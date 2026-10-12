@@ -1,0 +1,33 @@
+{
+  "actual_export_counterproofs_skipped_pending_export": 21,
+  "alternative": "python eval/scripts/test_state_event_receipt.py --proof-dir /absolute/export -v",
+  "command": [
+    "/private/tmp/xrai-c02-tools/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts",
+    "-p",
+    "test_state_event_receipt.py",
+    "-v"
+  ],
+  "data_only_structure_passed": 9,
+  "exit_code": 0,
+  "finished_utc": "2026-10-12T21:07:54.294077+00:00",
+  "limits": [
+    "Small illustrative records exercise data structure validation only; no upstream code executed",
+    "21 real-export checks are not claimed accepted until authentic native CI export is supplied",
+    "Replacement of both binary bytes and all claimed receipt digests requires caller authentication of original CI ZIP/head/job; local verifier is not a CI signing authority"
+  ],
+  "native_execution": false,
+  "run_real_export": "XRAI_STATE_EVENT_PROOF=/absolute/export python -m unittest discover -s eval/scripts -p test_state_event_receipt.py -v",
+  "schema_version": "xrai.eval.c03.counterproof-preparation.v1",
+  "source_sha256": {
+    "eval/scripts/test_state_event_receipt.py": "dfadae6ddcb01098614301ec8652e18ed6f5224fab6d9cac366ee34ad1759b6e"
+  },
+  "started_utc": "2026-10-12T21:07:54.232973+00:00",
+  "stderr_sha256": "c6bbb9781d4fef9632249b8334e83bc9119eaf30dc4eb43d30628d5627a3d019",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tests_ran": 30
+}

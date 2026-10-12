@@ -1,0 +1,1 @@
+The indexing session uses the older edition while this workspace declares the newer edition. Update the session configuration to the workspace edition and refresh navigation for the randomization utilities. Keep an unavailable helper unavailable. Compare the refreshed state with a fresh index without closing the working session.

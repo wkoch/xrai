@@ -1,0 +1,96 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_execution_gate.py",
+        "-v"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 0.372,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "579de948c7313e047e1892668a8c08cf54b8817cdcf03d0d8298c16511130470",
+      "data_only_or_offline_fake": true
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_state_events.py",
+        "-v"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 0.569,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c791097096ce69cbcc3901ac9f640911469fc997dda1ff1e251bcc45be5abddd",
+      "data_only_or_offline_fake": true
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_gitea_exposure.py",
+        "-v"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 3.989,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "476ebacca9ee3527d63f6aaa9ea98167c26c4c46b9e354fe52bd94cd29bf0211",
+      "data_only_or_offline_fake": true
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/execution_preflight.py",
+        "eval/qualification/execution-gate/smoke-offline.json",
+        "--dispatch-fake"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 0.044,
+      "stdout_sha256": "24508b0d81e5aa8d24fb5a645986373cf8fb3f7f90150561357b5e84156fdf98",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "data_only_or_offline_fake": true
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_gitea_exposure.py",
+        "--require-execution",
+        "--phase",
+        "download"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "passed": true,
+      "seconds": 0.252,
+      "stdout_sha256": "4755433719f85565567c63f059283ac84c1cd454590728524e8c97ab6aa03761",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "data_only_or_offline_fake": true
+    }
+  ],
+  "passed": true
+}

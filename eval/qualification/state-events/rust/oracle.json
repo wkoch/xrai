@@ -1,0 +1,57 @@
+{
+  "answers": {
+    "no_such_random_helper": {
+      "a": {
+        "state": "unknown",
+        "target": null
+      },
+      "b": {
+        "state": "unknown",
+        "target": null
+      }
+    },
+    "seed": {
+      "a": {
+        "state": "unknown",
+        "target": null
+      },
+      "b": {
+        "state": "resolved",
+        "target": "crates/stdx/src/rand.rs:seed"
+      }
+    },
+    "shuffle": {
+      "a": {
+        "state": "unknown",
+        "target": null
+      },
+      "b": {
+        "state": "resolved",
+        "target": "crates/stdx/src/rand.rs:shuffle"
+      }
+    }
+  },
+  "capacity": "rust-r3-v1-limited-root-lookup",
+  "full_comparison": "complete declared snapshot, all queries, unknown/coverage/diagnostics preserved",
+  "labels_frozen_before_results": true,
+  "no_normalization_of": [
+    "source_hashes",
+    "configuration",
+    "unknown",
+    "coverage",
+    "diagnostics",
+    "targets",
+    "evidence",
+    "dependencies"
+  ],
+  "operational_normalization": [
+    "session_id",
+    "operation_id",
+    "generation",
+    "pid",
+    "timing"
+  ],
+  "schema_version": "xrai.eval.real-state-event.prepared.v1",
+  "stale_control": "A answers for changed queries must differ from B expectations",
+  "task_id": "L5-STATE-Rust-STDX-EDITION"
+}

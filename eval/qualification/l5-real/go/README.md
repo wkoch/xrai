@@ -28,3 +28,9 @@ Toolchain/cache are verified byte copies, never host hardlinks; all source bytes
 At preparation: behavioral pair **not run**, independent review pending, admission false and competitive runs false. C02 keeps the separate Go family state A→B event open; it does not become an artificial dependency of this contract dossier. Global D1/quota gates remain open.
 
 Revisão independente de fontes/input/oracle/reference/setup aceita em `docs/relatorios/logs/L5-C02/integration/go-source-review-root.json`. Esta revisão é anterior à prova comportamental; elegibilidade do dossiê e admissão permanecem pendentes até seus critérios, conforme C02. Recibos/freeze anteriores preservados.
+
+## Estado corrente após C02
+
+Os parágrafos de preparação acima preservam o histórico anterior à prova. O par comportamental e a revisão independente foram concluídos no código `e02370a`, [CI38294106923](https://github.com/wkoch/xrai/actions/runs/38294106923). Consulte a [matriz factual derivada](../../c02-status-matrix.json) e o [relatório C02](../../../../docs/relatorios/L5-C02.md) para a elegibilidade individual corrente. Os casos, oracles, pins e recibos congelados permanecem originais; admissão global continua 0/32 e o evento obrigatório da família é separado.
+
+Novas execuções Gitea estão bloqueadas pelo [gate S01](../../../../docs/relatorios/L5-S01.md) enquanto a exposição dos 55 alertas permanece desconhecida. Os comandos acima são documentação histórica e não substituem esse gate.

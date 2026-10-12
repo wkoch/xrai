@@ -1,0 +1,90 @@
+{
+  "a_inventory": {
+    "sklearn/metrics/__init__.py": {
+      "bytes": 4553,
+      "sha256": "0388db4efb86c7ca3aa117c0ff92075dc9edd405514e403a92706740bd3445e6"
+    }
+  },
+  "admitted": false,
+  "archive": {
+    "commit": "156ef141f3b270edb06c8ae9af37c55253c0aabe",
+    "path": "eval/qualification/l5-real/python/sources/base.tar.gz",
+    "repository": "scikit-learn/scikit-learn",
+    "sha256": "70f9d47a3aba04faf22b150075283b0a4311f8b665bf2ab3e447cd5c3685b70b"
+  },
+  "artifacts": {
+    "a.json": {
+      "bytes": 5033,
+      "sha256": "9acfbefb2d2d1ee15212aefe247a7f08e4a9fca3d0bf96dcfe7e8e25a3986061"
+    },
+    "agent/input.md": {
+      "bytes": 350,
+      "sha256": "c17d33d56fe6d7d2de4d4a717528fc74d5ddfc34c13f311f511d397f9bcaca40"
+    },
+    "b.json": {
+      "bytes": 85286,
+      "sha256": "82c5f98096a6c6ebdcb65d7b3d1288ffe927cde2f5fc7daf05688084a8af23f9"
+    },
+    "context.json": {
+      "bytes": 8498,
+      "sha256": "1fc126e324398b1b493b9aa8f1cc790110ed85a34b980b939e5a913a8d404e27"
+    },
+    "oracle.json": {
+      "bytes": 1416,
+      "sha256": "19471d293b4e5d9b3713125248ef4ae491a62a8f722500f5f39f28d03a88beaa"
+    },
+    "queries.json": {
+      "bytes": 355,
+      "sha256": "4a74cce68496dde8b889ea0bfc661f17cde47ebb8adf043a40dcd5755f66c070"
+    }
+  },
+  "b_inventory": {
+    "sklearn/metrics/__init__.py": {
+      "bytes": 4553,
+      "sha256": "0388db4efb86c7ca3aa117c0ff92075dc9edd405514e403a92706740bd3445e6"
+    },
+    "sklearn/metrics/_ranking.py": {
+      "bytes": 77526,
+      "sha256": "420a8519c0dedc3d0e71dc0b7371dc93946e33f0026d9bd2a08bf5851bb9bab4"
+    }
+  },
+  "capacity": "captured-source-presence-v1",
+  "change_lineage": "controlled:scikit-learn/scikit-learn:156ef141f3b270edb06c8ae9af37c55253c0aabe:L5-STATE-Python-SOURCE-AVAILABILITY",
+  "complex": false,
+  "complex_reason": "no claimed three-module/two-subsystem necessary chain",
+  "delta": {
+    "configuration_changed": {},
+    "files_added": [
+      "sklearn/metrics/_ranking.py"
+    ],
+    "files_changed": [],
+    "files_removed": []
+  },
+  "derived_from": [],
+  "event": "source_availability_change",
+  "event_role": "required",
+  "executed": false,
+  "family": "Python",
+  "global_admission_delta": 0,
+  "individual_eligible": false,
+  "kind": "state_config",
+  "origin": "controlled_independent_state_task",
+  "parsing_requirement": "none: source availability only; parse/semantic relations explicitly unknown, never omitted as proven",
+  "prepared": true,
+  "receipt_policy": "descriptor is preparation only; cold B, restart, supplemental role and relabelled case cannot demonstrate the required event",
+  "repository": "scikit-learn/scikit-learn",
+  "required_session_sequence": [
+    "open_A",
+    "warm_all_queries_A",
+    "apply_B_same_index",
+    "query_all_B",
+    "snapshot_B",
+    "independent_open_B",
+    "compare_complete",
+    "close_both"
+  ],
+  "schema_version": "xrai.eval.real-state-event.prepared.v1",
+  "slot_id": "L5-SLOT-Python-state_config-1",
+  "source_scope": "entire original selected production files; full upstream archive retained separately; no whole-repository semantic claim",
+  "task_id": "L5-STATE-Python-SOURCE-AVAILABILITY"
+}

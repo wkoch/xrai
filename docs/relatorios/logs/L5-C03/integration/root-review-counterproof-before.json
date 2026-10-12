@@ -1,0 +1,30 @@
+{
+  "cli": {
+    "campaign_adapter_calls": 0,
+    "campaign_refusals": {
+      "corpus": "immutable complete qualified-corpus reconciliation not connected",
+      "events": "four required real A-to-B execution reconciliations not connected",
+      "provider": "paid provider adapter and authorization unavailable"
+    },
+    "smoke_adapter_calls": 1
+  },
+  "data_only": true,
+  "narrow_transport_checks": {
+    "envelope_snapshot": {
+      "accepted": true
+    },
+    "stale_error_fields": {
+      "accepted": true
+    },
+    "unchanged": {
+      "accepted": true
+    }
+  },
+  "native_code_executed": false,
+  "scope": "load_process envelope linkage only; this synthetic fixture is not a valid full native event proof",
+  "source_sha256": {
+    "docs/relatorios/logs/L5-C03/integration/review_counterproof.py": "789a16012c55241bd2c13d23bf09909ad767b76c791f6ae2855bd7487b95f768",
+    "eval/scripts/execution_preflight.py": "e3828c7a8e705a7f9364c489afc5a91ae664803e9f7715dfbeb684306f28e6ca",
+    "eval/scripts/verify_state_event.py": "be40b9e5e884e2023e6d5d9c3bcfde43dff53b9f9407e41ea658d121458dd67b"
+  }
+}

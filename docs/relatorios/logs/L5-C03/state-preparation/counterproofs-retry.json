@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts",
+    "-p",
+    "test_state_events.py",
+    "-v"
+  ],
+  "started_utc": "2026-10-12T20:57:11.580624+00:00",
+  "finished_utc": "2026-10-12T20:57:12.077509+00:00",
+  "exit_code": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "1aa4a146aa7fc50fb67a47e886c064884d5e9c30e32c3fd93cb3f209bc62e66e",
+  "data_only": true,
+  "collector_retry_reason": "original collector failed to persist unittest result after subprocess completion due ENOSPC; no delivery test status claimed from lost output"
+}

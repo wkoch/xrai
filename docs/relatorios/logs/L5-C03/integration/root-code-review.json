@@ -1,0 +1,91 @@
+{
+  "after_fix": {
+    "captured_at": "2026-10-12T21:10:19.753977+00:00",
+    "counterproof": "docs/relatorios/logs/L5-C03/integration/root-review-counterproof-after.json",
+    "coverage": {
+      "caveat": "best-effort; source fallback used for changed files",
+      "execution_preflight": "metadata_match",
+      "generation": "2026-10-12T21:09:16Z",
+      "run_state_event": "metadata_changed; changed retainedcopy/execute/posthash spans read directly",
+      "semantics_spike": "metadata_match",
+      "verify_state_event": "metadata_changed; changed load_process snapshot/generation spans read directly"
+    },
+    "no_native_execution": true,
+    "optional_snapshot_fields": "bindings/conditions correctly optional because original Rust skips serialization for empty Vec",
+    "result": "both requested findings resolved by source review and data-only transport counterproof re-execution",
+    "source_sha256": {
+      "eval/scripts/execution_preflight.py": "e3828c7a8e705a7f9364c489afc5a91ae664803e9f7715dfbeb684306f28e6ca",
+      "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+      "eval/scripts/verify_state_event.py": "46235cd97d9d61ad3eefbf05d10aefc3422282793490f683194497f47c083d12"
+    }
+  },
+  "captured_at": "2026-10-12T21:08:21.603600+00:00",
+  "confirmed": [
+    "Rust Input field-order and sorted BTreeMap serialization agree with Python identity recomposition.",
+    "Successful A/B sequence generations and complete B/query equality preserve coverage, unknown, diagnostics and evidence.",
+    "Rust session uses one Index, checks expected revision before update, publishes after Index::update success and exits on explicit close.",
+    "Native source is parsed only; analyzed upstream source is not compiled/executed.",
+    "S01 Go download guard precedes setup-go/fetch; !cancelled reference path repeats probe guard before invoking probe.",
+    "CLI consumer integration: smoke adapter calls=1, incomplete campaign adapter calls=0."
+  ],
+  "counterproof_before": "docs/relatorios/logs/L5-C03/integration/root-review-counterproof-before.json",
+  "findings": [
+    {
+      "file": "eval/scripts/run_state_event.py",
+      "id": "C03-REVIEW-NATIVE-CONSUMED-BYTES",
+      "lines": [
+        103,
+        128,
+        145
+      ],
+      "problem": "Collector retains a native executable copy but dispatches the original mutable path; before/after hashes do not bind transiently substituted executed bytes.",
+      "requested_fix": "Execute the retained copy with executable/read-only mode and bind its actual bytes before/after dispatch.",
+      "resolution": "Collector executes retained 0500 copy; source-reviewed before/after byte binding.",
+      "severity": "P1",
+      "status": "resolved_after_fix"
+    },
+    {
+      "file": "eval/scripts/verify_state_event.py",
+      "id": "C03-REVIEW-ENVELOPE-CONTENT",
+      "lines": [
+        103,
+        112
+      ],
+      "problem": "load_process accepts substituted envelope snapshot_id and stale-error snapshot_id/generation inconsistent with preserved A.",
+      "requested_fix": "Track expected snapshot and generation for every envelope, including rejected update; validate against snapshot result and native Input identity.",
+      "resolution": "Unchanged transport accepted; both malformed snapshot/generation controls rejected after fix.",
+      "severity": "P2",
+      "status": "resolved_after_fix"
+    }
+  ],
+  "graph": {
+    "caveat": "Best-effort coverage; no recorded issue is not proof of completeness.",
+    "fallback": [
+      "run_state_event.py",
+      "verify_state_event.py",
+      "execution_preflight.py read fully because not_tracked"
+    ],
+    "generation": "2026-10-12T20:59:22Z",
+    "tier": 2
+  },
+  "limits": [
+    "Actual native build/run and byte-provenance authentication remain Linux CI and original artifact/API metadata work.",
+    "No comprehensive resource-bound or arbitrary malicious-native-binary audit. Blocking stdin write precedes response deadline; current frozen frames are below pipe capacity.",
+    "Campaign is intentionally blocked; fake fixture verifies gate/dispatch only, not two paid agents or OS containment."
+  ],
+  "native_proof_acceptance": "source/data-only review passed; actual native build/run and authenticated CI artifact acceptance pending",
+  "reviewer": "c03_dispatch",
+  "schema": "xrai.eval.root-code-review.v1",
+  "scope": "Directed independent source/data-only review of root C03-B native session collector/verifier/CLI/workflows; no Rust/upstream/provider execution.",
+  "source_sha256": {
+    ".github/workflows/ci.yml": "204fb0fe44c3d5fc3728d9c6fd2fffd99201cdeb12d8ed1ef2d3633ad36ac2f5",
+    ".github/workflows/l5-corpus-next.yml": "f56ef5d60b74464e92df28a3c8b9ad790be327db1cac9c7819e44cf868536851",
+    ".github/workflows/l5-state-event.yml": "0c0fafb5e7e4713813f4f1addbe7aae1116912816f456c83e6413b69131c74aa",
+    "crates/xrai-eval/src/bin/semantics-session.rs": "05ad8f816d7df461dec5382b6330169c490649de09c5b53cd9478bc6c7da211b",
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "eval/scripts/execution_preflight.py": "e3828c7a8e705a7f9364c489afc5a91ae664803e9f7715dfbeb684306f28e6ca",
+    "eval/scripts/run_state_event.py": "dd1eea97017eceb8ca320fa8c5afbfa9a2e5c6ed428f23521c5ff83aa3d8fa1b",
+    "eval/scripts/verify_state_event.py": "be40b9e5e884e2023e6d5d9c3bcfde43dff53b9f9407e41ea658d121458dd67b",
+    "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+  }
+}

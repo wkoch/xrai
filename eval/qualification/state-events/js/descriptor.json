@@ -1,0 +1,90 @@
+{
+  "a_inventory": {
+    "packages/react/src/ReactHooks.js": {
+      "bytes": 5778,
+      "sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+    }
+  },
+  "admitted": false,
+  "archive": {
+    "commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+    "path": "eval/qualification/l5-real/js/sources/base.tar.gz",
+    "repository": "facebook/react",
+    "sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6"
+  },
+  "artifacts": {
+    "a.json": {
+      "bytes": 6101,
+      "sha256": "56e59562dead00bb493aeb8458370eaf2411014eae7c081770d0554e287783e0"
+    },
+    "agent/input.md": {
+      "bytes": 347,
+      "sha256": "e751dab4b4615f7a42047adfbcd71e0fcf5590617338848fb89f00e358c5f2ed"
+    },
+    "b.json": {
+      "bytes": 6675,
+      "sha256": "a723856691d7c9b53e726c38a279470baa8dfab1a8ca5e6952671a095c3eddc3"
+    },
+    "context.json": {
+      "bytes": 8856,
+      "sha256": "a98385588c93b19c21cc771489962ae92b59f5bc8d90936501650cd641b6274a"
+    },
+    "oracle.json": {
+      "bytes": 1414,
+      "sha256": "2ac94a4abb6a4d9e4a8b37871c11f15b08d609a0c65178ba0074f899e2369ca8"
+    },
+    "queries.json": {
+      "bytes": 380,
+      "sha256": "fa1882368b0b5925fa4cadaca03e55a775c2c72568a9a406da7434edf1c533d9"
+    }
+  },
+  "b_inventory": {
+    "packages/react/src/ReactCurrentDispatcher.js": {
+      "bytes": 495,
+      "sha256": "8a5078b861880b0f0661bd1871852efe5dd686c6d965608103c1c112004bbd1b"
+    },
+    "packages/react/src/ReactHooks.js": {
+      "bytes": 5778,
+      "sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+    }
+  },
+  "capacity": "captured-source-presence-v1",
+  "change_lineage": "controlled:facebook/react:77912d9a05d7a90287fabdec76486f25869b2981:L5-STATE-TSJS-SOURCE-AVAILABILITY",
+  "complex": false,
+  "complex_reason": "no claimed three-module/two-subsystem necessary chain",
+  "delta": {
+    "configuration_changed": {},
+    "files_added": [
+      "packages/react/src/ReactCurrentDispatcher.js"
+    ],
+    "files_changed": [],
+    "files_removed": []
+  },
+  "derived_from": [],
+  "event": "source_availability_change",
+  "event_role": "required",
+  "executed": false,
+  "family": "TSJS",
+  "global_admission_delta": 0,
+  "individual_eligible": false,
+  "kind": "state_config",
+  "origin": "controlled_independent_state_task",
+  "parsing_requirement": "none: source availability only; parse/semantic relations explicitly unknown, never omitted as proven",
+  "prepared": true,
+  "receipt_policy": "descriptor is preparation only; cold B, restart, supplemental role and relabelled case cannot demonstrate the required event",
+  "repository": "facebook/react",
+  "required_session_sequence": [
+    "open_A",
+    "warm_all_queries_A",
+    "apply_B_same_index",
+    "query_all_B",
+    "snapshot_B",
+    "independent_open_B",
+    "compare_complete",
+    "close_both"
+  ],
+  "schema_version": "xrai.eval.real-state-event.prepared.v1",
+  "slot_id": "L5-SLOT-TSJS-state_config-1",
+  "source_scope": "entire original selected production files; full upstream archive retained separately; no whole-repository semantic claim",
+  "task_id": "L5-STATE-TSJS-SOURCE-AVAILABILITY"
+}

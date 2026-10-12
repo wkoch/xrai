@@ -1,0 +1,90 @@
+{
+  "a_inventory": {
+    "modules/util/url.go": {
+      "bytes": 1138,
+      "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+    }
+  },
+  "admitted": false,
+  "archive": {
+    "commit": "8eefa1f6dedf2488db2c9e12c916e8e51f673160",
+    "path": "eval/qualification/l5-real/go/sources/base.tar.gz",
+    "repository": "go-gitea/gitea",
+    "sha256": "3cd918c96a563db6a64e8c9717d556097240de799f9f0948ba50060e6143c190"
+  },
+  "artifacts": {
+    "a.json": {
+      "bytes": 1370,
+      "sha256": "045500223166da810ee34ad00da4b5e4cbc17c78ec2f8831df56bea8a4d2061a"
+    },
+    "agent/input.md": {
+      "bytes": 393,
+      "sha256": "268a174285f7f2894678bea7209f8f10d6923b5080bf400e2ff7115601a198fb"
+    },
+    "b.json": {
+      "bytes": 11373,
+      "sha256": "93cc2475f71015e7a115ce0e6366b62dbdba2e329d4140d6cdf75f613aabce42"
+    },
+    "context.json": {
+      "bytes": 16835,
+      "sha256": "a83c4559a25b795573ee7cc38f3132b7ffbe747c37ee7e59435bbabec7b38a7e"
+    },
+    "oracle.json": {
+      "bytes": 1412,
+      "sha256": "242a4f624b5fd83e1e670719e109da56f03ed7d4a39f0083bc17826c1a7ce7a6"
+    },
+    "queries.json": {
+      "bytes": 337,
+      "sha256": "536a053e28e900984d76f120534c6dcdb9c7bec2656b0358fe61f4f8f7fa2b70"
+    }
+  },
+  "b_inventory": {
+    "modules/util/path.go": {
+      "bytes": 9185,
+      "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+    },
+    "modules/util/url.go": {
+      "bytes": 1138,
+      "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+    }
+  },
+  "capacity": "captured-source-presence-v1",
+  "change_lineage": "controlled:go-gitea/gitea:8eefa1f6dedf2488db2c9e12c916e8e51f673160:L5-STATE-Go-SOURCE-AVAILABILITY",
+  "complex": false,
+  "complex_reason": "no claimed three-module/two-subsystem necessary chain",
+  "delta": {
+    "configuration_changed": {},
+    "files_added": [
+      "modules/util/path.go"
+    ],
+    "files_changed": [],
+    "files_removed": []
+  },
+  "derived_from": [],
+  "event": "source_availability_change",
+  "event_role": "required",
+  "executed": false,
+  "family": "Go",
+  "global_admission_delta": 0,
+  "individual_eligible": false,
+  "kind": "state_config",
+  "origin": "controlled_independent_state_task",
+  "parsing_requirement": "none: source availability only; parse/semantic relations explicitly unknown, never omitted as proven",
+  "prepared": true,
+  "receipt_policy": "descriptor is preparation only; cold B, restart, supplemental role and relabelled case cannot demonstrate the required event",
+  "repository": "go-gitea/gitea",
+  "required_session_sequence": [
+    "open_A",
+    "warm_all_queries_A",
+    "apply_B_same_index",
+    "query_all_B",
+    "snapshot_B",
+    "independent_open_B",
+    "compare_complete",
+    "close_both"
+  ],
+  "schema_version": "xrai.eval.real-state-event.prepared.v1",
+  "slot_id": "L5-SLOT-Go-state_config-1",
+  "source_scope": "entire original selected production files; full upstream archive retained separately; no whole-repository semantic claim",
+  "task_id": "L5-STATE-Go-SOURCE-AVAILABILITY"
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "xrai.eval.gitea.s01.consumer.integration.v1",
+  "at_utc": "2026-10-12T21:08:34.369442+00:00",
+  "workflow": ".github/workflows/l5-corpus-next.yml",
+  "workflow_sha256": "f56ef5d60b74464e92df28a3c8b9ad790be327db1cac9c7819e44cf868536851",
+  "verifier_sha256": "e5e8cbbfe786836d98303df5fbe3a7b793efa969873b6b0979765724391c37b8",
+  "tests_sha256": "9db2f363abdab4b86322f45561221cedc92e2e0468958e8eae186b0aa7db1e0f",
+  "inventory_sha256": "db0f572bbb4bbe20fa04c6b0f8608bf3cc1bd7b5f617a997433c96dc7fc14bf3",
+  "source_check": {
+    "verified": true,
+    "method": "bounded explicit Go job source/step-order check; general YAML validity checked separately",
+    "download_guard_step_index": 2,
+    "affected_guarded_step_indices": [
+      3,
+      5,
+      6,
+      7,
+      8
+    ],
+    "probe_step_indices": [
+      7,
+      8
+    ],
+    "execution_observed": false,
+    "upstream_executed": false
+  },
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "eval/scripts/verify_gitea_exposure.py",
+        "--require-execution",
+        "--phase",
+        "download"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "stdout": "docs/relatorios/logs/L5-C03/S01/consumer-download.stdout",
+      "stderr": "docs/relatorios/logs/L5-C03/S01/consumer-download.stderr",
+      "stdout_sha256": "4755433719f85565567c63f059283ac84c1cd454590728524e8c97ab6aa03761",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "python3",
+        "eval/scripts/verify_gitea_exposure.py",
+        "--require-execution",
+        "--phase",
+        "build"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "stdout": "docs/relatorios/logs/L5-C03/S01/consumer-build.stdout",
+      "stderr": "docs/relatorios/logs/L5-C03/S01/consumer-build.stderr",
+      "stdout_sha256": "bb1e108582da8633b863e94c51a2f7bc8214b3e85bbd5bd844ef89c1ef96fc70",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "python3",
+        "eval/scripts/verify_gitea_exposure.py",
+        "--require-execution",
+        "--phase",
+        "probe"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "stdout": "docs/relatorios/logs/L5-C03/S01/consumer-probe.stdout",
+      "stderr": "docs/relatorios/logs/L5-C03/S01/consumer-probe.stderr",
+      "stdout_sha256": "e3bbca53f0c11b6acdd16e8edc350a9a3f7dd7331e55d70d5e55fbd1670af487",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "unit_tests": {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "eval/scripts",
+      "-p",
+      "test_gitea_exposure.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests_passed": 32,
+    "stdout": "consumer-final-tests.stdout",
+    "stderr": "consumer-final-tests.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e7cee32c300b98752768ddea35863ab98608e2c01d07d3067247c9274e94dacc"
+  },
+  "safe_shell_spy_calls": 0,
+  "affected_upstream_execution_observed": false,
+  "go_pipeline_dispatched": false,
+  "frozen_runner_modified": false,
+  "provider_called": false,
+  "scope_limit": "Current explicit workflow source and own bash -e guard/printf spy only; not a CI run, general YAML verification, arbitrary future workflow, or advisory reachability assessment",
+  "pending_closed": "S01-CONSUMER-GUARD for current manual corpus Go workflow",
+  "all_expected_exits": true
+}

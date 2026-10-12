@@ -1,0 +1,3 @@
+# L5-STATE-Rust-STDX-EDITION
+
+Prepared independent controlled state task, frozen before execution. Capacity: `rust-r3-v1-limited-root-lookup`. No executed event, individual eligibility or D1 admission. The archive is reused solely as original source data; this lineage is independent of the earlier correction/contract. Input is agent-facing; oracle, context and descriptor are evaluator-only. Rust changes declared edition configuration; the other families restore original source availability in incomplete captures. TSJS React Flow source presence does not imply compatibility with captured-relative-exact-v1.

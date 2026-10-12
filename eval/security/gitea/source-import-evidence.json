@@ -1,0 +1,438 @@
+{
+  "method": "Data-only regexp of frozen Go import declarations, including tests and all build tags. Witnesses are syntactic imports anywhere in Gitea, NOT compiled package closure, function reachability, or absence proof. Indirect dependency graph is unavailable without dependency source/module graph.",
+  "archive_sha256": "3cd918c96a563db6a64e8c9717d556097240de799f9f0948ba50060e6143c190",
+  "packages": {
+    "filippo.io/edwards25519": {
+      "resolved_pin": {
+        "version": "v1.1.0",
+        "requirement_kind": "indirect",
+        "line": 128
+      },
+      "import_witness_count": 0,
+      "import_witnesses": [],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/Azure/go-ntlmssp": {
+      "resolved_pin": {
+        "version": "v0.0.0-20221128193559-754e69321358",
+        "requirement_kind": "direct",
+        "line": 18
+      },
+      "import_witness_count": 1,
+      "import_witnesses": [
+        {
+          "path": "services/mailer/mailer.go",
+          "line": 30,
+          "import": "github.com/Azure/go-ntlmssp",
+          "source_sha256": "43d21dcaedef2ab78d3024dddde1a5657d4e04a6b6eea0a242c428ba43cf92fe"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/ClickHouse/ch-go": {
+      "resolved_pin": {
+        "version": "v0.61.5",
+        "requirement_kind": "indirect",
+        "line": 130
+      },
+      "import_witness_count": 0,
+      "import_witnesses": [],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/blevesearch/bleve/v2": {
+      "resolved_pin": {
+        "version": "v2.4.2",
+        "requirement_kind": "direct",
+        "line": 22
+      },
+      "import_witness_count": 24,
+      "import_witnesses": [
+        {
+          "path": "modules/indexer/code/bleve/bleve.go",
+          "line": 27,
+          "import": "github.com/blevesearch/bleve/v2",
+          "source_sha256": "046f64582493396fca742b0604371bfcc85791f5844b4d0b7db69d4927264167"
+        },
+        {
+          "path": "modules/indexer/code/bleve/bleve.go",
+          "line": 28,
+          "import": "github.com/blevesearch/bleve/v2/analysis/analyzer/custom",
+          "source_sha256": "046f64582493396fca742b0604371bfcc85791f5844b4d0b7db69d4927264167"
+        },
+        {
+          "path": "modules/indexer/code/bleve/bleve.go",
+          "line": 29,
+          "import": "github.com/blevesearch/bleve/v2/analysis/analyzer/keyword",
+          "source_sha256": "046f64582493396fca742b0604371bfcc85791f5844b4d0b7db69d4927264167"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/cloudflare/circl": {
+      "resolved_pin": {
+        "version": "v1.3.7",
+        "requirement_kind": "indirect",
+        "line": 168
+      },
+      "import_witness_count": 0,
+      "import_witnesses": [],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/go-chi/chi/v5": {
+      "resolved_pin": {
+        "version": "v5.0.12",
+        "requirement_kind": "direct",
+        "line": 40
+      },
+      "import_witness_count": 8,
+      "import_witnesses": [
+        {
+          "path": "modules/validation/binding_test.go",
+          "line": 12,
+          "import": "github.com/go-chi/chi/v5",
+          "source_sha256": "a67bed75c90cea96d3e2dc13d13921735acd66248bd303ed022e65328085eeea"
+        },
+        {
+          "path": "modules/web/route.go",
+          "line": 14,
+          "import": "github.com/go-chi/chi/v5",
+          "source_sha256": "d365bfed1b8e257b9a8356c5524f629fdcf3e3ee690dfd9f9f0c6989b03ac6b8"
+        },
+        {
+          "path": "modules/web/route_test.go",
+          "line": 13,
+          "import": "github.com/go-chi/chi/v5",
+          "source_sha256": "5b9bde6d281ba421a2524f96441d1f0da1eb4948aba01aad3f885754cf1d04bd"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/go-git/go-billy/v5": {
+      "resolved_pin": {
+        "version": "v5.5.0",
+        "requirement_kind": "direct",
+        "line": 45
+      },
+      "import_witness_count": 2,
+      "import_witnesses": [
+        {
+          "path": "modules/git/repo_base_gogit.go",
+          "line": 17,
+          "import": "github.com/go-git/go-billy/v5",
+          "source_sha256": "9bd23531edf80b13bd7bb721a3794b2dc1ad658623395a9563720907430cd64d"
+        },
+        {
+          "path": "modules/git/repo_base_gogit.go",
+          "line": 18,
+          "import": "github.com/go-git/go-billy/v5/osfs",
+          "source_sha256": "9bd23531edf80b13bd7bb721a3794b2dc1ad658623395a9563720907430cd64d"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/go-git/go-git/v5": {
+      "resolved_pin": {
+        "version": "v5.11.0",
+        "requirement_kind": "direct",
+        "line": 46
+      },
+      "import_witness_count": 53,
+      "import_witnesses": [
+        {
+          "path": "modules/git/blob_gogit.go",
+          "line": 12,
+          "import": "github.com/go-git/go-git/v5/plumbing",
+          "source_sha256": "1932071e303e73ea001206a621455053bd1fff3586877b2f0877d8c4fc587a54"
+        },
+        {
+          "path": "modules/git/commit_convert_gogit.go",
+          "line": 13,
+          "import": "github.com/go-git/go-git/v5/plumbing/object",
+          "source_sha256": "603406358b548c650c936f826dbe29b43cc55f1bcdc2d58817b3ed01048223e0"
+        },
+        {
+          "path": "modules/git/commit_info_gogit.go",
+          "line": 13,
+          "import": "github.com/go-git/go-git/v5/plumbing",
+          "source_sha256": "a1efa2989a66e1dc3c5417dbe9ad7bd8ae902ab15a5ed45b357c18155f7a3823"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/golang-jwt/jwt/v4": {
+      "resolved_pin": {
+        "version": "v4.5.0",
+        "requirement_kind": "indirect",
+        "line": 202
+      },
+      "import_witness_count": 0,
+      "import_witnesses": [],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/golang-jwt/jwt/v5": {
+      "resolved_pin": {
+        "version": "v5.2.1",
+        "requirement_kind": "direct",
+        "line": 55
+      },
+      "import_witness_count": 10,
+      "import_witnesses": [
+        {
+          "path": "cmd/serv.go",
+          "line": 33,
+          "import": "github.com/golang-jwt/jwt/v5",
+          "source_sha256": "cd3c67aea0d92f3c6f820983a81ae692c5b305433bf47beed79263ce1779f36b"
+        },
+        {
+          "path": "modules/generate/generate.go",
+          "line": 16,
+          "import": "github.com/golang-jwt/jwt/v5",
+          "source_sha256": "defab5df1116add929df1c611f0a01f982df16724547f4b558ae35279776d3fa"
+        },
+        {
+          "path": "routers/web/auth/oauth.go",
+          "line": 42,
+          "import": "github.com/golang-jwt/jwt/v5",
+          "source_sha256": "939f64b839ef5d8d1e2b40f558925a216cc696d84d1a3f5bb57d59479e2f2932"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/nwaples/rardecode": {
+      "resolved_pin": {
+        "version": "v1.1.3",
+        "requirement_kind": "indirect",
+        "line": 242
+      },
+      "import_witness_count": 0,
+      "import_witnesses": [],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/redis/go-redis/v9": {
+      "resolved_pin": {
+        "version": "v9.6.0",
+        "requirement_kind": "direct",
+        "line": 90
+      },
+      "import_witness_count": 5,
+      "import_witnesses": [
+        {
+          "path": "modules/cache/cache_redis.go",
+          "line": 15,
+          "import": "github.com/redis/go-redis/v9",
+          "source_sha256": "4b382b03adee0896a7f1a49be78ceb58ef045544d7128cc79c30b0ccfa72b3af"
+        },
+        {
+          "path": "modules/nosql/manager.go",
+          "line": 14,
+          "import": "github.com/redis/go-redis/v9",
+          "source_sha256": "7a0dcfdc3ebfaab347c7e754f6382f4f564c7e1f63d116bdbf0cb79f7aa0a269"
+        },
+        {
+          "path": "modules/nosql/manager_redis.go",
+          "line": 16,
+          "import": "github.com/redis/go-redis/v9",
+          "source_sha256": "de66f216e763551ec4fb938b4662531ad7f88226c95fcf1d47898cb631fee736"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "github.com/ulikunitz/xz": {
+      "resolved_pin": {
+        "version": "v0.5.11",
+        "requirement_kind": "direct",
+        "line": 99
+      },
+      "import_witness_count": 3,
+      "import_witnesses": [
+        {
+          "path": "modules/packages/debian/metadata.go",
+          "line": 20,
+          "import": "github.com/ulikunitz/xz",
+          "source_sha256": "ec6aa2b7ce5c33c5631fe351be1878b48ecaf99278f10b2b3e4865d64ca9bdb9"
+        },
+        {
+          "path": "modules/packages/debian/metadata_test.go",
+          "line": 16,
+          "import": "github.com/ulikunitz/xz",
+          "source_sha256": "957b70554e4cc1f0740081981f7ff01839efd9cfec92ed4ef10d008fa8294407"
+        },
+        {
+          "path": "services/packages/debian/repository.go",
+          "line": 30,
+          "import": "github.com/ulikunitz/xz",
+          "source_sha256": "b4c0e4c3cc2c3d22fe66560329acc6c54bbd005f458698f3fd82cde8ca480616"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "go.mongodb.org/mongo-driver": {
+      "resolved_pin": {
+        "version": "v1.14.0",
+        "requirement_kind": "indirect",
+        "line": 286
+      },
+      "import_witness_count": 0,
+      "import_witnesses": [],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "golang.org/x/crypto": {
+      "resolved_pin": {
+        "version": "v0.31.0",
+        "requirement_kind": "direct",
+        "line": 107
+      },
+      "import_witness_count": 20,
+      "import_witnesses": [
+        {
+          "path": "models/asymkey/ssh_key.go",
+          "line": 21,
+          "import": "golang.org/x/crypto/ssh",
+          "source_sha256": "a4dbf7ad891eabc140fd7887f9a5d8ba75509c1e83a8d73fcf3cfe964131b88e"
+        },
+        {
+          "path": "models/asymkey/ssh_key_fingerprint.go",
+          "line": 17,
+          "import": "golang.org/x/crypto/ssh",
+          "source_sha256": "bf8437c28b0a72c967e3d8a838ae7fe14b330843996a1d904ef8af40f1ba6481"
+        },
+        {
+          "path": "models/asymkey/ssh_key_parse.go",
+          "line": 24,
+          "import": "golang.org/x/crypto/ssh",
+          "source_sha256": "8f320f30c4530e69dc1854f01a013be0c83a79205886e3f95affed719a4e7e18"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "golang.org/x/image": {
+      "resolved_pin": {
+        "version": "v0.18.0",
+        "requirement_kind": "direct",
+        "line": 108
+      },
+      "import_witness_count": 4,
+      "import_witnesses": [
+        {
+          "path": "modules/avatar/avatar.go",
+          "line": 20,
+          "import": "golang.org/x/image/draw",
+          "source_sha256": "9ce611da6a009a0058748e63f434885c1986f4e5fb1b3bfc10544b26cc74af73"
+        },
+        {
+          "path": "modules/avatar/avatar.go",
+          "line": 22,
+          "import": "golang.org/x/image/webp",
+          "source_sha256": "9ce611da6a009a0058748e63f434885c1986f4e5fb1b3bfc10544b26cc74af73"
+        },
+        {
+          "path": "routers/web/repo/view.go",
+          "line": 58,
+          "import": "golang.org/x/image/bmp",
+          "source_sha256": "42fac2b92c562dd5075c1bb3db22bba74ee1a4dc5ecbccbea0236a3edbc73ee7"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "golang.org/x/net": {
+      "resolved_pin": {
+        "version": "v0.28.0",
+        "requirement_kind": "direct",
+        "line": 109
+      },
+      "import_witness_count": 9,
+      "import_witnesses": [
+        {
+          "path": "modules/charset/charset.go",
+          "line": 18,
+          "import": "golang.org/x/net/html/charset",
+          "source_sha256": "fbaa2bd848c92b59bfa5a37ad5b451df7f9c26fbd3b605706fbe2ee8bed5fae2"
+        },
+        {
+          "path": "modules/charset/escape_stream.go",
+          "line": 15,
+          "import": "golang.org/x/net/html",
+          "source_sha256": "b3ebc5a6281ebf492f0d2fd49b4d51a6de6629a7aa004f0c4c9d367a7df18f19"
+        },
+        {
+          "path": "modules/charset/htmlstream.go",
+          "line": 10,
+          "import": "golang.org/x/net/html",
+          "source_sha256": "472d54e34e0978c093d30fcdd9c70cf6f97a555ebd3e0ebd4f9b8fcb81855fe1"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "golang.org/x/oauth2": {
+      "resolved_pin": {
+        "version": "v0.21.0",
+        "requirement_kind": "direct",
+        "line": 110
+      },
+      "import_witness_count": 2,
+      "import_witnesses": [
+        {
+          "path": "routers/web/auth/oauth.go",
+          "line": 45,
+          "import": "golang.org/x/oauth2",
+          "source_sha256": "939f64b839ef5d8d1e2b40f558925a216cc696d84d1a3f5bb57d59479e2f2932"
+        },
+        {
+          "path": "services/migrations/github.go",
+          "line": 24,
+          "import": "golang.org/x/oauth2",
+          "source_sha256": "f086e84165080b29758bff4c6c681026f052758a409db23abc63347ea2760962"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    },
+    "google.golang.org/grpc": {
+      "resolved_pin": {
+        "version": "v1.62.1",
+        "requirement_kind": "direct",
+        "line": 114
+      },
+      "import_witness_count": 4,
+      "import_witnesses": [
+        {
+          "path": "routers/api/actions/runner/interceptor.go",
+          "line": 19,
+          "import": "google.golang.org/grpc/codes",
+          "source_sha256": "a3318b2a42cfa1d4698ed17468b368e95c7d029a111c011b0ea0407ad5d10cf6"
+        },
+        {
+          "path": "routers/api/actions/runner/interceptor.go",
+          "line": 20,
+          "import": "google.golang.org/grpc/status",
+          "source_sha256": "a3318b2a42cfa1d4698ed17468b368e95c7d029a111c011b0ea0407ad5d10cf6"
+        },
+        {
+          "path": "routers/api/actions/runner/runner.go",
+          "line": 23,
+          "import": "google.golang.org/grpc/codes",
+          "source_sha256": "046bc480740d46adc00f07a3712be6ddda5d5731bbe6e802633b92e282233d05"
+        }
+      ],
+      "probe_package": "./services/convert",
+      "probe_compile_and_call_chain": "unknown; no go list/build/test/execution performed by this analysis"
+    }
+  }
+}

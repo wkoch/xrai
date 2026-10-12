@@ -1,0 +1,479 @@
+{
+  "campaign": {
+    "adapter_calls": 0,
+    "decision": {
+      "accepted": false,
+      "campaign_scoring_enabled": false,
+      "dimensions": {
+        "corpus": "immutable complete qualified-corpus reconciliation not connected",
+        "events": "four required real A-to-B execution reconciliations not connected",
+        "provider": "paid provider adapter and authorization unavailable"
+      },
+      "intent": "campaign_d1",
+      "paid_provider_enabled": false,
+      "schema_version": "xrai.eval.execution-gate.v1",
+      "scope": "offline-fake-only",
+      "snapshot_sha256": "e3e836d34486d15c75d5555353ea004efbd23a6ac008ac7eed43070a7e2d2705"
+    }
+  },
+  "campaign_scoring_enabled": false,
+  "captured_at": "2026-10-12T20:59:59.801849+00:00",
+  "command": "python docs/relatorios/logs/L5-C03/gate/prove_gate.py",
+  "configuration_mutation": {
+    "adapter_calls": 0,
+    "refusal": "manifest/configuration changed"
+  },
+  "fixture_sha256": "dbf8d7399499b24faadea0210992d715636baba6b894b615223d82342d984c53",
+  "network_calls": 0,
+  "paid_provider_called": false,
+  "real_containment_proved": false,
+  "replay": {
+    "adapter_calls": 0,
+    "result": {
+      "accounting": {
+        "budget_limit_respected": true,
+        "budget_micro_usd": 1000,
+        "known_observed_charge_micro_usd": 35,
+        "observed_cost_complete": true,
+        "observed_cost_micro_usd": 35,
+        "reservation_is_provider_charge_guarantee": false,
+        "retained_reservation_micro_usd": 0,
+        "supported_cost_interval_micro_usd": [
+          35,
+          35
+        ],
+        "unknown_charge_attempts": []
+      },
+      "attempts": 1,
+      "status": "verified_fake_session"
+    }
+  },
+  "retry": {
+    "adapter_calls": 1,
+    "ledger": {
+      "accounting": {
+        "budget_limit_respected": true,
+        "budget_micro_usd": 500,
+        "known_observed_charge_micro_usd": 0,
+        "observed_cost_complete": false,
+        "observed_cost_micro_usd": null,
+        "reservation_is_provider_charge_guarantee": false,
+        "retained_reservation_micro_usd": 500,
+        "supported_cost_interval_micro_usd": [
+          0,
+          500
+        ],
+        "unknown_charge_attempts": [
+          "first"
+        ]
+      },
+      "adapter": "fake-offline-v1",
+      "attempts": {
+        "first": {
+          "call_id": "same-call",
+          "receipt": null,
+          "request": {
+            "base64": "eyJlZGl0cyI6W10sImV4cGFuc2lvbnMiOltdLCJsaW1pdHMiOnsiaW5wdXRfdG9rZW5zIjoxMDAsIm91dHB1dF90b2tlbnMiOjEwMH0sIm1heGltdW1fY2hhcmdlX3BvbGljeSI6ImZha2UtZW5mb3JjZWQiLCJtZXNzYWdlcyI6W3siY29udGVudCI6ImxvY2FsaXplIGZ1bsOnw6NvIiwicm9sZSI6InVzZXIifV0sIm9yaWVudGF0aW9uIjoiT2ZmbGluZSBmYWtlIHNlc3Npb247IG5vIHNvdXJjZSBvcmFjbGUuIiwidGVzdHMiOltdLCJ0b29sX2NhbGxzIjpbXSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV19",
+            "captured_bytes": 312,
+            "observed_bytes": 312,
+            "sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+            "truncated": false
+          },
+          "reservation_micro_usd": 500,
+          "response_chunks": [
+            {
+              "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+              "captured_bytes": 16,
+              "observed_bytes": 16,
+              "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20",
+              "truncated": false
+            }
+          ],
+          "retry_of": null,
+          "sent": true,
+          "state": "timeout"
+        },
+        "second": {
+          "call_id": "same-call",
+          "receipt": null,
+          "request": {
+            "base64": "eyJlZGl0cyI6W10sImV4cGFuc2lvbnMiOltdLCJsaW1pdHMiOnsiaW5wdXRfdG9rZW5zIjoxMDAsIm91dHB1dF90b2tlbnMiOjEwMH0sIm1heGltdW1fY2hhcmdlX3BvbGljeSI6ImZha2UtZW5mb3JjZWQiLCJtZXNzYWdlcyI6W3siY29udGVudCI6ImxvY2FsaXplIGZ1bsOnw6NvIiwicm9sZSI6InVzZXIifV0sIm9yaWVudGF0aW9uIjoiT2ZmbGluZSBmYWtlIHNlc3Npb247IG5vIHNvdXJjZSBvcmFjbGUuIiwidGVzdHMiOltdLCJ0b29sX2NhbGxzIjpbXSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV19",
+            "captured_bytes": 312,
+            "observed_bytes": 312,
+            "sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+            "truncated": false
+          },
+          "reservation_micro_usd": 0,
+          "response_chunks": [],
+          "retry_of": "first",
+          "sent": false,
+          "state": "rejected_before_send"
+        }
+      },
+      "budget_incidents": [],
+      "budget_micro_usd": 500,
+      "events": [
+        {
+          "attempt_id": "first",
+          "details": {
+            "call_id": "same-call",
+            "max_charge_micro_usd": 500,
+            "request": {
+              "edits": [],
+              "expansions": [],
+              "limits": {
+                "input_tokens": 100,
+                "output_tokens": 100
+              },
+              "maximum_charge_policy": "fake-enforced",
+              "messages": [
+                {
+                  "content": "localize fun\u00e7\u00e3o",
+                  "role": "user"
+                }
+              ],
+              "orientation": "Offline fake session; no source oracle.",
+              "tests": [],
+              "tool_calls": [],
+              "tool_definitions": [
+                {
+                  "input": "path",
+                  "name": "read"
+                }
+              ]
+            },
+            "retry_of": null
+          },
+          "kind": "reserve",
+          "monotonic_seconds": 8574.59814475,
+          "previous_event_sha256": null,
+          "sequence": 0
+        },
+        {
+          "attempt_id": "first",
+          "details": {},
+          "kind": "send",
+          "monotonic_seconds": 8574.598171166,
+          "previous_event_sha256": "775205c0d5986034b7b1a2c7122dbc87c0722047994ed5d850803895a961e3d8",
+          "sequence": 1
+        },
+        {
+          "attempt_id": "first",
+          "details": {
+            "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+            "captured_bytes": 16,
+            "observed_bytes": 16,
+            "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20",
+            "truncated": false
+          },
+          "kind": "chunk",
+          "monotonic_seconds": 8574.598186458,
+          "previous_event_sha256": "847b484133f22b0f1aad6db5cbde43362790cea3b7df7ca42dee339d1b18689b",
+          "sequence": 2
+        },
+        {
+          "attempt_id": "first",
+          "details": {
+            "state": "timeout"
+          },
+          "kind": "finish",
+          "monotonic_seconds": 8574.598192875,
+          "previous_event_sha256": "8b270a0f3876189ff21d9aa44d435d1dc3dbaa274bf626a76486589cc2192beb",
+          "sequence": 3
+        },
+        {
+          "attempt_id": "second",
+          "details": {
+            "call_id": "same-call",
+            "max_charge_micro_usd": 500,
+            "request": {
+              "edits": [],
+              "expansions": [],
+              "limits": {
+                "input_tokens": 100,
+                "output_tokens": 100
+              },
+              "maximum_charge_policy": "fake-enforced",
+              "messages": [
+                {
+                  "content": "localize fun\u00e7\u00e3o",
+                  "role": "user"
+                }
+              ],
+              "orientation": "Offline fake session; no source oracle.",
+              "tests": [],
+              "tool_calls": [],
+              "tool_definitions": [
+                {
+                  "input": "path",
+                  "name": "read"
+                }
+              ]
+            },
+            "retry_of": "first"
+          },
+          "kind": "reject",
+          "monotonic_seconds": 8574.598214916,
+          "previous_event_sha256": "cef41bd090519d53708446c54ca261b80f64c733c8fec9a83967df714685725b",
+          "sequence": 4
+        }
+      ],
+      "events_sha256": "f8a439be8e5d3cbdff33454cc7e2954023244be66f5c1e0c6ef89062b2ae626c",
+      "metadata": {
+        "arm": "fake-ledger-demonstration",
+        "credentials": "never-recorded",
+        "dataset_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f",
+        "model": {
+          "effort": "fixed",
+          "name": "fake-stream-v1",
+          "provider": "fake",
+          "version": "1"
+        },
+        "policy": {
+          "config_sha256": "7d7e0fac1d3a36298994fd2f1b3cb006b6e3f815ee31e81b26fdf1fa31a807aa",
+          "id": "offline-no-provider-v1"
+        },
+        "price": {
+          "currency": "USD",
+          "date": "2026-10-12",
+          "input": 2,
+          "output": 3,
+          "source": "synthetic-test-fixture",
+          "unit": "micro_usd_per_token",
+          "version": "fake-usd-v1"
+        },
+        "run_id": "fake-L4-01",
+        "setup_amortization": {
+          "gross_micro_usd": 0,
+          "regime": "none",
+          "uses": 1
+        },
+        "task_id": "D0-RS-01"
+      },
+      "outcome": "not_judged",
+      "paid_provider_called": false,
+      "schema_version": "xrai.eval.agent.v1"
+    },
+    "result": {
+      "adapter_called": false,
+      "status": "rejected_before_send"
+    }
+  },
+  "schema_version": "xrai.eval.execution-gate.proof.v1",
+  "smoke": {
+    "adapter_calls": 1,
+    "decision": {
+      "accepted": true,
+      "campaign_scoring_enabled": false,
+      "dimensions": {},
+      "intent": "smoke_seed",
+      "paid_provider_enabled": false,
+      "schema_version": "xrai.eval.execution-gate.v1",
+      "scope": "offline-fake-only",
+      "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f"
+    },
+    "ledger": {
+      "accounting": {
+        "budget_limit_respected": true,
+        "budget_micro_usd": 1000,
+        "known_observed_charge_micro_usd": 35,
+        "observed_cost_complete": true,
+        "observed_cost_micro_usd": 35,
+        "reservation_is_provider_charge_guarantee": false,
+        "retained_reservation_micro_usd": 0,
+        "supported_cost_interval_micro_usd": [
+          35,
+          35
+        ],
+        "unknown_charge_attempts": []
+      },
+      "adapter": "fake-offline-v1",
+      "attempts": {
+        "smoke-1": {
+          "call_id": "call-1",
+          "receipt": {
+            "category_semantics": {
+              "cached_input_tokens": "subset_of_input_tokens",
+              "reasoning_output_tokens": "subset_of_output_tokens"
+            },
+            "estimated_charge_micro_usd": 35,
+            "observed_charge_micro_usd": 35,
+            "observed_charge_source": "synthetic-receipt",
+            "price_version": "fake-usd-v1",
+            "provider": "fake",
+            "provider_receipt_id": "fake-dispatch-1",
+            "usage": {
+              "cached_input_tokens": 4,
+              "input_tokens": 10,
+              "output_tokens": 5,
+              "reasoning_output_tokens": 2
+            }
+          },
+          "request": {
+            "base64": "eyJlZGl0cyI6W10sImV4cGFuc2lvbnMiOltdLCJsaW1pdHMiOnsiaW5wdXRfdG9rZW5zIjoxMDAsIm91dHB1dF90b2tlbnMiOjEwMH0sIm1heGltdW1fY2hhcmdlX3BvbGljeSI6ImZha2UtZW5mb3JjZWQiLCJtZXNzYWdlcyI6W3siY29udGVudCI6ImxvY2FsaXplIGZ1bsOnw6NvIiwicm9sZSI6InVzZXIifV0sIm9yaWVudGF0aW9uIjoiT2ZmbGluZSBmYWtlIHNlc3Npb247IG5vIHNvdXJjZSBvcmFjbGUuIiwidGVzdHMiOltdLCJ0b29sX2NhbGxzIjpbXSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV19",
+            "captured_bytes": 312,
+            "observed_bytes": 312,
+            "sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+            "truncated": false
+          },
+          "reservation_micro_usd": 500,
+          "response_chunks": [
+            {
+              "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+              "captured_bytes": 16,
+              "observed_bytes": 16,
+              "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20",
+              "truncated": false
+            }
+          ],
+          "retry_of": null,
+          "sent": true,
+          "state": "completed"
+        }
+      },
+      "budget_incidents": [],
+      "budget_micro_usd": 1000,
+      "events": [
+        {
+          "attempt_id": "smoke-1",
+          "details": {
+            "call_id": "call-1",
+            "max_charge_micro_usd": 500,
+            "request": {
+              "edits": [],
+              "expansions": [],
+              "limits": {
+                "input_tokens": 100,
+                "output_tokens": 100
+              },
+              "maximum_charge_policy": "fake-enforced",
+              "messages": [
+                {
+                  "content": "localize fun\u00e7\u00e3o",
+                  "role": "user"
+                }
+              ],
+              "orientation": "Offline fake session; no source oracle.",
+              "tests": [],
+              "tool_calls": [],
+              "tool_definitions": [
+                {
+                  "input": "path",
+                  "name": "read"
+                }
+              ]
+            },
+            "retry_of": null
+          },
+          "kind": "reserve",
+          "monotonic_seconds": 8574.528581291,
+          "previous_event_sha256": null,
+          "sequence": 0
+        },
+        {
+          "attempt_id": "smoke-1",
+          "details": {},
+          "kind": "send",
+          "monotonic_seconds": 8574.528611541,
+          "previous_event_sha256": "759d8adcae9b9add1fd534ab54b6cbc495d85b13f60ed2ef6ada7757b470bcd7",
+          "sequence": 1
+        },
+        {
+          "attempt_id": "smoke-1",
+          "details": {
+            "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+            "captured_bytes": 16,
+            "observed_bytes": 16,
+            "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20",
+            "truncated": false
+          },
+          "kind": "chunk",
+          "monotonic_seconds": 8574.528628833,
+          "previous_event_sha256": "e3c1f6be1a23cb5b7b43acd8796e8c42878cbcbdf0b0f66064b221c70c5e4e43",
+          "sequence": 2
+        },
+        {
+          "attempt_id": "smoke-1",
+          "details": {
+            "state": "completed"
+          },
+          "kind": "finish",
+          "monotonic_seconds": 8574.528637416,
+          "previous_event_sha256": "58082106449c21c4c3ade084b05cce9b59e6fad9d6a74e4f7f5a05b23bffd421",
+          "sequence": 3
+        },
+        {
+          "attempt_id": "smoke-1",
+          "details": {
+            "category_semantics": {
+              "cached_input_tokens": "subset_of_input_tokens",
+              "reasoning_output_tokens": "subset_of_output_tokens"
+            },
+            "estimated_charge_micro_usd": 35,
+            "observed_charge_micro_usd": 35,
+            "observed_charge_source": "synthetic-receipt",
+            "price_version": "fake-usd-v1",
+            "provider": "fake",
+            "provider_receipt_id": "fake-dispatch-1",
+            "usage": {
+              "cached_input_tokens": 4,
+              "input_tokens": 10,
+              "output_tokens": 5,
+              "reasoning_output_tokens": 2
+            }
+          },
+          "kind": "receipt",
+          "monotonic_seconds": 8574.528643875,
+          "previous_event_sha256": "81e3c7831997aedaaa895c42a2e7300a55cd604e439de6a1972c87df29b98ae5",
+          "sequence": 4
+        }
+      ],
+      "events_sha256": "439f734e5946ad4837e6383bbebd865ea7c14b76a81cf71b5f5ac1221e19f0d7",
+      "metadata": {
+        "arm": "fake-ledger-demonstration",
+        "credentials": "never-recorded",
+        "dataset_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f",
+        "model": {
+          "effort": "fixed",
+          "name": "fake-stream-v1",
+          "provider": "fake",
+          "version": "1"
+        },
+        "policy": {
+          "config_sha256": "7d7e0fac1d3a36298994fd2f1b3cb006b6e3f815ee31e81b26fdf1fa31a807aa",
+          "id": "offline-no-provider-v1"
+        },
+        "price": {
+          "currency": "USD",
+          "date": "2026-10-12",
+          "input": 2,
+          "output": 3,
+          "source": "synthetic-test-fixture",
+          "unit": "micro_usd_per_token",
+          "version": "fake-usd-v1"
+        },
+        "run_id": "fake-L4-01",
+        "setup_amortization": {
+          "gross_micro_usd": 0,
+          "regime": "none",
+          "uses": 1
+        },
+        "task_id": "D0-RS-01"
+      },
+      "outcome": "not_judged",
+      "paid_provider_called": false,
+      "schema_version": "xrai.eval.agent.v1"
+    },
+    "result": {
+      "adapter_called": true,
+      "status": "completed"
+    }
+  },
+  "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f",
+  "sources_sha256": {
+    "crates/xrai-eval/harness/agent_ledger.py": "6d9538dbf0a6e545133b7f310e73d39f687dd43fb227f688511a69394a2dc4d8",
+    "crates/xrai-eval/harness/execution_gate.py": "b21be0cd01302e32d89b3626553838978c138cf5485a628b2f3a46bd10c5d951",
+    "crates/xrai-eval/harness/tests/test_execution_gate.py": "e10ba8d5f24bf358a0d5b9c599b71ebe992137ba35d5b3c5ebde39694f8f6e9c",
+    "docs/relatorios/logs/L5-C03/gate/prove_gate.py": "879e412018c50b7077f220d96a9c94392ad8df1dae44727a8eca67b1a45c74b6"
+  }
+}

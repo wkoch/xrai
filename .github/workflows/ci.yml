@@ -39,6 +39,11 @@ jobs:
           python eval/scripts/verify_corpus.py
           python -m unittest discover -s eval/scripts/tests -v
           python -m unittest discover -s eval/scripts -p 'test_l5_*.py' -v
+          python -m unittest discover -s eval/scripts -p 'test_state_events.py' -v
+          python -m unittest discover -s eval/scripts -p 'test_gitea_exposure.py' -v
+          python eval/scripts/prepare_state_events.py verify
+          python eval/scripts/verify_gitea_exposure.py --check-data
+          python eval/scripts/execution_preflight.py eval/qualification/execution-gate/smoke-offline.json --dispatch-fake
           python eval/scripts/verify_vertical.py
           python eval/scripts/verify_c02.py
           python eval/scripts/verify_slot_plan.py
@@ -169,6 +174,7 @@ jobs:
           retention-days: 90
   corpus-rust:
     name: L5 real Rust behavioral pair
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
@@ -204,6 +210,7 @@ jobs:
           retention-days: 90
   corpus-js:
     name: L5 real JavaScript behavioral pair
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:

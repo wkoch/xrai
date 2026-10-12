@@ -1,0 +1,3 @@
+# L5-STATE-TSJS-SOURCE-AVAILABILITY
+
+Prepared independent controlled state task, frozen before execution. Capacity: `captured-source-presence-v1`. No executed event, individual eligibility or D1 admission. The archive is reused solely as original source data; this lineage is independent of the earlier correction/contract. Input is agent-facing; oracle, context and descriptor are evaluator-only. Rust changes declared edition configuration; the other families restore original source availability in incomplete captures. TSJS React Flow source presence does not imply compatibility with captured-relative-exact-v1.

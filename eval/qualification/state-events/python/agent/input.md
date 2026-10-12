@@ -1,0 +1,1 @@
+The metrics package was captured without its ranking implementation. Refresh this incomplete capture when the ranking source becomes available. Remove the cached missing-source answer, preserve the other captured source and keep an unrelated missing source unavailable. Compare the refreshed session with a fresh capture; do not execute the package.

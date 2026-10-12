@@ -1,0 +1,16 @@
+{
+  "tier": 2,
+  "project": "Users-wkoch-Projetos-xrai",
+  "generation": "2026-10-12T20:59:22Z",
+  "paths": [
+    "eval/scripts/verify_gitea_exposure.py",
+    "eval/scripts/test_gitea_exposure.py",
+    "eval/scripts/run_l5_go.py",
+    "crates/xrai-eval/harness/adapters.py",
+    "crates/xrai-eval/harness/supervisor.py"
+  ],
+  "result": "no recorded issue for five paths; verifier metadata_changed, source fallback performed on its current validation span and generated constants consumed/recomputed by tests",
+  "limitations": "best-effort graph coverage, not audit or reachability proof",
+  "graft_tokens_saved": 7298,
+  "graft_calls": 3
+}

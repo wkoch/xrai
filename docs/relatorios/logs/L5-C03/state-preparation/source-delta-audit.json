@@ -1,0 +1,49 @@
+{
+  "author": "state_descriptors",
+  "collector_incident": "first raw unittest subprocess result not retained due ENOSPC; successful retry and final output retained separately; original freeze remains immutable",
+  "config_change": {
+    "a_edition": "2018",
+    "b_edition": "2024"
+  },
+  "created_utc": "2026-10-12T20:58:41.469205+00:00",
+  "graph_evidence": {
+    "generation": "2026-10-12T19:27:42Z",
+    "graft_calls": 2,
+    "graft_tokens_saved_estimated": 18327,
+    "new_owned_files": "not_tracked; read own complete source directly after coverage",
+    "original_semantics_paths": "no_recorded_issue metadata_match",
+    "project": "Users-wkoch-Projetos-xrai",
+    "tier": 2
+  },
+  "independent_second_reader": false,
+  "kind": "data-only-source-delta-audit",
+  "limitations": [
+    "A2018 is unsupported by the experimental Rust index; no upstream edition validity claim",
+    "No upstream code or native parser was executed during preparation",
+    "Other three events source-presence-only, not semantic invalidation",
+    "All four prepared descriptors currently executed=false and eligibility delta zero"
+  ],
+  "source_declarations": [
+    {
+      "end": 252,
+      "needle": "pub fn shuffle<T>",
+      "start": 235
+    },
+    {
+      "end": 517,
+      "needle": "pub fn seed() -> u64",
+      "start": 497
+    }
+  ],
+  "source_full_original_file": true,
+  "source_sha256": "cb56df4a9ab5e528e9d8df04127ff4fc395607d73b93e4d0fdf83341dacee772",
+  "source_unchanged_between_a_b": true,
+  "task_id": "L5-STATE-Rust-STDX-EDITION",
+  "tests": 18,
+  "workspace_edition_anchor": {
+    "byte_start": 200,
+    "path": "Cargo.toml",
+    "sha256": "80fe22fb96e3d05eb66270e5b0e17534e2f52b7ed47a0beb63d3989d20be2a1e",
+    "text": "edition = \"2024\""
+  }
+}

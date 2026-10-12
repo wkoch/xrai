@@ -1,0 +1,112 @@
+{
+  "evidence": {
+    "configuration": {
+      "base64": "eyJpbnB1dF90b2tlbnMiOjEwMCwib3V0cHV0X3Rva2VucyI6MTAwLCJwcm9maWxlIjoib2ZmbGluZS1wYWlyZWQtc21va2UtdjEifQ==",
+      "bytes": 76,
+      "sha256": "167e1eef7534c0e705eb1c3cb547b86052a4ca64637ea893213ef76e63c93923"
+    },
+    "controls": {
+      "base64": "eyJjb250YWlubWVudF9ldmlkZW5jZSI6Im5vdF9hX3JlYWxfcHJvYmUiLCJtb2RlIjoib2ZmbGluZV9mYWtlIiwibmV0d29yayI6Im5ldmVyX2NhbGxlZCJ9",
+      "bytes": 90,
+      "sha256": "ae4338dac4ceb58ac3a36467e5915b35fd0b906aaf7c3b161ee59a511b1c7a66"
+    },
+    "measurement": {
+      "base64": "eyJjb3N0X3NlbWFudGljcyI6InN5bnRoZXRpY19taWNyb191c2QiLCJwcm9maWxlIjoib2ZmbGluZS1jb3VudGVkLXYxIn0=",
+      "bytes": 71,
+      "sha256": "e50a29ee0332a95e9527a0fce8439fcd9c8bfab9e9aa638d466b8f4bbd9e57cc"
+    },
+    "model": {
+      "base64": "eyJlZmZvcnQiOiJmaXhlZCIsIm5hbWUiOiJmYWtlLXN0cmVhbS12MSIsInByb3ZpZGVyIjoiZmFrZSIsInZlcnNpb24iOiIxIn0=",
+      "bytes": 74,
+      "sha256": "b10ac7a63502baf5309cdcef79876d982a78be75f59755f6c444e6381369541e"
+    },
+    "protocol": {
+      "base64": "eyJhcm1zIjpbImRpcmVjdCIsImluZGV4ZWQiXSwiaWQiOiJvZmZsaW5lLXBhaXJlZC1zbW9rZS12MSIsInBhaXJlZF9yZXNvdXJjZXMiOnRydWUsInJlc3VsdF9kZXN0aW5hdGlvbiI6ImRldmVsb3BtZW50X29ubHkiLCJ0YXNrX2lkcyI6WyJEMC1SUy0wMSJdfQ==",
+      "bytes": 148,
+      "sha256": "efcbb29a13f61415540983a2e8ccd5fe5addf9a10b3e02f71e14d8f5a7d020d7"
+    },
+    "task/D0-RS-01/input": {
+      "base64": "b2ZmbGluZSBmaXh0dXJlIHRhc2s=",
+      "bytes": 20,
+      "sha256": "07351ff3cc44e74a5363b2e7ca03c39c0a2c677e273ae83adb554a857d8767a6"
+    },
+    "task/D0-RS-01/oracle": {
+      "base64": "b2ZmbGluZSBmaXh0dXJlIGV4cGVjdGVkIHJlc3VsdA==",
+      "bytes": 31,
+      "sha256": "61cb4e96703ec0a0c0c0f131af45114e3d747f796ef965d16ee211e8588fd590"
+    },
+    "task/D0-RS-01/review": {
+      "base64": "eyJpbnB1dF9zaGEyNTYiOiIwNzM1MWZmM2NjNDRlNzRhNTM2M2IyZTdjYTAzYzM5YzBhMmM2NzdlMjczYWU4M2FkYjU1NGE4NTdkODc2N2E2Iiwib3JhY2xlX3NoYTI1NiI6IjYxY2I0ZTk2NzAzZWMwYTBjMGMwZjEzMWFmNDUxMTRlM2Q3NDdmNzk2ZWY5NjVkMTZlZTIxMWU4NTg4ZmQ1OTAiLCJvcmlnaW4iOiJkZXZlbG9wbWVudF9zZWVkIiwic2NvcGUiOiJvZmZsaW5lX2ZpeHR1cmVfcmV2aWV3IiwidGFza19pZCI6IkQwLVJTLTAxIn0=",
+      "bytes": 248,
+      "sha256": "d3233ea3e7a49c56bc308da872e238021fd7e77acbe1c1b60d7c7f54057380c5"
+    },
+    "tools": {
+      "base64": "W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV0=",
+      "bytes": 32,
+      "sha256": "713b5720cfced91f91f282ed98815bc9b984512aa182233aa31db4a8e8481680"
+    }
+  },
+  "manifest": {
+    "configuration": {
+      "input_tokens": 100,
+      "output_tokens": 100,
+      "profile": "offline-paired-smoke-v1"
+    },
+    "controls": {
+      "containment_evidence": "not_a_real_probe",
+      "mode": "offline_fake",
+      "network": "never_called"
+    },
+    "dataset": {
+      "name": "D0",
+      "origin": "development_seed",
+      "purpose": "development_smoke"
+    },
+    "evidence_sha256": {
+      "configuration": "167e1eef7534c0e705eb1c3cb547b86052a4ca64637ea893213ef76e63c93923",
+      "controls": "ae4338dac4ceb58ac3a36467e5915b35fd0b906aaf7c3b161ee59a511b1c7a66",
+      "measurement": "e50a29ee0332a95e9527a0fce8439fcd9c8bfab9e9aa638d466b8f4bbd9e57cc",
+      "model": "b10ac7a63502baf5309cdcef79876d982a78be75f59755f6c444e6381369541e",
+      "protocol": "efcbb29a13f61415540983a2e8ccd5fe5addf9a10b3e02f71e14d8f5a7d020d7",
+      "task/D0-RS-01/input": "07351ff3cc44e74a5363b2e7ca03c39c0a2c677e273ae83adb554a857d8767a6",
+      "task/D0-RS-01/oracle": "61cb4e96703ec0a0c0c0f131af45114e3d747f796ef965d16ee211e8588fd590",
+      "task/D0-RS-01/review": "d3233ea3e7a49c56bc308da872e238021fd7e77acbe1c1b60d7c7f54057380c5",
+      "tools": "713b5720cfced91f91f282ed98815bc9b984512aa182233aa31db4a8e8481680"
+    },
+    "intent": "smoke_seed",
+    "measurement": {
+      "cost_semantics": "synthetic_micro_usd",
+      "profile": "offline-counted-v1"
+    },
+    "model": {
+      "effort": "fixed",
+      "name": "fake-stream-v1",
+      "provider": "fake",
+      "version": "1"
+    },
+    "protocol": {
+      "arms": [
+        "direct",
+        "indexed"
+      ],
+      "id": "offline-paired-smoke-v1",
+      "paired_resources": true,
+      "result_destination": "development_only",
+      "task_ids": [
+        "D0-RS-01"
+      ]
+    },
+    "request_sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+    "schema_version": "xrai.eval.execution-gate.v1",
+    "task_ids": [
+      "D0-RS-01"
+    ],
+    "tools": [
+      {
+        "input": "path",
+        "name": "read"
+      }
+    ]
+  },
+  "scope": "synthetic_offline_fixture"
+}

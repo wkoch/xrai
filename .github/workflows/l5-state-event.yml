@@ -1,0 +1,50 @@
+name: L5 real state event
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rust-state:
+    name: C03 Rust same-index state event
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Install pinned verification tooling
+        run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Verify descriptors and offline dispatch
+        run: |
+          mkdir -p state-evidence
+          python eval/scripts/prepare_state_events.py verify > state-evidence/preparation.json
+          python eval/scripts/execution_preflight.py eval/qualification/execution-gate/smoke-offline.json --dispatch-fake > state-evidence/offline-dispatch.json
+      - name: Build owned experimental analyzer
+        run: |
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+          cargo fmt --all -- --check
+          cargo clippy --locked -p xrai-eval --bin semantics-session -- -D warnings
+          cargo build --release --locked -p xrai-eval --bin semantics-session
+          rustc --version --verbose > state-evidence/toolchain.txt
+      - name: Prove first frozen real state event
+        run: |
+          python eval/scripts/run_state_event.py --binary target/release/semantics-session --output state-evidence/event > state-evidence/collector.stdout
+          python eval/scripts/verify_state_event.py state-evidence/event > state-evidence/recomputed-verification.json
+      - name: Recompute real receipt and reject adversarial substitutions
+        env:
+          XRAI_STATE_EVENT_PROOF: state-evidence/event
+        run: python -m unittest discover -s eval/scripts -p test_state_event_receipt.py -v > state-evidence/receipt-tests.stdout 2> state-evidence/receipt-tests.stderr
+      - name: Preserve exact state event and native executable
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c03-rust-state
+          path: state-evidence
+          if-no-files-found: error
+          retention-days: 90

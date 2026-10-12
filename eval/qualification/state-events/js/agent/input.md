@@ -1,0 +1,1 @@
+A partial checkout contains the hooks source but lacks its dispatcher source. Refresh the captured checkout when the missing upstream source becomes available. Previously cached absence must change to availability, while an unrelated missing source stays missing. Keep the same session and compare its refreshed source state with a fresh capture.

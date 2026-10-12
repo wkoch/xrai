@@ -1,0 +1,8 @@
+{
+  "configuration": {
+    "profile": "captured-source-presence-v1"
+  },
+  "files": {
+    "modules/util/url.go": "// Copyright 2019 The Gitea Authors. All rights reserved.\n// SPDX-License-Identifier: MIT\n\npackage util\n\nimport (\n\t\"net/url\"\n\t\"path\"\n\t\"strings\"\n)\n\n// PathEscapeSegments escapes segments of a path while not escaping forward slash\nfunc PathEscapeSegments(path string) string {\n\tslice := strings.Split(path, \"/\")\n\tfor index := range slice {\n\t\tslice[index] = url.PathEscape(slice[index])\n\t}\n\tescapedPath := strings.Join(slice, \"/\")\n\treturn escapedPath\n}\n\n// URLJoin joins url components, like path.Join, but preserving contents\nfunc URLJoin(base string, elems ...string) string {\n\tif !strings.HasSuffix(base, \"/\") {\n\t\tbase += \"/\"\n\t}\n\tbaseURL, err := url.Parse(base)\n\tif err != nil {\n\t\treturn \"\"\n\t}\n\tjoinedPath := path.Join(elems...)\n\targURL, err := url.Parse(joinedPath)\n\tif err != nil {\n\t\treturn \"\"\n\t}\n\tjoinedURL := baseURL.ResolveReference(argURL).String()\n\tif !baseURL.IsAbs() && !strings.HasPrefix(base, \"/\") {\n\t\treturn joinedURL[1:] // Removing leading '/' if needed\n\t}\n\treturn joinedURL\n}\n\nfunc SanitizeURL(s string) (string, error) {\n\tu, err := url.Parse(s)\n\tif err != nil {\n\t\treturn \"\", err\n\t}\n\tu.User = nil\n\treturn u.String(), nil\n}\n"
+  }
+}
