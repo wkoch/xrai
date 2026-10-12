@@ -1,0 +1,69 @@
+{
+  "kind": "architecture_documentation_verification",
+  "at_utc": "2026-10-12T15:46:22.191264+00:00",
+  "base_commit": "f529bd2b230a7782eff56c28b8573cdec2bdafb0",
+  "result": "passed",
+  "exit_code": 0,
+  "command": "python3 /tmp/xrai-verify-review-l5.py",
+  "verifier_source": "from pathlib import Path\nimport datetime, hashlib, json, re, subprocess\nroot=Path('/Users/wkoch/Projetos/xrai');log=root/'docs/relatorios/logs/revisao-L5';output=log/'documentacao.json';output.write_text('{}\\n')\nfiles=['IMPLEMENTADOR.md','README.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/PLANO-DE-VALIDACAO.md','docs/RFC-0001-ARQUITETURA.md','docs/STATUS-IMPLEMENTACAO.md','docs/contracts/m1.md','docs/decisoes/CONTEXTO-P3.md','docs/relatorios/REVISAO-L5.md']\ndef git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()\ndef sha(p):return hashlib.sha256((root/p).read_bytes()).hexdigest()\nerrors=[];links=0\nfor name in files:\n p=root/name\n for target in re.findall(r'\\]\\(([^)]+)\\)',p.read_text()):\n  if '://' in target or target.startswith('#'):continue\n  target=target.split('#')[0]\n  if target:\n   links+=1\n   if not (p.parent/target).exists():errors.append(f'broken link: {name} {target}')\ndef cards(text):\n parts=re.split(r'^### (M[01]-\\d+(?:\\.R\\d+)?) — ',text,flags=re.M);result={}\n for i in range(1,len(parts),2):\n  d=re.search(r'\\*\\*Depende de:\\*\\*(.*?)(?=\\*\\*|\\n)',parts[i+1]);assert d\n  result[parts[i]]=re.findall(r'M[01]-\\d+(?:\\.R\\d+)?',d.group(1))\n return result\nplan=cards((root/'docs/PLANO-DE-IMPLEMENTACAO.md').read_text());old=cards(git('show','HEAD:docs/PLANO-DE-IMPLEMENTACAO.md'))\nassert len(plan)==41 and plan==old\nseen=set();active=set()\ndef visit(c):\n assert c not in active,'dependency cycle';\n if c in seen:return\n active.add(c)\n for d in plan[c]:assert d in plan;visit(d)\n active.remove(c);seen.add(c)\nfor c in plan:visit(c)\ndef states(text):return dict(re.findall(r'^\\| (M[01]-\\d+(?:\\.R\\d+)?) \\|[^\\n]*?\\| ([^|]+?) \\|',text,re.M))\nstate=(root/'docs/STATUS-IMPLEMENTACAO.md').read_text();oldstate=git('show','HEAD:docs/STATUS-IMPLEMENTACAO.md')\nassert states(state)==states(oldstate) and set(plan)==set(states(state))\nassert all(f'| {g} | não avaliado |' in state for g in ['G0','G1','G2'])\nreview=(root/'docs/relatorios/REVISAO-L5.md').read_text()\nassert all(x in review for x in ['L5-01','L5-02','L5-03','L5-04','L5-05/06'])\nfor code in ['L5-C01','L5-P01','L5-P02','L5-R01','L5-E01']:assert f'| {code} |' in review\nrec=json.loads((log/'evidencias.json').read_text());assert rec['result']=='passed' and len(rec['records'])==7 and all(r['exit_code']==0 for r in rec['records'])\nassert rec['source_hashes_verified']==59 and rec['native_artifact_hashes_verified']==199\nassert rec['base_commit']==git('rev-parse','HEAD')\nchanged=git('diff','--name-only').splitlines()+git('ls-files','--others','--exclude-standard').splitlines()\nallowed=set(files+['docs/relatorios/logs/revisao-L5/documentacao.json','docs/relatorios/logs/revisao-L5/evidencias.json'])\nif set(changed)!=allowed:errors.append('unexpected/missing changes '+str(set(changed)^allowed))\ncheck=subprocess.run(['git','diff','--check'],cwd=root,capture_output=True,text=True)\nif check.returncode:errors.append(check.stdout+check.stderr)\ninputs=['docs/relatorios/L5.md','docs/relatorios/logs/L5/ci-native/native-receipt.json','docs/relatorios/logs/L5/ci-native/run-completed.json','docs/relatorios/logs/L5/integration/source-manifest-final.json','eval/context/README.md','eval/qualification/l5-slot-plan.json','eval/reports/m0-workers-persistent.md','eval/workers/matrix-design.json','crates/xrai-eval/src/context_spike.rs','eval/scripts/verify_context.py','eval/scripts/verify_worker_measurement.py','eval/scripts/verify_slot_plan.py','docs/contracts/experimental-p3/verify.py','docs/contracts/experimental-p3/schema.json','docs/contracts/experimental-p3/README.md']\nrecord={'kind':'architecture_documentation_verification','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_commit':git('rev-parse','HEAD'),'result':'passed' if not errors else 'failed','exit_code':int(bool(errors)),'command':'python3 /tmp/xrai-verify-review-l5.py','verifier_source':Path(__file__).read_text(),'checks':{'links':links,'cards':41,'dependencies_preserved':True,'dependencies_acyclic':True,'states_preserved':True,'gates_unchanged':True,'six_L5_activities_retained':True,'five_execution_decisions':True,'only_documentation_changes':set(changed)==allowed,'git_diff_check':check.returncode,'offline_evidence_commands':7,'offline_evidence_all_passed':True},'graph_coverage':json.loads(Path('/tmp/xrai-l5-coverage.json').read_text()),'artifact_sha256':{p:sha(p) for p in files+['docs/relatorios/logs/revisao-L5/evidencias.json']},'evidence_sha256':{p:sha(p) for p in inputs},'errors':errors,'limits':['Documentation and audit receipts only; no implementation.','Offline verifiers rerun on existing L5 receipts, not native workloads.','No paid calls, remote CI query/run or competitive gate decision.','Prior execution status preserved; M0-09 already in progress.','Commit/push not yet asserted by this prepublication receipt.']}\noutput.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\\n');print(json.dumps({'result':record['result'],'checks':record['checks'],'errors':errors},ensure_ascii=False,indent=2));raise SystemExit(bool(errors))\n",
+  "checks": {
+    "links": 207,
+    "cards": 41,
+    "dependencies_preserved": true,
+    "dependencies_acyclic": true,
+    "states_preserved": true,
+    "gates_unchanged": true,
+    "six_L5_activities_retained": true,
+    "five_execution_decisions": true,
+    "only_documentation_changes": true,
+    "git_diff_check": 0,
+    "offline_evidence_commands": 7,
+    "offline_evidence_all_passed": true
+  },
+  "graph_coverage": {
+    "content": [
+      {
+        "type": "text",
+        "text": "project: Users-wkoch-Projetos-xrai\nsignal: best_effort\nindexed_at: 2026-10-12T14:06:52Z\nmetadata:\n  generation: 2026-10-12T14:06:52Z\n  index_mode: full\n  recorded_at: 2026-10-12T14:06:53Z\n  recording_status: complete\n  ignored_files_stored: 0\n  ignored_files_total: 0\n  hash_records_complete: true\n  coverage_version: 3\n  generation_matches: true\npaths: 18  (cols: requested_path path status freshness recommended_action coverage)\n  crates/xrai-eval/src/context_spike.rs crates/xrai-eval/src/context_spike.rs no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/contracts/experimental-p3/verify.py docs/contracts/experimental-p3/verify.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/contracts/experimental-p3/schema.json docs/contracts/experimental-p3/schema.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/contracts/experimental-p3/README.md docs/contracts/experimental-p3/README.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/scripts/verify_context.py eval/scripts/verify_context.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/scripts/verify_worker_measurement.py eval/scripts/verify_worker_measurement.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/scripts/verify_slot_plan.py eval/scripts/verify_slot_plan.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/context/README.md eval/context/README.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/context/removed-consumer-input.json eval/context/removed-consumer-input.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/context/central-hunk-input.json eval/context/central-hunk-input.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/context/development-labels.json eval/context/development-labels.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/qualification/l5-slot-plan.json eval/qualification/l5-slot-plan.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/workers/matrix-design.json eval/workers/matrix-design.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/reports/m0-workers-persistent.md eval/reports/m0-workers-persistent.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/L5.md docs/relatorios/L5.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L5/ci-native/reconcile.py docs/relatorios/logs/L5/ci-native/reconcile.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L5/ci-native/native-receipt.json docs/relatorios/logs/L5/ci-native/native-receipt.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L5/integration/source-manifest-final.json docs/relatorios/logs/L5/integration/source-manifest-final.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\npath_total: 18\npath_returned: 18\npath_has_more: false\nscopes: 0\nscope_total: 0\nscope_returned: 0\nscope_truncated: false\nhas_more: false\ncaveat: \"Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable.\"\n"
+      }
+    ],
+    "isError": false
+  },
+  "artifact_sha256": {
+    "IMPLEMENTADOR.md": "adc7c50b1a0ffd6be23f3a5016d6d57f1eac1d5e7e9c690d5bf7dd6fe7f84e01",
+    "README.md": "f6b6d882e55853beed8e986f17dc7f50c46c8929782598bfa87561be02b654a7",
+    "docs/PLANO-DE-IMPLEMENTACAO.md": "34244e55d1fd375326df20171070dcf11647e889cc56fd8299c2a45560f7fc3e",
+    "docs/PLANO-DE-VALIDACAO.md": "a121d3afac82f47798513c3edcc5d83eec01d14a3e95017420a9ffbf8cf576e0",
+    "docs/RFC-0001-ARQUITETURA.md": "11d37548a25ad2bc17953d7d6d2ba863aafd40a05bf8745f4adf884eddb6325f",
+    "docs/STATUS-IMPLEMENTACAO.md": "d8ba3b72dbac0eefdfb3f041f9708ecfa53a0aa957bb2953bf080182120ba9b0",
+    "docs/contracts/m1.md": "4796f377f5b4a9ab09c2a6634283dc38c36202a7a117579032aa6404d4962462",
+    "docs/decisoes/CONTEXTO-P3.md": "c7c10b7df7b89e6b77661b278a370de5b676aec1d613ad993f753474e76f5385",
+    "docs/relatorios/REVISAO-L5.md": "1c863a6149d41753780ef42809876defb04ab995bf75c1e5260d6156f44d9003",
+    "docs/relatorios/logs/revisao-L5/evidencias.json": "0a1b0bc59b83e599b077d24b9a5a95f25f36158ff9674b456493557b88a4a197"
+  },
+  "evidence_sha256": {
+    "docs/relatorios/L5.md": "51c7dbee18f4a7e15d61af9aa9c9ec9c8161400d0f75e1cc9e04aa7cd296beb3",
+    "docs/relatorios/logs/L5/ci-native/native-receipt.json": "e80cbb71190e29cd9f4b0ff67d110eb793682a312792a87b8d7c40177e9aab21",
+    "docs/relatorios/logs/L5/ci-native/run-completed.json": "7b33b65c378f47acbd8f3474454128c8ca77bf31ca81f2a5410abfd23374556b",
+    "docs/relatorios/logs/L5/integration/source-manifest-final.json": "b4addfe2a348c78ddd119d2b8a4ac3c464c8c65ae97938d32fc381f149627de0",
+    "eval/context/README.md": "8a04830282c0683e0a815f4969f691b855cb57466b5bfe1a96e0ef3567f84e6d",
+    "eval/qualification/l5-slot-plan.json": "80219bb369ce74a9691bf90682c9366544f4cc49f768fe2ee68cc7f581a05760",
+    "eval/reports/m0-workers-persistent.md": "3f70bd314a25a17b9ac3388421db550249fe7553a764128c5f3eb6fa10ba40bb",
+    "eval/workers/matrix-design.json": "529b7cd7b84a14f7fa31a85b329188ee87ed1d6970f869d53d484653da6a5d40",
+    "crates/xrai-eval/src/context_spike.rs": "549eecd3297dcdf70a446696d895f131e6cac4e213260b12042cfb32943917e1",
+    "eval/scripts/verify_context.py": "d3c4a1ed1946b78fdb0f993b63d2f225c7cde374b5f00c507296e4e4e69a7616",
+    "eval/scripts/verify_worker_measurement.py": "86c9346343b2ac2edac91d94092752868149f4f63cc4695c76a17d056ac5bf98",
+    "eval/scripts/verify_slot_plan.py": "d23c683e7057995fac8067b70f0850e2ea8f7b5cc88bbbfc7f860de39a62f47d",
+    "docs/contracts/experimental-p3/verify.py": "33f27e03ea9aad7a5aeefed71175fac6cd6a981d0e2a76392f885f2c32f73573",
+    "docs/contracts/experimental-p3/schema.json": "c3d878c3234689984a8e3b052d429fe804a25ffd975a70dcb3d398facafa662f",
+    "docs/contracts/experimental-p3/README.md": "0f513982b97b42550b1c0cde45b7802782e30ab17bc0cfd1254323feb0b01df9"
+  },
+  "errors": [],
+  "limits": [
+    "Documentation and audit receipts only; no implementation.",
+    "Offline verifiers rerun on existing L5 receipts, not native workloads.",
+    "No paid calls, remote CI query/run or competitive gate decision.",
+    "Prior execution status preserved; M0-09 already in progress.",
+    "Commit/push not yet asserted by this prepublication receipt."
+  ]
+}

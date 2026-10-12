@@ -506,6 +506,10 @@ L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do co
 
 [Revisão L4 e atividades L5](relatorios/REVISAO-L4.md): aceitar os recortes offline/XRW2/Rust entregues; ADR 027 resolve a representação de comparação ainda não suportada pelo verificador v2 e define obrigações/expansão. Quatro smokes pareados no total, um por família. Nenhum cartão ou gate é concluído por planejamento.
 
+### 14.7 Revisão da primeira fatia L5
+
+[Revisão L5](relatorios/REVISAO-L5.md): v3/contexto e recursos sintéticos nativos aceitos nos recortes entregues. Retomar os mesmos seis incrementos, priorizando dossiês reais e Rust R3. Decisões L5-C01/P01/P02/R01/E01 concretizam realocação de candidatos, avaliação de orçamento/relevância e comparação com cache equivalente. Não há ADR novo nem promoção de produto/gates.
+
 ## 15. Definições com responsável e momento
 
 | Item | Responsável e regra vigente |

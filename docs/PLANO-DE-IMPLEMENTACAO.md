@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 12/10/2026. **Revisão L4: medição offline, XRW2 e Rust R1/R2 aceitos nos recortes entregues; atividades L5 detalhadas.** Quatro pilotos não admitem D1 global. [Parecer e seis incrementos executáveis](relatorios/REVISAO-L4.md). ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md)/[027](decisoes/CONTEXTO-P3.md) detalham semântica, workers, medição e contexto/expansão. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 12/10/2026. **Revisão L5: primeira vertical P3/v3 e recursos sintéticos nativos aceitos; retomada prioriza corpus real e Rust R3.** Quatro pilotos não admitem D1 global. [Parecer e continuação dos seis incrementos L5](relatorios/REVISAO-L5.md). ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md)/[027](decisoes/CONTEXTO-P3.md) detalham semântica, workers, medição e contexto/expansão. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -707,10 +707,10 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[L5, na revisão L4](relatorios/REVISAO-L4.md), continua os mesmos cartões abertos. Medição offline, ledger fake, XRW2 e primeira IR Rust estão entregues; não refazê-los para preencher lote novo.
+[Retomada L5, na revisão L5](relatorios/REVISAO-L5.md). IDs/dependências/aceites integrais preservados. Primeira vertical P3/v3 e comparação sintética nativa estão entregues; não reiniciá-las. Não há lote L6 neste parecer.
 
-1. L5-01: perfil experimental v3, contexto e expansão com fonte/revisão/orçamento verificáveis; preservar v2.
-2. Intercalar L5-03 (comparação direto/XRW1/XRW2 e CPU/RSS) e L5-04 (slots globais e quatro dossiês novos).
-3. L5-02: Rust R3/configuração, depois R4 e outras famílias; aceitar recortes separadamente sem encerrar M0-11 cedo.
-4. L5-05: adapter real testável offline e quatro smokes pareados condicionados a recursos/teto; uma tarefa por família.
-5. L5-06: comparadores fortes, preflight e projeção de campanha. M0-12 exige D1 admitido, harness/P2/P3 e recursos; G0 exige todas as provas técnicas e competitivas.
+1. L5-04: concretizar quatro dossiês; começar Rust e JavaScript, completar Python e Go. Slots condicionais não são qualificação.
+2. L5-02: Rust R3/bindings/configuração, incremental=rebuild e amostra real capturada; depois R4 e demais famílias.
+3. L5-01: recuperação lexical sem âncora, alternativas/ranking, labels externos e curvas em fontes reais; preservar v2/v3 e expansão fixada.
+4. L5-03: fontes reais/concorrência, decomposição e controle direto com cache equivalente; preservar matrizes históricas e reter os novos binários medidos.
+5. L5-05/06: adapter/replay, quatro smokes pareados condicionados e comparadores/preflight. M0-12 exige corpus qualificado e demais dependências; nenhum gate se altera por esta retomada.

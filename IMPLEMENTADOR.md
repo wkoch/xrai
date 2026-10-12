@@ -1,6 +1,6 @@
 # Instruções para a IA implementadora do xrai
 
-Data: 12/10/2026. **Entrada vigente: [revisão L4 e atividades L5](docs/relatorios/REVISAO-L4.md).** L4 entregou medição/ledger offline, workers XRW2 e primeira semântica Rust, com recibos nativos revalidados. L5 inicia contexto/expansão e continua recursos, semântica, corpus e adapters reais. Leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md). V1: Linux x86_64/macOS arm64. Não recrie entregas nem trate planejamento como código concluído.
+Data: 12/10/2026. **Entrada vigente: [revisão L5 e retomada](docs/relatorios/REVISAO-L5.md).** L5 entregou primeira vertical P3/v3 e recursos sintéticos nativos; recibos revalidados. Priorizar quatro dossiês reais e Rust R3; completar recuperação/relevância P3, recursos reais e adapters. Leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md). V1: Linux x86_64/macOS arm64. Não recrie entregas nem trate planejamento como código concluído.
 
 Atualização de 12/10/2026: repositório público e [CI confirmada nos três jobs](docs/relatorios/CI-PUBLICO.md). M0-02.R2/M0-07 concluídas; bloqueio anterior superado. [L3](docs/relatorios/L3.md) avançou contenção, workers, captura e quatro pilotos verticais. [L4](docs/relatorios/L4.md) entregou os recortes descritos acima; L5 organiza o restante dos mesmos cartões. Nenhum gate competitivo foi avaliado.
 
@@ -25,7 +25,8 @@ Leia inicialmente este arquivo, o estado atual, a revisão vigente e os cartões
 |---|---|
 | [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
 | [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e seis atividades complementares, dependências, entregáveis e aceite; IDs são estáveis |
-| [Revisão L4 / atividades L5](docs/relatorios/REVISAO-L4.md) | Entrada vigente: parecer L4, decisões P01/P02/M01 e seis incrementos executáveis |
+| [Revisão L5 / retomada](docs/relatorios/REVISAO-L5.md) | Entrada vigente: aceite L5, corpus/R3 prioritários, controles P3/cache e evidência restante |
+| [Revisão L4 / atividades L5](docs/relatorios/REVISAO-L4.md) | Critérios originais dos seis incrementos; continuam onde ainda não cumpridos |
 | [Contexto P3 / ADR 027](docs/decisoes/CONTEXTO-P3.md) | Comparação experimental versionada, obrigações, orçamento, manifesto e expansão |
 | [Revisão L3 / continuação L4](docs/relatorios/REVISAO-L3.md) | Histórico e critérios ainda abertos, retomados em L5 |
 | [Semântica P2 / ADR 025](docs/decisoes/SEMANTICA-P2.md) | IR, primeira fatia Rust, incertezas, dependências negativas e equivalência incremental |
@@ -131,4 +132,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Próxima execução: aplicar [L5](docs/relatorios/REVISAO-L4.md), começando por L5-01 (contexto/expansão), intercalando L5-03 (CPU/RSS/comparação) e L5-04 (quatro dossiês novos).** L5-02 amplia Rust R3/R4 e outras famílias; L5-05 prepara adapter/smokes e L5-06 comparadores/preflight. ADR 027 define o perfil experimental v3; v2 permanece testado. São quatro smokes pareados no total, um por família, condicionados a recursos/teto. Não refazer captura concluída ou qualificação vertical aceita. Não promover quatro pilotos a D1 nem antecipar M1-B. Registrar evidências/pendências por cartão; commit/push após verificar, conforme AGENTS.md.
+**Próxima execução: [retomar L5](docs/relatorios/REVISAO-L5.md), priorizando L5-04 (quatro dossiês reais) e L5-02 (Rust R3).** L5-01 avança recuperação lexical/relevância em fontes reais; L5-03 completa recursos com controle direto de cache equivalente; L5-05/06 preparam adapter/comparadores. Perfil experimental v3 já tem primeira implementação; preservar v2/v3 e retenção comprovada. São quatro smokes pareados no total, um por família, condicionados a recursos/teto. Não refazer captura concluída ou qualificação vertical aceita. Não promover quatro pilotos a D1 nem antecipar M1-B. Registrar evidências/pendências por cartão; commit/push após verificar, conforme AGENTS.md.

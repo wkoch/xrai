@@ -274,3 +274,17 @@ Critérios numéricos de qualidade/custo e gates permanecem os do protocolo. Con
 | Adapter/smokes | Protocolo/ledger testado offline; quatro smokes pareados totais, um por família, quando houver recursos/teto | Fake e readiness não substituem uso real; oito sessões mínimas não autorizam despesa |
 
 Verificação de produto cabe ao Implementador. Não alterar limiares dos gates, denominadores ou dados reservados para acomodar resultados.
+
+## 13. Retomada após a primeira fatia L5
+
+[Revisão L5](relatorios/REVISAO-L5.md) preserva as provas sintéticas e prioriza evidência real. Contratos v2/v3 e retenção já verificados são regressões a preservar, sem refazer seu desenho.
+
+| Frente | Próxima prova | Interpretação correta |
+|---|---|---|
+| Corpus | Quatro dossiês com porte/módulos/setup, baseline/referência/probes e revisão | Verificador de 32 slots só comprova alocação condicional; quatro novos continuam 0/4 |
+| P2 Rust | R3 com labels anteriores às regras, shadowing/configuração, eventos e rebuild B | Amostra de arquivo não é pacote; R3 não encerra quatro famílias |
+| P3 | Lexical sem âncora, ranking/alternativas, oracle externo e curvas em fontes reais | Ablação P2 off não é baseline lexical; rejeição em 2k fica no resultado |
+| Contagem | Total de wire exato, metadados/fonte e custo de expansão separados por método explícito | Tokens por campo não se somam necessariamente; não retirar metadados do orçamento |
+| Workers | Direto com cache equivalente, fontes reais, concorrência, fases e novos binários recuperáveis | Ganho misto de cache/IPC não isola mecanismo; controle direto não prova contenção |
+
+Usar o escopo/recorte congelado antes dos resultados; conservar falhas, perdas, indisponibilidades e histórico de schemas. Nenhuma alteração dos limiares G0/G1/G2 nesta revisão.

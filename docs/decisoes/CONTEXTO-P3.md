@@ -1,12 +1,12 @@
 # ADR 027 — Contexto P3, comparação de revisões e expansão
 
-12/10/2026. **Decisão do Arquiteto para implementação experimental em M0-09. Não implementada nesta entrega.** Complementa ADRs 007/015/025/026 e o [contrato](../contracts/m1.md). O Implementador concretiza schemas, código e provas. Promoção para domínio/CLI/MCP continua M1-23/M1-16/17/18 após G1.
+12/10/2026. **Decisão do Arquiteto para M0-09. Primeira fatia experimental implementada em L5 e aceita na [revisão L5](../relatorios/REVISAO-L5.md); aceite integral pendente.** Complementa ADRs 007/015/025/026 e o [contrato](../contracts/m1.md). O Implementador concretiza schemas, código e provas. Promoção para domínio/CLI/MCP continua M1-23/M1-16/17/18 após G1.
 
 ## 1. Problema, decisão e alternativas
 
 L4 fornece fontes capturadas, IR Rust inicial e medição offline. Falta provar que esses componentes selecionam evidência útil, preservam fatos removidos e permitem leitura adicional sob orçamento. O acerto de lookup de declaração não demonstra descoberta de todos os consumidores.
 
-Há uma lacuna documental concreta: o contrato permite comparação base/head, porém `docs/contracts/verify.py` exige que itens, afirmações e cobertura pertençam ao único `response.snapshot`; o schema v2 não tem descritor da comparação. Portanto, o exemplo de duas revisões ainda não tem representação/verificação documental implementada.
+Motivação original em L4: o contrato permitia comparação base/head, porém `docs/contracts/verify.py` exigia que itens, afirmações e cobertura pertencessem ao único `response.snapshot`; o schema v2 não tinha descritor da comparação. L5 concretizou o perfil v3 separado, mantendo essa restrição em v2; o requisito deixou de ser apenas documental nessa primeira fatia.
 
 **Decisão:** iniciar P3 com seleção determinística, fontes imutáveis, obrigações atribuídas e expansão por manifesto. Concretizar um perfil experimental v3 de comparação com dois snapshots explícitos; manter v2 e seus testes históricos. O mesmo motor atende uma revisão ou comparação. Não criar uma API de produção paralela nem fazer o verificador v2 aceitar mistura silenciosa.
 
