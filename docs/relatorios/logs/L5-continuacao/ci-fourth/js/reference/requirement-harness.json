@@ -1,0 +1,57 @@
+{
+  "phase": "qualification-requirement",
+  "command": [
+    "/usr/bin/env",
+    "HOME=/workspace",
+    "TMPDIR=/tmp",
+    "NODE_ENV=development",
+    "RELEASE_CHANNEL=experimental",
+    "VARIANT=true",
+    "/workspace/.xrai-node",
+    "./scripts/jest/jest.js",
+    "--config",
+    "./scripts/jest/config.source-www.js",
+    "--runInBand",
+    "--json",
+    "--outputFile=.xrai-jest-requirement.json",
+    "--testNamePattern=^contract ",
+    "XraiExternalStoreContract-test"
+  ],
+  "status": "ok",
+  "execution_status": "ok",
+  "exit_code": 0,
+  "sandbox": "Linux bubblewrap",
+  "containment": "linux_pid_namespace",
+  "cleanup_status": "confirmed",
+  "domain_id": "8f856055-2b8a-44c1-ba78-c704bf8e8473",
+  "termination_evidence": {
+    "init_pid": 2860,
+    "pid_namespace": "pid:[4026532319]",
+    "init_held_before_pin": true,
+    "pidfd_exit_observed": true,
+    "wrapper_reaped": true,
+    "user_namespace_mapping": {
+      "uid": 1001,
+      "gid": 1001,
+      "count": 1,
+      "setgroups": "deny"
+    }
+  },
+  "eligible_for_agent_run": true,
+  "diagnostic": null,
+  "elapsed_seconds": 3.831408077000006,
+  "stdout": {
+    "base64": "",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "captured_bytes": 0,
+    "observed_bytes": 0,
+    "truncated": false
+  },
+  "stderr": {
+    "base64": "UEFTUyBwYWNrYWdlcy9yZWFjdC1yZWNvbmNpbGVyL3NyYy9fX3Rlc3RzX18vWHJhaUV4dGVybmFsU3RvcmVDb250cmFjdC10ZXN0LmpzCiAg4pyTIGNvbnRyYWN0IHNuYXBzaG90IG5vdGlmaWNhdGlvbnMgYW5kIGVxdWFsaXR5IGJhaWxvdXQgKDIyMDcgbXMpCiAg4pyTIGNvbnRyYWN0IHN0b3JlIHJlcGxhY2VtZW50IHVuc3Vic2NyaWJlcyBwcmV2aW91cyBzb3VyY2UgKDI4IG1zKQogIOKckyBjb250cmFjdCBpbmRlcGVuZGVudGx5IHNlbGVjdGVkIHNuYXBzaG90IGlnbm9yZXMgdW5yZWxhdGVkIGZpZWxkICgyOCBtcykKICDil4sgc2tpcHBlZCByZWdyZXNzaW9uIG9yZGluYXJ5IHN0YXRlIHVwZGF0ZSByZW1haW5zIHN1cHBvcnRlZAogIOKXiyBza2lwcGVkIHJlZ3Jlc3Npb24gbGF5b3V0IGFuZCBwYXNzaXZlIGVmZmVjdHMgcmVsZWFzZSByZXNvdXJjZXMKClRlc3QgU3VpdGVzOiAxIHBhc3NlZCwgMSB0b3RhbApUZXN0czogICAgICAgMiBza2lwcGVkLCAzIHBhc3NlZCwgNSB0b3RhbApTbmFwc2hvdHM6ICAgMCB0b3RhbApUaW1lOiAgICAgICAgMy4yNiBzClJhbiBhbGwgdGVzdCBzdWl0ZXMgbWF0Y2hpbmcgL1hyYWlFeHRlcm5hbFN0b3JlQ29udHJhY3QtdGVzdC9pIHdpdGggdGVzdHMgbWF0Y2hpbmcgIl5jb250cmFjdCAiLgpUZXN0IHJlc3VsdHMgd3JpdHRlbiB0bzogLnhyYWktamVzdC1yZXF1aXJlbWVudC5qc29uCg==",
+    "sha256": "cd22b42014f10f397a078fef4822bd969d8aa709bd4f0686fd1e389456808430",
+    "captured_bytes": 697,
+    "observed_bytes": 697,
+    "truncated": false
+  }
+}

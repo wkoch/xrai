@@ -1,0 +1,34 @@
+{
+  "x86_64-unknown-linux-gnu": {
+    "rust_passed": 115,
+    "rust_failed": 0,
+    "rust_ignored": 0,
+    "harness_total": 50,
+    "harness_passed": 49,
+    "harness_skipped": 1
+  },
+  "aarch64-apple-darwin": {
+    "rust_passed": 114,
+    "rust_failed": 0,
+    "rust_ignored": 0,
+    "harness_total": 50,
+    "harness_passed": 45,
+    "harness_skipped": 5
+  },
+  "python_groups": [
+    "aarch64-apple-darwin\tProve local harness isolation and replay\t2026-10-12T17:18:01.5861590Z Ran 50 tests in 3.507s",
+    "aarch64-apple-darwin\tProve local harness isolation and replay\t2026-10-12T17:18:01.5862270Z OK (skipped=5)",
+    "aarch64-apple-darwin\tProve bounded context selection and retained expansion\t2026-10-12T17:21:58.9638150Z Ran 18 tests in 0.455s",
+    "aarch64-apple-darwin\tProve bounded context selection and retained expansion\t2026-10-12T17:22:07.8637500Z Ran 13 tests in 3.485s",
+    "aarch64-apple-darwin\tProve labeled Rust semantics and captured development sample\t2026-10-12T17:22:08.9843380Z Ran 15 tests in 0.145s",
+    "Documentary contracts\tVerify rejection and failure propagation\t2026-10-12T17:16:45.3297425Z Ran 10 tests in 0.593s",
+    "Documentary contracts\tVerify experimental P3 comparison profile\t2026-10-12T17:16:45.9574733Z Ran 18 tests in 0.229s",
+    "Documentary contracts\tVerify experimental P3 comparison profile\t2026-10-12T17:16:45.9574931Z OK (skipped=1)",
+    "Documentary contracts\tVerify development corpus and admission gate\t2026-10-12T17:16:56.1970189Z Ran 80 tests in 6.397s",
+    "x86_64-unknown-linux-gnu\tProve local harness isolation and replay\t2026-10-12T17:17:55.9932438Z Ran 50 tests in 14.787s",
+    "x86_64-unknown-linux-gnu\tProve local harness isolation and replay\t2026-10-12T17:17:55.9932662Z OK (skipped=1)",
+    "x86_64-unknown-linux-gnu\tProve bounded context selection and retained expansion\t2026-10-12T17:20:18.7752240Z Ran 18 tests in 0.346s",
+    "x86_64-unknown-linux-gnu\tProve bounded context selection and retained expansion\t2026-10-12T17:20:24.3964099Z Ran 13 tests in 2.389s",
+    "x86_64-unknown-linux-gnu\tProve labeled Rust semantics and captured development sample\t2026-10-12T17:20:25.0553904Z Ran 15 tests in 0.110s"
+  ]
+}

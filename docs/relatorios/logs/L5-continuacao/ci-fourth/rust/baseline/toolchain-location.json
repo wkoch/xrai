@@ -1,0 +1,39 @@
+{
+  "command": [
+    "rustup",
+    "which",
+    "rustc",
+    "--toolchain",
+    "1.98.1"
+  ],
+  "cwd": "/home/runner/work/_temp/rust-probes/work/baseline",
+  "environment": {
+    "RUSTUP_TOOLCHAIN": "1.98.1",
+    "CARGO_TARGET_DIR": "/home/runner/work/_temp/rust-probes/work/baseline-target"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 0.0045386620000016364,
+  "exit_code": 0,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/home/runner/work/_temp/rust-probes/baseline/toolchain-location.stdout.log",
+      "captured_bytes": 74,
+      "observed_bytes": 74,
+      "captured_sha256": "db8cdbac2cab29126c5b46b20ae50107dfe8e306ebc50f9d05896cbdf26a3b5a",
+      "observed_sha256": "db8cdbac2cab29126c5b46b20ae50107dfe8e306ebc50f9d05896cbdf26a3b5a",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/home/runner/work/_temp/rust-probes/baseline/toolchain-location.stderr.log",
+      "captured_bytes": 0,
+      "observed_bytes": 0,
+      "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncated": false
+    }
+  }
+}

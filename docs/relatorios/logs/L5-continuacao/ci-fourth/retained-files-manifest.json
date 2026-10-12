@@ -1,0 +1,243 @@
+{
+  "schema": "xrai.eval.l5.final-retention.v1",
+  "recorded_utc": "2026-10-12T17:46:42.267627+00:00",
+  "tested_code_commit": "c48b5993550fd258f1efe5677704a59d9eb73de0",
+  "ci_run": 38283109016,
+  "ci_conclusion": "success",
+  "receipt_parent": "c48b5993550fd258f1efe5677704a59d9eb73de0",
+  "retained_files": {
+    "artifacts.json": {
+      "bytes": 2709,
+      "sha256": "5457ab5f0075ec47e8d2dd09986289beaf46f2590f94f72efceae5b771e18a77"
+    },
+    "check-counts.json": {
+      "bytes": 2213,
+      "sha256": "16a8f9160f16d4c7b565fe257ace30e597880db8efd6f99d3b7f1b668fba0cf1"
+    },
+    "corpus-verification.json": {
+      "bytes": 8974,
+      "sha256": "be4415d366df9fd075ab650f0af4f9aa18acf39cceee2ec7107f2213ae150afd"
+    },
+    "jobs-log-receipt.json": {
+      "bytes": 303,
+      "sha256": "40b8dc961aedac77de9a167897210814439c97cc0e867681e324c2f6b2bfffbf"
+    },
+    "jobs.log.gz": {
+      "bytes": 114760,
+      "sha256": "42b829002a4f25db6fcd1880fed5ade34f5bb735d965ed3f417388abb34ee67f"
+    },
+    "js/base/bootstrap.json": {
+      "bytes": 1976,
+      "sha256": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1"
+    },
+    "js/base/probe.json": {
+      "bytes": 4417,
+      "sha256": "6571ee082dd793d2433ea58ac7bc0657c4ea454f12f6bfd01d06a150db250d24"
+    },
+    "js/base/regression-harness.json": {
+      "bytes": 2434,
+      "sha256": "060464b66af990df732c6a15d3c7614afae73f326e82e8ad42112f2054b5b8e7"
+    },
+    "js/base/regression-jest.json": {
+      "bytes": 1827,
+      "sha256": "6fb673738af4262ff817091cb3b6449caae68dec2144f28dbf4ef901eb1cf8e3"
+    },
+    "js/base/requirement-harness.json": {
+      "bytes": 11760,
+      "sha256": "cfbcafe92c066840711c12302dd32ddcb55f255044043531edcbc986da32e1fc"
+    },
+    "js/base/requirement-jest.json": {
+      "bytes": 17057,
+      "sha256": "2caa1cdca362a6e63e6618b6b4e9b0b38262af38ac2eb5562e0fd892a15dbbf9"
+    },
+    "js/reference/bootstrap.json": {
+      "bytes": 1976,
+      "sha256": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1"
+    },
+    "js/reference/probe.json": {
+      "bytes": 4726,
+      "sha256": "bbd096757be3facd898e72e83cbcb588ad3846811573c204f45c372f018e6cdf"
+    },
+    "js/reference/regression-harness.json": {
+      "bytes": 2434,
+      "sha256": "58f6e02cd194e852b55009c3370b411f3522e2153f207dbbdecf92a018268012"
+    },
+    "js/reference/regression-jest.json": {
+      "bytes": 1827,
+      "sha256": "e9a96d75ddda5be86ff37bd3096a31a92167c682a9a309e97e3d3a56a8d6fcdd"
+    },
+    "js/reference/requirement-harness.json": {
+      "bytes": 2433,
+      "sha256": "d9a75d6b878c1f91bdb8928641c9f654d521900bf73968af1251e1f81b80c6c8"
+    },
+    "js/reference/requirement-jest.json": {
+      "bytes": 1826,
+      "sha256": "f333242e5537a548c82206060a5274cce946c63c465419dc9f76f0cbc4604f28"
+    },
+    "l5-real-js.zip": {
+      "bytes": 18678,
+      "sha256": "b2315f23d64725699d44c2c604bfeaa0bc382e5065f0249f8062676ae6cde479"
+    },
+    "l5-real-rust.zip": {
+      "bytes": 23472,
+      "sha256": "a4e697aa6135878986646fcfac155a7636a6a584694a6e011ba36a4753495012"
+    },
+    "native-aarch64-apple-darwin/binaries/manifest.json": {
+      "bytes": 1474,
+      "sha256": "a08cdd16605c4ec624c13590267e672c639470234b80a040145091e8baf633a1"
+    },
+    "native-aarch64-apple-darwin/environment.json": {
+      "bytes": 92,
+      "sha256": "9247a83b379734b6eea4b6d4c08d9e68afee1a40411bed184bc43918e0a80c6b"
+    },
+    "native-aarch64-apple-darwin/harness-tests.log": {
+      "bytes": 7325,
+      "sha256": "89d1e18e0c9aa49122672f675365b37c9a2350f2cf377792b6182fab26c20da5"
+    },
+    "native-aarch64-apple-darwin/workspace-tests.log": {
+      "bytes": 15867,
+      "sha256": "0939d559f1742e079d4d0463dc0cbdbd9f8b4c65dcb56454f531f27d73ce8924"
+    },
+    "native-verification.json": {
+      "bytes": 443442,
+      "sha256": "c0ecec8ae7fe3e7eca317eedf86fc60ffa8073d04d544d8612aac273eb65394a"
+    },
+    "native-x86_64-unknown-linux-gnu/binaries/manifest.json": {
+      "bytes": 1488,
+      "sha256": "5d5478185a827ac4805c9304597e3724bdfecdcbf458afd9d9fcf389c1d975db"
+    },
+    "native-x86_64-unknown-linux-gnu/environment.json": {
+      "bytes": 102,
+      "sha256": "8978653957a31f800e6b0512013b243462641dd6d34fa358f268c83e16a91e5e"
+    },
+    "native-x86_64-unknown-linux-gnu/harness-tests.log": {
+      "bytes": 7121,
+      "sha256": "a0e8d2991ed50b9c477d35b68cef4a89e07904ea45a36a49c20e5509a7c84640"
+    },
+    "native-x86_64-unknown-linux-gnu/workspace-tests.log": {
+      "bytes": 15890,
+      "sha256": "fd404d4f8f1db9e5fb79eb4772cbe57c5001e29cbac50d94e87fea9325b461fd"
+    },
+    "original-zip-verification.json": {
+      "bytes": 1889,
+      "sha256": "35c488e6f67e249855c67a1652634c9a4874cee2c858342d319ccb8e4aec48fe"
+    },
+    "run.json": {
+      "bytes": 16913,
+      "sha256": "f005c2cb71b0d55f959113f6e26227dc2dc4ac377dd930de99dea83b994fdfa0"
+    },
+    "rust/baseline/prepare.json": {
+      "bytes": 1295,
+      "sha256": "0b99b041681f8b6e5ee21300d983de106eace5dc90fb62414490ad8c78df20c0"
+    },
+    "rust/baseline/prepare.stderr.log": {
+      "bytes": 10850,
+      "sha256": "7951152bc468e80339be9d47a8f875152ffee74fe854e9f14a6d014b8a76e07a"
+    },
+    "rust/baseline/prepare.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rust/baseline/probe.json": {
+      "bytes": 10490,
+      "sha256": "fb5dbcc188f2671eea9b60cfbd75ffeb807b4042fcd52d987e4a8cb5e36d2432"
+    },
+    "rust/baseline/probe.stderr.log": {
+      "bytes": 6082,
+      "sha256": "7127614bdb7dc7f57205e32fc0e48c54d692a88523b882fe75a895ba06bcce01"
+    },
+    "rust/baseline/probe.stdout.log": {
+      "bytes": 405,
+      "sha256": "b2ba45849518239535e7518da1491f92520195254ac7dabc23f51fbb9fc8b0c5"
+    },
+    "rust/baseline/toolchain-location.json": {
+      "bytes": 1346,
+      "sha256": "3cdab901b6b27c02ae8ff193fbb0929da3e878a49777fccdf1d3a469c78276d6"
+    },
+    "rust/baseline/toolchain-location.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rust/baseline/toolchain-location.stdout.log": {
+      "bytes": 74,
+      "sha256": "db8cdbac2cab29126c5b46b20ae50107dfe8e306ebc50f9d05896cbdf26a3b5a"
+    },
+    "rust/baseline/tooling.json": {
+      "bytes": 1280,
+      "sha256": "815af0a413ee01cfbfd18de3b89d4fc59adb50126373d2e0721944663ed13656"
+    },
+    "rust/baseline/tooling.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rust/baseline/tooling.stdout.log": {
+      "bytes": 36,
+      "sha256": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503"
+    },
+    "rust/reference/prepare.json": {
+      "bytes": 1293,
+      "sha256": "7d1086e92ac3920e2f687aaade54439e27e40d8ca043e3627e0b6546086b81ec"
+    },
+    "rust/reference/prepare.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rust/reference/prepare.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rust/reference/probe.json": {
+      "bytes": 9383,
+      "sha256": "6a4bec9f50ba6e5607c1582ea36bd76962e98530b758cfb24a37cd50d23dc9a5"
+    },
+    "rust/reference/probe.stderr.log": {
+      "bytes": 5404,
+      "sha256": "0b71150c3b11697928f62dd66df16d6651f412655343bd9c6286a00ede62fc07"
+    },
+    "rust/reference/probe.stdout.log": {
+      "bytes": 251,
+      "sha256": "a10663ad4dca8e64c876d79d62216e240361b85c41d859cadde2813e0cf93410"
+    },
+    "rust/reference/regressions.json": {
+      "bytes": 3732,
+      "sha256": "00504b50f3f351eb191d90cc68cf05e65673e1470c20cb5c9f39105c6a44a6eb"
+    },
+    "rust/reference/regressions.stderr.log": {
+      "bytes": 158,
+      "sha256": "cb4185e1cc7d126c4a7c70d6f1a83831c52aca13209c16ad834c446d49e20100"
+    },
+    "rust/reference/regressions.stdout.log": {
+      "bytes": 1245,
+      "sha256": "355904acee27deaffa40fe2e5314a7259f48ae29658bac689568b79cfe74468b"
+    },
+    "rust/reference/tooling.json": {
+      "bytes": 1285,
+      "sha256": "0fc1194b68ece6d54ae3050f8ea36ce1295e5edbf413d112fdc93416240d8ffb"
+    },
+    "rust/reference/tooling.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rust/reference/tooling.stdout.log": {
+      "bytes": 36,
+      "sha256": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503"
+    },
+    "rust/summary.json": {
+      "bytes": 3278,
+      "sha256": "ca183189301d553b8b6a466cf735e81edd8c0ef7de3850b4bc54426845a4e01a"
+    }
+  },
+  "publication_sources_sha256": {
+    "docs/STATUS-IMPLEMENTACAO.md": "eca77da83151d7ec4577238791fcaceb0bff4be4a6263271dc2508e6c2bf06a2",
+    "docs/relatorios/L5-CONTINUACAO.md": "975ef4f43dda0a2ba2c2f202fc2723d4cbe3ff331fa681a7895640515ddc0c5a",
+    "eval/reports/m0-corpus-qualification.md": "c41e8e53592d943c2b7d270e71f8298882e3897d17ad8cf6f092a9133f27dacf",
+    "eval/reports/m0-semantics.md": "a1b4a5587ffcb979415aabf44d9e00078016a476f49db5e01900cbe26f22f0a2",
+    "eval/qualification/l5-real/js/case.json": "03679a0afa131b55306fa41d80c5e87e4de5c93ac7af64791da4cb26dbfa7e76",
+    "eval/qualification/l5-real/rust/case.json": "9c31e2b89337d5467a30443e5a7a31d98c54e4c4fddc9d68e121b3a4435f4813",
+    "eval/qualification/l5-real/js/README.md": "4e967c70de63d3b0fea962eb44a9a234318bf6b5a3823517bd270e7092cfec11",
+    "docs/relatorios/logs/L5-continuacao/reconcile_corpus.py": "687b6f3fddd522fef2f12ce3906fe70fc07b4a946ba8fe940a6fd8475e3fb6d1"
+  },
+  "native_artifacts": "actual bytes independently verified; recover via artifacts.json before 2027-01-10; native ZIPs/binaries not duplicated in repository",
+  "corpus_artifacts": "both original ZIPs and exact complete member sets retained",
+  "limits": "approval belongs to tested code commit; this manifest does not establish A-to-B real, full upstream suites, corpus admission, or approval of the later receipt commit"
+}

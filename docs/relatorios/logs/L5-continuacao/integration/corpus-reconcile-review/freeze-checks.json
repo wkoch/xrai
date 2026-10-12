@@ -1,0 +1,133 @@
+{
+  "schema": "xrai.eval.l5.corpus-reconcile-freeze.v1",
+  "utc": "2026-10-12T17:25:43.592065+00:00",
+  "data_only": true,
+  "upstream_executed": false,
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "source_sha256": {
+    "docs/relatorios/logs/L5-continuacao/reconcile_corpus.py": "b700879bcb0404f8da9eb20f941c214869a22d91212e15ebec1e74afcbd97ce6",
+    "docs/relatorios/logs/L5-continuacao/integration/corpus-reconcile-review/test_reconcile.py": "953c44be216e1024595f811eadf4bfc37c092be990c502d9c336f3bb96e58a38"
+  },
+  "counterchecks": "13 unittest methods, including 5 metadata, 5 Rust pin and 12 containment/stream mutation subcases; actual preserved CI2 Rust positive and CI2 JS old-oracle rejected",
+  "commands": [
+    {
+      "name": "counterchecks",
+      "command": [
+        "/opt/homebrew/opt/python@3.15/bin/python3.15",
+        "docs/relatorios/logs/L5-continuacao/integration/corpus-reconcile-review/test_reconcile.py"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b55e81aba4306532b934fa7d235a364e5e2af623e63a4edcf2969751bd8db05e",
+      "timeout_seconds": 30
+    },
+    {
+      "name": "rust-ci2",
+      "command": [
+        "/opt/homebrew/opt/python@3.15/bin/python3.15",
+        "docs/relatorios/logs/L5-continuacao/reconcile_corpus.py",
+        "docs/relatorios/logs/L5-continuacao/ci-second",
+        "--commit",
+        "d54520b2d5f7d8fcac1e770ad06d26d1d5333a0d",
+        "--run",
+        "38280118706",
+        "--only",
+        "rust"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "stdout_sha256": "c3742d59ecce9f7febfba92f1ded1ff99bef361d9424e512796fcbdd5b9798d2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timeout_seconds": 30
+    },
+    {
+      "name": "full-ci2-rejected",
+      "command": [
+        "/opt/homebrew/opt/python@3.15/bin/python3.15",
+        "docs/relatorios/logs/L5-continuacao/reconcile_corpus.py",
+        "docs/relatorios/logs/L5-continuacao/ci-second",
+        "--commit",
+        "d54520b2d5f7d8fcac1e770ad06d26d1d5333a0d",
+        "--run",
+        "38280118706"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "stdout_sha256": "50217ef2afd1d3c226e3c24c619098b00a1ee0ca0807ce26a75e735f9d5f3fcf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timeout_seconds": 30
+    }
+  ],
+  "preserved_ci2_input_sha256": {
+    "retrieval-hashes.json": "4d2393201e8146f13fa8cb34d5d9944f3f6766b43e199d13fc562aa7b4b6fd5b",
+    "artifact-metadata-sha256.json": "e9f94843ca377449b96ed4cb8c75a2f3d03ce0edad005f92e4b540d63c601dc7",
+    "run.json": "db658180a7c31cd6deaa398d0ae6469655e29eeea4c8e127fd034b621ab1e542",
+    "artifacts.json": "ddf608d9682486ba985937162812fca2b4f8c6f40a5737cb1e7c700a555daa78",
+    "rust/summary.json": "faa7bbc9086c27deba0ddc1f6f11a2c43782a5634b59b9fc07510fa99fcbb446",
+    "rust/baseline/tooling.json": "3434dd71f23a1abb830a66fb2da83af21631d3a596665ee944e6c69093b42f47",
+    "rust/baseline/probe.stderr.log": "03c369d017da7b915cc116d7331bbc5f0465dc1faa1cf1521e8f2aaf5ab98770",
+    "rust/baseline/toolchain-location.json": "90a58c4a71ee709577ea888cb7d2fd605333187eb7ad2a4dfdd5c039cf3fd123",
+    "rust/baseline/toolchain-location.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/baseline/prepare.stderr.log": "16d89c23083bd047af3ebdbe09d08bcc96ab2ba8c2293118b8f2a1b68a8c7389",
+    "rust/baseline/tooling.stdout.log": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503",
+    "rust/baseline/probe.stdout.log": "b2ba45849518239535e7518da1491f92520195254ac7dabc23f51fbb9fc8b0c5",
+    "rust/baseline/probe.json": "2dc4a9253661f1e96ae2059061655fe38ff5276951cb4a5a8ba887d9c3cf79eb",
+    "rust/baseline/prepare.json": "0c01e172c3e2de8b41444f8a49fdc401485544b91c89ce36ac06740cc8949a0a",
+    "rust/baseline/toolchain-location.stdout.log": "db8cdbac2cab29126c5b46b20ae50107dfe8e306ebc50f9d05896cbdf26a3b5a",
+    "rust/baseline/prepare.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/baseline/tooling.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/tooling.json": "9b3bd61a306e8c0a4d08972e769ecb4f15185d25aef3b61af45f1252aeffb5cd",
+    "rust/reference/probe.stderr.log": "e443b7f2b3d9583d40d2d82a61a34de572a232f3d899768019b6ff62b945f46f",
+    "rust/reference/regressions.stdout.log": "d87dcc34322d975ad97672a4a906ad79beb375da3228e6ca0047a033d82dd4ee",
+    "rust/reference/prepare.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/tooling.stdout.log": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503",
+    "rust/reference/probe.stdout.log": "38140f635820ccd91e114670eece90497775c44d9f2cdf251bd161e539c39d3c",
+    "rust/reference/probe.json": "da3a44a71887b1ba4d41605e9ab266db0e008bba3a7be25088ae073f77bb59b3",
+    "rust/reference/regressions.json": "b4c4dac0b3f70936dbb0cfc19c785cdcf7b9ec8d872c94b099d6c584c0514b9d",
+    "rust/reference/prepare.json": "19214ddc02d4ef8a0c8ad7fca7ef2a0621a2fdc81d096327c40236b7d2a4f3d3",
+    "rust/reference/regressions.stderr.log": "1b0a99a3e0a382c6a567d10a0c1fb6b2529dd6e36ada9c16e63a9023dc47f341",
+    "rust/reference/prepare.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/tooling.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "js/base/requirement-jest.json": "650c9a4ac583d06c5771b6b50bf9f2e0e77e66802db120d5dab8a2528a54a888",
+    "js/base/regression-jest.json": "c4c2f759f96f28452bf90452e5b3dead7f799b6bf31af67bb499189887b258dd",
+    "js/base/regression-harness.json": "e9053912782abe765c920ea8b980cc3e84eff82a343cae09d59d1530a0326aa1",
+    "js/base/probe.json": "18e514a8b590c42bfb28dd2a0615636b2f6adb3389545197720d1329a6de4f5d",
+    "js/base/requirement-harness.json": "93c4e37975a85a47e08ef067a4353eb49956a04b2f214209e431d69453ae1bdf",
+    "js/base/bootstrap.json": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1",
+    "js/reference/requirement-jest.json": "833f49e25457f6cf8544a55747703ec5d1f13916c500e1ff7587c0ce84d8c854",
+    "js/reference/regression-jest.json": "8ade76708017dd909de90338d4468295670ee32f82f7d03e85ec5a8efed35801",
+    "js/reference/regression-harness.json": "5d06913eea90c9b159f39ebce8be5e070d98036fac67d020668ab571eba8cb76",
+    "js/reference/probe.json": "e7b75b1fec3bd4e64521dc936cbd0561ac0c9a07d84c69029ac2420bffebeb32",
+    "js/reference/requirement-harness.json": "a202d39fde5df156b488041cc94c45418403386f2ee0edd76608a384f4035f8e",
+    "js/reference/bootstrap.json": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1"
+  },
+  "exports_unchanged": true,
+  "initial_test_failure": {
+    "cause": "Two artifact-mutation test subcases selected array index zero (JS artifact) while verifying only Rust. Corrected test selection to the artifact name l5-real-rust; production verifier unchanged by this correction.",
+    "tests": 13,
+    "failed_subcases": 2
+  },
+  "fresh_pair_status": "pending fourth CI export; no fresh JS success inferred",
+  "next_cli": "python3 docs/relatorios/logs/L5-continuacao/reconcile_corpus.py <export-root> --commit c48b5993550fd258f1efe5677704a59d9eb73de0 --run 38283109016",
+  "provenance_limits": [
+    "Offline supplied JSON is not authenticated; obtain run/artifacts through trusted GitHub export.",
+    "ZIP digest verified only when original l5-real-{rust,js}.zip supplied at export root; otherwise report records the gap.",
+    "Contains no independent observation of past workspace/process; checks consistent producer evidence against frozen source pins.",
+    "No A-to-B, agent success or corpus admission."
+  ],
+  "graph": {
+    "coverage_file": "coverage.json",
+    "signal": "best_effort",
+    "paths": 6,
+    "freshness": "metadata_match",
+    "indexed_at": "2026-10-12T17:24:41Z"
+  },
+  "graft": {
+    "this_assignment_queries": 2,
+    "this_assignment_tokens_saved": 3098,
+    "cumulative_queries": 16,
+    "cumulative_tokens_saved": 81323
+  }
+}

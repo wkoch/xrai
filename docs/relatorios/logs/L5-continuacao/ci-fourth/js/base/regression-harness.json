@@ -1,0 +1,57 @@
+{
+  "phase": "qualification-regression",
+  "command": [
+    "/usr/bin/env",
+    "HOME=/workspace",
+    "TMPDIR=/tmp",
+    "NODE_ENV=development",
+    "RELEASE_CHANNEL=experimental",
+    "VARIANT=true",
+    "/workspace/.xrai-node",
+    "./scripts/jest/jest.js",
+    "--config",
+    "./scripts/jest/config.source-www.js",
+    "--runInBand",
+    "--json",
+    "--outputFile=.xrai-jest-regression.json",
+    "--testNamePattern=^regression ",
+    "XraiExternalStoreContract-test"
+  ],
+  "status": "ok",
+  "execution_status": "ok",
+  "exit_code": 0,
+  "sandbox": "Linux bubblewrap",
+  "containment": "linux_pid_namespace",
+  "cleanup_status": "confirmed",
+  "domain_id": "b733ec70-20fb-4d42-850b-0a05d355f33b",
+  "termination_evidence": {
+    "init_pid": 2822,
+    "pid_namespace": "pid:[4026532379]",
+    "init_held_before_pin": true,
+    "pidfd_exit_observed": true,
+    "wrapper_reaped": true,
+    "user_namespace_mapping": {
+      "uid": 1001,
+      "gid": 1001,
+      "count": 1,
+      "setgroups": "deny"
+    }
+  },
+  "eligible_for_agent_run": true,
+  "diagnostic": null,
+  "elapsed_seconds": 3.6753778409999995,
+  "stdout": {
+    "base64": "",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "captured_bytes": 0,
+    "observed_bytes": 0,
+    "truncated": false
+  },
+  "stderr": {
+    "base64": "UEFTUyBwYWNrYWdlcy9yZWFjdC1yZWNvbmNpbGVyL3NyYy9fX3Rlc3RzX18vWHJhaUV4dGVybmFsU3RvcmVDb250cmFjdC10ZXN0LmpzCiAg4pyTIHJlZ3Jlc3Npb24gb3JkaW5hcnkgc3RhdGUgdXBkYXRlIHJlbWFpbnMgc3VwcG9ydGVkICgyMTQ5IG1zKQogIOKckyByZWdyZXNzaW9uIGxheW91dCBhbmQgcGFzc2l2ZSBlZmZlY3RzIHJlbGVhc2UgcmVzb3VyY2VzICgyNCBtcykKICDil4sgc2tpcHBlZCBjb250cmFjdCBzbmFwc2hvdCBub3RpZmljYXRpb25zIGFuZCBlcXVhbGl0eSBiYWlsb3V0CiAg4peLIHNraXBwZWQgY29udHJhY3Qgc3RvcmUgcmVwbGFjZW1lbnQgdW5zdWJzY3JpYmVzIHByZXZpb3VzIHNvdXJjZQogIOKXiyBza2lwcGVkIGNvbnRyYWN0IGluZGVwZW5kZW50bHkgc2VsZWN0ZWQgc25hcHNob3QgaWdub3JlcyB1bnJlbGF0ZWQgZmllbGQKClRlc3QgU3VpdGVzOiAxIHBhc3NlZCwgMSB0b3RhbApUZXN0czogICAgICAgMyBza2lwcGVkLCAyIHBhc3NlZCwgNSB0b3RhbApTbmFwc2hvdHM6ICAgMCB0b3RhbApUaW1lOiAgICAgICAgMy4xMzUgcwpSYW4gYWxsIHRlc3Qgc3VpdGVzIG1hdGNoaW5nIC9YcmFpRXh0ZXJuYWxTdG9yZUNvbnRyYWN0LXRlc3QvaSB3aXRoIHRlc3RzIG1hdGNoaW5nICJecmVncmVzc2lvbiAiLgpUZXN0IHJlc3VsdHMgd3JpdHRlbiB0bzogLnhyYWktamVzdC1yZWdyZXNzaW9uLmpzb24K",
+    "sha256": "d032aee2bc94b8d8561b394d2fb15ea18a05f275fd1020e86888a7f33dde0277",
+    "captured_bytes": 699,
+    "observed_bytes": 699,
+    "truncated": false
+  }
+}

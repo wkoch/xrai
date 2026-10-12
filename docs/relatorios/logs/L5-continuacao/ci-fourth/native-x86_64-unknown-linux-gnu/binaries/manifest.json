@@ -1,0 +1,46 @@
+{
+  "format": "l5-native-executables-v1",
+  "system": "Linux",
+  "machine": "x86_64",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "code_commit": "c48b5993550fd258f1efe5677704a59d9eb73de0",
+  "rustc_verbose": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "executables": [
+    {
+      "name": "parsing-spike",
+      "bytes": 8996840,
+      "sha256": "047abde80844d7afc296af19f507ac76c58ce2cfa0b950a29a16ee5af80e64dd",
+      "mode": 493
+    },
+    {
+      "name": "worker-spike",
+      "bytes": 9302368,
+      "sha256": "aac4758d117ae9e3fa58ba4838ed2e4942a909b7b8b73c9c0f12b5b064d4d622",
+      "mode": 493
+    },
+    {
+      "name": "worker-persistent",
+      "bytes": 9488776,
+      "sha256": "ce058a9bee104b55ad111ba4ee7a03fbaca96bb840f10428de05e20ffc6e9cc1",
+      "mode": 493
+    },
+    {
+      "name": "worker-benchmark",
+      "bytes": 9572576,
+      "sha256": "cf07922a74b705828e07f149f8db5d1c49b0a9ccc0fa26ca4a0e373fbc854c70",
+      "mode": 493
+    },
+    {
+      "name": "semantics-spike",
+      "bytes": 7097776,
+      "sha256": "16a778114795c14b7f6b5ff2792f0ff88f98f149bc48a7f81313e26235107652",
+      "mode": 493
+    },
+    {
+      "name": "context-spike",
+      "bytes": 7939576,
+      "sha256": "19acfd73a9a53b438768c5648befa3bbd0e3bb6cf6526c9cea9ccff580db93b9",
+      "mode": 493
+    }
+  ]
+}

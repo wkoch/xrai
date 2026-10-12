@@ -1,0 +1,65 @@
+{
+  "phase": "upstream_behavioral_probe",
+  "command": [
+    "/usr/bin/env",
+    "PATH=/workspace/_toolchain/bin:/usr/bin:/bin",
+    "CARGO_WORKSPACE_DIR=/workspace/reference",
+    "CARGO_HOME=/workspace/_cargo",
+    "CARGO_TARGET_DIR=/workspace/reference-target",
+    "RUSTC=/workspace/_toolchain/bin/rustc",
+    "CARGO_BUILD_JOBS=2",
+    "CARGO_PROFILE_DEV_DEBUG=0",
+    "CARGO_PROFILE_TEST_DEBUG=0",
+    "CC=/usr/bin/x86_64-linux-gnu-gcc-13",
+    "CXX=/usr/bin/x86_64-linux-gnu-g++-13",
+    "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=/usr/bin/x86_64-linux-gnu-gcc-13",
+    "/workspace/_toolchain/bin/cargo",
+    "test",
+    "--manifest-path",
+    "/workspace/reference/Cargo.toml",
+    "--locked",
+    "--offline",
+    "-p",
+    "ide-diagnostics",
+    "handlers::non_exhaustive_let::tests",
+    "--",
+    "--nocapture"
+  ],
+  "status": "ok",
+  "execution_status": "ok",
+  "exit_code": 0,
+  "sandbox": "Linux bubblewrap",
+  "containment": "linux_pid_namespace",
+  "cleanup_status": "confirmed",
+  "domain_id": "03a7e3b2-3efc-4dbd-b70d-d8a701203487",
+  "termination_evidence": {
+    "init_pid": 12805,
+    "pid_namespace": "pid:[4026532320]",
+    "init_held_before_pin": true,
+    "pidfd_exit_observed": true,
+    "wrapper_reaped": true,
+    "user_namespace_mapping": {
+      "uid": 1001,
+      "gid": 1001,
+      "count": 1,
+      "setgroups": "deny"
+    }
+  },
+  "eligible_for_agent_run": true,
+  "diagnostic": null,
+  "elapsed_seconds": 0.20688293000000613,
+  "stdout": {
+    "base64": "CnJ1bm5pbmcgMTYgdGVzdHMKdGVzdCBoYW5kbGVyczo6bm9uX2V4aGF1c3RpdmVfbGV0Ojp0ZXN0czo6ZW1wdHlfcGF0dGVybnNfbm9ybWFsaXplIC4uLiBvawp0ZXN0IGhhbmRsZXJzOjpub25fZXhoYXVzdGl2ZV9sZXQ6OnRlc3RzOjpmaXhfcmV0dXJuX2luX2ZuIC4uLiBvawp0ZXN0IGhhbmRsZXJzOjpub25fZXhoYXVzdGl2ZV9sZXQ6OnRlc3RzOjpmaXhfcmV0dXJuX2luX2Nsb3N1cmUgLi4uIG9rCnRlc3QgaGFuZGxlcnM6Om5vbl9leGhhdXN0aXZlX2xldDo6dGVzdHM6OmZpeF9yZXR1cm5faW5faW5jb21wbGV0ZV9sZXQgLi4uIG9rCnRlc3QgaGFuZGxlcnM6Om5vbl9leGhhdXN0aXZlX2xldDo6dGVzdHM6OmZpeF9yZXR1cm5faW5fbWFjcm9fZXhwYW5kZWQgLi4uIG9rCnRlc3QgaGFuZGxlcnM6Om5vbl9leGhhdXN0aXZlX2xldDo6dGVzdHM6OmZpeF9yZXR1cm5faW5fbG9vcCAuLi4gb2sKdGVzdCBoYW5kbGVyczo6bm9uX2V4aGF1c3RpdmVfbGV0Ojp0ZXN0czo6bWluX2V4aGF1c3RpdmUgLi4uIG9rCnRlc3QgaGFuZGxlcnM6Om5vbl9leGhhdXN0aXZlX2xldDo6dGVzdHM6Om9wdGlvbl9leGhhdXN0aXZlIC4uLiBvawp0ZXN0IGhhbmRsZXJzOjpub25fZXhoYXVzdGl2ZV9sZXQ6OnRlc3RzOjpvcHRpb25fbm9uZXhoYXVzdGl2ZSAuLi4gb2sKdGVzdCBoYW5kbGVyczo6bm9uX2V4aGF1c3RpdmVfbGV0Ojp0ZXN0czo6Zml4X3JldHVybl90cnlfaW5fZm4gLi4uIG9rCnRlc3QgaGFuZGxlcnM6Om5vbl9leGhhdXN0aXZlX2xldDo6dGVzdHM6OnJlZ3Jlc3Npb25fMjMzMzZfMSAuLi4gb2sKdGVzdCBoYW5kbGVyczo6bm9uX2V4aGF1c3RpdmVfbGV0Ojp0ZXN0czo6cmVncmVzc2lvbl8yMzMzNl8yIC4uLiBvawp0ZXN0IGhhbmRsZXJzOjpub25fZXhoYXVzdGl2ZV9sZXQ6OnRlc3RzOjpyZWdyZXNzaW9uXzIwMjU5IC4uLiBvawp0ZXN0IGhhbmRsZXJzOjpub25fZXhoYXVzdGl2ZV9sZXQ6OnRlc3RzOjpyZWdyZXNzaW9uXzIzMzI3IC4uLiBvawp0ZXN0IGhhbmRsZXJzOjpub25fZXhoYXVzdGl2ZV9sZXQ6OnRlc3RzOjp1bmluaGFiaXRlZF92YXJpYW50cyAuLi4gb2sKdGVzdCBoYW5kbGVyczo6bm9uX2V4aGF1c3RpdmVfbGV0Ojp0ZXN0czo6b3B0aW9uX25vbmV4aGF1c3RpdmVfaW5zaWRlX2Jsb2NrcyAuLi4gb2sKCnRlc3QgcmVzdWx0OiBvay4gMTYgcGFzc2VkOyAwIGZhaWxlZDsgMCBpZ25vcmVkOyAwIG1lYXN1cmVkOyA3MjUgZmlsdGVyZWQgb3V0OyBmaW5pc2hlZCBpbiAwLjEwcwoK",
+    "sha256": "355904acee27deaffa40fe2e5314a7259f48ae29658bac689568b79cfe74468b",
+    "captured_bytes": 1245,
+    "observed_bytes": 1245,
+    "truncated": false
+  },
+  "stderr": {
+    "base64": "ICAgIEZpbmlzaGVkIGB0ZXN0YCBwcm9maWxlIFt1bm9wdGltaXplZF0gdGFyZ2V0KHMpIGluIDAuMDdzCiAgICAgUnVubmluZyB1bml0dGVzdHMgc3JjL2xpYi5ycyAocmVmZXJlbmNlLXRhcmdldC9kZWJ1Zy9kZXBzL2lkZV9kaWFnbm9zdGljcy1kNmQ3MGJkMzZkN2I1ODMzKQo=",
+    "sha256": "cb4185e1cc7d126c4a7c70d6f1a83831c52aca13209c16ad834c446d49e20100",
+    "captured_bytes": 158,
+    "observed_bytes": 158,
+    "truncated": false
+  }
+}

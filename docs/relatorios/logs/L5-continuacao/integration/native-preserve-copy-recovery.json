@@ -1,0 +1,5 @@
+{
+  "first_attempt": "copy named workspace-tests.txt failed with FileNotFoundError; artifact uses workspace-tests.log",
+  "effect": "only identical environment.json copied; original exports untouched; native verifier already passed",
+  "recovery": "copied actual .log files and verified every original ZIP member against independently downloaded exports; all four official ZIP digests matched"
+}

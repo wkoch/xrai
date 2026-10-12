@@ -1,0 +1,21 @@
+
+running 16 tests
+test handlers::non_exhaustive_let::tests::empty_patterns_normalize ... ok
+test handlers::non_exhaustive_let::tests::fix_return_in_fn ... ok
+test handlers::non_exhaustive_let::tests::fix_return_in_closure ... ok
+test handlers::non_exhaustive_let::tests::fix_return_in_incomplete_let ... ok
+test handlers::non_exhaustive_let::tests::fix_return_in_macro_expanded ... ok
+test handlers::non_exhaustive_let::tests::fix_return_in_loop ... ok
+test handlers::non_exhaustive_let::tests::min_exhaustive ... ok
+test handlers::non_exhaustive_let::tests::option_exhaustive ... ok
+test handlers::non_exhaustive_let::tests::option_nonexhaustive ... ok
+test handlers::non_exhaustive_let::tests::fix_return_try_in_fn ... ok
+test handlers::non_exhaustive_let::tests::regression_23336_1 ... ok
+test handlers::non_exhaustive_let::tests::regression_23336_2 ... ok
+test handlers::non_exhaustive_let::tests::regression_20259 ... ok
+test handlers::non_exhaustive_let::tests::regression_23327 ... ok
+test handlers::non_exhaustive_let::tests::uninhabited_variants ... ok
+test handlers::non_exhaustive_let::tests::option_nonexhaustive_inside_blocks ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 725 filtered out; finished in 0.10s
+

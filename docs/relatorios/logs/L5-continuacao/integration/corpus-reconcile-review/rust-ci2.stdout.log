@@ -1,0 +1,90 @@
+{
+  "schema": "xrai.eval.l5.corpus-data-reconcile.v1",
+  "verified": true,
+  "run_id": 38280118706,
+  "code_commit": "d54520b2d5f7d8fcac1e770ad06d26d1d5333a0d",
+  "families": {
+    "rust": {
+      "verified": true,
+      "sides": {
+        "baseline": {
+          "tests": 2,
+          "passed": 0,
+          "failed": 2,
+          "archive_sha256": "539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f",
+          "hidden_probe_sha256": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+          "lock_sha256": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+          "namespace": "7e1401b0-c5fc-4d49-bce3-f15c179d23aa"
+        },
+        "reference": {
+          "tests": 2,
+          "passed": 2,
+          "failed": 0,
+          "archive_sha256": "aa9d5764517afece4c0da16b70f206c27073bff2c40399cd579e243139fa0d66",
+          "hidden_probe_sha256": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+          "lock_sha256": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+          "namespace": "859a9e03-2f67-43b0-a695-304821ec1535"
+        }
+      },
+      "reference_family_regressions": 16,
+      "reference_patch_sha256": "05c3f3ba4da6d261c0719fc084a12d9592ce929b10ea1749eeec0546e21d4538",
+      "materialization_proof": "producer-bound full source archive and identical hidden handler/lock; local archived patch delta and unchanged hidden production prefix checked; exported workspaces not included"
+    }
+  },
+  "export_provenance": {
+    "rust": {
+      "artifact_id": 11760952130,
+      "github_reported_zip_digest": "sha256:0a4765eb3b1e29b71932c1f82bc0464472f9667a1b94334be6491a06dc7e40cb",
+      "job_id": 114915111340,
+      "zip_bytes_independently_verified": false
+    }
+  },
+  "input_sha256": {
+    "run.json": "db658180a7c31cd6deaa398d0ae6469655e29eeea4c8e127fd034b621ab1e542",
+    "artifacts.json": "ddf608d9682486ba985937162812fca2b4f8c6f40a5737cb1e7c700a555daa78",
+    "rust/summary.json": "faa7bbc9086c27deba0ddc1f6f11a2c43782a5634b59b9fc07510fa99fcbb446",
+    "rust/baseline/tooling.json": "3434dd71f23a1abb830a66fb2da83af21631d3a596665ee944e6c69093b42f47",
+    "rust/baseline/tooling.stdout.log": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503",
+    "rust/baseline/tooling.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/baseline/prepare.json": "0c01e172c3e2de8b41444f8a49fdc401485544b91c89ce36ac06740cc8949a0a",
+    "rust/baseline/prepare.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/baseline/prepare.stderr.log": "16d89c23083bd047af3ebdbe09d08bcc96ab2ba8c2293118b8f2a1b68a8c7389",
+    "rust/baseline/probe.json": "2dc4a9253661f1e96ae2059061655fe38ff5276951cb4a5a8ba887d9c3cf79eb",
+    "rust/baseline/probe.stdout.log": "b2ba45849518239535e7518da1491f92520195254ac7dabc23f51fbb9fc8b0c5",
+    "rust/baseline/probe.stderr.log": "03c369d017da7b915cc116d7331bbc5f0465dc1faa1cf1521e8f2aaf5ab98770",
+    "rust/reference/tooling.json": "9b3bd61a306e8c0a4d08972e769ecb4f15185d25aef3b61af45f1252aeffb5cd",
+    "rust/reference/tooling.stdout.log": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503",
+    "rust/reference/tooling.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/prepare.json": "19214ddc02d4ef8a0c8ad7fca7ef2a0621a2fdc81d096327c40236b7d2a4f3d3",
+    "rust/reference/prepare.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/prepare.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/probe.json": "da3a44a71887b1ba4d41605e9ab266db0e008bba3a7be25088ae073f77bb59b3",
+    "rust/reference/probe.stdout.log": "38140f635820ccd91e114670eece90497775c44d9f2cdf251bd161e539c39d3c",
+    "rust/reference/probe.stderr.log": "e443b7f2b3d9583d40d2d82a61a34de572a232f3d899768019b6ff62b945f46f",
+    "rust/baseline/toolchain-location.json": "90a58c4a71ee709577ea888cb7d2fd605333187eb7ad2a4dfdd5c039cf3fd123",
+    "rust/baseline/toolchain-location.stdout.log": "db8cdbac2cab29126c5b46b20ae50107dfe8e306ebc50f9d05896cbdf26a3b5a",
+    "rust/baseline/toolchain-location.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/regressions.json": "b4c4dac0b3f70936dbb0cfc19c785cdcf7b9ec8d872c94b099d6c584c0514b9d",
+    "rust/reference/regressions.stdout.log": "d87dcc34322d975ad97672a4a906ad79beb375da3228e6ca0047a033d82dd4ee",
+    "rust/reference/regressions.stderr.log": "1b0a99a3e0a382c6a567d10a0c1fb6b2529dd6e36ada9c16e63a9023dc47f341"
+  },
+  "verifier_sha256": "b700879bcb0404f8da9eb20f941c214869a22d91212e15ebec1e74afcbd97ce6",
+  "sources_sha256": {
+    "eval/scripts/run_real_rust_probes.py": "4c917109ba4765c0b2262fc3e37d54bcc7be054c3b6546d8e163eb1750228f9c",
+    "eval/scripts/run_vertical_probes.py": "943f31fae58d99696c4bf4006af319afe54faead75ae30b4cea26f74c3f7a88d",
+    "eval/scripts/run_l5_js.py": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+    "eval/scripts/verify_l5_js_oracle.py": "ac6c5d48a0dd3484cfbd0502a3cf543a56f430680dc615062e26d2cee278db8b",
+    "crates/xrai-eval/harness/supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+  },
+  "data_only": true,
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "limits": [
+    "producer receipt consistency is not independent observation of the past process or workspace",
+    "metadata must be obtained by trusted GitHub export; supplied JSON is not authenticated by this offline verifier",
+    "without original ZIP, extracted file hashes are recorded but not cryptographically bound to GitHub-reported ZIP digest",
+    "native executable bytes are reported by producers; binaries are not retained in these corpus exports",
+    "Rust family regressions run on reference only; no baseline-family or full upstream suite claim",
+    "no agent success, incremental A-to-B proof, full semantic coverage or corpus admission inferred"
+  ]
+}

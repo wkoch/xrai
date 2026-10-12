@@ -1,0 +1,147 @@
+{
+  "schema": "xrai.eval.l5.corpus-data-reconcile.v1",
+  "verified": true,
+  "run_id": 38283109016,
+  "code_commit": "c48b5993550fd258f1efe5677704a59d9eb73de0",
+  "families": {
+    "rust": {
+      "verified": true,
+      "sides": {
+        "baseline": {
+          "tests": 2,
+          "passed": 0,
+          "failed": 2,
+          "archive_sha256": "539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f",
+          "hidden_probe_sha256": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+          "lock_sha256": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+          "namespace": "6c1d8c33-af20-4855-b6ae-f10b0ded5fae"
+        },
+        "reference": {
+          "tests": 2,
+          "passed": 2,
+          "failed": 0,
+          "archive_sha256": "aa9d5764517afece4c0da16b70f206c27073bff2c40399cd579e243139fa0d66",
+          "hidden_probe_sha256": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+          "lock_sha256": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+          "namespace": "f73d07ea-533e-49f3-88e2-04e05f6e9274"
+        }
+      },
+      "reference_family_regressions": 16,
+      "reference_patch_sha256": "05c3f3ba4da6d261c0719fc084a12d9592ce929b10ea1749eeec0546e21d4538",
+      "materialization_proof": "producer-bound full source archive and identical hidden handler/lock; local archived patch delta and unchanged hidden production prefix checked; exported workspaces not included"
+    },
+    "js": {
+      "verified": true,
+      "sides": {
+        "base": {
+          "requirement": {
+            "passed": 0,
+            "failed": 3,
+            "pending": 2
+          },
+          "regression": {
+            "passed": 2,
+            "failed": 0,
+            "pending": 3
+          }
+        },
+        "reference": {
+          "requirement": {
+            "passed": 3,
+            "failed": 0,
+            "pending": 2
+          },
+          "regression": {
+            "passed": 2,
+            "failed": 0,
+            "pending": 3
+          }
+        }
+      },
+      "oracle_sha256": "9938be79198f975471b472f3bbfa33614fe63d46e1def912d8a827a925292d65",
+      "node_reported_sha256": "8440cffda5a21bf7cfda43d2c396f79777585a4c5e03ed2801fe226953a7aa11",
+      "transition_guard": "frozen local source guard passed; runtime ordinary transition negative control included in the two passed regressions",
+      "materialization_proof": "producer-bound full base archive plus exact two reference production source digests; exported workspaces not included"
+    }
+  },
+  "export_provenance": {
+    "rust": {
+      "artifact_id": 11761958158,
+      "github_reported_zip_digest": "sha256:a4e697aa6135878986646fcfac155a7636a6a584694a6e011ba36a4753495012",
+      "job_id": 114924905570,
+      "zip_bytes_independently_verified": true,
+      "complete_file_set_verified": true,
+      "file_count": 25
+    },
+    "js": {
+      "artifact_id": 11762371278,
+      "github_reported_zip_digest": "sha256:b2315f23d64725699d44c2c604bfeaa0bc382e5065f0249f8062676ae6cde479",
+      "job_id": 114924905412,
+      "zip_bytes_independently_verified": true,
+      "complete_file_set_verified": true,
+      "file_count": 12
+    }
+  },
+  "input_sha256": {
+    "run.json": "f005c2cb71b0d55f959113f6e26227dc2dc4ac377dd930de99dea83b994fdfa0",
+    "artifacts.json": "5457ab5f0075ec47e8d2dd09986289beaf46f2590f94f72efceae5b771e18a77",
+    "l5-real-rust.zip": "a4e697aa6135878986646fcfac155a7636a6a584694a6e011ba36a4753495012",
+    "rust/summary.json": "ca183189301d553b8b6a466cf735e81edd8c0ef7de3850b4bc54426845a4e01a",
+    "rust/baseline/prepare.json": "0b99b041681f8b6e5ee21300d983de106eace5dc90fb62414490ad8c78df20c0",
+    "rust/baseline/prepare.stderr.log": "7951152bc468e80339be9d47a8f875152ffee74fe854e9f14a6d014b8a76e07a",
+    "rust/baseline/prepare.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/baseline/probe.json": "fb5dbcc188f2671eea9b60cfbd75ffeb807b4042fcd52d987e4a8cb5e36d2432",
+    "rust/baseline/probe.stderr.log": "7127614bdb7dc7f57205e32fc0e48c54d692a88523b882fe75a895ba06bcce01",
+    "rust/baseline/probe.stdout.log": "b2ba45849518239535e7518da1491f92520195254ac7dabc23f51fbb9fc8b0c5",
+    "rust/baseline/toolchain-location.json": "3cdab901b6b27c02ae8ff193fbb0929da3e878a49777fccdf1d3a469c78276d6",
+    "rust/baseline/toolchain-location.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/baseline/toolchain-location.stdout.log": "db8cdbac2cab29126c5b46b20ae50107dfe8e306ebc50f9d05896cbdf26a3b5a",
+    "rust/baseline/tooling.json": "815af0a413ee01cfbfd18de3b89d4fc59adb50126373d2e0721944663ed13656",
+    "rust/baseline/tooling.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/baseline/tooling.stdout.log": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503",
+    "rust/reference/prepare.json": "7d1086e92ac3920e2f687aaade54439e27e40d8ca043e3627e0b6546086b81ec",
+    "rust/reference/prepare.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/prepare.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/probe.json": "6a4bec9f50ba6e5607c1582ea36bd76962e98530b758cfb24a37cd50d23dc9a5",
+    "rust/reference/probe.stderr.log": "0b71150c3b11697928f62dd66df16d6651f412655343bd9c6286a00ede62fc07",
+    "rust/reference/probe.stdout.log": "a10663ad4dca8e64c876d79d62216e240361b85c41d859cadde2813e0cf93410",
+    "rust/reference/regressions.json": "00504b50f3f351eb191d90cc68cf05e65673e1470c20cb5c9f39105c6a44a6eb",
+    "rust/reference/regressions.stderr.log": "cb4185e1cc7d126c4a7c70d6f1a83831c52aca13209c16ad834c446d49e20100",
+    "rust/reference/regressions.stdout.log": "355904acee27deaffa40fe2e5314a7259f48ae29658bac689568b79cfe74468b",
+    "rust/reference/tooling.json": "0fc1194b68ece6d54ae3050f8ea36ce1295e5edbf413d112fdc93416240d8ffb",
+    "rust/reference/tooling.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rust/reference/tooling.stdout.log": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503",
+    "l5-real-js.zip": "b2315f23d64725699d44c2c604bfeaa0bc382e5065f0249f8062676ae6cde479",
+    "js/base/bootstrap.json": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1",
+    "js/base/probe.json": "6571ee082dd793d2433ea58ac7bc0657c4ea454f12f6bfd01d06a150db250d24",
+    "js/base/regression-harness.json": "060464b66af990df732c6a15d3c7614afae73f326e82e8ad42112f2054b5b8e7",
+    "js/base/regression-jest.json": "6fb673738af4262ff817091cb3b6449caae68dec2144f28dbf4ef901eb1cf8e3",
+    "js/base/requirement-harness.json": "cfbcafe92c066840711c12302dd32ddcb55f255044043531edcbc986da32e1fc",
+    "js/base/requirement-jest.json": "2caa1cdca362a6e63e6618b6b4e9b0b38262af38ac2eb5562e0fd892a15dbbf9",
+    "js/reference/bootstrap.json": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1",
+    "js/reference/probe.json": "bbd096757be3facd898e72e83cbcb588ad3846811573c204f45c372f018e6cdf",
+    "js/reference/regression-harness.json": "58f6e02cd194e852b55009c3370b411f3522e2153f207dbbdecf92a018268012",
+    "js/reference/regression-jest.json": "e9a96d75ddda5be86ff37bd3096a31a92167c682a9a309e97e3d3a56a8d6fcdd",
+    "js/reference/requirement-harness.json": "d9a75d6b878c1f91bdb8928641c9f654d521900bf73968af1251e1f81b80c6c8",
+    "js/reference/requirement-jest.json": "f333242e5537a548c82206060a5274cce946c63c465419dc9f76f0cbc4604f28"
+  },
+  "verifier_sha256": "687b6f3fddd522fef2f12ce3906fe70fc07b4a946ba8fe940a6fd8475e3fb6d1",
+  "sources_sha256": {
+    "eval/scripts/run_real_rust_probes.py": "4c917109ba4765c0b2262fc3e37d54bcc7be054c3b6546d8e163eb1750228f9c",
+    "eval/scripts/run_vertical_probes.py": "943f31fae58d99696c4bf4006af319afe54faead75ae30b4cea26f74c3f7a88d",
+    "eval/scripts/run_l5_js.py": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+    "eval/scripts/verify_l5_js_oracle.py": "ac6c5d48a0dd3484cfbd0502a3cf543a56f430680dc615062e26d2cee278db8b",
+    "crates/xrai-eval/harness/supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+  },
+  "data_only": true,
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "limits": [
+    "producer receipt consistency is not independent observation of the past process or workspace",
+    "metadata must be obtained by trusted GitHub export; supplied JSON is not authenticated by this offline verifier",
+    "without original ZIP, extracted file hashes are recorded but not cryptographically bound to GitHub-reported ZIP digest",
+    "native executable bytes are reported by producers; binaries are not retained in these corpus exports",
+    "Rust family regressions run on reference only; no baseline-family or full upstream suite claim",
+    "no agent success, incremental A-to-B proof, full semantic coverage or corpus admission inferred"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "docs/relatorios/logs/L5-continuacao/reconcile_native.py",
+    "/private/tmp/xrai-l5-ci-fourth",
+    "--commit",
+    "c48b5993550fd258f1efe5677704a59d9eb73de0",
+    "--output",
+    "docs/relatorios/logs/L5-continuacao/ci-fourth/native-verification.json"
+  ],
+  "base_commit": "c48b5993550fd258f1efe5677704a59d9eb73de0",
+  "recorded_at": "2026-10-12T17:28:31.483324+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 11.843555041999934,
+  "exit_code": 0,
+  "stdout": "{\"verified\": true, \"targets\": [\"x86_64-unknown-linux-gnu\", \"aarch64-apple-darwin\"]}\n",
+  "stderr": "",
+  "stdout_sha256": "6ef28572eff955b3ed56332abd97c71cac646f163e6d1279f1688b86019e3817",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

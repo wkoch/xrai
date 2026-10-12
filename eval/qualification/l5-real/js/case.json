@@ -52,7 +52,7 @@
       "packages/react-reconciler"
     ],
     "evidence": "oracles/source-relations.json",
-    "review": "pending"
+    "review": "reviewed source necessity and pinned byte anchors; no admission"
   },
   "probe_plan": {
     "environment": "disposable Linux CI only; Node16.20.2/Yarn1.22.22; exact captured yarn.lock; no lifecycle scripts during install",
@@ -70,22 +70,26 @@
     "containment": "runner.execute arbitrary_agent=True; fresh Linux PID namespace per operation; verified teardown; no network during probes",
     "minimum_free_disk_per_checkout": "2 GiB recommended; check actual CI headroom",
     "setup_execution": "frozen install + pinned bootstrap passed in CI38280118706",
-    "baseline_reference_regression": "CI38282162955 baseline requirements3 failed as intended; ordinary transition negative control observation completed but regression failed on expected DEV warning outside act. Warning-specific matcher correction now frozen; no retrospective success, fresh CI required.",
+    "baseline_reference_regression": "verified CI38283109016: baseline requirements3 fail Not yet implemented, reference requirements3 pass, regressions2 pass each side including deferred-transition negative control",
     "bootstrap": "probe installs pinned react-is17.0.2 offline under pretty-format/node_modules, reproducing captured omitted postinstall; verify SHA256/SHA512 and retain receipt; no production/lock/oracle edits",
-    "oracle_checkpoint": "Principal unchanged: SyncLane checkpoint at one Promise microtask after startTransition outside act, no flushSync/Scheduler drain. Ordinary transition negative control expects only Stateful DEV act warning via local upstream toErrorDev and must remain pending at same checkpoint."
+    "oracle_checkpoint": "verified: one Promise microtask after notification in startTransition outside act commits external snapshot; normal useState transition remains pending at same checkpoint with expected DEV warning explicitly asserted"
   },
   "incremental_event": {
     "status": "not_started",
     "note": "This historical contract dossier is not the required state/index A\u2192B event; no persistent index or rebuild proof claimed."
   },
   "independent_review": {
-    "status": "pending",
+    "status": "reviewed",
     "author": "Implementador corpus_js",
-    "second_reader": null
+    "second_reader": "root and cfg_review",
+    "receipts": [
+      "docs/relatorios/logs/L5-continuacao/corpus-js/independent-review-root.json",
+      "docs/relatorios/logs/L5-continuacao/integration/js-checkpoint-independent.json"
+    ]
   },
   "qualification": {
     "admitted": false,
-    "status": "curated_candidate_probes_and_independent_review_pending",
+    "status": "reviewed_behavioral_pair_verified_incremental_pending",
     "counts_as_one_of_four_completed_dossiers": false,
     "competitive_runs_allowed": false,
     "D1_admitted_delta": 0
@@ -171,5 +175,19 @@
       "sha256": "b12db5568eb8fcf0d9147a18563825ebac4ab617768c15afc2d7329f57cb7a4d",
       "bytes": 794
     }
-  }
+  },
+  "verification": {
+    "ci_run": 38283109016,
+    "code_commit": "c48b5993550fd258f1efe5677704a59d9eb73de0",
+    "artifact_id": 11762371278,
+    "receipt": "docs/relatorios/logs/L5-continuacao/ci-fourth/corpus-verification.json",
+    "oracle_sha256": "9938be79198f975471b472f3bbfa33614fe63d46e1def912d8a827a925292d65",
+    "complete_export_zip_verified": true,
+    "dependency_lock_unchanged": true,
+    "teardown_confirmed": true,
+    "prior_attempts": "CI38278746631 bootstrap; CI38280118706 checkpoint; CI38282162955 expected DEV warning; all retained as failures"
+  },
+  "pending": [
+    "incremental A-to-B same index/process execution and full B rebuild comparison"
+  ]
 }
