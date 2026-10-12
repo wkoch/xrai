@@ -62,9 +62,24 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         Err(error) => return Err(error.into()),
     };
     let native_name = OsString::from_vec(b"space \xff.go".to_vec());
-    let native_name_result = fs::write(root.join(&native_name), b"native\x00\r\n");
+    let native_payload = b"native\x00\r\n";
+    let native_control = root.join("native-valid-control.go");
+    fs::write(&native_control, native_payload)?;
+    if fs::read(&native_control)? != native_payload {
+        return Err("native control bytes differ".into());
+    }
+    let native_name_result = fs::write(root.join(&native_name), native_payload);
     let native_name_supported = native_name_result.is_ok();
-    let native_name_error = native_name_result.err().map(|error| error.to_string());
+    let native_name_error = native_name_result.err();
+    fs::write(&native_control, native_payload)?;
+    if fs::read(&native_control)? != native_payload {
+        return Err("native control bytes differ after filename probe".into());
+    }
+    if std::env::consts::OS == "linux"
+        && let Some(error) = &native_name_error
+    {
+        return Err(format!("Linux native filename probe failed: {error}").into());
+    }
     fs::write(root.join("denied"), b"secret")?;
     fs::set_permissions(root.join("denied"), fs::Permissions::from_mode(0o0))?;
     let permission_denial_supported = matches!(spike::capture(&root, std::path::Path::new("denied")), Err(d) if d.reason == Reason::PermissionDenied);
@@ -144,7 +159,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         .collect::<Result<Vec<_>, _>>()?;
     observed_names.sort();
     println!(
-        "{{\"schema\":\"xrai-filesystem-spike-receipt-v1\",\"os\":{},\"arch\":{},\"root_native_hex\":{},\"checkout_id\":{},\"case_sensitive\":{},\"normalization_distinct\":{},\"invalid_utf8_name_supported\":{},\"invalid_utf8_name_error\":{},\"permission_denial_supported\":{},\"df_exit_success\":{},\"df\":{},\"filesystem_probe_exit_success\":{},\"filesystem_probe\":{},\"filesystem_probe_stderr\":{},\"observed_names_hex\":[{}],\"sources\":[{}],\"diagnostics\":[{}]}}",
+        "{{\"schema\":\"xrai-filesystem-spike-receipt-v1\",\"os\":{},\"arch\":{},\"root_native_hex\":{},\"checkout_id\":{},\"case_sensitive\":{},\"normalization_distinct\":{},\"invalid_utf8_name_supported\":{},\"invalid_utf8_name_error\":{},\"invalid_utf8_name_error_kind\":{},\"invalid_utf8_name_error_raw_os\":{},\"native_filename_valid_control_passed\":true,\"permission_denial_supported\":{},\"df_exit_success\":{},\"df\":{},\"filesystem_probe_exit_success\":{},\"filesystem_probe\":{},\"filesystem_probe_stderr\":{},\"observed_names_hex\":[{}],\"sources\":[{}],\"diagnostics\":[{}]}}",
         quote(std::env::consts::OS),
         quote(std::env::consts::ARCH),
         quote(
@@ -160,8 +175,17 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         normalization_distinct,
         native_name_supported,
         native_name_error
-            .as_deref()
-            .map(quote)
+            .as_ref()
+            .map(|error| quote(&error.to_string()))
+            .unwrap_or_else(|| "null".into()),
+        native_name_error
+            .as_ref()
+            .map(|error| quote(&format!("{:?}", error.kind())))
+            .unwrap_or_else(|| "null".into()),
+        native_name_error
+            .as_ref()
+            .and_then(|error| error.raw_os_error())
+            .map(|error| error.to_string())
             .unwrap_or_else(|| "null".into()),
         permission_denial_supported,
         df.status.success(),

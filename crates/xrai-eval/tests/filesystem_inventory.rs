@@ -108,11 +108,20 @@ fn unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes() {
             Err(error) => {
                 assert_eq!(std::env::consts::OS, "macos");
                 assert!(name.contains(&0xff));
-                assert!(matches!(
+                // Filesystem/OS versions map filename rejection to different
+                // ErrorKind/errno values. Observe the capability, not a whitelist.
+                // Positive writes and reads before and after the failed probe
+                // distinguish filename rejection from an unusable directory.
+                assert!(accepted.contains(&names[0]));
+                let control = fixture.0.join(OsString::from_vec(names[0].clone()));
+                assert_eq!(fs::read(&control).unwrap(), bytes);
+                fs::write(&control, bytes).unwrap();
+                assert_eq!(fs::read(&control).unwrap(), bytes);
+                println!(
+                    "invalid_utf8_filename_supported=false kind={:?} raw_os_error={:?}: {error}",
                     error.kind(),
-                    std::io::ErrorKind::PermissionDenied | std::io::ErrorKind::InvalidInput
-                ));
-                println!("invalid_utf8_filename_supported=false: {error}");
+                    error.raw_os_error()
+                );
             }
         }
     }

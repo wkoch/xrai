@@ -1,0 +1,152 @@
+aarch64-apple-darwin	Test	﻿2026-10-12T03:39:49.0990240Z ##[group]Run cargo test --workspace --locked
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.0990760Z ^[[36;1mcargo test --workspace --locked^[[0m
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1061260Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1061670Z env:
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1061910Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1062180Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1062400Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1062800Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1063140Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1063570Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1063990Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1064420Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1064800Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Test	2026-10-12T03:39:49.1065110Z ##[endgroup]
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.3001500Z ^[[1m^[[92m   Compiling^[[0m xrai-core v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-core)
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.3003270Z ^[[1m^[[92m   Compiling^[[0m memchr v2.8.3
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.3008470Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-language v0.1.9
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.3456680Z ^[[1m^[[92m   Compiling^[[0m xrai-index v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-index)
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.3588850Z ^[[1m^[[92m   Compiling^[[0m xrai-query v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-query)
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.3909370Z ^[[1m^[[92m   Compiling^[[0m regex-syntax v0.8.11
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.4010830Z ^[[1m^[[92m   Compiling^[[0m libsqlite3-sys v0.38.2
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.5224870Z ^[[1m^[[92m   Compiling^[[0m bitflags v2.13.2
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.6630390Z ^[[1m^[[92m   Compiling^[[0m serde_json v1.0.154
+aarch64-apple-darwin	Test	2026-10-12T03:39:50.7569540Z ^[[1m^[[92m   Compiling^[[0m aho-corasick v1.1.5
+aarch64-apple-darwin	Test	2026-10-12T03:39:51.5992200Z ^[[1m^[[92m   Compiling^[[0m tree-sitter v0.27.1
+aarch64-apple-darwin	Test	2026-10-12T03:39:52.2149370Z ^[[1m^[[92m   Compiling^[[0m regex-automata v0.4.18
+aarch64-apple-darwin	Test	2026-10-12T03:39:52.8458900Z ^[[1m^[[92m   Compiling^[[0m fallible-iterator v0.3.0
+aarch64-apple-darwin	Test	2026-10-12T03:39:52.9031550Z ^[[1m^[[92m   Compiling^[[0m fallible-streaming-iterator v0.1.9
+aarch64-apple-darwin	Test	2026-10-12T03:39:52.9688940Z ^[[1m^[[92m   Compiling^[[0m cfg-if v1.0.5
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.0091320Z ^[[1m^[[92m   Compiling^[[0m constant_time_eq v0.3.1
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.0451390Z ^[[1m^[[92m   Compiling^[[0m arrayref v0.3.9
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.0456160Z ^[[1m^[[92m   Compiling^[[0m arrayvec v0.7.8
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.0858500Z ^[[1m^[[92m   Compiling^[[0m streaming-iterator v0.1.9
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.1597770Z ^[[1m^[[92m   Compiling^[[0m smallvec v1.16.3
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.2503900Z ^[[1m^[[92m   Compiling^[[0m rusqlite v0.40.2
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.2605060Z ^[[1m^[[92m   Compiling^[[0m blake3 v1.8.2
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.5713110Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-rust v0.24.2
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.6216530Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-javascript v0.25.0
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.6699540Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-go v0.25.0
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.7110490Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-typescript v0.23.2
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.7561400Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-python v0.25.0
+aarch64-apple-darwin	Test	2026-10-12T03:39:53.7910320Z ^[[1m^[[92m   Compiling^[[0m xrai v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai)
+aarch64-apple-darwin	Test	2026-10-12T03:39:54.0482670Z ^[[1m^[[92m   Compiling^[[0m regex v1.13.1
+aarch64-apple-darwin	Test	2026-10-12T03:39:54.9216610Z ^[[1m^[[92m   Compiling^[[0m xrai-eval v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-eval)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3859010Z ^[[1m^[[92m    Finished^[[0m `test` profile [unoptimized + debuginfo] target(s) in 8.18s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3897500Z ^[[1m^[[92m     Running^[[0m unittests src/main.rs (target/debug/deps/xrai-ba4f32348ba588f5)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3932590Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3933370Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3934580Z ^[[1m^[[92m     Running^[[0m tests/cli.rs (target/debug/deps/cli-1427b58f7f811a40)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3935420Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3936540Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3939950Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3965460Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.3966660Z running 3 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4102540Z test help_only_advertises_available_options ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4111180Z test version_reports_package_version_and_native_platform ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4179860Z test unsupported_operations_and_extra_arguments_fail_without_data ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4182250Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_core-2e8b6dc476131edd)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4183010Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4183640Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4184480Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4219830Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4220420Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4220670Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4221530Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4222060Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4222570Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_eval-f3c29efd53eb2f53)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4250620Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4251490Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4251810Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4252490Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4253230Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4254470Z ^[[1m^[[92m     Running^[[0m unittests src/bin/filesystem-spike.rs (target/debug/deps/filesystem_spike-e6d9ca0a89cfea25)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4286700Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4287140Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4287390Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4287620Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4287990Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4288590Z ^[[1m^[[92m     Running^[[0m unittests src/bin/incremental-probe.rs (target/debug/deps/incremental_probe-acbbf5b2c3a03f9f)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4318080Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4319040Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4319560Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4320230Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4321100Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4322150Z ^[[1m^[[92m     Running^[[0m unittests src/bin/parsing-spike.rs (target/debug/deps/parsing_spike-7efc9f4a8892d7f2)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4354180Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4355250Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4355620Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4355990Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4356290Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4356900Z ^[[1m^[[92m     Running^[[0m unittests src/bin/sqlite-spike.rs (target/debug/deps/sqlite_spike-9a49d90ccb9fb2c1)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4384790Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4385400Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4385940Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4386480Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4387400Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4388620Z ^[[1m^[[92m     Running^[[0m tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-36b664a48431443a)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4420790Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4422000Z running 14 tests
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4435620Z test filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4441160Z test explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4442670Z test invalid_configuration_fails_before_inventory ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4463080Z test linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4463770Z test gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4465570Z test permission_failure_is_diagnostic_or_records_privileged_capability ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4470780Z test removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4474160Z test no_git_and_identical_named_checkouts_have_independent_writable_state ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4475380Z test removal_between_discovery_and_capture_has_typed_diagnostic ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4481360Z test replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4485650Z test same_size_and_mtime_change_is_detected_by_content_hash ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4486440Z test symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.4490120Z test unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... FAILED
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5301060Z test actual_git_linked_worktrees_have_independent_checkout_state ... ok
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5301490Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5301560Z failures:
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5301760Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5302070Z ---- unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes stdout ----
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5302470Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5303290Z thread 'unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes' (18322) panicked at crates/xrai-eval/tests/filesystem_inventory.rs:111:17:
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5304380Z assertion failed: matches!(error.kind(), std::io::ErrorKind::PermissionDenied |
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5307720Z     std::io::ErrorKind::InvalidInput)
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5308120Z note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5308460Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5308460Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5308660Z failures:
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5309060Z     unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5309660Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5310350Z ^[[1m^[[91merror^[[0m: test failed, to rerun pass `-p xrai-eval --test filesystem_inventory`
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5310980Z test result: FAILED. 13 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5311430Z 
+aarch64-apple-darwin	Test	2026-10-12T03:39:57.5327890Z ##[error]Process completed with exit code 101.
+aarch64-apple-darwin	Preserve native receipts	﻿2026-10-12T03:39:57.5475150Z ##[group]Run actions/upload-artifact@v7
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5475410Z with:
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5475600Z   name: native-aarch64-apple-darwin
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5475810Z   path: native-evidence
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5475990Z   if-no-files-found: error
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5476180Z   compression-level: 6
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5476330Z   overwrite: false
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5476500Z   include-hidden-files: false
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5476680Z   archive: true
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5476810Z env:
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5476940Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5477170Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5477390Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5477600Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5477880Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5478310Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5479110Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5479510Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5479880Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.5480150Z ##[endgroup]
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T03:39:57.7146750Z ##[error]No files were found with the provided path: native-evidence. No artifacts will be uploaded.

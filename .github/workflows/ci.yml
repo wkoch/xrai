@@ -79,6 +79,8 @@ jobs:
         run: rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
       - name: Record and verify native environment
         run: |
+          mkdir -p native-evidence
+          python -c 'import json,platform; print(json.dumps({"system": platform.system(), "platform": platform.platform(), "machine": platform.machine()}))' > native-evidence/environment.json
           rustc --version --verbose
           cargo --version
           test "$(rustc --version --verbose | awk '/^host:/ {print $2}')" = "$EXPECTED_HOST"
@@ -87,7 +89,7 @@ jobs:
       - name: Lint
         run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Test
-        run: cargo test --workspace --locked
+        run: cargo test --workspace --locked 2>&1 | tee native-evidence/workspace-tests.log
       - name: Build
         run: cargo build --workspace --locked
       - name: Smoke help
