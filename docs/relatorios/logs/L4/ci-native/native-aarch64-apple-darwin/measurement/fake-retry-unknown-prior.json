@@ -1,0 +1,286 @@
+{
+  "schema_version": "xrai.eval.agent.v1",
+  "metadata": {
+    "task_id": "D0-RS-01",
+    "dataset_sha256": "e0996fc73cf94857dbf51fb1d842b4ca46566316d822c83b76a341ca0c093fa7",
+    "arm": "fake-ledger-demonstration",
+    "model": {
+      "provider": "fake",
+      "name": "fake-stream-v1",
+      "version": "1",
+      "effort": "fixed"
+    },
+    "policy": {
+      "id": "offline-no-provider-v1",
+      "config_sha256": "7d7e0fac1d3a36298994fd2f1b3cb006b6e3f815ee31e81b26fdf1fa31a807aa"
+    },
+    "run_id": "fake-L4-01",
+    "price": {
+      "version": "fake-usd-v1",
+      "source": "synthetic-test-fixture",
+      "date": "2026-10-12",
+      "currency": "USD",
+      "unit": "micro_usd_per_token",
+      "input": 2,
+      "output": 3
+    },
+    "setup_amortization": {
+      "regime": "none",
+      "uses": 1,
+      "gross_micro_usd": 0
+    },
+    "credentials": "never-recorded"
+  },
+  "budget_micro_usd": 1000,
+  "events": [
+    {
+      "sequence": 0,
+      "kind": "reserve",
+      "attempt_id": "a1",
+      "monotonic_seconds": 0,
+      "details": {
+        "call_id": "c1",
+        "request": {
+          "orientation": "Offline fake session; no source oracle.",
+          "tool_definitions": [
+            {
+              "name": "read",
+              "input": "path"
+            }
+          ],
+          "messages": [
+            {
+              "role": "user",
+              "content": "localize função"
+            }
+          ],
+          "tool_calls": [],
+          "expansions": [],
+          "edits": [],
+          "tests": [],
+          "limits": {
+            "input_tokens": 100,
+            "output_tokens": 100
+          },
+          "maximum_charge_policy": "fake-enforced"
+        },
+        "max_charge_micro_usd": 500,
+        "retry_of": null
+      },
+      "previous_event_sha256": null
+    },
+    {
+      "sequence": 1,
+      "kind": "send",
+      "attempt_id": "a1",
+      "monotonic_seconds": 1,
+      "details": {},
+      "previous_event_sha256": "1054b8146d6335b6fdda09da8fa2dc317d646bccbb986e7f13bf0ce409f677aa"
+    },
+    {
+      "sequence": 2,
+      "kind": "chunk",
+      "attempt_id": "a1",
+      "monotonic_seconds": 2,
+      "details": {
+        "base64": "cGFydGlhbA==",
+        "sha256": "9834a14ab9bcaa0f6a8da71073617eac8f004e596a3fa11d807b84631b825d9d",
+        "captured_bytes": 7,
+        "observed_bytes": 7,
+        "truncated": false
+      },
+      "previous_event_sha256": "bcca41fd3445bdc95bbec56a22f1b9dcfdb0f7c0748afc2a3bc975d85f35db35"
+    },
+    {
+      "sequence": 3,
+      "kind": "finish",
+      "attempt_id": "a1",
+      "monotonic_seconds": 3,
+      "details": {
+        "state": "timeout"
+      },
+      "previous_event_sha256": "bc532cd6d9dc0a0fb12755c547f69d66e4e037c17eb0a7cd5270879627008d2d"
+    },
+    {
+      "sequence": 4,
+      "kind": "reserve",
+      "attempt_id": "a2",
+      "monotonic_seconds": 4,
+      "details": {
+        "call_id": "c1",
+        "request": {
+          "orientation": "Offline fake session; no source oracle.",
+          "tool_definitions": [
+            {
+              "name": "read",
+              "input": "path"
+            }
+          ],
+          "messages": [
+            {
+              "role": "user",
+              "content": "localize função"
+            }
+          ],
+          "tool_calls": [],
+          "expansions": [],
+          "edits": [],
+          "tests": [],
+          "limits": {
+            "input_tokens": 100,
+            "output_tokens": 100
+          },
+          "maximum_charge_policy": "fake-enforced"
+        },
+        "max_charge_micro_usd": 500,
+        "retry_of": "a1"
+      },
+      "previous_event_sha256": "0929ece45f3efdb460e2aa95b081423f2acafde7fba2db90b5a56f5e4dc53442"
+    },
+    {
+      "sequence": 5,
+      "kind": "send",
+      "attempt_id": "a2",
+      "monotonic_seconds": 5,
+      "details": {},
+      "previous_event_sha256": "85d88663de1b0ea12af7d9dfd9147ff03730fbfd61b79d9bcb4a9239ffb59446"
+    },
+    {
+      "sequence": 6,
+      "kind": "chunk",
+      "attempt_id": "a2",
+      "monotonic_seconds": 6,
+      "details": {
+        "base64": "ZmFrZSByZXRyeSBjb21wbGV0ZWQ=",
+        "sha256": "12a4efbda51b3038281b03b1de2f1d367b4b643bd704cb7b79eea1a3b0a9db86",
+        "captured_bytes": 20,
+        "observed_bytes": 20,
+        "truncated": false
+      },
+      "previous_event_sha256": "ed7de15f914fcb373e3e4bd26bbc72a3375791504a20e70297d48f49fd79be7f"
+    },
+    {
+      "sequence": 7,
+      "kind": "finish",
+      "attempt_id": "a2",
+      "monotonic_seconds": 7,
+      "details": {
+        "state": "completed"
+      },
+      "previous_event_sha256": "907dda070cee1ae688eade23c03526ba4a3cf25015fd68731de94f51675dab79"
+    },
+    {
+      "sequence": 8,
+      "kind": "receipt",
+      "attempt_id": "a2",
+      "monotonic_seconds": 8,
+      "details": {
+        "provider": "fake",
+        "provider_receipt_id": "fake-retry-receipt",
+        "usage": {
+          "input_tokens": 10,
+          "output_tokens": 5,
+          "cached_input_tokens": 4,
+          "reasoning_output_tokens": 2
+        },
+        "category_semantics": {
+          "cached_input_tokens": "subset_of_input_tokens",
+          "reasoning_output_tokens": "subset_of_output_tokens"
+        },
+        "price_version": "fake-usd-v1",
+        "estimated_charge_micro_usd": 35,
+        "observed_charge_micro_usd": 35,
+        "observed_charge_source": "synthetic-receipt"
+      },
+      "previous_event_sha256": "42e08226ac6f4fb1e0195389f0add86dcf830d96772151a9c6c23ddd7b285f6a"
+    }
+  ],
+  "attempts": {
+    "a1": {
+      "call_id": "c1",
+      "retry_of": null,
+      "request": {
+        "base64": "eyJlZGl0cyI6W10sImV4cGFuc2lvbnMiOltdLCJsaW1pdHMiOnsiaW5wdXRfdG9rZW5zIjoxMDAsIm91dHB1dF90b2tlbnMiOjEwMH0sIm1heGltdW1fY2hhcmdlX3BvbGljeSI6ImZha2UtZW5mb3JjZWQiLCJtZXNzYWdlcyI6W3siY29udGVudCI6ImxvY2FsaXplIGZ1bsOnw6NvIiwicm9sZSI6InVzZXIifV0sIm9yaWVudGF0aW9uIjoiT2ZmbGluZSBmYWtlIHNlc3Npb247IG5vIHNvdXJjZSBvcmFjbGUuIiwidGVzdHMiOltdLCJ0b29sX2NhbGxzIjpbXSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV19",
+        "sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+        "captured_bytes": 312,
+        "observed_bytes": 312,
+        "truncated": false
+      },
+      "state": "timeout",
+      "sent": true,
+      "response_chunks": [
+        {
+          "base64": "cGFydGlhbA==",
+          "sha256": "9834a14ab9bcaa0f6a8da71073617eac8f004e596a3fa11d807b84631b825d9d",
+          "captured_bytes": 7,
+          "observed_bytes": 7,
+          "truncated": false
+        }
+      ],
+      "receipt": null,
+      "reservation_micro_usd": 500
+    },
+    "a2": {
+      "call_id": "c1",
+      "retry_of": "a1",
+      "request": {
+        "base64": "eyJlZGl0cyI6W10sImV4cGFuc2lvbnMiOltdLCJsaW1pdHMiOnsiaW5wdXRfdG9rZW5zIjoxMDAsIm91dHB1dF90b2tlbnMiOjEwMH0sIm1heGltdW1fY2hhcmdlX3BvbGljeSI6ImZha2UtZW5mb3JjZWQiLCJtZXNzYWdlcyI6W3siY29udGVudCI6ImxvY2FsaXplIGZ1bsOnw6NvIiwicm9sZSI6InVzZXIifV0sIm9yaWVudGF0aW9uIjoiT2ZmbGluZSBmYWtlIHNlc3Npb247IG5vIHNvdXJjZSBvcmFjbGUuIiwidGVzdHMiOltdLCJ0b29sX2NhbGxzIjpbXSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV19",
+        "sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+        "captured_bytes": 312,
+        "observed_bytes": 312,
+        "truncated": false
+      },
+      "state": "completed",
+      "sent": true,
+      "response_chunks": [
+        {
+          "base64": "ZmFrZSByZXRyeSBjb21wbGV0ZWQ=",
+          "sha256": "12a4efbda51b3038281b03b1de2f1d367b4b643bd704cb7b79eea1a3b0a9db86",
+          "captured_bytes": 20,
+          "observed_bytes": 20,
+          "truncated": false
+        }
+      ],
+      "receipt": {
+        "provider": "fake",
+        "provider_receipt_id": "fake-retry-receipt",
+        "usage": {
+          "input_tokens": 10,
+          "output_tokens": 5,
+          "cached_input_tokens": 4,
+          "reasoning_output_tokens": 2
+        },
+        "category_semantics": {
+          "cached_input_tokens": "subset_of_input_tokens",
+          "reasoning_output_tokens": "subset_of_output_tokens"
+        },
+        "price_version": "fake-usd-v1",
+        "estimated_charge_micro_usd": 35,
+        "observed_charge_micro_usd": 35,
+        "observed_charge_source": "synthetic-receipt"
+      },
+      "reservation_micro_usd": 500
+    }
+  },
+  "accounting": {
+    "known_observed_charge_micro_usd": 35,
+    "retained_reservation_micro_usd": 500,
+    "budget_micro_usd": 1000,
+    "unknown_charge_attempts": [
+      "a1"
+    ],
+    "observed_cost_complete": false,
+    "observed_cost_micro_usd": null,
+    "supported_cost_interval_micro_usd": [
+      35,
+      535
+    ],
+    "reservation_is_provider_charge_guarantee": false,
+    "budget_limit_respected": true
+  },
+  "events_sha256": "d7a0bbe82b40f3e29c96816b111a5df3e090c2908b30374a8fb070e919147c13",
+  "budget_incidents": [],
+  "outcome": "not_judged",
+  "adapter": "fake-offline-v1",
+  "paid_provider_called": false
+}

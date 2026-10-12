@@ -1,0 +1,146 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-RS-03",
+  "family": "Rust",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.004487358999995195,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "python": "3.13.13",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "c58bc5fc82b3a524a63414c0b0349ed1464a7c67078e6c7a46c35827bc4a4026",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "6f0c6783-1dc4-40e5-9613-54b17260575f",
+      "termination_evidence": {
+        "init_pid": 7011,
+        "pid_namespace": "pid:[4026532276]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.00580497999999352,
+      "stdout": {
+        "base64": "Li9ydXN0Zm10LnRvbWwKLi8uZ2l0aWdub3JlCi4vQ2FyZ28udG9tbAouL3NyYy9saWIucnMKLi9MSUNFTlNFLU1JVAouL0xJQ0VOU0UtQVBBQ0hFCi4vUkVBRE1FLm1kCg==",
+        "sha256": "10253b92c365a4d7a08d7eab8d0f64b09935814cec3f8d6a0e911e236a36fc48",
+        "captured_bytes": 97,
+        "observed_bytes": 97,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "join|quote|split|join|args|preserva|argumentos|aspas|espaços",
+        "."
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "7a08642c-7b40-47b2-a1f0-75fbb5ab4b9d",
+      "termination_evidence": {
+        "init_pid": 7014,
+        "pid_namespace": "pid:[4026532338]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.006175268000006895,
+      "stdout": {
+        "base64": "Li9zcmMvbGliLnJzLTM3LQouL3NyYy9saWIucnMtMzgtaW1wbCBmbXQ6OkRpc3BsYXkgZm9yIFBhcnNlRXJyb3IgewouL3NyYy9saWIucnMtMzktICAgIGZuIGZtdCgmc2VsZiwgZjogJm11dCBmbXQ6OkZvcm1hdHRlcikgLT4gZm10OjpSZXN1bHQgewouL3NyYy9saWIucnM6NDA6ICAgICAgICBmLndyaXRlX3N0cigibWlzc2luZyBjbG9zaW5nIHF1b3RlIikKLi9zcmMvbGliLnJzLTQxLSAgICB9Ci4vc3JjL2xpYi5ycy00Mi19Ci4vc3JjL2xpYi5ycy00My0KLS0KLi9zcmMvbGliLnJzLTQ5LSAgICBEZWxpbWl0ZXIsCi4vc3JjL2xpYi5ycy01MC0gICAgLy8vIEFmdGVyIGJhY2tzbGFzaCwgYnV0IGJlZm9yZSBzdGFydGluZyB3b3JkLgouL3NyYy9saWIucnMtNTEtICAgIEJhY2tzbGFzaCwKLi9zcmMvbGliLnJzOjUyOiAgICAvLy8gV2l0aGluIGFuIHVucXVvdGVkIHdvcmQuCi4vc3JjL2xpYi5yczo1MzogICAgVW5xdW90ZWQsCi4vc3JjL2xpYi5ycy01NC0gICAgLy8vIEFmdGVyIGJhY2tzbGFzaCBpbiBhbiB1bnF1b3RlZCB3b3JkLgouL3NyYy9saWIucnMtNTUtICAgIFVucXVvdGVkQmFja3NsYXNoLAouL3NyYy9saWIucnMtNTYtICAgIC8vLyBXaXRoaW4gYSBzaW5nbGUgcXVvdGVkIHdvcmQuCg==",
+        "sha256": "41b8209b67a55577f9eae983dbdfcff2d77755bdc0dae7b838f57d957374d489",
+        "captured_bytes": 625,
+        "observed_bytes": 625,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 722,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "7827ea922d0258835f6bac6b7e6e105f31e6af7b29d90ea09a9bf37b8b956efe",
+  "workspace_sha256": "476f5598a61aa647bbb35ca9ca66cc1bfbfa5fc4f2e3b121f292ff30dc6a9793"
+}

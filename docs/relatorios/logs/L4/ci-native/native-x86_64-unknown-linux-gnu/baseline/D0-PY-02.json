@@ -1,0 +1,146 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-PY-02",
+  "family": "Python",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.007050403999997457,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "python": "3.13.13",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "712d71784dd818c7ed31299cbf7197ce9d6799536d6a141cda186d9175183a3d",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "672cdc04-2ff5-4616-b084-971e23533432",
+      "termination_evidence": {
+        "init_pid": 7065,
+        "pid_namespace": "pid:[4026532336]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.006172427999999286,
+      "stdout": {
+        "base64": "Li90ZXN0LnB5Ci4vQ0hBTkdFTE9HLm1kCi4vcHlwcm9qZWN0LnRvbWwKLi9mb3JtYXQuc2gKLi8uZ2l0aHViL3dvcmtmbG93cy9jaS55bWwKLi8uZ2l0aHViL3dvcmtmbG93cy9tYWluLnltbAouLy5naXRodWIvd29ya2Zsb3dzL2Rldi55bWwKLi9MSUNFTlNFCi4vLmdpdGlnbm9yZQouL3RlYS55YW1sCi4vZGV2LnJlcXVpcmVtZW50cy50eHQKLi9zZXR1cC5weQouL3NsdWdpZnkvX192ZXJzaW9uX18ucHkKLi9zbHVnaWZ5L19fbWFpbl9fLnB5Ci4vc2x1Z2lmeS9weS50eXBlZAouL3NsdWdpZnkvc2x1Z2lmeS5weQouL3NsdWdpZnkvc3BlY2lhbC5weQouL3NsdWdpZnkvX19pbml0X18ucHkKLi9SRUFETUUubWQKLi9NQU5JRkVTVC5pbgouL3RveC5pbmkKLi8udnNjb2RlL3NldHRpbmdzLmpzb24K",
+        "sha256": "81a4fe9fc5006707b4cecd7fd1ad5ad6dfc0d46ebfba7170b68509522280a467",
+        "captured_bytes": 396,
+        "observed_bytes": 396,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "parser|CLI|propagação|parâmetros|slugify",
+        "."
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "ec4981bd-dc91-40ae-a82a-99e8410b10ff",
+      "termination_evidence": {
+        "init_pid": 7068,
+        "pid_namespace": "pid:[4026532280]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.006261409000003937,
+      "stdout": {
+        "base64": "Li90ZXN0LnB5LTQtaW1wb3J0IHVuaXR0ZXN0Ci4vdGVzdC5weS01LWZyb20gY29udGV4dGxpYiBpbXBvcnQgY29udGV4dG1hbmFnZXIKLi90ZXN0LnB5LTYtCi4vdGVzdC5weTo3OmZyb20gc2x1Z2lmeSBpbXBvcnQgUFJFX1RSQU5TTEFUSU9OUwouL3Rlc3QucHk6ODpmcm9tIHNsdWdpZnkgaW1wb3J0IHNsdWdpZnkKLi90ZXN0LnB5Ojk6ZnJvbSBzbHVnaWZ5IGltcG9ydCBzbWFydF90cnVuY2F0ZQouL3Rlc3QucHktMTAtZnJvbSBzbHVnaWZ5Ll9fbWFpbl9fIGltcG9ydCBzbHVnaWZ5X3BhcmFtcywgcGFyc2VfYXJncwouL3Rlc3QucHktMTEtCi4vdGVzdC5weS0xMi0KLS0KLi9zZXR1cC5weS03LWZyb20gc2V0dXB0b29scyBpbXBvcnQgc2V0dXAKLi9zZXR1cC5weS04LQouL3NldHVwLnB5LTktCi4vc2V0dXAucHk6MTA6cGFja2FnZSA9ICdzbHVnaWZ5JwouL3NldHVwLnB5LTExLXB5dGhvbl9yZXF1aXJlcyA9ICI+PTMuMTAiCi4vc2V0dXAucHktMTItaGVyZSA9IG9zLnBhdGguYWJzcGF0aChvcy5wYXRoLmRpcm5hbWUoX19maWxlX18pKQouL3NldHVwLnB5LTEzLQotLQouL3NldHVwLnB5LTU4LSAgICBwYWNrYWdlcz1bcGFja2FnZV0sCi4vc2V0dXAucHktNTktICAgIHBhY2thZ2VfZGF0YT17Ci4vc2V0dXAucHktNjAtICAgICAgICAnJzogWydMSUNFTlNFJ10sCi4vc2V0dXAucHk6NjE6ICAgICAgICAnc2x1Z2lmeSc6IFsncHkudHlwZWQnXSwKLi9zZXR1cC5weS02Mi0gICAgfSwKLi9zZXR1cC5weTo2MzogICAgcGFja2FnZV9kaXI9eydzbHVnaWZ5JzogJ3NsdWdpZnknfSwKLi9zZXR1cC5weS02NC0gICAgaW5jbHVkZV9wYWNrYWdlX2RhdGE9VHJ1ZSwKLi9zZXR1cC5weS02NS0gICAgcHl0aG9uX3JlcXVpcmVzPXB5dGhvbl9yZXF1aXJlcywKLi9zZXR1cC5weS02Ni0gICAgaW5zdGFsbF9yZXF1aXJlcz1pbnN0YWxsX3JlcXVpcmVzLAotLQouL3NsdWdpZnkvX192ZXJzaW9uX18ucHk6MTpfX3RpdGxlX18gPSAncHl0aG9uLXNsdWdpZnknCi4vc2x1Z2lmeS9fX3ZlcnNpb25fXy5weS0yLV9fYXV0aG9yX18gPSAnVmFsIE5lZWttYW4nCi4vc2x1Z2lmeS9fX3ZlcnNpb25fXy5weS0zLV9fYXV0aG9yX2VtYWlsX18gPSAnaW5mb0BuZWVrd2FyZS5jb20nCi4vc2x1Z2lmeS9fX3ZlcnNpb25fXy5weTo0Ol9fZGVzY3JpcHRpb25fXyA9ICdBIFB5dGhvbiBzbHVnaWZ5IGFwcGxpY2F0aW9uIHRoYXQgYWxzbyBoYW5kbGVzIFVuaWNvZGUnCi4vc2x1Z2lmeS9fX3ZlcnNpb25fXy5weTo1Ol9fdXJsX18gPSAnaHR0cHM6Ly9naXRodWIuY29tL3VuMzNrL3B5dGhvbi1zbHVnaWZ5JwouL3NsdWdpZnkvX192ZXJzaW9uX18ucHktNi1fX2xpY2Vuc2VfXyA9ICdTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogTUlUJwouL3NsdWdpZnkvX192ZXJzaW9uX18ucHktNy1fX2NvcHlyaWdodF9fID0gJ0NvcHlyaWdodCAyMDIyIFZhbCBOZWVrbWFuIEAgTmVla3dhcmUgSW5jLicKLi9zbHVnaWZ5L19fdmVyc2lvbl9fLnB5LTgtX192ZXJzaW9uX18gPSAnOC4wLjQnCi0tCi4vc2x1Z2lmeS9fX21haW5fXy5weS00LWltcG9ydCBzeXMKLi9zbHVnaWZ5L19fbWFpbl9fLnB5LTUtZnJvbSB0eXBpbmcgaW1wb3J0IEFueQouL3NsdWdpZnkvX19tYWluX18ucHktNi0KLi9zbHVnaWZ5L19fbWFpbl9fLnB5Ojc6ZnJvbSAuc2x1Z2lmeSBpbXBvcnQgc2x1Z2lmeSwgREVGQVVMVF9TRVBBUkFUT1IKLi9zbHVnaWZ5L19fbWFpbl9fLnB5LTgtCi4vc2x1Z2lmeS9fX21haW5fXy5weS05LQouL3NsdWdpZnkvX19tYWluX18ucHktMTAtZGVmIHBhcnNlX2FyZ3MoYXJndjogbGlzdFtzdHJdKSAtPiBhcmdwYXJzZS5OYW1lc3BhY2U6Ci4vc2x1Z2lmeS9fX21haW5fXy5weToxMTogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoZGVzY3JpcHRpb249IlNsdWcgc3RyaW5nIikKLi9zbHVnaWZ5L19fbWFpbl9fLnB5LTEyLQouL3NsdWdpZnkvX19tYWluX18ucHk6MTM6ICAgIGlucHV0X2dyb3VwID0gcGFyc2VyLmFkZF9hcmd1bWVudF9ncm91cChkZXNjcmlwdGlvbj0iSW5wdXQiKQouL3NsdWdpZnkvX19tYWluX18ucHktMTQtICAgIGlucHV0X2dyb3VwLmFkZF9hcmd1bWVudCgiaW5wdXRfc3RyaW5nIiwgbmFyZ3M9JyonLAouL3NsdWdpZnkvX19tYWluX18ucHktMTUtICAgICAgICAgICAgICAgICAgICAgICAgICAgICBoZWxwPSdUZXh0IHRvIHNsdWdpZnknKQouL3NsdWdpZnkvX19tYWluX18ucHktMTYtICAgIGlucHV0X2dyb3VwLmFkZF9hcmd1bWVudCgiLS1zdGRpbiIsIGFjdGlvbj0nc3RvcmVfdHJ1ZScsCi0tCi4vc2x1Z2lmeS9zbHVnaWZ5LnB5LTEwLWV4Y2VwdCBJbXBvcnRFcnJvcjoKLi9zbHVnaWZ5L3NsdWdpZnkucHktMTEtICAgIGltcG9ydCB0ZXh0X3VuaWRlY29kZSBhcyB1bmlkZWNvZGUgICMgdHlwZTogaWdub3JlW2ltcG9ydC11bnR5cGVkLCBuby1yZWRlZl0KLi9zbHVnaWZ5L3NsdWdpZnkucHktMTItCi4vc2x1Z2lmeS9zbHVnaWZ5LnB5OjEzOl9fYWxsX18gPSBbJ3NsdWdpZnknLCAnc21hcnRfdHJ1bmNhdGUnXQouL3NsdWdpZnkvc2x1Z2lmeS5weS0xNC0KLi9zbHVnaWZ5L3NsdWdpZnkucHktMTUtCi4vc2x1Z2lmeS9zbHVnaWZ5LnB5LTE2LUNIQVJfRU5USVRZX1BBVFRFUk4gPSByZS5jb21waWxlKHInJiglcyk7JyAlICd8Jy5qb2luKG5hbWUyY29kZXBvaW50KSkKLS0KLi9zbHVnaWZ5L3NsdWdpZnkucHktNzItICAgIHJldHVybiB0cnVuY2F0ZWQuc3RyaXAoc2VwYXJhdG9yKQouL3NsdWdpZnkvc2x1Z2lmeS5weS03My0KLi9zbHVnaWZ5L3NsdWdpZnkucHktNzQtCi4vc2x1Z2lmeS9zbHVnaWZ5LnB5Ojc1OmRlZiBzbHVnaWZ5KAouL3NsdWdpZnkvc2x1Z2lmeS5weS03Ni0gICAgdGV4dDogc3RyLAouL3NsdWdpZnkvc2x1Z2lmeS5weS03Ny0gICAgZW50aXRpZXM6IGJvb2wgPSBUcnVlLAouL3NsdWdpZnkvc2x1Z2lmeS5weS03OC0gICAgZGVjaW1hbDogYm9vbCA9IFRydWUsCi0tCi4vc2x1Z2lmeS9zcGVjaWFsLnB5LTEzLQouL3NsdWdpZnkvc3BlY2lhbC5weS0xNC0KLi9zbHVnaWZ5L3NwZWNpYWwucHktMTUtIyBMYW5ndWFnZSBzcGVjaWZpYyBwcmUgdHJhbnNsYXRpb25zCi4vc2x1Z2lmeS9zcGVjaWFsLnB5OjE2OiMgU291cmNlIGF3ZXNvbWUtc2x1Z2lmeQouL3NsdWdpZnkvc3BlY2lhbC5weS0xNy0KLi9zbHVnaWZ5L3NwZWNpYWwucHktMTgtX0NZUklMTElDID0gWyAgICAgICMgcGFja2FnZSBkZWZhdWx0czoKLi9zbHVnaWZ5L3NwZWNpYWwucHktMTktICAgICh1J9GRJywgdSdlJyksICAgICMgaW8gLyB5bwotLQouL3NsdWdpZnkvX19pbml0X18ucHktMS1mcm9tIC5zcGVjaWFsIGltcG9ydCAqCi4vc2x1Z2lmeS9fX2luaXRfXy5weToyOmZyb20gLnNsdWdpZnkgaW1wb3J0ICoKLi9zbHVnaWZ5L19faW5pdF9fLnB5LTMtZnJvbSAuX192ZXJzaW9uX18gaW1wb3J0IF9fdGl0bGVfXwouL3NsdWdpZnkvX19pbml0X18ucHktNC1mcm9tIC5fX3ZlcnNpb25fXyBpbXBvcnQgX19hdXRob3JfXwouL3NsdWdpZnkvX19pbml0X18ucHktNS1mcm9tIC5fX3ZlcnNpb25fXyBpbXBvcnQgX19hdXRob3JfZW1haWxfXwo=",
+        "sha256": "e4817ef34f527afb37f5184f0ae20061d2b1468f9c257f99aef0905253596dc8",
+        "captured_bytes": 3533,
+        "observed_bytes": 3533,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 3929,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "657a717e8b370df9e217d53ed9da85de07c4c6befa94208844347b9f6078cea5",
+  "workspace_sha256": "8d1a9faeee2fdc6e1853d0db0ee17487f0daeb86d137378726515f5db6901e21"
+}

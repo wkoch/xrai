@@ -47,3 +47,7 @@ cargo run -p xrai-eval --bin worker-persistent -- demonstrate
 1. Comparação completa direto/XRW1/XRW2 conforme ADR 026 §3: manifesto congelado, três sessões, ≥30 pedidos/classe, fontes reais pequenas/médias/grandes densas, sete dialetos, cold/warm e concorrência separados, amostras cruas e percentis por sessão. O smoke atual usa fontes sintéticas pequenas e é exploratório.
 2. CPU user/system pai+filhos com contadores de saída e observer externo; série temporal RSS simultânea com gaps e overhead. Campos são **null com causa** no smoke. Não há alegação de ganho, pico exato ou gate de recursos fechado.
 3. Reunir prova nativa do commit final em Linux/macOS. Nenhuma decisão arquitetural nova é necessária para o recorte funcional; os itens acima são implementação/verificação subsequente.
+
+## Prova nativa conciliada
+
+[CI38248278388](https://github.com/wkoch/xrai/actions/runs/38248278388), código `1d2d40a221dad1a5ec9188158dbc624f329023c7`, Linux x86_64/glibc2.39 e macOS15.7.9 arm64: três jobs aprovados. [L4](../../docs/relatorios/L4.md) e [conferência dos receipts](../../docs/relatorios/logs/L4/integration/native-receipts-verification-final.json) registram comandos/hashes, resultados e limites do primeiro recorte. Prova antes pendente agora concluída para este incremento; os critérios restantes do cartão continuam abertos.

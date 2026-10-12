@@ -1,0 +1,146 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-TJ-02",
+  "family": "TSJS",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.0049732970000064824,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "python": "3.13.13",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "6d5ecd531af3508d56eca56fad4394464ee3105f640fd56d4f71d4399369d76e",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "9fa81d91-13fc-4360-be83-d0e598cb38ca",
+      "termination_evidence": {
+        "init_pid": 7035,
+        "pid_namespace": "pid:[4026532276]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.005689994999997339,
+      "stdout": {
+        "base64": "Li9wYWNrYWdlLWxvY2suanNvbgouL3Rlc3RzLmpzCi4vLmdpdGh1Yi93b3JrZmxvd3MvY2kueW1sCi4vLmdpdGlnbm9yZQouLy5ucG1yYwouL2luZGV4LmpzCi4vcmVhZG1lLm1kCi4vcGFja2FnZS5qc29uCi4vbGljZW5zZS5tZAo=",
+        "sha256": "c1b4f6f75daf0e4e1a494038a7c667d06deb2d881faaf1d6d96d3e2d93f41c12",
+        "captured_bytes": 131,
+        "observed_bytes": 131,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "parser|string|ligação|entre|export|CommonJS|formatação|longa",
+        "."
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "daee1ba1-3f10-4201-9582-10c23f04df46",
+      "termination_evidence": {
+        "init_pid": 7038,
+        "pid_namespace": "pid:[4026532338]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.006301926999995544,
+      "stdout": {
+        "base64": "Li90ZXN0cy5qcy04LSAgbXMgPSByZXF1aXJlKCcuLycpOwouL3Rlc3RzLmpzLTktfQouL3Rlc3RzLmpzLTEwLQouL3Rlc3RzLmpzOjExOi8vIHN0cmluZ3MKLi90ZXN0cy5qcy0xMi0KLi90ZXN0cy5qczoxMzpkZXNjcmliZSgnbXMoc3RyaW5nKScsIGZ1bmN0aW9uKCkgewouL3Rlc3RzLmpzLTE0LSAgaXQoJ3Nob3VsZCBub3QgdGhyb3cgYW4gZXJyb3InLCBmdW5jdGlvbigpIHsKLi90ZXN0cy5qcy0xNS0gICAgZXhwZWN0KGZ1bmN0aW9uKCkgewouL3Rlc3RzLmpzLTE2LSAgICAgIG1zKCcxbScpOwotLQouL3Rlc3RzLmpzLTgwLSAgfSk7Ci4vdGVzdHMuanMtODEtfSk7Ci4vdGVzdHMuanMtODItCi4vdGVzdHMuanM6ODM6Ly8gbG9uZyBzdHJpbmdzCi4vdGVzdHMuanMtODQtCi4vdGVzdHMuanMtODUtZGVzY3JpYmUoJ21zKGxvbmcgc3RyaW5nKScsIGZ1bmN0aW9uKCkgewouL3Rlc3RzLmpzLTg2LSAgaXQoJ3Nob3VsZCBub3QgdGhyb3cgYW4gZXJyb3InLCBmdW5jdGlvbigpIHsKLS0KLi9pbmRleC5qcy0xNi0gKgouL2luZGV4LmpzLTE3LSAqICAtIGBsb25nYCB2ZXJib3NlIGZvcm1hdHRpbmcgW2ZhbHNlXQouL2luZGV4LmpzLTE4LSAqCi4vaW5kZXguanM6MTk6ICogQHBhcmFtIHtTdHJpbmd8TnVtYmVyfSB2YWwKLi9pbmRleC5qcy0yMC0gKiBAcGFyYW0ge09iamVjdH0gW29wdGlvbnNdCi4vaW5kZXguanM6MjE6ICogQHRocm93cyB7RXJyb3J9IHRocm93IGFuIGVycm9yIGlmIHZhbCBpcyBub3QgYSBub24tZW1wdHkgc3RyaW5nIG9yIGEgbnVtYmVyCi4vaW5kZXguanM6MjI6ICogQHJldHVybiB7U3RyaW5nfE51bWJlcn0KLi9pbmRleC5qcy0yMy0gKiBAYXBpIHB1YmxpYwouL2luZGV4LmpzLTI0LSAqLwouL2luZGV4LmpzLTI1LQo=",
+        "sha256": "19e9ebf72bc5d95f2571ccbd9dbe712847770aa77c424794250a536cd00a3ae7",
+        "captured_bytes": 875,
+        "observed_bytes": 875,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 1006,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "2106a5073228b2ecae7ebc7574446810007a54d0d021b2df297ca05ce5bb41cf",
+  "workspace_sha256": "f240f53e2fce629b8e97fb21a38647f61c3861eb9c1cf602be23462c6613c07f"
+}

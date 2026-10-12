@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "docs/relatorios/logs/L4/verify-native.py"
+  ],
+  "base_commit": "1d2d40a221dad1a5ec9188158dbc624f329023c7",
+  "recorded_at": "2026-10-12T12:23:33.926409+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.3445169579990761,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L4/verify-native.py\", line 38, in <module>\n    assert match and int(match[1]) == expected, module\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: workers\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "aac931a4500bee37c4ca55ce0cbe08b26e276d5fbcecf1d125f6d17707fd2e7e"
+}
