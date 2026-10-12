@@ -1,0 +1,273 @@
+{
+  "schema_version": "xrai.eval.native-containment.review.v1",
+  "reviewer": "/root/l3_containment",
+  "reviewed_at_utc": "2026-10-12T11:04:14.656178+00:00",
+  "head_sha": "21e9279a7502ed398e3b1d8321495142376e78af",
+  "run_url": "https://github.com/wkoch/xrai/actions/runs/38239765003",
+  "run_id": 38239765003,
+  "verdict": "linux_bounded_adversarial_containment_proven",
+  "environment": {
+    "system": "Linux",
+    "kernel": "6.17.0-1022-azure",
+    "python": "3.15.0"
+  },
+  "hashes": {
+    "docs/relatorios/logs/L3/ci-native/native-x86_64-unknown-linux-gnu/containment.jsonl": "7c25758cbe83f19b9558dadddc8cde31024392a5978657e158f67951983ff3cb",
+    "docs/relatorios/logs/L3/ci-native/native-x86_64-unknown-linux-gnu/harness-tests.log": "e76a725453d2b3d81529d38f910a3ac031c3c2bb582475663874bf71d03f8b0f",
+    "docs/relatorios/logs/L3/ci-native/native-x86_64-unknown-linux-gnu/environment.json": "8978653957a31f800e6b0512013b243462641dd6d34fa358f268c83e16a91e5e",
+    "docs/relatorios/logs/L3/ci-native/native-aarch64-apple-darwin/harness-tests.log": "422e745644eb1a7b55b31434c2098a0d66ef9ce9ae9cb4c5da57b835782c5101",
+    "docs/relatorios/logs/L3/ci-native-run.json": "b7b7389345d79803f67d8d66ab6e676c1a75675f7c3e45e06320e4089af509ec"
+  },
+  "counts": {
+    "native_test_groups": 5,
+    "recorded_rounds": 19,
+    "normal_supervisor_receipts": 17,
+    "externally_observed_parent_death": 2,
+    "distinct_domain_uuid4": 17,
+    "statuses": {
+      "timeout": 10,
+      "output_limit": 2,
+      "ok": 4,
+      "cancelled": 1
+    },
+    "linux_tests": 31,
+    "linux_passed": 30,
+    "linux_platform_skip": 1,
+    "mac_tests": 31,
+    "mac_passed": 26,
+    "mac_linux_skips": 5
+  },
+  "checks": [
+    "concrete PID/namespace, held-before-pin, one-identity maps verified all19",
+    "all17 normal receipts cleanup confirmed, pidfd exit and wrapper reaped, no repeated domain IDs",
+    "all stdout/stderr base64/hash/length/truncation metadata verified",
+    "two evaluator deaths have external pidfd exit; internal flags remain false because evaluator was killed, not forged into a completed receipt",
+    "two repetitions each setsid/doublefork/inherited pipes/normal parent exit with child",
+    "two repetitions four-child bounded fork, continuous output limit and closed-pipe timeout",
+    "positive descendant sentinel and two simultaneous domains with A cancellation/B success passed native assertions"
+  ],
+  "cases": [
+    {
+      "test": "test_containment.NamespaceTests.test_bounded_fork_output_limit_and_closed_pipes",
+      "round_count": 6,
+      "rounds": [
+        {
+          "domain_id": "f9d54cf5-d964-4016-b26d-75b5a2668a4f",
+          "status": "timeout",
+          "init_pid": 5882,
+          "namespace": "pid:[4026532272]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 12,
+          "stdout_observed_bytes": 12
+        },
+        {
+          "domain_id": "5cd8e8d7-c2a8-478a-a6de-620ade3f1067",
+          "status": "output_limit",
+          "init_pid": 5890,
+          "namespace": "pid:[4026532333]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 100,
+          "stdout_observed_bytes": 81920
+        },
+        {
+          "domain_id": "2b1eb8d8-68e2-4b87-81e2-efe921040ded",
+          "status": "timeout",
+          "init_pid": 5893,
+          "namespace": "pid:[4026532273]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 0,
+          "stdout_observed_bytes": 0
+        },
+        {
+          "domain_id": "d934761b-37a9-4488-ad9f-9194f8509cc0",
+          "status": "timeout",
+          "init_pid": 5896,
+          "namespace": "pid:[4026532274]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 12,
+          "stdout_observed_bytes": 12
+        },
+        {
+          "domain_id": "01d0d41d-be5b-4a5e-9904-aac8f26f0e54",
+          "status": "output_limit",
+          "init_pid": 5903,
+          "namespace": "pid:[4026532275]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 100,
+          "stdout_observed_bytes": 81920
+        },
+        {
+          "domain_id": "220fd564-41f2-4605-9c44-5525a996cf9b",
+          "status": "timeout",
+          "init_pid": 5906,
+          "namespace": "pid:[4026532274]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 0,
+          "stdout_observed_bytes": 0
+        }
+      ]
+    },
+    {
+      "test": "test_containment.NamespaceTests.test_evaluator_death_destroys_namespace",
+      "round_count": 2,
+      "rounds": [
+        {
+          "parent_death": true,
+          "init_pid": 5910,
+          "namespace": "pid:[4026532272]",
+          "external_pidfd_exit_observed": true,
+          "internal_evaluator_receipt_unfinished": true
+        },
+        {
+          "parent_death": true,
+          "init_pid": 5916,
+          "namespace": "pid:[4026532272]",
+          "external_pidfd_exit_observed": true,
+          "internal_evaluator_receipt_unfinished": true
+        }
+      ]
+    },
+    {
+      "test": "test_containment.NamespaceTests.test_positive_descendant_sentinel",
+      "round_count": 1,
+      "rounds": [
+        {
+          "domain_id": "38d3548e-d685-4905-8bcc-fe5f4e772843",
+          "status": "ok",
+          "init_pid": 5921,
+          "namespace": "pid:[4026532272]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 0,
+          "stdout_observed_bytes": 0
+        }
+      ]
+    },
+    {
+      "test": "test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit",
+      "round_count": 8,
+      "rounds": [
+        {
+          "domain_id": "aedb4832-f7f7-4352-bc60-c1c49f78d948",
+          "status": "timeout",
+          "init_pid": 5924,
+          "namespace": "pid:[4026532333]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 9,
+          "stdout_observed_bytes": 9
+        },
+        {
+          "domain_id": "2b40a152-b124-4e42-a8c6-3aa3b771fbc3",
+          "status": "timeout",
+          "init_pid": 5930,
+          "namespace": "pid:[4026532272]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 9,
+          "stdout_observed_bytes": 9
+        },
+        {
+          "domain_id": "daaf1d9e-48c6-4550-ad10-1f7572382080",
+          "status": "timeout",
+          "init_pid": 5936,
+          "namespace": "pid:[4026532274]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 9,
+          "stdout_observed_bytes": 9
+        },
+        {
+          "domain_id": "f9975599-9e8c-433e-9c23-fb736211123a",
+          "status": "ok",
+          "init_pid": 5940,
+          "namespace": "pid:[4026532274]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 9,
+          "stdout_observed_bytes": 9
+        },
+        {
+          "domain_id": "d6237961-86c2-41c8-af89-7691badf3c80",
+          "status": "timeout",
+          "init_pid": 5944,
+          "namespace": "pid:[4026532274]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 9,
+          "stdout_observed_bytes": 9
+        },
+        {
+          "domain_id": "f17c4e14-7836-41bb-9c39-0894306c3fee",
+          "status": "timeout",
+          "init_pid": 5948,
+          "namespace": "pid:[4026532274]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 9,
+          "stdout_observed_bytes": 9
+        },
+        {
+          "domain_id": "b40632e1-ef82-4756-8094-cdfa0a3ceb6c",
+          "status": "timeout",
+          "init_pid": 5953,
+          "namespace": "pid:[4026532274]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 9,
+          "stdout_observed_bytes": 9
+        },
+        {
+          "domain_id": "50b22e57-63f2-4ea9-8a7b-5acb845bb7db",
+          "status": "ok",
+          "init_pid": 5957,
+          "namespace": "pid:[4026532274]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 9,
+          "stdout_observed_bytes": 9
+        }
+      ]
+    },
+    {
+      "test": "test_containment.NamespaceTests.test_two_arms_isolation_and_independent_cancellation",
+      "round_count": 2,
+      "rounds": [
+        {
+          "domain_id": "b96bacdb-09ca-424e-a206-d3f24f4b4f7b",
+          "status": "cancelled",
+          "init_pid": 5965,
+          "namespace": "pid:[4026532278]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 0,
+          "stdout_observed_bytes": 0
+        },
+        {
+          "domain_id": "86f62814-ce82-42cf-ab7b-29177eb2cdbf",
+          "status": "ok",
+          "init_pid": 5964,
+          "namespace": "pid:[4026532284]",
+          "pidfd_exit_observed": true,
+          "wrapper_reaped": true,
+          "stdout_captured_bytes": 0,
+          "stdout_observed_bytes": 0
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "bounded finite test workloads only, not proof against all adversaries",
+    "namespace does not constrain global CPU/RSS/disk or kernel damage; no fork bomb/OOM exercised",
+    "parent-death test covers payload execution after positive control, not every bubblewrap setup window",
+    "macOS remains known-smoke only, no disposable VM/runner proof; arbitrary-agent eligibility remains denied there",
+    "successful Linux receipt proves containment mechanism, not readiness/budget/model qualification; M0-04.R1 whole card not closed",
+    "raw artifacts read-only; initial failed CI retained separately"
+  ]
+}

@@ -120,3 +120,9 @@ Exploração estrutural: codebase-memory Tier2 geração `2026-10-12T09:34:55Z`,
 ### Correção da revisão independente L3
 
 Revisor L3-02 encontrou a ausência de stamps de cobertura dos diretórios: adicionar uma entrada após `walk` mantinha as identidades antigas e podia retornar inventário sem limitação. Correção aplicada antes da entrega: observações de raiz/dirs vazios/no início/fim/final, dois testes determinísticos de adição/remoção e recibo local renovado. Fontes cujo binding/revisão ainda é válido podem permanecer no resultado com diagnóstico explícito de cobertura parcial; um inventário com diagnóstico nunca é prova de cobertura completa. Total local final: 20 provas R1 + 14 originais, clippy/fmt/driver aprovados.
+
+## Aceite nativo L3-04 / M0-08.R1
+
+[CI38239765003](https://github.com/wkoch/xrai/actions/runs/38239765003), código `21e9279a7502ed398e3b1d8321495142376e78af`, três jobs aprovados. `docs/relatorios/logs/L3/ci-native/native-{host}/workspace-tests.log` registra21+14testes Linux e20+14macOS; ambos drivers filesystem.json aprovados. Linux Ubuntu24.04.5/glibc2.39 exercitou openat2 BENEATH/NO_SYMLINKS/NO_XDEV sem fallback, incluindo mount; macOS15.7.9/APFS exercitou handles de componentes NOFOLLOW/device check. As corridas determinísticas, seed/concorrência, limite de crescimento e revalidação de coverage/binding passaram nos hosts reais. Readcap8MiB e consistency_model not-atomic-snapshot explícitos.
+
+**M0-08.R1 concluída no escopo do spike ancorado/revalidação, com os limites deste relatório.** M1, watcher e snapshot atômico não são entregues por esse aceite. Piso literal mac15.0 permanece em M0-05; execução15.7.9 não o substitui. Integração incremental passou4eventos por host após permissionamento Seatbelt somente de ancestrais literais; controles continuam negando bytes de oracle/outro braço/symlink externo. Falhas iniciais e correções estão preservadas em L3/ci-first e incremental-seatbelt-fix.json.

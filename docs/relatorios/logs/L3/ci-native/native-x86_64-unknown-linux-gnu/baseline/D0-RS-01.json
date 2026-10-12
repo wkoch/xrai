@@ -1,0 +1,146 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-RS-01",
+  "family": "Rust",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.006982811000000311,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "python": "3.15.0",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "8dde3e1a58293efb5cc938f7a2061d63478d9448e2cf4739af0f7a9c97a2a984",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "b9c34db6-50f4-4f5a-9b89-7fc1416e7045",
+      "termination_evidence": {
+        "init_pid": 6025,
+        "pid_namespace": "pid:[4026532274]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.0070956600000045,
+      "stdout": {
+        "base64": "Li9iZW5jaGVzL2JlbmNoZXMucnMKLi9DSEFOR0VMT0cubWQKLi9kZXYKLi8uZ2l0aHViL0ZVTkRJTkcueW1sCi4vLmdpdGh1Yi93b3JrZmxvd3MvY2kueW1sCi4vTElDRU5TRQouLy5naXRpZ25vcmUKLi9TRUNVUklUWS5tZAouL3Rlc3RzL2xpYi5ycwouLy5naXRhdHRyaWJ1dGVzCi4vLmVkaXRvcmNvbmZpZwouL0NhcmdvLnRvbWwKLi9zcmMvbGliLnJzCi4vUkVBRE1FLm1kCg==",
+        "sha256": "234c56e46de441e3a3ddafe77312272ca919a1642f940e6cd0fa804e1d2af142",
+        "captured_bytes": 214,
+        "observed_bytes": 214,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "API|compara|Hamming|caracteres|delegada",
+        "."
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "9e7da720-593c-4ae6-95fa-22fee1efc4c5",
+      "termination_evidence": {
+        "init_pid": 6028,
+        "pid_namespace": "pid:[4026532336]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.006831860999994888,
+      "stdout": {
+        "base64": "Li9iZW5jaGVzL2JlbmNoZXMucnMtNy11c2Ugc2VsZjo6dGVzdDo6QmVuY2hlcjsKLi9iZW5jaGVzL2JlbmNoZXMucnMtOC0KLi9iZW5jaGVzL2JlbmNoZXMucnMtOS0jW2JlbmNoXQouL2JlbmNoZXMvYmVuY2hlcy5yczoxMDpmbiBiZW5jaF9oYW1taW5nKGJlbmNoZXI6ICZtdXQgQmVuY2hlcikgewouL2JlbmNoZXMvYmVuY2hlcy5ycy0xMS0gICAgbGV0IGEgPSAiQUNBQUdBVEdDQ0FUVEdUQ0NDQ0NHR0NDVENDVEdDVEdDVEdDVEdDVENUQ0NHR0dHIjsKLi9iZW5jaGVzL2JlbmNoZXMucnMtMTItICAgIGxldCBiID0gIkNDVEdHQUdHR1RHR0NDQ0NBQ0NHR0NDR0FHQUNBR0NHQUdDQVRBVEdDQUdHQUFHQyI7Ci4vYmVuY2hlcy9iZW5jaGVzLnJzLTEzLSAgICBiZW5jaGVyLml0ZXIofHwgewouL2JlbmNoZXMvYmVuY2hlcy5yczoxNDogICAgICAgIHN0cnNpbTo6aGFtbWluZyhhLCBiKS51bndyYXAoKTsKLi9iZW5jaGVzL2JlbmNoZXMucnMtMTUtICAgIH0pCi4vYmVuY2hlcy9iZW5jaGVzLnJzLTE2LX0KLi9iZW5jaGVzL2JlbmNoZXMucnMtMTctCi0tCi4vdGVzdHMvbGliLnJzLTEtZXh0ZXJuIGNyYXRlIHN0cnNpbTsKLi90ZXN0cy9saWIucnMtMi0KLi90ZXN0cy9saWIucnMtMy11c2Ugc3Ryc2ltOjp7Ci4vdGVzdHMvbGliLnJzOjQ6ICAgIGRhbWVyYXVfbGV2ZW5zaHRlaW4sIGhhbW1pbmcsIGphcm8sIGphcm9fd2lua2xlciwgbGV2ZW5zaHRlaW4sIG5vcm1hbGl6ZWRfZGFtZXJhdV9sZXZlbnNodGVpbiwKLi90ZXN0cy9saWIucnMtNS0gICAgbm9ybWFsaXplZF9sZXZlbnNodGVpbiwgb3NhX2Rpc3RhbmNlLAouL3Rlc3RzL2xpYi5ycy02LX07Ci4vdGVzdHMvbGliLnJzLTctCi0tCi4vdGVzdHMvbGliLnJzLTIxLX0KLi90ZXN0cy9saWIucnMtMjItCi4vdGVzdHMvbGliLnJzLTIzLSNbdGVzdF0KLi90ZXN0cy9saWIucnM6MjQ6Zm4gaGFtbWluZ193b3JrcygpIHsKLi90ZXN0cy9saWIucnM6MjU6ICAgIG1hdGNoIGhhbW1pbmcoImhhbW1pbmciLCAiaGFtbWVycyIpIHsKLi90ZXN0cy9saWIucnMtMjYtICAgICAgICBPayhkaXN0YW5jZSkgPT4gYXNzZXJ0X2VxISgzLCBkaXN0YW5jZSksCi4vdGVzdHMvbGliLnJzLTI3LSAgICAgICAgRXJyKHdoeSkgPT4gcGFuaWMhKCJ7Oj99Iiwgd2h5KSwKLi90ZXN0cy9saWIucnMtMjgtICAgIH0KLS0KLi9zcmMvbGliLnJzLTE1LSAgICBjbGlwcHk6Om1pc3NpbmdfZXJyb3JzX2RvYywKLi9zcmMvbGliLnJzLTE2LSAgICBjbGlwcHk6Om1pc3NpbmdfcGFuaWNzX2RvYywKLi9zcmMvbGliLnJzLTE3LSAgICBjbGlwcHk6Om11c3RfdXNlX2NhbmRpZGF0ZSwKLi9zcmMvbGliLnJzOjE4OiAgICAvLyB0b2RvIGh0dHBzOi8vZ2l0aHViLmNvbS9yYXBpZGZ1enovc3Ryc2ltLXJzL2lzc3Vlcy81OQouL3NyYy9saWIucnMtMTktICAgIGNsaXBweTo6cmFuZ2VfcGx1c19vbmUKLi9zcmMvbGliLnJzLTIwLSldCi4vc3JjL2xpYi5ycy0yMS0KLS0KLi9zcmMvbGliLnJzLTQ2LQouL3NyYy9saWIucnMtNDctaW1wbCBFcnJvciBmb3IgU3RyU2ltRXJyb3Ige30KLi9zcmMvbGliLnJzLTQ4LQouL3NyYy9saWIucnM6NDk6cHViIHR5cGUgSGFtbWluZ1Jlc3VsdCA9IFJlc3VsdDx1c2l6ZSwgU3RyU2ltRXJyb3I+OwouL3NyYy9saWIucnMtNTAtCi4vc3JjL2xpYi5ycy01MS0vLy8gQ2FsY3VsYXRlcyB0aGUgbnVtYmVyIG9mIHBvc2l0aW9ucyBpbiB0aGUgdHdvIHNlcXVlbmNlcyB3aGVyZSB0aGUgZWxlbWVudHMKLi9zcmMvbGliLnJzLTUyLS8vLyBkaWZmZXIuIFJldHVybnMgYW4gZXJyb3IgaWYgdGhlIHNlcXVlbmNlcyBoYXZlIGRpZmZlcmVudCBsZW5ndGhzLgouL3NyYy9saWIucnM6NTM6cHViIGZuIGdlbmVyaWNfaGFtbWluZzxJdGVyMSwgSXRlcjIsIEVsZW0xLCBFbGVtMj4oYTogSXRlcjEsIGI6IEl0ZXIyKSAtPiBIYW1taW5nUmVzdWx0Ci4vc3JjL2xpYi5ycy01NC13aGVyZQouL3NyYy9saWIucnMtNTUtICAgIEl0ZXIxOiBJbnRvSXRlcmF0b3I8SXRlbSA9IEVsZW0xPiwKLi9zcmMvbGliLnJzLTU2LSAgICBJdGVyMjogSW50b0l0ZXJhdG9yPEl0ZW0gPSBFbGVtMj4sCg==",
+        "sha256": "9ff47cbe72c80d185cd939b4867d6d18726314e356d0fec5a1b427f95d562b18",
+        "captured_bytes": 2047,
+        "observed_bytes": 2047,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 2261,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "87890c5c8e7b06a63e298b3082081b7ca261b5a7876f87b7c88b425fbb7a16b2",
+  "workspace_sha256": "726c9e251464f75c090bb5b7331c8438d560c67895323a1b320c2879a14d13d7"
+}

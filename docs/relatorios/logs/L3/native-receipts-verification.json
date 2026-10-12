@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "/private/tmp/xrai-l3-native-check.py"
+  ],
+  "base_commit": "21e9279a7502ed398e3b1d8321495142376e78af",
+  "recorded_at": "2026-10-12T11:03:57.842305+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.06553816700034076,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/private/tmp/xrai-l3-native-check.py\", line 10, in <module>\n    assert len(pack['fixtures'])==14 and all(f['exit_code']==0 for f in pack['fixtures']) and all(pack['isolation_negative_probes'].values()) and pack['paid_campaign_executed'] is False\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+}

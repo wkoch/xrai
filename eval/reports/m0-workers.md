@@ -46,3 +46,14 @@ Ticket cancelado ou abandonado não publica resultado; resultado é rechecado ap
 Concluir comparação de CPU e RSS agregado com observador apropriado (amostragem de processos simultâneos, overhead separado); decidir empiricamente se pool persistente justifica cache com owner/config fingerprint. Benchmark atual mede cold spawn por tentativa e entrada grande composta majoritariamente de comentários, não conjunto de grandes projetos/campanha competitiva. Não mede vantagem de retrieval e não libera G0/G1. Aproximação de p95 sobre seis observações é exploratória.
 
 Não surgiu decisão arquitetural nova: limites e mecanismo seguem ADR 023, otimização/medição são execução pendente. Modelo de processo do produto não controla OOM global, CPU/RSS da biblioteca nativa ou execução hostil do mesmo usuário. M1-05 só deve promover o mecanismo após a matriz e calibração pertinentes.
+
+## Prova nativa do primeiro incremento
+
+[CI38239765003](https://github.com/wkoch/xrai/actions/runs/38239765003), código `21e9279a7502ed398e3b1d8321495142376e78af`, todos os jobs aprovados. `docs/relatorios/logs/L3/ci-native/native-{host}/workspace-tests.log` confirma13testes em cada host; workers.json registra18comparações diretas/pool release,3classes×6, logical_equivalence=true. Fonte grande1.144.014bytes, limites/identidades e arrays de medições preservados.
+
+| Host real | Cold startup ms | Small p50 direto/pool ms | Large-comments p50 direto/pool ms | CPU/RSS agregado |
+|---|---:|---:|---:|---|
+| Ubuntu24.04.5 x86_64/glibc2.39 | 4,823 | 2,148 / 5,271 | 25,418 / 38,094 | desconhecidos |
+| macOS15.7.9 arm64 | 4,450 | 1,574 / 4,591 | 16,312 / 26,026 | desconhecidos |
+
+**Primeiro incremento L3-03 nativo verificado; M0-06 permanece em andamento.** Processo por tentativa, pool persistente/calibração e observação CPU/RSS agregados seguem pendentes. Números exploratórios não são ganho competitivo nem amostra de grandes projetos. Piso literal15.0 e bibliotecas nativas sob pressão global não foram comprovados.

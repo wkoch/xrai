@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "docs/relatorios/logs/L3/native-receipt-verification.py"
+  ],
+  "base_commit": "21e9279a7502ed398e3b1d8321495142376e78af",
+  "recorded_at": "2026-10-12T11:04:25.834332+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.046179459000086354,
+  "exit_code": 0,
+  "stdout": "{\n  \"status\": \"native_receipts_verified\",\n  \"code_commit\": \"21e9279a7502ed398e3b1d8321495142376e78af\",\n  \"run_url\": \"https://github.com/wkoch/xrai/actions/runs/38239765003\",\n  \"hosts\": [\n    {\n      \"host\": \"native-aarch64-apple-darwin\",\n      \"environment\": {\n        \"system\": \"Darwin\",\n        \"platform\": \"macOS-15.7.9-arm64-arm-64bit-Mach-O\",\n        \"machine\": \"arm64\"\n      },\n      \"filesystem_tests\": 34,\n      \"filesystem_resolution\": \"rustix-1.1.5-openat-directory-nofollow-device_check\",\n      \"workers_tests\": 13,\n      \"worker_equivalent_roundtrips\": 18,\n      \"incremental_events\": 4,\n      \"packaging_fixtures\": 14,\n      \"negative_packaging_probes\": {\n        \"network_blocked\": true,\n        \"other_executable_blocked\": true,\n        \"evaluator_file_blocked\": true\n      },\n      \"harness_tests\": 31,\n      \"harness_skips\": 5,\n      \"literal_macos_15_0_proved\": false,\n      \"worker_cpu_rss_proved\": false\n    },\n    {\n      \"host\": \"native-x86_64-unknown-linux-gnu\",\n      \"environment\": {\n        \"system\": \"Linux\",\n        \"platform\": \"Linux-6.17.0-1022-azure-x86_64-with-glibc2.39\",\n        \"machine\": \"x86_64\"\n      },\n      \"filesystem_tests\": 35,\n      \"filesystem_resolution\": \"rustix-1.1.5-openat2-beneath-no_symlinks-no_xdev-no_fallback\",\n      \"workers_tests\": 13,\n      \"worker_equivalent_roundtrips\": 18,\n      \"incremental_events\": 4,\n      \"packaging_fixtures\": 14,\n      \"negative_packaging_probes\": {\n        \"network_blocked\": true,\n        \"other_executable_blocked\": true,\n        \"evaluator_file_blocked\": true\n      },\n      \"harness_tests\": 31,\n      \"harness_skips\": 1,\n      \"literal_macos_15_0_proved\": false,\n      \"worker_cpu_rss_proved\": false\n    }\n  ],\n  \"competitive_runs_allowed\": false\n}\n",
+  "stderr": ""
+}

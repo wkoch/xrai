@@ -1,0 +1,214 @@
+[1m[92m   Compiling[0m xrai-core v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-core)
+[1m[92m   Compiling[0m memchr v2.8.3
+[1m[92m   Compiling[0m tree-sitter-language v0.1.9
+[1m[92m   Compiling[0m regex-syntax v0.8.11
+[1m[92m   Compiling[0m xrai-index v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-index)
+[1m[92m   Compiling[0m xrai-query v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-query)
+[1m[92m   Compiling[0m bitflags v2.13.2
+[1m[92m   Compiling[0m libsqlite3-sys v0.38.2
+[1m[92m   Compiling[0m arrayref v0.3.9
+[1m[92m   Compiling[0m linux-raw-sys v0.12.1
+[1m[92m   Compiling[0m fallible-streaming-iterator v0.1.9
+[1m[92m   Compiling[0m streaming-iterator v0.1.9
+[1m[92m   Compiling[0m serde_json v1.0.154
+[1m[92m   Compiling[0m aho-corasick v1.1.5
+[1m[92m   Compiling[0m fallible-iterator v0.3.0
+[1m[92m   Compiling[0m smallvec v1.16.3
+[1m[92m   Compiling[0m cfg-if v1.0.5
+[1m[92m   Compiling[0m constant_time_eq v0.3.1
+[1m[92m   Compiling[0m arrayvec v0.7.8
+[1m[92m   Compiling[0m blake3 v1.8.2
+[1m[92m   Compiling[0m tree-sitter v0.27.1
+[1m[92m   Compiling[0m regex-automata v0.4.18
+[1m[92m   Compiling[0m rusqlite v0.40.2
+[1m[92m   Compiling[0m rustix v1.1.5
+[1m[92m   Compiling[0m tree-sitter-rust v0.24.2
+[1m[92m   Compiling[0m tree-sitter-go v0.25.0
+[1m[92m   Compiling[0m tree-sitter-typescript v0.23.2
+[1m[92m   Compiling[0m tree-sitter-python v0.25.0
+[1m[92m   Compiling[0m tree-sitter-javascript v0.25.0
+[1m[92m   Compiling[0m xrai v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai)
+[1m[92m   Compiling[0m regex v1.13.1
+[1m[92m   Compiling[0m xrai-eval v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-eval)
+[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 8.79s
+[1m[92m     Running[0m unittests src/main.rs (target/debug/deps/xrai-a7be12092be90a2e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m tests/cli.rs (target/debug/deps/cli-eb381197ce171f36)
+
+running 3 tests
+test help_only_advertises_available_options ... ok
+test version_reports_package_version_and_native_platform ... ok
+test unsupported_operations_and_extra_arguments_fail_without_data ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+[1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/xrai_core-a634cf6e76f1e98d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/xrai_eval-fefaba7a12424d6f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/filesystem-spike.rs (target/debug/deps/filesystem_spike-a9f00b2e0f2ba42b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/incremental-probe.rs (target/debug/deps/incremental_probe-5187740386636f48)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/parsing-spike.rs (target/debug/deps/parsing_spike-2d4a3e4645734c81)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/sqlite-spike.rs (target/debug/deps/sqlite_spike-20452a173cec9fa1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/worker-spike.rs (target/debug/deps/worker_spike-46837c7e37a5894b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m tests/filesystem_anchored.rs (target/debug/deps/filesystem_anchored-d8cd0a2fd3b06d05)
+
+running 21 tests
+test ancestor_symlink_after_source_open_never_publishes_as_current ... ok
+test ancestor_symlink_before_open_never_delivers_external_sentinel ... ok
+test anchored_enumeration_of_moved_directory_returns_partial_inventory ... ok
+test barrier_swap_after_ancestor_handle_open_invalidates_binding ... ok
+test ceiling_is_enforced_for_initial_size_and_during_growth ... ok
+test existing_proc_mount_is_refused_by_linux_no_xdev ... ok
+test hard_link_captures_shared_object_and_does_not_claim_link_confinement ... ok
+test empty_directory_addition_and_removal_are_reconciled_before_publication ... ok
+test in_place_same_size_and_restored_mtime_is_not_a_snapshot_guarantee ... ok
+test last_publication_reconciles_previously_captured_ancestor ... ok
+test inventory_final_reconciliation_rejects_changed_source_revision ... ok
+test moving_open_directory_outside_without_link_is_diagnosed ... ok
+test rejects_invalid_native_components_and_internal_capture_inventory_exclusions ... ok
+test original_file_unlink_and_recreate_cannot_reuse_old_binding ... ok
+test replaced_root_invalidates_all_inventory_sources ... ok
+test new_file_after_enumeration_marks_root_coverage_partial ... ok
+test replacing_checkout_parent_with_alias_of_moved_parent_invalidates_locator ... ok
+test stabilized_update_equals_independent_rebuild_and_old_bytes_remain_immutable ... ok
+test special_files_are_refused_without_fifo_blocking ... ok
+test seeded_concurrent_writer_stress_never_delivers_external_sentinel ... ok
+test seeded_adversarial_schedule_supplements_deterministic_barriers ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+[1m[92m     Running[0m tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-2d364704b37a2ef5)
+
+running 14 tests
+test filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok
+test explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok
+test invalid_configuration_fails_before_inventory ... ok
+test gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok
+test permission_failure_is_diagnostic_or_records_privileged_capability ... ok
+test removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok
+test linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok
+test removal_between_discovery_and_capture_has_typed_diagnostic ... ok
+test replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok
+test no_git_and_identical_named_checkouts_have_independent_writable_state ... ok
+test symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok
+test same_size_and_mtime_change_is_detected_by_content_hash ... ok
+test unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok
+test actual_git_linked_worktrees_have_independent_checkout_state ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[1m[92m     Running[0m tests/parsing.rs (target/debug/deps/parsing-573077007bf5ac06)
+
+running 4 tests
+test copied_binary_reports_incomplete_exit_status_and_refuses_unknown_dialect ... ok
+test incorporated_unicode_notice_is_preserved_in_binary_inventory ... ok
+test fingerprints_cover_distinct_queries_and_grammars ... ok
+test every_embedded_dialect_parses_valid_and_reports_incomplete_sources ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+[1m[92m     Running[0m tests/sqlite_snapshots.rs (target/debug/deps/sqlite_snapshots-22b338926ff39f00)
+
+running 6 tests
+test bundled_sqlite_fts5_and_trigram_are_available_without_load_extension ... ok
+test future_schema_and_foreign_application_are_refused_without_recreation ... ok
+test source_foreign_keys_hashes_and_invalid_spans_are_enforced ... ok
+test backup_rebuild_preserve_human_files_and_readers_and_refuse_overwrite ... ok
+test two_readers_keep_a_bytes_facts_and_fts_while_writer_publishes_b ... ok
+test killed_writer_rolls_back_b_keeps_a_and_records_abandoned_staging ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+
+[1m[92m     Running[0m tests/workers.rs (target/debug/deps/workers-8bc236b46e4d6525)
+
+running 13 tests
+test admission_overload_and_duplicate_requests_do_not_grow_memory ... ok
+test decoder_refuses_huge_header_before_payload_read_and_corrupt_enums ... ok
+test executable_path_with_spaces_roundtrips_real_worker ... ok
+test identities_spans_and_extra_bytes_refused ... ok
+test deadlines_cancel_late_and_shutdown_are_bounded ... ok
+test finite_retry_in_new_process_and_stderr_capture_bounded ... ok
+test queue_wait_consumes_total_deadline_before_spawn ... ok
+test simultaneous_configurations_remain_distinct ... ok
+test faulty_worker_cannot_publish_and_independent_work_progresses ... ok
+test shutdown_with_inflight_failure_reaps_child ... ok
+test worker_is_given_bytes_and_does_not_reopen_source ... ok
+test roundtrip_and_direct_pool_equivalence_all_dialects ... ok
+test valid_frame_requires_successful_exit_and_roundtrips_repeat ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.07s
+
+[1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/xrai_index-d89e7505ec0753a9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/xrai_query-96914637e2eedb4c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m   Doc-tests[0m xrai_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m   Doc-tests[0m xrai_eval
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m   Doc-tests[0m xrai_index
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m   Doc-tests[0m xrai_query
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
