@@ -1,0 +1,192 @@
+{
+  "schema": "xrai.architecture.c02-review.documentation.v1",
+  "at_utc": "2026-10-12T19:27:28.882090+00:00",
+  "base_commit": "0c7064e73a97d7ef004350f1ec98a7e805597d1b",
+  "result": "passed",
+  "checks": {
+    "cards_states_dependencies_preserved": 41,
+    "conditional_V1_cards_and_dependencies_preserved": 6,
+    "counts": {
+      "concluída": 9,
+      "em andamento": 7,
+      "não iniciada": 25
+    },
+    "gates": {
+      "G0": "não avaliado",
+      "G1": "não avaliado",
+      "G2": "não avaliado"
+    },
+    "dependency_graph_acyclic": true,
+    "local_link_targets": 222,
+    "diff_check_exit_code": 0,
+    "changes_only_documentation": true,
+    "factual_deficits_per_family": {
+      "Rust": {
+        "additional_tasks": 6,
+        "additional_complex": 3,
+        "additional_historical": 2
+      },
+      "TSJS": {
+        "additional_tasks": 6,
+        "additional_complex": 3,
+        "additional_historical": 2
+      },
+      "Python": {
+        "additional_tasks": 6,
+        "additional_complex": 2,
+        "additional_historical": 3
+      },
+      "Go": {
+        "additional_tasks": 6,
+        "additional_complex": 3,
+        "additional_historical": 3
+      }
+    }
+  },
+  "coverage_at_review_before_document_edits": {
+    "project": "Users-wkoch-Projetos-xrai",
+    "tier": 2,
+    "generation": "2026-10-12T19:18:26Z",
+    "paths": [
+      "eval/scripts/verify_c02.py",
+      "eval/scripts/verify_slot_plan.py",
+      "eval/scripts/verify_qualified.py",
+      "eval/scripts/tests/test_c02.py",
+      "eval/scripts/run_l5_go.py",
+      "eval/scripts/prepare_l5_go.py",
+      "eval/scripts/prepare_l5_python.py",
+      "docs/relatorios/logs/L5-C02/reconcile_new_corpus.py",
+      "docs/relatorios/logs/L5-C02/verify_go_export.py",
+      "docs/relatorios/logs/L5-C02/verify_python_export.py",
+      ".github/workflows/l5-corpus-next.yml",
+      "eval/qualification/c02-status-matrix.json",
+      "eval/qualification/l5-slot-plan.json",
+      "eval/qualification/l5-real/python/case.json",
+      "eval/qualification/l5-real/go/case.json",
+      "docs/relatorios/L5-C02.md",
+      "docs/relatorios/logs/L5-C02/integration/publication-receipt.json"
+    ],
+    "result": "17 no_recorded_issue / metadata_match",
+    "caveat": "Best-effort coverage, not proof of completeness; bounded review."
+  },
+  "files": {
+    "IMPLEMENTADOR.md": {
+      "sha256": "dd4af2fd3935849e28511bccdfd8887f6f37fc181db300cc401cdc4efc150ef5",
+      "bytes": 19036
+    },
+    "README.md": {
+      "sha256": "a7d60b5a70cd808eed33fa9b3906590fa1fd47cba41d2956b9f65fbe35202da3",
+      "bytes": 4099
+    },
+    "docs/PLANO-DE-IMPLEMENTACAO.md": {
+      "sha256": "c3983f157b6019fd3911beef103299ac5ecc14526932f3ebc5b6e08bfeaa8a5c",
+      "bytes": 74324
+    },
+    "docs/PLANO-DE-VALIDACAO.md": {
+      "sha256": "d45da97c2b267458774c9695249bbc391f32465e46e9ffef4d0e8ae83c9bc6d3",
+      "bytes": 33524
+    },
+    "docs/RFC-0001-ARQUITETURA.md": {
+      "sha256": "3e52d59dd84446d580c2c25d79b557c8065996ec09cf448805084cb24b44be8c",
+      "bytes": 58349
+    },
+    "docs/STATUS-IMPLEMENTACAO.md": {
+      "sha256": "29a1a56a3173a2b4c28977d3b43482124a7b81cd91d9964839e3c3c1b0114475",
+      "bytes": 24840
+    },
+    "docs/decisoes/CORPUS-QUALIFICADO.md": {
+      "sha256": "718a9aa90da7220170e67835e724a69ada9f24770b7df9e546e2cecba469fa85",
+      "bytes": 12417
+    },
+    "docs/ROTEIRO-V1.md": {
+      "sha256": "bd7d832e94f79d3a8aadc23f407cc90ee51f2db699f7d0af2a689dcd437ddc9a",
+      "bytes": 15541
+    },
+    "docs/relatorios/REVISAO-L5-C02.md": {
+      "sha256": "717d99f412e763c416b104e79c2985e35db38c2b3f93f6fc5d612399bceb50be",
+      "bytes": 12810
+    },
+    "docs/relatorios/logs/revisao-L5-C02/evidencias.json": {
+      "sha256": "79f0b85fe12527c68ed42902d7bbac457bfd9cd2f3f2a1b3db75c0bbcbfd725a",
+      "bytes": 6998
+    },
+    "docs/relatorios/logs/revisao-L5-C02/dependencias.json": {
+      "sha256": "05b375d76b57941e337131712e9e83f2ebfc1348f19a4efd2b0ab78337c0778b",
+      "bytes": 48780
+    },
+    "eval/scripts/verify_c02.py": {
+      "sha256": "da40b94fe09e241747fc2f49195967799b18752ebf1f84e6a03ede4d0f3bfe96",
+      "bytes": 25099
+    },
+    "eval/scripts/verify_slot_plan.py": {
+      "sha256": "4a29f23174e355ff5b82466b9a96e6524ff10b94bee80e78b8acc5737ab5dbd8",
+      "bytes": 10241
+    },
+    "eval/scripts/verify_qualified.py": {
+      "sha256": "2bfdf70dc122484ebf7017fa4d9b25fd69dbece4a380fe7ce47d356eb9283526",
+      "bytes": 13315
+    },
+    "eval/scripts/tests/test_c02.py": {
+      "sha256": "066011b6c41fefbf85d3a161e883b4d589fbab753991deda3c77d2ae4596b25c",
+      "bytes": 13974
+    },
+    "eval/scripts/run_l5_go.py": {
+      "sha256": "2ad65bba0e27f572adc51f2a91ab48943a40c54c0e4ac5ee7bbb1ee48ee1f597",
+      "bytes": 10173
+    },
+    "eval/scripts/prepare_l5_go.py": {
+      "sha256": "9a00a0db03f066dc19b2c845b967b95ffb28f7e5942735027ecc54fbafe8ea26",
+      "bytes": 9488
+    },
+    "eval/scripts/prepare_l5_python.py": {
+      "sha256": "4b6277c7d974e192ca123410accd27bedb9ed870ab09b102acb1c7074193da45",
+      "bytes": 6743
+    },
+    "docs/relatorios/logs/L5-C02/reconcile_new_corpus.py": {
+      "sha256": "c3f88baf9fa230827485ff5dc4a066b2502cd3f47012767020c037886c13e1da",
+      "bytes": 5879
+    },
+    "docs/relatorios/logs/L5-C02/verify_go_export.py": {
+      "sha256": "900825b2cfd26b90862a3b4591ebacdfe4693380233d2b936925ea43732cf9d2",
+      "bytes": 16304
+    },
+    "docs/relatorios/logs/L5-C02/verify_python_export.py": {
+      "sha256": "d51b6223bfabe1af9d9a8a68bfa093c94342ccf49f9aefca26b56791b4eb3960",
+      "bytes": 14544
+    },
+    ".github/workflows/l5-corpus-next.yml": {
+      "sha256": "740f8a39182c2b76f8d1d4537c763bf50d5e4267ff060a0d9d8c0d42589374c2",
+      "bytes": 3874
+    },
+    "eval/qualification/c02-status-matrix.json": {
+      "sha256": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+      "bytes": 19098
+    },
+    "eval/qualification/l5-slot-plan.json": {
+      "sha256": "ec4f37722ba944af7ef29004b77594a5414df5d8a5625dc4abd6e560aff7765b",
+      "bytes": 33728
+    },
+    "eval/qualification/l5-real/python/case.json": {
+      "sha256": "8976e5ff5ee366103de7bf67e65ccc23a10b40d869098dfc806eddf8962f154f",
+      "bytes": 5412
+    },
+    "eval/qualification/l5-real/go/case.json": {
+      "sha256": "d83f69c80b85af39aa80adfeff5e927e5375757efc6d4e53428abff36e7329d9",
+      "bytes": 4881
+    },
+    "docs/relatorios/L5-C02.md": {
+      "sha256": "e3bf0d2a1762a08554129339174345d4a095eecc29d8606a319262a62b8bde09",
+      "bytes": 9436
+    },
+    "docs/relatorios/logs/L5-C02/integration/publication-receipt.json": {
+      "sha256": "99f7492b122d04fa541c71925610f3994f2e5b2f1295f336b1b77b6624427312",
+      "bytes": 1978
+    }
+  },
+  "verifier_source": "from pathlib import Path\nimport collections,datetime,hashlib,json,re,subprocess\nfrom urllib.parse import unquote\nROOT=Path('/Users/wkoch/Projetos/xrai');LOG='docs/relatorios/logs/revisao-L5-C02/'\nDOCS=['IMPLEMENTADOR.md','README.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/PLANO-DE-VALIDACAO.md','docs/RFC-0001-ARQUITETURA.md','docs/STATUS-IMPLEMENTACAO.md','docs/decisoes/CORPUS-QUALIFICADO.md','docs/ROTEIRO-V1.md','docs/relatorios/REVISAO-L5-C02.md']\nOUT=LOG+'documentacao.json'\ndef git(*args):return subprocess.check_output(['git',*args],cwd=ROOT,text=True)\ndef read(p):return (ROOT/p).read_text()\ndef old(p):return git('show','HEAD:'+p)\ndef cards(t,prefix):\n matches=list(re.finditer(r'^### ('+prefix+r'-\\d+(?:\\.R\\d+)?) —[^\\n]+',t,re.M)); result={}\n for i,m in enumerate(matches):\n  block=t[m.end():matches[i+1].start() if i+1<len(matches) else len(t)]\n  deps=re.search(r'\\*\\*Depende de:\\*\\* ([^\\n]+)',block).group(1).split(' **')[0]\n  result[m.group(1)]={'heading':m.group(0),'dependency_text':deps,'dependencies':re.findall(r'(?:M[01]|V1)-\\d+(?:\\.R\\d+)?',deps)}\n return result\nplan=cards(read(DOCS[2]),'M[01]');assert len(plan)==41 and plan==cards(old(DOCS[2]),'M[01]')\nfuture=cards(read(DOCS[7]),'V1');assert len(future)==6 and future==cards(old(DOCS[7]),'V1')\ncombined=plan|future\ndef ancestors(key,active=()):\n assert key not in active,('cycle',key,active)\n result=set()\n for dep in combined[key]['dependencies']:assert dep in combined;result|={dep}|ancestors(dep,active+(key,))\n return result\nfor key in combined:ancestors(key)\nfor key in future:assert 'M1-21' in ancestors(key)\ndef states(t):return dict(re.findall(r'^\\| (M[01]-\\d+(?:\\.R\\d+)?) \\| [^|]+ \\| ([^|]+?) \\|',t,re.M))\ns=states(read(DOCS[5]));assert s==states(old(DOCS[5])) and set(s)==set(plan)\ncounts=dict(collections.Counter(s.values()));assert counts=={'concluída':9,'em andamento':7,'não iniciada':25}\ngates=dict(re.findall(r'^\\| (G[012]) \\| ([^|]+?) \\|',read(DOCS[5]),re.M));assert gates=={f'G{i}':'não avaliado' for i in range(3)}\nlinks=0\nfor name in DOCS:\n for target in re.findall(r'\\[[^\\]]*\\]\\(([^)]+)\\)',read(name)):\n  target=target.strip('<>')\n  if re.match(r'^[a-zA-Z]+:',target) or target.startswith('#'):continue\n  path=(ROOT/name).parent/unquote(target.split('#')[0]);assert path.exists() or path.resolve()==(ROOT/OUT).resolve(),(name,target);links+=1\nallowed=set(DOCS+[LOG+'evidencias.json',LOG+'dependencias.json',OUT])\nchanged=set(git('diff','--name-only').splitlines())|set(git('ls-files','--others','--exclude-standard').splitlines());assert changed<=allowed,changed-allowed\nassert not git('diff','--cached','--name-only').strip(),'unexpected staged files'\np=subprocess.run(['git','diff','--check'],cwd=ROOT,capture_output=True,text=True);assert p.returncode==0,p.stdout+p.stderr\ne=json.loads(read(LOG+'evidencias.json'));assert e['result']=='passed' and [r['exit_code'] for r in e['commands']]==[0,0,0,1]\na=json.loads(read(LOG+'dependencias.json'));assert a['total']==55 and a['counts_by_manifest']=={'eval/qualification/l5-real/go/setup/go.mod':55}\nassert a['counts_by_severity']=={'critical':9,'high':14,'medium':25,'low':7}\nm=json.loads(read('eval/qualification/c02-status-matrix.json'));summary=m['summary'];assert summary['eligible_tasks']==8 and summary['admitted_tasks']==0\nper_family={}\nfor family in ['Rust','TSJS','Python','Go']:\n rows=[r for r in m['tasks'] if r['family']==family and r['individually_eligible']]\n per_family[family]={'additional_tasks':8-len(rows),'additional_complex':4-sum(r['complex'] for r in rows),'additional_historical':4-sum(r['historical'] for r in rows)}\nassert sum(v['additional_tasks'] for v in per_family.values())==24 and sum(v['additional_complex'] for v in per_family.values())==11 and sum(v['additional_historical'] for v in per_family.values())==10\npaths=['eval/scripts/verify_c02.py','eval/scripts/verify_slot_plan.py','eval/scripts/verify_qualified.py','eval/scripts/tests/test_c02.py','eval/scripts/run_l5_go.py','eval/scripts/prepare_l5_go.py','eval/scripts/prepare_l5_python.py','docs/relatorios/logs/L5-C02/reconcile_new_corpus.py','docs/relatorios/logs/L5-C02/verify_go_export.py','docs/relatorios/logs/L5-C02/verify_python_export.py','.github/workflows/l5-corpus-next.yml','eval/qualification/c02-status-matrix.json','eval/qualification/l5-slot-plan.json','eval/qualification/l5-real/python/case.json','eval/qualification/l5-real/go/case.json','docs/relatorios/L5-C02.md','docs/relatorios/logs/L5-C02/integration/publication-receipt.json']\nfiles={name:{'sha256':hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),'bytes':(ROOT/name).stat().st_size} for name in DOCS+[LOG+'evidencias.json',LOG+'dependencias.json']+paths}\nresult={'schema':'xrai.architecture.c02-review.documentation.v1','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_commit':git('rev-parse','HEAD').strip(),'result':'passed','checks':{'cards_states_dependencies_preserved':41,'conditional_V1_cards_and_dependencies_preserved':6,'counts':counts,'gates':gates,'dependency_graph_acyclic':True,'local_link_targets':links,'diff_check_exit_code':0,'changes_only_documentation':True,'factual_deficits_per_family':per_family},'coverage_at_review_before_document_edits':{'project':'Users-wkoch-Projetos-xrai','tier':2,'generation':'2026-10-12T19:18:26Z','paths':paths,'result':'17 no_recorded_issue / metadata_match','caveat':'Best-effort coverage, not proof of completeness; bounded review.'},'files':files,'verifier_source':Path(__file__).read_text(),'limits':['No product implementation, upstream/native tests, release or campaign approval.','Gate execution proof and advisory-level exposure remain implementation work.','Links verified for local file existence, not external URL availability or Markdown anchor resolution.']}\n(ROOT/OUT).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\\n');print(json.dumps({'result':'passed','local_links':links,'cards':41,'V1_cards':6,'counts':counts},ensure_ascii=False))\n",
+  "limits": [
+    "No product implementation, upstream/native tests, release or campaign approval.",
+    "Gate execution proof and advisory-level exposure remain implementation work.",
+    "Links verified for local file existence, not external URL availability or Markdown anchor resolution."
+  ]
+}

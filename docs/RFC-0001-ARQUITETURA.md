@@ -515,6 +515,10 @@ L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do co
 
 [Revisão corrente](relatorios/REVISAO-L5-CONTINUACAO.md) aceita R3/pares Rust-JS e resolve C02: prova de estado por família não é requisito universal por dossiê histórico. ADR028 define o caminho até 1.0 e seis atividades pós-G2; M0/M1 e gates preservados.
 
+### 14.9 Aceite C02 e eventos/dependências
+
+[Revisão L5-C02](relatorios/REVISAO-L5-C02.md) aceita quatro novos dossiês e a derivação factual; C03 concretiza prova de execução dos eventos no preflight, separada de preparo. S01 distingue dependências ativas e setup congelado do corpus, preservando provas e exigindo avaliação de exposição antes de novas execuções afetadas. Não acrescenta ADR ou lote nem altera gates/cartões.
+
 ## 15. Definições com responsável e momento
 
 | Item | Responsável e regra vigente |

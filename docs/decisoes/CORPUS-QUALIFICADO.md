@@ -40,6 +40,8 @@ Repositórios exatos são escolha de execução orientada por esses critérios, 
 5. **Estado incremental:** pelo menos um caso por família segue a sequência abaixo. Edição já aplicada antes de indexar é rotulada `cold_changed_checkout`; não é prova de atualização. Outros tipos de estado permanecem explicitamente classificados.
 
    **Esclarecimento C02, 12/10/2026:** a exigência é por família/caso de estado, não por toda correção ou contrato histórico. Curadoria/revisão, provas comportamentais, preparo/execução incremental, elegibilidade individual e admissão global são estados distintos. Exercício suplementar não vira outra tarefa primária. A conciliação dos dossiês Rust/JS e critérios está na [revisão da continuação L5](../relatorios/REVISAO-L5-CONTINUACAO.md); manter o gate global fechado até todos os requisitos, sem apagar provas pendentes.
+   **Concretização C03, 12/10/2026:** preparo/eligibilidade e execução continuam separados. Antes de campanha, o gate/preflight usado pelo executor exige quatro eventos requeridos executados, recibos vinculados e comparação completa recomputável com rebuild B, além das quotas e demais condições. Descritor e booleanos de sucesso não bastam. [Critérios e contraprovas](../relatorios/REVISAO-L5-C02.md).
+
 6. **Revisão dos rótulos:** registrar autor, segundo leitor, hashes dos artefatos revisados, achados e correções. Os 32 oracles atuais ainda dizem `second-reader audit pending`, apesar do relato de revisão. Conciliar cada recibo com a evidência existente ou realizar a revisão faltante; não trocar todos os rótulos por sucesso sem rastreabilidade. O Arquiteto não será necessário para aprovar rotineiramente cada tarefa que cumprir este contrato.
 
 ```text

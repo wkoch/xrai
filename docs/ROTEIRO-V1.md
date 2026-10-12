@@ -1,6 +1,6 @@
 # Caminho até o v1.0 — ADR 028
 
-12/10/2026. Avaliação arquitetural sobre `27290e4`, com implementação verificada na CI do código `c48b599`. **Decisão do Arquiteto para delimitar estabilização e lançamento; não é aprovação de release nem autorização para antecipar M1-B.** Estado executado em [STATUS-IMPLEMENTACAO](STATUS-IMPLEMENTACAO.md); parecer da entrega recente em [REVISAO-L5-CONTINUACAO](relatorios/REVISAO-L5-CONTINUACAO.md).
+12/10/2026. Avaliação arquitetural atualizada sobre `0c7064e`; provas Rust/JS no código `c48b599` e Python/Go em `e02370a`. **Decisão do Arquiteto para delimitar estabilização e lançamento; não é aprovação de release nem autorização para antecipar M1-B.** Estado executado em [STATUS-IMPLEMENTACAO](STATUS-IMPLEMENTACAO.md); parecer da entrega recente em [REVISAO-L5-C02](relatorios/REVISAO-L5-C02.md).
 
 ## 1. Onde estamos
 
@@ -11,12 +11,12 @@ O projeto está em **M0, pesquisa aplicada e protótipos verificáveis**. A infr
 | Captura, armazenamento e parsing | Spikes de fontes/revisões/SQLite/FTS, sete dialetos e workers com provas nativas | Implementar integração de produção, atualização, recuperação e distribuição |
 | Semântica | Rust R1/R2 e R3 opt-in; R3 34/34, 16/16 resolvíveis; contraprovas cfg corrigidas | Rust R4 e lacunas R2; recortes TS/JS, Python e Go; ampliar cobertura real sem falsas certezas |
 | Contexto | Perfil v3, base/head, orçamento serializado, retenção e expansão; consumidor R3 | Recuperação lexical sem âncora, seleção relevante, alternativas e qualidade em tarefas reais |
-| Corpus | Quatro pilotos anteriores e dois novos pares comportamentais/revisados Rust/JS | Completar Python/Go, 32 tarefas qualificadas, eventos de estado, controles e adjudicação; admissão global atual 0/32 |
+| Corpus | Quatro pilotos anteriores e quatro novos dossiês elegíveis Rust/JS/Python/Go | Oito tarefas elegíveis; faltam 24 para o conjunto, quotas completas e quatro eventos reais; admissão global atual 0/32 |
 | Avaliação por agente | Harness/replay/ledger offline, contenção Linux e oracles reais | Adapter real, quatro smokes pareados, comparadores fortes, campanhas D1/H1 e recursos autorizados |
 | Produto público | `xrai --help` e `--version`; crates de domínio ainda sem capacidades da alpha | Indexar, consultar e atualizar pelo executável/CLI/MCP de produção |
 | Distribuição | CI Linux x86_64/macOS arm64; bytes de executáveis experimentais conferidos em recibos | Instalação limpa do produto, piso literal macOS 15.0, compatibilidade, licença e release reproduzível/auditável |
 
-Avanço recente relevante: os probes deixaram de ser somente sintéticos. Rust reproduz os dois problemas esperados no baseline, passa referência 2/2 e 16 regressões; JS reproduz três requisitos falhos e passa referência 3/3, com duas regressões por lado. Isso valida tarefas/oracles; **não mede sucesso de um agente usando xrai**. Na amostra Tokio-test, 201 chamadas continuam unknown; o acerto 1/1 do subconjunto resolvível não é cobertura de 201 chamadas.
+Avanço recente: C02 recomputa quatro novos dossiês elegíveis. Python/Go têm três requisitos falhos na base, três aprovados na referência e duas regressões por lado. São contratos controlados, não bugs históricos. Os probes deixaram de ser somente sintéticos. Rust reproduz os dois problemas esperados no baseline, passa referência 2/2 e 16 regressões; JS reproduz três requisitos falhos e passa referência 3/3, com duas regressões por lado. Isso valida tarefas/oracles; **não mede sucesso de um agente usando xrai**. Na amostra Tokio-test, 201 chamadas continuam unknown; o acerto 1/1 do subconjunto resolvível não é cobertura de 201 chamadas.
 
 Os principais riscos são: semântica útil insuficiente fora das fixtures; seleção não melhorar tarefas completas; custo de sessão exceder tetos; esforço de qualificação/campanha e integração maior que o sugerido pelo scaffold. Tamanho da biblioteca necessária não é veto. Investir em biblioteca própria segue ADR 024 quando uma perda concreta a justificar.
 
@@ -119,4 +119,4 @@ Medir cinco eixos separadamente: capacidades reais por linguagem; tarefas do cor
 
 Antes de estimar uma data, registrar esforço ativo e espera externa de pelo menos dois incrementos representativos (um dossiê completo e uma fatia de frontend/contexto), custos dos probes/campanhas e largura real de trabalho do Implementador. Só então apresentar faixa condicionada a G0/G1 e recursos, revisada quando surgir dependência nova. Hoje não há base para prometer semanas, meses ou percentual de 1.0; a maior incerteza é a eficácia ainda não medida.
 
-Próximas decisões observáveis: completar Python/Go e a contabilização dos dois pares prontos; ampliar semântica para outra família; recuperar contexto real com controle lexical; conectar agente e preparar orçamento de campanha. Caminho detalhado e responsáveis estão na [revisão corrente](relatorios/REVISAO-L5-CONTINUACAO.md). Nenhuma dessas frentes locais precisa esperar implementação integral de M2–M5.
+Próximas entregas observáveis: quatro casos reais de estado e primeiro evento executado/reconciliado, gate de execução C03, primeira semântica TS/JS, contexto real com controle lexical e adapter/orçamento. S01 classifica os 55 alertas observados no setup congelado Gitea; aplicabilidade e controles devem ser avaliados antes de novas execuções afetadas. Caminho detalhado e responsáveis estão na [revisão corrente](relatorios/REVISAO-L5-C02.md). Nenhuma dessas frentes locais precisa esperar implementação integral de M2–M5.

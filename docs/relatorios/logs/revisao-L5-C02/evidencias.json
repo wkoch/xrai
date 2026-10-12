@@ -1,0 +1,137 @@
+{
+  "schema": "xrai.architecture.c02-review.evidence.v1",
+  "at_utc": "2026-10-12T19:22:42.955718+00:00",
+  "base_commit": "0c7064e73a97d7ef004350f1ec98a7e805597d1b",
+  "result": "passed",
+  "commands": [
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "docs/relatorios/logs/L5-C02/reconcile_new_corpus.py"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 1.416,
+      "stdout_sha256": "b1e99988a361c750761fc883034edbffb8a2a4f96b36b2cbff5c84ce59087d4b",
+      "stderr": "",
+      "summary": {
+        "go": {
+          "artifact_id": 11768465101,
+          "files": 14,
+          "zip_bytes": 4832868,
+          "zip_sha256": "9fbdfef0962e483310dc0ea983ed7e9077f4a0c33c64c8e972d492b5116449a0"
+        },
+        "python": {
+          "artifact_id": 11767189393,
+          "files": 13,
+          "zip_bytes": 500904,
+          "zip_sha256": "da370edb40c9c3bcd0030bbecec0bf1d142a6dca5faafd44c5f58f903190a5a5"
+        }
+      }
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_c02.py"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 5.064,
+      "stdout_sha256": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+      "stderr": "",
+      "summary": {
+        "admitted_tasks": 0,
+        "competitive_runs_allowed": false,
+        "conditional_projection": {
+          "additional_complex": 11,
+          "additional_historical": 10,
+          "additional_multi_module": 12,
+          "additional_tasks": 24,
+          "admission_deficit": 32,
+          "new_dossiers_remaining": 0
+        },
+        "eligible_complex": 5,
+        "eligible_historical": 6,
+        "eligible_multi_module": 8,
+        "eligible_tasks": 8,
+        "new_dossiers_behavior_verified": 4,
+        "new_dossiers_curated_reviewed": 4,
+        "new_dossiers_individually_eligible": 4,
+        "new_dossiers_required": 4,
+        "required_state_events_prepared": {
+          "Go": 0,
+          "Python": 0,
+          "Rust": 0,
+          "TSJS": 0
+        }
+      }
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_slot_plan.py"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 5.031,
+      "stdout_sha256": "f3f85653d3ee3531ec42eaee4355232c7e722f5778ab129c6ef4885b677a3d15",
+      "stderr": "",
+      "summary": {
+        "admitted_tasks": 0,
+        "competitive_runs_allowed": false,
+        "conditional_projection": {
+          "additional_complex": 11,
+          "additional_historical": 10,
+          "additional_multi_module": 12,
+          "additional_tasks": 24,
+          "admission_deficit": 32,
+          "new_dossiers_remaining": 0
+        },
+        "eligible_complex": 5,
+        "eligible_historical": 6,
+        "eligible_multi_module": 8,
+        "eligible_tasks": 8,
+        "new_dossiers_behavior_verified": 4,
+        "new_dossiers_curated_reviewed": 4,
+        "new_dossiers_individually_eligible": 4,
+        "new_dossiers_required": 4,
+        "required_state_events_prepared": {
+          "Go": 0,
+          "Python": 0,
+          "Rust": 0,
+          "TSJS": 0
+        }
+      }
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_qualified.py"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "elapsed_seconds": 0.044,
+      "stdout_sha256": "7ed0c78941892f2fbd08421b2e3518b6cc33d464711546afe3a1ae93f1b64b86",
+      "stderr": "",
+      "summary": {
+        "status": "not_admitted",
+        "error": "qualified admission requires exactly 32 primary tasks",
+        "competitive_runs_allowed": false
+      }
+    }
+  ],
+  "historical_freezes": [
+    {
+      "file": "docs/relatorios/logs/L5-C02/integration/publication-source-freeze.json",
+      "verified_against_commit": "e02370a",
+      "count": 19
+    },
+    {
+      "file": "docs/relatorios/logs/L5-C02/integration/publication-evidence-freeze.json",
+      "verified_against_commit": "aadab48",
+      "count": 16
+    }
+  ],
+  "scope": "Data-only reconciliation; no native, upstream, model or product execution. Native runtime bytes were not retained; hashes are prior producer reports. GitHub run metadata here is retained from the implementation, not freshly queried.",
+  "verifier_source": "from pathlib import Path\nimport subprocess,json,hashlib,datetime,time\nroot=Path('/Users/wkoch/Projetos/xrai');out=root/'docs/relatorios/logs/revisao-L5-C02';out.mkdir(exist_ok=True)\npy='/private/tmp/xrai-c02-tools/bin/python'\ncommands=[([py,'docs/relatorios/logs/L5-C02/reconcile_new_corpus.py'],0),([py,'eval/scripts/verify_c02.py'],0),([py,'eval/scripts/verify_slot_plan.py'],0),([py,'eval/scripts/verify_qualified.py'],1)]\nresults=[]\nfor cmd,expected in commands:\n start=time.monotonic();p=subprocess.run(cmd,cwd=root,capture_output=True,text=True)\n assert p.returncode==expected,(cmd,p.returncode,p.stderr[-2000:])\n data=json.loads(p.stdout)\n if 'verify_qualified.py' in cmd[-1]:assert data['status']=='not_admitted' and data['competitive_runs_allowed'] is False\n if 'verify_c02.py' in cmd[-1]:assert data==json.loads((root/'eval/qualification/c02-status-matrix.json').read_text())\n if 'reconcile_new_corpus.py' in cmd[-1]:assert data==json.loads((root/'docs/relatorios/logs/L5-C02/ci-next-first/verification.json').read_text())\n results.append({'command':cmd,'exit_code':p.returncode,'expected_exit':expected,'elapsed_seconds':round(time.monotonic()-start,3),'stdout_sha256':hashlib.sha256(p.stdout.encode()).hexdigest(),'stderr':p.stderr,'summary':data.get('summary',data.get('factual_summary',data.get('export_provenance',data)))})\n print(cmd[-1],p.returncode,flush=True)\nfreezes=[]\nfor name,commit in [('publication-source-freeze.json','e02370a'),('publication-evidence-freeze.json','aadab48')]:\n p=root/'docs/relatorios/logs/L5-C02/integration'/name;data=json.loads(p.read_text())\n for path,sha in data['source_sha256'].items():\n  raw=subprocess.check_output(['git','show',commit+':'+path],cwd=root); assert hashlib.sha256(raw).hexdigest()==sha,(name,path)\n freezes.append({'file':str(p.relative_to(root)),'verified_against_commit':commit,'count':len(data['source_sha256'])})\nreport={'schema':'xrai.architecture.c02-review.evidence.v1','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'result':'passed','commands':results,'historical_freezes':freezes,'scope':'Data-only reconciliation; no native, upstream, model or product execution. Native runtime bytes were not retained; hashes are prior producer reports. GitHub run metadata here is retained from the implementation, not freshly queried.','verifier_source':Path(__file__).read_text()}\n(out/'evidencias.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\\n'); print('DONE',flush=True)\n"
+}

@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 12/10/2026. **Continuação L5: R3 e pares comportamentais Rust/JS aceitos no recorte; faltam corpus integral, outras famílias, agente e gates.** [Parecer e próxima execução](relatorios/REVISAO-L5-CONTINUACAO.md). [Roteiro v1 / ADR028](ROTEIRO-V1.md) acrescenta seis atividades condicionais de estabilização após G2, fora dos 41 cartões M0/M1. ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md)/[027](decisoes/CONTEXTO-P3.md) detalham semântica, workers, medição e contexto/expansão. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 12/10/2026. **L5-C02 aceita: quatro novos dossiês elegíveis, oito com pilotos; faltam eventos reais, quotas, outras famílias semânticas e agente.** [Parecer e próxima execução](relatorios/REVISAO-L5-C02.md). [Roteiro v1 / ADR028](ROTEIRO-V1.md) mantém seis atividades condicionais após G2, fora dos 41 cartões M0/M1. ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md)/[027](decisoes/CONTEXTO-P3.md) permanecem. Estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -709,11 +709,12 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[Continuação L5](relatorios/REVISAO-L5-CONTINUACAO.md): preservar os mesmos seis incrementos e os 41 cartões M0/M1. R3 e provas comportamentais Rust/JS já entregues; não refazê-los.
+[Revisão L5-C02](relatorios/REVISAO-L5-C02.md): mesmos seis incrementos e 41 cartões. C02/quatro dossiês aceitos, oito elegíveis com pilotos; não refazer as provas aprovadas. Sem lote L6.
 
-1. L5-04: conciliar C02 (curadoria/comportamento, evento por família e admissão global separados); novos dossiês Python/Go e matriz factual de 32 tarefas.
-2. L5-02: primeira fatia TS/JS, R4 orientado por perdas e depois Python/Go; preservar R3/cfg/contraprovas.
-3. L5-01/05: recuperação lexical e seleção em fonte real, controles comparáveis, adapter real com replay/ledger e estimativa concreta para quatro smokes condicionados.
-4. L5-03: direto com cache equivalente, fontes reais/concorrência/decomposição e calibração completa.
-5. L5-06: comparadores/preflight; D1 → M0-12/G0, H1 → G1, integração → G2. Nenhum gate aprovado por planejamento.
-6. Somente após G2: V1-01…06 do roteiro de estabilização, ainda não iniciados. Publicação 1.0 requer decisão de release; commit/push rotineiro não a substitui.
+1. L5-04/05: selecionar quatro casos de estado, congelar descritores e entregar um evento integral com contraprovas; completar quatro e impor C03 no preflight de campanha. Elegibilidade preparada não é execução comprovada.
+2. L5-02: primeira fatia TS/JS alinhada a fontes reais e eventos, R4 orientado por perdas e depois Python/Go; preservar R3/cfg.
+3. L5-01/05: recuperação lexical/seleção real e controles comparáveis; adapter, ledger e estimativa de quatro smokes condicionados.
+4. L5-04: ampliar 24 tarefas restantes/quotas e integrar ao schema/materializador de admissão, preservando IDs/linhagens e aceites por tipo.
+5. L5-03/06: direto com cache equivalente, recursos reais/concorrência e comparadores/preflight; M0-12/G0 exige todas as dependências.
+6. S01 antes de nova execução afetada: avaliar aplicabilidade e controles dos alertas do setup Gitea, sem atualizar o corpus congelado silenciosamente. Trabalho independente continua.
+7. Após G2: seis cartões V1 de estabilização. Nenhum gate ou estado muda por planejamento; publicação 1.0 requer decisão própria.

@@ -294,3 +294,9 @@ Usar o escopo/recorte congelado antes dos resultados; conservar falhas, perdas, 
 [Revisão corrente](relatorios/REVISAO-L5-CONTINUACAO.md) preserva as provas R3/pares históricos e concretiza C02. Validar separadamente status de dossiê, evento por família e admissão global; uma correção histórica não recebe obrigação automática de A→B suplementar. Baseline/reference/probes continuam obrigatórios no seu recorte. Denominadores de cobertura real incluem unknowns e não podem ser substituídos pelo subconjunto resolvível.
 
 [ADR028](ROTEIRO-V1.md) especifica as provas condicionais V1-01…06: compatibilidade pública, recursos medidos, atualização/recuperação, fluxo completo pelos artefatos CLI/MCP, distribuição nos pisos nativos e qualificação da candidate. Executar após G2; não alterar H1 ou limiares para acomodar resultados. A documentação de release só anuncia capacidades, estabilidade e reprodutibilidade efetivamente comprovadas.
+
+## 15. Aceite L5-C02 e próximos controles
+
+[Revisão L5-C02](relatorios/REVISAO-L5-C02.md): pares Python/Go aceitos no recorte e matriz recomposta. C03 exige recibos vinculados a task/descriptor/fontes A/B/executável/configuração, continuidade de índice/processo, saídas completas e comparação recomputável com rebuild B; quota preparada não libera campanha. Contraprovas cobrem cold B, reinício, troca de recibo, evento suplementar, flags sem provas e divergências de cobertura/unknown.
+
+S01 exige avaliação dos alertas observados no setup congelado antes de nova execução afetada, preservando o baseline. Mudança de setup que afete prova requer variante identificada e revalidação. No próximo incremento do executor Go, separar inventários imutáveis de caches graváveis e conferir mudanças entre fases; não atribuir retroativamente essa prova ao run aceito. Continuidade de documentação usa a matriz C02 derivada, mantendo checkpoints congelados explicitamente históricos.
