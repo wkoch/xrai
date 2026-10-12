@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-12T17:04:35.445586+00:00",
+  "reviewer": "independent cfg_review subagent",
+  "existing_proof_reverified": {
+    "counterproofs-cfg": {
+      "cases": 8,
+      "resolvable": 1,
+      "resolvable_correct": 1,
+      "correct": 8,
+      "false_promotions": 0,
+      "events": 0
+    },
+    "rust-r3": {
+      "cases": 34,
+      "resolvable": 16,
+      "resolvable_correct": 16,
+      "correct": 34,
+      "false_promotions": 0,
+      "events": 0
+    }
+  },
+  "main_denominator_unchanged": [
+    34,
+    16
+  ],
+  "findings": [],
+  "limitations": [
+    "Restricted cfg parser conservatively rejects literal parentheses inside string atoms.",
+    "No complete compiler cfg equivalence or native CI claim."
+  ],
+  "artifacts": {
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/README.md": "3b253e75874e26af59af6989aa5d7f220b14be736f44eb196afd17963b222512",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/graph-coverage.json": "43388911a631dd2fec126d79d1731e0ab26b3b5046964c0207cf715aa53827dd",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/labels-first.json": "ce755d49ccc235218e4988b63208a5056800111dbccd4eaf9f6ffb6e094563b9",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/matrix.json": "36c58e6760ddac70023e706d1325680c3a639cef741684883b4409e42d966b74",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/outer-shapes-labels-first.json": "9c522dd262356167fbde5fb07a92cd0639754fb4dbc0343d3b14f6daf0e13589",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/outer-shapes-matrix.json": "9f21853b4814ba8559299324f060ebba1bdfa0948866f7c7e2f7248c92649745",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/outer-shapes.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/outer-shapes.stdout": "126ed0e816891edd6460abc861e02f285c8eab68f5a3022b73e353457275f66c",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/review.py": "9a3c6f28a2fe9b3920e6d6b999d6e0b00f021bcd8a61c297e48a08a7c8899828",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/run.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/run.stdout": "680f16d63c0bf3025df7199cdf841cf413a8fbafbe369a4882b04b956d6fd827",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/source-and-shape-review.json": "344c2d7d2c849edbfd63d074c8fdef3143109e0f0e8599453450a4a1c06c7ff9",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/summary-first-error.txt": "acfb53cd612f568b64d2ff017e57f3211ab638e88e5121fc7cfc0f35b9f302d2",
+    "docs/relatorios/logs/L5-continuacao/integration/cfg-independent/verification.json": "a6c57ddefb2d9efc09db9e1971854ace58e67e35113e23a3b37086c314ce8fa4"
+  }
+}

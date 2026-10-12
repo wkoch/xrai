@@ -15,6 +15,18 @@ class R3VerifierTests(unittest.TestCase):
     def test_all_originals(self):
         for stem in ['rust-r3','counterproofs-r3','counterproofs-extra','tokio-test-development','incremental-events','p3-consumer']:
             V.verify(MATRIX/(stem+'.json'),LOG/(stem+'-completed.stdout'))
+    def test_cfg_unsupported_is_not_masked_by_known_branch(self):
+        directory = LOG if 'XRAI_R3_RECEIPT_DIR' in os.environ else ROOT/'docs/relatorios/logs/L5-continuacao/r3/cfg-review'
+        receipt = directory/'counterproofs-cfg-completed.stdout'
+        V.verify(MATRIX/'counterproofs-cfg.json', receipt)
+        data=json.loads(receipt.read_text())
+        data['rows'][0]['snapshot']['conditions'][0]['state']='known_true'
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp)/'changed.json';p.write_text(json.dumps(data))
+            with self.assertRaises(AssertionError): V.verify(MATRIX/'counterproofs-cfg.json',p)
+            data=json.loads(receipt.read_text());data['rows'][0]['snapshot']['gaps']=[]
+            p.write_text(json.dumps(data))
+            with self.assertRaises(AssertionError): V.verify(MATRIX/'counterproofs-cfg.json',p)
     def test_condition_state(self):
         self.reject('rust-r3',lambda d:d['rows'][23]['snapshot']['conditions'][0].update(state='known_false'))
     def test_binding_name(self):

@@ -1,0 +1,135 @@
+{
+  "schema": "xrai.eval.l5.js.checkpoint-diagnostic.v1",
+  "at": "2026-10-12T17:06:38.837731+00:00",
+  "status": "objective_oracle_observation_error_corrected_fresh_CI_pending",
+  "CI_run": "38280118706",
+  "CI_url": "https://github.com/wkoch/xrai/actions/runs/38280118706",
+  "CI_observations": {
+    "base": {
+      "oracle_source_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+      "executor_source_sha256": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+      "lock_before": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+      "lock_after": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+      "requirements": {
+        "passed": 0,
+        "failed": 3,
+        "pending": 2
+      },
+      "regressions": {
+        "passed": 2,
+        "failed": 0,
+        "pending": 3
+      },
+      "teardown_all_verified": true,
+      "probe_verified": true,
+      "requirement_failure": "Not yet implemented"
+    },
+    "reference": {
+      "oracle_source_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+      "executor_source_sha256": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+      "lock_before": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+      "lock_after": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+      "requirements": {
+        "passed": 0,
+        "failed": 3,
+        "pending": 2
+      },
+      "regressions": {
+        "passed": 2,
+        "failed": 0,
+        "pending": 3
+      },
+      "teardown_all_verified": true,
+      "probe_verified": false,
+      "requirement_failure": "empty yields at next/current/A1 before queued SyncLane microtask could run"
+    }
+  },
+  "diagnosis": [
+    "ReactNoop.createRoot selects ConcurrentRoot and supportsMicrotasks=true",
+    "native hook clears transition and sets DiscreteEventPriority for changed snapshot forceUpdate",
+    "WorkLoop queues SyncLane on the microtask queue for concurrent roots; batchedUpdates only flushes legacy sync callbacks",
+    "synchronous internalAct drains mock Scheduler but does not process the pending Promise microtask",
+    "captured native shared tests await act in basic updates, store replacement and selected snapshots"
+  ],
+  "source_evidence": {
+    "path": "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/captured-source-anchors.json",
+    "sha256": "1621f6bf0fdd0138722812ae122f52af76907582060a32599f66946359429d51",
+    "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+    "anchors_verified_from_complete_archive": true
+  },
+  "natural_input": {
+    "path": "eval/qualification/l5-real/js/agent/input.md",
+    "sha256": "f6822108434963667d2f220d60d60e134a48e93130bb25c74b4bcce5359862ef",
+    "text_unchanged": true,
+    "requires_synchronous_update_in_concurrent_root_inside_startTransition": true,
+    "explicit_same_stack_return_requirement": false,
+    "interpretation": "SyncLane work at the concurrent root microtask checkpoint; this interpretation follows the captured producer scheduling and is independently reviewable"
+  },
+  "oracle_change": {
+    "original": "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/oracle-before-checkpoint.js",
+    "original_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+    "corrected": "eval/qualification/l5-real/js/oracles/XraiExternalStoreContract-test.js",
+    "corrected_sha256": "7e07f66795a31c1d0877bfb992c7aa3a1c117e39ba5197d60a16572645c84872",
+    "principal": "startTransition stays outside act, followed by exactly one await Promise.resolve before observing render/output; no flushSync/Scheduler drain",
+    "lifecycle": "await act matches captured upstream observation sequence",
+    "negative_control": "ordinary useState transition remains pending after identical Promise checkpoint; only subsequent explicit act flushes it",
+    "requirements": 3,
+    "regressions": 2,
+    "upstream_reference_modified": false,
+    "lock_modified": false,
+    "not_retroactive_success": true
+  },
+  "checks": {
+    "receipt": "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/freeze-checks.json",
+    "sha256": "b316d1ceae9284e69238105305e7d8c841708ffa5ec35dbbcc2457b422b4fd79",
+    "own_offline_tests": 18,
+    "source_guard_mutation_counterchecks": 6,
+    "case_artifact_digests": 20,
+    "JS_runtime_execution": false,
+    "native_behavior_proven": false
+  },
+  "limits": [
+    "source guard verifies the bounded fixture layout, not general JavaScript syntax or semantics",
+    "new oracle and transition negative control must pass a fresh disposable Linux CI run",
+    "candidate admission, A-to-B evidence and competitive gates remain pending"
+  ],
+  "admitted": false,
+  "D1_admitted_delta": 0,
+  "graph_coverage": {
+    "receipt": "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/index-coverage.json",
+    "generation": "2026-10-12T17:05:30Z",
+    "matched_paths": 3,
+    "tier": 2,
+    "caveat": "best effort"
+  },
+  "graft": {
+    "incremental_queries": 1,
+    "incremental_tokens_saved": 3460,
+    "cumulative_agent_queries": 14,
+    "cumulative_agent_tokens_saved": 78225
+  },
+  "artifacts": {
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/capture-verify.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/capture-verify.stdout": "fbd63db92ed476024085c17fa12b74ebf884f9f2a92622b99b6495bd9753e559",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/captured-source-anchors.json": "1621f6bf0fdd0138722812ae122f52af76907582060a32599f66946359429d51",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/base/bootstrap.json": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/base/probe.json": "18e514a8b590c42bfb28dd2a0615636b2f6adb3389545197720d1329a6de4f5d",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/base/regression-harness.json": "e9053912782abe765c920ea8b980cc3e84eff82a343cae09d59d1530a0326aa1",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/base/regression-jest.json": "c4c2f759f96f28452bf90452e5b3dead7f799b6bf31af67bb499189887b258dd",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/base/requirement-harness.json": "93c4e37975a85a47e08ef067a4353eb49956a04b2f214209e431d69453ae1bdf",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/base/requirement-jest.json": "650c9a4ac583d06c5771b6b50bf9f2e0e77e66802db120d5dab8a2528a54a888",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/reference/bootstrap.json": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/reference/probe.json": "e7b75b1fec3bd4e64521dc936cbd0561ac0c9a07d84c69029ac2420bffebeb32",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/reference/regression-harness.json": "5d06913eea90c9b159f39ebce8be5e070d98036fac67d020668ab571eba8cb76",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/reference/regression-jest.json": "8ade76708017dd909de90338d4468295670ee32f82f7d03e85ec5a8efed35801",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/reference/requirement-harness.json": "a202d39fde5df156b488041cc94c45418403386f2ee0edd76608a384f4035f8e",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/ci-second/reference/requirement-jest.json": "833f49e25457f6cf8544a55747703ec5d1f13916c500e1ff7587c0ce84d8c854",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/freeze-checks.json": "b316d1ceae9284e69238105305e7d8c841708ffa5ec35dbbcc2457b422b4fd79",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/index-coverage.json": "2a3cd35676b3e467609f183b915a3d0a948f26bdc0c455affb2bf94aca7b0c69",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/oracle-before-checkpoint.js": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/oracle-guard.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/oracle-guard.stdout": "6a9683b0178fd723d731e83c3fefa30c8aa6724380d8140a7c748b3ba5d69cfe",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/own-tests.stderr": "ece897d6b74c44c1996b687595a5032b7c0be08924c9ecfa6c119bdf56a928b9",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/checkpoint-diagnostic/own-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

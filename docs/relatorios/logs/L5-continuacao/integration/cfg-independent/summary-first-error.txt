@@ -1,0 +1,1 @@
+The supplementary shape run exited 0 and passed verification; first summary generation then failed with KeyError: conditions because conditionless conservative snapshots omit this optional JSON field. Summary reader was corrected to use .get; implementation and oracle labels unchanged.

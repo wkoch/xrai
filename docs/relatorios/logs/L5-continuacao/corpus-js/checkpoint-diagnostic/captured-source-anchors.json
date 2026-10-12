@@ -1,0 +1,122 @@
+[
+  {
+    "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+    "base_sha256": "66a2e38d1d47afd70c3b487e0582716777b2174caef5e0b4ab949514eef5968f",
+    "head_sha256": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753",
+    "unchanged_outside_reference_patch": false,
+    "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+    "anchors": [
+      {
+        "start_line": 1291,
+        "end_line": 1307,
+        "source": "  // Because updates are synchronous, we don't queue them. Instead we force a\n  // re-render whenever the subscribed state changes by updating an some\n  // arbitrary useState hook. Then, during render, we call getSnapshot to read\n  // the current value.\n  //\n  // Because we don't actually use the state returned by the useState hook, we\n  // can save a bit of memory by storing other stuff in that slot.\n  //\n  // To implement the early bailout, we need to track some things on a mutable\n  // object. Usually, we would put that in a useRef hook, but we can stash it in\n  // our useState hook instead.\n  //\n  // To force a re-render, we call forceUpdate({inst}). That works because the\n  // new object always fails an equality check.\n  const [{inst}, forceUpdate] = dispatcher.useState({\n    inst: {value, getSnapshot},\n  });"
+      },
+      {
+        "start_line": 1321,
+        "end_line": 1329,
+        "source": "    if (checkIfSnapshotChanged(inst)) {\n      // Force a re-render.\n      const prevTransition = ReactCurrentBatchConfig.transition;\n      const prevPriority = getCurrentUpdatePriority();\n      ReactCurrentBatchConfig.transition = 0;\n      setCurrentUpdatePriority(DiscreteEventPriority);\n      forceUpdate({inst});\n      setCurrentUpdatePriority(prevPriority);\n      ReactCurrentBatchConfig.transition = prevTransition;"
+      },
+      {
+        "start_line": 1340,
+        "end_line": 1357,
+        "source": "      // The store changed. Check if the snapshot changed since the last time we\n      // read from the store.\n      if (checkIfSnapshotChanged(inst)) {\n        // Force a re-render.\n        const prevTransition = ReactCurrentBatchConfig.transition;\n        const prevPriority = getCurrentUpdatePriority();\n        ReactCurrentBatchConfig.transition = 0;\n        setCurrentUpdatePriority(DiscreteEventPriority);\n        forceUpdate({inst});\n        setCurrentUpdatePriority(prevPriority);\n        ReactCurrentBatchConfig.transition = prevTransition;\n      }\n    };\n    // Check for changes right before subscribing. Subsequent changes will be\n    // detected in the subscription handler.\n    handleStoreChange();\n    // Subscribe to the store and return a clean-up function.\n    return subscribe(handleStoreChange);"
+      }
+    ]
+  },
+  {
+    "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+    "base_sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+    "head_sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+    "unchanged_outside_reference_patch": true,
+    "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+    "anchors": [
+      {
+        "start_line": 506,
+        "end_line": 521,
+        "source": "  ensureRootIsScheduled(root, eventTime);\n  if (\n    lane === SyncLane &&\n    executionContext === NoContext &&\n    (fiber.mode & ConcurrentMode) === NoMode &&\n    // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.\n    !(__DEV__ && ReactCurrentActQueue.isBatchingLegacy)\n  ) {\n    // Flush the synchronous work now, unless we're already working or inside\n    // a batch. This is intentionally inside scheduleUpdateOnFiber instead of\n    // scheduleCallbackForFiber to preserve the ability to schedule a callback\n    // without immediately flushing it. We only do this for user-initiated\n    // updates, to preserve historical behavior of legacy mode.\n    resetRenderTimer();\n    flushSyncCallbacksOnlyInLegacyMode();\n  }"
+      },
+      {
+        "start_line": 658,
+        "end_line": 682,
+        "source": "  if (newCallbackPriority === SyncLane) {\n    // Special case: Sync React callbacks are scheduled on a special\n    // internal queue\n    if (root.tag === LegacyRoot) {\n      if (__DEV__ && ReactCurrentActQueue.isBatchingLegacy !== null) {\n        ReactCurrentActQueue.didScheduleLegacyUpdate = true;\n      }\n      scheduleLegacySyncCallback(performSyncWorkOnRoot.bind(null, root));\n    } else {\n      scheduleSyncCallback(performSyncWorkOnRoot.bind(null, root));\n    }\n    if (supportsMicrotasks) {\n      // Flush the queue in a microtask.\n      if (__DEV__ && ReactCurrentActQueue.current !== null) {\n        // Inside `act`, use our internal `act` queue so that these get flushed\n        // at the end of the current scope even when using the sync version\n        // of `act`.\n        ReactCurrentActQueue.current.push(flushSyncCallbacks);\n      } else {\n        scheduleMicrotask(flushSyncCallbacks);\n      }\n    } else {\n      // Flush the queue in an Immediate task.\n      scheduleCallback(ImmediateSchedulerPriority, flushSyncCallbacks);\n    }"
+      },
+      {
+        "start_line": 1043,
+        "end_line": 1061,
+        "source": "export function batchedUpdates<A, R>(fn: A => R, a: A): R {\n  const prevExecutionContext = executionContext;\n  executionContext |= BatchedContext;\n  try {\n    return fn(a);\n  } finally {\n    executionContext = prevExecutionContext;\n    // If there were legacy sync updates, flush them at the end of the outer\n    // most batchedUpdates-like method.\n    if (\n      executionContext === NoContext &&\n      // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.\n      !(__DEV__ && ReactCurrentActQueue.isBatchingLegacy)\n    ) {\n      resetRenderTimer();\n      flushSyncCallbacksOnlyInLegacyMode();\n    }\n  }\n}"
+      }
+    ]
+  },
+  {
+    "path": "packages/react-noop-renderer/src/createReactNoop.js",
+    "base_sha256": "974809e4e2d9ecdbf3cce713a278cfab0cd46cd0b79941e8280f633bd879dc70",
+    "head_sha256": "974809e4e2d9ecdbf3cce713a278cfab0cd46cd0b79941e8280f633bd879dc70",
+    "unchanged_outside_reference_patch": true,
+    "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+    "anchors": [
+      {
+        "start_line": 398,
+        "end_line": 419,
+        "source": "\n    scheduleTimeout: setTimeout,\n    cancelTimeout: clearTimeout,\n    noTimeout: -1,\n\n    supportsMicrotasks: true,\n    scheduleMicrotask:\n      typeof queueMicrotask === 'function'\n        ? queueMicrotask\n        : typeof Promise !== 'undefined'\n        ? callback =>\n            Promise.resolve(null)\n              .then(callback)\n              .catch(error => {\n                setTimeout(() => {\n                  throw error;\n                });\n              })\n        : setTimeout,\n\n    prepareForCommit(): null | Object {\n      return null;"
+      },
+      {
+        "start_line": 935,
+        "end_line": 945,
+        "source": "    // TODO: Replace ReactNoop.render with createRoot + root.render\n    createRoot() {\n      const container = {\n        rootID: '' + idCounter++,\n        pendingChildren: [],\n        children: [],\n      };\n      const fiberRoot = NoopRenderer.createContainer(\n        container,\n        ConcurrentRoot,\n        false,"
+      }
+    ]
+  },
+  {
+    "path": "packages/jest-react/src/internalAct.js",
+    "base_sha256": "3f3a3b6492e2aaa3abf62783ab18a3d22912342b459d262af794e5fd5e5b9855",
+    "head_sha256": "3f3a3b6492e2aaa3abf62783ab18a3d22912342b459d262af794e5fd5e5b9855",
+    "unchanged_outside_reference_patch": true,
+    "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+    "anchors": [
+      {
+        "start_line": 95,
+        "end_line": 107,
+        "source": "      };\n    } else {\n      try {\n        // TODO: Let's not support non-async scopes at all in our tests. Need to\n        // migrate existing tests.\n        let didFlushWork;\n        do {\n          didFlushWork = Scheduler.unstable_flushAllWithoutAsserting();\n        } while (didFlushWork);\n      } finally {\n        unwind();\n      }\n    }"
+      },
+      {
+        "start_line": 114,
+        "end_line": 129,
+        "source": "function flushActWork(resolve, reject) {\n  // Flush suspended fallbacks\n  // $FlowFixMe: Flow doesn't know about global Jest object\n  jest.runOnlyPendingTimers();\n  enqueueTask(() => {\n    try {\n      const didFlushWork = Scheduler.unstable_flushAllWithoutAsserting();\n      if (didFlushWork) {\n        flushActWork(resolve, reject);\n      } else {\n        resolve();\n      }\n    } catch (error) {\n      reject(error);\n    }\n  });"
+      }
+    ]
+  },
+  {
+    "path": "packages/use-sync-external-store/src/__tests__/useSyncExternalStoreShared-test.js",
+    "base_sha256": "d174ab2c519abf18e13655899d1d4e24c1eabefe886b4dd6d6614a8eafe11cdf",
+    "head_sha256": "938a7953d90ecb0a25e6967f11c0a2ce95f82de0866bb2dad8b6af806fdfd1b1",
+    "unchanged_outside_reference_patch": false,
+    "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+    "anchors": [
+      {
+        "start_line": 62,
+        "end_line": 73,
+        "source": "    const internalAct = require('jest-react').act;\n\n    // The internal act implementation doesn't batch updates by default, since\n    // it's mostly used to test concurrent mode. But since these tests run\n    // in both concurrent and legacy mode, I'm adding batching here.\n    act = cb => internalAct(() => ReactNoop.batchedUpdates(cb));\n\n    useSyncExternalStore = require('use-sync-external-store')\n      .useSyncExternalStore;\n    useSyncExternalStoreExtra = require('use-sync-external-store/extra')\n      .useSyncExternalStoreExtra;\n  });"
+      },
+      {
+        "start_line": 80,
+        "end_line": 105,
+        "source": "  function createRoot(element) {\n    // This wrapper function exists so we can test both legacy roots and\n    // concurrent roots.\n    if (gate(flags => flags.variant)) {\n      // The native implementation only exists in 18+, so we test using\n      // concurrent mode. To test the legacy root behavior in the native\n      // implementation (which is supported in the sense that it needs to have\n      // the correct behavior, despite the fact that the legacy root API\n      // triggers a warning in 18), write a test that uses\n      // createLegacyRoot directly.\n      return ReactNoop.createRoot();\n    } else {\n      return ReactNoop.createLegacyRoot();\n    }\n  }\n\n  function createExternalStore(initialState) {\n    const listeners = new Set();\n    let currentState = initialState;\n    return {\n      set(text) {\n        currentState = text;\n        ReactNoop.batchedUpdates(() => {\n          listeners.forEach(listener => listener());\n        });\n      },"
+      },
+      {
+        "start_line": 119,
+        "end_line": 137,
+        "source": "  test('basic usage', async () => {\n    const store = createExternalStore('Initial');\n\n    function App() {\n      const text = useSyncExternalStore(store.subscribe, store.getState);\n      return <Text text={text} />;\n    }\n\n    const root = createRoot();\n    await act(() => root.render(<App />));\n\n    expect(Scheduler).toHaveYielded(['Initial']);\n    expect(root).toMatchRenderedOutput('Initial');\n\n    await act(() => {\n      store.set('Updated');\n    });\n    expect(Scheduler).toHaveYielded(['Updated']);\n    expect(root).toMatchRenderedOutput('Updated');"
+      },
+      {
+        "start_line": 163,
+        "end_line": 212,
+        "source": "  test('switch to a different store', async () => {\n    const storeA = createExternalStore(0);\n    const storeB = createExternalStore(0);\n\n    let setStore;\n    function App() {\n      const [store, _setStore] = useState(storeA);\n      setStore = _setStore;\n      const value = useSyncExternalStore(store.subscribe, store.getState);\n      return <Text text={value} />;\n    }\n\n    const root = createRoot();\n    await act(() => root.render(<App />));\n\n    expect(Scheduler).toHaveYielded([0]);\n    expect(root).toMatchRenderedOutput('0');\n\n    await act(() => {\n      storeA.set(1);\n    });\n    expect(Scheduler).toHaveYielded([1]);\n    expect(root).toMatchRenderedOutput('1');\n\n    // Switch stores and update in the same batch\n    act(() => {\n      ReactNoop.flushSync(() => {\n        // This update will be disregarded\n        storeA.set(2);\n        setStore(storeB);\n      });\n    });\n    // Now reading from B instead of A\n    expect(Scheduler).toHaveYielded([0]);\n    expect(root).toMatchRenderedOutput('0');\n\n    // Update A\n    await act(() => {\n      storeA.set(3);\n    });\n    // Nothing happened, because we're no longer subscribed to A\n    expect(Scheduler).toHaveYielded([]);\n    expect(root).toMatchRenderedOutput('0');\n\n    // Update B\n    await act(() => {\n      storeB.set(1);\n    });\n    expect(Scheduler).toHaveYielded([1]);\n    expect(root).toMatchRenderedOutput('1');"
+      },
+      {
+        "start_line": 215,
+        "end_line": 263,
+        "source": "  test('selecting a specific value inside getSnapshot', async () => {\n    const store = createExternalStore({a: 0, b: 0});\n\n    function A() {\n      const a = useSyncExternalStore(store.subscribe, () => store.getState().a);\n      return <Text text={'A' + a} />;\n    }\n    function B() {\n      const b = useSyncExternalStore(store.subscribe, () => store.getState().b);\n      return <Text text={'B' + b} />;\n    }\n\n    function App() {\n      return (\n        <>\n          <A />\n          <B />\n        </>\n      );\n    }\n\n    const root = createRoot();\n    act(() => root.render(<App />));\n\n    expect(Scheduler).toHaveYielded(['A0', 'B0']);\n    expect(root).toMatchRenderedOutput('A0B0');\n\n    // Update b but not a\n    await act(() => {\n      store.set({a: 0, b: 1});\n    });\n    // Only b re-renders\n    expect(Scheduler).toHaveYielded(['B1']);\n    expect(root).toMatchRenderedOutput('A0B1');\n\n    // Update a but not b\n    await act(() => {\n      store.set({a: 1, b: 1});\n    });\n    // Only a re-renders\n    expect(Scheduler).toHaveYielded(['A1']);\n    expect(root).toMatchRenderedOutput('A1B1');\n  });\n\n  // In React 18, you can't observe in between a sync render and its\n  // passive effects, so this is only relevant to legacy roots\n  // @gate !variant\n  test(\n    \"compares to current state before bailing out, even when there's a \" +"
+      }
+    ]
+  }
+]

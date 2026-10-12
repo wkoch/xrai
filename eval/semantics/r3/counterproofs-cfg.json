@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "profile": "rust-r3-v1",
+  "cases": [
+    {
+      "id": "any-known-true-unsupported",
+      "files": {
+        "src/lib.rs": "#[cfg(any(feature=\"on\", broken(option)))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "all-known-false-unsupported",
+      "files": {
+        "src/lib.rs": "#[cfg(all(feature=\"on\", broken(option)))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:false"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "all-known-false-escaped",
+      "files": {
+        "src/lib.rs": "#[cfg(all(feature=\"on\", feature=\"cho\\n\"))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:false"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "any-known-true-escaped",
+      "files": {
+        "src/lib.rs": "#[cfg(any(feature=\"on\", feature=\"cho\\n\"))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "any-known-true-valid-unknown",
+      "files": {
+        "src/lib.rs": "#[cfg(any(feature=\"on\", feature=\"missing\"))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target"
+    },
+    {
+      "id": "all-known-false-valid-unknown",
+      "files": {
+        "src/lib.rs": "#[cfg(all(feature=\"on\", feature=\"missing\"))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:false"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "nested-unsupported",
+      "files": {
+        "src/lib.rs": "#[cfg(any(feature=\"on\", all(unix, broken(option))))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "not-unsupported",
+      "files": {
+        "src/lib.rs": "#[cfg(not(broken(option)))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 2,
+  "profile": "rust-r3-v1",
+  "cases": [
+    {
+      "id": "noncanonical-or-bounded-string-0",
+      "files": {
+        "src/lib.rs": "#[cfg (any(feature=\"on\", broken(option)))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true",
+        "feature:paren(value)": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "noncanonical-or-bounded-string-1",
+      "files": {
+        "src/lib.rs": "#[ cfg(any(feature=\"on\", broken(option)))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true",
+        "feature:paren(value)": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "noncanonical-or-bounded-string-2",
+      "files": {
+        "src/lib.rs": "#![cfg(any(feature=\"on\", broken(option)))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true",
+        "feature:paren(value)": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "noncanonical-or-bounded-string-3",
+      "files": {
+        "src/lib.rs": "#[cfg_attr(unix, cfg(any(feature=\"on\", broken(option))))] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true",
+        "feature:paren(value)": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "noncanonical-or-bounded-string-4",
+      "files": {
+        "src/lib.rs": "#[cfg(feature=\"paren(value)\")] pub fn target() {}"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:on": "known:true",
+        "feature:paren(value)": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "expected_state": "unknown",
+      "expected_target": null
+    }
+  ]
+}

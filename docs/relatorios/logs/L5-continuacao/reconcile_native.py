@@ -25,7 +25,7 @@ def reconcile(directory, commit):
                     native / ('context-' + name + '.json'))
                     for name in ['removed-consumer', 'central-hunk', 'r3-binding']}
         semantics = {}
-        for name in ['rust-r3', 'counterproofs-r3', 'counterproofs-extra',
+        for name in ['rust-r3', 'counterproofs-r3', 'counterproofs-extra', 'counterproofs-cfg',
                      'tokio-test-development', 'incremental-events', 'p3-consumer']:
             semantics[name] = verify_semantics(ROOT / 'eval/semantics/r3' / (name + '.json'),
                                                native / 'r3' / (name + '-completed.stdout'))

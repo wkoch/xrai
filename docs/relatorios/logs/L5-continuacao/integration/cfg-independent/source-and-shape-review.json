@@ -1,0 +1,110 @@
+{
+  "at": "2026-10-12T17:03:54.757198+00:00",
+  "sources_hash_match": {
+    "crates/xrai-eval/src/semantics_spike/r3.rs": true,
+    "eval/scripts/verify_semantics.py": true,
+    "crates/xrai-eval/tests/semantics_spike.rs": true,
+    "eval/semantics/r3/tests/test_r3_verifier.py": true,
+    "eval/semantics/r3/counterproofs-cfg.json": true
+  },
+  "artifact_hash_match": {
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test.stdout": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-completed.stdout": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-completed.stderr": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-verified.receipt.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test.receipt.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/initial.stderr": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/implementation-sources.tar.gz": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-verified.stdout": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test-final.stderr": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test-final.stdout": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/python-adversarial.receipt.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-verified.stderr": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-completed.stdout": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-completed.stderr": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/initial.stdout": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test.stderr": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/python-adversarial.stderr": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-completed.receipt.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-verified.stdout": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/initial.receipt.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/labels-first.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-verified.stderr": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test-final.receipt.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-verified.receipt.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-completed.receipt.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/graph-coverage.json": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantics-spike-debug-macos-arm64.gz": true,
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/python-adversarial.stdout": true
+  },
+  "binary_hash_matches_retained_debug": true,
+  "verified_outer_shapes": {
+    "cases": 5,
+    "resolvable": 0,
+    "resolvable_correct": 0,
+    "correct": 5,
+    "false_promotions": 0,
+    "events": 0
+  },
+  "outer_shape_rows": [
+    {
+      "id": "noncanonical-or-bounded-string-0",
+      "state": "unknown",
+      "conditions": [],
+      "gap_reasons": [
+        "configuration_or_attribute_not_evaluated"
+      ]
+    },
+    {
+      "id": "noncanonical-or-bounded-string-1",
+      "state": "unknown",
+      "conditions": [],
+      "gap_reasons": [
+        "configuration_or_attribute_not_evaluated"
+      ]
+    },
+    {
+      "id": "noncanonical-or-bounded-string-2",
+      "state": "unknown",
+      "conditions": [],
+      "gap_reasons": [
+        "configuration_or_attribute_not_evaluated"
+      ]
+    },
+    {
+      "id": "noncanonical-or-bounded-string-3",
+      "state": "unknown",
+      "conditions": [],
+      "gap_reasons": [
+        "configuration_or_attribute_not_evaluated"
+      ]
+    },
+    {
+      "id": "noncanonical-or-bounded-string-4",
+      "state": "unknown",
+      "conditions": [
+        {
+          "predicate": "feature=\"paren(value)\"",
+          "state": "not_evaluated",
+          "inputs": [],
+          "evidence": {
+            "file_id": "fi_e3f85dfb5b619eeb400b77bf17e6437c22a5c093bd69cd499ebc9b993b0fc846",
+            "snapshot_id": "snap_8a4d14aba9fc22fbcd302e2e1f4490fd07242392a43811ec5f699663b022bf37",
+            "path": "src/lib.rs",
+            "source_hash": "58a7ad37b7b2ae06e253930fc6db91df4160f3d2bcb9ef4017cb92163b2094b1",
+            "start": 0,
+            "end": 30
+          }
+        }
+      ],
+      "gap_reasons": [
+        "configuration_not_evaluated"
+      ]
+    }
+  ],
+  "limitation": "Literal parentheses inside a cfg string are conservatively not_evaluated by the restricted parser; this bounded review does not claim full cfg grammar support.",
+  "main_denominator_unchanged": [
+    34,
+    16
+  ]
+}

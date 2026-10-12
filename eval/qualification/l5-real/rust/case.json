@@ -87,16 +87,32 @@
   "complexity": {
     "requested": true,
     "portability_floor_demonstrated": true,
-    "need_second_reader_semantic_review": true,
+    "need_second_reader_semantic_review": false,
     "complex_admitted": false
   },
-  "status": "materialized_candidate_probes_and_review_pending",
+  "status": "reviewed_behavioral_pair_verified_incremental_pending",
   "admitted": false,
   "competitive_runs_allowed": false,
   "pending": [
-    "baseline failing behavioral probe in Linux harness domain",
-    "reference behavioral and non_exhaustive_let regression suite in Linux harness domain",
-    "independent second-reader review",
     "incremental A-to-B same index/process execution and full B rebuild comparison"
-  ]
+  ],
+  "verification": {
+    "behavioral_pair": {
+      "status": "verified",
+      "ci_run": 38280118706,
+      "code_commit": "d54520b2d5f7d8fcac1e770ad06d26d1d5333a0d",
+      "artifact_id": 11760952130,
+      "receipt": "docs/relatorios/logs/L5-continuacao/ci-second/rust/summary.json",
+      "baseline_failed": 2,
+      "reference_passed": 2,
+      "reference_family_regressions_passed": 16,
+      "dependency_lock_unchanged": true,
+      "teardown_confirmed": true
+    },
+    "independent_review": {
+      "status": "reviewed",
+      "receipt": "docs/relatorios/logs/L5-continuacao/corpus-js/rust-second-reader-after-hardening.json",
+      "scope": "source pins, production floor, necessary relationships and production/reference/oracle separation; no competitive admission"
+    }
+  }
 }

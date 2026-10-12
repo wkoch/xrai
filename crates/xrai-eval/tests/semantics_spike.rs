@@ -170,6 +170,7 @@ fn r3_preregistered_bindings_cfg_real_modules_and_full_update_events() {
         "eval/semantics/r3/rust-r3.json",
         "eval/semantics/r3/counterproofs-r3.json",
         "eval/semantics/r3/counterproofs-extra.json",
+        "eval/semantics/r3/counterproofs-cfg.json",
         "eval/semantics/r3/tokio-test-development.json",
         "eval/semantics/r3/incremental-events.json",
     ] {

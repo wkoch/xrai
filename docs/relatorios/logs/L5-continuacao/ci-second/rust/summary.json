@@ -1,0 +1,67 @@
+{
+  "domain_id": "github-38280118706-1-rust",
+  "guard_is_containment": false,
+  "execution_domain": "harness bubblewrap user/PID/network namespace, confirmed teardown per command",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "results": {
+    "baseline": {
+      "source_archive_sha256": "539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f",
+      "hidden_test_sha256": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+      "namespace_domain_id": "7e1401b0-c5fc-4d49-bce3-f15c179d23aa",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "eligible_for_agent_run": true,
+      "preparation_environment": {
+        "RUSTUP_TOOLCHAIN": "1.98.1",
+        "CARGO_HOME": "/home/runner/work/_temp/rust-probes/work/_cargo",
+        "CARGO_TARGET_DIR": "/home/runner/work/_temp/rust-probes/work/baseline-target",
+        "CARGO_BUILD_JOBS": "2",
+        "CARGO_PROFILE_DEV_DEBUG": "0",
+        "CARGO_PROFILE_TEST_DEBUG": "0"
+      },
+      "lock_sha256_before": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+      "lock_sha256_after": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+      "probe_verified": true
+    },
+    "reference": {
+      "source_archive_sha256": "aa9d5764517afece4c0da16b70f206c27073bff2c40399cd579e243139fa0d66",
+      "hidden_test_sha256": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+      "namespace_domain_id": "859a9e03-2f67-43b0-a695-304821ec1535",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "eligible_for_agent_run": true,
+      "preparation_environment": {
+        "RUSTUP_TOOLCHAIN": "1.98.1",
+        "CARGO_HOME": "/home/runner/work/_temp/rust-probes/work/_cargo",
+        "CARGO_TARGET_DIR": "/home/runner/work/_temp/rust-probes/work/reference-target",
+        "CARGO_BUILD_JOBS": "2",
+        "CARGO_PROFILE_DEV_DEBUG": "0",
+        "CARGO_PROFILE_TEST_DEBUG": "0"
+      },
+      "lock_sha256_before": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+      "lock_sha256_after": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+      "probe_verified": true,
+      "regressions_verified": true,
+      "regressions_domain_id": "44e38bbd-c596-4c9e-ba9f-237591c1a2d6"
+    }
+  },
+  "vertical_pair_verified": true,
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "runner_sha256": "4c917109ba4765c0b2262fc3e37d54bcc7be054c3b6546d8e163eb1750228f9c",
+  "bounded_process_runner_sha256": "943f31fae58d99696c4bf4006af319afe54faead75ae30b4cea26f74c3f7a88d",
+  "toolchain_copy": {
+    "file_count": 153,
+    "source": "/home/runner/.rustup/toolchains/1.98.1-x86_64-unknown-linux-gnu",
+    "copies_no_hardlinks": true,
+    "cargo_sha256": "da77c8b33849312255ccde3179198ada4c8deb370488d050286146b1d1b27e14",
+    "rustc_sha256": "859254978c0a0402c32f949f6de0d99aee73be8d15f45aac00ae1448aac51e74"
+  },
+  "native_compilers": {
+    "cc": "/usr/bin/x86_64-linux-gnu-gcc-13",
+    "cc_sha256": "1b99826121ae6682a634e5efe09bd3e3df58ce58e0b28f849114ab5b89139c26",
+    "cxx": "/usr/bin/x86_64-linux-gnu-g++-13",
+    "cxx_sha256": "1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769"
+  }
+}

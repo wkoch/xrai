@@ -1,0 +1,28 @@
+{
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "xrai-eval",
+    "--test",
+    "semantics_spike",
+    "r3_preregistered_bindings_cfg_real_modules_and_full_update_events",
+    "--locked"
+  ],
+  "started": "2026-10-12T16:57:11.109753+00:00",
+  "elapsed_seconds": 3.4506135000010545,
+  "exit": 0,
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "stdout": "semantic-test-final.stdout",
+  "stdout_sha256": "7f458e036c88dd700b8d1f0d768b8ecacfb95306127abe95943a4b3aa10e48bd",
+  "stderr": "semantic-test-final.stderr",
+  "stderr_sha256": "6ba44db879fe3b33cf1486a801e80a3edb51a2c44029fd78770f6374aca9846c",
+  "sources": {
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "dde45cb4ebc3113fd18cb327f56ae5d27e6a08d3473c3d9a5d55cfe61912d2cf",
+    "crates/xrai-eval/src/bin/semantics-spike.rs": "4f801649cece5c15dc0f9807b64648dcf8c593497b3a8923b5d4690b74cdad23",
+    "crates/xrai-eval/tests/semantics_spike.rs": "75915c695e79aebe5d8b548f289abad3ee1077413dee03a38ddf789c41ed3afd",
+    "eval/scripts/verify_semantics.py": "8fb06d627c7d07300fd3d53263663607c9a85a0dd686fc5e2bf460e971ff420a"
+  }
+}

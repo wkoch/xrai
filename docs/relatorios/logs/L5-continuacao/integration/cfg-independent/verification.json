@@ -1,0 +1,165 @@
+{
+  "at": "2026-10-12T17:02:26.321028+00:00",
+  "command": [
+    "/Users/wkoch/Projetos/xrai/target/debug/semantics-spike",
+    "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-independent/matrix.json"
+  ],
+  "exit": 0,
+  "stdout_sha256": "680f16d63c0bf3025df7199cdf841cf413a8fbafbe369a4882b04b956d6fd827",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "verified": {
+    "cases": 24,
+    "resolvable": 4,
+    "resolvable_correct": 4,
+    "correct": 24,
+    "false_promotions": 0,
+    "events": 0
+  },
+  "rows": [
+    {
+      "id": "unsupported-first-any",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-last-any",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-first-all",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-last-all",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-deep-any",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-deep-all",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "invalid-not-empty",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "invalid-not-two",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-raw-string",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-numeric-value",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-escape",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-invalid-key",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-extra-comma",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "unsupported-unknown-op",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "valid-trailing-comma-any",
+      "condition": "known_true",
+      "result": "resolved",
+      "configuration_gap": false
+    },
+    {
+      "id": "valid-trailing-comma-all",
+      "condition": "known_false",
+      "result": "unknown",
+      "configuration_gap": false
+    },
+    {
+      "id": "valid-not-unknown",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "valid-any-empty",
+      "condition": "known_false",
+      "result": "unknown",
+      "configuration_gap": false
+    },
+    {
+      "id": "valid-all-empty",
+      "condition": "known_true",
+      "result": "resolved",
+      "configuration_gap": false
+    },
+    {
+      "id": "valid-all-unknown",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "valid-any-unknown",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    },
+    {
+      "id": "valid-closed-family",
+      "condition": "known_true",
+      "result": "resolved",
+      "configuration_gap": false
+    },
+    {
+      "id": "valid-nested-known",
+      "condition": "known_true",
+      "result": "resolved",
+      "configuration_gap": false
+    },
+    {
+      "id": "valid-nested-unknown",
+      "condition": "not_evaluated",
+      "result": "unknown",
+      "configuration_gap": true
+    }
+  ],
+  "scope": "24 supplementary cfg cases only; original 34/16 denominator unchanged; no upstream execution or full-compiler equivalence claim"
+}

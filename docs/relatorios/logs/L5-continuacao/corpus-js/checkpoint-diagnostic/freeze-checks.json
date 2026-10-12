@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-12T17:05:18.153890+00:00",
+  "commands": [
+    {
+      "name": "own-tests",
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts/tests",
+        "-p",
+        "test_l5_js*.py",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "own-tests.stdout",
+      "stderr": "own-tests.stderr"
+    },
+    {
+      "name": "oracle-guard",
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_l5_js_oracle.py"
+      ],
+      "exit": 0,
+      "stdout": "oracle-guard.stdout",
+      "stderr": "oracle-guard.stderr"
+    },
+    {
+      "name": "capture-verify",
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/prepare_l5_js.py",
+        "verify"
+      ],
+      "exit": 0,
+      "stdout": "capture-verify.stdout",
+      "stderr": "capture-verify.stderr"
+    }
+  ],
+  "syntax_checked": [
+    "eval/scripts/run_l5_js.py",
+    "eval/scripts/verify_l5_js_oracle.py",
+    "eval/scripts/tests/test_l5_js_oracle.py"
+  ],
+  "case_artifacts_verified": 20,
+  "no_JS_runtime_execution": true,
+  "fresh_CI_required": true,
+  "source_hashes": {
+    "eval/scripts/run_l5_js.py": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+    "eval/scripts/verify_l5_js_oracle.py": "e0773783c92021f76a8aa068727c6f36728d4b1c846d2403bb38fb86101c3f79",
+    "eval/scripts/tests/test_l5_js_oracle.py": "9c56c7ea90e66d74c6c9efa56f2cd1c433e2914ca4b0c432ce24f30abfe57555",
+    "eval/qualification/l5-real/js/case.json": "d901dcb9a638f886d64da6b371ecf371618a44ddd5c94284d31eab3f96490c00",
+    "eval/qualification/l5-real/js/oracles/XraiExternalStoreContract-test.js": "7e07f66795a31c1d0877bfb992c7aa3a1c117e39ba5197d60a16572645c84872",
+    "eval/qualification/l5-real/js/README.md": "9835c0d26a66a243853321037cec760fc4957d2d92c5a4c80c70d4320f9dc71a"
+  }
+}

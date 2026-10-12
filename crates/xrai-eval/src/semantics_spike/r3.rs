@@ -142,15 +142,16 @@ impl Snapshot {
         result
     }
 }
-/// Three-valued cfg evaluator. Missing entries stay unknown unless explicitly closed.
+/// Validate every supported predicate before three-valued evaluation.
+/// Err is unsupported syntax; Ok(None) is valid syntax with unknown configuration.
 fn evaluate(
     input: &str,
     config: &BTreeMap<String, String>,
     used: &mut BTreeSet<String>,
-) -> Option<bool> {
+) -> Result<Option<bool>, ()> {
     let input = input.trim();
     if let Some((op, rest)) = input.split_once('(') {
-        let body = rest.strip_suffix(')')?;
+        let body = rest.strip_suffix(')').ok_or(())?;
         let mut parts = vec![];
         let mut depth = 0usize;
         let mut start = 0;
@@ -159,7 +160,7 @@ fn evaluate(
             match ch {
                 '"' => quoted = !quoted,
                 '(' if !quoted => depth += 1,
-                ')' if !quoted => depth = depth.checked_sub(1)?,
+                ')' if !quoted => depth = depth.checked_sub(1).ok_or(())?,
                 ',' if !quoted && depth == 0 => {
                     parts.push(body[start..i].trim());
                     start = i + 1;
@@ -168,40 +169,47 @@ fn evaluate(
             }
         }
         if quoted || depth != 0 {
-            return None;
+            return Err(());
         }
         if !body[start..].trim().is_empty() {
             parts.push(body[start..].trim());
         }
-        let values: Vec<_> = parts.iter().map(|p| evaluate(p, config, used)).collect();
+        let values: Vec<_> = parts
+            .iter()
+            .map(|p| evaluate(p, config, used))
+            .collect::<Result<_, _>>()?;
         match op.trim() {
-            "not" if values.len() == 1 => values[0].map(|v| !v),
+            "not" if values.len() == 1 => Ok(values[0].map(|v| !v)),
             "all" => {
                 if values.contains(&Some(false)) {
-                    Some(false)
+                    Ok(Some(false))
                 } else if values.iter().all(|v| *v == Some(true)) {
-                    Some(true)
+                    Ok(Some(true))
                 } else {
-                    None
+                    Ok(None)
                 }
             }
             "any" => {
                 if values.contains(&Some(true)) {
-                    Some(true)
+                    Ok(Some(true))
                 } else if values.iter().all(|v| *v == Some(false)) {
-                    Some(false)
+                    Ok(Some(false))
                 } else {
-                    None
+                    Ok(None)
                 }
             }
-            _ => None,
+            _ => Err(()),
         }
     } else {
         let (key, family) = if let Some((key, value)) = input.split_once('=') {
             let key = key.trim();
             let value = value.trim();
-            if !(value.starts_with('"') && value.ends_with('"')) || value.contains('\\') {
-                return None;
+            if value.len() < 2
+                || !(value.starts_with('"') && value.ends_with('"'))
+                || value.contains('\\')
+                || value[1..value.len() - 1].contains('"')
+            {
+                return Err(());
             }
             (
                 format!("{key}:{}", &value[1..value.len() - 1]),
@@ -213,12 +221,15 @@ fn evaluate(
         if !family
             .chars()
             .all(|c| c.is_ascii_alphanumeric() || c == '_')
-            || family.is_empty()
+            || !family
+                .chars()
+                .next()
+                .is_some_and(|c| c.is_ascii_alphabetic() || c == '_')
         {
-            return None;
+            return Err(());
         }
         used.insert(key.clone());
-        match config.get(&key).map(String::as_str) {
+        Ok(match config.get(&key).map(String::as_str) {
             Some("known:true") => Some(true),
             Some("known:false") => Some(false),
             None if config
@@ -229,7 +240,7 @@ fn evaluate(
                 Some(false)
             }
             _ => None,
-        }
+        })
     }
 }
 pub(super) fn attribute(
@@ -242,7 +253,9 @@ pub(super) fn attribute(
     let t = text(node, source);
     let body = t.strip_prefix("#[cfg(")?.strip_suffix(")]")?;
     let mut used = BTreeSet::new();
-    let result = evaluate(body, &s.input.configuration, &mut used);
+    let result = evaluate(body, &s.input.configuration, &mut used)
+        .ok()
+        .flatten();
     let evidence = s.evidence(file, node.start_byte(), node.end_byte());
     s.conditions.push(Condition {
         predicate: body.into(),

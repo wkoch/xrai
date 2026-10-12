@@ -1,0 +1,304 @@
+{
+  "parent_commit": "d54520b2d5f7d8fcac1e770ad06d26d1d5333a0d",
+  "sources": {
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "dde45cb4ebc3113fd18cb327f56ae5d27e6a08d3473c3d9a5d55cfe61912d2cf",
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "crates/xrai-eval/src/context_spike.rs": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+    "eval/scripts/verify_semantics.py": "5590b8509e7c6f55e4d302c6c47024a3a1539f70b92951632440240278715c75"
+  },
+  "executables": {
+    "target/release/semantics-spike": "5a6e533c1fd7265105bc03234fd28a27418e9ba66707c5e75d4141e1d7860f9c",
+    "target/release/context-spike": "3d763c6a0ae087c3f70bdd3decbdf23aeee90707f2058e590dd5dc4245edc048"
+  },
+  "receipts": [
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/r3/rust-r3.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.31125225000141654,
+      "stdout_sha256": "5be561203f04f0999d40a1dd2c6becda18bdf6d59b57e6a43a06309da3a2b3d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/r3/rust-r3.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/rust-r3-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.0416757500024687,
+      "stdout_sha256": "b1bde3731b38d4991a11567067385d5ddbd584d24c67e8bf896a7705c20d0afe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/r3/counterproofs-r3.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.004485499997826992,
+      "stdout_sha256": "88d45ef3b1f483ed48fd1acc25d4a1febc474d13029d838d067bbd7a726f5dea",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/r3/counterproofs-r3.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/counterproofs-r3-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.027015083000151208,
+      "stdout_sha256": "9aaa88805fa9b96d01e221a165f5d49095407fdcaad5d907e3c5a5878ecd27e1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/r3/counterproofs-extra.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.0043188749987166375,
+      "stdout_sha256": "1ffca0d7deb39a6112bfa20bf2384a1172a4948bbfb4a2b82a23560607299c6a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/r3/counterproofs-extra.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/counterproofs-extra-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.026580082998407306,
+      "stdout_sha256": "2a4b9d92fa9d595713646714e868cf26723eb56e2ad9fed3b362be442d28d932",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/r3/counterproofs-cfg.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.004890917000011541,
+      "stdout_sha256": "8c947b2ec690fa853b93e3efebe0964310c2ff9b71bc33b990923e43a718be38",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/r3/counterproofs-cfg.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/counterproofs-cfg-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.02421370899901376,
+      "stdout_sha256": "e2bcba9c94759824ac6e21b22057f6a1d638d7cb8a3559d1668640812d56fbd1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/r3/tokio-test-development.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.02729824999914854,
+      "stdout_sha256": "f6523dfef68f3f44fc0011d984678f860bee1ab6d0622cb7f62c307bbbb77444",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/r3/tokio-test-development.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/tokio-test-development-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.07279812499837135,
+      "stdout_sha256": "f53f520680827d24e768f50fdcc2ee69f1a1817ecc32d3d2630cd6a110486f8f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/r3/incremental-events.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.004312999997637235,
+      "stdout_sha256": "466109d8608cb1725039aa81183182ccb428927239bd3835de81d255d7cc727a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/r3/incremental-events.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/incremental-events-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.023448084000847302,
+      "stdout_sha256": "4c8aeaadc661a6311bf9a97014768fb9318372eeab2c419eda880c907bd74915",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/r3/p3-consumer.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.0034276250007678755,
+      "stdout_sha256": "5b49897249eb3bb224eee2e2e313a85356fbbae7ce1a33b4251234792ace9ebe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/r3/p3-consumer.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/p3-consumer-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.02288758400027291,
+      "stdout_sha256": "754f74ae8dacd5b026ca228e371c7e8959bbb0880ba56f4d7062a8cee5270b9e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/rust-r1-r2.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.007628250001289416,
+      "stdout_sha256": "af793430f8d47fc43e45e55bb08eb08a98126387aa2647b32e019559ae3dc19b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/rust-r1-r2.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/rust-r1-r2-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.024321000000782078,
+      "stdout_sha256": "778e2033a0bd0b11dc7aebdcc662a0dd0ff72619c6bd8f7aaefe730c121d1beb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/tokio-development.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.004017584000393981,
+      "stdout_sha256": "932909a3e81ce6dc4f49111f6c08ffcf5ae102c2141f4d5c0fb7c27be8616293",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/tokio-development.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/tokio-development-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.0426912499970058,
+      "stdout_sha256": "c177aec8e5292b86cd56fad6786b517935af12a508ea0121958c7866a036e988",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/semantics-spike",
+        "eval/semantics/rust-counterproofs.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.004223542000545422,
+      "stdout_sha256": "1420e4d955b6a985e69052dd0ac6b153c53f3aff97fd3ca228e23fa3f9dc95e1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/rust-counterproofs.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/rust-counterproofs-completed.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.023762709002767224,
+      "stdout_sha256": "1eb1c61a85971c3c4c761413f0a55bc1d68b19ba9f92bec3188a60862e8d2941",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/context-spike",
+        "eval/context/removed-consumer-input.json",
+        "/private/tmp/xrai-l4-measurement/bin/python"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.6208209159995022,
+      "stdout_sha256": "3e8428858cb01106b79873c2e36e02bee6513c8e92c15cd1fefa50257ac70dae",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_context.py",
+        "eval/context/removed-consumer-input.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/context-removed-consumer.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.3043114579995745,
+      "stdout_sha256": "741e358f07a9259b2f412b544b8c9d55f24a19f826d6c448f8a8f5777ca0a2f3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/context-spike",
+        "eval/context/central-hunk-input.json",
+        "/private/tmp/xrai-l4-measurement/bin/python"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.897171917000378,
+      "stdout_sha256": "9df236ddd5e195dbd8b0ca5bb291afb95a8c4ad56384564722d0d32e9f48f524",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_context.py",
+        "eval/context/central-hunk-input.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/context-central-hunk.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.3385620840017509,
+      "stdout_sha256": "fbed98f7f279e072c4b3cd892c2b791ac0fefd750e5481a17e460b81f7ffbddf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "target/release/context-spike",
+        "eval/context/r3-binding-input.json",
+        "/private/tmp/xrai-l4-measurement/bin/python"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.45074987500265706,
+      "stdout_sha256": "aab309f510f75179aa80f16cf3eea11616fd9c6b5a62eff9a0be1becb399fbde",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_context.py",
+        "eval/context/r3-binding-input.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/cfg-parent/context-r3-binding.stdout"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.2572340000006079,
+      "stdout_sha256": "41d21cf2a40f6b0cbc5ba3f03feadbf2e3e632c3edbadaa14b10a2089d038823",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

@@ -148,7 +148,7 @@ jobs:
           python eval/scripts/verify_semantics.py eval/semantics/tokio-development.json native-evidence/semantics-tokio.json
           python eval/scripts/verify_semantics.py eval/semantics/rust-counterproofs.json native-evidence/semantics-counterproofs.json
           mkdir -p native-evidence/r3
-          for name in rust-r3 counterproofs-r3 counterproofs-extra tokio-test-development incremental-events p3-consumer; do
+          for name in rust-r3 counterproofs-r3 counterproofs-extra counterproofs-cfg tokio-test-development incremental-events p3-consumer; do
             input="eval/semantics/r3/$name.json"
             output="native-evidence/r3/$name-completed.stdout"
             target/release/semantics-spike "$input" > "$output"

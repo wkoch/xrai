@@ -1,0 +1,69 @@
+{
+  "recorded_at": "2026-10-12T16:58:55.033565+00:00",
+  "bug": "Unsupported cfg predicate was conflated with valid unknown configuration and masked by any(true,..)/all(false,..)",
+  "fix": "Fallible supported-form evaluation; unsupported propagates Err through every nesting, then emits not_evaluated+configuration_not_evaluated gap. Valid unknown config retains three-valued logic. Python builds validated cfg syntax tree before applying logic.",
+  "sources": {
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "dde45cb4ebc3113fd18cb327f56ae5d27e6a08d3473c3d9a5d55cfe61912d2cf",
+    "eval/scripts/verify_semantics.py": "5590b8509e7c6f55e4d302c6c47024a3a1539f70b92951632440240278715c75",
+    "crates/xrai-eval/tests/semantics_spike.rs": "75915c695e79aebe5d8b548f289abad3ee1077413dee03a38ddf789c41ed3afd",
+    "eval/semantics/r3/tests/test_r3_verifier.py": "56fdb8671dd59173d0c709f6256b6f6d93746c508ec757ea23bbf9a58ee4bdf7",
+    "eval/semantics/r3/counterproofs-cfg.json": "1957ca00fddac5f9a01d01b0fc9e31693c43c92651303112a9c972751486d3c7"
+  },
+  "binary": {
+    "path": "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantics-spike-debug-macos-arm64.gz",
+    "sha256": "02b62f4252b9d33f25b8ef8c43eaa94524314df19c148a8b40ee9a42c99362e1",
+    "compressed_sha256": "52a03b39e488b6e5d45647d88e51e909d498a7f1ac48caf84489af924bfe47b3"
+  },
+  "initial": {
+    "cases": 8,
+    "correct": 5,
+    "false_promotions": 3
+  },
+  "final": {
+    "cases": 8,
+    "correct": 8,
+    "false_promotions": 0
+  },
+  "original_matrix": {
+    "cases": 34,
+    "correct": 34,
+    "resolvable": 16,
+    "resolvable_correct": 16,
+    "false_promotions": 0
+  },
+  "tests": {
+    "rust_specific": 1,
+    "python_adversarial": 15
+  },
+  "artifacts": {
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test.stdout": "aabe6994ff9e57fdb395af0eceb6c9b0ecd243159678a80b3cc46c438e8d0fc0",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-completed.stdout": "8c947b2ec690fa853b93e3efebe0964310c2ff9b71bc33b990923e43a718be38",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-completed.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-verified.receipt.json": "7319b1d4a9da8353ee8b00c799e25889a4ca256c7299eaf043b74d302ee0a48a",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test.receipt.json": "d142d22c7fbd3ae046bd3998106d724aa447a29e0302a636ca9ee73b43a9fc5d",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/initial.stderr": "af4a6d10807f84317007b3dcf0470470b45e82dbbc949b731bc54431cadff355",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/implementation-sources.tar.gz": "65138fb4f7eb3615df3e35300651c4ca8797523d0396b80b1c101ce8c3beebfd",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-verified.stdout": "e2bcba9c94759824ac6e21b22057f6a1d638d7cb8a3559d1668640812d56fbd1",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test-final.stderr": "6ba44db879fe3b33cf1486a801e80a3edb51a2c44029fd78770f6374aca9846c",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test-final.stdout": "7f458e036c88dd700b8d1f0d768b8ecacfb95306127abe95943a4b3aa10e48bd",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/python-adversarial.receipt.json": "f4a1408795b753981bcfc4a0eccfc75adaee6826b8f85a20d71ea984a6d0f0c7",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-verified.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-completed.stdout": "5be561203f04f0999d40a1dd2c6becda18bdf6d59b57e6a43a06309da3a2b3d6",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-completed.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/initial.stdout": "3f06e8730181b146d4cc8cc42bd04b39eabedfe51675f3340e439ecf07e19cb8",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test.stderr": "b3d4e6016b36f3c11f7da4c2f8d37661815d1bba4fc39a4268797251e495d6b8",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/python-adversarial.stderr": "5692ed268021dc362b07406ea6197abf8796bc760ec8a161c83322a78a5d4641",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/counterproofs-cfg-completed.receipt.json": "6c0a21d30d24478c1e88efd4ecb7cfb458792dc01255a2552419ef2b20cc155d",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-verified.stdout": "b1bde3731b38d4991a11567067385d5ddbd584d24c67e8bf896a7705c20d0afe",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/initial.receipt.json": "9c449fc2f8923df9302f7f3fc7cd5db857317959050057dc604d163a169c7956",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/labels-first.json": "f1cf7695ff04c27d44ec4b846ac28471ed4e0e74e634a1768d91c023b443da5d",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-verified.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantic-test-final.receipt.json": "49456e29d208203462a0707e3f6d0c7f8b22be7ef27cae394a4d5bbafa8417e3",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-verified.receipt.json": "cc3c1eb0f0a6f142ab1db043453ad8ba347603a55ebb31023b3f3097bc3c7f00",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/rust-r3-completed.receipt.json": "4a8ba37acebd142d0bec8be87dfaede326d856d215df50517958fc3ad257511b",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/graph-coverage.json": "d05e55bf7fa6db256779e5d12b3cbde49b1fd326930225e04cd0865c98dc5744",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/semantics-spike-debug-macos-arm64.gz": "52a03b39e488b6e5d45647d88e51e909d498a7f1ac48caf84489af924bfe47b3",
+    "docs/relatorios/logs/L5-continuacao/r3/cfg-review/python-adversarial.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "history": "Prior r3/final proofs remain intact and source-bound; this receipt supersedes current implementation only. Native CI root integration pending."
+}

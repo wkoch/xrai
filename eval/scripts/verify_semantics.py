@@ -17,11 +17,14 @@ def digest(value):
     return blake3.blake3(value).hexdigest()
 
 
-def evaluate_cfg(text, config):
+def parse_cfg(text):
+    """Validate the entire supported form before applying three-valued knowledge."""
     text = text.strip()
     if "(" in text:
         op, rest = text.split("(", 1)
-        if not rest.endswith(")"): return None
+        op = op.strip()
+        if op not in ("all", "any", "not") or not rest.endswith(")"):
+            raise ValueError("unsupported cfg predicate")
         body = rest[:-1]; parts=[]; depth=0; quoted=False; start=0
         for index, char in enumerate(body):
             if char == '"': quoted = not quoted
@@ -29,23 +32,35 @@ def evaluate_cfg(text, config):
             elif not quoted and char == ")": depth -= 1
             elif not quoted and char == "," and depth == 0:
                 parts.append(body[start:index].strip()); start=index+1
-            if depth < 0: return None
-        if quoted or depth: return None
+            if depth < 0: raise ValueError("cfg depth")
+        if quoted or depth: raise ValueError("cfg syntax")
         if body[start:].strip(): parts.append(body[start:].strip())
-        values=[evaluate_cfg(part,config) for part in parts]
-        if op.strip()=="not" and len(values)==1: return None if values[0] is None else not values[0]
-        if op.strip()=="all": return False if False in values else True if all(v is True for v in values) else None
-        if op.strip()=="any": return True if True in values else False if all(v is False for v in values) else None
-        return None
+        nodes = [parse_cfg(part) for part in parts]
+        if op == "not" and len(nodes) != 1: raise ValueError("not arity")
+        return op, nodes
     match=re.fullmatch(r'([A-Za-z_][A-Za-z_0-9]*)\s*=\s*"([^"\\]*)"', text)
     if match: family,value=match.groups(); key=family+":"+value
     elif re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*',text): family=key=text
-    else: return None
-    result=config.get(key)
-    if result=="known:true": return True
-    if result=="known:false": return False
-    if result is None and config.get("closed:"+family)=="true": return False
-    return None
+    else: raise ValueError("unsupported cfg atom")
+    return "key", (family,key)
+
+
+def evaluate_cfg(text, config):
+    try: parsed = parse_cfg(text)
+    except ValueError: return None
+    def evaluate(node):
+        op, children = node
+        if op == "key":
+            family,key = children; result=config.get(key)
+            if result=="known:true": return True
+            if result=="known:false": return False
+            if result is None and config.get("closed:"+family)=="true": return False
+            return None
+        values = [evaluate(child) for child in children]
+        if op == "not": return None if values[0] is None else not values[0]
+        if op == "all": return False if False in values else True if all(v is True for v in values) else None
+        return True if True in values else False if all(v is False for v in values) else None
+    return evaluate(parsed)
 
 
 def verify_snapshot(snapshot):
@@ -116,6 +131,8 @@ def verify_snapshot(snapshot):
         assert inp["rules"] == "rust-r3-v1"
         expected = evaluate_cfg(condition["predicate"], inp["configuration"])
         assert condition["state"] == ("known_true" if expected is True else "known_false" if expected is False else "not_evaluated")
+        if expected is None:
+            assert any(g["reason"] == "configuration_not_evaluated" and g["evidence"] == condition["evidence"] for g in snapshot["gaps"])
         ev=condition["evidence"]
         assert inp["files"][ev["path"]].encode()[ev["start"]:ev["end"]].decode() == "#[cfg(" + condition["predicate"] + ")]"
         assert condition["inputs"] == sorted(set(condition["inputs"]))

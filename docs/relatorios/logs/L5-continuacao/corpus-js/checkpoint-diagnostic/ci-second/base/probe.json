@@ -1,0 +1,88 @@
+{
+  "schema_version": "xrai.eval.l5.js.probe.v1",
+  "side": "base",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "node_executable_sha256": "8440cffda5a21bf7cfda43d2c396f79777585a4c5e03ed2801fe226953a7aa11",
+  "executor_source_sha256": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+  "oracle_source_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+  "materialization": {
+    "side": "base",
+    "base_commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+    "reference_commit": null,
+    "full_base_archive_sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6",
+    "reference_policy": "only the two production modules changed; upstream test changes not applied",
+    "reference_source_sha256": {},
+    "evaluator_probe_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+    "warning": "evaluator workspace only; hidden oracle must never enter a comparative agent workspace",
+    "yarn_lock_sha256": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544"
+  },
+  "bootstrap": {
+    "schema_version": "xrai.eval.l5.js.bootstrap.v1",
+    "method": "offline pinned data extraction; no captured hooks executed",
+    "omitted_postinstall": "scripts/yarn/downloadReactIsForPrettyFormat.js",
+    "omitted_postinstall_sha256": "b12db5568eb8fcf0d9147a18563825ebac4ab617768c15afc2d7329f57cb7a4d",
+    "package": "react-is",
+    "version": "17.0.2",
+    "required_range": "^17.0.1",
+    "pretty_format_version": "26.6.2",
+    "registry_metadata_sha256": "b265f28da6b3ea2f04129f4478bba9dcffcd7a7a87fb2613d2f2bb3647759999",
+    "registry_url": "https://registry.npmjs.org/react-is/17.0.2",
+    "archive_sha256": "9b1850c05b4fc08e9b814a201281a103a7651ac46500dce7b6bedd0865963eb1",
+    "archive_integrity": "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==",
+    "target": "node_modules/pretty-format/node_modules/react-is",
+    "files": {
+      "LICENSE": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+      "README.md": "c255107ea9a45a3938ac6d0738032e5bdbcc2719fce4d5e9199fdee86a0d2e5d",
+      "build-info.json": "ea653ac8deac7de0a4983c00c43e6a029e40d391ce71f8c4156ad11bbd8d9929",
+      "cjs/react-is.development.js": "405a40c4b9c170c4448a4f5fd47caa58f25ef831ad87709c6ca6e3b1de85e6ed",
+      "cjs/react-is.production.min.js": "bcc4627f6f6062d15a820501d2053dcae8470c14a7b7e1e4b07f06a2a4711cbb",
+      "index.js": "d34fce01b963097a8d649b95e20aa17a63e4105b54adcce7d7daf1c8524b434e",
+      "package.json": "96002dcc58acbd31c0e1329c548f4d967ea1446c5658e514de125be7293e5e60",
+      "umd/react-is.development.js": "41ae5d7a7c40cd3e843c2d354353f39c3ba98559d3ed4265ab3c9eb8078ac245",
+      "umd/react-is.production.min.js": "2b9b5850c797bb8b55a0bafe7a4822cc973ed3730a2e9b138c9f4eb3a36ad1f7"
+    },
+    "lock_before": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+    "lock_after": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+    "network_used": false,
+    "production_modified": false,
+    "oracle_modified": false
+  },
+  "configuration": {
+    "NODE_ENV": "development",
+    "RELEASE_CHANNEL": "experimental",
+    "VARIANT": "true",
+    "config": "scripts/jest/config.source-www.js"
+  },
+  "lock_before": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+  "lock_after": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+  "phases": [
+    {
+      "name": "requirement",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "execution_status": "error",
+      "teardown_verified": true,
+      "behavioral_result_verified": true,
+      "jest_report_sha256": "650c9a4ac583d06c5771b6b50bf9f2e0e77e66802db120d5dab8a2528a54a888",
+      "receipt": "requirement-harness.json",
+      "jest_report": "requirement-jest.json",
+      "verified": true
+    },
+    {
+      "name": "regression",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "execution_status": "ok",
+      "teardown_verified": true,
+      "behavioral_result_verified": true,
+      "jest_report_sha256": "c4c2f759f96f28452bf90452e5b3dead7f799b6bf31af67bb499189887b258dd",
+      "receipt": "regression-harness.json",
+      "jest_report": "regression-jest.json",
+      "verified": true
+    }
+  ],
+  "verified": true,
+  "admitted": false,
+  "competitive_runs_allowed": false
+}
