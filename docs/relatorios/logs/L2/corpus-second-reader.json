@@ -1,0 +1,135 @@
+{
+  "schema": "m0-spike-review-v1",
+  "utc": "2026-10-12T03:51:27.766497+00:00",
+  "reviewer": "/root/l2_parsing",
+  "scope": [
+    "eval/scripts/verify_qualified.py",
+    "eval/qualification/qualified-task.schema.json",
+    "eval/scripts/tests/test_qualification.py",
+    "eval/scripts/materialize_task.py",
+    "eval/scripts/triage_candidates.py"
+  ],
+  "source_sha256": {
+    "eval/scripts/verify_qualified.py": "a1dbaf14f6ce2f016d20b51bcedd5002266090ca5e7df06b241fb05980c51358",
+    "eval/qualification/qualified-task.schema.json": "966293fa5fd191b4b60066ec62caa65e54e948a8936f4e07a18bea9e47e4b10c",
+    "eval/scripts/tests/test_qualification.py": "dbe2d027f3f358a7547a3a17431824d4612eca7a4858580a5ed745f8eb7260e4",
+    "eval/scripts/materialize_task.py": "f2396c2c4be579f13dd1225ca13b87dfaf2bac71fae5f819fd297b9926fbb843",
+    "eval/scripts/triage_candidates.py": "0f5ca42c04675d548d0d7a48723c73244662f75a76388c8c4f5d03f8dad92cd5"
+  },
+  "method": "Complete bounded independent source review ADR021, direct fallback for nottracked/metadatachanged graph paths; structural negative probes use synthetic unit fixtures in temporary root and CHECK_ARTIFACTS_TRUE, never primary dataset.",
+  "findings": [
+    {
+      "id": "R1-R01",
+      "severity": "medium",
+      "description": "Schema is published but not applied by admission gate; family/language mismatch and boolean version are structurally accepted.",
+      "resolution": "resolved and independently reverified: executable typed schema/family language matching and oracle_B hash/confinement check"
+    },
+    {
+      "id": "R1-R02",
+      "severity": "medium",
+      "description": "incremental_event.oracle_B artifact metadata is only tested for truthiness; hash and evaluator-root confinement are omitted.",
+      "resolution": "resolved and independently reverified: executable typed schema/family language matching and oracle_B hash/confinement check"
+    }
+  ],
+  "checked": [
+    "32primary/max4repo/8family/exactstrata",
+    "complex>=4family/>=2repos>=2complexeach and3modules2subsystems2-relationpath; sizefloor50k/500",
+    "public origins>=4family, controlled<=12, TS>=2JS>=2, relatedproductionnoncontrol>=20",
+    "prompt/oracle reviewhashes andindependent author/reader, archive/oracle/probe/review artifacthashes/root confinement",
+    "seed notdefaultpromoted; emptyqualified notadmitted",
+    "phase A/B publicprompt omits hiddenstateevents; event IO anchored withdirfd O_NOFOLLOW and boundedregularfiles/no hardlinks",
+    "Executable Draft202012Schema types/family language matching/control simple; incremental oracle_B artifact path/hash; snapshot archive contents/production counts recomputed via pinned path-marker classifier",
+    "Final small delta: archive guard mirrors materializer reserved .git/oracles/reports/tasks exclusions; CLI converts tarfile.TarError into structured not_admitted output. Owner reran nine tests after delta; independent nine-test run recorded above preceded this two-line guard delta."
+  ],
+  "limitations": [
+    "Validator checks document shape and receipts, not semantic necessity, natural prompt quality, genuine public provenance, actual checkout production size or honest behavioral results. Those remain independent author/second-reader work.",
+    "Snapshot identity now bound to source manifest commit/repo/archive/hash/licenses and each archive file/hash/size; path-marker v1 production counts are recomputed. Semantic production classification, notably embedded tests/fixtures/vendor lacking markers, still needs independent review before genuine R1 admission.",
+    "Incremental event recipe is not proof of persistent service execution; corpus tests check A/B same filesystem identity only and do not claim same index validation."
+  ],
+  "previous_source_sha256": {
+    "eval/scripts/verify_qualified.py": "fe0e663bcf55b8e43c039a23b392913b3be96729fb09169dc9d3f51bec853a6a",
+    "eval/qualification/qualified-task.schema.json": "1a9bc28c2530657fef519a32da1aae7912e2ae6736417a56ac2c65a66ce410be",
+    "eval/scripts/tests/test_qualification.py": "d2afc6ac082bc002bb46aab2fc1a40e6d6d60947688a3d04897550f3fa63708a",
+    "eval/scripts/materialize_task.py": "f2396c2c4be579f13dd1225ca13b87dfaf2bac71fae5f819fd297b9926fbb843"
+  },
+  "pre_fix_negative_probe_results": {
+    "wrong_language_family": {
+      "unexpectedly_admitted": true,
+      "summary": {
+        "primary_tasks": 32,
+        "complex_tasks": 16,
+        "gate": "admitted",
+        "semantic_review_required": true
+      }
+    },
+    "boolean_version": {
+      "unexpectedly_admitted": true,
+      "summary": {
+        "primary_tasks": 32,
+        "complex_tasks": 16,
+        "gate": "admitted",
+        "semantic_review_required": true
+      }
+    },
+    "unverified_incremental_oracle": {
+      "unexpectedly_admitted": true,
+      "summary": {
+        "primary_tasks": 32,
+        "complex_tasks": 16,
+        "gate": "admitted",
+        "semantic_review_required": true
+      }
+    }
+  },
+  "post_fix_negative_probe_results": {
+    "wrong_language_family": {
+      "unexpectedly_admitted": false,
+      "error": "qualified task schema: $.language: 'Go' is not one of ['Rust']"
+    },
+    "boolean_version": {
+      "unexpectedly_admitted": false,
+      "error": "qualified task schema: $.version: True is not of type 'integer'"
+    },
+    "unverified_incremental_oracle": {
+      "unexpectedly_admitted": false,
+      "error": "qualified task schema: $.incremental_event.oracle_B.path: '/outside/does-not-exist' does not match '^(?!/)(?!.*\\\\\\\\)(?!.*(?:^|/)\\\\.\\\\.(?:/|$)).+$'"
+    },
+    "simple_control_marked_complex": {
+      "unexpectedly_admitted": false,
+      "error": "qualified task schema: $.complexity.complex: False was expected"
+    },
+    "missing_incremental_oracle_artifact": {
+      "unexpectedly_admitted": false,
+      "error": "artifact missing or unreadable: missing"
+    },
+    "tampered_incremental_oracle_hash": {
+      "unexpectedly_admitted": false,
+      "error": "artifact fingerprint"
+    }
+  },
+  "temporary_shape_positive_control": {
+    "primary_tasks": 32,
+    "complex_tasks": 16,
+    "gate": "admitted",
+    "semantic_review_required": true
+  },
+  "blocking_findings": [],
+  "qualification_test_run": {
+    "command": [
+      "/opt/homebrew/opt/python@3.15/bin/python3.15",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "eval/scripts/tests",
+      "-p",
+      "test_qualification.py",
+      "-v"
+    ],
+    "PYTHONPATH": "/private/tmp/xrai-contract-blake3",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "test_complete_synthetic_shape (test_qualification.AdmissionTests.test_complete_synthetic_shape) ... ok\ntest_empty_and_seed_fail_closed (test_qualification.AdmissionTests.test_empty_and_seed_fail_closed) ... ok\ntest_event_refuses_agent_symlink_escape (test_qualification.AdmissionTests.test_event_refuses_agent_symlink_escape) ... ok\ntest_event_refuses_hardlink_and_parent_symlink_escape (test_qualification.AdmissionTests.test_event_refuses_hardlink_and_parent_symlink_escape) ... ok\ntest_mutations_reject_false_admission (test_qualification.AdmissionTests.test_mutations_reject_false_admission) ... ok\ntest_phase_A_event_B_matches_cold_checkout_each_family (test_qualification.AdmissionTests.test_phase_A_event_B_matches_cold_checkout_each_family) ... ok\ntest_qualified_and_supplementary_are_explicit_empty (test_qualification.AdmissionTests.test_qualified_and_supplementary_are_explicit_empty) ... ok\ntest_real_mode_binds_snapshots_sources_measurements_and_event_oracle (test_qualification.AdmissionTests.test_real_mode_binds_snapshots_sources_measurements_and_event_oracle) ... ok\ntest_schema_types_language_and_incremental_oracle_both_modes (test_qualification.AdmissionTests.test_schema_types_language_and_incremental_oracle_both_modes) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 1.086s\n\nOK\n"
+  },
+  "qualification_status": "No actual qualified primary tasks admitted; temporary synthetic fixtures prove guard mechanics only, not 32-case acceptance."
+}

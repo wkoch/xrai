@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3",
+    "eval/scripts/verify_corpus.py"
+  ],
+  "base_commit": "1e093189ba52b0b19f8e115f64c1d395a04a3721",
+  "time_utc": "2026-10-12T03:50:06.607791+00:00",
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.46938529099861626,
+  "exit_code": 0,
+  "stdout": "{\n  \"status\": \"passed\",\n  \"summary\": {\n    \"tasks\": 52,\n    \"datasets\": {\n      \"D0\": 20,\n      \"D1\": 32\n    },\n    \"families\": {\n      \"Rust\": 13,\n      \"TSJS\": 13,\n      \"Python\": 13,\n      \"Go\": 13\n    },\n    \"repositories\": 8,\n    \"snapshots\": 20,\n    \"source_bytes\": 1546610,\n    \"archive_bytes\": 360234,\n    \"reference_patches\": 12,\n    \"materialized_inputs_checked\": 52,\n    \"oracle_leaks\": 0,\n    \"origin_classes\": {\n      \"historical_upstream_fix\": 8,\n      \"local_contract_requirement\": 8,\n      \"upstream_source_question\": 8,\n      \"materialized_state_scenario\": 4,\n      \"simulated_regression_review\": 4\n    },\n    \"dataset_classes\": {\n      \"D0\": \"development\",\n      \"D1\": \"seed\"\n    },\n    \"competitive_admission\": false,\n    \"fixture_files\": 78,\n    \"fixture_generator_deterministic\": true,\n    \"duplicate_lineage_rejected\": true,\n    \"agent_success_measured\": false,\n    \"statistical_superiority_claimed\": false\n  }\n}\n",
+  "stderr": ""
+}

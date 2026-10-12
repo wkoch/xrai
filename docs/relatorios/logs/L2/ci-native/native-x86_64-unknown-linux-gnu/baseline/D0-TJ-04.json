@@ -1,0 +1,106 @@
+{
+  "schema_version": "xrai.eval.local.v1",
+  "task_id": "D0-TJ-04",
+  "family": "TSJS",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.004887868000011508,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "python": "3.15.0",
+    "executor_sha256": "a96a139174041ae8dfe7963efb7acd8c1ff59a39e1f8a5bd857f76274fc65660"
+  },
+  "input_sha256": "e229b748fab18b98b507f2c99118a56819141c66a631c4cadde1cf5bcbac5d33",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "diagnostic": null,
+      "elapsed_seconds": 0.005285013999994703,
+      "stdout": {
+        "base64": "Li9wYWNrYWdlLWxvY2suanNvbgouL3Rlc3RzLmpzCi4vcHJvYmUuanMKLi8uZ2l0aHViL3dvcmtmbG93cy9jaS55bWwKLi8uZ2l0aWdub3JlCi4vLm5wbXJjCi4vaW5kZXguanMKLi9wYWNrYWdlLmpzb24KLi9saWNlbnNlLm1kCg==",
+        "sha256": "9cd256c2f63b811aeba898b4edff624aaab7b1f3387fc8bca548ac8697a669ac",
+        "captured_bytes": 130,
+        "observed_bytes": 130,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "Após|criar|probe|remover|readme|probe|revisão|atual|reporte|readme|não|existe",
+        "."
+      ],
+      "status": "error",
+      "exit_code": 1,
+      "sandbox": "Linux bubblewrap",
+      "diagnostic": null,
+      "elapsed_seconds": 0.005937161999995055,
+      "stdout": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 130,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "e953c7423d48fd690da9dad4157b436cd2d82afbacefe7237e24d5f058662ee4",
+  "workspace_sha256": "34eff78e1ac9eeddbd53474ef48460612abfaee1e34737acb01a7977a57d2b30"
+}

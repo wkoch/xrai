@@ -1,0 +1,33 @@
+{
+  "implementation_commit": "1e093189ba52b0b19f8e115f64c1d395a04a3721",
+  "run": 38200959849,
+  "status": "passed",
+  "hosts": {
+    "native-x86_64-unknown-linux-gnu": {
+      "baseline_replays": 20,
+      "incremental_same_process_events": 4,
+      "parser_fixtures": 14,
+      "parser_negative_probes": {
+        "network_blocked": true,
+        "other_executable_blocked": true,
+        "evaluator_file_blocked": true
+      },
+      "native_filename_positive_controls": true,
+      "os_version": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+      "baseline_exactly_executed": true
+    },
+    "native-aarch64-apple-darwin": {
+      "baseline_replays": 20,
+      "incremental_same_process_events": 4,
+      "parser_fixtures": 14,
+      "parser_negative_probes": {
+        "network_blocked": true,
+        "other_executable_blocked": true,
+        "evaluator_file_blocked": true
+      },
+      "native_filename_positive_controls": true,
+      "os_version": "15.7.9",
+      "baseline_exactly_executed": false
+    }
+  }
+}

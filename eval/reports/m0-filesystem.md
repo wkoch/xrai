@@ -62,3 +62,14 @@ A execução `38200549676` aprovou o job Linux completo e encontrou uma falha no
 O teste agora registra `ErrorKind`, `raw_os_error` e mensagem efetivamente recebidos. Somente a tentativa de nome inválido no macOS pode produzir esse resultado de capacidade: o nome Unicode válido precisa funcionar, e escritas/leituras positivas no mesmo diretório antes e depois confirmam que o diretório permanece utilizável. No Linux, criação e captura dos dois nomes continuam obrigatórias; o driver também falha se a tentativa inválida não funcionar. A representação `OsString` e os bytes de fonte continuam verificados sem perda em ambos os hosts.
 
 O driver mantém a mensagem histórica e acrescenta `invalid_utf8_name_error_kind`, `invalid_utf8_name_error_raw_os` (ou null quando não houve erro) e `native_filename_valid_control_passed`. Nenhuma classe/errno universal é prometida. O novo recibo [`filesystem-fix-local.json`](../../docs/relatorios/logs/L2/filesystem-fix-local.json) registra hashes das fontes alteradas, 14 testes, clippy `-D warnings`, formatação dos dois arquivos alterados e driver. O resultado local continua sendo smoke macOS 27; a nova execução macOS nativa da CI é necessária para concluir a correção do cartão.
+
+## Adendo nativo de CI, 12/10/2026
+
+[Run38200959849](https://github.com/wkoch/xrai/actions/runs/38200959849), commit `1e093189ba52b0b19f8e115f64c1d395a04a3721`: 14 testes filesystem em cada host e todos os jobs aprovados. Recibos `docs/relatorios/logs/L2/ci-native/native-{host}/filesystem.json`; saída dos testes e ambiente no mesmo artifact. A primeira falha macOS e a correção permanecem em L2, sem substituir logs antigos.
+
+| Volume efetivo | Case/NFC-NFD | Filename0xff | Mode000 |
+|---|---|---|---|
+| Ubuntu24.04.5 x86_64, `stat --file-system` informa `ext2/ext3` | Distintos | Criação/captura nativa aprovadas | Negação comprovada |
+| macOS15.7.9 arm64, APFS `/System/Volumes/Data` | Aliases | Rejeição `Uncategorized`, errno92, com controles positivos antes/depois | Negação comprovada |
+
+O APFS mac15 retorna classe/errno distintos do APFS localmac27: a rejeição observada é dado da capacidade do volume. Os recibos conservam kind/mensagem/errno e a representação de path élossless. Linux mantém exigência de criar e capturar o nome nativo. Isso não reinterpreta `stat` como prova de uma versão específica de ext filesystem nem define todos os volumes desses SOs. A análise F01 e o registro da decisão Git pelo Arquiteto continuam pendentes; a CI não prova captura resistente à troca de ancestral.

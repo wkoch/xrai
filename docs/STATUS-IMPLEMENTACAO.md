@@ -1,8 +1,8 @@
 # Estado da implementação
 
-Atualizado em: 12/10/2026, pelo Implementador, após o primeiro incremento L2. A [CI pública anterior](relatorios/CI-PUBLICO.md), commit `9b5411c`, permanece aceita; CI do incremento corrente em execução após publicação.
+Atualizado em: 12/10/2026, pelo Implementador, após o primeiro incremento L2. A [CI pública anterior](relatorios/CI-PUBLICO.md), commit `9b5411c`, permanece aceita; [CI nativa L2](relatorios/L2.md) do commit `1e09318` passou nos três jobs; gate de admissão corrigido e revisado com nove testes e provas negativas adicionais.
 
-**Situação:** L0 e retificações M0-01.R1/M0-02.R1 concluídas. Revisão L1 resolveu C01/S01/S02. M0-03 foi aceita no escopo revisado de corpus inicial: 20 D0/32 D1-seed e 78 fixtures. A qualificação competitiva permanece obrigatória em M0-03.R1: gate/triagem iniciados, zero casos qualificados. Usuário liberou L2; harness local/replay e spikes de parsing/filesystem implementados com evidência local em [L2](relatorios/L2.md). Aceite nativo do novo código, smokes de modelos reais e pendências de contenção permanecem separados. Com o repo público, a tentativa 2 do run `38197775334` passou nos três jobs: **M0-02.R2 e M0-07 concluídas**, com seis testes SQLite em cada alvo nativo. V1: Linux x86_64/macOS arm64. Parsing, consultas e MCP de produção continuam indisponíveis; nenhum gate competitivo avaliado.
+**Situação:** L0 e retificações M0-01.R1/M0-02.R1 concluídas. Revisão L1 resolveu C01/S01/S02. M0-03 foi aceita no escopo revisado de corpus inicial: 20 D0/32 D1-seed e 78 fixtures. A qualificação competitiva permanece obrigatória em M0-03.R1: gate/triagem iniciados, zero casos qualificados. Usuário liberou L2; harness local/replay e spikes de parsing/filesystem implementados com evidência local em [L2](relatorios/L2.md). Provas nativas de parsing/filesystem/harness passaram em Ubuntu24.04.5 e macOS15.7.9; smokes de modelos reais, execução literal15.0 e pendências de contenção permanecem separados. Com o repo público, a tentativa 2 do run `38197775334` passou nos três jobs: **M0-02.R2 e M0-07 concluídas**, com seis testes SQLite em cada alvo nativo. V1: Linux x86_64/macOS arm64. Parsing, consultas e MCP de produção continuam indisponíveis; nenhum gate competitivo avaliado.
 
 **Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima execução:** [lote L2](relatorios/REVISAO-L1.md). M0-04/05/08 podem começar com o corpus inicial; M0-12 exige qualificação R1. L0-A01 permanece escolha do mantenedor antes de distribuição, sem bloquear trabalho local. [ADR 021](decisoes/CORPUS-QUALIFICADO.md) e [ADR 022](decisoes/PERSISTENCIA-E-RETENCAO.md) fecham as decisões solicitadas ao Arquiteto.
 
@@ -30,10 +30,10 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | M0-03 | Corpus inicial D0/D1-seed e fixtures | concluída | [Aceite no escopo revisado](relatorios/REVISAO-L1.md); [52 materializações revalidadas](relatorios/logs/revisao-L1/corpus-check.json); qualificação original transferida para R1, sem aceite competitivo |
 | M0-03.R1 | Qualificar D1 para piloto/G0 | em andamento | [Gate fechado e oito candidatos medidos](../eval/reports/m0-corpus-qualification.md); 0/32 qualificados, seed preservado |
 | M0-04 | Harness, baseline e agentes | em andamento | [20 D0, replay, isolamento e quatro eventos A→B](relatorios/L2.md); 13 testes locais; modelos/tokenizer/custo reais e H01 pendentes |
-| M0-05 | Gramáticas e autonomia | em andamento | [Sete dialetos e autonomia local](../eval/reports/m0-packaging.md); matriz CI corrente e host literal15.0 pendentes |
+| M0-05 | Gramáticas e autonomia | em andamento | [Sete dialetos e autonomia local](../eval/reports/m0-packaging.md); [Matriz nativa aprovada](relatorios/logs/L2/ci-native-fsfix.json); host literal15.0 ainda pendente |
 | M0-06 | Workers e IPC | não iniciada | — |
 | M0-07 | Snapshots e armazenamento | concluída | [Seis testes SQLite passaram em Linux x86_64 e macOS arm64](relatorios/logs/ci-publico/output.json); [aceite e limites](relatorios/CI-PUBLICO.md); spike experimental, produção permanece M1 |
-| M0-08 | Filesystem e checkout | em andamento | [14 testes e capacidades reais locais](../eval/reports/m0-filesystem.md); CI corrente e análise F01/Git pendentes |
+| M0-08 | Filesystem e checkout | em andamento | [14 testes e capacidades reais locais](../eval/reports/m0-filesystem.md); [Matriz nativa aprovada](relatorios/logs/L2/ci-native-fsfix.json); análise F01/Git pendente |
 | M0-11 | Protótipo semântico P2 | não iniciada | — |
 | M0-09 | Protótipo de contexto P3 | não iniciada | — |
 | M0-12 | Piloto competitivo | não iniciada | — |

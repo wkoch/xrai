@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-12T03:51:56.052737+00:00",
+  "author": "/root/l2_corpus",
+  "base_commit": "1e093189ba52b0b19f8e115f64c1d395a04a3721",
+  "environment": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "jsonschema": "4.25.1"
+  },
+  "source_sha256": {
+    "eval/scripts/verify_qualified.py": "a1dbaf14f6ce2f016d20b51bcedd5002266090ca5e7df06b241fb05980c51358",
+    "eval/qualification/qualified-task.schema.json": "966293fa5fd191b4b60066ec62caa65e54e948a8936f4e07a18bea9e47e4b10c",
+    "eval/scripts/tests/test_qualification.py": "dbe2d027f3f358a7547a3a17431824d4612eca7a4858580a5ed745f8eb7260e4",
+    "eval/scripts/triage_candidates.py": "0f5ca42c04675d548d0d7a48723c73244662f75a76388c8c4f5d03f8dad92cd5",
+    "eval/reports/m0-corpus-qualification.md": "4401d79a543e8babb0e7c06772125a0d7274c73904fc5857832c81518c684705"
+  },
+  "historical_receipts_preserved": [
+    "eval/qualification/increment-verification.json",
+    "eval/qualification/development-verification.json",
+    "eval/qualification/admission-status.json"
+  ],
+  "test_command": "PYTHONPATH=/private/tmp/xrai-contract-blake3 python3 -m unittest discover -s eval/scripts/tests -v",
+  "tests_passed": 9,
+  "original_negative_mutations": 12,
+  "new_schema_mutations_per_mode": 9,
+  "schema_modes": [
+    "check_artifacts=False",
+    "check_artifacts=True"
+  ],
+  "new_real_source_binding_mutations": 6,
+  "total_negative_mutations": 36,
+  "schema_executed_before_cross_row_checks": true,
+  "family_language_constraints_enforced": true,
+  "boolean_as_integer_rejected": true,
+  "control_complexity_false_enforced": true,
+  "oracle_B_confined_fingerprinted_in_real_mode": true,
+  "snapshot_binding": [
+    "input.snapshot exists in source manifest",
+    "repository/commit/archive hash/path/licenses match",
+    "tar unique regular files and materializer path restrictions",
+    "manifest hashes/sizes match every tar file",
+    "declared production measurements recomputed by path-marker v1",
+    "necessary modules occur in eligible production inventory"
+  ],
+  "empty_gate_checks": [
+    {
+      "command": [
+        "python3",
+        "eval/scripts/verify_qualified.py"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "result": {
+        "status": "not_admitted",
+        "error": "qualified admission requires exactly 32 primary tasks",
+        "competitive_runs_allowed": false
+      }
+    },
+    {
+      "command": [
+        "python3",
+        "eval/scripts/verify_corpus.py",
+        "--qualified"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "result": {
+        "status": "failed",
+        "error": "qualified admission requires exactly 32 primary tasks"
+      }
+    }
+  ],
+  "qualified_tasks": 0,
+  "competitive_runs_allowed": false,
+  "synthetic_positive_fixture": "500 source files/50000 lines in temporary tar only; not added to dataset",
+  "independent_review": "docs/relatorios/logs/L2/corpus-second-reader.json",
+  "pending_R1": [
+    "32 actual tasks, complete public provenance and natural prompts",
+    "build/probe/regression execution and independent semantic label receipts",
+    "line/path classification excluding inline Rust tests where relevant; extend measurement method before full R1 acceptance",
+    "qualified events and source/runtime semantic evidence"
+  ],
+  "coverage": "codebase-memory paths not_tracked; exact source fallback; graft callers blast radius checked",
+  "graft_additional_saved_tokens": 4151,
+  "graft_additional_calls": 1
+}

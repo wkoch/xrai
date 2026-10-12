@@ -34,3 +34,21 @@ python3 eval/scripts/triage_candidates.py --cache /tmp/xrai-qualified-triage
 ```
 
 Próximo incremento R1: testar builds/probes sobre esses pins; escolher 32 casos e SHAs históricos pertinentes, preservar checkout completo/manifest/notice, medir produção com exclusões revistas, preparar testes baseline/reference/regressão, relações semanticamente necessárias, eventos A/B e revisão independente. A ausência dessas evidências mantém o gate fechado. Não há decisão arquitetural nova requerida neste incremento.
+
+## Correção do gate após revisão independente
+
+A revisão de `l2_parsing` encontrou falso aceite de família/language divergentes, `version=true` e oracle incremental não verificado. O incremento corretivo preserva os recibos/logs anteriores e registra nova evidência em `docs/relatorios/logs/L2/qualified-gate-fix.json`.
+
+`verify_qualified.validate()` agora executa o JSON Schema Draft 2020-12 para todas as linhas, antes das regras entre tarefas, tanto com quanto sem IO de artefatos. O schema define tipos dos campos aninhados, enums/condicionais de família/language, versionamento inteiro (booleano recusado), recibos com caminho relativo e SHA-256, operações do evento, probes e oracles. Controles obrigatoriamente têm `complexity.complex=false` e não podem preencher o piso complexo. Em modo real, `oracle_B` precisa existir dentro da raiz do avaliador e corresponder ao fingerprint; falhas IO produzem erro de admissão.
+
+O modo real também vincula `input.snapshot` ao manifest que o materializador usa: repository/commit/archive/hash/licenças devem coincidir. Cada arquivo do tar precisa aparecer no manifest com tamanho/hash corretos; arquivos duplicados, links, entradas proibidas e inventário divergente são recusados. Os módulos necessários precisam pertencer à produção elegível. As contagens declaradas são recomputadas diretamente dos bytes, usando método explícito `xrai.production.path-marker.v1`; inventar porte sobre um snapshot pequeno não passa. Esse filtro conserva a limitação documentada de testes inline/Rust e classificação semântica: antes de fechar R1, a medição precisa excluir esses trechos com recibo independente/método revisto quando pertinente. O gate ainda não prova autenticidade externa de Git/issue, verdade dos rótulos ou execução de probes pelo simples fato de validar recibos; essa curadoria continua obrigatória.
+
+Nove testes passam, incluindo 36 mutações: as 12 anteriores, nove novos erros de tipos/linguagem/recibos/controle exercitados nos dois modos e seis divergências reais de snapshot/commit/módulo/porte/oracle. O positivo real usa somente um tar sintético em diretório temporário com 500 arquivos/50 mil linhas, explicitamente fixture; nunca é escrito no dataset nem contado como desafio.
+
+A validação de 32 linhas e os testes agora reutilizam `jsonschema==4.25.1`, pin de desenvolvimento já existente em `docs/contracts/examples/requirements.txt`. Não há dependência runtime nova. Instalar esse requirements em ambiente de avaliação, como na CI; no ambiente local isolado usado aqui:
+
+```sh
+PYTHONPATH=/private/tmp/xrai-contract-blake3 python3 -m unittest discover -s eval/scripts/tests -v
+```
+
+O dataset qualificado permanece vazio; o gate continua fechado. As 32 tarefas, builds/probes, revisão semântica e de contagem, e eventos qualificados ainda precisam de execução em R1.

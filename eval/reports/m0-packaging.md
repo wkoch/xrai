@@ -26,3 +26,14 @@ python3 crates/xrai-eval/scripts/verify_packaging.py --binary target/release/par
 O avaliador usa Python e ferramentas de inspeção do host fora do sandbox. Elas não são runtime do executável copiado. Linux requer bubblewrap instalado para **a prova**, não para usar o parser. Não há fallback sem sandbox; restrição de user namespaces ou sandbox-exec indisponível falha explicitamente. No macOS, caminhos temporários usam representação física `/private/...`, e leitura do diretório raiz é necessária para o loader dyld; essa regra não abre os arquivos filhos. Queries e proveniência são `include_str!`, disponíveis mesmo com repositório e cache Cargo inacessíveis.
 
 A CI deve guardar o JSON completo por host, incluindo versão real do SO, ABI e `baseline_exactly_executed`. Runner macOS 15.x posterior ao 15.0 comprova apenas a versão registrada; ainda falta máquina 15.0 para fechar esse trecho literal do aceite. Essa pendência de infraestrutura não autoriza alterar o piso ou concluir o cartão.
+
+## Adendo nativo de CI, 12/10/2026
+
+[Run38200959849](https://github.com/wkoch/xrai/actions/runs/38200959849), commit `1e093189ba52b0b19f8e115f64c1d395a04a3721`: três jobs aprovados. Recibos em `docs/relatorios/logs/L2/ci-native/native-x86_64-unknown-linux-gnu/packaging.json` e `native-aarch64-apple-darwin/packaging.json`, metadados em `ci-native-fsfix.json`. Cada alvo executou14fixtures/7dialetos e3probesnegativos, queries, árvores e diagnósticos no único executável copiado, sem auxiliares no PATH, sem fontes/gramáticas externas e com rede negada.
+
+| Alvo efetivo | Binary bytes | Startup com sandbox | Baseline |
+|---|---:|---:|---|
+| Ubuntu24.04.5 x86_64, glibc2.39 | 8.915.504 | 22,30ms | Executado no baseline Linux do ADR020 |
+| macOS15.7.9 arm64, `LC_BUILD_VERSION minos15.0` | 8.160.640 | 36,93ms | Autonomia nativa comprovada em15.7.9; execução literal15.0 ainda pendente |
+
+Bibliotecas Linux: libc.so.6, libgcc_s.so.1 e loader do sistema; macOS: bibliotecas do SO registradas porotool no recibo. As métricas incluem sandbox e permanecem observações, sem meta de performance ou conclusão competitiva. O aceite integral M0-05 continua em andamento pela prova literal do piso macOS15.0; nenhuma falha de implementação ou linguagem foi ocultada.

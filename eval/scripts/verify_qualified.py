@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FAMILIES = ('Rust', 'TSJS', 'Python', 'Go')
@@ -20,12 +21,68 @@ def require(value, message):
 def artifact(root, receipt):
     path = root / receipt['path']
     require(path.resolve().is_relative_to(root.resolve()), 'artifact escapes evaluator root')
-    require(hashlib.sha256(path.read_bytes()).hexdigest() == receipt['sha256'], 'artifact fingerprint')
+    try:
+        data = path.read_bytes()
+    except OSError as error:
+        raise ValueError('artifact missing or unreadable: ' + receipt['path']) from error
+    require(hashlib.sha256(data).hexdigest() == receipt['sha256'], 'artifact fingerprint')
     return path
+
+
+def bind_snapshot(row, sources, root, cache):
+    """The eligible source proof must identify the tree materialize() will use."""
+    snapshot = sources['snapshots'].get(row['input']['snapshot'])
+    require(snapshot is not None, 'qualified input snapshot absent from source manifest')
+    proof = row['snapshot_proof']
+    require(snapshot['repository'] == row['repository'], 'snapshot repository mismatch')
+    require(snapshot['commit'] == proof['commit'], 'snapshot commit mismatch')
+    require(snapshot['archive'] == proof['archive']['path'] and snapshot['sha256'] == proof['archive']['sha256'], 'snapshot archive fingerprint mismatch')
+    require(set(proof['license_files']) == set(snapshot['license_files']), 'snapshot license evidence mismatch')
+    files = {entry['path']: entry for entry in snapshot['files']}
+    require(snapshot['file_count'] == len(files), 'source manifest file count mismatch')
+    require(proof['production_files'] <= len(files), 'production files exceed complete snapshot inventory')
+    require(all(module['path'] in files for module in row['production_modules']), 'production module absent from materialized snapshot')
+    key = row['input']['snapshot']
+    if key not in cache:
+        from materialize_task import safe_path
+        from triage_candidates import classify
+        archive = artifact(root, proof['archive'])
+        production = {}
+        names = set()
+        with tarfile.open(archive, 'r:gz') as tree:
+            for entry in tree:
+                name = safe_path(entry.name)
+                require('.git' not in name.parts and name.parts[0] not in {'oracles', 'reports', 'tasks'}, 'archive entry forbidden by materializer')
+                require(entry.isfile() and entry.name not in names, 'snapshot must contain unique regular files')
+                names.add(entry.name)
+                require(entry.name in files, 'archive file absent from source manifest')
+                data = tree.extractfile(entry).read()
+                require(files[entry.name]['sha256'] == hashlib.sha256(data).hexdigest() and files[entry.name]['bytes'] == len(data), 'archive source fingerprint mismatch')
+                if classify(Path(entry.name), data) is None:
+                    production[entry.name] = sum(bool(line.strip()) for line in data.splitlines())
+        require(names == set(files), 'source manifest file absent from archive')
+        require(set(proof['license_files']) <= names, 'license missing from materialized archive')
+        cache[key] = production
+    production = cache[key]
+    require(proof['measurement_method'] == 'xrai.production.path-marker.v1', 'production measurement method must be reproducible')
+    require(proof['production_files'] == len(production) and proof['production_nonempty_lines'] == sum(production.values()), 'production measurements differ from materialized snapshot')
+    require(all(module['path'] in production for module in row['production_modules']), 'required module is not eligible production source')
 
 
 def validate(rows, *, root=ROOT, check_artifacts=True):
     require(len(rows) == 32, 'qualified admission requires exactly 32 primary tasks')
+    # Always validate types and nested receipts, even when fixture tests skip IO.
+    # Exact jsonschema 4.25.1 pin already belongs to evaluator/document tooling.
+    from jsonschema import Draft202012Validator
+    schema = json.loads((ROOT / 'qualification/qualified-task.schema.json').read_text(encoding='utf-8'))
+    Draft202012Validator.check_schema(schema)
+    validator = Draft202012Validator(schema)
+    for row in rows:
+        error = next(validator.iter_errors(row), None)
+        if error is not None:
+            raise ValueError(f'qualified task schema: {error.json_path}: {error.message}')
+    sources = json.loads((root / 'sources/manifest.json').read_text(encoding='utf-8')) if check_artifacts else None
+    source_cache = {}
     require(len({r['id'] for r in rows}) == 32, 'duplicate qualified ID')
     require(len({r['change_lineage'] for r in rows}) == 32, 'duplicate change lineage')
     require(max(Counter(r['repository'] for r in rows).values()) <= 4, 'repository exceeds four primary tasks')
@@ -57,6 +114,7 @@ def validate(rows, *, root=ROOT, check_artifacts=True):
         prompt_hash = hashlib.sha256(row['input']['prompt'].encode()).hexdigest()
         require(review['prompt_sha256'] == prompt_hash and review['oracle_sha256'] == oracle['sha256'], 'review hashes do not bind prompt/oracle')
         if check_artifacts:
+            bind_snapshot(row, sources, root, source_cache)
             artifact(root, proof['archive'])
             artifact(root, oracle)
             artifact(root, review['evidence'])
@@ -90,6 +148,8 @@ def validate(rows, *, root=ROOT, check_artifacts=True):
             event = row['incremental_event']
             require(event['sequence'] == ['materialize_A', 'start_index_A', 'warm_query', 'apply_B', 'same_index_query', 'oracle_B', 'full_rebuild_B'] and event['same_process_required'] is True, 'cold checkout is not incremental')
             require(row['input'].get('state_changes') and event['oracle_B'] and event['full_rebuild_comparison'], 'incremental event/oracle specification missing')
+            if check_artifacts:
+                artifact(root, event['oracle_B'])
     tsjs = [r for r in rows if r['family'] == 'TSJS']
     require(sum(r['language'] == 'TypeScript' for r in tsjs) >= 2 and sum(r['language'] == 'JavaScript' for r in tsjs) >= 2, 'TS and JS floors')
     require(sum(r['kind'] != 'control' and len(r['production_modules']) >= 2 and bool(r['relations']) for r in rows) >= 20, 'twenty noncontrols need related production modules')
@@ -105,7 +165,7 @@ def main():
     try:
         rows = [json.loads(line) for line in args.dataset.read_text(encoding='utf-8').splitlines() if line.strip()]
         result = {'status': 'passed', 'summary': validate(rows)}
-    except (ValueError, KeyError, OSError, TypeError) as error:
+    except (ValueError, KeyError, OSError, TypeError, tarfile.TarError) as error:
         result = {'status': 'not_admitted', 'error': str(error), 'competitive_runs_allowed': False}
     text = json.dumps(result, indent=2) + '\n'
     if args.output:
