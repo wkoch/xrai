@@ -1,0 +1,111 @@
+{
+  "schema": "xrai.architecture.next-execution.v1",
+  "at_utc": "2026-10-12T20:39:52.004323+00:00",
+  "base_commit": "a8f3764fecc8efdc84370ef31da88260e61c73ee",
+  "remote_read": {
+    "command": "gh api repos/wkoch/xrai/commits/main --jq .sha",
+    "exit_code": 0,
+    "observed_sha": "a8f3764fecc8efdc84370ef31da88260e61c73ee",
+    "new_implementation_since_last_review": false
+  },
+  "result": "passed",
+  "checks": {
+    "cards_and_dependencies_preserved": 41,
+    "V1_cards_preserved": 6,
+    "counts": {
+      "concluída": 9,
+      "em andamento": 7,
+      "não iniciada": 25
+    },
+    "gates": {
+      "G0": "não avaliado",
+      "G1": "não avaliado",
+      "G2": "não avaliado"
+    },
+    "local_link_targets": 168,
+    "diff_check": 0,
+    "documentation_only": true
+  },
+  "agents": {
+    "c03_design": {
+      "role": "read-only architecture",
+      "coverage_paths": [
+        "docs/relatorios/REVISAO-L5-C02.md",
+        "crates/xrai-eval/harness/agent_ledger.py",
+        "crates/xrai-eval/harness/adapters.py",
+        "crates/xrai-eval/harness/incremental.py",
+        "crates/xrai-eval/harness/runner.py",
+        "crates/xrai-eval/harness/README.md",
+        "crates/xrai-eval/harness/tests/test_agent_ledger.py",
+        "eval/scripts/verify_c02.py",
+        "eval/scripts/verify_qualified.py"
+      ],
+      "finding": "Place C03 at real provider orchestration, preserve probes/replay and D0/seed smoke gates."
+    },
+    "tsjs_slice": {
+      "role": "read-only architecture",
+      "coverage_paths": [
+        "docs/decisoes/SEMANTICA-P2.md",
+        "docs/relatorios/REVISAO-L5-C02.md",
+        "crates/xrai-eval/src/semantics_spike.rs",
+        "crates/xrai-eval/src/semantics_spike/r3.rs",
+        "crates/xrai-eval/src/bin/semantics-spike.rs",
+        "crates/xrai-eval/src/lib.rs",
+        "crates/xrai-eval/src/parsing_spike.rs",
+        "crates/xrai-eval/src/worker_spike.rs",
+        "eval/scripts/verify_semantics.py"
+      ],
+      "finding": "Rust-specific resolver stays isolated; exact local ESM profile, bindings and conservative session update."
+    }
+  },
+  "graph": {
+    "project": "Users-wkoch-Projetos-xrai",
+    "generation": "2026-10-12T19:27:42Z",
+    "tier": 2,
+    "agent_coverage": "nine paths each, no_recorded_issue/metadata_match, best effort",
+    "parent_path_correction": "semantics_spike/mod.rs absent; actual semantics_spike.rs discovered and read by agent",
+    "limits": "Homonymous trace edges not treated as proof of runtime paths; agents used source reads for material claims."
+  },
+  "graft": {
+    "calls_including_agents": 2,
+    "estimated_tokens_saved": 44905
+  },
+  "official_references_consulted": [
+    "https://www.typescriptlang.org/docs/handbook/modules/reference.html",
+    "https://tc39.es/ecma262/2024/multipage/ecmascript-language-statements-and-declarations.html#sec-let-and-const-declarations"
+  ],
+  "input_sha256_at_base": {
+    "crates/xrai-eval/harness/README.md": "e43863cc00a6e398b930b62f0da1cb711a15fca1439341bc6afafcfdf67834e5",
+    "crates/xrai-eval/harness/adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+    "crates/xrai-eval/harness/agent_ledger.py": "6d9538dbf0a6e545133b7f310e73d39f687dd43fb227f688511a69394a2dc4d8",
+    "crates/xrai-eval/harness/incremental.py": "e4c47ec13c3e354e7c3e2e6bc71f62c462e421dbd1ca266f8b31e4cb367ad9de",
+    "crates/xrai-eval/harness/runner.py": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "crates/xrai-eval/harness/tests/test_agent_ledger.py": "553f7f5f4b1096f662a1a9384406a7de1dce1c0009f3ad2528ed21166d2b8730",
+    "crates/xrai-eval/src/bin/semantics-spike.rs": "4f801649cece5c15dc0f9807b64648dcf8c593497b3a8923b5d4690b74cdad23",
+    "crates/xrai-eval/src/lib.rs": "1c3d666ee3d2a0bd3eb2ca084d78065882a4ce11c77446fc743c40196d5bb4fd",
+    "crates/xrai-eval/src/parsing_spike.rs": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "dde45cb4ebc3113fd18cb327f56ae5d27e6a08d3473c3d9a5d55cfe61912d2cf",
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "docs/decisoes/SEMANTICA-P2.md": "1ceb455057c70520a406e80bc7b05266384ce246d9b9fe7db9ba20c1477c9956",
+    "docs/relatorios/REVISAO-L5-C02.md": "717d99f412e763c416b104e79c2985e35db38c2b3f93f6fc5d612399bceb50be",
+    "docs/relatorios/logs/revisao-L5-C02/dependencias.json": "05b375d76b57941e337131712e9e83f2ebfc1348f19a4efd2b0ab78337c0778b",
+    "eval/qualification/c02-status-matrix.json": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+    "eval/scripts/verify_c02.py": "da40b94fe09e241747fc2f49195967799b18752ebf1f84e6a03ede4d0f3bfe96",
+    "eval/scripts/verify_qualified.py": "2bfdf70dc122484ebf7017fa4d9b25fd69dbece4a380fe7ce47d356eb9283526",
+    "eval/scripts/verify_semantics.py": "5590b8509e7c6f55e4d302c6c47024a3a1539f70b92951632440240278715c75"
+  },
+  "document_sha256": {
+    "IMPLEMENTADOR.md": "f88be4a3ad3511753f66dd24e195b133ccb40020c8a4d4332c62c2554db8fac0",
+    "docs/PLANO-DE-IMPLEMENTACAO.md": "1c0e672adbc8606e82c9d064382e1daeba1ef72919bb6c70d123c471a27709a2",
+    "docs/STATUS-IMPLEMENTACAO.md": "831696cd57d193cbeec8c6127d6647babd96d1d20af06f109a2b3a8b0d0039f1",
+    "docs/ROTEIRO-V1.md": "4c3116a182e4b530d987d0ecabe83f94205def00318035456d3afb3b8cac35a3",
+    "docs/decisoes/SEMANTICA-P2.md": "1a02515c92efd53b643952beab94044d769911fdc87ecd30a80377a97615cbe1",
+    "docs/L5-PROXIMA-EXECUCAO.md": "933454cc954ac69b3ee776777fa13448ecb6398fa3c44d923211d3b23916cbf4"
+  },
+  "limits": [
+    "No implementation change, product/upstream/native test, CI dispatch, new advisory query or provider call.",
+    "Only existing structural evidence and documentary consistency reviewed; not an acceptance of the planned capabilities."
+  ],
+  "verifier_source": "from pathlib import Path\nimport json,re,subprocess,hashlib,datetime,collections\nfrom urllib.parse import unquote\nroot=Path('/Users/wkoch/Projetos/xrai')\nfiles=['IMPLEMENTADOR.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/STATUS-IMPLEMENTACAO.md','docs/ROTEIRO-V1.md','docs/decisoes/SEMANTICA-P2.md','docs/L5-PROXIMA-EXECUCAO.md']\noutput='docs/relatorios/logs/proxima-execucao/checks.json'\ndef git(*a):return subprocess.check_output(['git',*a],cwd=root,text=True)\ndef read(p):return (root/p).read_text()\ndef old(p):return git('show','HEAD:'+p)\nhead=git('rev-parse','HEAD').strip();assert head=='a8f3764fecc8efdc84370ef31da88260e61c73ee'\ndef cards(text,prefix):\n matches=list(re.finditer(r'^### ('+prefix+r'-\\d+(?:\\.R\\d+)?) —[^\\n]+',text,re.M));out={}\n for i,m in enumerate(matches):\n  block=text[m.end():matches[i+1].start() if i+1<len(matches) else len(text)]\n  out[m.group(1)]={'title':m.group(0),'dependencies':re.search(r'\\*\\*Depende de:\\*\\* ([^\\n]+)',block).group(1).split(' **')[0]}\n return out\nfor name,prefix,n in [('docs/PLANO-DE-IMPLEMENTACAO.md','M[01]',41),('docs/ROTEIRO-V1.md','V1',6)]:\n current=cards(read(name),prefix);assert len(current)==n and current==cards(old(name),prefix)\ndef states(t):return dict(re.findall(r'^\\| (M[01]-\\d+(?:\\.R\\d+)?) \\| [^|]+ \\| ([^|]+?) \\|',t,re.M))\ns=states(read('docs/STATUS-IMPLEMENTACAO.md'));assert s==states(old('docs/STATUS-IMPLEMENTACAO.md')) and len(s)==41\ncounts=dict(collections.Counter(s.values()));assert counts=={'concluída':9,'em andamento':7,'não iniciada':25}\ngates=dict(re.findall(r'^\\| (G[012]) \\| ([^|]+?) \\|',read('docs/STATUS-IMPLEMENTACAO.md'),re.M));assert gates=={f'G{i}':'não avaliado' for i in range(3)}\nlinks=0\nfor name in files:\n for target in re.findall(r'\\[[^\\]]*\\]\\(([^)]+)\\)',read(name)):\n  target=target.strip('<>')\n  if re.match(r'^[a-zA-Z]+:',target) or target.startswith('#'):continue\n  p=(root/name).parent/unquote(target.split('#')[0]);assert p.exists() or p.resolve()==(root/output).resolve(),(name,target);links+=1\nchanged=set(git('diff','--name-only').splitlines())|set(git('ls-files','--others','--exclude-standard').splitlines());assert changed<=set(files+[output]),changed\nassert not git('diff','--cached','--name-only').strip()\nc=subprocess.run(['git','diff','--check'],cwd=root,capture_output=True,text=True);assert c.returncode==0,c.stdout\npaths_c03=['docs/relatorios/REVISAO-L5-C02.md','crates/xrai-eval/harness/agent_ledger.py','crates/xrai-eval/harness/adapters.py','crates/xrai-eval/harness/incremental.py','crates/xrai-eval/harness/runner.py','crates/xrai-eval/harness/README.md','crates/xrai-eval/harness/tests/test_agent_ledger.py','eval/scripts/verify_c02.py','eval/scripts/verify_qualified.py']\npaths_ts=['docs/decisoes/SEMANTICA-P2.md','docs/relatorios/REVISAO-L5-C02.md','crates/xrai-eval/src/semantics_spike.rs','crates/xrai-eval/src/semantics_spike/r3.rs','crates/xrai-eval/src/bin/semantics-spike.rs','crates/xrai-eval/src/lib.rs','crates/xrai-eval/src/parsing_spike.rs','crates/xrai-eval/src/worker_spike.rs','eval/scripts/verify_semantics.py']\ninputs=sorted(set(paths_c03+paths_ts+['eval/qualification/c02-status-matrix.json','docs/relatorios/logs/revisao-L5-C02/dependencias.json']))\ninput_hashes={p:hashlib.sha256(subprocess.check_output(['git','show',head+':'+p],cwd=root)).hexdigest() for p in inputs}\nassert not (root/'crates/xrai-eval/src/semantics_spike/mod.rs').exists()\nm=json.loads(read('eval/qualification/c02-status-matrix.json'));assert m['summary']['eligible_tasks']==8 and m['summary']['admitted_tasks']==0\nreport={'schema':'xrai.architecture.next-execution.v1','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_commit':head,'remote_read':{'command':'gh api repos/wkoch/xrai/commits/main --jq .sha','exit_code':0,'observed_sha':head,'new_implementation_since_last_review':False},'result':'passed','checks':{'cards_and_dependencies_preserved':41,'V1_cards_preserved':6,'counts':counts,'gates':gates,'local_link_targets':links,'diff_check':0,'documentation_only':True},'agents':{'c03_design':{'role':'read-only architecture','coverage_paths':paths_c03,'finding':'Place C03 at real provider orchestration, preserve probes/replay and D0/seed smoke gates.'},'tsjs_slice':{'role':'read-only architecture','coverage_paths':paths_ts,'finding':'Rust-specific resolver stays isolated; exact local ESM profile, bindings and conservative session update.'}},'graph':{'project':'Users-wkoch-Projetos-xrai','generation':'2026-10-12T19:27:42Z','tier':2,'agent_coverage':'nine paths each, no_recorded_issue/metadata_match, best effort','parent_path_correction':'semantics_spike/mod.rs absent; actual semantics_spike.rs discovered and read by agent','limits':'Homonymous trace edges not treated as proof of runtime paths; agents used source reads for material claims.'},'graft':{'calls_including_agents':2,'estimated_tokens_saved':44905},'official_references_consulted':['https://www.typescriptlang.org/docs/handbook/modules/reference.html','https://tc39.es/ecma262/2024/multipage/ecmascript-language-statements-and-declarations.html#sec-let-and-const-declarations'],'input_sha256_at_base':input_hashes,'document_sha256':{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in files},'limits':['No implementation change, product/upstream/native test, CI dispatch, new advisory query or provider call.','Only existing structural evidence and documentary consistency reviewed; not an acceptance of the planned capabilities.'],'verifier_source':Path(__file__).read_text()}\np=root/output;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\\n');print(json.dumps({'result':'passed','links':links,'cards':41,'V1_cards':6,'files':len(files)},ensure_ascii=False))\n"
+}

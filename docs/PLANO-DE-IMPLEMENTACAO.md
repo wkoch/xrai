@@ -709,6 +709,8 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
+[Interfaces e entregas pequenas da próxima execução](L5-PROXIMA-EXECUCAO.md): C03 distingue replay/smoke/campanha no dispatch real; TS/JS começa por perfil ESM local exato. Este detalhamento não altera IDs/dependências nem representa código entregue.
+
 [Revisão L5-C02](relatorios/REVISAO-L5-C02.md): mesmos seis incrementos e 41 cartões. C02/quatro dossiês aceitos, oito elegíveis com pilotos; não refazer as provas aprovadas. Sem lote L6.
 
 1. L5-04/05: selecionar quatro casos de estado, congelar descritores e entregar um evento integral com contraprovas; completar quatro e impor C03 no preflight de campanha. Elegibilidade preparada não é execução comprovada.

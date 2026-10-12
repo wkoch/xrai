@@ -97,3 +97,7 @@ Primeiro relatório entrega R1/R2 Rust, matriz e perdas; fechamento do cartão e
 ## 7. Integração posterior com P3
 
 P3 recebe fatos/candidatos/unknowns junto com revisão, evidência e coverage; usa isso para sugerir obrigações e expandir. Candidato serve como caminho de investigação, não como afirmação de causalidade. Comparar controle lexical/estrutural e P2 com os mesmos blobs/configuração. A avaliação de sucesso de tarefa continua M0-12; acerto de relações não é sucesso de agente.
+
+## Concretização TS/JS de L5-02
+
+O [roteiro da próxima execução](../L5-PROXIMA-EXECUCAO.md) fixa `captured-relative-exact-v1` como perfil experimental inicial, com ESM local, evidências por ocorrência, bindings e sessão A→B em três incrementos. Preservar semântica/recibos Rust; gramática compartilhada não implica resolução compartilhada. Regras de módulo e shadowing têm limites próprios, labels prévios e fontes oficiais vinculadas no roteiro. Esta decisão detalha P2, sem promover o perfil a API pública nem concluir a implementação.
