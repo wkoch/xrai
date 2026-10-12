@@ -1,0 +1,9 @@
+{
+  "configuration": {},
+  "edition": "2024",
+  "files": {
+    "crates/stdx/src/rand.rs": "//! We don't use `rand` because that is too many things for us.\n//!\n//! `oorandom` is used instead, but it's missing these two utilities.\n//! Switching to `fastrand` or our own small PRNG may be good because only xor-shift is needed.\n\npub fn shuffle<T>(slice: &mut [T], mut rand_index: impl FnMut(usize) -> usize) {\n    let mut remaining = slice.len() - 1;\n    while remaining > 0 {\n        let index = rand_index(remaining);\n        slice.swap(remaining, index);\n        remaining -= 1;\n    }\n}\n\npub fn seed() -> u64 {\n    use std::hash::{BuildHasher, Hasher};\n    #[expect(clippy::disallowed_types, reason = \"we need a source of randomness for the seed\")]\n    std::collections::hash_map::RandomState::new().build_hasher().finish()\n}\n"
+  },
+  "root": "crates/stdx/src/rand.rs",
+  "rules": "rust-r3-v1"
+}

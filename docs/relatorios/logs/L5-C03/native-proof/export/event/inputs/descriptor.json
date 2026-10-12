@@ -1,0 +1,89 @@
+{
+  "a_inventory": {
+    "crates/stdx/src/rand.rs": {
+      "bytes": 735,
+      "sha256": "cb56df4a9ab5e528e9d8df04127ff4fc395607d73b93e4d0fdf83341dacee772"
+    }
+  },
+  "admitted": false,
+  "archive": {
+    "commit": "3a5f65784a90278fa1de97fe89a7a529dd44765a",
+    "path": "eval/qualification/l5-real/rust/baseline.tar.gz",
+    "repository": "rust-lang/rust-analyzer",
+    "sha256": "539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f"
+  },
+  "artifacts": {
+    "a.json": {
+      "bytes": 917,
+      "sha256": "9f13674fa6d7a324df50a91cec8a61024e4d601f5279c16f488c16167834e1a2"
+    },
+    "agent/input.md": {
+      "bytes": 331,
+      "sha256": "49fa272e597bdce352f6831242ee06225f8671f039a04acb967dd3974582019a"
+    },
+    "b.json": {
+      "bytes": 917,
+      "sha256": "690f2c8cd4182f2cb566602573ef60851e41939f564f8b0ab5de0c7492c38a1f"
+    },
+    "context.json": {
+      "bytes": 21017,
+      "sha256": "d62287bc61951e26c3c1f51f4698c207fad37f3ffef0d63f143d487c3d78a5c8"
+    },
+    "oracle.json": {
+      "bytes": 1270,
+      "sha256": "d73e2f39dfe2ab0cced44791e40fe6bdf5b4cb93f366c30f662b656e0eafe97d"
+    },
+    "queries.json": {
+      "bytes": 313,
+      "sha256": "fe7529b27c963c392322fe3cacbcb594e9c1936bf5d83bf8cf1ed18227e8bd6d"
+    }
+  },
+  "b_inventory": {
+    "crates/stdx/src/rand.rs": {
+      "bytes": 735,
+      "sha256": "cb56df4a9ab5e528e9d8df04127ff4fc395607d73b93e4d0fdf83341dacee772"
+    }
+  },
+  "capacity": "rust-r3-v1-limited-root-lookup",
+  "change_lineage": "controlled:rust-lang/rust-analyzer:3a5f65784a90278fa1de97fe89a7a529dd44765a:L5-STATE-Rust-STDX-EDITION",
+  "complex": false,
+  "complex_reason": "no claimed three-module/two-subsystem necessary chain",
+  "delta": {
+    "configuration_changed": {
+      "edition": {
+        "a": "2018",
+        "b": "2024"
+      }
+    },
+    "files_added": [],
+    "files_changed": [],
+    "files_removed": []
+  },
+  "derived_from": [],
+  "event": "configured_edition_change",
+  "event_role": "required",
+  "executed": false,
+  "family": "Rust",
+  "global_admission_delta": 0,
+  "individual_eligible": false,
+  "kind": "state_config",
+  "origin": "controlled_independent_state_task",
+  "parsing_requirement": "Tree-sitter Rust producer reports full snapshot coverage/gaps; no upstream code execution",
+  "prepared": true,
+  "receipt_policy": "descriptor is preparation only; cold B, restart, supplemental role and relabelled case cannot demonstrate the required event",
+  "repository": "rust-lang/rust-analyzer",
+  "required_session_sequence": [
+    "open_A",
+    "warm_all_queries_A",
+    "apply_B_same_index",
+    "query_all_B",
+    "snapshot_B",
+    "independent_open_B",
+    "compare_complete",
+    "close_both"
+  ],
+  "schema_version": "xrai.eval.real-state-event.prepared.v1",
+  "slot_id": "L5-SLOT-Rust-state_config-1",
+  "source_scope": "entire original selected production files; full upstream archive retained separately; no whole-repository semantic claim",
+  "task_id": "L5-STATE-Rust-STDX-EDITION"
+}

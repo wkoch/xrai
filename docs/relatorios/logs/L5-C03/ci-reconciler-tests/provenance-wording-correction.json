@@ -1,0 +1,14 @@
+{
+  "after_sha256": "9e3b20b3f4bfdf33b93572a179acba4733170be5174e4e23aae1139896f7ae37",
+  "algorithm_changed": false,
+  "before_sha256": "f1a68f414cd03cfa69adf2702fdc328bdc750ca93e412d4c5b7dfddbddcf1f70",
+  "change": "native_code_provenance output wording only; own reconciler source hash continues to be recorded separately",
+  "created_utc": "2026-10-12T21:24:41.392382+00:00",
+  "data_only": true,
+  "frozen_native_sources_changed": false,
+  "native_execution": false,
+  "path": "eval/scripts/reconcile_state_ci.py",
+  "reason": "successful native head4972f02 already includes the reconciler, so blanket statement that it was written after tested head is no longer accurate",
+  "schema_version": "xrai.eval.c03.reconciler.provenance-wording-correction.v1",
+  "tests_changed": false
+}

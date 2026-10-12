@@ -1,0 +1,37 @@
+{
+  "schema": "xrai.eval.c03.real-event.receipt.v1",
+  "task_id": "L5-STATE-Rust-STDX-EDITION",
+  "slot_id": "L5-SLOT-Rust-state_config-1",
+  "family": "Rust",
+  "event_role": "required",
+  "descriptor_sha256": "78cb26abf5d189d866a9fadfcc462a0c8c18d4d35acce05ced85f2be25a85d0a",
+  "input_sha256": {
+    "a.json": "9f13674fa6d7a324df50a91cec8a61024e4d601f5279c16f488c16167834e1a2",
+    "b.json": "690f2c8cd4182f2cb566602573ef60851e41939f564f8b0ab5de0c7492c38a1f",
+    "queries.json": "fe7529b27c963c392322fe3cacbcb594e9c1936bf5d83bf8cf1ed18227e8bd6d",
+    "oracle.json": "d73e2f39dfe2ab0cced44791e40fe6bdf5b4cb93f366c30f662b656e0eafe97d"
+  },
+  "binary": {
+    "path": "native-bin/semantics-session",
+    "sha256": "fbc7ffd273d22ea2f5304e2d7537c48ba4f5a0f25b2433824e7afb456bd64073",
+    "bytes": 7111672
+  },
+  "source_sha256": {
+    "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+    "eval/scripts/verify_state_event.py": "46235cd97d9d61ad3eefbf05d10aefc3422282793490f683194497f47c083d12",
+    "crates/xrai-eval/src/bin/semantics-session.rs": "05ad8f816d7df461dec5382b6330169c490649de09c5b53cd9478bc6c7da211b",
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "dde45cb4ebc3113fd18cb327f56ae5d27e6a08d3473c3d9a5d55cfe61912d2cf"
+  },
+  "environment": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "github_run_id": "38309739709",
+    "github_sha": "4972f0285915a37d044d0d2bee30a32eecaffb30"
+  },
+  "strategy": "conservative_full_rebuild",
+  "scope": "rust-r3-v1-limited-root-lookup",
+  "normalization": [],
+  "admitted": false,
+  "competitive_runs_allowed": false
+}

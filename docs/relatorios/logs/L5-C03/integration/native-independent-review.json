@@ -1,0 +1,132 @@
+{
+  "accepted": true,
+  "artifact_id": 11773539273,
+  "campaign": {
+    "admitted": false,
+    "competitive_runs_allowed": false,
+    "individual_eligibility_or_global_admission_added": false,
+    "required_events_reconciled": 1,
+    "required_events_total": 4
+  },
+  "captured_utc": "2026-10-12T21:23:13.388866+00:00",
+  "code_commit": "4972f0285915a37d044d0d2bee30a32eecaffb30",
+  "complete_comparison": {
+    "all_three_B_query_results_equal": true,
+    "changed_expectations": 2,
+    "coverage_preserved": {
+      "crates/stdx/src/rand.rs": "parsed"
+    },
+    "declarations_B": 2,
+    "evidence_and_dependencies_compared_without_filtering": true,
+    "gaps_A": [
+      "edition_not_supported",
+      "r3_lexical_form_not_supported"
+    ],
+    "gaps_B": [
+      "r3_lexical_form_not_supported"
+    ],
+    "normalized_fields": [],
+    "snapshot_B_equals_independent_rebuild": true,
+    "snapshot_fields_B": [
+      "bindings",
+      "configuration_fingerprint",
+      "configuration_id",
+      "coverage",
+      "declarations",
+      "gaps",
+      "imports",
+      "input",
+      "modules",
+      "producer_fingerprint",
+      "references",
+      "scopes",
+      "snapshot_id"
+    ],
+    "unknown_query_preserved": "no_such_random_helper"
+  },
+  "continuity": {
+    "commands": 13,
+    "explicit_close_reaped_both": true,
+    "generation_A": 1,
+    "generation_B": 2,
+    "independent_generation_B": 1,
+    "independent_rebuild_pid": 4759,
+    "live_single_session": true,
+    "observed_collector_pid": 4758,
+    "rejected_stale_revision_preserved_A": true,
+    "three_queries_warmed_before_update": true
+  },
+  "evidence_sha256": {
+    "docs/relatorios/logs/L5-C03/native-proof/acquisition.json": "88bbe6121616de2ca360d6fd57aea759880947da47ca4704ae598f7f09ae1e39",
+    "docs/relatorios/logs/L5-C03/native-proof/artifacts.json": "4e711192517849a5c62c2e5d5db4d606b286e6a8c706fd7751c7223d3573746d",
+    "docs/relatorios/logs/L5-C03/native-proof/jobs.json": "5e4ead6e8744c1a21335db522e89e72d4d42fa84c39f7b9910fcbdd949e29bf3",
+    "docs/relatorios/logs/L5-C03/native-proof/original.zip": "561c3a7893dcb4a3fcdcf8ee21915f3395a80c1e1cd1847283d3ecf64f20edcb",
+    "docs/relatorios/logs/L5-C03/native-proof/reconciliation.json": "c633a99f50d1343304800f2d73b80f4975ec6f4415aa0f4477b1ec36c9694252",
+    "docs/relatorios/logs/L5-C03/native-proof/run.json": "24e5d58eee5b4484434921c307737bd6a824816be36fc29acfe40d378348c3b8"
+  },
+  "exact_original_zip_files": 23,
+  "exact_reconciliation_equality": true,
+  "graph_coverage": {
+    "caveat": "best-effort coverage",
+    "generation": "2026-10-12T21:21:37Z",
+    "reconciler_collector_verifier": "no_recorded_issue metadata_match",
+    "tier": 2
+  },
+  "job_id": 115012267959,
+  "limits": [
+    "Authenticated acquisition evidence was retained by root and matched byte-for-byte; this reviewer did not reacquire GitHub metadata. Local JSON is not a signature.",
+    "Historical process continuity relies on authenticated CI plus owned collector/protocol; data-only review cannot observe past processes anew.",
+    "Native test/build/probe code commit is the recorded 4972f028; later documentation or reconciler wording changes are not the tested native code.",
+    "Three required real family events remain prepared and unexecuted; campaign/global admission stays blocked."
+  ],
+  "native_binary_sha256": "fbc7ffd273d22ea2f5304e2d7537c48ba4f5a0f25b2433824e7afb456bd64073",
+  "original_zip_sha256": "561c3a7893dcb4a3fcdcf8ee21915f3395a80c1e1cd1847283d3ecf64f20edcb",
+  "other_families": {
+    "Go": "prepared_not_executed",
+    "Python": "prepared_not_executed",
+    "TSJS": "prepared_not_executed"
+  },
+  "provenance_wording_correction": {
+    "captured_utc": "2026-10-12T21:25:33.698972+00:00",
+    "exact_reconciliation_recomputed": true,
+    "native_or_tests_executed": false,
+    "reconciler_source_sha256": "9e3b20b3f4bfdf33b93572a179acba4733170be5174e4e23aae1139896f7ae37",
+    "retained_native_source_commit": "4972f0285915a37d044d0d2bee30a32eecaffb30",
+    "scope": "Factual documentation string corrected in the data-only reconciler; native ZIP/API/source/binary/event evidence unchanged.",
+    "wording": "Native producer source bindings verified unchanged; data-only reconciler provenance is recorded separately by its own source hash."
+  },
+  "receipt_counterproofs": {
+    "all_passed": true,
+    "interpretation": "Python receipt structure/counterproof tests against real native export; not 30 extra native executions",
+    "retained_CI_tests": 30,
+    "stderr_sha256": "0f3db9b74aef1c687e7ba251ab5217f04ee84f33c2b9b7d62a2272b5370ac72c"
+  },
+  "review_scope": "Data-only independent recomposition of retained original CI ZIP/API/export and complete A/B transport; no native code, GitHub access, provider or upstream execution during this review.",
+  "reviewer": "c03_dispatch",
+  "run_id": 38309739709,
+  "schema": "xrai.eval.c03.native-independent-review.v1",
+  "scope": {
+    "cache_or_performance_improvement_claimed": false,
+    "capacity": "rust-r3-v1-limited-root-lookup",
+    "edition_A": "2018",
+    "edition_B": "2024",
+    "full_original_source_bytes_preserved_between_states": true,
+    "source_units": 1,
+    "strategy": "conservative_full_rebuild",
+    "whole_upstream_semantics_claimed": false
+  },
+  "task": {
+    "derived_from": [],
+    "event_role": "required",
+    "family": "Rust",
+    "id": "L5-STATE-Rust-STDX-EDITION",
+    "independent_lineage": "controlled:rust-lang/rust-analyzer:3a5f65784a90278fa1de97fe89a7a529dd44765a:L5-STATE-Rust-STDX-EDITION",
+    "not_prior_correction_or_supplemental": true,
+    "slot": "L5-SLOT-Rust-state_config-1"
+  },
+  "verifier_sources_sha256": {
+    "eval/scripts/reconcile_state_ci.py": "9e3b20b3f4bfdf33b93572a179acba4733170be5174e4e23aae1139896f7ae37",
+    "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+    "eval/scripts/verify_state_event.py": "46235cd97d9d61ad3eefbf05d10aefc3422282793490f683194497f47c083d12"
+  }
+}

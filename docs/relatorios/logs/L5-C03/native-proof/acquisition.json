@@ -1,0 +1,45 @@
+{
+  "captured_utc": "2026-10-12T21:21:30.858475+00:00",
+  "authenticated_read_only_github_cli": true,
+  "headers_or_credentials_retained": false,
+  "no_binary_execution": true,
+  "items": [
+    {
+      "endpoint": "repos/wkoch/xrai/actions/runs/38309739709",
+      "path": "run.json",
+      "exit": 0,
+      "bytes": 11120,
+      "sha256": "24e5d58eee5b4484434921c307737bd6a824816be36fc29acfe40d378348c3b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "endpoint": "repos/wkoch/xrai/actions/runs/38309739709/jobs",
+      "path": "jobs.json",
+      "exit": 0,
+      "bytes": 2981,
+      "sha256": "5e4ead6e8744c1a21335db522e89e72d4d42fa84c39f7b9910fcbdd949e29bf3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "endpoint": "repos/wkoch/xrai/actions/runs/38309739709/artifacts",
+      "path": "artifacts.json",
+      "exit": 0,
+      "bytes": 695,
+      "sha256": "4e711192517849a5c62c2e5d5db4d606b286e6a8c706fd7751c7223d3573746d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "endpoint": "repos/wkoch/xrai/actions/artifacts/11773539273/zip",
+      "path": "original.zip",
+      "exit": 0,
+      "bytes": 1213909,
+      "sha256": "561c3a7893dcb4a3fcdcf8ee21915f3395a80c1e1cd1847283d3ecf64f20edcb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "local_tooling_retry": {
+    "first_attempt": "system python3 failed importing pinned blake3 after successful API captures",
+    "correction": "use existing /private/tmp/xrai-c02-tools/bin/python",
+    "native_producer_and_assets_changed": false
+  }
+}

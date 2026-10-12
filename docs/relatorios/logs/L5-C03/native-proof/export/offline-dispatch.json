@@ -1,0 +1,211 @@
+{
+  "adapter_calls": 1,
+  "decision": {
+    "accepted": true,
+    "campaign_scoring_enabled": false,
+    "dimensions": {},
+    "intent": "smoke_seed",
+    "paid_provider_enabled": false,
+    "schema_version": "xrai.eval.execution-gate.v1",
+    "scope": "offline-fake-only",
+    "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f"
+  },
+  "external_calls": 0,
+  "ledger": {
+    "accounting": {
+      "budget_limit_respected": true,
+      "budget_micro_usd": 1000,
+      "known_observed_charge_micro_usd": 35,
+      "observed_cost_complete": true,
+      "observed_cost_micro_usd": 35,
+      "reservation_is_provider_charge_guarantee": false,
+      "retained_reservation_micro_usd": 0,
+      "supported_cost_interval_micro_usd": [
+        35,
+        35
+      ],
+      "unknown_charge_attempts": []
+    },
+    "adapter": "fake-offline-v1",
+    "attempts": {
+      "cli-attempt": {
+        "call_id": "cli-call",
+        "receipt": {
+          "category_semantics": {
+            "cached_input_tokens": "subset_of_input_tokens",
+            "reasoning_output_tokens": "subset_of_output_tokens"
+          },
+          "estimated_charge_micro_usd": 35,
+          "observed_charge_micro_usd": 35,
+          "observed_charge_source": "synthetic-receipt",
+          "price_version": "fake-usd-v1",
+          "provider": "fake",
+          "provider_receipt_id": "fake-dispatch-1",
+          "usage": {
+            "cached_input_tokens": 4,
+            "input_tokens": 10,
+            "output_tokens": 5,
+            "reasoning_output_tokens": 2
+          }
+        },
+        "request": {
+          "base64": "eyJlZGl0cyI6W10sImV4cGFuc2lvbnMiOltdLCJsaW1pdHMiOnsiaW5wdXRfdG9rZW5zIjoxMDAsIm91dHB1dF90b2tlbnMiOjEwMH0sIm1heGltdW1fY2hhcmdlX3BvbGljeSI6ImZha2UtZW5mb3JjZWQiLCJtZXNzYWdlcyI6W3siY29udGVudCI6ImxvY2FsaXplIGZ1bsOnw6NvIiwicm9sZSI6InVzZXIifV0sIm9yaWVudGF0aW9uIjoiT2ZmbGluZSBmYWtlIHNlc3Npb247IG5vIHNvdXJjZSBvcmFjbGUuIiwidGVzdHMiOltdLCJ0b29sX2NhbGxzIjpbXSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV19",
+          "captured_bytes": 312,
+          "observed_bytes": 312,
+          "sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+          "truncated": false
+        },
+        "reservation_micro_usd": 500,
+        "response_chunks": [
+          {
+            "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+            "captured_bytes": 16,
+            "observed_bytes": 16,
+            "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20",
+            "truncated": false
+          }
+        ],
+        "retry_of": null,
+        "sent": true,
+        "state": "completed"
+      }
+    },
+    "budget_incidents": [],
+    "budget_micro_usd": 1000,
+    "events": [
+      {
+        "attempt_id": "cli-attempt",
+        "details": {
+          "call_id": "cli-call",
+          "max_charge_micro_usd": 500,
+          "request": {
+            "edits": [],
+            "expansions": [],
+            "limits": {
+              "input_tokens": 100,
+              "output_tokens": 100
+            },
+            "maximum_charge_policy": "fake-enforced",
+            "messages": [
+              {
+                "content": "localize fun\u00e7\u00e3o",
+                "role": "user"
+              }
+            ],
+            "orientation": "Offline fake session; no source oracle.",
+            "tests": [],
+            "tool_calls": [],
+            "tool_definitions": [
+              {
+                "input": "path",
+                "name": "read"
+              }
+            ]
+          },
+          "retry_of": null
+        },
+        "kind": "reserve",
+        "monotonic_seconds": 49.941364029,
+        "previous_event_sha256": null,
+        "sequence": 0
+      },
+      {
+        "attempt_id": "cli-attempt",
+        "details": {},
+        "kind": "send",
+        "monotonic_seconds": 49.941446492,
+        "previous_event_sha256": "e07fca15168c3db34ad9aa2603a1996ab61f907a242b866553f3ff9bbd07cafd",
+        "sequence": 1
+      },
+      {
+        "attempt_id": "cli-attempt",
+        "details": {
+          "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+          "captured_bytes": 16,
+          "observed_bytes": 16,
+          "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20",
+          "truncated": false
+        },
+        "kind": "chunk",
+        "monotonic_seconds": 49.94148536,
+        "previous_event_sha256": "6125b45878c006ec6d7721af3d0d57879688def081d87c5f868b2fc0d24144c3",
+        "sequence": 2
+      },
+      {
+        "attempt_id": "cli-attempt",
+        "details": {
+          "state": "completed"
+        },
+        "kind": "finish",
+        "monotonic_seconds": 49.941507593,
+        "previous_event_sha256": "23fd327a603a516acc8f17854754493b5f630fe56a5729c467e95b471b49c379",
+        "sequence": 3
+      },
+      {
+        "attempt_id": "cli-attempt",
+        "details": {
+          "category_semantics": {
+            "cached_input_tokens": "subset_of_input_tokens",
+            "reasoning_output_tokens": "subset_of_output_tokens"
+          },
+          "estimated_charge_micro_usd": 35,
+          "observed_charge_micro_usd": 35,
+          "observed_charge_source": "synthetic-receipt",
+          "price_version": "fake-usd-v1",
+          "provider": "fake",
+          "provider_receipt_id": "fake-dispatch-1",
+          "usage": {
+            "cached_input_tokens": 4,
+            "input_tokens": 10,
+            "output_tokens": 5,
+            "reasoning_output_tokens": 2
+          }
+        },
+        "kind": "receipt",
+        "monotonic_seconds": 49.941524778,
+        "previous_event_sha256": "3a50e066b570e3ffdab114d5a75fcb0f55192beebbefbca9cc752428f18f011c",
+        "sequence": 4
+      }
+    ],
+    "events_sha256": "473ab44be63d1b886821338acd3963d65ca839eb4cf53878b9372af7d6a5b238",
+    "metadata": {
+      "arm": "fake-ledger-demonstration",
+      "credentials": "never-recorded",
+      "dataset_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f",
+      "model": {
+        "effort": "fixed",
+        "name": "fake-stream-v1",
+        "provider": "fake",
+        "version": "1"
+      },
+      "policy": {
+        "config_sha256": "7d7e0fac1d3a36298994fd2f1b3cb006b6e3f815ee31e81b26fdf1fa31a807aa",
+        "id": "offline-no-provider-v1"
+      },
+      "price": {
+        "currency": "USD",
+        "date": "2026-10-12",
+        "input": 2,
+        "output": 3,
+        "source": "synthetic-test-fixture",
+        "unit": "micro_usd_per_token",
+        "version": "fake-usd-v1"
+      },
+      "run_id": "fake-L4-01",
+      "setup_amortization": {
+        "gross_micro_usd": 0,
+        "regime": "none",
+        "uses": 1
+      },
+      "task_id": "D0-RS-01"
+    },
+    "outcome": "not_judged",
+    "paid_provider_called": false,
+    "schema_version": "xrai.eval.agent.v1"
+  },
+  "paid_authorization": false,
+  "result": {
+    "adapter_called": true,
+    "status": "completed"
+  }
+}

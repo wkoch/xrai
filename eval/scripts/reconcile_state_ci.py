@@ -193,7 +193,7 @@ def reconcile(directory, run_id, head, artifact_id, attempt=1):
             "export_file_sha256": {name: sha(raw) for name, raw in sorted(members.items())},
             "native_verification": recomputed,
             "reconciler_source_sha256": sha(Path(__file__).read_bytes()),
-            "native_code_provenance": "native producer source bindings verified unchanged; this data-only reconciler was written after the tested code head",
+            "native_code_provenance": "Native producer source bindings verified unchanged; data-only reconciler provenance is recorded separately by its own source hash.",
             "admitted": False, "competitive_runs_allowed": False,
             "limits": ["Caller authenticates the original GitHub API/ZIP acquisition; local JSON is not a signature.",
                        "Retained native binary is hashed, never executed by this reconciler.",
