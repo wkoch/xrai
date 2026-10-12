@@ -1,0 +1,50 @@
+{
+  "schema": "xrai.eval.c02.publication-receipt.v1",
+  "recorded_at_utc": "2026-10-12T19:17:39.591852+00:00",
+  "preparation_commit": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+  "acceptance_commit": "aadab48ad27d1bfdf4e77faf5e7a18a5bebfb7ba",
+  "remote": "https://github.com/wkoch/xrai.git",
+  "branch": "main",
+  "push": {
+    "exit": 0,
+    "confirmed_update": "e02370a..aadab48 main -> main"
+  },
+  "checkout_clean_after_acceptance_push": true,
+  "accepted_behavior_ci": {
+    "run": 38294106923,
+    "code_commit": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+    "families": [
+      "Python",
+      "Go"
+    ],
+    "conclusion": "success"
+  },
+  "regular_ci": {
+    "run": 38294095468,
+    "code_commit": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+    "conclusion": "success"
+  },
+  "new_acceptance_head_ci": "Automatic CI may run after push; previous CI success is not claimed for the new acceptance HEAD. Data-only checks and scoped counterproofs passed before this push.",
+  "pending_for_architect": [
+    {
+      "id": "C02-DEPENDABOT-TRIAGE",
+      "source": "GitHub remote push message",
+      "observed_counts": {
+        "total": 55,
+        "critical": 9,
+        "high": 14,
+        "moderate": 25,
+        "low": 7
+      },
+      "url": "https://github.com/wkoch/xrai/security/dependabot",
+      "scope_not_yet_triaged": true,
+      "decision_requested": "Classify alerts between product/tooling dependencies and frozen historical/control corpus snapshots; define remediation while preserving pins and reproducible source/oracle proofs.",
+      "not_claimed": "No advisory-level investigation, exploitable-product finding or remediation is inferred from this remote summary."
+    }
+  ],
+  "other_execution_pending": [
+    "Four distinct real state/config cases: selection, freezing and same-process/index A-to-B proof versus full rebuild B.",
+    "Global corpus quotas; D1 remains0/32.",
+    "First TS/JS semantic slice and remaining current L5 tasks."
+  ]
+}
