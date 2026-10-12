@@ -1,0 +1,48 @@
+{
+  "D0": {
+    "offline_fake_ready": true,
+    "paid_adapter_enabled": false,
+    "real_run_ready": false,
+    "run_kind": "paired_smoke",
+    "dataset": "D0",
+    "reasons": [
+      "real provider adapter not implemented/configured; fake only",
+      "model/version/effort adapter not configured",
+      "provider credentials/resources not configured",
+      "authorized monetary ceiling absent; paid adapter disabled",
+      "arbitrary agent requires disposable containment; macOS smoke is insufficient"
+    ],
+    "readiness_does_not_authorize_provider_call": true
+  },
+  "D1": {
+    "offline_fake_ready": true,
+    "paid_adapter_enabled": false,
+    "real_run_ready": false,
+    "run_kind": "campaign",
+    "dataset": "D1",
+    "reasons": [
+      "real provider adapter not implemented/configured; fake only",
+      "model/version/effort adapter not configured",
+      "provider credentials/resources not configured",
+      "authorized monetary ceiling absent; paid adapter disabled",
+      "arbitrary agent requires disposable containment; macOS smoke is insufficient",
+      "D1 corpus not admitted: 0/32"
+    ],
+    "readiness_does_not_authorize_provider_call": true
+  },
+  "macOS-D0": {
+    "offline_fake_ready": true,
+    "paid_adapter_enabled": false,
+    "real_run_ready": false,
+    "run_kind": "paired_smoke",
+    "dataset": "D0",
+    "reasons": [
+      "real provider adapter not implemented/configured; fake only",
+      "model/version/effort adapter not configured",
+      "provider credentials/resources not configured",
+      "authorized monetary ceiling absent; paid adapter disabled",
+      "arbitrary agent requires disposable containment; macOS smoke is insufficient"
+    ],
+    "readiness_does_not_authorize_provider_call": true
+  }
+}

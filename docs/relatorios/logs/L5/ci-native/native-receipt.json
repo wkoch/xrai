@@ -1,0 +1,986 @@
+{
+  "schema": "xrai.eval.l5.native-receipt.v1",
+  "recorded_at_utc": "2026-10-12T14:04:26.182760+00:00",
+  "code_commit": "e4cd4d47090ca93715e82c4623a6a2463af3bdb4",
+  "run": 38259048931,
+  "url": "https://github.com/wkoch/xrai/actions/runs/38259048931",
+  "all_three_jobs_succeeded": true,
+  "source_generation_matches_published_code": 59,
+  "hosts": {
+    "native-aarch64-apple-darwin": {
+      "environment": {
+        "system": "Darwin",
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "machine": "arm64"
+      },
+      "workspace_passed": 111,
+      "workspace_ignored": 0,
+      "harness_cases": 50,
+      "harness_passed": 45,
+      "harness_skipped": 5
+    },
+    "native-x86_64-unknown-linux-gnu": {
+      "environment": {
+        "system": "Linux",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "machine": "x86_64"
+      },
+      "workspace_passed": 112,
+      "workspace_ignored": 0,
+      "harness_cases": 50,
+      "harness_passed": 49,
+      "harness_skipped": 1
+    }
+  },
+  "independent_context_verification": {
+    "macos/removed-consumer": {
+      "verified": true,
+      "profile": "l4:d9430ef6fbbc087da841dc7433b4d31857e33f48ea1ebd8c5556db6af3fe76c7",
+      "receipts": {
+        "initial": {
+          "bytes": 8157,
+          "tokens": 3084,
+          "status": "partial",
+          "items": 3,
+          "identified": 3,
+          "included": 3
+        },
+        "expanded": {
+          "bytes": 7529,
+          "tokens": 2816,
+          "status": "partial",
+          "items": 2,
+          "identified": 3,
+          "included": 3
+        },
+        "published": {
+          "bytes": 4297,
+          "tokens": 1518,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        "after_new": {
+          "bytes": 7529,
+          "tokens": 2816,
+          "status": "partial",
+          "items": 2,
+          "identified": 3,
+          "included": 3
+        },
+        "insufficient": {
+          "bytes": 7526,
+          "tokens": 2815,
+          "status": "partial",
+          "items": 2,
+          "identified": 3,
+          "included": 3
+        },
+        "retention_recreated": {
+          "bytes": 8157,
+          "tokens": 3085,
+          "status": "partial",
+          "items": 3,
+          "identified": 3,
+          "included": 3
+        }
+      },
+      "controls": [
+        {
+          "pair": false,
+          "p2": false,
+          "bytes": 4297,
+          "tokens": 1544,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        {
+          "pair": false,
+          "p2": true,
+          "bytes": 4297,
+          "tokens": 1539,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        {
+          "pair": true,
+          "p2": false,
+          "bytes": 7222,
+          "tokens": 2685,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        },
+        {
+          "pair": true,
+          "p2": true,
+          "bytes": 8157,
+          "tokens": 3087,
+          "status": "partial",
+          "items": 3,
+          "identified": 3,
+          "included": 3
+        }
+      ],
+      "curves": [
+        {
+          "max_tokens": 2000,
+          "error": "budget_below_envelope"
+        },
+        {
+          "max_tokens": 4000,
+          "initial": {
+            "bytes": 8156,
+            "tokens": 3081,
+            "status": "partial",
+            "items": 3,
+            "identified": 3,
+            "included": 3
+          },
+          "expansion": {
+            "bytes": 7528,
+            "tokens": 2816,
+            "status": "partial",
+            "items": 2,
+            "identified": 3,
+            "included": 3
+          },
+          "session_tokens": 5897
+        },
+        {
+          "max_tokens": 8000,
+          "initial": {
+            "bytes": 8156,
+            "tokens": 3085,
+            "status": "partial",
+            "items": 3,
+            "identified": 3,
+            "included": 3
+          },
+          "expansion": {
+            "bytes": 7528,
+            "tokens": 2812,
+            "status": "partial",
+            "items": 2,
+            "identified": 3,
+            "included": 3
+          },
+          "session_tokens": 5897
+        },
+        {
+          "max_tokens": 16000,
+          "initial": {
+            "bytes": 8157,
+            "tokens": 3088,
+            "status": "partial",
+            "items": 3,
+            "identified": 3,
+            "included": 3
+          },
+          "expansion": {
+            "bytes": 7529,
+            "tokens": 2823,
+            "status": "partial",
+            "items": 2,
+            "identified": 3,
+            "included": 3
+          },
+          "session_tokens": 5911
+        },
+        {
+          "max_tokens": 32000,
+          "initial": {
+            "bytes": 8157,
+            "tokens": 3083,
+            "status": "partial",
+            "items": 3,
+            "identified": 3,
+            "included": 3
+          },
+          "expansion": {
+            "bytes": 7529,
+            "tokens": 2812,
+            "status": "partial",
+            "items": 2,
+            "identified": 3,
+            "included": 3
+          },
+          "session_tokens": 5895
+        }
+      ],
+      "expired": "context_expired",
+      "labels_role": "synthetic_evaluator_only",
+      "complete_task_success": null
+    },
+    "macos/central-hunk": {
+      "verified": true,
+      "profile": "l4:d9430ef6fbbc087da841dc7433b4d31857e33f48ea1ebd8c5556db6af3fe76c7",
+      "receipts": {
+        "initial": {
+          "bytes": 7213,
+          "tokens": 2666,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        },
+        "expanded": {
+          "bytes": 56591,
+          "tokens": 19344,
+          "status": "insufficient_budget",
+          "items": 1,
+          "identified": 2,
+          "included": 1
+        },
+        "published": {
+          "bytes": 4308,
+          "tokens": 1545,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        "after_new": {
+          "bytes": 56591,
+          "tokens": 19344,
+          "status": "insufficient_budget",
+          "items": 1,
+          "identified": 2,
+          "included": 1
+        },
+        "insufficient": {
+          "bytes": 6550,
+          "tokens": 2342,
+          "status": "insufficient_budget",
+          "items": 0,
+          "identified": 2,
+          "included": 0
+        },
+        "retention_recreated": {
+          "bytes": 7213,
+          "tokens": 2666,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        }
+      },
+      "controls": [
+        {
+          "pair": false,
+          "p2": false,
+          "bytes": 4308,
+          "tokens": 1533,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        {
+          "pair": false,
+          "p2": true,
+          "bytes": 4308,
+          "tokens": 1528,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        {
+          "pair": true,
+          "p2": false,
+          "bytes": 7213,
+          "tokens": 2667,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        },
+        {
+          "pair": true,
+          "p2": true,
+          "bytes": 7213,
+          "tokens": 2671,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        }
+      ],
+      "curves": [
+        {
+          "max_tokens": 2000,
+          "error": "budget_below_envelope"
+        },
+        {
+          "max_tokens": 4000,
+          "initial": {
+            "bytes": 7212,
+            "tokens": 2666,
+            "status": "partial",
+            "items": 2,
+            "identified": 2,
+            "included": 2
+          },
+          "expansion": {
+            "bytes": 6552,
+            "tokens": 2343,
+            "status": "insufficient_budget",
+            "items": 0,
+            "identified": 2,
+            "included": 0
+          },
+          "session_tokens": 5009
+        },
+        {
+          "max_tokens": 8000,
+          "initial": {
+            "bytes": 7212,
+            "tokens": 2661,
+            "status": "partial",
+            "items": 2,
+            "identified": 2,
+            "included": 2
+          },
+          "expansion": {
+            "bytes": 6552,
+            "tokens": 2346,
+            "status": "insufficient_budget",
+            "items": 0,
+            "identified": 2,
+            "included": 0
+          },
+          "session_tokens": 5007
+        },
+        {
+          "max_tokens": 16000,
+          "initial": {
+            "bytes": 7213,
+            "tokens": 2666,
+            "status": "partial",
+            "items": 2,
+            "identified": 2,
+            "included": 2
+          },
+          "expansion": {
+            "bytes": 6553,
+            "tokens": 2346,
+            "status": "insufficient_budget",
+            "items": 0,
+            "identified": 2,
+            "included": 0
+          },
+          "session_tokens": 5012
+        },
+        {
+          "max_tokens": 32000,
+          "initial": {
+            "bytes": 7213,
+            "tokens": 2663,
+            "status": "partial",
+            "items": 2,
+            "identified": 2,
+            "included": 2
+          },
+          "expansion": {
+            "bytes": 56591,
+            "tokens": 19348,
+            "status": "insufficient_budget",
+            "items": 1,
+            "identified": 2,
+            "included": 1
+          },
+          "session_tokens": 22011
+        }
+      ],
+      "expired": "context_expired",
+      "labels_role": "synthetic_evaluator_only",
+      "complete_task_success": null
+    },
+    "linux/removed-consumer": {
+      "verified": true,
+      "profile": "l4:d9430ef6fbbc087da841dc7433b4d31857e33f48ea1ebd8c5556db6af3fe76c7",
+      "receipts": {
+        "initial": {
+          "bytes": 8157,
+          "tokens": 3086,
+          "status": "partial",
+          "items": 3,
+          "identified": 3,
+          "included": 3
+        },
+        "expanded": {
+          "bytes": 7529,
+          "tokens": 2819,
+          "status": "partial",
+          "items": 2,
+          "identified": 3,
+          "included": 3
+        },
+        "published": {
+          "bytes": 4297,
+          "tokens": 1519,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        "after_new": {
+          "bytes": 7529,
+          "tokens": 2819,
+          "status": "partial",
+          "items": 2,
+          "identified": 3,
+          "included": 3
+        },
+        "insufficient": {
+          "bytes": 7526,
+          "tokens": 2815,
+          "status": "partial",
+          "items": 2,
+          "identified": 3,
+          "included": 3
+        },
+        "retention_recreated": {
+          "bytes": 8157,
+          "tokens": 3085,
+          "status": "partial",
+          "items": 3,
+          "identified": 3,
+          "included": 3
+        }
+      },
+      "controls": [
+        {
+          "pair": false,
+          "p2": false,
+          "bytes": 4297,
+          "tokens": 1542,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        {
+          "pair": false,
+          "p2": true,
+          "bytes": 4297,
+          "tokens": 1541,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        {
+          "pair": true,
+          "p2": false,
+          "bytes": 7222,
+          "tokens": 2684,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        },
+        {
+          "pair": true,
+          "p2": true,
+          "bytes": 8157,
+          "tokens": 3093,
+          "status": "partial",
+          "items": 3,
+          "identified": 3,
+          "included": 3
+        }
+      ],
+      "curves": [
+        {
+          "max_tokens": 2000,
+          "error": "budget_below_envelope"
+        },
+        {
+          "max_tokens": 4000,
+          "initial": {
+            "bytes": 8156,
+            "tokens": 3079,
+            "status": "partial",
+            "items": 3,
+            "identified": 3,
+            "included": 3
+          },
+          "expansion": {
+            "bytes": 7528,
+            "tokens": 2815,
+            "status": "partial",
+            "items": 2,
+            "identified": 3,
+            "included": 3
+          },
+          "session_tokens": 5894
+        },
+        {
+          "max_tokens": 8000,
+          "initial": {
+            "bytes": 8156,
+            "tokens": 3084,
+            "status": "partial",
+            "items": 3,
+            "identified": 3,
+            "included": 3
+          },
+          "expansion": {
+            "bytes": 7528,
+            "tokens": 2806,
+            "status": "partial",
+            "items": 2,
+            "identified": 3,
+            "included": 3
+          },
+          "session_tokens": 5890
+        },
+        {
+          "max_tokens": 16000,
+          "initial": {
+            "bytes": 8157,
+            "tokens": 3087,
+            "status": "partial",
+            "items": 3,
+            "identified": 3,
+            "included": 3
+          },
+          "expansion": {
+            "bytes": 7529,
+            "tokens": 2817,
+            "status": "partial",
+            "items": 2,
+            "identified": 3,
+            "included": 3
+          },
+          "session_tokens": 5904
+        },
+        {
+          "max_tokens": 32000,
+          "initial": {
+            "bytes": 8157,
+            "tokens": 3091,
+            "status": "partial",
+            "items": 3,
+            "identified": 3,
+            "included": 3
+          },
+          "expansion": {
+            "bytes": 7529,
+            "tokens": 2815,
+            "status": "partial",
+            "items": 2,
+            "identified": 3,
+            "included": 3
+          },
+          "session_tokens": 5906
+        }
+      ],
+      "expired": "context_expired",
+      "labels_role": "synthetic_evaluator_only",
+      "complete_task_success": null
+    },
+    "linux/central-hunk": {
+      "verified": true,
+      "profile": "l4:d9430ef6fbbc087da841dc7433b4d31857e33f48ea1ebd8c5556db6af3fe76c7",
+      "receipts": {
+        "initial": {
+          "bytes": 7213,
+          "tokens": 2669,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        },
+        "expanded": {
+          "bytes": 56591,
+          "tokens": 19348,
+          "status": "insufficient_budget",
+          "items": 1,
+          "identified": 2,
+          "included": 1
+        },
+        "published": {
+          "bytes": 4308,
+          "tokens": 1536,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        "after_new": {
+          "bytes": 56591,
+          "tokens": 19348,
+          "status": "insufficient_budget",
+          "items": 1,
+          "identified": 2,
+          "included": 1
+        },
+        "insufficient": {
+          "bytes": 6550,
+          "tokens": 2347,
+          "status": "insufficient_budget",
+          "items": 0,
+          "identified": 2,
+          "included": 0
+        },
+        "retention_recreated": {
+          "bytes": 7213,
+          "tokens": 2667,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        }
+      },
+      "controls": [
+        {
+          "pair": false,
+          "p2": false,
+          "bytes": 4308,
+          "tokens": 1532,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        {
+          "pair": false,
+          "p2": true,
+          "bytes": 4308,
+          "tokens": 1531,
+          "status": "partial",
+          "items": 1,
+          "identified": 1,
+          "included": 1
+        },
+        {
+          "pair": true,
+          "p2": false,
+          "bytes": 7213,
+          "tokens": 2672,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        },
+        {
+          "pair": true,
+          "p2": true,
+          "bytes": 7213,
+          "tokens": 2670,
+          "status": "partial",
+          "items": 2,
+          "identified": 2,
+          "included": 2
+        }
+      ],
+      "curves": [
+        {
+          "max_tokens": 2000,
+          "error": "budget_below_envelope"
+        },
+        {
+          "max_tokens": 4000,
+          "initial": {
+            "bytes": 7212,
+            "tokens": 2670,
+            "status": "partial",
+            "items": 2,
+            "identified": 2,
+            "included": 2
+          },
+          "expansion": {
+            "bytes": 6552,
+            "tokens": 2353,
+            "status": "insufficient_budget",
+            "items": 0,
+            "identified": 2,
+            "included": 0
+          },
+          "session_tokens": 5023
+        },
+        {
+          "max_tokens": 8000,
+          "initial": {
+            "bytes": 7212,
+            "tokens": 2662,
+            "status": "partial",
+            "items": 2,
+            "identified": 2,
+            "included": 2
+          },
+          "expansion": {
+            "bytes": 6552,
+            "tokens": 2341,
+            "status": "insufficient_budget",
+            "items": 0,
+            "identified": 2,
+            "included": 0
+          },
+          "session_tokens": 5003
+        },
+        {
+          "max_tokens": 16000,
+          "initial": {
+            "bytes": 7213,
+            "tokens": 2667,
+            "status": "partial",
+            "items": 2,
+            "identified": 2,
+            "included": 2
+          },
+          "expansion": {
+            "bytes": 6553,
+            "tokens": 2349,
+            "status": "insufficient_budget",
+            "items": 0,
+            "identified": 2,
+            "included": 0
+          },
+          "session_tokens": 5016
+        },
+        {
+          "max_tokens": 32000,
+          "initial": {
+            "bytes": 7213,
+            "tokens": 2659,
+            "status": "partial",
+            "items": 2,
+            "identified": 2,
+            "included": 2
+          },
+          "expansion": {
+            "bytes": 56591,
+            "tokens": 19334,
+            "status": "insufficient_budget",
+            "items": 1,
+            "identified": 2,
+            "included": 1
+          },
+          "session_tokens": 21993
+        }
+      ],
+      "expired": "context_expired",
+      "labels_role": "synthetic_evaluator_only",
+      "complete_task_success": null
+    }
+  },
+  "resource_review": "resource-native-review.json",
+  "resource_review_sha256": "7231e425f3b47ae333a066d817459e31c2b615d6b25668171fcb92b3344aeffd",
+  "file_sha256": {
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-GO-01.json": "d718335cae8f63ba8d251026aaf77a9a8fae16935dd520d45b0394cf07a881ff",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-GO-02.json": "1241f1cf5e4fe0c7e0f9ce44413b3a9bec91590507b3e8853a63428d82fe0763",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-GO-03.json": "0d6ed237b55dfb19b957952f57da562c0740842b42e60a4883934da766ce4ded",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-GO-04.json": "64a3c8dc58e500af43b5da905a2a8efe3b8453e63d71186ce68002dfcc259483",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-GO-05.json": "21f30f35e2f4180ab1eb3302dc40cdcf8c097aaa947659b2a7a309748d21b19f",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-PY-01.json": "5f8519745f4fe8a6008a3e775a1d1452261bae5cb39e5e573dcb239d4798c8d5",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-PY-02.json": "e12b6c8c53e87b53d5f48736bc96f3e8ce8584afe816196f659c19d0f71800e4",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-PY-03.json": "254c33848878db899d0cf1bd88787a82cedcb67e65d84a24e53a18b74605fe8c",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-PY-04.json": "3833bc0ac28c4026404be6e645ed1017f93c6e2c39e3d8df62451be9161a2f43",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-PY-05.json": "b0ca2a2781b638f89dd13e8b9519707e717430abd11cdc7ee1e0fcfa111a863b",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-RS-01.json": "d4318ae3b42dd912a1b3808920ffa1afc3b6e181c7dfa8d78c64e2b2cc22450a",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-RS-02.json": "8e45babf9705795cb33a9551e9e6e724e89af24552af6a3e62f0570def5064df",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-RS-03.json": "7bbabbd0a8edc3025e1a1286483d443d81ba13495db0d99fe83b0aaacb0ce6c0",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-RS-04.json": "5164d489dedd9143f23060fd5befe641086cd339d64586321b3f588464afd49c",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-RS-05.json": "8f64552be6311799d8b6ce7d8e6563451235ec52253984ddc795728284ab5e43",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-TJ-01.json": "1cca54ac714a43f77418d9a49967153d8366e507f1083aba269d0d0b52729189",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-TJ-02.json": "cc1725edc4a28a393d7014dc721c08a097ade3b363a7feeda1b030bf66ca5af7",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-TJ-03.json": "87d66afc7fe00db6e2946b0cdb73137ec932c16c4f777f8b273123021f823b26",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-TJ-04.json": "ab0ff6f4429ddc4d2c40ab81a837a747f764214148805d37572df6eb422836c1",
+    "artifacts/native-aarch64-apple-darwin/baseline/D0-TJ-05.json": "8bd653cb93e8822d412e5687d9f5d7657b9ee313bdd28b6c4dbc43314868345d",
+    "artifacts/native-aarch64-apple-darwin/baseline-summary.json": "43cc99c2ab28f0f8dcdedc1d1e59a8189b864cb9ee49601408285abcc4517e2f",
+    "artifacts/native-aarch64-apple-darwin/context-central-hunk.json": "aee6dc5aee269a53b07416a0231507a415054ba2d69bb8b022ab7b447a009327",
+    "artifacts/native-aarch64-apple-darwin/context-removed-consumer.json": "263754b9bd99d9ad0b2c76094d3f5a4a8462ba0ac1b7d5b37fc90078c466b1ea",
+    "artifacts/native-aarch64-apple-darwin/environment.json": "9247a83b379734b6eea4b6d4c08d9e68afee1a40411bed184bc43918e0a80c6b",
+    "artifacts/native-aarch64-apple-darwin/filesystem.json": "5fd1f3a73e3f971824cf7d37e957ac8688625eabef47c35bed61d11a0fab920e",
+    "artifacts/native-aarch64-apple-darwin/harness-tests.log": "b118185a011cfebe8ed8cd6c0da26f2e36162d9ba21b4322f7265502037c7bef",
+    "artifacts/native-aarch64-apple-darwin/incremental.json": "63d896c619fba7dbba14885acfe1d710a8dce9e017952fe40e1cf4979a81f7c1",
+    "artifacts/native-aarch64-apple-darwin/measurement/fake-budget-incident.json": "4b4f3dfb43ee5febb18bdf16b7b40927251b9ac5f65633021250911fb293b809",
+    "artifacts/native-aarch64-apple-darwin/measurement/fake-complete.json": "0641a75a25792d4bdedd8c67bd00642d017ff62b4bacdc1a7e4c0224d13f2e51",
+    "artifacts/native-aarch64-apple-darwin/measurement/fake-retry-unknown-prior.json": "f3c281f683da38a93351212415283e9d6f02e2b7319432917cec7f9014f30a66",
+    "artifacts/native-aarch64-apple-darwin/measurement/fake-unknown-charge.json": "053bf380da50792e7ddb2fb44d59b08621f6f42331434759033a99670af34e04",
+    "artifacts/native-aarch64-apple-darwin/measurement/offline-derived.json": "d3466b428ca3fa458d4802bef39339e5cccfac80fbcb00cfb4d8686970344fbb",
+    "artifacts/native-aarch64-apple-darwin/measurement/readiness.json": "5bac9cc03903680c688e523af774b74b09ead6327dbc5720ecdf12bb1018508f",
+    "artifacts/native-aarch64-apple-darwin/measurement/summary.json": "04d5dd67e48b2b14596fa479cd9cc09d7fac55c55e564138b25731ad9ba89cd0",
+    "artifacts/native-aarch64-apple-darwin/packaging.json": "5125b8de063c773872a2a09354b79c866bc69c213274d863f2232bd5e2c846f9",
+    "artifacts/native-aarch64-apple-darwin/semantics-counterproofs.json": "c06dd4ca14aa90b7df2171942e1b8349a0850e2050046f88e5d5bb95e8a9bbc7",
+    "artifacts/native-aarch64-apple-darwin/semantics-fixtures.json": "2b5a5329c1f01d5fbe63d461dfae7c027386bd7736f9a51fbbc4ae8fa7c5e69a",
+    "artifacts/native-aarch64-apple-darwin/semantics-tokio.json": "498d41908ff7622d7d9859ddede820b1724f32674286b49eab53f9271f382ad7",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/calibration/calibration.json": "7aa8c2723fb90135e0d2fa191b2ac1307cab90a69bf67658169047f66db776e0",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/calibration/input.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/calibration/resources.json": "163182325e46ae77165e35e54a8245c2be74436e5724121bc61dd8cb5b4fb330",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/calibration/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/calibration/stdout": "21b2bb65f4ce1649b5fc3b4af98dfe4f7271ee4b0d1b7efac7d979946d3e8f7a",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/preregistered.json": "5f7184cf9453f31929d81e6b938299827bc6037092910d4425533743a9094c29",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/reference.json": "260030aa72e80e67924326b8e5d41afb48c64b98fd6d7bdc48decd7ba1b7caa0",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-direct/input.json": "96bf3e75035edc4d1f300b859c2c0d80b77c556bc0eeca2f0515c5f1e265be5d",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-direct/resources.json": "57f3d6b19a825eacd963abbe7a18f6e60df88140239a675d4663fa80430035a0",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-direct/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-direct/stdout": "7c342dbbcfcce5b49a7227be94a29adf0d0306e0a68b14b2107679e46ff19e83",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-direct/verified.json": "c5a08cc647207d6fe5b29f45cb6a82e11118f00db8f720cd7fd23323bb6161fe",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw1/input.json": "4d31054e8cd46b3e95b11beccb1a9497d02ca27bed4338ae69bfc0dd94c03504",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw1/resources.json": "550f2d4dbd39698640573e3c5cc51243afa97c5835018de5f429da1adb64262e",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw1/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw1/stdout": "808a16d99f02870ba66826f9c5dc117ed63426d5fce4d6452c0bbf2677e7e670",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw1/verified.json": "d175474d44211f74c11e9ff59b4d45fc6a926ea48536d67499c7a8677b781904",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw2/input.json": "ec461ba178eaf014cecb255c19fd49894db6d1c4882eda30b60d5143f2e1440d",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw2/resources.json": "aaea053a2fe06d7f56b94e13daf382d985c18a1a8256c4727700e76828bc5d63",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw2/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw2/stdout": "338d2ed386ceb5cbaf3b25cd5023c5252e56286ebccea468fb2ca57838e9e97c",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-0-xrw2/verified.json": "8a47fd358f09c625901d4cd1ea36cbd10e29a5df4e2990370ea09839de9d7cc7",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-direct/input.json": "96bf3e75035edc4d1f300b859c2c0d80b77c556bc0eeca2f0515c5f1e265be5d",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-direct/resources.json": "28d7445db7597f1712c347d7b89ac9509f200f042c26531396f503dae890220c",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-direct/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-direct/stdout": "845788ca1056a3763b3b7491c58418e799d5a7d6f44652b2bf7a3dd758afa54c",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-direct/verified.json": "1fce481e73fff29c2f3ffd7f691faa5081be42dfd2d985263169a47e78f74038",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw1/input.json": "4d31054e8cd46b3e95b11beccb1a9497d02ca27bed4338ae69bfc0dd94c03504",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw1/resources.json": "8542382a4ff0d5995d8035a97b51aecc43988f00b841f2275b28004a3969069d",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw1/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw1/stdout": "33e62b67433f7c5358294cd6d6046c26d6def3464f520ec2bb0075bc36551bc8",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw1/verified.json": "25ce9d8540482c28e200192cbf64eacca1dd1550984492e4ea975a3bad134127",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw2/input.json": "ec461ba178eaf014cecb255c19fd49894db6d1c4882eda30b60d5143f2e1440d",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw2/resources.json": "1b6ed6fad088d34198aba7f97ab168ad51b40715816e03d96706296c45086bfb",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw2/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw2/stdout": "81b9fb6ff7143e2d7137b5c81e5c4933bea013167970bb5205c67d9a9b10039e",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-1-xrw2/verified.json": "2cfc8cbe3295b887402d23cfeb21774706561f19be4c670c2312754aa3e58611",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-direct/input.json": "96bf3e75035edc4d1f300b859c2c0d80b77c556bc0eeca2f0515c5f1e265be5d",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-direct/resources.json": "b004c5fb28d3593ab55df2044e9945988393a7b5e036ebac60424c61945b1a49",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-direct/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-direct/stdout": "eeee590f3fd36ef2b25e6a9b5b78e6bb82b8cc2ad1cacc4d9e6d7676aecc63a0",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-direct/verified.json": "af50c9bd97071252ad5c3279d65faf6b92d6021c2670eacc1d2fb62052cf734f",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw1/input.json": "4d31054e8cd46b3e95b11beccb1a9497d02ca27bed4338ae69bfc0dd94c03504",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw1/resources.json": "416fe0dcdd351bde586486d9d329bb9a2e88c66c687e6ee91a136e33107e68d0",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw1/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw1/stdout": "cfa24b8876f2bbc56c4aafb82967f4af110f6fd72535d09b5044e83048c88cc6",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw1/verified.json": "81cdd4cff146fec9239b86e51eadc5f852317cb364e1dcbd9c645305d17726ec",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw2/input.json": "ec461ba178eaf014cecb255c19fd49894db6d1c4882eda30b60d5143f2e1440d",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw2/resources.json": "d79dbd1bd4adcd3bd720cbbf6e0e433eee92fd20c8e8b7b1e802aea8dd0aca15",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw2/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw2/stdout": "88ad0336479a4c3ea85e7051824ee9e82bb5a2c793c58830653eac855738c989",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/session-2-xrw2/verified.json": "88bd6dacb9e6bcba233bbe70d210a54a2c81a6b808ac2c67c6439327697aec74",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/sources.tar.gz": "227eb1941e09c1b640aa790d3a7521bbe5abc3b8af2e9232a12531978f230f31",
+    "artifacts/native-aarch64-apple-darwin/worker-resources/summary.json": "1ccb0a909fc6b3da8a6ee5e7611cb9effae797f1a90e625254e87dc0124cfa92",
+    "artifacts/native-aarch64-apple-darwin/worker-resources-verification.json": "a96ef7204e10ecee25ad81983bbfb7f26917c1618f907c95a8f28c0b76df6c97",
+    "artifacts/native-aarch64-apple-darwin/workers-persistent.json": "4680d0ba3fe134b2f93cb9e7343708ae5ca83b825661492b49466bdcaefbb823",
+    "artifacts/native-aarch64-apple-darwin/workers.json": "dc7a0eeb3d9b363cfff1bff1e35988a9eceb395d158fae0eb275f102b9294fab",
+    "artifacts/native-aarch64-apple-darwin/workspace-tests.log": "774b15d28223cfee68095e6c15d8c9b6a3daec66271e63bffaa12a0ec6581190",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-GO-01.json": "28b114b8992cb45f6edb33fd12a84209143e2e2f872d93c96b6f67170eff82b5",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-GO-02.json": "5f0031c5574fdca3896b6fb146512f87705a54fbeb01ab1bcd1b84c657b3c5ee",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-GO-03.json": "7d895784099a3980f6301d5c4c39117ceb9f95b637625bf018f37d2143c1bab0",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-GO-04.json": "2b96cdc39fb8ee66ee9dbc513829f475e61d908ed04d03bb37db0a0eedf0c444",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-GO-05.json": "101f936470589b2b286267281f1860cbf8d04f755527c978e9eacf9013d40081",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-PY-01.json": "b89de275f31a545a6eff61b29731b3c2d4a3be7eb2a35fd47dac6597761ed93f",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-PY-02.json": "3784671bc9878a55be2b680bcfc67eb99798681991dc254bcc3ec3e92cdd23e2",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-PY-03.json": "5c585bc8c67ff90e5fc1474d74a6c690d8f0553df7301cbf157755dc8c2305bc",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-PY-04.json": "5dcda40c8fcc9b77620caf39c8d4a079117eba8966ffce50f7b25e087310d27c",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-PY-05.json": "56c2af21f26a8a2874215138eabb512019dce6bff5d14bcb44fa3d8075d58eb7",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-RS-01.json": "5d3c2fc039c98727c59e6503cfa24bc03361d6659bf42e22b1cf505b8d4a87b4",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-RS-02.json": "61c954a01042fb1a4132c497f0fc5c355a458c0bf6709356a5b953725f66757d",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-RS-03.json": "ebff6e5df91fde54e3db1d978acab30ff156bebff84a29e609290655af95cf0c",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-RS-04.json": "79bd9b180b7cd15e74e794749be5eee0bae604b390789598e7164b1fafbfe407",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-RS-05.json": "c8b2944bb2dd23a4c3adbd8dc468fa10081858700f6653c942bc0cba0d3a6773",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-TJ-01.json": "f854b10032e62b9b1edc6677ac4545bab8263afd0abb9a6d35b4b1c58a152903",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-TJ-02.json": "38bc7b1b532ed0243d918f2038fb4f620e6be506472344d91949ee77d98dff62",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-TJ-03.json": "f93a5472d56f6622aa879d0daf175a79e57ea59bfc2c0b2e16d666dbbcf3965f",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-TJ-04.json": "ca4b99160d01f993be02853ca63b3f27b10889bef1caf872ce8843fe319fc320",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline/D0-TJ-05.json": "90726c1fc7e003a8f564a074315df052ecdb50235bef958a254033e77fc716d5",
+    "artifacts/native-x86_64-unknown-linux-gnu/baseline-summary.json": "1f4152d265a7c37935f45bf9d7114be0d4053416a35013ba430ae51e6b310055",
+    "artifacts/native-x86_64-unknown-linux-gnu/containment.jsonl": "7213f20f98c66e92394aeb1db09c1e8895db6ff9ba8cc0e968df328bad6c9834",
+    "artifacts/native-x86_64-unknown-linux-gnu/context-central-hunk.json": "f9f731347846ea6c105ca754083b633ff735362966f64f2b096029a0dd1cf16e",
+    "artifacts/native-x86_64-unknown-linux-gnu/context-removed-consumer.json": "c5eceb25a87459933c230954a5e6cac36d3809fe986e437fc5fd0381f7c0f413",
+    "artifacts/native-x86_64-unknown-linux-gnu/environment.json": "8978653957a31f800e6b0512013b243462641dd6d34fa358f268c83e16a91e5e",
+    "artifacts/native-x86_64-unknown-linux-gnu/filesystem.json": "3b92e0ba92f7b9a19f5f422156af874b0230e7380985b3c1d9f3b4ca59e78c0f",
+    "artifacts/native-x86_64-unknown-linux-gnu/harness-tests.log": "af44b10787ac53100b7946d60ddbe5eaecb1c71d461dec70e04cadb0b4308a21",
+    "artifacts/native-x86_64-unknown-linux-gnu/incremental.json": "aacf6e7459d134ba8d69bcc58608512b917a2e2de437afd79eca7e89b21f7dc4",
+    "artifacts/native-x86_64-unknown-linux-gnu/measurement/fake-budget-incident.json": "4b4f3dfb43ee5febb18bdf16b7b40927251b9ac5f65633021250911fb293b809",
+    "artifacts/native-x86_64-unknown-linux-gnu/measurement/fake-complete.json": "0641a75a25792d4bdedd8c67bd00642d017ff62b4bacdc1a7e4c0224d13f2e51",
+    "artifacts/native-x86_64-unknown-linux-gnu/measurement/fake-retry-unknown-prior.json": "f3c281f683da38a93351212415283e9d6f02e2b7319432917cec7f9014f30a66",
+    "artifacts/native-x86_64-unknown-linux-gnu/measurement/fake-unknown-charge.json": "053bf380da50792e7ddb2fb44d59b08621f6f42331434759033a99670af34e04",
+    "artifacts/native-x86_64-unknown-linux-gnu/measurement/offline-derived.json": "04fdfcae364fc7a5757b3d030e0b143600810192d781a689764e74f22db6d426",
+    "artifacts/native-x86_64-unknown-linux-gnu/measurement/readiness.json": "5bac9cc03903680c688e523af774b74b09ead6327dbc5720ecdf12bb1018508f",
+    "artifacts/native-x86_64-unknown-linux-gnu/measurement/summary.json": "e58ea57eab3af3e29ab48a6fe9a4863859a33f1961cc60d2ddb11f9721c51c32",
+    "artifacts/native-x86_64-unknown-linux-gnu/packaging.json": "caceb54d1c543923621ccd09871ec6b5dc72234aff5ee49c6c5a35abdde0c182",
+    "artifacts/native-x86_64-unknown-linux-gnu/semantics-counterproofs.json": "c06dd4ca14aa90b7df2171942e1b8349a0850e2050046f88e5d5bb95e8a9bbc7",
+    "artifacts/native-x86_64-unknown-linux-gnu/semantics-fixtures.json": "2b5a5329c1f01d5fbe63d461dfae7c027386bd7736f9a51fbbc4ae8fa7c5e69a",
+    "artifacts/native-x86_64-unknown-linux-gnu/semantics-tokio.json": "498d41908ff7622d7d9859ddede820b1724f32674286b49eab53f9271f382ad7",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/calibration/calibration.json": "a18b79fe553573617de5d5565115944f0352547f697ef8f697794381fc3ca2bf",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/calibration/input.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/calibration/resources.json": "2dcb7dc911ac5a229f553b5fec4d00991216d85823f2193d8d0e0fb660bfadc7",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/calibration/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/calibration/stdout": "b96ca1f4632e93a8b2fc39bc4823ac884af0c264b17c0058bf5407260f2cb6df",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/preregistered.json": "4530e6bb36c92dd323a5a1b39c0251637ac9e5428c157a4be49c4c78202246be",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/reference.json": "ff0929f92c8d3c7023470782bb678045cec4a462778572937225b90696916513",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-direct/input.json": "dc7cedf0e6a7a319f91d00330414bf91ca03b46b9f9a20af4aae9b00ff751a20",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-direct/resources.json": "26b3662d0a415c4ef4d3e806129f4eb21093425267308870917e534d6834c37b",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-direct/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-direct/stdout": "30f2e5f4e25013e8ea803ce3bffbeb6d2aec92fb84787f5fa1fef6e738b20e97",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-direct/verified.json": "ff99c5078c9f0f5aed85f249b12c495652312c66ceee694051c2d1f59cfb512f",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw1/input.json": "1e1471d66ffec868746e9823022b867b59f4c88ff1c004179f1d1d8d4da91a6f",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw1/resources.json": "9e189b6a13e9c7929a08ce056514d337f8423efc8c752e53aa9ab853d67f3b6f",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw1/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw1/stdout": "00624d431e24d76e0306a2f02fec88eba13c8ba08aa8b85c2d6d82a92d44b3f8",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw1/verified.json": "089e53771fda802a37aa0267cfa5e769149c40e6ac9fd3991763bb8f81c6da92",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw2/input.json": "3e7b43518e32e3a81850d48834a68b8ac6f3c14d84d2b91c518c4d1d9888bfc9",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw2/resources.json": "15a8acb645bae100a6cd4d86f026b98e0d17062d680539dec07633ad14b56415",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw2/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw2/stdout": "973e9b2bf5c8fa0969ab22cd8336652f27c9b68ff67602491ce16ddeaf7a35a4",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-0-xrw2/verified.json": "6aaa581bb6010900f10cea517055abc75091b2405dc4d097c22aa36a4f2eb5ab",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-direct/input.json": "dc7cedf0e6a7a319f91d00330414bf91ca03b46b9f9a20af4aae9b00ff751a20",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-direct/resources.json": "6538aec62fe62b77571ea7137b6d0cdaf925012043c4b9de5668fbad9ffcdadf",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-direct/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-direct/stdout": "0a2d560cbff7d27272d2a600209a7704b6334d51f549d1f08153af130acbf140",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-direct/verified.json": "7748648a7b764a93c6404472d3c7765bc646a2b4188b089f35a97f31c6655980",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw1/input.json": "1e1471d66ffec868746e9823022b867b59f4c88ff1c004179f1d1d8d4da91a6f",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw1/resources.json": "64059411abc61cc4c64a8cefaf7d71697eb1e9fc84cbc30851e24c70a20fb93d",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw1/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw1/stdout": "afcffde787a3b2bd5ff478d464c04ad7460d96d30aec0c54440cc9f463230382",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw1/verified.json": "b97f5ab23a934a740a8004cbeaef24dfab511c78375e3741507c6fc9a3b04113",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw2/input.json": "3e7b43518e32e3a81850d48834a68b8ac6f3c14d84d2b91c518c4d1d9888bfc9",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw2/resources.json": "2205933d90714d18926cc4f7a211dcecda15a45501f41a9c692ba85a651f6139",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw2/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw2/stdout": "445ab90fa1d16edb20357ba3ecac7d4b5b44ffb9e1370f41bd4ea4cea6351efa",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-1-xrw2/verified.json": "1259894c983b4f00c650c0bffe57d675c22441d716c3d02328e20aece266a8a9",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-direct/input.json": "dc7cedf0e6a7a319f91d00330414bf91ca03b46b9f9a20af4aae9b00ff751a20",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-direct/resources.json": "86f860bc55e83ece6daf95dd1f79bdf5d4de1bb1c839ab79c364470b822c8c4a",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-direct/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-direct/stdout": "8cf44a1a305b0dce1ed38b2b5c228ae58f6928dcf9f21a1ae7989a84b6308462",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-direct/verified.json": "e70c679b29b4a651526841a56e9c9bba6e814b06468a97b1454cab182cda94c1",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw1/input.json": "1e1471d66ffec868746e9823022b867b59f4c88ff1c004179f1d1d8d4da91a6f",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw1/resources.json": "afa58c4d5804e9e3ef5b5f2069eb12e38adbc5e6dfc715ccac8fc5b51820fdd7",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw1/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw1/stdout": "963705323aaffbd8f0f492997588631b342436ef3da4055e1f16693c9c7424e1",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw1/verified.json": "b5ab58625c5827dfda9e160d80362110eb2987b4c3e43654034041db5c84d136",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw2/input.json": "3e7b43518e32e3a81850d48834a68b8ac6f3c14d84d2b91c518c4d1d9888bfc9",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw2/resources.json": "d39b3156a8bef43fc4427efda849ed36abd7732d24bf8d996c429a8b9333bddf",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw2/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw2/stdout": "4be5dccc31895e943db7e45f42f118b8209d0dab4d858c808a322fd79f32eb87",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/session-2-xrw2/verified.json": "ab876276b4dc03547de6d51170e2e7057e4b1710fa6fbb0228eb7012072d1937",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/sources.tar.gz": "8c03de53edc495484c9a72e56cdd0564dcd4bfe726e4d0313bdaadc5b6cad215",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources/summary.json": "98db3435bcececb74bf5e78235a347fc80b37e009dd2bea22d351f065844c71e",
+    "artifacts/native-x86_64-unknown-linux-gnu/worker-resources-verification.json": "0cb9ec054119bef417b6035d75899034f6e3c16aa2c200db05dd8553840fafd7",
+    "artifacts/native-x86_64-unknown-linux-gnu/workers-persistent.json": "b3f57f1c044e6c24813af145d7dc72eff9dd84be3f8f3b57586edbd0d37b83c7",
+    "artifacts/native-x86_64-unknown-linux-gnu/workers.json": "147e251155fd4508fb171fbd9b1222bc0f12274bd07fcff0bb56c3704c98a555",
+    "artifacts/native-x86_64-unknown-linux-gnu/workspace-tests.log": "0d8b0d12ee579cdade57e02ee6dee484b8641751b56769348f9c73b2440f3efe",
+    "native-receipt-before-count-label.json": "c3528a35c3e207e0326eb3b9677b24d8d90d4c5bd3b8371ced5093f3c3e966b5",
+    "reconcile.py": "e03eb9b1c2057faa2e1e0083a22d008388caadbef71d34dcbd55cb7790f72990",
+    "resource-native-review.json": "7231e425f3b47ae333a066d817459e31c2b615d6b25668171fcb92b3344aeffd",
+    "run-completed.json": "7b33b65c378f47acbd8f3474454128c8ca77bf31ca81f2a5410abfd23374556b",
+    "run-start.json": "c3676ed8d8376e0ba23c4a3055f96fdfc9e33548fdc94e8ac1d7fda4d14875ee",
+    "run.log": "e75fa287fa70dfca28b0428f4e20dfad507efc3982512df4ee2cda43b439457c"
+  },
+  "limits": [
+    "macOS runner is 15.7.9, not literal 15.0",
+    "Experimental development captures and synthetic resource classes",
+    "D1 remains 0/32; four new dossiers remain 0/4; M0-06 and M0-09 remain open",
+    "Executables were not uploaded; binary hashes cannot be recomputed offline from absent bytes"
+  ]
+}

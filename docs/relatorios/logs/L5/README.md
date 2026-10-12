@@ -15,7 +15,7 @@ intenção daquele comando, e não substitui a conferência de fingerprint.
 - `resources/` preserva o desenho congelado, erro de `ps` no sandbox, calibração,
   matriz nativa sintética local e arquivos de fontes. `corpus-plan/` verifica
   somente alocação condicional; não comprova admissão nem dossiê concluído.
-- Recibos nativos de CI, quando conciliados, ficam em diretório próprio e ligam
+- Recibos nativos de CI conciliados ficam em `ci-native/` e ligam
   run, commit de código, ambiente e verificação externa dos artefatos.
 
 O [relatório L5](../../L5.md) identifica a evidência aceita e as pendências. Não

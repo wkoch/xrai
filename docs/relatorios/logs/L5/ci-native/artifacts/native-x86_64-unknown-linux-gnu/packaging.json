@@ -1,0 +1,675 @@
+{
+  "schema": "m0-packaging-proof-v1",
+  "host": "Linux",
+  "architecture": "x86_64",
+  "os_version": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "baseline_exactly_executed": true,
+  "binary_bytes": 8993720,
+  "binary_sha256": "91248f21ef4acb8da83526706a849f4967512f29040d3b1cc5631ed999dcd864",
+  "clean_directory_entries": [
+    "parsing-spike"
+  ],
+  "auxiliary_runtimes_in_path": {
+    "node": null,
+    "python": null,
+    "go": null,
+    "git": null,
+    "cc": null
+  },
+  "network_policy": "unshared network namespace",
+  "sandbox": "/usr/bin/bwrap",
+  "dynamic_libraries": "\tlinux-vdso.so.1 (0x00007fd910834000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fd9107f4000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd90fc00000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fd910836000)\n",
+  "abi_inspection": "glibc 2.39\n",
+  "inventory": {
+    "runtime": "tree-sitter",
+    "version": "0.27.1",
+    "license": "MIT",
+    "incorporated_component_notices": "Unicode/ICU and nested upstream notices in source_provenance",
+    "dialects": [
+      {
+        "dialect": "rust",
+        "crate": "tree-sitter-rust",
+        "version": "0.24.2",
+        "license": "MIT",
+        "grammar_abi": 15,
+        "node_types_blake3": "8fd818477e09d44baff5ac7dad2f5586c32d4298fe33a00db372bfa79a428166",
+        "query_blake3": "cdc90fb3203a2967ba053e1e3baf898bd297948056a23a2eb0773adf9d9ab422"
+      },
+      {
+        "dialect": "javascript",
+        "crate": "tree-sitter-javascript",
+        "version": "0.25.0",
+        "license": "MIT",
+        "grammar_abi": 15,
+        "node_types_blake3": "b258820a9191a79a8c6ca45bf1981b46f7dd748faede0110b44d73dd84d5d226",
+        "query_blake3": "f9cdb6cc24688ac29374afc2498779e1ad953e93de0d33f73fbe4c69c493b5cd"
+      },
+      {
+        "dialect": "jsx",
+        "crate": "tree-sitter-javascript",
+        "version": "0.25.0",
+        "license": "MIT",
+        "grammar_abi": 15,
+        "node_types_blake3": "b258820a9191a79a8c6ca45bf1981b46f7dd748faede0110b44d73dd84d5d226",
+        "query_blake3": "f9cdb6cc24688ac29374afc2498779e1ad953e93de0d33f73fbe4c69c493b5cd"
+      },
+      {
+        "dialect": "typescript",
+        "crate": "tree-sitter-typescript",
+        "version": "0.23.2",
+        "license": "MIT",
+        "grammar_abi": 14,
+        "node_types_blake3": "93743b527fd706405646723d242b40b2c6718b97f3a5fb1b92173c071fa98f13",
+        "query_blake3": "62c6c394913c30dbee042b835efbec99302b0deec5f5ee1fecf3db1bd72247e5"
+      },
+      {
+        "dialect": "tsx",
+        "crate": "tree-sitter-typescript",
+        "version": "0.23.2",
+        "license": "MIT",
+        "grammar_abi": 14,
+        "node_types_blake3": "995bb49a4990040bd1024cb5113ed1a846d50ebfe4a5e93bf2a5105fde053d73",
+        "query_blake3": "62c6c394913c30dbee042b835efbec99302b0deec5f5ee1fecf3db1bd72247e5"
+      },
+      {
+        "dialect": "python",
+        "crate": "tree-sitter-python",
+        "version": "0.25.0",
+        "license": "MIT",
+        "grammar_abi": 15,
+        "node_types_blake3": "35f2ec3bdb672cca5ff45c34beb53081f68723304bc5e79fe26b7e1ff4a3beb5",
+        "query_blake3": "cd2f53f27246356f6a03b23e412b08665bd2dc818db714bb7bb6726ddc5f039e"
+      },
+      {
+        "dialect": "go",
+        "crate": "tree-sitter-go",
+        "version": "0.25.0",
+        "license": "MIT",
+        "grammar_abi": 15,
+        "node_types_blake3": "39641d4d4860bce98913adb726cd89cd6d2fe67d7ec2f78dd37fd3dceb716077",
+        "query_blake3": "1510ca1568942e9c3831c12b0c2420c8d10144f479d7746be1bdff734ef7f158"
+      }
+    ],
+    "source_provenance": {
+      "schema": "m0-parser-provenance-v1",
+      "packages": [
+        {
+          "crate": "tree-sitter",
+          "version": "0.27.1",
+          "license": "MIT",
+          "license_scope": "registry package declaration; nested component notices also apply",
+          "repository": "https://github.com/tree-sitter/tree-sitter",
+          "registry_archive_sha256": "a5129de2ccc97808c4583d48f1fb44576d015cf241e432800572bda11ef30c3b",
+          "native_source_sha256": {
+            "include/tree_sitter/api.h": "f8480415ae20cb5e0fd519ba44c84268c5acb4c918106238fc1d328d91431783",
+            "src/alloc.c": "c7d15b9015568f439af4adf28ead9e2bd14901221819276727c11227a29576da",
+            "src/alloc.h": "6a59c4997fe6df7fa2c00fcaff9cf0882e26309d1743bea05983ea56e0ca0c91",
+            "src/array.h": "3a66fd611d88de00207bf40466b2393170c2110b17ce0d16e3716ef3a00e3d8e",
+            "src/atomic.h": "bbc630cb913ac64274ce4412bc9d504174220323993f306ded74abe502867e74",
+            "src/error_costs.h": "0e8d1a21e0d60981e762989108231df6610d95591892f631c6c78a9ef831a2ab",
+            "src/get_changed_ranges.c": "6fcee7d2663ac67d88b9e79a03ff4854dde1e8d30d3c985d945bad8017532c52",
+            "src/get_changed_ranges.h": "f394bd0b6fce006be460fd16cbea3cc96e248c810a4d97e8830463c29c85e4a5",
+            "src/host.h": "e1982b9795b9c52b5ab564d8b9876189d65a97ca02f78351e1740b0985992fd2",
+            "src/language.c": "16ca0511cd57ff301c63a19b4f10821552153224affa23908d4fc0d2bbca353e",
+            "src/language.h": "9371240c2060bd7c145b41a32b2535bbca3c3ac1713a4684e272e268ac924c22",
+            "src/length.h": "7fc186fb4bf50233059e8be9ca68efe95e66d34ced4b8a8f38f14497352faeb1",
+            "src/lexer.c": "eb6ca639beaea9fb99bfb0faa0bd0f8e8df785a52dc09321582dc858a448eb34",
+            "src/lexer.h": "7d76308f7a2d3246a3e28fb27698be928f848130d1bfacc39f9f623127671b74",
+            "src/lib.c": "a9830f5a1e72db564afef45f690510cf0aa751075ed855789e26c9f25f087b80",
+            "src/node.c": "fb0b5eecacb6d7e324f60914893801c0d147f413dd0af73a19ef270d341a77b5",
+            "src/parser.c": "450cb5196ffb74ffd8ba16fcb770b995f000348ac054542afb9f547bd86ab611",
+            "src/parser.h": "180b893c8734778fd32f372dfbc27bd6ad1cd2221f26150b31256ff6716320d2",
+            "src/point.c": "04a101f16f40a651814c0f307fadf3f351d0f24013fa6d8b89c85bf1c6a5e717",
+            "src/point.h": "0929027be2ff54627be560f3bafc1af59e81ac6d5a8d5864455601a0dbee50ff",
+            "src/portable/endian.h": "528ca0666737e1a66218e2179004d5af2154393c6564ac9c57c110c5d8f57f85",
+            "src/query.c": "d5424d95c92fbb95b39f64d4fbec19d53d3d51bfd30bf34b0030679547dd59fc",
+            "src/reduce_action.h": "8f40396e431d7ff558694ca248eed1332b6cf6f7e6255f06cddfde78020bd308",
+            "src/reusable_node.h": "10be747ea4c733ca181dc43d55d155ac8e5b8caa247079621cca0ce633347bfb",
+            "src/stack.c": "f70b7e5823e82901801193562908037db4c1a73721e48da0fe54cdb2a6b5856d",
+            "src/stack.h": "dea9df947fa871b253528dca48611aa174181a286ec2734c16d4038e040834f6",
+            "src/subtree.c": "6b8737764405898a2941df6951f548d73131ada230eec906ee062ca453a2bb80",
+            "src/subtree.h": "290ac499f1cdd03d2100de98e12c3fccfe806b663337d648eaf4744348bfb2d5",
+            "src/tree.c": "a0f63bc46fc4fcb88d35caa6fe89d7fc18edb895bc781db20f11d5c58988fb06",
+            "src/tree.h": "628701f470166ad550471a673dce078f28a7851193939f02a342c30c3a8ef39c",
+            "src/tree_cursor.c": "5638f6702b6d0b40755fcba32d85ca0fc44ab51bd3546525b4787a304a7b503c",
+            "src/tree_cursor.h": "3e8d9671ab1397bcaeb3e0cbf153a61a99e214782b43c09e5cde5a01e8283a1a",
+            "src/ts_assert.h": "ac1ec4b7ba388a9d8708feeb6c5c766b2927cecfd6db644b939772e1dc086526",
+            "src/unicode/ptypes.h": "a87e9710c9cad7b08a945f4fb8b9d4629189897cc535f8ac927640c210a94b69",
+            "src/unicode/umachine.h": "2d79c0903d9e73e247b948bc0a12b6a785257ca0273bddab56fb59561f8d7391",
+            "src/unicode/urename.h": "a87e9710c9cad7b08a945f4fb8b9d4629189897cc535f8ac927640c210a94b69",
+            "src/unicode/utf.h": "a87e9710c9cad7b08a945f4fb8b9d4629189897cc535f8ac927640c210a94b69",
+            "src/unicode/utf16.h": "c370d9069f37fad2b53981c06dc648bbc21923db1655517a31bb237df4fba041",
+            "src/unicode/utf8.h": "39651224b2ca2452359c7f3339f3cc0a841fe7db64f8a00c9c5ec19c0389645c",
+            "src/unicode.h": "968175f1e018e4130c403fe08d12b4d103e6fe6c1dbbf658e58ab9af378530a4",
+            "src/wasm-stdlib/external_scanner_allocator.c": "b13eb3c31b8b952578260b858462e821985d347d1dae186e71566ff36d875b1f",
+            "src/wasm-stdlib/external_scanner_stdlib.h": "462bb994df614cb18899b03b1435f2749414e4722ba8cf450266a149426cea0c",
+            "src/wasm-stdlib/libc/ctype/alpha.h": "bf14a0a8e2e3722e8d618d00f903be102a0214c4ab30d96dc8d7f3e15c5106e7",
+            "src/wasm-stdlib/libc/ctype/casemap.h": "e69896dc36e5b1c0f0f30917cad6dcda2f55c2d691be1b84625880ebf22fb618",
+            "src/wasm-stdlib/libc/ctype/isblank.c": "2fe71bd5c48604d04f2582e35e1230c2c302bd175ebcfa3c7ed15cf191156bd3",
+            "src/wasm-stdlib/libc/ctype/iswalnum.c": "647f8fc54b33790c1de8a26acd2f5b7212952c2e60db0ada433f9ddd639ce186",
+            "src/wasm-stdlib/libc/ctype/iswalpha.c": "c22480b08b6943bbecfb6e0ab6677bf3b41c0371d5df51286f437b3cb37c130e",
+            "src/wasm-stdlib/libc/ctype/iswblank.c": "6f3a3161506c01d7a425c766e6de722101618d14548b56998bc147e86077e744",
+            "src/wasm-stdlib/libc/ctype/iswdigit.c": "d7e9bda18ff14bd8ace47884d8bd021130e95c69a2dc747f83effc1a2714895b",
+            "src/wasm-stdlib/libc/ctype/iswlower.c": "e51bb97002c407e416bfca5689abef2e9b9dc625bef19ae684753722e98d0392",
+            "src/wasm-stdlib/libc/ctype/iswpunct.c": "6bc6c0a07485c87aa556c265f37968c42d635e4a2fd89e701efdb57f8a111b66",
+            "src/wasm-stdlib/libc/ctype/iswspace.c": "c8592c0fb5463b314c38926e3df26b9efdfe5f1437958ba20c7c36f81facba80",
+            "src/wasm-stdlib/libc/ctype/iswupper.c": "f6b68aa9983a6fb5c09479e1349a2b35721cb7aef308192584fdea5585032cd8",
+            "src/wasm-stdlib/libc/ctype/iswxdigit.c": "1f6dc78efe7c313ddcf47401101f903ce194af5dacd89922f483a995075f52cb",
+            "src/wasm-stdlib/libc/ctype/punct.h": "45382a2b630fc896057871ac9abe9e3f1580048f1f3b1c96505aaf3dc522832d",
+            "src/wasm-stdlib/libc/ctype/towctrans.c": "43f4374b7dfcd24a957b4be4cfa304611e24912529183174ec724fcbaedf82cd",
+            "src/wasm-stdlib/libc/string/memchr.c": "1ea082084a8cfcc6aee5dc962e0ddd2167d2ce38e529a22d138bdfaab83c223a",
+            "src/wasm-stdlib/libc/string/memcmp.c": "44ec5045d00709ddd9ae59b4b0e7ac7e78a8401d27acc4cb95bb46acb2d103f2",
+            "src/wasm-stdlib/libc/string/memcpy.c": "4ad219f8d43467d894ef2cfd3d6d17ae958710c689097c15d41b68ee99c74769",
+            "src/wasm-stdlib/libc/string/memmove.c": "202adc3108340168e8604c1ed848e84df51a806726ebc992b597218a50c9a8d9",
+            "src/wasm-stdlib/libc/string/memset.c": "a7a8ff014b6a196342bbe3e8bdd7ae7ee91f0003f96e328d915f1af13066dad8",
+            "src/wasm-stdlib/libc/string/stpncpy.c": "12f0e4fd1005104a6c1200af5b90e1694d75ad0fb2586305b560341be0ef6481",
+            "src/wasm-stdlib/libc/string/strchr.c": "629d401b95d07ddff9560eb5a9cfbda1652caaec273dc6a79013a56b1790af53",
+            "src/wasm-stdlib/libc/string/strchrnul.c": "3eaa363698e2dfb472a59ed35c445d970a06d4da9d94a47eb918c0a3e2f74e7b",
+            "src/wasm-stdlib/libc/string/strcmp.c": "3e1793ea2dd358e5c884c4dd232083605d0f6775f7ebe19d03d64fe97068a78f",
+            "src/wasm-stdlib/libc/string/strlen.c": "767f030f94a4868eb88c8b28e0aa535f53deb2f23b79ba5627d6d8ba6b460d7d",
+            "src/wasm-stdlib/libc/string/strncat.c": "784dbc83b122671f97711ab6cbcb1ee871513e8d0da3462a8ce267e1367353af",
+            "src/wasm-stdlib/libc/string/strncmp.c": "df801c43304b27dcda67f219a7a3ca34a8fb06f4e63d21e8a6bcb36b03c3c012",
+            "src/wasm-stdlib/libc/string/strncpy.c": "88301f7a48004250e1833e9155c7d2fa607ffdddca3b1b1804774d93c82acb96",
+            "src/wasm-stdlib/libc/string/wcschr.c": "c9ac14e131c281bef6ab9228ae4e0aea824b3b96c32ed4c2b1a573d7529e7194",
+            "src/wasm-stdlib/libc/string/wcslen.c": "4baada75103e9906fa85dd6650c07752c1803b36cbdfc1b5e0678c5e3f3223a6",
+            "src/wasm-stdlib/libc.c": "1b70f41eda904b816e641d5841c7ad0b637cf5bc637e1f3d0965f75789711ff5",
+            "src/wasm-stdlib/stdio.c": "463ff7c94b4f9df0164aa3d966eeb5765a7f9acecdf477119e2fe54891e34b0e",
+            "src/wasm_store.c": "e630e55f3984cc9111646a719f793f5b7b4823632767129c4583aa2b1521e746",
+            "src/wasm_store.h": "4f70d0500b0775e5d862a8e7d191b3853d73378c65e020e01767838a18debe0e"
+          },
+          "legal_notices": [
+            {
+              "path": "licenses/parsing/tree-sitter-0.27.1-LICENSE",
+              "source_path": "LICENSE",
+              "scope": "native package or incorporated component",
+              "sha256": "c5cfb43042b6b72045f4ba997834d0a7786d2793d91680868b5815b39f14fc78",
+              "text": "The MIT License (MIT)\n\nCopyright (c) 2018 Max Brunsfeld\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+            },
+            {
+              "path": "licenses/parsing/tree-sitter-0.27.1-src--unicode--LICENSE",
+              "source_path": "src/unicode/LICENSE",
+              "scope": "native package or incorporated component",
+              "sha256": "6a18c5fac70d7860b57f5b72b4e2c9a1ba6b3d2741eef7ff9767c5379364f10d",
+              "text": "COPYRIGHT AND PERMISSION NOTICE (ICU 58 and later)\n\nCopyright © 1991-2019 Unicode, Inc. All rights reserved.\nDistributed under the Terms of Use in https://www.unicode.org/copyright.html.\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Unicode data files and any associated documentation\n(the \"Data Files\") or Unicode software and any associated documentation\n(the \"Software\") to deal in the Data Files or Software\nwithout restriction, including without limitation the rights to use,\ncopy, modify, merge, publish, distribute, and/or sell copies of\nthe Data Files or Software, and to permit persons to whom the Data Files\nor Software are furnished to do so, provided that either\n(a) this copyright and permission notice appear with all copies\nof the Data Files or Software, or\n(b) this copyright and permission notice appear in associated\nDocumentation.\n\nTHE DATA FILES AND SOFTWARE ARE PROVIDED \"AS IS\", WITHOUT WARRANTY OF\nANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE\nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT OF THIRD PARTY RIGHTS.\nIN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS\nNOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL\nDAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,\nDATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER\nTORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR\nPERFORMANCE OF THE DATA FILES OR SOFTWARE.\n\nExcept as contained in this notice, the name of a copyright holder\nshall not be used in advertising or otherwise to promote the sale,\nuse or other dealings in these Data Files or Software without prior\nwritten authorization of the copyright holder.\n\n---------------------\n\nThird-Party Software Licenses\n\nThis section contains third-party software notices and/or additional\nterms for licensed third-party software components included within ICU\nlibraries.\n\n1. ICU License - ICU 1.8.1 to ICU 57.1\n\nCOPYRIGHT AND PERMISSION NOTICE\n\nCopyright (c) 1995-2016 International Business Machines Corporation and others\nAll rights reserved.\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, and/or sell copies of the Software, and to permit persons\nto whom the Software is furnished to do so, provided that the above\ncopyright notice(s) and this permission notice appear in all copies of\nthe Software and that both the above copyright notice(s) and this\npermission notice appear in supporting documentation.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR\nHOLDERS INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY\nSPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER\nRESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF\nCONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN\nCONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n\nExcept as contained in this notice, the name of a copyright holder\nshall not be used in advertising or otherwise to promote the sale, use\nor other dealings in this Software without prior written authorization\nof the copyright holder.\n\nAll trademarks and registered trademarks mentioned herein are the\nproperty of their respective owners.\n\n2. Chinese/Japanese Word Break Dictionary Data (cjdict.txt)\n\n #     The Google Chrome software developed by Google is licensed under\n # the BSD license. Other software included in this distribution is\n # provided under other licenses, as set forth below.\n #\n #  The BSD License\n #  http://opensource.org/licenses/bsd-license.php\n #  Copyright (C) 2006-2008, Google Inc.\n #\n #  All rights reserved.\n #\n #  Redistribution and use in source and binary forms, with or without\n # modification, are permitted provided that the following conditions are met:\n #\n #  Redistributions of source code must retain the above copyright notice,\n # this list of conditions and the following disclaimer.\n #  Redistributions in binary form must reproduce the above\n # copyright notice, this list of conditions and the following\n # disclaimer in the documentation and/or other materials provided with\n # the distribution.\n #  Neither the name of  Google Inc. nor the names of its\n # contributors may be used to endorse or promote products derived from\n # this software without specific prior written permission.\n #\n #\n #  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND\n # CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES,\n # INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF\n # MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n # DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE\n # LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\n # CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\n # SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR\n # BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\n # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n #\n #\n #  The word list in cjdict.txt are generated by combining three word lists\n # listed below with further processing for compound word breaking. The\n # frequency is generated with an iterative training against Google web\n # corpora.\n #\n #  * Libtabe (Chinese)\n #    - https://sourceforge.net/project/?group_id=1519\n #    - Its license terms and conditions are shown below.\n #\n #  * IPADIC (Japanese)\n #    - http://chasen.aist-nara.ac.jp/chasen/distribution.html\n #    - Its license terms and conditions are shown below.\n #\n #  ---------COPYING.libtabe ---- BEGIN--------------------\n #\n #  /*\n #   * Copyright (c) 1999 TaBE Project.\n #   * Copyright (c) 1999 Pai-Hsiang Hsiao.\n #   * All rights reserved.\n #   *\n #   * Redistribution and use in source and binary forms, with or without\n #   * modification, are permitted provided that the following conditions\n #   * are met:\n #   *\n #   * . Redistributions of source code must retain the above copyright\n #   *   notice, this list of conditions and the following disclaimer.\n #   * . Redistributions in binary form must reproduce the above copyright\n #   *   notice, this list of conditions and the following disclaimer in\n #   *   the documentation and/or other materials provided with the\n #   *   distribution.\n #   * . Neither the name of the TaBE Project nor the names of its\n #   *   contributors may be used to endorse or promote products derived\n #   *   from this software without specific prior written permission.\n #   *\n #   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n #   * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n #   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n #   * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n #   * REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n #   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n #   * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n #   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n #   * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,\n #   * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\n #   * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED\n #   * OF THE POSSIBILITY OF SUCH DAMAGE.\n #   */\n #\n #  /*\n #   * Copyright (c) 1999 Computer Systems and Communication Lab,\n #   *                    Institute of Information Science, Academia\n #       *                    Sinica. All rights reserved.\n #   *\n #   * Redistribution and use in source and binary forms, with or without\n #   * modification, are permitted provided that the following conditions\n #   * are met:\n #   *\n #   * . Redistributions of source code must retain the above copyright\n #   *   notice, this list of conditions and the following disclaimer.\n #   * . Redistributions in binary form must reproduce the above copyright\n #   *   notice, this list of conditions and the following disclaimer in\n #   *   the documentation and/or other materials provided with the\n #   *   distribution.\n #   * . Neither the name of the Computer Systems and Communication Lab\n #   *   nor the names of its contributors may be used to endorse or\n #   *   promote products derived from this software without specific\n #   *   prior written permission.\n #   *\n #   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n #   * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n #   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n #   * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n #   * REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n #   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n #   * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n #   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n #   * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,\n #   * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\n #   * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED\n #   * OF THE POSSIBILITY OF SUCH DAMAGE.\n #   */\n #\n #  Copyright 1996 Chih-Hao Tsai @ Beckman Institute,\n #      University of Illinois\n #  c-tsai4@uiuc.edu  http://casper.beckman.uiuc.edu/~c-tsai4\n #\n #  ---------------COPYING.libtabe-----END--------------------------------\n #\n #\n #  ---------------COPYING.ipadic-----BEGIN-------------------------------\n #\n #  Copyright 2000, 2001, 2002, 2003 Nara Institute of Science\n #  and Technology.  All Rights Reserved.\n #\n #  Use, reproduction, and distribution of this software is permitted.\n #  Any copy of this software, whether in its original form or modified,\n #  must include both the above copyright notice and the following\n #  paragraphs.\n #\n #  Nara Institute of Science and Technology (NAIST),\n #  the copyright holders, disclaims all warranties with regard to this\n #  software, including all implied warranties of merchantability and\n #  fitness, in no event shall NAIST be liable for\n #  any special, indirect or consequential damages or any damages\n #  whatsoever resulting from loss of use, data or profits, whether in an\n #  action of contract, negligence or other tortuous action, arising out\n #  of or in connection with the use or performance of this software.\n #\n #  A large portion of the dictionary entries\n #  originate from ICOT Free Software.  The following conditions for ICOT\n #  Free Software applies to the current dictionary as well.\n #\n #  Each User may also freely distribute the Program, whether in its\n #  original form or modified, to any third party or parties, PROVIDED\n #  that the provisions of Section 3 (\"NO WARRANTY\") will ALWAYS appear\n #  on, or be attached to, the Program, which is distributed substantially\n #  in the same form as set out herein and that such intended\n #  distribution, if actually made, will neither violate or otherwise\n #  contravene any of the laws and regulations of the countries having\n #  jurisdiction over the User or the intended distribution itself.\n #\n #  NO WARRANTY\n #\n #  The program was produced on an experimental basis in the course of the\n #  research and development conducted during the project and is provided\n #  to users as so produced on an experimental basis.  Accordingly, the\n #  program is provided without any warranty whatsoever, whether express,\n #  implied, statutory or otherwise.  The term \"warranty\" used herein\n #  includes, but is not limited to, any warranty of the quality,\n #  performance, merchantability and fitness for a particular purpose of\n #  the program and the nonexistence of any infringement or violation of\n #  any right of any third party.\n #\n #  Each user of the program will agree and understand, and be deemed to\n #  have agreed and understood, that there is no warranty whatsoever for\n #  the program and, accordingly, the entire risk arising from or\n #  otherwise connected with the program is assumed by the user.\n #\n #  Therefore, neither ICOT, the copyright holder, or any other\n #  organization that participated in or was otherwise related to the\n #  development of the program and their respective officials, directors,\n #  officers and other employees shall be held liable for any and all\n #  damages, including, without limitation, general, special, incidental\n #  and consequential damages, arising out of or otherwise in connection\n #  with the use or inability to use the program or any product, material\n #  or result produced or otherwise obtained by using the program,\n #  regardless of whether they have been advised of, or otherwise had\n #  knowledge of, the possibility of such damages at any time during the\n #  project or thereafter.  Each user will be deemed to have agreed to the\n #  foregoing by his or her commencement of use of the program.  The term\n #  \"use\" as used herein includes, but is not limited to, the use,\n #  modification, copying and distribution of the program and the\n #  production of secondary products from the program.\n #\n #  In the case where the program, whether in its original form or\n #  modified, was distributed or delivered to or received by a user from\n #  any person, organization or entity other than ICOT, unless it makes or\n #  grants independently of ICOT any specific warranty to the user in\n #  writing, such person, organization or entity, will also be exempted\n #  from and not be held liable to the user for any such damages as noted\n #  above as far as the program is concerned.\n #\n #  ---------------COPYING.ipadic-----END----------------------------------\n\n3. Lao Word Break Dictionary Data (laodict.txt)\n\n #  Copyright (c) 2013 International Business Machines Corporation\n #  and others. All Rights Reserved.\n #\n # Project: http://code.google.com/p/lao-dictionary/\n # Dictionary: http://lao-dictionary.googlecode.com/git/Lao-Dictionary.txt\n # License: http://lao-dictionary.googlecode.com/git/Lao-Dictionary-LICENSE.txt\n #              (copied below)\n #\n #  This file is derived from the above dictionary, with slight\n #  modifications.\n #  ----------------------------------------------------------------------\n #  Copyright (C) 2013 Brian Eugene Wilson, Robert Martin Campbell.\n #  All rights reserved.\n #\n #  Redistribution and use in source and binary forms, with or without\n #  modification,\n #  are permitted provided that the following conditions are met:\n #\n #\n # Redistributions of source code must retain the above copyright notice, this\n #  list of conditions and the following disclaimer. Redistributions in\n #  binary form must reproduce the above copyright notice, this list of\n #  conditions and the following disclaimer in the documentation and/or\n #  other materials provided with the distribution.\n #\n #\n # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n # \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n # FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n # COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,\n # INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n # (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n # SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,\n # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\n # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED\n # OF THE POSSIBILITY OF SUCH DAMAGE.\n #  --------------------------------------------------------------------------\n\n4. Burmese Word Break Dictionary Data (burmesedict.txt)\n\n #  Copyright (c) 2014 International Business Machines Corporation\n #  and others. All Rights Reserved.\n #\n #  This list is part of a project hosted at:\n #    github.com/kanyawtech/myanmar-karen-word-lists\n #\n #  --------------------------------------------------------------------------\n #  Copyright (c) 2013, LeRoy Benjamin Sharon\n #  All rights reserved.\n #\n #  Redistribution and use in source and binary forms, with or without\n #  modification, are permitted provided that the following conditions\n #  are met: Redistributions of source code must retain the above\n #  copyright notice, this list of conditions and the following\n #  disclaimer.  Redistributions in binary form must reproduce the\n #  above copyright notice, this list of conditions and the following\n #  disclaimer in the documentation and/or other materials provided\n #  with the distribution.\n #\n #    Neither the name Myanmar Karen Word Lists, nor the names of its\n #    contributors may be used to endorse or promote products derived\n #    from this software without specific prior written permission.\n #\n #  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND\n #  CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES,\n #  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF\n #  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n #  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS\n #  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n #  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED\n #  TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n #  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\n #  ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR\n #  TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF\n #  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF\n #  SUCH DAMAGE.\n #  --------------------------------------------------------------------------\n\n5. Time Zone Database\n\n  ICU uses the public domain data and code derived from Time Zone\nDatabase for its time zone support. The ownership of the TZ database\nis explained in BCP 175: Procedure for Maintaining the Time Zone\nDatabase section 7.\n\n # 7.  Database Ownership\n #\n #    The TZ database itself is not an IETF Contribution or an IETF\n #    document.  Rather it is a pre-existing and regularly updated work\n #    that is in the public domain, and is intended to remain in the\n #    public domain.  Therefore, BCPs 78 [RFC5378] and 79 [RFC3979] do\n #    not apply to the TZ Database or contributions that individuals make\n #    to it.  Should any claims be made and substantiated against the TZ\n #    Database, the organization that is providing the IANA\n #    Considerations defined in this RFC, under the memorandum of\n #    understanding with the IETF, currently ICANN, may act in accordance\n #    with all competent court orders.  No ownership claims will be made\n #    by ICANN or the IETF Trust on the database or the code.  Any person\n #    making a contribution to the database or code waives all rights to\n #    future claims in that contribution or in the TZ Database.\n\n6. Google double-conversion\n\nCopyright 2006-2011, the V8 project authors. All rights reserved.\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are\nmet:\n\n    * Redistributions of source code must retain the above copyright\n      notice, this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above\n      copyright notice, this list of conditions and the following\n      disclaimer in the documentation and/or other materials provided\n      with the distribution.\n    * Neither the name of Google Inc. nor the names of its\n      contributors may be used to endorse or promote products derived\n      from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\nLIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\nA PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\nOWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\nSPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\nLIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\nDATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\nTHEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+            },
+            {
+              "path": "licenses/parsing/tree-sitter-0.27.1-src--wasm-stdlib--libc--LICENSE",
+              "source_path": "src/wasm-stdlib/libc/LICENSE",
+              "scope": "optional wasm libc; not compiled for native targets",
+              "sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+              "text": "musl as a whole is licensed under the following standard MIT license:\n\n----------------------------------------------------------------------\nCopyright © 2005-2020 Rich Felker, et al.\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n----------------------------------------------------------------------\n\nAuthors/contributors include:\n\nA. Wilcox\nAda Worcester\nAlex Dowad\nAlex Suykov\nAlexander Monakov\nAndre McCurdy\nAndrew Kelley\nAnthony G. Basile\nAric Belsito\nArvid Picciani\nBartosz Brachaczek\nBenjamin Peterson\nBobby Bingham\nBoris Brezillon\nBrent Cook\nChris Spiegel\nClément Vasseur\nDaniel Micay\nDaniel Sabogal\nDaurnimator\nDavid Carlier\nDavid Edelsohn\nDenys Vlasenko\nDmitry Ivanov\nDmitry V. Levin\nDrew DeVault\nEmil Renner Berthing\nFangrui Song\nFelix Fietkau\nFelix Janda\nGianluca Anzolin\nHauke Mehrtens\nHe X\nHiltjo Posthuma\nIsaac Dunham\nJaydeep Patil\nJens Gustedt\nJeremy Huntwork\nJo-Philipp Wich\nJoakim Sindholt\nJohn Spencer\nJulien Ramseier\nJustin Cormack\nKaarle Ritvanen\nKhem Raj\nKylie McClain\nLeah Neukirchen\nLuca Barbato\nLuka Perkov\nM Farkas-Dyck (Strake)\nMahesh Bodapati\nMarkus Wichmann\nMasanori Ogino\nMichael Clark\nMichael Forney\nMikhail Kremnyov\nNatanael Copa\nNicholas J. Kain\norc\nPascal Cuoq\nPatrick Oppenlander\nPetr Hosek\nPetr Skocik\nPierre Carrier\nReini Urban\nRich Felker\nRichard Pennington\nRyan Fairfax\nSamuel Holland\nSegev Finer\nShiz\nsin\nSolar Designer\nStefan Kristiansson\nStefan O'Rear\nSzabolcs Nagy\nTimo Teräs\nTrutz Behn\nValentin Ochs\nWill Dietz\nWilliam Haddon\nWilliam Pitcock\n\nPortions of this software are derived from third-party works licensed\nunder terms compatible with the above MIT license:\n\nThe TRE regular expression implementation (src/regex/reg* and\nsrc/regex/tre*) is Copyright © 2001-2008 Ville Laurikari and licensed\nunder a 2-clause BSD license (license text in the source files). The\nincluded version has been heavily modified by Rich Felker in 2012, in\nthe interests of size, simplicity, and namespace cleanliness.\n\nMuch of the math library code (src/math/* and src/complex/*) is\nCopyright © 1993,2004 Sun Microsystems or\nCopyright © 2003-2011 David Schultz or\nCopyright © 2003-2009 Steven G. Kargl or\nCopyright © 2003-2009 Bruce D. Evans or\nCopyright © 2008 Stephen L. Moshier or\nCopyright © 2017-2018 Arm Limited\nand labelled as such in comments in the individual source files. All\nhave been licensed under extremely permissive terms.\n\nThe ARM memcpy code (src/string/arm/memcpy.S) is Copyright © 2008\nThe Android Open Source Project and is licensed under a two-clause BSD\nlicense. It was taken from Bionic libc, used on Android.\n\nThe AArch64 memcpy and memset code (src/string/aarch64/*) are\nCopyright © 1999-2019, Arm Limited.\n\nThe implementation of DES for crypt (src/crypt/crypt_des.c) is\nCopyright © 1994 David Burren. It is licensed under a BSD license.\n\nThe implementation of blowfish crypt (src/crypt/crypt_blowfish.c) was\noriginally written by Solar Designer and placed into the public\ndomain. The code also comes with a fallback permissive license for use\nin jurisdictions that may not recognize the public domain.\n\nThe smoothsort implementation (src/stdlib/qsort.c) is Copyright © 2011\nValentin Ochs and is licensed under an MIT-style license.\n\nThe x86_64 port was written by Nicholas J. Kain and is licensed under\nthe standard MIT terms.\n\nThe mips and microblaze ports were originally written by Richard\nPennington for use in the ellcc project. The original code was adapted\nby Rich Felker for build system and code conventions during upstream\nintegration. It is licensed under the standard MIT terms.\n\nThe mips64 port was contributed by Imagination Technologies and is\nlicensed under the standard MIT terms.\n\nThe powerpc port was also originally written by Richard Pennington,\nand later supplemented and integrated by John Spencer. It is licensed\nunder the standard MIT terms.\n\nAll other files which have no copyright comments are original works\nproduced specifically for use as part of this library, written either\nby Rich Felker, the main author of the library, or by one or more\ncontibutors listed above. Details on authorship of individual files\ncan be found in the git version control history of the project. The\nomission of copyright and license comments in each file is in the\ninterest of source tree size.\n\nIn addition, permission is hereby granted for all public header files\n(include/* and arch/*/bits/*) and crt files intended to be linked into\napplications (crt/*, ldso/dlstart.c, and arch/*/crt_arch.h) to omit\nthe copyright notice and permission notice otherwise required by the\nlicense, and to use these files without any requirement of\nattribution. These files include substantial contributions from:\n\nBobby Bingham\nJohn Spencer\nNicholas J. Kain\nRich Felker\nRichard Pennington\nStefan Kristiansson\nSzabolcs Nagy\n\nall of whom have explicitly granted such permission.\n\nThis file previously contained text expressing a belief that most of\nthe files covered by the above exception were sufficiently trivial not\nto be subject to copyright, resulting in confusion over whether it\nnegated the permissions granted in the license. In the spirit of\npermissive licensing, and of not having licensing issues being an\nobstacle to adoption, that text has been removed.\n"
+            }
+          ]
+        },
+        {
+          "crate": "tree-sitter-language",
+          "version": "0.1.9",
+          "license": "MIT",
+          "license_scope": "registry package declaration; nested component notices also apply",
+          "repository": "https://github.com/tree-sitter/tree-sitter",
+          "registry_archive_sha256": "d0af592be68c579aa78a16846bd19422978c3c52e438523d45ff5d1bff1f9d4a",
+          "native_source_sha256": {
+            "wasm/include/assert.h": "4df5e9b34df394ea131ae5ad246aa1703090477ff1a9c67084339214cabe5bfe",
+            "wasm/include/ctype.h": "8109d886e1dc98450a897c9911962382a29207d9fdf4e72c8b825ca216642ba5",
+            "wasm/include/endian.h": "52cc59248a872db52986b1047f89eecccfc966f9efd9c202b5139d6bb507b35a",
+            "wasm/include/inttypes.h": "b40be70f423069f4268d062d3e74ac2f9095afb175f09116bf6ecb360d52ba55",
+            "wasm/include/stdint.h": "307a58c354ddd4f7a3c4818fa3102ca96d0892965458457c9974bc5ab0769c65",
+            "wasm/include/stdio.h": "aabed2e01d5c17934c57fddc4717d462c609edb9054a0d818c6241c3f6f55477",
+            "wasm/include/stdlib.h": "7301c6e6528393e0089b9ffa59c65bc59c066f5eee94971a87afe640c6bcd6a6",
+            "wasm/include/string.h": "a4869445bb2ec1dc667022e1a61df6264ff07ea0498fc1676a7a67ad927aeeca",
+            "wasm/include/wchar.h": "812383781e5219f4e0b9b09a68c74bd7ff2662f00e8a8b4e0f5d64a3d6b551e6",
+            "wasm/include/wctype.h": "a9fdb9b98ea0f88306f225f12854932651a596781535dbb7977eb031dc527403",
+            "wasm/unsupported/tree-sitter-0.26/stdio.c": "9b26fbf80c476514f6c2a25cf0cf0ff58c7ff8e8e4f401d6fd7b7ab12f9ee292",
+            "wasm/unsupported/tree-sitter-0.26/stdlib.c": "9b26fbf80c476514f6c2a25cf0cf0ff58c7ff8e8e4f401d6fd7b7ab12f9ee292",
+            "wasm/unsupported/tree-sitter-0.26/string.c": "9b26fbf80c476514f6c2a25cf0cf0ff58c7ff8e8e4f401d6fd7b7ab12f9ee292"
+          },
+          "legal_notices": [
+            {
+              "path": "licenses/parsing/tree-sitter-language-0.1.9-LICENSE",
+              "source_path": "LICENSE",
+              "scope": "native package or incorporated component",
+              "sha256": "c5cfb43042b6b72045f4ba997834d0a7786d2793d91680868b5815b39f14fc78",
+              "text": "The MIT License (MIT)\n\nCopyright (c) 2018 Max Brunsfeld\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+            }
+          ]
+        },
+        {
+          "crate": "tree-sitter-rust",
+          "version": "0.24.2",
+          "license": "MIT",
+          "license_scope": "registry package declaration; nested component notices also apply",
+          "repository": "https://github.com/tree-sitter/tree-sitter-rust",
+          "registry_archive_sha256": "439e577dbe07423ec2582ac62c7531120dbfccfa6e5f92406f93dd271a120e45",
+          "native_source_sha256": {
+            "src/node-types.json": "4b73a1248978340336100db455bf0731c23f9190568c9ae62265fa4a80a327d5",
+            "src/parser.c": "9602518f9e57919910bf0e777e52f6bfc9325d4c182e998bdb4efd5682b76e4a",
+            "src/scanner.c": "9609a2f92dbb7c32bc056fd8fb94e5478428f04496696aa08b048a9b66caf283",
+            "src/tree_sitter/alloc.h": "b29c1c9fb7cc82f58c84b376df1297d6e2737a1d655fd356db0859e3c29c2fea",
+            "src/tree_sitter/array.h": "31e60a1bff6f715afacce03b5b70efe42b58371b4f9595dd4af52a577ff9608c",
+            "src/tree_sitter/parser.h": "180b893c8734778fd32f372dfbc27bd6ad1cd2221f26150b31256ff6716320d2"
+          },
+          "legal_notices": [
+            {
+              "path": "licenses/parsing/tree-sitter-rust-0.24.2-LICENSE",
+              "source_path": "LICENSE",
+              "scope": "native package or incorporated component",
+              "sha256": "31d5b6f4243d5c7c6e1c4ebbbb9f6407bd1457a08bcc4f706521710341acba36",
+              "text": "The MIT License (MIT)\n\nCopyright (c) 2017 Maxim Sokolov\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+            }
+          ]
+        },
+        {
+          "crate": "tree-sitter-javascript",
+          "version": "0.25.0",
+          "license": "MIT",
+          "license_scope": "registry package declaration; nested component notices also apply",
+          "repository": "https://github.com/tree-sitter/tree-sitter-javascript",
+          "registry_archive_sha256": "68204f2abc0627a90bdf06e605f5c470aa26fdcb2081ea553a04bdad756693f5",
+          "native_source_sha256": {
+            "src/node-types.json": "188a8baa97018edaf63bf7ece372c07bc0d74d1301004bc8f211eb7dee5a6e70",
+            "src/parser.c": "67209ca7ef6e1a4f74e29e48b5928455f892fe1821a3960fbcd62f4e972f7384",
+            "src/scanner.c": "b3d3f64284d97bf80749c026862427782cf7ecc0b7dc094e6698ab311c9a42c7",
+            "src/tree_sitter/alloc.h": "b29c1c9fb7cc82f58c84b376df1297d6e2737a1d655fd356db0859e3c29c2fea",
+            "src/tree_sitter/array.h": "5bdf6ed1a78e3409fd443e085ca967a64c188a5d082aaf7f819bccd53a471c94",
+            "src/tree_sitter/parser.h": "180b893c8734778fd32f372dfbc27bd6ad1cd2221f26150b31256ff6716320d2"
+          },
+          "legal_notices": [
+            {
+              "path": "licenses/parsing/tree-sitter-javascript-0.25.0-LICENSE",
+              "source_path": "LICENSE",
+              "scope": "native package or incorporated component",
+              "sha256": "2e0110e07abef7c2548b26ec9d6969775617ca539a0dc8dbeeb14d6452c711d1",
+              "text": "The MIT License (MIT)\n\nCopyright (c) 2014 Max Brunsfeld\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+            }
+          ]
+        },
+        {
+          "crate": "tree-sitter-typescript",
+          "version": "0.23.2",
+          "license": "MIT",
+          "license_scope": "registry package declaration; nested component notices also apply",
+          "repository": "https://github.com/tree-sitter/tree-sitter-typescript",
+          "registry_archive_sha256": "6c5f76ed8d947a75cc446d5fccd8b602ebf0cde64ccf2ffa434d873d7a575eff",
+          "native_source_sha256": {
+            "common/scanner.h": "da66ef2bd14a3f7ea743e25ba068c6c9aae2c3509db200ff80c4a0e6116e564c",
+            "tsx/src/node-types.json": "78b5789145286799a27a0a7ecc36cc1bcb151f94ec7fa631b248459867010c8c",
+            "tsx/src/parser.c": "1902cb53fa7ff5179df89b2eea863165e84c8cc866226419dc26921d8c055885",
+            "tsx/src/scanner.c": "d563cd30b2f39718c9ae4292795c5ce03a2ad01954ba3a86ef84c2781a736673",
+            "tsx/src/tree_sitter/alloc.h": "b29c1c9fb7cc82f58c84b376df1297d6e2737a1d655fd356db0859e3c29c2fea",
+            "tsx/src/tree_sitter/array.h": "4ff743903dc46f5db6aa54f31c6b4d160a8a9779e5b2ab1ee59ae7ebcd850ea1",
+            "tsx/src/tree_sitter/parser.h": "a1f6ef161fbaf48a0e10fca90ef5290a062462b307b3898aa562993853b9f80a",
+            "typescript/src/node-types.json": "c790a733fc756b54d4e54dceeb7d2d51e40d8b57136e70277753a75804cce3e3",
+            "typescript/src/parser.c": "74fe453edd70f4eae9af0a1050cbd7943d8971d59165b6aaebbaa0a0b716d1aa",
+            "typescript/src/scanner.c": "9125013b42cb888379d9be909f1d73dfb75a37626c2cdbf4122718a2b431a6d3",
+            "typescript/src/tree_sitter/alloc.h": "b29c1c9fb7cc82f58c84b376df1297d6e2737a1d655fd356db0859e3c29c2fea",
+            "typescript/src/tree_sitter/array.h": "4ff743903dc46f5db6aa54f31c6b4d160a8a9779e5b2ab1ee59ae7ebcd850ea1",
+            "typescript/src/tree_sitter/parser.h": "a1f6ef161fbaf48a0e10fca90ef5290a062462b307b3898aa562993853b9f80a"
+          },
+          "legal_notices": [
+            {
+              "path": "licenses/parsing/tree-sitter-typescript-0.23.2-LICENSE",
+              "sha256": "49bf33cf78ef5897e4e161ce1517df7de1ae5042a65b6bcfd44401e0fc606559",
+              "upstream_url": "https://raw.githubusercontent.com/tree-sitter/tree-sitter-typescript/v0.23.2/LICENSE",
+              "source_path": "LICENSE",
+              "scope": "native grammar package",
+              "text": "The MIT License (MIT)\n\nCopyright (c) 2017 Max Brunsfeld\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+            }
+          ]
+        },
+        {
+          "crate": "tree-sitter-python",
+          "version": "0.25.0",
+          "license": "MIT",
+          "license_scope": "registry package declaration; nested component notices also apply",
+          "repository": "https://github.com/tree-sitter/tree-sitter-python",
+          "registry_archive_sha256": "6bf85fd39652e740bf60f46f4cda9492c3a9ad75880575bf14960f775cb74a1c",
+          "native_source_sha256": {
+            "src/node-types.json": "a2456847bea3adff5b2222b2f7b03a870159470d8908622204e6eb29ee2fe45e",
+            "src/parser.c": "a895f10b3cf7b2608f3283b43cd5cfed70971c7ee4a0136abbaaccbc4a7a25e0",
+            "src/scanner.c": "6db82134ac2d4c90a1a1475487a625cface02662ebda9b7478cad9c7147e9afe",
+            "src/tree_sitter/alloc.h": "b29c1c9fb7cc82f58c84b376df1297d6e2737a1d655fd356db0859e3c29c2fea",
+            "src/tree_sitter/array.h": "5bdf6ed1a78e3409fd443e085ca967a64c188a5d082aaf7f819bccd53a471c94",
+            "src/tree_sitter/parser.h": "180b893c8734778fd32f372dfbc27bd6ad1cd2221f26150b31256ff6716320d2"
+          },
+          "legal_notices": [
+            {
+              "path": "licenses/parsing/tree-sitter-python-0.25.0-LICENSE",
+              "source_path": "LICENSE",
+              "scope": "native package or incorporated component",
+              "sha256": "d724405ce238a22c0d35769c5a36b386ad5958192efe8bbb304fb2896254575f",
+              "text": "The MIT License (MIT)\n\nCopyright (c) 2016 Max Brunsfeld\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+            }
+          ]
+        },
+        {
+          "crate": "tree-sitter-go",
+          "version": "0.25.0",
+          "license": "MIT",
+          "license_scope": "registry package declaration; nested component notices also apply",
+          "repository": "https://github.com/tree-sitter/tree-sitter-go",
+          "registry_archive_sha256": "c8560a4d2f835cc0d4d2c2e03cbd0dde2f6114b43bc491164238d333e28b16ea",
+          "native_source_sha256": {
+            "src/node-types.json": "8d77e723df0f0dfccb66d4571a5c3c17ecfb6c90959044c0992146b21f383bff",
+            "src/parser.c": "3dbf6ed1238b5dfcf2be4d2f2d4cb27a14d34f34d7784eccccbfd532fd4a6d85",
+            "src/tree_sitter/alloc.h": "b29c1c9fb7cc82f58c84b376df1297d6e2737a1d655fd356db0859e3c29c2fea",
+            "src/tree_sitter/array.h": "5bdf6ed1a78e3409fd443e085ca967a64c188a5d082aaf7f819bccd53a471c94",
+            "src/tree_sitter/parser.h": "180b893c8734778fd32f372dfbc27bd6ad1cd2221f26150b31256ff6716320d2"
+          },
+          "legal_notices": [
+            {
+              "path": "licenses/parsing/tree-sitter-go-0.25.0-LICENSE",
+              "source_path": "LICENSE",
+              "scope": "native package or incorporated component",
+              "sha256": "2e0110e07abef7c2548b26ec9d6969775617ca539a0dc8dbeeb14d6452c711d1",
+              "text": "The MIT License (MIT)\n\nCopyright (c) 2014 Max Brunsfeld\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "isolation_negative_probes": {
+    "network_blocked": true,
+    "other_executable_blocked": true,
+    "evaluator_file_blocked": true
+  },
+  "startup_ms_including_sandbox": 14.620934,
+  "children_max_rss_bytes_including_sandbox_and_abi_inspection": 19075072,
+  "fixtures": [
+    {
+      "dialect": "rust",
+      "state": "valid",
+      "source_sha256": "1f25cc68700b7dc8615e0bee9fa3d348477b0ba5e54b6f4057a812c09dc0e185",
+      "elapsed_ms_including_sandbox": 6.252245,
+      "exit_code": 0,
+      "parsed": {
+        "dialect": "rust",
+        "complete": true,
+        "source_bytes": 30,
+        "node_count": 15,
+        "query_matches": 1,
+        "tree": "(source_file (function_item (visibility_modifier) name: (identifier) parameters: (parameters) return_type: (primitive_type) body: (block (integer_literal))))",
+        "diagnostics": []
+      }
+    },
+    {
+      "dialect": "rust",
+      "state": "incomplete",
+      "source_sha256": "82e06253ad3baafda03f0e2c8e642c62eef6d7b597275146c15820b713272add",
+      "elapsed_ms_including_sandbox": 6.468798,
+      "exit_code": 2,
+      "parsed": {
+        "dialect": "rust",
+        "complete": false,
+        "source_bytes": 15,
+        "node_count": 7,
+        "query_matches": 0,
+        "tree": "(source_file (ERROR (visibility_modifier) (identifier)))",
+        "diagnostics": [
+          {
+            "kind": "error",
+            "start_byte": 0,
+            "end_byte": 14,
+            "start_line": 1,
+            "start_column_byte": 0,
+            "end_line": 1,
+            "end_column_byte": 14
+          }
+        ]
+      }
+    },
+    {
+      "dialect": "javascript",
+      "state": "valid",
+      "source_sha256": "ff2824c870369186b78fab3d574a6a0e04432ed19641134aa05f431d2e46ebf7",
+      "elapsed_ms_including_sandbox": 8.278262,
+      "exit_code": 0,
+      "parsed": {
+        "dialect": "javascript",
+        "complete": true,
+        "source_bytes": 42,
+        "node_count": 17,
+        "query_matches": 1,
+        "tree": "(program (function_declaration name: (identifier) parameters: (formal_parameters) body: (statement_block (return_statement (string (string_fragment))))))",
+        "diagnostics": []
+      }
+    },
+    {
+      "dialect": "javascript",
+      "state": "incomplete",
+      "source_sha256": "d87a2168fa77a8bd52f2e52cbeaab946d45bf6f0c6eaf1833be4474de554009c",
+      "elapsed_ms_including_sandbox": 8.379854,
+      "exit_code": 2,
+      "parsed": {
+        "dialect": "javascript",
+        "complete": false,
+        "source_bytes": 17,
+        "node_count": 5,
+        "query_matches": 0,
+        "tree": "(program (ERROR (identifier)))",
+        "diagnostics": [
+          {
+            "kind": "error",
+            "start_byte": 0,
+            "end_byte": 16,
+            "start_line": 1,
+            "start_column_byte": 0,
+            "end_line": 1,
+            "end_column_byte": 16
+          }
+        ]
+      }
+    },
+    {
+      "dialect": "jsx",
+      "state": "valid",
+      "source_sha256": "d7803699ed2742dfe28aa8c420b3cd3a8fe0361d779ea19fe92f8667b4453bb0",
+      "elapsed_ms_including_sandbox": 9.936197,
+      "exit_code": 0,
+      "parsed": {
+        "dialect": "jsx",
+        "complete": true,
+        "source_bytes": 60,
+        "node_count": 25,
+        "query_matches": 1,
+        "tree": "(program (export_statement declaration: (function_declaration name: (identifier) parameters: (formal_parameters) body: (statement_block (return_statement (jsx_element open_tag: (jsx_opening_element name: (identifier)) (jsx_text) close_tag: (jsx_closing_element name: (identifier))))))))",
+        "diagnostics": []
+      }
+    },
+    {
+      "dialect": "jsx",
+      "state": "incomplete",
+      "source_sha256": "ea5a8e60dff677c8b424b115ed9dfcb9022ae39156b41dded06da53f0b3dd32d",
+      "elapsed_ms_including_sandbox": 5.06254,
+      "exit_code": 2,
+      "parsed": {
+        "dialect": "jsx",
+        "complete": false,
+        "source_bytes": 44,
+        "node_count": 14,
+        "query_matches": 0,
+        "tree": "(program (ERROR (identifier) (formal_parameters) (jsx_opening_element name: (identifier))))",
+        "diagnostics": [
+          {
+            "kind": "error",
+            "start_byte": 0,
+            "end_byte": 43,
+            "start_line": 1,
+            "start_column_byte": 0,
+            "end_line": 1,
+            "end_column_byte": 43
+          }
+        ]
+      }
+    },
+    {
+      "dialect": "typescript",
+      "state": "valid",
+      "source_sha256": "d2f4b668e58dc3974de820b16c389ab7e9464ddafded519aba18ee50d2195ffc",
+      "elapsed_ms_including_sandbox": 6.442023,
+      "exit_code": 0,
+      "parsed": {
+        "dialect": "typescript",
+        "complete": true,
+        "source_bytes": 90,
+        "node_count": 39,
+        "query_matches": 2,
+        "tree": "(program (interface_declaration name: (type_identifier) body: (interface_body (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (member_expression object: (identifier) property: (property_identifier))))))",
+        "diagnostics": []
+      }
+    },
+    {
+      "dialect": "typescript",
+      "state": "incomplete",
+      "source_sha256": "6b986a4637c4ad56dde1f0445e364d5ccb7359066cc0825eb45adc5de343a561",
+      "elapsed_ms_including_sandbox": 6.286366,
+      "exit_code": 2,
+      "parsed": {
+        "dialect": "typescript",
+        "complete": false,
+        "source_bytes": 26,
+        "node_count": 7,
+        "query_matches": 0,
+        "tree": "(program (ERROR (identifier) (property_identifier)))",
+        "diagnostics": [
+          {
+            "kind": "error",
+            "start_byte": 0,
+            "end_byte": 24,
+            "start_line": 1,
+            "start_column_byte": 0,
+            "end_line": 1,
+            "end_column_byte": 24
+          }
+        ]
+      }
+    },
+    {
+      "dialect": "tsx",
+      "state": "valid",
+      "source_sha256": "5d95a9ecf2eb7351a79bd4566087704b1a03f28cd55e9588c5ca36ecfbb4d061",
+      "elapsed_ms_including_sandbox": 6.167899,
+      "exit_code": 0,
+      "parsed": {
+        "dialect": "tsx",
+        "complete": true,
+        "source_bytes": 73,
+        "node_count": 31,
+        "query_matches": 1,
+        "tree": "(program (export_statement declaration: (function_declaration name: (identifier) parameters: (formal_parameters) return_type: (type_annotation (nested_type_identifier module: (identifier) name: (type_identifier))) body: (statement_block (return_statement (jsx_element open_tag: (jsx_opening_element name: (identifier)) (jsx_text) close_tag: (jsx_closing_element name: (identifier))))))))",
+        "diagnostics": []
+      }
+    },
+    {
+      "dialect": "tsx",
+      "state": "incomplete",
+      "source_sha256": "6d778e67158a45af8cb85de338e7199b80cd1b7a2186b55e5e7cf3cfd7dbfd2a",
+      "elapsed_ms_including_sandbox": 6.465874,
+      "exit_code": 2,
+      "parsed": {
+        "dialect": "tsx",
+        "complete": false,
+        "source_bytes": 57,
+        "node_count": 20,
+        "query_matches": 0,
+        "tree": "(program (ERROR (identifier) parameters: (formal_parameters) return_type: (type_annotation (nested_type_identifier module: (identifier) name: (type_identifier))) (jsx_opening_element name: (identifier))))",
+        "diagnostics": [
+          {
+            "kind": "error",
+            "start_byte": 0,
+            "end_byte": 56,
+            "start_line": 1,
+            "start_column_byte": 0,
+            "end_line": 1,
+            "end_column_byte": 56
+          }
+        ]
+      }
+    },
+    {
+      "dialect": "python",
+      "state": "valid",
+      "source_sha256": "9338fd2744b62904ccf38377b5fead56b0c15f218a16941df604f62fc467288a",
+      "elapsed_ms_including_sandbox": 5.42834,
+      "exit_code": 0,
+      "parsed": {
+        "dialect": "python",
+        "complete": true,
+        "source_bytes": 37,
+        "node_count": 15,
+        "query_matches": 1,
+        "tree": "(module (function_definition name: (identifier) parameters: (parameters) body: (block (return_statement (string (string_start) (string_content) (string_end))))))",
+        "diagnostics": []
+      }
+    },
+    {
+      "dialect": "python",
+      "state": "incomplete",
+      "source_sha256": "553eda8c53fc903895e005a1bc644c6058ffd91ce4df67c9fbdbe8763f6d8862",
+      "elapsed_ms_including_sandbox": 5.501545,
+      "exit_code": 2,
+      "parsed": {
+        "dialect": "python",
+        "complete": false,
+        "source_bytes": 12,
+        "node_count": 5,
+        "query_matches": 0,
+        "tree": "(module (ERROR (identifier)))",
+        "diagnostics": [
+          {
+            "kind": "error",
+            "start_byte": 0,
+            "end_byte": 11,
+            "start_line": 1,
+            "start_column_byte": 0,
+            "end_line": 1,
+            "end_column_byte": 11
+          }
+        ]
+      }
+    },
+    {
+      "dialect": "go",
+      "state": "valid",
+      "source_sha256": "5b20beb5f68376f8c873eceba28b7d960b444b27d0ada264c50ba181943922bf",
+      "elapsed_ms_including_sandbox": 4.603965,
+      "exit_code": 0,
+      "parsed": {
+        "dialect": "go",
+        "complete": true,
+        "source_bytes": 57,
+        "node_count": 22,
+        "query_matches": 1,
+        "tree": "(source_file (package_clause (package_identifier)) (function_declaration name: (identifier) parameters: (parameter_list) result: (type_identifier) body: (block (statement_list (return_statement (expression_list (interpreted_string_literal (interpreted_string_literal_content))))))))",
+        "diagnostics": []
+      }
+    },
+    {
+      "dialect": "go",
+      "state": "incomplete",
+      "source_sha256": "f54c7eccb032b630568cb3cb2781608d4a7e199b355e95d81c7af12ddb172231",
+      "elapsed_ms_including_sandbox": 4.520711,
+      "exit_code": 2,
+      "parsed": {
+        "dialect": "go",
+        "complete": false,
+        "source_bytes": 26,
+        "node_count": 10,
+        "query_matches": 1,
+        "tree": "(source_file (package_clause (package_identifier)) (function_declaration name: (identifier) parameters: (parameter_list (MISSING \")\"))))",
+        "diagnostics": [
+          {
+            "kind": "missing",
+            "start_byte": 25,
+            "end_byte": 25,
+            "start_line": 2,
+            "start_column_byte": 12,
+            "end_line": 2,
+            "end_column_byte": 12
+          }
+        ]
+      }
+    }
+  ],
+  "paid_campaign_executed": false
+}

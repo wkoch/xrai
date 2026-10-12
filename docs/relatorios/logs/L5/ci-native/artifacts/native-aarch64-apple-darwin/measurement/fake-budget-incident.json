@@ -1,0 +1,229 @@
+{
+  "schema_version": "xrai.eval.agent.v1",
+  "metadata": {
+    "task_id": "D0-RS-01",
+    "dataset_sha256": "e0996fc73cf94857dbf51fb1d842b4ca46566316d822c83b76a341ca0c093fa7",
+    "arm": "fake-ledger-demonstration",
+    "model": {
+      "provider": "fake",
+      "name": "fake-stream-v1",
+      "version": "1",
+      "effort": "fixed"
+    },
+    "policy": {
+      "id": "offline-no-provider-v1",
+      "config_sha256": "7d7e0fac1d3a36298994fd2f1b3cb006b6e3f815ee31e81b26fdf1fa31a807aa"
+    },
+    "run_id": "fake-L4-01",
+    "price": {
+      "version": "fake-usd-v1",
+      "source": "synthetic-test-fixture",
+      "date": "2026-10-12",
+      "currency": "USD",
+      "unit": "micro_usd_per_token",
+      "input": 2,
+      "output": 3
+    },
+    "setup_amortization": {
+      "regime": "none",
+      "uses": 1,
+      "gross_micro_usd": 0
+    },
+    "credentials": "never-recorded"
+  },
+  "budget_micro_usd": 1000,
+  "events": [
+    {
+      "sequence": 0,
+      "kind": "reserve",
+      "attempt_id": "a1",
+      "monotonic_seconds": 0,
+      "details": {
+        "call_id": "c1",
+        "request": {
+          "orientation": "Offline fake session; no source oracle.",
+          "tool_definitions": [
+            {
+              "name": "read",
+              "input": "path"
+            }
+          ],
+          "messages": [
+            {
+              "role": "user",
+              "content": "localize função"
+            }
+          ],
+          "tool_calls": [],
+          "expansions": [],
+          "edits": [],
+          "tests": [],
+          "limits": {
+            "input_tokens": 100,
+            "output_tokens": 100
+          },
+          "maximum_charge_policy": "fake-enforced"
+        },
+        "max_charge_micro_usd": 500,
+        "retry_of": null
+      },
+      "previous_event_sha256": null
+    },
+    {
+      "sequence": 1,
+      "kind": "send",
+      "attempt_id": "a1",
+      "monotonic_seconds": 1,
+      "details": {},
+      "previous_event_sha256": "1054b8146d6335b6fdda09da8fa2dc317d646bccbb986e7f13bf0ce409f677aa"
+    },
+    {
+      "sequence": 2,
+      "kind": "finish",
+      "attempt_id": "a1",
+      "monotonic_seconds": 2,
+      "details": {
+        "state": "completed"
+      },
+      "previous_event_sha256": "bcca41fd3445bdc95bbec56a22f1b9dcfdb0f7c0748afc2a3bc975d85f35db35"
+    },
+    {
+      "sequence": 3,
+      "kind": "receipt",
+      "attempt_id": "a1",
+      "monotonic_seconds": 3,
+      "details": {
+        "provider": "fake",
+        "provider_receipt_id": "fake-budget-incident",
+        "usage": {
+          "input_tokens": 10,
+          "output_tokens": 5,
+          "cached_input_tokens": 4,
+          "reasoning_output_tokens": 2
+        },
+        "category_semantics": {
+          "cached_input_tokens": "subset_of_input_tokens",
+          "reasoning_output_tokens": "subset_of_output_tokens"
+        },
+        "price_version": "fake-usd-v1",
+        "estimated_charge_micro_usd": 35,
+        "observed_charge_micro_usd": 600,
+        "observed_charge_source": "synthetic-receipt"
+      },
+      "previous_event_sha256": "72ff75bf11c1e5e6c1ab44d0aad8ae80e671eeb7b03e2304f3a79721974214a1"
+    },
+    {
+      "sequence": 4,
+      "kind": "reject",
+      "attempt_id": "a2",
+      "monotonic_seconds": 4,
+      "details": {
+        "call_id": "c2",
+        "request": {
+          "orientation": "Offline fake session; no source oracle.",
+          "tool_definitions": [
+            {
+              "name": "read",
+              "input": "path"
+            }
+          ],
+          "messages": [
+            {
+              "role": "user",
+              "content": "localize função"
+            }
+          ],
+          "tool_calls": [],
+          "expansions": [],
+          "edits": [],
+          "tests": [],
+          "limits": {
+            "input_tokens": 100,
+            "output_tokens": 100
+          },
+          "maximum_charge_policy": "fake-enforced"
+        },
+        "max_charge_micro_usd": 500,
+        "retry_of": null
+      },
+      "previous_event_sha256": "07603473ea5d6527235f5002826056ad9c68355ea525df540663fa8a2dc14bb9"
+    }
+  ],
+  "attempts": {
+    "a1": {
+      "call_id": "c1",
+      "retry_of": null,
+      "request": {
+        "base64": "eyJlZGl0cyI6W10sImV4cGFuc2lvbnMiOltdLCJsaW1pdHMiOnsiaW5wdXRfdG9rZW5zIjoxMDAsIm91dHB1dF90b2tlbnMiOjEwMH0sIm1heGltdW1fY2hhcmdlX3BvbGljeSI6ImZha2UtZW5mb3JjZWQiLCJtZXNzYWdlcyI6W3siY29udGVudCI6ImxvY2FsaXplIGZ1bsOnw6NvIiwicm9sZSI6InVzZXIifV0sIm9yaWVudGF0aW9uIjoiT2ZmbGluZSBmYWtlIHNlc3Npb247IG5vIHNvdXJjZSBvcmFjbGUuIiwidGVzdHMiOltdLCJ0b29sX2NhbGxzIjpbXSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV19",
+        "sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+        "captured_bytes": 312,
+        "observed_bytes": 312,
+        "truncated": false
+      },
+      "state": "completed",
+      "sent": true,
+      "response_chunks": [],
+      "receipt": {
+        "provider": "fake",
+        "provider_receipt_id": "fake-budget-incident",
+        "usage": {
+          "input_tokens": 10,
+          "output_tokens": 5,
+          "cached_input_tokens": 4,
+          "reasoning_output_tokens": 2
+        },
+        "category_semantics": {
+          "cached_input_tokens": "subset_of_input_tokens",
+          "reasoning_output_tokens": "subset_of_output_tokens"
+        },
+        "price_version": "fake-usd-v1",
+        "estimated_charge_micro_usd": 35,
+        "observed_charge_micro_usd": 600,
+        "observed_charge_source": "synthetic-receipt"
+      },
+      "reservation_micro_usd": 500
+    },
+    "a2": {
+      "call_id": "c2",
+      "retry_of": null,
+      "request": {
+        "base64": "eyJlZGl0cyI6W10sImV4cGFuc2lvbnMiOltdLCJsaW1pdHMiOnsiaW5wdXRfdG9rZW5zIjoxMDAsIm91dHB1dF90b2tlbnMiOjEwMH0sIm1heGltdW1fY2hhcmdlX3BvbGljeSI6ImZha2UtZW5mb3JjZWQiLCJtZXNzYWdlcyI6W3siY29udGVudCI6ImxvY2FsaXplIGZ1bsOnw6NvIiwicm9sZSI6InVzZXIifV0sIm9yaWVudGF0aW9uIjoiT2ZmbGluZSBmYWtlIHNlc3Npb247IG5vIHNvdXJjZSBvcmFjbGUuIiwidGVzdHMiOltdLCJ0b29sX2NhbGxzIjpbXSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV19",
+        "sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+        "captured_bytes": 312,
+        "observed_bytes": 312,
+        "truncated": false
+      },
+      "state": "rejected_before_send",
+      "sent": false,
+      "response_chunks": [],
+      "receipt": null,
+      "reservation_micro_usd": 0
+    }
+  },
+  "accounting": {
+    "known_observed_charge_micro_usd": 600,
+    "retained_reservation_micro_usd": 0,
+    "budget_micro_usd": 1000,
+    "unknown_charge_attempts": [],
+    "observed_cost_complete": true,
+    "observed_cost_micro_usd": 600,
+    "supported_cost_interval_micro_usd": [
+      600,
+      600
+    ],
+    "reservation_is_provider_charge_guarantee": false,
+    "budget_limit_respected": false
+  },
+  "events_sha256": "1dc4e51ea47d58e187a742ce0776672b0608c289556b71a0282f139f4a32fb5f",
+  "budget_incidents": [
+    {
+      "attempt_id": "a1",
+      "reserved_maximum_micro_usd": 500,
+      "observed_charge_micro_usd": 600,
+      "reason": "observed usage/charge exceeded enforced maximum; admissions closed"
+    }
+  ],
+  "outcome": "not_judged",
+  "adapter": "fake-offline-v1",
+  "paid_provider_called": false
+}

@@ -1,0 +1,146 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-TJ-04",
+  "family": "TSJS",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.0031136779999911823,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "python": "3.13.13",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "e229b748fab18b98b507f2c99118a56819141c66a631c4cadde1cf5bcbac5d33",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "dd0f6baf-d41b-4a25-ba90-eaedb5e58cbe",
+      "termination_evidence": {
+        "init_pid": 7258,
+        "pid_namespace": "pid:[4026532323]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.004229183999996167,
+      "stdout": {
+        "base64": "Li9wYWNrYWdlLWxvY2suanNvbgouL3Rlc3RzLmpzCi4vcHJvYmUuanMKLi8uZ2l0aHViL3dvcmtmbG93cy9jaS55bWwKLi8uZ2l0aWdub3JlCi4vLm5wbXJjCi4vaW5kZXguanMKLi9wYWNrYWdlLmpzb24KLi9saWNlbnNlLm1kCg==",
+        "sha256": "9cd256c2f63b811aeba898b4edff624aaab7b1f3387fc8bca548ac8697a669ac",
+        "captured_bytes": 130,
+        "observed_bytes": 130,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "Após|criar|probe|remover|readme|probe|revisão|atual|reporte|readme|não|existe",
+        "."
+      ],
+      "status": "error",
+      "execution_status": "error",
+      "exit_code": 1,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "334d0263-01a4-4b22-b3bc-ac5f2aec4f00",
+      "termination_evidence": {
+        "init_pid": 7261,
+        "pid_namespace": "pid:[4026532327]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.0045096120000067685,
+      "stdout": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 130,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "dc19b3965c25112dce9f15bb55985f777a04a30feeaf87370d7de476c45c5efb",
+  "workspace_sha256": "34eff78e1ac9eeddbd53474ef48460612abfaee1e34737acb01a7977a57d2b30"
+}

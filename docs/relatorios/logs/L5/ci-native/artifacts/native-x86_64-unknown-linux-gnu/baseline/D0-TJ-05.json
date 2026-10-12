@@ -1,0 +1,146 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-TJ-05",
+  "family": "TSJS",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.0028738800000098763,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "python": "3.13.13",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "e2da73fb2f1f8ac9efd275562434220f6ba8d345642d5a70667c4ed63541c5cf",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "4b795be1-d557-49b7-ab48-cfd667011066",
+      "termination_evidence": {
+        "init_pid": 7264,
+        "pid_namespace": "pid:[4026532324]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.004250424999995062,
+      "stdout": {
+        "base64": "Li9wYWNrYWdlLWxvY2suanNvbgouL3Rlc3RzLmpzCi4vLmdpdGh1Yi93b3JrZmxvd3MvY2kueW1sCi4vLmdpdGlnbm9yZQouLy5ucG1yYwouL2luZGV4LmpzCi4vcmVhZG1lLm1kCi4vcGFja2FnZS5qc29uCi4vbGljZW5zZS5tZAo=",
+        "sha256": "c1b4f6f75daf0e4e1a494038a7c667d06deb2d881faaf1d6d96d3e2d93f41c12",
+        "captured_bytes": 131,
+        "observed_bytes": 131,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "Identifique|limite|tamanho|input|parser|resultado|texto|maior|100|caracteres",
+        "."
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "58e57876-0560-44fa-be25-9c6abf8c8ed9",
+      "termination_evidence": {
+        "init_pid": 7267,
+        "pid_namespace": "pid:[4026532558]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.004731054000004065,
+      "stdout": {
+        "base64": "Li90ZXN0cy5qcy0xOC0gIH0pOwouL3Rlc3RzLmpzLTE5LQouL3Rlc3RzLmpzLTIwLSAgaXQoJ3Nob3VsZCBwcmVzZXJ2ZSBtcycsIGZ1bmN0aW9uKCkgewouL3Rlc3RzLmpzOjIxOiAgICBleHBlY3QobXMoJzEwMCcpKS50by5iZSgxMDApOwouL3Rlc3RzLmpzLTIyLSAgfSk7Ci4vdGVzdHMuanMtMjMtCi4vdGVzdHMuanMtMjQtICBpdCgnc2hvdWxkIGNvbnZlcnQgZnJvbSBtIHRvIG1zJywgZnVuY3Rpb24oKSB7Ci0tCi4vdGVzdHMuanMtMzgtICB9KTsKLi90ZXN0cy5qcy0zOS0KLi90ZXN0cy5qcy00MC0gIGl0KCdzaG91bGQgY29udmVydCBzIHRvIG1zJywgZnVuY3Rpb24oKSB7Ci4vdGVzdHMuanM6NDE6ICAgIGV4cGVjdChtcygnMXMnKSkudG8uYmUoMTAwMCk7Ci4vdGVzdHMuanMtNDItICB9KTsKLi90ZXN0cy5qcy00My0KLi90ZXN0cy5qcy00NC0gIGl0KCdzaG91bGQgY29udmVydCBtcyB0byBtcycsIGZ1bmN0aW9uKCkgewouL3Rlc3RzLmpzOjQ1OiAgICBleHBlY3QobXMoJzEwMG1zJykpLnRvLmJlKDEwMCk7Ci4vdGVzdHMuanMtNDYtICB9KTsKLi90ZXN0cy5qcy00Ny0KLi90ZXN0cy5qcy00OC0gIGl0KCdzaG91bGQgd29yayB3aXRoIGRlY2ltYWxzJywgZnVuY3Rpb24oKSB7Ci0tCi4vaW5kZXguanMtMi0gKiBIZWxwZXJzLgouL2luZGV4LmpzLTMtICovCi4vaW5kZXguanMtNC0KLi9pbmRleC5qczo1OnZhciBzID0gMTAwMDsKLi9pbmRleC5qcy02LXZhciBtID0gcyAqIDYwOwouL2luZGV4LmpzLTctdmFyIGggPSBtICogNjA7Ci4vaW5kZXguanMtOC12YXIgZCA9IGggKiAyNDsKLS0KLi9pbmRleC5qcy00Ny0KLi9pbmRleC5qcy00OC1mdW5jdGlvbiBwYXJzZShzdHIpIHsKLi9pbmRleC5qcy00OS0gIHN0ciA9IFN0cmluZyhzdHIpOwouL2luZGV4LmpzOjUwOiAgaWYgKHN0ci5sZW5ndGggPiAxMDApIHsKLi9pbmRleC5qcy01MS0gICAgcmV0dXJuOwouL2luZGV4LmpzLTUyLSAgfQouL2luZGV4LmpzLTUzLSAgdmFyIG1hdGNoID0gL14oLT8oPzpcZCspP1wuP1xkKykgKihtaWxsaXNlY29uZHM/fG1zZWNzP3xtc3xzZWNvbmRzP3xzZWNzP3xzfG1pbnV0ZXM/fG1pbnM/fG18aG91cnM/fGhycz98aHxkYXlzP3xkfHdlZWtzP3x3fHllYXJzP3x5cnM/fHkpPyQvaS5leGVjKAo=",
+        "sha256": "660463295555ab979d4adb9c9b7be185b94144b048e9302e6bf7694e6d5b3003",
+        "captured_bytes": 1130,
+        "observed_bytes": 1130,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 1261,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "cfd370e3a8f0765df516c6ec3998f051cd32fa579703a888dac8e71e20970498",
+  "workspace_sha256": "f240f53e2fce629b8e97fb21a38647f61c3861eb9c1cf602be23462c6613c07f"
+}

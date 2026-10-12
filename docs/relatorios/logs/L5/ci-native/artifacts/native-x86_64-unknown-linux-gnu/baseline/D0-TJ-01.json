@@ -1,0 +1,146 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-TJ-01",
+  "family": "TSJS",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.00320782899999017,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "python": "3.13.13",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "9d5af54881a8996484ecfab20494fa76187daac561871a9ce9d1ccb49ba64253",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "735a3a65-05f1-4c9e-ba34-6d255bb97834",
+      "termination_evidence": {
+        "init_pid": 7240,
+        "pid_namespace": "pid:[4026532324]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.004389352999993434,
+      "stdout": {
+        "base64": "Li8uZ2l0aHViL1BVTExfUkVRVUVTVF9URU1QTEFURS5tZAouLy5naXRodWIvd29ya2Zsb3dzL21haW4ueW1sCi4vLmdpdGh1Yi93b3JrZmxvd3MvY29tcHJlc3NlZC1zaXplLnltbAouL0xJQ0VOU0UKLi8uZ2l0aWdub3JlCi4vdGVzdC90ZXN0LXR5cGVzLWNvbXBpbGF0aW9uLnRzCi4vdGVzdC9pbmRleF90ZXN0LnRzCi4vLmVkaXRvcmNvbmZpZwouL3RzY29uZmlnLmpzb24KLi9zcmMvaW5kZXgudHMKLi8uZXNsaW50cmMKLi9SRUFETUUubWQKLi9wYWNrYWdlLmpzb24K",
+        "sha256": "b54ec8228f25524cb9a43549252b272ac4943ab51004c0d90fe1bc75bf808472",
+        "captured_bytes": 267,
+        "observed_bytes": 267,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "remoção|handlers|onde|API|off|está|tipada",
+        "."
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "Linux bubblewrap",
+      "containment": "linux_pid_namespace",
+      "cleanup_status": "confirmed",
+      "domain_id": "438c6056-af2b-419a-8b75-e2fb1c0a5b2e",
+      "termination_evidence": {
+        "init_pid": 7243,
+        "pid_namespace": "pid:[4026532328]",
+        "init_held_before_pin": true,
+        "pidfd_exit_observed": true,
+        "wrapper_reaped": true,
+        "user_namespace_mapping": {
+          "uid": 1001,
+          "gid": 1001,
+          "count": 1,
+          "setgroups": "deny"
+        }
+      },
+      "eligible_for_agent_run": true,
+      "diagnostic": null,
+      "elapsed_seconds": 0.004565135000007103,
+      "stdout": {
+        "base64": "Li90ZXN0L3Rlc3QtdHlwZXMtY29tcGlsYXRpb24udHMtMzktfQouL3Rlc3QvdGVzdC10eXBlcy1jb21waWxhdGlvbi50cy00MC0KLi90ZXN0L3Rlc3QtdHlwZXMtY29tcGlsYXRpb24udHMtNDEtLyoKLi90ZXN0L3Rlc3QtdHlwZXMtY29tcGlsYXRpb24udHM6NDI6ICogQ2hlY2sgdGhhdCAnb2ZmJyBhcmdzIGFyZSBpbmZlcnJlZCBjb3JyZWN0bHkKLi90ZXN0L3Rlc3QtdHlwZXMtY29tcGlsYXRpb24udHMtNDMtICovCi4vdGVzdC90ZXN0LXR5cGVzLWNvbXBpbGF0aW9uLnRzLTQ0LXsKLi90ZXN0L3Rlc3QtdHlwZXMtY29tcGlsYXRpb24udHMtNDUtCS8vIEB0cy1leHBlY3QtZXJyb3IKLi90ZXN0L3Rlc3QtdHlwZXMtY29tcGlsYXRpb24udHM6NDY6CWVtaXR0ZXIub2ZmKCdmb28nLCBiYXJIYW5kbGVyKTsKLi90ZXN0L3Rlc3QtdHlwZXMtY29tcGlsYXRpb24udHM6NDc6CWVtaXR0ZXIub2ZmKCdmb28nLCBmb29IYW5kbGVyKTsKLi90ZXN0L3Rlc3QtdHlwZXMtY29tcGlsYXRpb24udHMtNDgtCi4vdGVzdC90ZXN0LXR5cGVzLWNvbXBpbGF0aW9uLnRzLTQ5LQllbWl0dGVyLm9mZignYmFyJywgYmFySGFuZGxlcik7Ci4vdGVzdC90ZXN0LXR5cGVzLWNvbXBpbGF0aW9uLnRzLTUwLQkvLyBAdHMtZXhwZWN0LWVycm9yCi0tCi4vdGVzdC9pbmRleF90ZXN0LnRzLTYwLQkJCWV4cGVjdChldmVudHMuZ2V0KCdmb28nKSkudG8uZGVlcC5lcXVhbChbZm9vXSk7Ci4vdGVzdC9pbmRleF90ZXN0LnRzLTYxLQkJfSk7Ci4vdGVzdC9pbmRleF90ZXN0LnRzLTYyLQouL3Rlc3QvaW5kZXhfdGVzdC50czo2MzoJCWl0KCdzaG91bGQgcmVnaXN0ZXIgaGFuZGxlcnMgZm9yIGFueSB0eXBlIHN0cmluZ3MnLCAoKSA9PiB7Ci4vdGVzdC9pbmRleF90ZXN0LnRzLTY0LQkJCWNvbnN0IGZvbyA9ICgpID0+IHt9OwouL3Rlc3QvaW5kZXhfdGVzdC50cy02NS0JCQlpbnN0Lm9uKCdjb25zdHJ1Y3RvcicsIGZvbyk7Ci4vdGVzdC9pbmRleF90ZXN0LnRzLTY2LQotLQouL3Rlc3QvaW5kZXhfdGVzdC50cy05Ni0JCX0pOwouL3Rlc3QvaW5kZXhfdGVzdC50cy05Ny0KLi90ZXN0L2luZGV4X3Rlc3QudHMtOTgtCQkvLyBBZGRpbmcgdGhlIHNhbWUgbGlzdGVuZXIgbXVsdGlwbGUgdGltZXMgc2hvdWxkIHJlZ2lzdGVyIGl0IG11bHRpcGxlIHRpbWVzLgouL3Rlc3QvaW5kZXhfdGVzdC50czo5OToJCS8vIFNlZSBodHRwczovL25vZGVqcy5vcmcvYXBpL2V2ZW50cy5odG1sI2V2ZW50c19lbWl0dGVyX29uX2V2ZW50bmFtZV9saXN0ZW5lcgouL3Rlc3QvaW5kZXhfdGVzdC50cy0xMDAtCQlpdCgnc2hvdWxkIGFkZCBkdXBsaWNhdGUgbGlzdGVuZXJzJywgKCkgPT4gewouL3Rlc3QvaW5kZXhfdGVzdC50cy0xMDEtCQkJY29uc3QgZm9vID0gKCkgPT4ge307Ci4vdGVzdC9pbmRleF90ZXN0LnRzLTEwMi0JCQlpbnN0Lm9uKCdmb28nLCBmb28pOwotLQouL3Rlc3QvaW5kZXhfdGVzdC50cy0xMDUtCQl9KTsKLi90ZXN0L2luZGV4X3Rlc3QudHMtMTA2LQl9KTsKLi90ZXN0L2luZGV4X3Rlc3QudHMtMTA3LQouL3Rlc3QvaW5kZXhfdGVzdC50czoxMDg6CWRlc2NyaWJlKCdvZmYoKScsICgpID0+IHsKLi90ZXN0L2luZGV4X3Rlc3QudHMtMTA5LQkJaXQoJ3Nob3VsZCBiZSBhIGZ1bmN0aW9uJywgKCkgPT4gewouL3Rlc3QvaW5kZXhfdGVzdC50cy0xMTAtCQkJZXhwZWN0KGluc3QpLnRvLmhhdmUucHJvcGVydHkoJ29mZicpLnRoYXQuaXMuYSgnZnVuY3Rpb24nKTsKLi90ZXN0L2luZGV4X3Rlc3QudHMtMTExLQkJfSk7Ci0tCi4vc3JjL2luZGV4LnRzLTgtCWV2ZW50OiBUW2tleW9mIFRdCi4vc3JjL2luZGV4LnRzLTktKSA9PiB2b2lkOwouL3NyYy9pbmRleC50cy0xMC0KLi9zcmMvaW5kZXgudHM6MTE6Ly8gQW4gYXJyYXkgb2YgYWxsIGN1cnJlbnRseSByZWdpc3RlcmVkIGV2ZW50IGhhbmRsZXJzIGZvciBhIHR5cGUKLi9zcmMvaW5kZXgudHMtMTItZXhwb3J0IHR5cGUgRXZlbnRIYW5kbGVyTGlzdDxUID0gdW5rbm93bj4gPSBBcnJheTxIYW5kbGVyPFQ+PjsKLi9zcmMvaW5kZXgudHMtMTMtZXhwb3J0IHR5cGUgV2lsZENhcmRFdmVudEhhbmRsZXJMaXN0PFQgPSBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPj4gPSBBcnJheTwKLi9zcmMvaW5kZXgudHMtMTQtCVdpbGRjYXJkSGFuZGxlcjxUPgouL3NyYy9pbmRleC50cy0xNS0+OwouL3NyYy9pbmRleC50cy0xNi0KLi9zcmMvaW5kZXgudHM6MTc6Ly8gQSBtYXAgb2YgZXZlbnQgdHlwZXMgYW5kIHRoZWlyIGNvcnJlc3BvbmRpbmcgZXZlbnQgaGFuZGxlcnMuCi4vc3JjL2luZGV4LnRzLTE4LWV4cG9ydCB0eXBlIEV2ZW50SGFuZGxlck1hcDxFdmVudHMgZXh0ZW5kcyBSZWNvcmQ8RXZlbnRUeXBlLCB1bmtub3duPj4gPSBNYXA8Ci4vc3JjL2luZGV4LnRzLTE5LQlrZXlvZiBFdmVudHMgfCAnKicsCi4vc3JjL2luZGV4LnRzLTIwLQlFdmVudEhhbmRsZXJMaXN0PEV2ZW50c1trZXlvZiBFdmVudHNdPiB8IFdpbGRDYXJkRXZlbnRIYW5kbGVyTGlzdDxFdmVudHM+Ci0tCi4vc3JjL2luZGV4LnRzLTI2LQlvbjxLZXkgZXh0ZW5kcyBrZXlvZiBFdmVudHM+KHR5cGU6IEtleSwgaGFuZGxlcjogSGFuZGxlcjxFdmVudHNbS2V5XT4pOiB2b2lkOwouL3NyYy9pbmRleC50cy0yNy0Jb24odHlwZTogJyonLCBoYW5kbGVyOiBXaWxkY2FyZEhhbmRsZXI8RXZlbnRzPik6IHZvaWQ7Ci4vc3JjL2luZGV4LnRzLTI4LQouL3NyYy9pbmRleC50czoyOToJb2ZmPEtleSBleHRlbmRzIGtleW9mIEV2ZW50cz4oCi4vc3JjL2luZGV4LnRzLTMwLQkJdHlwZTogS2V5LAouL3NyYy9pbmRleC50cy0zMS0JCWhhbmRsZXI/OiBIYW5kbGVyPEV2ZW50c1tLZXldPgouL3NyYy9pbmRleC50cy0zMi0JKTogdm9pZDsK",
+        "sha256": "41af5d2fdc7b011050ec5a986b239319ae1d6ca245d3a3039a2a11806e473c89",
+        "captured_bytes": 2829,
+        "observed_bytes": 2829,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 3096,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "6a2c9e948a14b70069a9d832d31fb61b45464643409ea4092b6415ee5ad0c724",
+  "workspace_sha256": "565e1cfeb9df9af21fe2e67282c45cb51610f364f724f851d88b346e7ae2e86e"
+}
