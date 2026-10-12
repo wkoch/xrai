@@ -2,7 +2,7 @@
 
 Atualizado em: 11/10/2026, pelo implementador, ao retomar L1 após a revisão arquitetural `257b91d`.
 
-**Situação:** L0 aceito no escopo de contrato/exemplos e scaffold, conforme [revisão arquitetural](relatorios/REVISAO-L0.md). Reexecução local passou e CI do scaffold foi confirmada em Linux x86_64, macOS arm64 e Windows x86_64. M0-01.R1 foi concretizada em contrato/schema v2 e passou em 56 exemplos e dez testes locais. M0-02.R1 acrescenta CI dos exemplos, aguardando run do commit. Parsing, consultas e MCP ainda indisponíveis. Nenhum gate competitivo foi avaliado.
+**Situação:** L0 aceito no escopo de contrato/exemplos e scaffold, conforme [revisão arquitetural](relatorios/REVISAO-L0.md). Reexecução local passou e CI do scaffold foi confirmada em Linux x86_64, macOS arm64 e Windows x86_64. M0-01.R1 foi concretizada em contrato/schema v2 e passou em 56 exemplos e dez testes locais. M0-02.R1 passou em CI no commit `0669f71`: job documental e os três jobs Rust aprovados. Parsing, consultas e MCP ainda indisponíveis. Nenhum gate competitivo foi avaliado.
 
 **Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Lote L1 em execução:** M0-01.R1 e M0-03, com M0-07 como frente independente; depois M0-02.R1. M0-04 aguarda corpus/retificação; M0-05/M0-08 aguardam corpus. L0-A01 depende do mantenedor; A02/A03 já têm direção arquitetural e trabalho concreto para o implementador.
 
@@ -25,7 +25,7 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | M0-01 | Contrato mínimo, escopo L0 | concluída | [Contrato](contracts/m1.md); [25 exemplos revalidados](relatorios/logs/revisao-L0/checks.json); [aceite e ressalva para promoção](relatorios/REVISAO-L0.md) |
 | M0-01.R1 | Retificação de seletor de revisão e admissão | concluída | [Aceite L1](relatorios/L1.md); [checks e preservação L0](relatorios/logs/L1/contract-r1-checks.json) |
 | M0-02 | Workspace Rust e CI | concluída | [Escolhas e verificações](relatorios/dependencias-L0.md); [CI do commit](relatorios/logs/revisao-L0/ci.json) |
-| M0-02.R1 | Validação documental em CI | em andamento | Job documental configurado; [suíte local](relatorios/logs/L1/contracts-tests.json); aguardando CI do commit |
+| M0-02.R1 | Validação documental em CI | concluída | [CI do commit `0669f71`](relatorios/logs/L1/contracts-ci.json); [saída e contagens](relatorios/logs/L1/contracts-ci-output.json) |
 | M0-03 | Corpus D0/D1 e oracles | em andamento | — |
 | M0-04 | Harness, baseline e agentes | não iniciada | — |
 | M0-05 | Gramáticas e autonomia | não iniciada | — |
@@ -76,7 +76,7 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | Repositórios e tarefas reais do corpus | M0-03, com versões e oracles |
 | Licença de distribuição do produto | L0-A01: decisão do mantenedor antes de M1-20; manter publish=false |
 | Contrato de revisão e admissão | M0-01.R1: direção A02/A03 concretizada em exemplos/schema/verificador v2; adapters/tokenizers reais nos cartões consumidores |
-| CI dos exemplos documentais | M0-02.R1: novo check implementado, aguardando run do commit; workflow Rust L0 já passou nos três hosts |
+| CI dos exemplos documentais | M0-02.R1: check aprovado no commit `0669f71`, 26 positivos/30 adversos e dez testes; Rust preservado e aprovado nos três hosts |
 | Hardware de referência e autonomia nativa | Hardware permanece não medido; M0-05 ainda precisa provar gramáticas/ambiente limpo. CI atual comprova somente scaffold |
 | Modelos, limites de runs, esforço e teto monetário de campanha | Antes do uso pago correspondente em M0-04/12; preparar replay/local enquanto isso |
 | Tamanho final de H1 e método estatístico | M0-10/M1-22, após dados D1 e antes de abrir H1 |
@@ -93,4 +93,4 @@ L0-A02 foi resolvida em arquitetura com alcance explícito do cap de diagnóstic
 
 Nenhuma decisão competitiva foi tomada com base nos smokes. A preferência do usuário por qualidade e os tetos propostos de custo permanecem inalterados.
 
-[Relatório L1](relatorios/L1.md): contrato retificado e CI em verificação; corpus e spike SQLite em execução.
+[Relatório L1](relatorios/L1.md): contrato retificado e CI aprovados; corpus e spike SQLite em execução.
