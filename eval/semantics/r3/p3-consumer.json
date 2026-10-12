@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "profile": "rust-r3-v1",
+  "cases": [
+    {
+      "id": "p3-local-shadow-changes-target",
+      "files": {
+        "src/lib.rs": "mod old { pub fn target() {} } mod new { pub fn target() {} } use old::target as entry; fn run() { let entry=crate::new::target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 129,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:new::target"
+    }
+  ],
+  "evaluator_only": {
+    "lexical_module_lookup_target": "src/lib.rs:old::target",
+    "occurrence_lookup_target": "src/lib.rs:new::target",
+    "role": "development proof of P3-consumable facts, no selector labels"
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "schema_version": 2,
+  "profile": "rust-r3-v1",
+  "cases": [
+    {
+      "id": "qualified-alias-ignores-unrelated-local-shadow",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let target=1; let entry=crate::target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 65,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target"
+    },
+    {
+      "id": "alias-retains-definition-before-later-shadow",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let entry=target; let target=1; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 58,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target"
+    },
+    {
+      "id": "alias-from-parameter-not-function-item",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run(target: fn()) { let entry=target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 56,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "nested-alias-chain-conservative",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let first=target; { let second=first; second(); } }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "second",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 64,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "local-use-not-global-fallback",
+      "files": {
+        "src/lib.rs": "fn target() {} mod other { pub fn target() {} } fn run() { use other::target; target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 78,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "local-ref-binding-not-global-fallback",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let ref target=1; target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 44,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "if-let-binding-not-global-fallback",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { if let Some(target) = None::<fn()> { target(); } }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 63,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "closure-scope-not-global-fallback",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let invoke = |target: fn()| target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 54,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "cfg-all-unknown-no-positive-assumption",
+      "files": {
+        "src/lib.rs": "#[cfg(all(unix, feature=\"x\"))] fn target() {} fn run(){ target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "unix": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 56,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "cfg-not-unknown-no-positive-assumption",
+      "files": {
+        "src/lib.rs": "#[cfg(not(feature=\"x\"))] fn target() {} fn run(){ target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 50,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "cfg-raw-string-unsupported",
+      "files": {
+        "src/lib.rs": "#[cfg(feature=r\"x\")] fn target() {} fn run(){ target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:x": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 46,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "cfg-inner-attribute-conservative",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run(){ #[cfg(unix)] let entry=target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "unix": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 56,
+      "expected_state": "unknown",
+      "expected_target": null
+    }
+  ]
+}

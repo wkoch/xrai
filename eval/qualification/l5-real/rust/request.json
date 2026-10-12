@@ -1,0 +1,7 @@
+{
+  "id": "L5-Rust-RA-23422",
+  "family": "Rust",
+  "language": "Rust",
+  "prompt": "O rust-analyzer encerra a análise com panic ao encontrar um let cujo padrão inclui alternativas de tupla com formatos incompatíveis. O problema público reproduz isto com: fn main() { let mut x: &((String, String),) = todo!(); let ((ref mut r, _) | ((ref mut r, _),),) = &*x; }. Corrija a análise desse código inválido para apresentar os erros de tipo e continuar funcionando. Preserve os diagnósticos de padrões let e match válidos e inválidos.",
+  "context_policy": {}
+}

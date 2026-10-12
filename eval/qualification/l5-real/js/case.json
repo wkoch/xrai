@@ -1,0 +1,156 @@
+{
+  "schema_version": "xrai.eval.l5.real-dossier.curated.v1",
+  "case_id": "L5-JS-REACT-22239",
+  "slot": "L5-SLOT-TSJS-contract_change-2",
+  "family": "TSJS",
+  "language": "JavaScript",
+  "repository": "facebook/react",
+  "type": "contract_change",
+  "origin": "public_historical_change",
+  "origin_urls": [
+    "https://github.com/facebook/react/pull/22239",
+    "https://github.com/facebook/react/pull/22237",
+    "https://github.com/facebook/react/pull/22211",
+    "https://github.com/reactwg/react-18/discussions/86"
+  ],
+  "base": "77912d9a05d7a90287fabdec76486f25869b2981",
+  "reference": "06f98c168060ef0213526a1aee696a568cec7f54",
+  "license_spdx": "MIT",
+  "capture": "capture.json",
+  "natural_input": "agent/input.md",
+  "evaluator_only": [
+    "oracles/reference.patch",
+    "oracles/XraiExternalStoreContract-test.js",
+    "oracles/source-relations.json",
+    "provenance",
+    "sources/head.tar.gz"
+  ],
+  "agent_materialization": "complete base source tree from sources/base.tar.gz plus natural input only; never give case folder/head archive/evaluator files to the agent",
+  "lineage": {
+    "derived_from": null,
+    "siblings": [],
+    "note": "new repository and independent public feature; no patch variants counted as independent tasks"
+  },
+  "production_floor": {
+    "eligible": true,
+    "method": "xrai.production.react.runtime-js.conservative.v1",
+    "base_files": 273,
+    "base_nonempty_lines": 56440,
+    "comments_included": true,
+    "comment_filtered_diagnostic_only": 46766,
+    "not_type_script_reclassification": true
+  },
+  "complexity": {
+    "required_production_modules": [
+      "packages/react/src/ReactHooks.js",
+      "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "packages/react-reconciler/src/ReactFiberWorkLoop.new.js"
+    ],
+    "subsystems": [
+      "packages/react",
+      "packages/react-reconciler"
+    ],
+    "evidence": "oracles/source-relations.json",
+    "review": "pending"
+  },
+  "probe_plan": {
+    "environment": "disposable Linux CI only; Node16.20.2/Yarn1.22.22; exact captured yarn.lock; no lifecycle scripts during install",
+    "requirements": 3,
+    "regressions": 2,
+    "commands": [
+      "python eval/scripts/run_l5_js.py materialize --workspace DIR --side base|reference",
+      "yarn install --frozen-lockfile --ignore-scripts --non-interactive --no-progress",
+      "python eval/scripts/run_l5_js.py probe --workspace DIR --side base|reference --node NODE_PATH --output OUT --timeout 300"
+    ],
+    "requirement_baseline_expected_exit": 1,
+    "requirement_reference_expected_exit": 0,
+    "regression_baseline_expected_exit": 0,
+    "regression_reference_expected_exit": 0,
+    "containment": "runner.execute arbitrary_agent=True; fresh Linux PID namespace per operation; verified teardown; no network during probes",
+    "minimum_free_disk_per_checkout": "2 GiB recommended; check actual CI headroom",
+    "setup_execution": "pending Linux CI",
+    "baseline_reference_regression": "pending Linux CI"
+  },
+  "incremental_event": {
+    "status": "not_started",
+    "note": "This historical contract dossier is not the required state/index A\u2192B event; no persistent index or rebuild proof claimed."
+  },
+  "independent_review": {
+    "status": "pending",
+    "author": "Implementador corpus_js",
+    "second_reader": null
+  },
+  "qualification": {
+    "admitted": false,
+    "status": "curated_candidate_probes_and_independent_review_pending",
+    "counts_as_one_of_four_completed_dossiers": false,
+    "competitive_runs_allowed": false,
+    "D1_admitted_delta": 0
+  },
+  "artifacts": {
+    "eval/qualification/l5-real/js/LICENSE.react": {
+      "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+      "bytes": 1086
+    },
+    "eval/qualification/l5-real/js/agent/input.md": {
+      "sha256": "f6822108434963667d2f220d60d60e134a48e93130bb25c74b4bcce5359862ef",
+      "bytes": 919
+    },
+    "eval/qualification/l5-real/js/capture.json": {
+      "sha256": "fbd63db92ed476024085c17fa12b74ebf884f9f2a92622b99b6495bd9753e559",
+      "bytes": 7424
+    },
+    "eval/qualification/l5-real/js/oracles/XraiExternalStoreContract-test.js": {
+      "sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+      "bytes": 4322
+    },
+    "eval/qualification/l5-real/js/oracles/reference.patch": {
+      "sha256": "3156ac7ac3e5a2df64db9cbff7e4939da5c3dac35aa4851a0008a98e6e546733",
+      "bytes": 11104
+    },
+    "eval/qualification/l5-real/js/oracles/source-relations.json": {
+      "sha256": "b2433c431e2d1c5ef963f6cf7796cc449c45fa63dffc91230a0e8d11325d3365",
+      "bytes": 26923
+    },
+    "eval/qualification/l5-real/js/provenance/commit.json": {
+      "sha256": "22738b8b563641cd82ef4192a0fb6d2ab5b3a294546ec9c1936846ad2244a0fe",
+      "bytes": 30344
+    },
+    "eval/qualification/l5-real/js/provenance/discussion-86.json": {
+      "sha256": "c4db970720dc47b2e8568ae3b114f870eead5c33d666057f135f5aa7e63e7aa9",
+      "bytes": 8295
+    },
+    "eval/qualification/l5-real/js/provenance/pull-22211.json": {
+      "sha256": "d2e1ff661ea87b5ea1d3f19d005b7cadf90ff2b6f76f7b2ba89ae6d49fe220a0",
+      "bytes": 18181
+    },
+    "eval/qualification/l5-real/js/provenance/pull-22237.json": {
+      "sha256": "c5bf3c3cac5b9bb107a0a2962dd5ee5d31094ef932604adb80c10124183c3524",
+      "bytes": 18233
+    },
+    "eval/qualification/l5-real/js/provenance/pull-22239-files.json": {
+      "sha256": "82a9aad263ff4a5375274600edc74b9d2c522a431365990fe72ec5c7a086af48",
+      "bytes": 25197
+    },
+    "eval/qualification/l5-real/js/provenance/pull-22239.json": {
+      "sha256": "01b36f857864b7445a7b0c802bcad50f2fa13e1593dfc5dd6894605293276387",
+      "bytes": 17737
+    },
+    "eval/qualification/l5-real/js/sources/base-inventory.json.gz": {
+      "sha256": "4013fd6b455f5ac891fac6492e91f5544fe8f40c633e0b97dbdb41e24356a209",
+      "bytes": 122817
+    },
+    "eval/qualification/l5-real/js/sources/base.tar.gz": {
+      "sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6",
+      "bytes": 5952369
+    },
+    "eval/qualification/l5-real/js/sources/head-inventory.json.gz": {
+      "sha256": "1130dddf3e9a68064bf16fee7f8589fe6b181e29b755046a08a55581e9a39bb8",
+      "bytes": 122816
+    },
+    "eval/qualification/l5-real/js/sources/head.tar.gz": {
+      "sha256": "1d7af4d0c750af4ce19c18473e876b4bc56390f3adca22dae9a4d85304a808c9",
+      "bytes": 5955008
+    }
+  }
+}

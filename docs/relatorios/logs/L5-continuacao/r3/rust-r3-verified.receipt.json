@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "eval/scripts/verify_semantics.py",
+    "eval/semantics/r3/rust-r3.json",
+    "docs/relatorios/logs/L5-continuacao/r3/rust-r3-completed.stdout"
+  ],
+  "started": "2026-10-12T16:26:20.232179+00:00",
+  "elapsed_seconds": 0.04622933300197474,
+  "exit": 0,
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "stdout": "rust-r3-verified.stdout",
+  "stdout_sha256": "b1bde3731b38d4991a11567067385d5ddbd584d24c67e8bf896a7705c20d0afe",
+  "stderr": "rust-r3-verified.stderr",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "sources": {
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "21d690b427a389eebd75752780b7ef80d4145f0fb015d87741dc1d26c2788ec0",
+    "crates/xrai-eval/src/bin/semantics-spike.rs": "4f801649cece5c15dc0f9807b64648dcf8c593497b3a8923b5d4690b74cdad23",
+    "crates/xrai-eval/tests/semantics_spike.rs": "8c9f72ef9da47bb673361c754be0e8fbb2f7415f0198cb57e4ed29209e7c462f",
+    "eval/scripts/verify_semantics.py": "3c5c4838208e24a902c3f3c8df7c8caca95675f803d141c2ebc0ab0ff5ae0135"
+  }
+}

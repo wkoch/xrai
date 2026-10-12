@@ -4,6 +4,9 @@ use std::collections::{BTreeMap, BTreeSet};
 use tree_sitter::{Node, Parser};
 
 pub const RULES: &str = "rust-r1-r2-v1";
+pub const RULES_R3: &str = "rust-r3-v1";
+mod r3;
+pub use r3::{Binding, Condition};
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Input {
     pub files: BTreeMap<String, String>,
@@ -60,6 +63,8 @@ pub struct Scope {
     pub local_id: usize,
     pub kind: String,
     pub module_owner: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub parent_scope_local_id: Option<usize>,
     pub evidence: Evidence,
 }
 #[derive(Clone, Debug, Serialize, PartialEq, Eq)]
@@ -96,6 +101,10 @@ pub struct Snapshot {
     pub references: Vec<Reference>,
     pub scopes: Vec<Scope>,
     pub coverage: BTreeMap<String, String>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub bindings: Vec<Binding>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub conditions: Vec<Condition>,
 }
 fn hash(bytes: &[u8]) -> String {
     blake3::hash(bytes).to_hex().to_string()
@@ -159,7 +168,9 @@ impl Snapshot {
         });
     }
     fn ancestors_gap(&self, module: &str) -> Option<&Gap> {
-        self.gaps.iter().find(|g| descendant(module, &g.module))
+        self.gaps
+            .iter()
+            .find(|g| g.reason != "r3_lexical_form_not_supported" && descendant(module, &g.module))
     }
     pub fn resolve(&self, module: &str, path: &str, namespace: &str) -> Resolution {
         let mut visiting = BTreeSet::new();
@@ -359,6 +370,7 @@ pub fn build(input: Input) -> Result<Snapshot, String> {
             RULES,
             &input.rules,
             include_str!("semantics_spike.rs"),
+            include_str!("semantics_spike/r3.rs"),
         ))
         .map_err(|e| e.to_string())?,
     );
@@ -379,6 +391,8 @@ pub fn build(input: Input) -> Result<Snapshot, String> {
         references: vec![],
         scopes: vec![],
         coverage: BTreeMap::new(),
+        bindings: vec![],
+        conditions: vec![],
     };
     let root = snapshot.input.root.clone();
     let directory = root.rsplit_once('/').map_or("", |(d, _)| d).to_string();
@@ -396,7 +410,7 @@ pub fn build(input: Input) -> Result<Snapshot, String> {
     if !["2021", "2024"].contains(&snapshot.input.edition.as_str()) {
         snapshot.gap("", "edition_not_supported", None);
     }
-    if snapshot.input.rules != RULES {
+    if ![RULES, RULES_R3].contains(&snapshot.input.rules.as_str()) {
         snapshot.gap("", "resolver_rules_not_supported", None);
     }
     let mut visited = BTreeSet::new();
@@ -411,8 +425,20 @@ pub fn build(input: Input) -> Result<Snapshot, String> {
     for i in 0..snapshot.references.len() {
         if snapshot.references[i].resolution.reason == "pending" {
             let r = &snapshot.references[i];
-            let mut result = snapshot.resolve(&r.module, &r.path, &r.namespace);
-            result.evidence.insert(0, r.evidence.clone());
+            let mut result = if snapshot.input.rules == RULES_R3 {
+                snapshot.resolve_at(
+                    &r.module,
+                    &r.path,
+                    &r.namespace,
+                    &r.evidence.path,
+                    r.evidence.start,
+                )
+            } else {
+                snapshot.resolve(&r.module, &r.path, &r.namespace)
+            };
+            if !result.evidence.contains(&r.evidence) {
+                result.evidence.insert(0, r.evidence.clone());
+            }
             snapshot.references[i].resolution = result;
         }
     }
@@ -468,7 +494,29 @@ fn extract_items(
     source: &str,
     visited: &mut BTreeSet<String>,
 ) -> Result<(), String> {
+    let mut cfg_active = true;
     for item in children(node) {
+        if snapshot.input.rules == RULES_R3
+            && item.kind() == "attribute_item"
+            && let Some(active) = r3::attribute(snapshot, module, file, item, source)
+        {
+            cfg_active &= active;
+            continue;
+        }
+        if ![
+            "attribute_item",
+            "inner_attribute_item",
+            "line_comment",
+            "block_comment",
+        ]
+        .contains(&item.kind())
+        {
+            let active = cfg_active;
+            cfg_active = true;
+            if !active {
+                continue;
+            }
+        }
         let evidence = snapshot.evidence(file, item.start_byte(), item.end_byte());
         let vis = visibility(item, source);
         if !["private", "pub", "pub(crate)"].contains(&vis.as_str()) {
@@ -708,6 +756,10 @@ fn extract_references(
     function: Node<'_>,
     source: &str,
 ) {
+    if snapshot.input.rules == RULES_R3 {
+        r3::extract(snapshot, module, file, function, source);
+        return;
+    }
     let body = function.child_by_field_name("body");
     let Some(body) = body else {
         return;
@@ -717,6 +769,7 @@ fn extract_references(
         local_id: scope_local_id,
         kind: "function".into(),
         module_owner: module.into(),
+        parent_scope_local_id: None,
         evidence: snapshot.evidence(file, function.start_byte(), function.end_byte()),
     });
     let params = function

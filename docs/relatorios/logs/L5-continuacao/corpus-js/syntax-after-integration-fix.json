@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-12T16:32:01.266388+00:00",
+  "checks": [
+    {
+      "path": "eval/scripts/prepare_l5_js.py",
+      "syntax_valid": true,
+      "sha256": "1fbdd2ed8783ed838c87c0ef016f1aca1395cecec8a48259210fb839ae48a970"
+    },
+    {
+      "path": "eval/scripts/run_l5_js.py",
+      "syntax_valid": true,
+      "sha256": "49d45fc9d3dfd43dc1f13b5a476fd8ea17df185aff18e4315d96ed9373df0695"
+    },
+    {
+      "path": "eval/scripts/tests/test_l5_js_capture.py",
+      "syntax_valid": true,
+      "sha256": "a30a86e69762af493d455740d8ab5dad81e1f83f4070d5a1f3729ce9fe239eaf"
+    }
+  ],
+  "upstream_execution": false,
+  "integration_fix": "env nested node argument uses /workspace/.xrai-node; HOME=/workspace TMPDIR=/tmp explicit; copied Node bytes hashed in receipt"
+}

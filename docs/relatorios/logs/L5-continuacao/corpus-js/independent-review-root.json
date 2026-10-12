@@ -1,0 +1,73 @@
+{
+  "reviewer": "/root (second reader independent of corpus_js)",
+  "verified": true,
+  "capture_checked": [
+    {
+      "side": "base",
+      "path": "packages/react/src/ReactHooks.js",
+      "symbol": "useSyncExternalStore",
+      "source_sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353",
+      "start_line": 172,
+      "end_line": 179
+    },
+    {
+      "side": "base",
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "symbol": "dispatchAction",
+      "source_sha256": "66a2e38d1d47afd70c3b487e0582716777b2174caef5e0b4ab949514eef5968f",
+      "start_line": 1916,
+      "end_line": 2066
+    },
+    {
+      "side": "base",
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "symbol": "scheduleUpdateOnFiber",
+      "source_sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+      "start_line": 437,
+      "end_line": 529
+    },
+    {
+      "side": "head",
+      "path": "packages/react/src/ReactHooks.js",
+      "symbol": "useSyncExternalStore",
+      "source_sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353",
+      "start_line": 172,
+      "end_line": 179
+    },
+    {
+      "side": "head",
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "symbol": "useSyncExternalStore",
+      "source_sha256": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753",
+      "start_line": 1263,
+      "end_line": 1362
+    },
+    {
+      "side": "head",
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "symbol": "dispatchAction",
+      "source_sha256": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753",
+      "start_line": 2031,
+      "end_line": 2181
+    },
+    {
+      "side": "head",
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "symbol": "scheduleUpdateOnFiber",
+      "source_sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+      "start_line": 437,
+      "end_line": 529
+    }
+  ],
+  "floor": {
+    "production_JS_files": 273,
+    "nonempty_production_lines": 56440,
+    "comments_included_per_ADR021": true,
+    "comment_filtered_diagnostic_only": 46766
+  },
+  "complexity": "ReactHooks dispatches public hook to FiberHooks; store notifications must schedule synchronously through FiberWorkLoop. Three production modules, two packages, two required edges for the stated concurrent-root notification contract. API is a stub in the baseline.",
+  "oracle_separation": "Natural public API behavior in agent/input.md; complete baseline supplied alone; internal paths, reference and evaluator probes excluded.",
+  "behavioral_probes": "pending disposable Linux CI",
+  "state_index_A_to_B": "pending",
+  "accepted_dossier": false
+}

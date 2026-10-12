@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "side": "base",
+      "all_full_tree_source_hashes_verified": 2330,
+      "reference_delta_only": [],
+      "materialization_receipt": {
+        "side": "base",
+        "base_commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+        "reference_commit": null,
+        "full_base_archive_sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6",
+        "reference_policy": "only the two production modules changed; upstream test changes not applied",
+        "reference_source_sha256": {},
+        "evaluator_probe_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+        "warning": "evaluator workspace only; hidden oracle must never enter a comparative agent workspace",
+        "yarn_lock_sha256": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544"
+      }
+    },
+    {
+      "side": "reference",
+      "all_full_tree_source_hashes_verified": 2330,
+      "reference_delta_only": [
+        "packages/react-reconciler/src/ReactFiberHooks.new.js",
+        "packages/react-reconciler/src/ReactFiberHooks.old.js"
+      ],
+      "materialization_receipt": {
+        "side": "reference",
+        "base_commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+        "reference_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+        "full_base_archive_sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6",
+        "reference_policy": "only the two production modules changed; upstream test changes not applied",
+        "reference_source_sha256": {
+          "packages/react-reconciler/src/ReactFiberHooks.new.js": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753",
+          "packages/react-reconciler/src/ReactFiberHooks.old.js": "8cd11500b4c39b9da038346a86aaaa7f8efdf04e964eb2c63c06cc6512c632d5"
+        },
+        "evaluator_probe_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+        "warning": "evaluator workspace only; hidden oracle must never enter a comparative agent workspace",
+        "yarn_lock_sha256": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544"
+      }
+    },
+    {
+      "all_case_artifact_hashes_verified": 16,
+      "oracle_contract_tests": 3,
+      "regression_tests": 2,
+      "upstream_commands_executed": false
+    }
+  ],
+  "pending": "behavioral probes and independent review; no admission"
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": "xrai.eval.dossier.second-reader.source.v1",
+  "case_id": "L5-Rust-RA-23422",
+  "author": "/root/corpus_rust",
+  "second_reader": "/root/corpus_js",
+  "review_script_sha256": "1a9d714dd79c01948b9af0de795997a4ff0a00a1327382a25edbce300df6bd39",
+  "review_scope": "origin/parent, full archives, licenses, independent production-floor sample, three necessary modules/two source edges, request naturalness, hidden production-prefix and exact reference delta",
+  "source_evidence": {
+    "baseline": {
+      "archive_sha256": "539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f",
+      "root_commit_verified": true,
+      "core_crates": [
+        "hir",
+        "hir-def",
+        "hir-ty",
+        "ide-diagnostics"
+      ],
+      "core_source_files": 258,
+      "core_nonempty_comment_filtered_prefix_lines": 84453,
+      "method": "independent four-crate src-only prefix count, broader test cfg and comment-block filtering; source-only operational floor check, not exact lexical LOC",
+      "license_mit_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "license_apache_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "reference": {
+      "archive_sha256": "aa9d5764517afece4c0da16b70f206c27073bff2c40399cd579e243139fa0d66",
+      "root_commit_verified": true,
+      "core_crates": [
+        "hir",
+        "hir-def",
+        "hir-ty",
+        "ide-diagnostics"
+      ],
+      "core_source_files": 258,
+      "core_nonempty_comment_filtered_prefix_lines": 84453,
+      "method": "independent four-crate src-only prefix count, broader test cfg and comment-block filtering; source-only operational floor check, not exact lexical LOC",
+      "license_mit_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "license_apache_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    }
+  },
+  "relationship_assessment": "HIR diagnostics dispatches BodyValidationDiagnostic.collect; hir-ty validates let and retains inference errors; its nested mismatch walk calls hir-def Pat.walk_child_pats over tuple/or/bind/ref shapes. Needed to reject malformed nested shapes before usefulness analysis while preserving genuine type errors, rather than disabling diagnostics.",
+  "natural_input_assessment": "public issue reproducer and desired diagnostic continuation, no solution symbol/path or oracle injected",
+  "oracle_assessment": "reference production prefix of hidden handler equals both captured sides; upstream annotation assertions and two added public regressions, independent of xrai/parser output. Runtime not executed in this review.",
+  "findings": [
+    {
+      "id": "RUST-VERIFY-01",
+      "severity": "verification_gap",
+      "description": "The reviewed collector version recomputes inventories/module anchors but does not cross-bind declared commits to tar root/public parent or validate hidden-probe/reference-patch digests. Current artifacts pass these additional independent checks. Harden verifier or explicitly retain this bounded manual audit before claiming automated provenance closure."
+    }
+  ],
+  "curation_review": "source_curation_supported_with_verifier_gap",
+  "behavioral_probes": "pending_disposable_Linux_receipts",
+  "incremental_event": "pending_same_index_process_A_B_rebuild",
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "reviewed_artifact_hashes": {
+    "eval/qualification/l5-real/rust/baseline-inventory.json": "f2cb1dfad39cffbe5630b52512546f1c9b8672471c0f363a435e6aff62250394",
+    "eval/qualification/l5-real/rust/baseline.tar.gz": "539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f",
+    "eval/qualification/l5-real/rust/captures/baseline/Cargo.lock": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+    "eval/qualification/l5-real/rust/captures/baseline/Cargo.toml": "80fe22fb96e3d05eb66270e5b0e17534e2f52b7ed47a0beb63d3989d20be2a1e",
+    "eval/qualification/l5-real/rust/captures/baseline/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "eval/qualification/l5-real/rust/captures/baseline/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "eval/qualification/l5-real/rust/captures/baseline/crates/hir/src/diagnostics.rs": "40a01a66fe2020caa673ad3ffbe4e166601ac7b81024cfe1484496c7ba784d9f",
+    "eval/qualification/l5-real/rust/captures/baseline/crates/hir-def/src/hir.rs": "82b8a483610ebacac1543e10b8dd0b4cf43a4b5e1501f3f906537be76f0ad6e1",
+    "eval/qualification/l5-real/rust/captures/baseline/crates/hir-ty/src/diagnostics/expr.rs": "790b0610162c71588e9e97ef011e97df3ae5fde093b52ce35667c4fe3242524b",
+    "eval/qualification/l5-real/rust/captures/baseline/crates/ide-diagnostics/src/handlers/non_exhaustive_let.rs": "4ce71d2385f16340f111082c4cb9b88a10423044421913ffa861d605b31769c5",
+    "eval/qualification/l5-real/rust/captures/reference/Cargo.lock": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+    "eval/qualification/l5-real/rust/captures/reference/Cargo.toml": "80fe22fb96e3d05eb66270e5b0e17534e2f52b7ed47a0beb63d3989d20be2a1e",
+    "eval/qualification/l5-real/rust/captures/reference/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "eval/qualification/l5-real/rust/captures/reference/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "eval/qualification/l5-real/rust/captures/reference/crates/hir/src/diagnostics.rs": "40a01a66fe2020caa673ad3ffbe4e166601ac7b81024cfe1484496c7ba784d9f",
+    "eval/qualification/l5-real/rust/captures/reference/crates/hir-def/src/hir.rs": "82b8a483610ebacac1543e10b8dd0b4cf43a4b5e1501f3f906537be76f0ad6e1",
+    "eval/qualification/l5-real/rust/captures/reference/crates/hir-ty/src/diagnostics/expr.rs": "637c634e4031be5f30ef83fdbe9e7935d26ab6a73f8ad9e25274e270f54b95a3",
+    "eval/qualification/l5-real/rust/captures/reference/crates/ide-diagnostics/src/handlers/non_exhaustive_let.rs": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+    "eval/qualification/l5-real/rust/case.json": "82c0a1e49b8ae39e1c0b69d17a59177e29e2dcce2e458a29fe34d3100a92675f",
+    "eval/qualification/l5-real/rust/oracles/event-plan.json": "758ffb7d136c409041e18d72b70f15cc03f73c27ae3ad2005e013a836883d48b",
+    "eval/qualification/l5-real/rust/oracles/non_exhaustive_let.rs": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+    "eval/qualification/l5-real/rust/oracles/oracle.json": "1329a98ace6de8ecc56db3acd4a2816f5af2d73ca1d6fbc4d35b46e1dd53fbfc",
+    "eval/qualification/l5-real/rust/oracles/probe-plan.json": "4722799bc2b7659a915eebe5683b98253a402af464cb2b4ab3d92aaa8e0bb993",
+    "eval/qualification/l5-real/rust/oracles/reference.patch": "05c3f3ba4da6d261c0719fc084a12d9592ce929b10ea1749eeec0546e21d4538",
+    "eval/qualification/l5-real/rust/reference-inventory.json": "a178da8b5f79904e7d5b21a43e085feedbc07afdd641e84b7c4b267b2e70dd46",
+    "eval/qualification/l5-real/rust/reference.tar.gz": "aa9d5764517afece4c0da16b70f206c27073bff2c40399cd579e243139fa0d66",
+    "eval/qualification/l5-real/rust/request.json": "d417a16aec38772c501b413fd101265d0d05b8dd21273a0265a9f58d2891b60c",
+    "eval/qualification/l5-real/rust/triage.json": "fc8c98997711c003263199b751264df9785b4bd8c4a96ca7e612814481bcdb22",
+    "eval/scripts/collect_real_rust.py": "31bd1713754eea325392a5b601e3e6495aac2fa108d4c2a718da9b4197666f87"
+  }
+}

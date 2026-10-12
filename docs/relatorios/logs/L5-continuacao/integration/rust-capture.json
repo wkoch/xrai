@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python3",
+    "eval/scripts/collect_real_rust.py",
+    "verify"
+  ],
+  "base_commit": "284e836d8ac15e110dbf1eff7eb37587388c46ea",
+  "recorded_at": "2026-10-12T16:28:03.409289+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.5059573340004135,
+  "exit_code": 0,
+  "stdout": "{\n  \"verified\": true,\n  \"snapshots\": {\n    \"baseline\": {\n      \"archive_sha256\": \"539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f\",\n      \"file_count\": 2345,\n      \"production_files_lower_bound\": 825,\n      \"production_nonempty_lines_lower_bound\": 220645\n    },\n    \"reference\": {\n      \"archive_sha256\": \"aa9d5764517afece4c0da16b70f206c27073bff2c40399cd579e243139fa0d66\",\n      \"file_count\": 2345,\n      \"production_files_lower_bound\": 825,\n      \"production_nonempty_lines_lower_bound\": 220645\n    }\n  },\n  \"admitted\": false,\n  \"behavioral_proof\": \"separate Linux evaluator receipts required\"\n}\n",
+  "stderr": "",
+  "stdout_sha256": "95bbf4a33c580087403024082bf5b7d8e86bfe7dde0890b6f69728e24f9788a4",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

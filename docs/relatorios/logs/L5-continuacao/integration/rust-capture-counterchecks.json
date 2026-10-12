@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-p",
+    "test_l5_rust_capture.py",
+    "-v"
+  ],
+  "base_commit": "284e836d8ac15e110dbf1eff7eb37587388c46ea",
+  "recorded_at": "2026-10-12T16:36:26.360855+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 1.4028101659969252,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_hidden_probe_cannot_edit_production_even_with_updated_digest (test_l5_rust_capture.RustCapture.test_hidden_probe_cannot_edit_production_even_with_updated_digest) ... ok\ntest_public_lineage_cannot_be_relabelled (test_l5_rust_capture.RustCapture.test_public_lineage_cannot_be_relabelled) ... ok\ntest_reference_patch_is_bound_to_capture (test_l5_rust_capture.RustCapture.test_reference_patch_is_bound_to_capture) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.330s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "7a179759ef6b13fde36227c4b2e156f1a7edc93cdc0be06ce3e55dfd2b650a1b"
+}

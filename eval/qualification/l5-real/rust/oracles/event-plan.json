@@ -1,0 +1,24 @@
+{
+  "task_id": "L5-Rust-RA-23422",
+  "event_id": "L5-Rust-RA-preserved-size-mtime",
+  "class": "controlled_real_source_binding_rename",
+  "phase_A": "materialize complete baseline, launch persistent arm/index and warm old helper definition/callers",
+  "event": {
+    "path": "crates/hir-ty/src/diagnostics/expr.rs",
+    "old_sha256": "790b0610162c71588e9e97ef011e97df3ae5fde093b52ce35667c4fe3242524b",
+    "new_sha256": "f087bd203ed9fef5780a8b56e476d84dd0ee85df1ce1a79991599c9cb26b410d",
+    "old_bytes": 27744,
+    "new_bytes": 27744,
+    "replace_old": "types_of_subpatterns_do_match",
+    "replace_new": "types_of_subpatterns_do_check",
+    "expected_replacements": 2,
+    "preserve_mtime_ns": true,
+    "preserve_inode": true
+  },
+  "phase_B": "same index/process must remove old helper and recover new helper plus same recursive call relationship; compare complete response/evidence/targets/gaps against independent full rebuild B",
+  "oracle_old_absent": "types_of_subpatterns_do_match",
+  "oracle_new_present": "types_of_subpatterns_do_check",
+  "baseline_guard_unchanged": true,
+  "execution_status": "pending; event descriptor is not an incremental execution proof",
+  "lineage": "controlled state exercise supplementary to correction, not a second primary task"
+}

@@ -163,3 +163,67 @@ fn duplicate_module_does_not_publish_unique_function_from_invalid_environment() 
     let snapshot = build(input("mod a { pub fn f() {} } mod a { pub fn g() {} }")).unwrap();
     assert_eq!(snapshot.resolve("", "a::f", "value").state, "unknown");
 }
+
+#[test]
+fn r3_preregistered_bindings_cfg_real_modules_and_full_update_events() {
+    for matrix in [
+        "eval/semantics/r3/rust-r3.json",
+        "eval/semantics/r3/counterproofs-r3.json",
+        "eval/semantics/r3/counterproofs-extra.json",
+        "eval/semantics/r3/tokio-test-development.json",
+        "eval/semantics/r3/incremental-events.json",
+    ] {
+        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+        let output = std::process::Command::new(env!("CARGO_BIN_EXE_semantics-spike"))
+            .arg(root.join(matrix))
+            .output()
+            .unwrap();
+        assert!(
+            output.status.success(),
+            "{matrix}: {}",
+            String::from_utf8_lossy(&output.stderr)
+        );
+        let v: serde_json::Value = serde_json::from_slice(&output.stdout).unwrap();
+        assert_eq!(v["false_promotions"], 0);
+        assert_eq!(v["cases"], v["correct"]);
+        if let Some(events) = v["events"].as_array() {
+            assert_eq!(events.len(), 2);
+            for event in events {
+                assert_eq!(event["incremental"], event["rebuild"]);
+            }
+        }
+    }
+}
+
+#[test]
+fn r3_shadow_introduction_and_removal_match_entire_rebuild() {
+    use xrai_eval::semantics_spike::RULES_R3;
+    let mut a = input("fn target() {} fn run() { target(); }");
+    a.rules = RULES_R3.into();
+    let mut index = Index::new(a.clone()).unwrap();
+    assert_eq!(index.current.references[0].resolution.state, "resolved");
+    let mut b = a.clone();
+    b.files.insert(
+        "src/lib.rs".into(),
+        "fn target() {} fn run() { let target=1; target(); }".into(),
+    );
+    assert_eq!(index.update(b.clone()).unwrap(), &build(b).unwrap());
+    assert_eq!(index.current.references[0].resolution.state, "unknown");
+    assert_eq!(index.update(a.clone()).unwrap(), &build(a).unwrap());
+    assert_eq!(index.current.references[0].resolution.state, "resolved");
+}
+
+#[test]
+fn r3_cfg_does_not_inherit_host_or_treat_unknown_as_false() {
+    use xrai_eval::semantics_spike::RULES_R3;
+    let mut a = input("#[cfg(unix)] fn target() {} fn run() { target(); }");
+    a.rules = RULES_R3.into();
+    let s = build(a.clone()).unwrap();
+    assert_eq!(s.conditions[0].state, "not_evaluated");
+    assert_eq!(s.references[0].resolution.state, "unknown");
+    a.configuration.insert("unix".into(), "known:false".into());
+    let s = build(a).unwrap();
+    assert_eq!(s.conditions[0].state, "known_false");
+    assert!(s.declarations.iter().all(|d| d.name != "target"));
+    assert_eq!(s.references[0].resolution.state, "unknown");
+}

@@ -1,9 +1,11 @@
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
-use xrai_eval::semantics_spike::{Input, Resolution, Snapshot, build};
+use xrai_eval::semantics_spike::{Index, Input, Resolution, Snapshot, build};
 #[derive(Deserialize)]
 struct Matrix {
     cases: Vec<Case>,
+    #[serde(default)]
+    events: Vec<Event>,
 }
 #[derive(Deserialize)]
 struct Case {
@@ -19,6 +21,25 @@ struct Case {
     edition: String,
     configuration: BTreeMap<String, String>,
     rules: String,
+    #[serde(default)]
+    query_file: Option<String>,
+    #[serde(default)]
+    query_start: Option<usize>,
+}
+#[derive(Deserialize)]
+struct Event {
+    id: String,
+    a: Input,
+    b: Input,
+}
+#[derive(Serialize)]
+struct EventRow {
+    id: String,
+    generation_before: u64,
+    generation_after: u64,
+    before: Snapshot,
+    incremental: Snapshot,
+    rebuild: Snapshot,
 }
 fn root() -> String {
     "src/lib.rs".into()
@@ -40,6 +61,8 @@ struct Output {
     correct: usize,
     false_promotions: usize,
     rows: Vec<Row>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    events: Vec<EventRow>,
 }
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let path = std::env::args()
@@ -53,6 +76,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         correct: 0,
         false_promotions: 0,
         rows: vec![],
+        events: vec![],
     };
     for case in matrix.cases {
         let snapshot = build(Input {
@@ -62,7 +86,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             configuration: case.configuration,
             rules: case.rules,
         })?;
-        let result = snapshot.resolve(&case.module, &case.path, &case.namespace);
+        let result = match (&case.query_file, case.query_start) {
+            (Some(file), Some(offset)) => {
+                snapshot.resolve_at(&case.module, &case.path, &case.namespace, file, offset)
+            }
+            (None, None) => snapshot.resolve(&case.module, &case.path, &case.namespace),
+            _ => return Err("occurrence query requires file and offset".into()),
+        };
         let target = result
             .target_id
             .as_ref()
@@ -90,6 +120,24 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             expected_target: case.expected_target,
             result,
             snapshot,
+        });
+    }
+    for event in matrix.events {
+        let mut index = Index::new(event.a)?;
+        let generation_before = index.generation;
+        let before = index.current.clone();
+        let incremental = index.update(event.b.clone())?.clone();
+        let rebuild = build(event.b)?;
+        if incremental != rebuild {
+            return Err("full incremental snapshot differs from rebuild".into());
+        }
+        output.events.push(EventRow {
+            id: event.id,
+            generation_before,
+            generation_after: index.generation,
+            before,
+            incremental,
+            rebuild,
         });
     }
     println!("{}", serde_json::to_string(&output)?);

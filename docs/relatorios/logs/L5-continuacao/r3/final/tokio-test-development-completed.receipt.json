@@ -1,0 +1,22 @@
+{
+  "command": [
+    "target/debug/semantics-spike",
+    "eval/semantics/r3/tokio-test-development.json"
+  ],
+  "started": "2026-10-12T16:30:10.360384+00:00",
+  "elapsed_seconds": 1.0074282499990659,
+  "exit": 0,
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "stdout": "tokio-test-development-completed.stdout",
+  "stdout_sha256": "70916d54ca8127fe447e09cf4a9140f48164fdf973108f6bae4743406a8bfd68",
+  "stderr": "tokio-test-development-completed.stderr",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "sources": {
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "b2a544ccea0aab7063ec6e1c2570df850135712e35797831a75b676c3b8310b2",
+    "crates/xrai-eval/src/bin/semantics-spike.rs": "4f801649cece5c15dc0f9807b64648dcf8c593497b3a8923b5d4690b74cdad23",
+    "crates/xrai-eval/tests/semantics_spike.rs": "a3f13344e324712f009edde7f5ecb74db5c0631448c2fde169a65ce90cda6e11",
+    "eval/scripts/verify_semantics.py": "3c5c4838208e24a902c3f3c8df7c8caca95675f803d141c2ebc0ab0ff5ae0135"
+  }
+}

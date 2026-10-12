@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/context/tests",
+    "-v"
+  ],
+  "base_commit": "284e836d8ac15e110dbf1eff7eb37587388c46ea",
+  "recorded_at": "2026-10-12T16:32:28.162097+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 1.8110092499991879,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_alias_cannot_borrow_import_homonym (test_r3_context.R3Context.test_alias_cannot_borrow_import_homonym) ... ok\ntest_current_receipt_selects_position_bound_targets (test_r3_context.R3Context.test_current_receipt_selects_position_bound_targets) ... ok\ntest_parameter_cannot_borrow_resolved_alias (test_r3_context.R3Context.test_parameter_cannot_borrow_resolved_alias) ... ok\ntest_query_position_cannot_move_to_import (test_r3_context.R3Context.test_query_position_cannot_move_to_import) ... ok\ntest_changed_capture_identity (test_verify_context.Verification.test_changed_capture_identity) ... ok\ntest_controls_cannot_change_token_budget (test_verify_context.Verification.test_controls_cannot_change_token_budget) ... ok\ntest_expansion_mutating_immutable_manifest (test_verify_context.Verification.test_expansion_mutating_immutable_manifest) ... ok\ntest_false_exact_token_count (test_verify_context.Verification.test_false_exact_token_count) ... ok\ntest_fictitious_resolved_consumer (test_verify_context.Verification.test_fictitious_resolved_consumer) ... ok\ntest_recreation_cannot_rebind_previous_incarnation (test_verify_context.Verification.test_recreation_cannot_rebind_previous_incarnation) ... ok\ntest_span_not_matching_captured_utf8_source (test_verify_context.Verification.test_span_not_matching_captured_utf8_source) ... ok\ntest_two_current_native_receipts (test_verify_context.Verification.test_two_current_native_receipts) ... ok\ntest_wire_hash_corruption (test_verify_context.Verification.test_wire_hash_corruption) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 1.686s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "df2597c04ec395bdd279e9f70d880fa5cf563f23795d5a25dc6c1b1f8b8b2c44"
+}

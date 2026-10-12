@@ -439,8 +439,19 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
         candidates.insert(c.id.clone(), c);
         if let Some(lookup) = &a.lookup {
             if req.p2 {
-                let r = s.resolve(&lookup.module, &lookup.path, &lookup.namespace);
-                resolutions.push(json!({"snapshot_id":s.snapshot_id,"lookup":lookup,"result":r}));
+                let r = if s.input.rules == crate::semantics_spike::RULES_R3 {
+                    s.resolve_at(
+                        &lookup.module,
+                        &lookup.path,
+                        &lookup.namespace,
+                        &a.path,
+                        a.start,
+                    )
+                } else {
+                    s.resolve(&lookup.module, &lookup.path, &lookup.namespace)
+                };
+                resolutions.push(json!({"snapshot_id":s.snapshot_id,"lookup":lookup,
+                    "occurrence":{"path":a.path,"start":a.start,"end":a.end},"result":r}));
                 if r.state == "resolved" {
                     if let Some(d) = s
                         .declarations

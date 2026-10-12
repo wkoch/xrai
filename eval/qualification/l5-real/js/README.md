@@ -1,0 +1,23 @@
+# L5-04 — React, contrato histórico JavaScript
+
+Candidato `L5-JS-REACT-22239`, slot `L5-SLOT-TSJS-contract_change-2`. **Curadoria pronta; probes Linux e revisão independente pendentes. Não é dossiê admitido, não fecha um dos quatro, D1 permanece 0/32.**
+
+[PR público 22239](https://github.com/facebook/react/pull/22239) implementou o hook nativo `useSyncExternalStore`. O par real é parent `77912d9a05d7a90287fabdec76486f25869b2981` → commit `06f98c168060ef0213526a1aee696a568cec7f54`. Os metadados integrais da API GitHub, o anúncio anterior da API ([22237](https://github.com/facebook/react/pull/22237)), a motivação do shim ([22211](https://github.com/facebook/react/pull/22211)) e a [discussão pública 86](https://github.com/reactwg/react-18/discussions/86) estão preservados em `provenance/`. Esse contrato público pede atualizações síncronas da store, inclusive dentro de `startTransition`; não exige esperar pelo suporte futuro a SSR.
+
+`capture.json` e os dois inventários comprimidos vinculam archives completos, fontes, licença MIT, setup e exclusões. A base tem **273 arquivos JavaScript de produção, 56.440 linhas não vazias**, acima do piso operacional de 50 mil do ADR021. A contagem restringe os pacotes runtime e exclui testes, fixtures, vendored, gerados, forks e cópias `.old.js`. JavaScript com anotações Flow continua JS; nenhum TypeScript foi reclassificado. Como a métrica ADR021 é linhas não vazias, comentários de arquivos de produção participam dessa contagem. A leitura adicional sem linhas de comentário fornece 46.766 como diagnóstico conservador; ela não substitui nem redefine o piso. A referência tem 56.545 linhas pela mesma regra. Não há comandos upstream executados no macOS.
+
+As três fontes de produção necessárias são a API pública em `react/src/ReactHooks.js`, a implementação/dispatch em `react-reconciler/src/ReactFiberHooks.new.js` e o agendamento em `react-reconciler/src/ReactFiberWorkLoop.new.js`. A primeira aresta liga API/dispatcher ao hook do renderer; a segunda liga a notificação/dispatch da store ao agendamento das lanes. O requisito síncrono num root concorrente exige verificar essa segunda ligação. Os spans e hashes exatos estão em `oracles/source-relations.json`; isso é atribuição manual de fonte, com revisão semântica pendente, e não alegação de cobertura de call graph.
+
+O pedido natural isolado está em `agent/input.md`. A futura materialização para braços deve fornecer **somente a árvore base completa e o pedido**, sem este diretório de dossiê, archive head, labels, patch ou probes. O materializador `run_l5_js.py` cria deliberadamente **workspaces do avaliador** com teste oculto; não é materializador de workspace do agente. A referência experimental aplica somente os dois módulos de produção do patch público, sem copiar a alteração de testes upstream. Oracle próprio: três requisitos comportamentais (incluindo notificação em `startTransition` fora de `act`, para não mascarar agendamento assíncrono) e duas regressões de state/effects. Esses testes não dependem de xrai, graft, Tree-sitter ou igualdade textual de patch.
+
+Plano executável Linux descartável: Node16.20.2, Yarn1.22.22, instalação `--frozen-lockfile --ignore-scripts`, probes offline via `runner.execute(..., arbitrary_agent=True)` e verificação do teardown de namespace PID. O executor copia Node ao workspace e registra stdout/stderr completos limitados, exit, JSON Jest, hashes de executável/probe e lock antes/depois. Cada operação tem deadline de 300s. Recomenda-se pelo menos 2GiB livres por checkout/dependências; esse valor é preparo, não calibração de recurso. Setup, baseline falhando pelo requisito, referência e regressões **ainda não foram executados**; failures de infraestrutura serão separados de falha comportamental.
+
+```sh
+python eval/scripts/prepare_l5_js.py
+python eval/scripts/run_l5_js.py materialize --workspace DIR --side base
+# Apenas em preparo CI Linux autorizado, dentro de DIR:
+yarn install --frozen-lockfile --ignore-scripts --non-interactive --no-progress
+python eval/scripts/run_l5_js.py probe --workspace DIR --side base --node NODE_PATH --output OUT --timeout 300
+```
+
+Repetir com workspace fresco e `--side reference`. O par referência/base exige os mesmos hashes de `package.json`/`yarn.lock`. A revisão independente deve confirmar a necessidade das relações, naturalidade do pedido, critérios comportamentais e os hashes dos artefatos executados. Este contrato histórico não comprova o evento de estado A→B da família: índice/processo/aquecimento/rebuild continuam pendentes e registrados separadamente em `case.json`. React continua candidato dos demais slots; a elegibilidade deste snapshot não qualifica automaticamente outras tarefas.

@@ -1,0 +1,7 @@
+{
+  "role": "external evaluator, never an Index input",
+  "events": {
+    "create-binding-and-export": {"before": {"target": ["unknown", null]}, "incremental": {"entry": ["resolved", "src/lib.rs:a::target"]}},
+    "configuration-swap": {"before": {"a::target": ["unknown", null], "b::target": ["resolved", "src/lib.rs:b::target"]}, "incremental": {"a::target": ["resolved", "src/lib.rs:a::target"], "b::target": ["unknown", null]}}
+  }
+}

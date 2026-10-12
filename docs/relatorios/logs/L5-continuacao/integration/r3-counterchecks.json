@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/semantics/r3/tests",
+    "-v"
+  ],
+  "base_commit": "284e836d8ac15e110dbf1eff7eb37587388c46ea",
+  "recorded_at": "2026-10-12T16:33:35.173643+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.14233095799863804,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_alias_initializer (test_r3_verifier.R3VerifierTests.test_alias_initializer) ... ok\ntest_all_originals (test_r3_verifier.R3VerifierTests.test_all_originals) ... ok\ntest_binding_name (test_r3_verifier.R3VerifierTests.test_binding_name) ... ok\ntest_binding_parent_scope (test_r3_verifier.R3VerifierTests.test_binding_parent_scope) ... ok\ntest_binding_temporal_range (test_r3_verifier.R3VerifierTests.test_binding_temporal_range) ... ok\ntest_condition_state (test_r3_verifier.R3VerifierTests.test_condition_state) ... ok\ntest_incremental_gap_difference (test_r3_verifier.R3VerifierTests.test_incremental_gap_difference) ... ok\ntest_incremental_generation (test_r3_verifier.R3VerifierTests.test_incremental_generation) ... ok\ntest_incremental_source (test_r3_verifier.R3VerifierTests.test_incremental_source) ... ok\ntest_occurrence_witness (test_r3_verifier.R3VerifierTests.test_occurrence_witness) ... ok\ntest_preregistered_denominator (test_r3_verifier.R3VerifierTests.test_preregistered_denominator) ... ok\ntest_scope_parent (test_r3_verifier.R3VerifierTests.test_scope_parent) ... ok\ntest_shared_forged_event_target (test_r3_verifier.R3VerifierTests.test_shared_forged_event_target) ... ok\ntest_wrong_snapshot (test_r3_verifier.R3VerifierTests.test_wrong_snapshot) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.090s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "867b14e5d21dab8c358f988056a453ffcaa6df3181ce9094b934408e5c9d0260"
+}

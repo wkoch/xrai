@@ -118,6 +118,8 @@ jobs:
         run: target/debug/filesystem-spike > native-evidence/filesystem.json
       - name: Build incorporated grammars
         run: cargo build --locked --release -p xrai-eval --bin parsing-spike --bin worker-spike --bin worker-persistent --bin semantics-spike --bin worker-benchmark --bin context-spike
+      - name: Retain measured native executables
+        run: python eval/scripts/retain_native_binaries.py --output native-evidence/binaries
       - name: Record worker IPC and exploratory benchmark
         run: target/release/worker-spike demonstrate > native-evidence/workers.json
       - name: Record persistent worker functional proof
@@ -134,6 +136,8 @@ jobs:
           target/release/context-spike eval/context/central-hunk-input.json python > native-evidence/context-central-hunk.json
           python eval/scripts/verify_context.py eval/context/removed-consumer-input.json native-evidence/context-removed-consumer.json
           python eval/scripts/verify_context.py eval/context/central-hunk-input.json native-evidence/context-central-hunk.json
+          target/release/context-spike eval/context/r3-binding-input.json python > native-evidence/context-r3-binding.json
+          python eval/scripts/verify_context.py eval/context/r3-binding-input.json native-evidence/context-r3-binding.json
           python -m unittest discover -s eval/context/tests -v
       - name: Prove labeled Rust semantics and captured development sample
         run: |
@@ -143,6 +147,14 @@ jobs:
           python eval/scripts/verify_semantics.py eval/semantics/rust-r1-r2.json native-evidence/semantics-fixtures.json
           python eval/scripts/verify_semantics.py eval/semantics/tokio-development.json native-evidence/semantics-tokio.json
           python eval/scripts/verify_semantics.py eval/semantics/rust-counterproofs.json native-evidence/semantics-counterproofs.json
+          mkdir -p native-evidence/r3
+          for name in rust-r3 counterproofs-r3 counterproofs-extra tokio-test-development incremental-events p3-consumer; do
+            input="eval/semantics/r3/$name.json"
+            output="native-evidence/r3/$name-completed.stdout"
+            target/release/semantics-spike "$input" > "$output"
+            python eval/scripts/verify_semantics.py "$input" "$output"
+          done
+          XRAI_R3_RECEIPT_DIR=native-evidence/r3 python -m unittest discover -s eval/semantics/r3/tests -v
       - name: Prove standalone parsing with network blocked
         run: python crates/xrai-eval/scripts/verify_packaging.py --binary target/release/parsing-spike --output native-evidence/packaging.json
       - name: Preserve native receipts
@@ -152,3 +164,87 @@ jobs:
           name: native-${{ matrix.host }}
           path: native-evidence
           if-no-files-found: error
+          retention-days: 90
+  corpus-rust:
+    name: L5 real Rust behavioral pair
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Prepare Linux evaluator
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          if ! bwrap --unshare-all --ro-bind / / /usr/bin/true; then
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
+          rustup toolchain install 1.98.1 --profile minimal
+          python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Verify capture and run behavioral pair
+        run: |
+          python eval/scripts/collect_real_rust.py verify
+          python eval/scripts/run_real_rust_probes.py --output "$RUNNER_TEMP/rust-probes" --domain-id "github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-rust"
+      - name: Preserve Rust evaluator receipts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: l5-real-rust
+          path: |
+            ${{ runner.temp }}/rust-probes/summary.json
+            ${{ runner.temp }}/rust-probes/baseline
+            ${{ runner.temp }}/rust-probes/reference
+          if-no-files-found: error
+          retention-days: 90
+  corpus-js:
+    name: L5 real JavaScript behavioral pair
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '16.20.2'
+      - name: Prepare Linux evaluator and pinned package manager
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          if ! bwrap --unshare-all --ro-bind / / /usr/bin/true; then
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
+          npm install --global yarn@1.22.22 --ignore-scripts
+          node --version
+          yarn --version
+          python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Prepare and prove baseline
+        run: |
+          python eval/scripts/prepare_l5_js.py verify
+          python eval/scripts/run_l5_js.py materialize --workspace "$RUNNER_TEMP/react-base" --side base
+          cd "$RUNNER_TEMP/react-base"
+          yarn install --frozen-lockfile --ignore-scripts --non-interactive --no-progress
+          cd "$GITHUB_WORKSPACE"
+          python eval/scripts/run_l5_js.py probe --workspace "$RUNNER_TEMP/react-base" --side base --node "$(command -v node)" --output "$RUNNER_TEMP/js-probes/base"
+      - name: Prepare and prove reference
+        run: |
+          python eval/scripts/run_l5_js.py materialize --workspace "$RUNNER_TEMP/react-reference" --side reference
+          cd "$RUNNER_TEMP/react-reference"
+          yarn install --frozen-lockfile --ignore-scripts --non-interactive --no-progress
+          cd "$GITHUB_WORKSPACE"
+          python eval/scripts/run_l5_js.py probe --workspace "$RUNNER_TEMP/react-reference" --side reference --node "$(command -v node)" --output "$RUNNER_TEMP/js-probes/reference"
+      - name: Preserve JavaScript evaluator receipts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: l5-real-js
+          path: ${{ runner.temp }}/js-probes
+          if-no-files-found: error
+          retention-days: 90

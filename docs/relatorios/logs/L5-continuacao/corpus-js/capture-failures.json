@@ -1,0 +1,18 @@
+{
+  "captured_at": "2026-10-12T16:26:15.593662+00:00",
+  "failures": [
+    {
+      "action": "initial gh api captures in network-restricted sandbox",
+      "exit_code": 1,
+      "stderr": "error connecting to api.github.com\ncheck your internet connection or https://githubstatus.com",
+      "resolution": "retried public read-only API with escalation and succeeded; empty files replaced by complete successful capture"
+    },
+    {
+      "action": "read pull-22237.json before yielded gh process finished",
+      "exit_code": 1,
+      "stderr": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "resolution": "waited session89733 completion exit0 then parsed complete source; no incomplete metadata used"
+    }
+  ],
+  "upstream_commands_executed_on_macos": false
+}

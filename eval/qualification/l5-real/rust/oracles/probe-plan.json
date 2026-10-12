@@ -1,0 +1,69 @@
+{
+  "task_id": "L5-Rust-RA-23422",
+  "toolchain": "Rust1.98.1",
+  "upstream_rust_version": "1.98",
+  "cargo_lock_sha256": "69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4",
+  "locked_identical_base_reference": true,
+  "dependency_preparation": {
+    "command": [
+      "cargo",
+      "fetch",
+      "--locked"
+    ],
+    "execution": "trusted disposable Linux CI preparation only; no build scripts"
+  },
+  "execution": "runner.execute arbitrary_agent=True; namespace receipt verified, offline cache/toolchain copies inside workspace",
+  "timeout_seconds_per_command": 600,
+  "output_limit_bytes_per_stream": 1048576,
+  "jobs": 2,
+  "debug_info": 0,
+  "fresh_targets_per_side": true,
+  "minimum_disk_headroom_bytes": 2147483648,
+  "recommended_free_disk_bytes": 10737418240,
+  "hidden_test": {
+    "path": "oracles/non_exhaustive_let.rs",
+    "sha256": "f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b",
+    "copied_to": "crates/ide-diagnostics/src/handlers/non_exhaustive_let.rs",
+    "scope": "original upstream handler production unchanged, both added hidden tests preserved; no hir-ty reference code copied"
+  },
+  "baseline": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "ide-diagnostics",
+    "regression_23336",
+    "--",
+    "--nocapture"
+  ],
+  "baseline_required": "exit101, both regression_23336 tests fail by panic, 2 failed; compile errors/zero tests/timeouts are infrastructure failures",
+  "reference_required": "same two tests pass exit0; no diagnostic panic and expected two type errors checked by upstream independent diagnostic annotations",
+  "reference_regressions": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "ide-diagnostics",
+    "handlers::non_exhaustive_let::tests",
+    "--",
+    "--nocapture"
+  ],
+  "regression_count": "capture actual nonzero count, do not preclaim",
+  "agent_workspace": {
+    "allowlist": [
+      "complete baseline source",
+      "request.json"
+    ],
+    "denied_evaluator_paths": [
+      "oracles",
+      "captures/reference",
+      "case.json",
+      "provenance",
+      "inventories",
+      "reference.patch"
+    ]
+  },
+  "results": "pending, no local upstream execution"
+}

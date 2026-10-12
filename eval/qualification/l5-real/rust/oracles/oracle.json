@@ -1,0 +1,26 @@
+{
+  "task_id": "L5-Rust-RA-23422",
+  "label_method": "Manual upstream source/issue/patch reading; byte anchors measured from captured upstream bytes, no xrai/graft/parser output labels",
+  "behavioral_assertions": [
+    "Both malformed tuple/or shapes report the two annotated type mismatches without panic",
+    "Non-exhaustive let diagnostics remain on valid refutable patterns",
+    "Existing scoped non_exhaustive_let diagnostics suite passes on reference"
+  ],
+  "test_provenance": "PR23422 added regression_23336_1 and regression_23336_2; evaluator copies same handler into both fresh trees, production reference patch remains excluded from agent",
+  "patch": {
+    "path": "oracles/reference.patch",
+    "sha256": "05c3f3ba4da6d261c0719fc084a12d9592ce929b10ea1749eeec0546e21d4538",
+    "source_commit": "ec5b576b726a1e3d0b860761f0fd73b1665cfa32"
+  },
+  "recovery_criteria": "necessary captured definitions/calls and nested mismatch traversal; not patch textual equality",
+  "agent_success_criteria": "pass executable assertions and scoped regressions, never source recovery alone",
+  "review": {
+    "author": "/root/corpus_rust",
+    "second_reader": null,
+    "status": "pending"
+  },
+  "probes": {
+    "status": "pending_authorized_Linux_domain"
+  },
+  "admitted": false
+}

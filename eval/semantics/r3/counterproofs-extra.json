@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "profile": "rust-r3-v1",
+  "cases": [
+    {
+      "id": "mutable-with-comment",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let /*comment*/ mut entry=target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 60,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "escaped-cfg",
+      "files": {
+        "src/lib.rs": "#[cfg(feature=\"cho\\n\")] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:cho\\n": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 50,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "unproven-occurrence",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let other=1; }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 30,
+      "expected_state": "unknown",
+      "expected_target": null
+    }
+  ]
+}

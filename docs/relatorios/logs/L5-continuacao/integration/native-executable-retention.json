@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "eval/scripts/retain_native_binaries.py",
+    "--output",
+    "/private/tmp/xrai-l5-continuacao-native-binaries"
+  ],
+  "base_commit": "284e836d8ac15e110dbf1eff7eb37587388c46ea",
+  "recorded_at": "2026-10-12T16:31:20.110868+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.75272645899895,
+  "exit_code": 0,
+  "stdout": "{\n  \"verified\": true,\n  \"code_commit\": \"284e836d8ac15e110dbf1eff7eb37587388c46ea\",\n  \"executables\": [\n    {\n      \"name\": \"parsing-spike\",\n      \"bytes\": 8162608,\n      \"sha256\": \"175927441a65ce12491e62160b9720f94fc06c1e6522ef0d6084cf05825b4bca\",\n      \"mode\": 493\n    },\n    {\n      \"name\": \"worker-spike\",\n      \"bytes\": 8452848,\n      \"sha256\": \"70fe041e2740ebf490c9f79d5ba30d56ce85d0f4ec14438e7b7285240e579166\",\n      \"mode\": 493\n    },\n    {\n      \"name\": \"worker-persistent\",\n      \"bytes\": 8616432,\n      \"sha256\": \"79a31dff0d67e446d156c609a46ec71076a839776c42a126bc99ac9ba3a9f8f3\",\n      \"mode\": 493\n    },\n    {\n      \"name\": \"worker-benchmark\",\n      \"bytes\": 8687184,\n      \"sha256\": \"95fb0a9893a7dafc238fe9ecf9efbf9f2f1f01fdea97f76a28b3b59148765420\",\n      \"mode\": 493\n    },\n    {\n      \"name\": \"semantics-spike\",\n      \"bytes\": 6725808,\n      \"sha256\": \"3ccd6a7d75ab086e8eb647daddda229c8564eb0478df6f3e5611800c88a1b1ca\",\n      \"mode\": 493\n    },\n    {\n      \"name\": \"context-spike\",\n      \"bytes\": 7484048,\n      \"sha256\": \"6fc9cd4dd3f025ab3066f7434b4dcae9508237bea439a53dcb67bd25539cec96\",\n      \"mode\": 493\n    }\n  ]\n}\n",
+  "stderr": "",
+  "stdout_sha256": "d05e1a5dd635f5ebc5207fb1a0976583b524bf670df0e3fc12a0cc4036b7dbc0",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

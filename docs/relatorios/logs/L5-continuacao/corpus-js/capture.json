@@ -1,0 +1,187 @@
+{
+  "schema_version": "xrai.eval.l5.js.capture.v1",
+  "repository": "facebook/react",
+  "slot": "L5-SLOT-TSJS-contract_change-2",
+  "language": "JavaScript (Flow annotations, not TypeScript)",
+  "method": "xrai.production.react.runtime-js.conservative.v1",
+  "method_source_sha256": "07630aac8dc86a4b93ba0c153d7217d9786eea69f540fb9499f1e2d941adf6c0",
+  "measurement_definition": "ADR021 nonempty production source lines, comments included; old implementation copies and forks excluded. Comment-filtered count is diagnostic only.",
+  "allowlisted_runtime_packages": [
+    "react",
+    "react-cache",
+    "react-client",
+    "react-dom",
+    "react-is",
+    "react-reconciler",
+    "react-refresh",
+    "react-server",
+    "scheduler",
+    "shared",
+    "use-subscription",
+    "use-sync-external-store"
+  ],
+  "excluded_path_parts": [
+    "__fixtures__",
+    "__mocks__",
+    "__tests__",
+    "benchmarks",
+    "fixtures",
+    "forks",
+    "generated",
+    "npm",
+    "test",
+    "test-utils",
+    "tests",
+    "third_party",
+    "vendor"
+  ],
+  "snapshots": {
+    "base": {
+      "commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+      "archive": "eval/qualification/l5-real/js/sources/base.tar.gz",
+      "archive_sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6",
+      "upstream_url": "https://codeload.github.com/facebook/react/tar.gz/77912d9a05d7a90287fabdec76486f25869b2981",
+      "inventory": "eval/qualification/l5-real/js/sources/base-inventory.json.gz",
+      "inventory_sha256": "4013fd6b455f5ac891fac6492e91f5544fe8f40c633e0b97dbdb41e24356a209",
+      "complete_regular_files": 2330,
+      "source_bytes": 21048754,
+      "production_js_files": 273,
+      "production_nonempty_lines": 56440,
+      "comment_filtered_diagnostic": 46766,
+      "excluded_counts": {
+        "duplicate_legacy_reconciler_variant": 32,
+        "included": 273,
+        "outside_allowlisted_runtime_js": 1714,
+        "test_doc_vendor_generated_or_fork_path": 311
+      },
+      "setup_and_evidence": {
+        "LICENSE": {
+          "bytes": 1086,
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        },
+        "babel.config.js": {
+          "bytes": 1051,
+          "sha256": "de56df93874159aa2709e47b324def6cf0ff706f8dedc42ac46cc6928718af14"
+        },
+        "package.json": {
+          "bytes": 6710,
+          "sha256": "fc9d4924264754b26826f4ac3ea40dc8335ac5c1779c1a562d6d6a0147a04aa4"
+        },
+        "packages/react-reconciler/src/ReactFiberHooks.new.js": {
+          "bytes": 105906,
+          "sha256": "66a2e38d1d47afd70c3b487e0582716777b2174caef5e0b4ab949514eef5968f"
+        },
+        "packages/react-reconciler/src/ReactFiberHooks.old.js": {
+          "bytes": 105906,
+          "sha256": "8bbba441b3bddc15730f6a322d18b878c2f5034b8fb160960c45b1c4c3f534ce"
+        },
+        "packages/react-reconciler/src/ReactFiberWorkLoop.new.js": {
+          "bytes": 92958,
+          "sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7"
+        },
+        "packages/react/src/ReactHooks.js": {
+          "bytes": 5778,
+          "sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+        },
+        "scripts/jest/config.base.js": {
+          "bytes": 950,
+          "sha256": "82483df1e5e6591f6d47294a452a920344b9f29cc2171a7db2104c919de6baaa"
+        },
+        "scripts/jest/config.source-www.js": {
+          "bytes": 414,
+          "sha256": "2d622f0664d9def39378d1217e44977cc0633c66cc517f9797c12d50528d77d2"
+        },
+        "scripts/jest/jest-cli.js": {
+          "bytes": 8826,
+          "sha256": "561c0a2911075136bdc56dc3daf3df2da0c7c7b76459c4179d27424703d59882"
+        },
+        "scripts/jest/preprocessor.js": {
+          "bytes": 3561,
+          "sha256": "4036fd7d39aa99171436067409a086bdce7523a050e9795c8ae63c6b6517b932"
+        },
+        "yarn.lock": {
+          "bytes": 716085,
+          "sha256": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544"
+        }
+      },
+      "eligible_floor": true
+    },
+    "head": {
+      "commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+      "archive": "eval/qualification/l5-real/js/sources/head.tar.gz",
+      "archive_sha256": "1d7af4d0c750af4ce19c18473e876b4bc56390f3adca22dae9a4d85304a808c9",
+      "upstream_url": "https://codeload.github.com/facebook/react/tar.gz/06f98c168060ef0213526a1aee696a568cec7f54",
+      "inventory": "eval/qualification/l5-real/js/sources/head-inventory.json.gz",
+      "inventory_sha256": "1130dddf3e9a68064bf16fee7f8589fe6b181e29b755046a08a55581e9a39bb8",
+      "complete_regular_files": 2330,
+      "source_bytes": 21058141,
+      "production_js_files": 273,
+      "production_nonempty_lines": 56545,
+      "comment_filtered_diagnostic": 46830,
+      "excluded_counts": {
+        "duplicate_legacy_reconciler_variant": 32,
+        "included": 273,
+        "outside_allowlisted_runtime_js": 1714,
+        "test_doc_vendor_generated_or_fork_path": 311
+      },
+      "setup_and_evidence": {
+        "LICENSE": {
+          "bytes": 1086,
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        },
+        "babel.config.js": {
+          "bytes": 1051,
+          "sha256": "de56df93874159aa2709e47b324def6cf0ff706f8dedc42ac46cc6928718af14"
+        },
+        "package.json": {
+          "bytes": 6710,
+          "sha256": "fc9d4924264754b26826f4ac3ea40dc8335ac5c1779c1a562d6d6a0147a04aa4"
+        },
+        "packages/react-reconciler/src/ReactFiberHooks.new.js": {
+          "bytes": 110416,
+          "sha256": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753"
+        },
+        "packages/react-reconciler/src/ReactFiberHooks.old.js": {
+          "bytes": 110416,
+          "sha256": "8cd11500b4c39b9da038346a86aaaa7f8efdf04e964eb2c63c06cc6512c632d5"
+        },
+        "packages/react-reconciler/src/ReactFiberWorkLoop.new.js": {
+          "bytes": 92958,
+          "sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7"
+        },
+        "packages/react/src/ReactHooks.js": {
+          "bytes": 5778,
+          "sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+        },
+        "scripts/jest/config.base.js": {
+          "bytes": 950,
+          "sha256": "82483df1e5e6591f6d47294a452a920344b9f29cc2171a7db2104c919de6baaa"
+        },
+        "scripts/jest/config.source-www.js": {
+          "bytes": 414,
+          "sha256": "2d622f0664d9def39378d1217e44977cc0633c66cc517f9797c12d50528d77d2"
+        },
+        "scripts/jest/jest-cli.js": {
+          "bytes": 8826,
+          "sha256": "561c0a2911075136bdc56dc3daf3df2da0c7c7b76459c4179d27424703d59882"
+        },
+        "scripts/jest/preprocessor.js": {
+          "bytes": 3561,
+          "sha256": "4036fd7d39aa99171436067409a086bdce7523a050e9795c8ae63c6b6517b932"
+        },
+        "yarn.lock": {
+          "bytes": 716085,
+          "sha256": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544"
+        }
+      },
+      "eligible_floor": true
+    }
+  },
+  "reference_patch_sha256": "3156ac7ac3e5a2df64db9cbff7e4939da5c3dac35aa4851a0008a98e6e546733",
+  "reference_patch_paths": [
+    "packages/react-reconciler/src/ReactFiberHooks.new.js",
+    "packages/react-reconciler/src/ReactFiberHooks.old.js"
+  ],
+  "qualification_status": "curated_candidate_probes_and_independent_review_pending",
+  "admitted": false
+}

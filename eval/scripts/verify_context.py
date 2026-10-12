@@ -103,6 +103,29 @@ def verify_delivery(delivery, encoding, profile, contract, validator):
     for resolution in m['resolutions']:
         s = next(s for s in delivery['snapshots'] if s['snapshot_id'] == resolution['snapshot_id'])
         validate_ir(resolution['result'], s, {d['id'] for d in s['declarations']})
+        occurrence = resolution['occurrence']
+        lookup = resolution['lookup']
+        assert any(a['path'] == occurrence['path'] and a['start'] == occurrence['start'] and
+                   a['end'] == occurrence['end'] and a['lookup'] == lookup
+                   and s['snapshot_id'] == (delivery['snapshots'][-1]['snapshot_id'] if a['side'] == 'head'
+                                            else delivery['snapshots'][0]['snapshot_id'])
+                   for a in m['normalized_request']['anchors'])
+        source = actual_sources[(s['snapshot_id'], occurrence['path'])]
+        assert 0 <= occurrence['start'] < occurrence['end'] <= len(source)
+        if s['input']['rules'] == 'rust-r3-v1':
+            # A position-bound query cannot borrow a resolution from a homonym.
+            assert all(e['snapshot_id'] == s['snapshot_id'] for e in resolution['result']['evidence'])
+            demonstrated = [ref for ref in s['references'] if ref['evidence']['path'] == occurrence['path']
+                            and ref['evidence']['start'] == occurrence['start']
+                            and ref['path'] == lookup['path'] and ref['namespace'] == lookup['namespace']
+                            and ref['module'] == lookup['module']]
+            if demonstrated:
+                assert resolution['result'] == demonstrated[0]['resolution']
+            elif resolution['result']['state'] == 'resolved':
+                assert any(d['evidence']['path'] == occurrence['path'] and
+                           d['evidence']['start'] == occurrence['start'] and d['name'] == lookup['path']
+                           and d['namespace'] == lookup['namespace']
+                           for d in s['declarations'])
     for c in m['candidates']:
         source = actual_sources[(c['snapshot_id'], c['path'])]
         assert c['source_hash'] == digest(source)
@@ -190,6 +213,23 @@ def verify(input_path, output_path):
             assert outcome['error']=='budget_below_envelope';summary['error']=outcome['error']
         curves.append(summary)
     labels = json.loads((ROOT / 'eval/context/development-labels.json').read_text())['cases'].get(Path(input_path).name)
+    if Path(input_path).name == 'r3-binding-input.json':
+        expected = json.loads((ROOT / 'eval/context/r3-binding-labels.json').read_text())['expected']
+        delivery = output['initial']
+        resolutions = delivery['manifest']['resolutions']
+        assert len(resolutions) == len(expected)
+        for result, label in zip(resolutions, expected):
+            snapshot = next(s for s in delivery['snapshots'] if s['snapshot_id'] == result['snapshot_id'])
+            assert snapshot['snapshot_id'] == delivery['snapshots'][0 if label['side'] == 'base' else -1]['snapshot_id']
+            assert result['result']['state'] == label['state']
+            if label['state'] == 'resolved':
+                target = next(d for d in snapshot['declarations'] if d['id'] == result['result']['target_id'])
+                assert target['module'] == label['module'] and target['name'] == 'target'
+                assert any(c['reason'] == 'resolved_definition' and c['snapshot_id'] == snapshot['snapshot_id'] and
+                           c['minimum'][0] <= target['evidence']['start'] < target['evidence']['end'] <= c['minimum'][1]
+                           for c in delivery['manifest']['candidates'])
+            else:
+                assert result['result']['target_id'] is None
     if labels:
         initial = output['initial']; base_id = initial['snapshots'][0]['snapshot_id']
         if 'required_base_text' in labels:

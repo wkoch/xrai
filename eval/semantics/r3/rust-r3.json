@@ -1,0 +1,640 @@
+{
+  "schema_version": 2,
+  "profile": "rust-r3-v1",
+  "preregistered_resolvable": 16,
+  "cases": [
+    {
+      "id": "before-simple-shadow",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { target(); let target = 1; target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 26,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "after-simple-shadow",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { target(); let target = 1; target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 52,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "unrelated-let",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let other=1; target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 39,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "mutable-local-shadow",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let mut target=1; target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 44,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "parameter-shadow",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run(target: fn()) { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 38,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "parameter-unrelated",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run(other: u8) { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 35,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "parameter-mut-shadow",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run(mut target: fn()) { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 42,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "parameter-type-homonym",
+      "files": {
+        "src/lib.rs": "struct target; fn run(value: target) { other(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "other",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 39,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "block-shadow-inner",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { { let target=1; target(); } target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 42,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "block-shadow-expired",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { { let target=1; target(); } target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 54,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "block-shadow-inherited",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let target=1; { target(); } }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 42,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "initializer-before-binding",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let target = target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 39,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "alias-direct-function",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let entry=target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 44,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "alias-qualified-function",
+      "files": {
+        "src/lib.rs": "mod a { pub fn target() {} } fn run() { let entry=crate::a::target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 68,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::target",
+      "expected_reason": null
+    },
+    {
+      "id": "alias-import-function",
+      "files": {
+        "src/lib.rs": "mod a { pub fn target() {} } use a::target; fn run() { let entry=target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 73,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::target",
+      "expected_reason": null
+    },
+    {
+      "id": "alias-mutable-unknown",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let mut entry=target; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 48,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "alias-chain-unsupported",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let first=target; let entry=first; entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "entry",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 61,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "shadow-import",
+      "files": {
+        "src/lib.rs": "mod a { pub fn target() {} } use a::target; fn run(target: fn()) { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 67,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "destructure-unsupported",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let (target, x)=(1,2); target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 49,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "closure-unsupported",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { let entry=|| target(); entry(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 39,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "for-pattern-unsupported",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { for target in [1] { target(); } }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 46,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "macro-scope-gap",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { made!(); target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 35,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "block-item-gap",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { target(); fn target() {} }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 26,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-true",
+      "files": {
+        "src/lib.rs": "#[cfg(feature=\"chosen\")] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:chosen": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 51,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-false",
+      "files": {
+        "src/lib.rs": "#[cfg(feature=\"chosen\")] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:chosen": "known:false"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 51,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-unknown",
+      "files": {
+        "src/lib.rs": "#[cfg(feature=\"chosen\")] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 51,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-not-false",
+      "files": {
+        "src/lib.rs": "#[cfg(not(feature=\"chosen\"))] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:chosen": "known:false"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 56,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-all-true",
+      "files": {
+        "src/lib.rs": "#[cfg(all(feature=\"chosen\", unix))] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:chosen": "known:true",
+        "unix": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 62,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-any-true",
+      "files": {
+        "src/lib.rs": "#[cfg(any(feature=\"missing\", unix))] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "unix": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 63,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-two-alternatives",
+      "files": {
+        "src/lib.rs": "#[cfg(feature=\"chosen\")] fn target() {} #[cfg(not(feature=\"chosen\"))] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:chosen": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 96,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-closed-absent",
+      "files": {
+        "src/lib.rs": "#[cfg(not(feature=\"chosen\"))] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "closed:feature": "true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 56,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-attr-gap",
+      "files": {
+        "src/lib.rs": "#[cfg_attr(feature=\"chosen\", made)] fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:chosen": "known:false"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 62,
+      "expected_state": "unknown",
+      "expected_target": null,
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-disabled-function",
+      "files": {
+        "src/lib.rs": "fn target() {} #[cfg(feature=\"chosen\")] fn hidden() { target(); } fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:chosen": "known:false"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 77,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:target",
+      "expected_reason": null
+    },
+    {
+      "id": "cfg-module-known",
+      "files": {
+        "src/lib.rs": "#[cfg(feature=\"chosen\")] mod a { pub fn target() {} } fn run() { a::target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {
+        "feature:chosen": "known:true"
+      },
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "a::target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 65,
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::target",
+      "expected_reason": null
+    }
+  ]
+}

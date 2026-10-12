@@ -1,0 +1,107 @@
+{
+  "parent_commit": "284e836d8ac15e110dbf1eff7eb37587388c46ea",
+  "sources": {
+    ".github/workflows/ci.yml": {
+      "sha256": "a9f334119e655fcb35f0063cc3767eb622fa31218409e963233375825531f169",
+      "bytes": 12369
+    },
+    "crates/xrai-eval/src/bin/semantics-spike.rs": {
+      "sha256": "4f801649cece5c15dc0f9807b64648dcf8c593497b3a8923b5d4690b74cdad23",
+      "bytes": 4459
+    },
+    "crates/xrai-eval/src/context_spike.rs": {
+      "sha256": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+      "bytes": 61415
+    },
+    "crates/xrai-eval/src/semantics_spike.rs": {
+      "sha256": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+      "bytes": 31558
+    },
+    "crates/xrai-eval/src/semantics_spike/r3.rs": {
+      "sha256": "b2a544ccea0aab7063ec6e1c2570df850135712e35797831a75b676c3b8310b2",
+      "bytes": 16292
+    },
+    "crates/xrai-eval/tests/semantics_spike.rs": {
+      "sha256": "a3f13344e324712f009edde7f5ecb74db5c0631448c2fde169a65ce90cda6e11",
+      "bytes": 8816
+    },
+    "eval/context/r3-binding-input.json": {
+      "sha256": "34060202057520049a0a7c50347d2189278f39c869b02e21562172b312f15bf4",
+      "bytes": 1661
+    },
+    "eval/context/r3-binding-labels.json": {
+      "sha256": "581819a9f3a70c7382eff6ae847c1d37276772be1d4cb2837566e2f7931ade47",
+      "bytes": 333
+    },
+    "eval/scripts/collect_real_rust.py": {
+      "sha256": "9e61970d9a2e385ea0b21ce6b15d63d8c02888b0d9840829dc2d41cb09431016",
+      "bytes": 10038
+    },
+    "eval/scripts/prepare_l5_js.py": {
+      "sha256": "1fbdd2ed8783ed838c87c0ef016f1aca1395cecec8a48259210fb839ae48a970",
+      "bytes": 8711
+    },
+    "eval/scripts/retain_native_binaries.py": {
+      "sha256": "0499edc16bc9e37023b4eb34bf23d09f4ce7a4c907cbd7f288af62995ae990b6",
+      "bytes": 2962
+    },
+    "eval/scripts/run_l5_js.py": {
+      "sha256": "49d45fc9d3dfd43dc1f13b5a476fd8ea17df185aff18e4315d96ed9373df0695",
+      "bytes": 8865
+    },
+    "eval/scripts/run_real_rust_probes.py": {
+      "sha256": "9e8236decd5b12fe9ba6487cb7199a02a536c3159019cb4679edd573a36e4044",
+      "bytes": 8759
+    },
+    "eval/scripts/verify_context.py": {
+      "sha256": "d67d255ce6f9454d04fd70a7916c700f4693df7b60a66a6bb74a9cf7d718bc49",
+      "bytes": 16836
+    },
+    "eval/scripts/verify_semantics.py": {
+      "sha256": "3c5c4838208e24a902c3f3c8df7c8caca95675f803d141c2ebc0ab0ff5ae0135",
+      "bytes": 12480
+    },
+    "eval/semantics/r3/counterproofs-extra.json": {
+      "sha256": "077c397240586c8753c524f6fc65e45ecc8f347489e176edb633cb49c5e28656",
+      "bytes": 1494
+    },
+    "eval/semantics/r3/counterproofs-r3.json": {
+      "sha256": "de0e5fae75a458a4a09dabda4c02b5843ff307f5e26909b38f0d7b72b0307b97",
+      "bytes": 1909
+    },
+    "eval/semantics/r3/incremental-events.json": {
+      "sha256": "89c247138cb195701c0ad4cb09a31e175ce520acdfd089f9f1a8ae4b4bb84984",
+      "bytes": 1506
+    },
+    "eval/semantics/r3/incremental-labels.json": {
+      "sha256": "d15d8ad2a12e10c54e2ad1586d8068e8e5d1a4d76a42388ab350d51b86b10884",
+      "bytes": 438
+    },
+    "eval/semantics/r3/language-reference-pin.json": {
+      "sha256": "ab6aceba946d0db3f12b846e0f54ac72f3a475ed64d17b2e7b25dd269b429bb8",
+      "bytes": 5033
+    },
+    "eval/semantics/r3/p3-consumer.json": {
+      "sha256": "b008dfa3d07ec6ccba287bd62f9a9c170906a193b7bbc39ad07e98b2dcd0a572",
+      "bytes": 867
+    },
+    "eval/semantics/r3/rust-r3.json": {
+      "sha256": "03793ea368850b427903578efd0274a1f0a317979be7568eba5e7831970ee785",
+      "bytes": 17790
+    },
+    "eval/semantics/r3/tests/test_r3_verifier.py": {
+      "sha256": "a95b88c4480e3aba9168f3a7be8bccd9c94c125bb49bac235c35390e7fd98916",
+      "bytes": 3197
+    },
+    "eval/semantics/r3/tokio-test-development.json": {
+      "sha256": "55163c9cb212b5c176a5592b1f36430661dea927e4f2c331c8028099855fed92",
+      "bytes": 87936
+    }
+  },
+  "graph_coverage": {
+    "project": "Users-wkoch-Projetos-xrai",
+    "generation": "2026-10-12T16:35:51Z",
+    "12_reliance_paths": "metadata_match best effort, not completeness proof",
+    "new_code_and_captured_upstream": "direct source/archived-byte verification supplements graph"
+  }
+}

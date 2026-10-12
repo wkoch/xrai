@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "profile": "rust-r3-v1",
+  "cases": [],
+  "events": [
+    {
+      "id": "create-binding-and-export",
+      "a": {
+        "files": {
+          "src/lib.rs": "mod a { } use a::target; fn run() { target(); }"
+        },
+        "root": "src/lib.rs",
+        "edition": "2021",
+        "configuration": {},
+        "rules": "rust-r3-v1"
+      },
+      "b": {
+        "files": {
+          "src/lib.rs": "mod a { pub fn target() {} } use a::target; fn run() { let entry=target; entry(); }"
+        },
+        "root": "src/lib.rs",
+        "edition": "2021",
+        "configuration": {},
+        "rules": "rust-r3-v1"
+      }
+    },
+    {
+      "id": "configuration-swap",
+      "a": {
+        "files": {
+          "src/lib.rs": "#[cfg(feature=\"chosen\")] mod a { pub fn target() {} } #[cfg(not(feature=\"chosen\"))] mod b { pub fn target() {} } fn run() { a::target(); b::target(); }"
+        },
+        "root": "src/lib.rs",
+        "edition": "2021",
+        "configuration": {
+          "feature:chosen": "known:false"
+        },
+        "rules": "rust-r3-v1"
+      },
+      "b": {
+        "files": {
+          "src/lib.rs": "#[cfg(feature=\"chosen\")] mod a { pub fn target() {} } #[cfg(not(feature=\"chosen\"))] mod b { pub fn target() {} } fn run() { a::target(); b::target(); }"
+        },
+        "root": "src/lib.rs",
+        "edition": "2021",
+        "configuration": {
+          "feature:chosen": "known:true"
+        },
+        "rules": "rust-r3-v1"
+      }
+    }
+  ]
+}

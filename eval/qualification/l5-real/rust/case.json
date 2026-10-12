@@ -1,0 +1,102 @@
+{
+  "id": "L5-Rust-RA-23422",
+  "slot": "L5-SLOT-Rust-correction-2",
+  "version": 1,
+  "family": "Rust",
+  "kind": "correction",
+  "repository": "rust-lang/rust-analyzer",
+  "origin": {
+    "class": "public_historical_fix",
+    "url": "https://github.com/rust-lang/rust-analyzer/pull/23422",
+    "issue_url": "https://github.com/rust-lang/rust-analyzer/issues/23336",
+    "selected_without_xrai_results": true
+  },
+  "change_lineage": "upstream:rust-lang/rust-analyzer:ec5b576b726a1e3d0b860761f0fd73b1665cfa32",
+  "derived_from": [],
+  "license_spdx": "MIT OR Apache-2.0",
+  "license_files": [
+    "LICENSE-MIT",
+    "LICENSE-APACHE"
+  ],
+  "baseline": {
+    "commit": "3a5f65784a90278fa1de97fe89a7a529dd44765a",
+    "archive": "baseline.tar.gz",
+    "upstream_url": "https://codeload.github.com/rust-lang/rust-analyzer/tar.gz/3a5f65784a90278fa1de97fe89a7a529dd44765a",
+    "inventory": "baseline-inventory.json"
+  },
+  "reference": {
+    "commit": "ec5b576b726a1e3d0b860761f0fd73b1665cfa32",
+    "archive": "reference.tar.gz",
+    "upstream_url": "https://codeload.github.com/rust-lang/rust-analyzer/tar.gz/ec5b576b726a1e3d0b860761f0fd73b1665cfa32",
+    "inventory": "reference-inventory.json"
+  },
+  "request": {
+    "path": "request.json",
+    "sha256": "d417a16aec38772c501b413fd101265d0d05b8dd21273a0265a9f58d2891b60c",
+    "source": "Issue23336 symptom/reproducer; desired behavior from PR23422, no solution symbol/path added"
+  },
+  "production_modules": [
+    {
+      "path": "crates/hir/src/diagnostics.rs",
+      "subsystem": "HIR-to-IDE-diagnostics",
+      "necessity": "Transforms type-inference errors and collected body validation into source diagnostics; required to keep real type errors visible while omitting spurious exhaustiveness output.",
+      "source_sha256": "40a01a66fe2020caa673ad3ffbe4e166601ac7b81024cfe1484496c7ba784d9f",
+      "commit": "3a5f65784a90278fa1de97fe89a7a529dd44765a",
+      "anchor": "BodyValidationDiagnostic::collect",
+      "byte_start": 41725,
+      "byte_end": 41758,
+      "line": 1281
+    },
+    {
+      "path": "crates/hir-ty/src/diagnostics/expr.rs",
+      "subsystem": "typed-pattern-validation",
+      "necessity": "Checks let-pattern well-formedness before lowering and usefulness analysis; nested mismatch differs from outer type mismatch.",
+      "source_sha256": "790b0610162c71588e9e97ef011e97df3ae5fde093b52ce35667c4fe3242524b",
+      "commit": "3a5f65784a90278fa1de97fe89a7a529dd44765a",
+      "anchor": "fn types_of_subpatterns_do_match",
+      "byte_start": 25135,
+      "byte_end": 25167,
+      "line": 699
+    },
+    {
+      "path": "crates/hir-def/src/hir.rs",
+      "subsystem": "lowered-pattern-structure",
+      "necessity": "Pat::walk_child_pats defines traversal of Or, Tuple, reference and binding subpatterns, needed to ensure buried errors are visited.",
+      "source_sha256": "82b8a483610ebacac1543e10b8dd0b4cf43a4b5e1501f3f906537be76f0ad6e1",
+      "commit": "3a5f65784a90278fa1de97fe89a7a529dd44765a",
+      "anchor": "pub fn walk_child_pats",
+      "byte_start": 21830,
+      "byte_end": 21852,
+      "line": 810
+    }
+  ],
+  "relations": [
+    {
+      "from": "crates/hir/src/diagnostics.rs",
+      "to": "crates/hir-ty/src/diagnostics/expr.rs",
+      "anchor": "BodyValidationDiagnostic::collect",
+      "necessity": "diagnostics collector invokes body validation while retaining inference errors"
+    },
+    {
+      "from": "crates/hir-ty/src/diagnostics/expr.rs",
+      "to": "crates/hir-def/src/hir.rs",
+      "anchor": "pat.walk_child_pats",
+      "necessity": "recursive validation uses the lowered pattern child traversal to reach tuple/or subpattern mismatches"
+    }
+  ],
+  "complexity": {
+    "requested": true,
+    "portability_floor_demonstrated": true,
+    "need_second_reader_semantic_review": true,
+    "complex_admitted": false
+  },
+  "status": "materialized_candidate_probes_and_review_pending",
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "pending": [
+    "baseline failing behavioral probe in Linux harness domain",
+    "reference behavioral and non_exhaustive_let regression suite in Linux harness domain",
+    "independent second-reader review",
+    "incremental A-to-B same index/process execution and full B rebuild comparison"
+  ]
+}

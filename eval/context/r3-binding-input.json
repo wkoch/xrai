@@ -1,0 +1,69 @@
+{
+  "base": {
+    "files": {
+      "src/lib.rs": "mod old { pub fn target() {} } mod new { pub fn target() {} } use old::target as entry; fn run() { entry(); }\n"
+    },
+    "root": "src/lib.rs",
+    "edition": "2021",
+    "configuration": {},
+    "rules": "rust-r3-v1"
+  },
+  "head": {
+    "files": {
+      "src/lib.rs": "mod old { pub fn target() {} } mod new { pub fn target() {} } use old::target as entry; fn run() { let entry=crate::new::target; entry(); } fn uncertain(entry: fn()) { entry(); }\n"
+    },
+    "root": "src/lib.rs",
+    "edition": "2021",
+    "configuration": {},
+    "rules": "rust-r3-v1"
+  },
+  "request": {
+    "intent": "review",
+    "description": "Development comparison of occurrence-sensitive local calls",
+    "anchors": [
+      {
+        "side": "base",
+        "path": "src/lib.rs",
+        "start": 99,
+        "end": 104,
+        "lookup": {
+          "module": "",
+          "path": "entry",
+          "namespace": "value"
+        }
+      },
+      {
+        "side": "head",
+        "path": "src/lib.rs",
+        "start": 129,
+        "end": 134,
+        "lookup": {
+          "module": "",
+          "path": "entry",
+          "namespace": "value"
+        }
+      },
+      {
+        "side": "head",
+        "path": "src/lib.rs",
+        "start": 168,
+        "end": 173,
+        "lookup": {
+          "module": "",
+          "path": "entry",
+          "namespace": "value"
+        }
+      }
+    ],
+    "hunks": [],
+    "p2": true,
+    "limits": {
+      "max_bytes": 131072,
+      "max_tokens": 32768,
+      "max_candidates": 24,
+      "max_files": 8,
+      "max_source_bytes": 1048576,
+      "deadline_ms": 30000
+    }
+  }
+}

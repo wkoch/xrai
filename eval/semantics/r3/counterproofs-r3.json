@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "profile": "rust-r3-v1",
+  "cases": [
+    {
+      "id": "const-generic-shadows-value",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run<const target: usize>() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 47,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "wrong-module-occurrence",
+      "files": {
+        "src/lib.rs": "mod a { pub fn target() {} } fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "a",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 40,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "offset-out-of-bounds",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run() { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 9999,
+      "expected_state": "unknown",
+      "expected_target": null
+    },
+    {
+      "id": "destructured-parameter",
+      "files": {
+        "src/lib.rs": "fn target() {} fn run((target,x): (fn(),u8)) { target(); }"
+      },
+      "root": "src/lib.rs",
+      "edition": "2021",
+      "configuration": {},
+      "rules": "rust-r3-v1",
+      "module": "",
+      "path": "target",
+      "namespace": "value",
+      "query_file": "src/lib.rs",
+      "query_start": 47,
+      "expected_state": "unknown",
+      "expected_target": null
+    }
+  ]
+}

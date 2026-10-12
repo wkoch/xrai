@@ -1,0 +1,29 @@
+{
+  "context-r3-binding.json": {
+    "command": [
+      "target/release/context-spike",
+      "eval/context/r3-binding-input.json",
+      "/private/tmp/xrai-l4-measurement/bin/python"
+    ],
+    "uncompressed_sha256": "6d2ac29502659ee2e56411637ffc883d0e6540191d3e09520d3523c7c7e7f4af",
+    "compressed_sha256": "739fce625a1739145650962fb2904c3c5b19edb9b93496f612aab2d4e857d27c"
+  },
+  "context-removed-consumer.json": {
+    "command": [
+      "target/release/context-spike",
+      "eval/context/removed-consumer-input.json",
+      "/private/tmp/xrai-l4-measurement/bin/python"
+    ],
+    "uncompressed_sha256": "bca85d1c491c9292233895d74351ce7b0172d007fc108c95ef7372d9ec633e8e",
+    "compressed_sha256": "d96699faab298002d3035be5266f7a093bf1bef56c2726dca9dcc2e7b504724c"
+  },
+  "context-central-hunk.json": {
+    "command": [
+      "target/release/context-spike",
+      "eval/context/central-hunk-input.json",
+      "/private/tmp/xrai-l4-measurement/bin/python"
+    ],
+    "uncompressed_sha256": "5071ccfcdc34ecca271937d2358973d4673fd44fa4b3b285d876dc4e37f10523",
+    "compressed_sha256": "b494059ee6944cce6abbffab33b8026bd20f9c9ae537bdffeb465c40207d5bfd"
+  }
+}
