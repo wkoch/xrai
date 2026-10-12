@@ -1,0 +1,268 @@
+{
+  "recorded_at": "2026-10-12T01:38:26.617251+00:00",
+  "base_commit": "257b91d80cbc02537efc254f496f1d1f6d0c0491",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "checks": [
+    {
+      "command": [
+        "rustc",
+        "-vV"
+      ],
+      "started_at": "2026-10-12T01:38:25.347713+00:00",
+      "exit_code": 0,
+      "stdout": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "-V"
+      ],
+      "started_at": "2026-10-12T01:38:25.383204+00:00",
+      "exit_code": 0,
+      "stdout": "cargo 1.98.1 (797e8a9bc 2026-08-05)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "fmt",
+        "-p",
+        "xrai-eval",
+        "--",
+        "--check"
+      ],
+      "started_at": "2026-10-12T01:38:25.402947+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "xrai-eval",
+        "--locked",
+        "--offline"
+      ],
+      "started_at": "2026-10-12T01:38:25.468069+00:00",
+      "exit_code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 6 tests\ntest bundled_sqlite_fts5_and_trigram_are_available_without_load_extension ... ok\ntest source_foreign_keys_hashes_and_invalid_spans_are_enforced ... ok\ntest two_readers_keep_a_bytes_facts_and_fts_while_writer_publishes_b ... ok\ntest future_schema_and_foreign_application_are_refused_without_recreation ... ok\ntest backup_rebuild_preserve_human_files_and_readers_and_refuse_overwrite ... ok\ntest killed_writer_rolls_back_b_keeps_a_and_records_abandoned_staging ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.37s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (target/debug/deps/xrai_eval-7f1c13dd6b66a588)\n     Running unittests src/bin/sqlite-spike.rs (target/debug/deps/sqlite_spike-26b0ca48a23651d8)\n     Running tests/sqlite_snapshots.rs (target/debug/deps/sqlite_snapshots-ba0cb14274d8f0e2)\n   Doc-tests xrai_eval\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "clippy",
+        "-p",
+        "xrai-eval",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "started_at": "2026-10-12T01:38:25.992058+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "tree",
+        "-p",
+        "xrai",
+        "--locked",
+        "--offline"
+      ],
+      "started_at": "2026-10-12T01:38:26.125328+00:00",
+      "exit_code": 0,
+      "stdout": "xrai v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai)\n├── xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n├── xrai-index v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-index)\n│   └── xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n└── xrai-query v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-query)\n    └── xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "run",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "sqlite-spike",
+        "--locked",
+        "--offline",
+        "--",
+        "demonstrate",
+        "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-sqlite-measurement-tn4fkugu/readers"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"sqlite\":\"3.53.2\",\"fts5\":true,\"old_readers\":2,\"old_generation\":\"A\",\"new_generation\":\"B\",\"source_blob_bytes\":82,\"page_count\":22,\"page_size\":4096,\"database_bytes\":90112,\"backup_bytes\":90112}\n",
+      "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s\n     Running `target/debug/sqlite-spike demonstrate /var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-sqlite-measurement-tn4fkugu/readers`\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "run",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "sqlite-spike",
+        "--locked",
+        "--offline",
+        "--",
+        "storage-cost",
+        "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-sqlite-measurement-tn4fkugu/cost"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"source_bytes_per_generation\":1024,\"changed\":false,\"retained_blob_count\":1,\"retained_blob_bytes\":1024,\"database_bytes_after_checkpoint\":90112,\"wal_bytes_before_checkpoint\":222512,\"publication_micros\":930},{\"source_bytes_per_generation\":1024,\"changed\":true,\"retained_blob_count\":2,\"retained_blob_bytes\":2048,\"database_bytes_after_checkpoint\":90112,\"wal_bytes_before_checkpoint\":230752,\"publication_micros\":950},{\"source_bytes_per_generation\":65536,\"changed\":false,\"retained_blob_count\":1,\"retained_blob_bytes\":65536,\"database_bytes_after_checkpoint\":315392,\"wal_bytes_before_checkpoint\":461472,\"publication_micros\":4084},{\"source_bytes_per_generation\":65536,\"changed\":true,\"retained_blob_count\":2,\"retained_blob_bytes\":131072,\"database_bytes_after_checkpoint\":380928,\"wal_bytes_before_checkpoint\":535632,\"publication_micros\":5450},{\"source_bytes_per_generation\":1048576,\"changed\":false,\"retained_blob_count\":1,\"retained_blob_bytes\":1048576,\"database_bytes_after_checkpoint\":3559424,\"wal_bytes_before_checkpoint\":3724512,\"publication_micros\":52563},{\"source_bytes_per_generation\":1048576,\"changed\":true,\"retained_blob_count\":2,\"retained_blob_bytes\":2097152,\"database_bytes_after_checkpoint\":4608000,\"wal_bytes_before_checkpoint\":4787472,\"publication_micros\":73265}]\n",
+      "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s\n     Running `target/debug/sqlite-spike storage-cost /var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-sqlite-measurement-tn4fkugu/cost`\n"
+    },
+    {
+      "command": [
+        "otool",
+        "-L",
+        "target/debug/sqlite-spike"
+      ],
+      "started_at": "2026-10-12T01:40:53.297426+00:00",
+      "exit_code": 0,
+      "stdout": "target/debug/sqlite-spike:\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1359.0.0)\n",
+      "stderr": ""
+    }
+  ],
+  "source_sha256": {
+    "crates/xrai-eval/tests/sqlite_snapshots.rs": "c42290f163189e499b849a6d6194fa13722cf8ee2bcb8b9a4926956ef7845d4b",
+    "crates/xrai-eval/src/lib.rs": "37955635f352ea1350268e258a7ca3827e65c2c02dd48ec8841cc945bdc02781",
+    "crates/xrai-eval/src/sqlite_spike.rs": "2fa7234566ca5ea8cc9fd933bcd584af241e60c038ed4cc9c2b7f6c1e4d2acb3",
+    "crates/xrai-eval/src/bin/sqlite-spike.rs": "34b3c99566e7a62e0fc50a98f1f3f2271476cdb92436ba811f72eb738b414663",
+    "crates/xrai-eval/Cargo.toml": "b8e64dba5452ddde8800b8889cc1e72f71ef6cdf6a3a2ecd46558096cf4200e4",
+    "Cargo.lock": "09d985dbb38969361ee8fc1ef1fa57c894914e81e80d4d552107c1116e05f65b"
+  },
+  "dependencies": [
+    {
+      "name": "arrayref",
+      "version": "0.3.9",
+      "license": "BSD-2-Clause",
+      "repository": "https://github.com/droundy/arrayref",
+      "rust_version": null
+    },
+    {
+      "name": "arrayvec",
+      "version": "0.7.8",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/bluss/arrayvec",
+      "rust_version": "1.51"
+    },
+    {
+      "name": "bitflags",
+      "version": "2.13.2",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/bitflags/bitflags",
+      "rust_version": "1.56.0"
+    },
+    {
+      "name": "blake3",
+      "version": "1.8.2",
+      "license": "CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception",
+      "repository": "https://github.com/BLAKE3-team/BLAKE3",
+      "rust_version": null
+    },
+    {
+      "name": "cc",
+      "version": "1.8.0",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/rust-lang/cc-rs",
+      "rust_version": "1.65.0"
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/rust-lang/cfg-if",
+      "rust_version": "1.32"
+    },
+    {
+      "name": "constant_time_eq",
+      "version": "0.3.1",
+      "license": "CC0-1.0 OR MIT-0 OR Apache-2.0",
+      "repository": "https://github.com/cesarb/constant_time_eq",
+      "rust_version": "1.66.0"
+    },
+    {
+      "name": "fallible-iterator",
+      "version": "0.3.0",
+      "license": "MIT/Apache-2.0",
+      "repository": "https://github.com/sfackler/rust-fallible-iterator",
+      "rust_version": null
+    },
+    {
+      "name": "fallible-streaming-iterator",
+      "version": "0.1.9",
+      "license": "MIT/Apache-2.0",
+      "repository": "https://github.com/sfackler/fallible-streaming-iterator",
+      "rust_version": null
+    },
+    {
+      "name": "find-msvc-tools",
+      "version": "0.1.14",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/rust-lang/cc-rs",
+      "rust_version": "1.65.0"
+    },
+    {
+      "name": "libsqlite3-sys",
+      "version": "0.38.2",
+      "license": "MIT",
+      "repository": "https://github.com/rusqlite/rusqlite",
+      "rust_version": null
+    },
+    {
+      "name": "pkg-config",
+      "version": "0.3.34",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/rust-lang/pkg-config-rs",
+      "rust_version": "1.63"
+    },
+    {
+      "name": "rusqlite",
+      "version": "0.40.2",
+      "license": "MIT",
+      "repository": "https://github.com/rusqlite/rusqlite",
+      "rust_version": null
+    },
+    {
+      "name": "shlex",
+      "version": "2.0.1",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/comex/rust-shlex",
+      "rust_version": "1.46.0"
+    },
+    {
+      "name": "smallvec",
+      "version": "1.16.3",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/servo/rust-smallvec",
+      "rust_version": null
+    },
+    {
+      "name": "vcpkg",
+      "version": "0.2.15",
+      "license": "MIT/Apache-2.0",
+      "repository": "https://github.com/mcgoo/vcpkg-rs",
+      "rust_version": null
+    }
+  ],
+  "native_platforms_not_observed": [
+    "Linux x86_64",
+    "Windows x86_64"
+  ],
+  "graph_verification": {
+    "project": "Users-wkoch-Projetos-xrai",
+    "generation": "2026-10-12T01:26:56Z",
+    "initial_paths": "no_recorded_issue / metadata_match",
+    "changed_paths": "metadata_changed (manifests), not_tracked (new sources/lockfile)",
+    "fallback": "direct source read and executed rustfmt/clippy/integration tests; graph not treated as proof of new implementation"
+  }
+}

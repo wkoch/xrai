@@ -30,7 +30,7 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | M0-04 | Harness, baseline e agentes | não iniciada | — |
 | M0-05 | Gramáticas e autonomia | não iniciada | — |
 | M0-06 | Workers e IPC | não iniciada | — |
-| M0-07 | Snapshots e armazenamento | em andamento | — |
+| M0-07 | Snapshots e armazenamento | em andamento | [Spike e seis testes locais](relatorios/sqlite-L1.md); [workspace integrado](relatorios/logs/L1/workspace-test.json); aguarda CI dos três SOs |
 | M0-08 | Filesystem e checkout | não iniciada | — |
 | M0-11 | Protótipo semântico P2 | não iniciada | — |
 | M0-09 | Protótipo de contexto P3 | não iniciada | — |
@@ -93,4 +93,6 @@ L0-A02 foi resolvida em arquitetura com alcance explícito do cap de diagnóstic
 
 Nenhuma decisão competitiva foi tomada com base nos smokes. A preferência do usuário por qualidade e os tetos propostos de custo permanecem inalterados.
 
-[Relatório L1](relatorios/L1.md): contrato retificado e CI aprovados; corpus e spike SQLite em execução.
+[Relatório L1](relatorios/L1.md): contrato retificado e CI aprovados; corpus em revisão e spike SQLite implementado/verificado localmente, aguardando CI nativa.
+
+L1-S01/S02: recuperação por supervisor, retenção/GC e duplicação FTS para M1-04; [detalhes do spike](relatorios/sqlite-L1.md). Não bloqueiam o experimento M0-07.

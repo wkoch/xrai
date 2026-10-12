@@ -1,0 +1,75 @@
+{
+  "measured_at": "2026-10-12T01:38:26.615724+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "command": [
+    "cargo",
+    "run",
+    "-p",
+    "xrai-eval",
+    "--bin",
+    "sqlite-spike",
+    "--locked",
+    "--offline",
+    "--",
+    "storage-cost",
+    "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-sqlite-measurement-tn4fkugu/cost"
+  ],
+  "exit_code": 0,
+  "measurement": [
+    {
+      "source_bytes_per_generation": 1024,
+      "changed": false,
+      "retained_blob_count": 1,
+      "retained_blob_bytes": 1024,
+      "database_bytes_after_checkpoint": 90112,
+      "wal_bytes_before_checkpoint": 222512,
+      "publication_micros": 930
+    },
+    {
+      "source_bytes_per_generation": 1024,
+      "changed": true,
+      "retained_blob_count": 2,
+      "retained_blob_bytes": 2048,
+      "database_bytes_after_checkpoint": 90112,
+      "wal_bytes_before_checkpoint": 230752,
+      "publication_micros": 950
+    },
+    {
+      "source_bytes_per_generation": 65536,
+      "changed": false,
+      "retained_blob_count": 1,
+      "retained_blob_bytes": 65536,
+      "database_bytes_after_checkpoint": 315392,
+      "wal_bytes_before_checkpoint": 461472,
+      "publication_micros": 4084
+    },
+    {
+      "source_bytes_per_generation": 65536,
+      "changed": true,
+      "retained_blob_count": 2,
+      "retained_blob_bytes": 131072,
+      "database_bytes_after_checkpoint": 380928,
+      "wal_bytes_before_checkpoint": 535632,
+      "publication_micros": 5450
+    },
+    {
+      "source_bytes_per_generation": 1048576,
+      "changed": false,
+      "retained_blob_count": 1,
+      "retained_blob_bytes": 1048576,
+      "database_bytes_after_checkpoint": 3559424,
+      "wal_bytes_before_checkpoint": 3724512,
+      "publication_micros": 52563
+    },
+    {
+      "source_bytes_per_generation": 1048576,
+      "changed": true,
+      "retained_blob_count": 2,
+      "retained_blob_bytes": 2097152,
+      "database_bytes_after_checkpoint": 4608000,
+      "wal_bytes_before_checkpoint": 4787472,
+      "publication_micros": 73265
+    }
+  ]
+}

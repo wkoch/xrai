@@ -1,0 +1,31 @@
+{
+  "measured_at": "2026-10-12T01:38:26.309808+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "command": [
+    "cargo",
+    "run",
+    "-p",
+    "xrai-eval",
+    "--bin",
+    "sqlite-spike",
+    "--locked",
+    "--offline",
+    "--",
+    "demonstrate",
+    "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-sqlite-measurement-tn4fkugu/readers"
+  ],
+  "exit_code": 0,
+  "measurement": {
+    "sqlite": "3.53.2",
+    "fts5": true,
+    "old_readers": 2,
+    "old_generation": "A",
+    "new_generation": "B",
+    "source_blob_bytes": 82,
+    "page_count": 22,
+    "page_size": 4096,
+    "database_bytes": 90112,
+    "backup_bytes": 90112
+  }
+}
