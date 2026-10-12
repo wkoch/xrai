@@ -100,6 +100,16 @@ def main():
                               "CARGO_HOME=/workspace/_cargo", "CARGO_TARGET_DIR=/workspace/" + side + "-target",
                               "RUSTC=/workspace/_toolchain/bin/rustc", "CARGO_BUILD_JOBS=2",
                               "CARGO_PROFILE_DEV_DEBUG=0", "CARGO_PROFILE_TEST_DEBUG=0", "/workspace/_toolchain/bin/cargo"]
+            # Ubuntu's cc/c++ aliases cross /etc/alternatives, deliberately absent
+            # from the execution domain. Use their resolved /usr executables.
+            cc = Path(shutil.which('cc') or '/missing-cc').resolve(strict=True)
+            cxx = Path(shutil.which('c++') or '/missing-cxx').resolve(strict=True)
+            if not cc.is_relative_to(Path('/usr')) or not cxx.is_relative_to(Path('/usr')):
+                raise ValueError('native compiler must reside in read-only /usr')
+            command_prefix[-1:-1] = ['CC=' + str(cc), 'CXX=' + str(cxx),
+                'CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=' + str(cc)]
+            summary['native_compilers'] = {'cc': str(cc), 'cc_sha256': sha(cc.read_bytes()),
+                                          'cxx': str(cxx), 'cxx_sha256': sha(cxx.read_bytes())}
             cargo = ["test", "--manifest-path", "/workspace/" + side + "/Cargo.toml", "--locked", "--offline", "-p", "ide-diagnostics"]
             probe, text, clean = contained(command_prefix + cargo + ["regression_23336", "--", "--nocapture"], work.resolve(), logs, "probe")
             names = ["regression_23336_1", "regression_23336_2"]

@@ -1,0 +1,308 @@
+[1m[92m   Compiling[0m xrai-core v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-core)
+[1m[92m   Compiling[0m memchr v2.8.3
+[1m[92m   Compiling[0m tree-sitter-language v0.1.9
+[1m[92m   Compiling[0m zmij v1.0.23
+[1m[92m   Compiling[0m itoa v1.0.18
+[1m[92m   Compiling[0m xrai-query v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-query)
+[1m[92m   Compiling[0m xrai-index v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-index)
+[1m[92m   Compiling[0m regex-syntax v0.8.11
+[1m[92m   Compiling[0m libc v0.2.190
+[1m[92m   Compiling[0m serde_json v1.0.154
+[1m[92m   Compiling[0m aho-corasick v1.1.5
+[1m[92m   Compiling[0m tree-sitter v0.27.1
+[1m[92m   Compiling[0m serde_core v1.0.229
+[1m[92m   Compiling[0m regex-automata v0.4.18
+[1m[92m   Compiling[0m bitflags v2.13.2
+[1m[92m   Compiling[0m libsqlite3-sys v0.38.2
+[1m[92m   Compiling[0m errno v0.3.14
+[1m[92m   Compiling[0m smallvec v1.16.3
+[1m[92m   Compiling[0m fallible-iterator v0.3.0
+[1m[92m   Compiling[0m arrayref v0.3.9
+[1m[92m   Compiling[0m arrayvec v0.7.8
+[1m[92m   Compiling[0m streaming-iterator v0.1.9
+[1m[92m   Compiling[0m fallible-streaming-iterator v0.1.9
+[1m[92m   Compiling[0m cfg-if v1.0.5
+[1m[92m   Compiling[0m constant_time_eq v0.3.1
+[1m[92m   Compiling[0m blake3 v1.8.2
+[1m[92m   Compiling[0m rusqlite v0.40.2
+[1m[92m   Compiling[0m regex v1.13.1
+[1m[92m   Compiling[0m serde v1.0.229
+[1m[92m   Compiling[0m rustix v1.1.5
+[1m[92m   Compiling[0m tree-sitter-javascript v0.25.0
+[1m[92m   Compiling[0m tree-sitter-go v0.25.0
+[1m[92m   Compiling[0m tree-sitter-rust v0.24.2
+[1m[92m   Compiling[0m tree-sitter-python v0.25.0
+[1m[92m   Compiling[0m tree-sitter-typescript v0.23.2
+[1m[92m   Compiling[0m xrai v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai)
+[1m[92m   Compiling[0m xrai-eval v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-eval)
+[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 21.29s
+[1m[92m     Running[0m unittests src/main.rs (target/debug/deps/xrai-ba4f32348ba588f5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m tests/cli.rs (target/debug/deps/cli-1427b58f7f811a40)
+
+running 3 tests
+test version_reports_package_version_and_native_platform ... ok
+test help_only_advertises_available_options ... ok
+test unsupported_operations_and_extra_arguments_fail_without_data ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/xrai_core-2e8b6dc476131edd)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/xrai_eval-77cf3eed90cfedbd)
+
+running 21 tests
+test context_spike::tests::absent_base_and_work_limits_do_not_fallback ... ok
+test context_spike::tests::byte_digit_boundaries_and_counter_cycles_are_bounded ... ok
+test context_spike::tests::absent_source_is_unavailable_not_budget ... ok
+test context_spike::tests::base_consumer_and_definition_use_ir_without_promotion ... ok
+test context_spike::tests::candidate_cap_has_gap_and_unknown_evidence_preserves_state ... ok
+test context_spike::tests::deterministic_wire_counts_and_profile_binding ... ok
+test context_spike::tests::deadline_checked_after_final_meter_and_empty_selection ... ok
+test context_spike::tests::central_hunk_is_not_prefix_and_wrong_diff_is_rejected ... ok
+test context_spike::tests::ended_context_handle_never_resurrects_when_same_input_is_recreated ... ok
+test context_spike::tests::expansion_that_cannot_grow_reports_insufficient ... ok
+test context_spike::tests::failed_admitted_expansions_consume_attempt_cap ... ok
+test context_spike::tests::expansion_work_limits_are_checked_before_materializing ... ok
+test context_spike::tests::foreign_duplicate_ids_and_expansion_cap_are_refused ... ok
+test context_spike::tests::incarnation_overflow_fails_closed ... ok
+test context_spike::tests::opaque_evaluator_fields_cannot_enter_typed_boundary ... ok
+test context_spike::tests::identified_content_does_not_fit_bytes_or_tokens ... ok
+test context_spike::tests::immutable_expansion_does_not_migrate_when_new_snapshot_publishes ... ok
+test context_spike::tests::unknown_lookup_is_retained_without_global_fallback ... ok
+test context_spike::tests::replacement_store_and_live_reuse_preserve_retention_domain_and_cap ... ok
+test context_spike::tests::valid_changed_slice_but_wrong_unchanged_region_is_invalid_diff ... ok
+test context_spike::tests::ttl_release_and_pressure_end_whole_context ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s
+
+[1m[92m     Running[0m unittests src/bin/context-spike.rs (target/debug/deps/context_spike-ee3e4333e362022c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/filesystem-spike.rs (target/debug/deps/filesystem_spike-ca6ac5266fdb5ecc)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/incremental-probe.rs (target/debug/deps/incremental_probe-7ba7c5176cbefc3c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/parsing-spike.rs (target/debug/deps/parsing_spike-5d887c3f13c174ee)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/semantics-spike.rs (target/debug/deps/semantics_spike-a1d9f05e19333c4b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/sqlite-spike.rs (target/debug/deps/sqlite_spike-b5fca03a5d5068a6)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/worker-benchmark.rs (target/debug/deps/worker_benchmark-6ab7500bde0c8305)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/worker-persistent.rs (target/debug/deps/worker_persistent-5cf3be036d9e7928)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/bin/worker-spike.rs (target/debug/deps/worker_spike-fea09d88d2227801)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m tests/filesystem_anchored.rs (target/debug/deps/filesystem_anchored-2cd663aad02fecfd)
+
+running 20 tests
+test ancestor_symlink_before_open_never_delivers_external_sentinel ... ok
+test anchored_enumeration_of_moved_directory_returns_partial_inventory ... ok
+test ancestor_symlink_after_source_open_never_publishes_as_current ... ok
+test barrier_swap_after_ancestor_handle_open_invalidates_binding ... ok
+test hard_link_captures_shared_object_and_does_not_claim_link_confinement ... ok
+test ceiling_is_enforced_for_initial_size_and_during_growth ... ok
+test inventory_final_reconciliation_rejects_changed_source_revision ... ok
+test in_place_same_size_and_restored_mtime_is_not_a_snapshot_guarantee ... ok
+test empty_directory_addition_and_removal_are_reconciled_before_publication ... ok
+test moving_open_directory_outside_without_link_is_diagnosed ... ok
+test last_publication_reconciles_previously_captured_ancestor ... ok
+test new_file_after_enumeration_marks_root_coverage_partial ... ok
+test original_file_unlink_and_recreate_cannot_reuse_old_binding ... ok
+test replacing_checkout_parent_with_alias_of_moved_parent_invalidates_locator ... ok
+test rejects_invalid_native_components_and_internal_capture_inventory_exclusions ... ok
+test replaced_root_invalidates_all_inventory_sources ... ok
+test special_files_are_refused_without_fifo_blocking ... ok
+test stabilized_update_equals_independent_rebuild_and_old_bytes_remain_immutable ... ok
+test seeded_concurrent_writer_stress_never_delivers_external_sentinel ... ok
+test seeded_adversarial_schedule_supplements_deterministic_barriers ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+[1m[92m     Running[0m tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-759975746b89563e)
+
+running 14 tests
+test explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok
+test filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok
+test invalid_configuration_fails_before_inventory ... ok
+test linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok
+test gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok
+test permission_failure_is_diagnostic_or_records_privileged_capability ... ok
+test removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok
+test no_git_and_identical_named_checkouts_have_independent_writable_state ... ok
+test removal_between_discovery_and_capture_has_typed_diagnostic ... ok
+test replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok
+test same_size_and_mtime_change_is_detected_by_content_hash ... ok
+test symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok
+test unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok
+test actual_git_linked_worktrees_have_independent_checkout_state ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+[1m[92m     Running[0m tests/parsing.rs (target/debug/deps/parsing-ecc03679bcaa526f)
+
+running 4 tests
+test copied_binary_reports_incomplete_exit_status_and_refuses_unknown_dialect ... ok
+test fingerprints_cover_distinct_queries_and_grammars ... ok
+test incorporated_unicode_notice_is_preserved_in_binary_inventory ... ok
+test every_embedded_dialect_parses_valid_and_reports_incomplete_sources ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+[1m[92m     Running[0m tests/semantics_spike.rs (target/debug/deps/semantics_spike-0670b10278aa7cc5)
+
+running 13 tests
+test duplicate_module_does_not_publish_unique_function_from_invalid_environment ... ok
+test macro_namespace_and_constructor_namespace_never_fuse ... ok
+test local_bindings_parameters_macros_and_methods_do_not_promote_calls ... ok
+test negative_export_then_module_create_and_remove_are_full_rebuilds ... ok
+test r3_cfg_does_not_inherit_host_or_treat_unknown_as_false ... ok
+test config_rules_path_rename_and_shadow_updates_compare_every_field ... ok
+test r3_shadow_introduction_and_removal_match_entire_rebuild ... ok
+test reexports_have_each_import_and_destination_in_evidence ... ok
+test references_are_calls_with_evidence_not_textual_name_matches ... ok
+test safe_attribute_identifier_does_not_allow_qualified_procedural_path ... ok
+test unicode_crlf_empty_and_path_validation ... ok
+test pre_registered_matrix_and_real_sample_are_verified ... ok
+test r3_preregistered_bindings_cfg_real_modules_and_full_update_events ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.10s
+
+[1m[92m     Running[0m tests/sqlite_snapshots.rs (target/debug/deps/sqlite_snapshots-d5d81b6e4cb2177f)
+
+running 6 tests
+test bundled_sqlite_fts5_and_trigram_are_available_without_load_extension ... ok
+test future_schema_and_foreign_application_are_refused_without_recreation ... ok
+test source_foreign_keys_hashes_and_invalid_spans_are_enforced ... ok
+test two_readers_keep_a_bytes_facts_and_fts_while_writer_publishes_b ... ok
+test backup_rebuild_preserve_human_files_and_readers_and_refuse_overwrite ... ok
+test killed_writer_rolls_back_b_keeps_a_and_records_abandoned_staging ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+
+[1m[92m     Running[0m tests/workers.rs (target/debug/deps/workers-899097471012b929)
+
+running 13 tests
+test decoder_refuses_huge_header_before_payload_read_and_corrupt_enums ... ok
+test admission_overload_and_duplicate_requests_do_not_grow_memory ... ok
+test executable_path_with_spaces_roundtrips_real_worker ... ok
+test deadlines_cancel_late_and_shutdown_are_bounded ... ok
+test identities_spans_and_extra_bytes_refused ... ok
+test finite_retry_in_new_process_and_stderr_capture_bounded ... ok
+test faulty_worker_cannot_publish_and_independent_work_progresses ... ok
+test queue_wait_consumes_total_deadline_before_spawn ... ok
+test shutdown_with_inflight_failure_reaps_child ... ok
+test simultaneous_configurations_remain_distinct ... ok
+test worker_is_given_bytes_and_does_not_reopen_source ... ok
+test roundtrip_and_direct_pool_equivalence_all_dialects ... ok
+test valid_frame_requires_successful_exit_and_roundtrips_repeat ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.98s
+
+[1m[92m     Running[0m tests/workers_persistent.rs (target/debug/deps/workers_persistent-233d9bbad8bce145)
+
+running 20 tests
+test abandoned_busy_ticket_releases_and_pool_recovers ... ok
+test cancel_busy_retires_while_other_worker_progresses_and_releases ... ok
+test codec_rejects_wrong_magic_type_and_limit_before_allocation ... ok
+test completed_cancel_is_checked_at_transfer_and_releases_reservation ... ok
+test completed_tickets_retain_cap_until_wait_or_drop ... ok
+test cached_seven_dialects_configs_errors_and_repeat_equal_direct ... ok
+test crash_retry_reaped_replacement_then_healthy ... ok
+test dense_diagnostic_positions_validate_with_linear_source_scan ... ok
+test envelope_json_and_positions_cannot_disagree ... ok
+test handshake_invalid_and_death_fail_without_leak ... ok
+test duplicate_never_publishes_as_next_request ... ok
+test partial_frame_transient_once_recovers ... ok
+test protocol_identity_payload_and_oversized_are_definitive ... ok
+test premature_frame_with_blocked_large_writer_is_rejected_and_reaped_in_deadline ... ok
+test result_then_death_does_not_revoke_accepted_immutable_answer ... ok
+test retry_attempt_overflow_is_definitive_without_panicking ... ok
+test stderr_above_retention_limit_is_drained_without_backpressure_deadlock ... ok
+test timeout_has_no_retry_and_shutdown_unblocks_reader_and_writer ... ok
+test caller_cannot_extend_reference_deadline ... ok
+test valid_result_without_draining_large_write_still_obeys_timeout_and_cancel ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.31s
+
+[1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/xrai_index-f4aae305fdd75544)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/xrai_query-bc231698edb02897)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m   Doc-tests[0m xrai_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m   Doc-tests[0m xrai_eval
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m   Doc-tests[0m xrai_index
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m   Doc-tests[0m xrai_query
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

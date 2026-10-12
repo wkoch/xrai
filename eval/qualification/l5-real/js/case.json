@@ -23,7 +23,8 @@
     "oracles/XraiExternalStoreContract-test.js",
     "oracles/source-relations.json",
     "provenance",
-    "sources/head.tar.gz"
+    "sources/head.tar.gz",
+    "setup"
   ],
   "agent_materialization": "complete base source tree from sources/base.tar.gz plus natural input only; never give case folder/head archive/evaluator files to the agent",
   "lineage": {
@@ -69,7 +70,8 @@
     "containment": "runner.execute arbitrary_agent=True; fresh Linux PID namespace per operation; verified teardown; no network during probes",
     "minimum_free_disk_per_checkout": "2 GiB recommended; check actual CI headroom",
     "setup_execution": "pending Linux CI",
-    "baseline_reference_regression": "pending Linux CI"
+    "baseline_reference_regression": "pending Linux CI",
+    "bootstrap": "probe installs pinned react-is17.0.2 offline under pretty-format/node_modules, reproducing captured omitted postinstall; verify SHA256/SHA512 and retain receipt; no production/lock/oracle edits"
   },
   "incremental_event": {
     "status": "not_started",
@@ -151,6 +153,22 @@
     "eval/qualification/l5-real/js/sources/head.tar.gz": {
       "sha256": "1d7af4d0c750af4ce19c18473e876b4bc56390f3adca22dae9a4d85304a808c9",
       "bytes": 5955008
+    },
+    "eval/qualification/l5-real/js/setup/bootstrap-pin.json": {
+      "sha256": "8af3f4bc8001b1e3063a54fab0002dc621a19502bfd4bd440544048ae6907be2",
+      "bytes": 1087
+    },
+    "eval/qualification/l5-real/js/setup/react-is-17.0.2.registry.json": {
+      "sha256": "b265f28da6b3ea2f04129f4478bba9dcffcd7a7a87fb2613d2f2bb3647759999",
+      "bytes": 2439
+    },
+    "eval/qualification/l5-real/js/setup/react-is-17.0.2.tgz": {
+      "sha256": "9b1850c05b4fc08e9b814a201281a103a7651ac46500dce7b6bedd0865963eb1",
+      "bytes": 5785
+    },
+    "eval/qualification/l5-real/js/setup/upstream-downloadReactIsForPrettyFormat.js": {
+      "sha256": "b12db5568eb8fcf0d9147a18563825ebac4ab617768c15afc2d7329f57cb7a4d",
+      "bytes": 794
     }
   }
 }

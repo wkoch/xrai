@@ -1,0 +1,57 @@
+{
+  "schema_version": "xrai.eval.l5.js.probe.v1",
+  "side": "base",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "node_executable_sha256": "8440cffda5a21bf7cfda43d2c396f79777585a4c5e03ed2801fe226953a7aa11",
+  "executor_source_sha256": "49d45fc9d3dfd43dc1f13b5a476fd8ea17df185aff18e4315d96ed9373df0695",
+  "oracle_source_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+  "materialization": {
+    "side": "base",
+    "base_commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+    "reference_commit": null,
+    "full_base_archive_sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6",
+    "reference_policy": "only the two production modules changed; upstream test changes not applied",
+    "reference_source_sha256": {},
+    "evaluator_probe_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+    "warning": "evaluator workspace only; hidden oracle must never enter a comparative agent workspace",
+    "yarn_lock_sha256": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544"
+  },
+  "configuration": {
+    "NODE_ENV": "development",
+    "RELEASE_CHANNEL": "experimental",
+    "VARIANT": "true",
+    "config": "scripts/jest/config.source-www.js"
+  },
+  "lock_before": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+  "lock_after": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+  "phases": [
+    {
+      "name": "requirement",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "execution_status": "error",
+      "teardown_verified": true,
+      "behavioral_result_verified": false,
+      "jest_report_sha256": null,
+      "receipt": "requirement-harness.json",
+      "jest_report": null,
+      "verified": false
+    },
+    {
+      "name": "regression",
+      "expected_exit": 0,
+      "actual_exit": 1,
+      "execution_status": "error",
+      "teardown_verified": true,
+      "behavioral_result_verified": false,
+      "jest_report_sha256": null,
+      "receipt": "regression-harness.json",
+      "jest_report": null,
+      "verified": false
+    }
+  ],
+  "verified": false,
+  "admitted": false,
+  "competitive_runs_allowed": false
+}

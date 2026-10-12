@@ -1,0 +1,57 @@
+{
+  "phase": "qualification-requirement",
+  "command": [
+    "/usr/bin/env",
+    "HOME=/workspace",
+    "TMPDIR=/tmp",
+    "NODE_ENV=development",
+    "RELEASE_CHANNEL=experimental",
+    "VARIANT=true",
+    "/workspace/.xrai-node",
+    "./scripts/jest/jest.js",
+    "--config",
+    "./scripts/jest/config.source-www.js",
+    "--runInBand",
+    "--json",
+    "--outputFile=.xrai-jest-requirement.json",
+    "--testNamePattern=^contract ",
+    "XraiExternalStoreContract-test"
+  ],
+  "status": "error",
+  "execution_status": "error",
+  "exit_code": 1,
+  "sandbox": "Linux bubblewrap",
+  "containment": "linux_pid_namespace",
+  "cleanup_status": "confirmed",
+  "domain_id": "b7efadcd-5a8e-494a-975f-fcea07ba576b",
+  "termination_evidence": {
+    "init_pid": 3075,
+    "pid_namespace": "pid:[4026532271]",
+    "init_held_before_pin": true,
+    "pidfd_exit_observed": true,
+    "wrapper_reaped": true,
+    "user_namespace_mapping": {
+      "uid": 1001,
+      "gid": 1001,
+      "count": 1,
+      "setgroups": "deny"
+    }
+  },
+  "eligible_for_agent_run": true,
+  "diagnostic": null,
+  "elapsed_seconds": 0.207743636999993,
+  "stdout": {
+    "base64": "",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "captured_bytes": 0,
+    "observed_bytes": 0,
+    "truncated": false
+  },
+  "stderr": {
+    "base64": "L3dvcmtzcGFjZS9wYWNrYWdlcy9yZWFjdC1pcy9pbmRleC5qczoxMgpleHBvcnQgKiBmcm9tICcuL3NyYy9SZWFjdElzJzsKXl5eXl5eCgpTeW50YXhFcnJvcjogVW5leHBlY3RlZCB0b2tlbiAnZXhwb3J0JwogICAgYXQgT2JqZWN0LmNvbXBpbGVGdW5jdGlvbiAobm9kZTp2bTozNjA6MTgpCiAgICBhdCB3cmFwU2FmZSAobm9kZTppbnRlcm5hbC9tb2R1bGVzL2Nqcy9sb2FkZXI6MTEyNjoxNSkKICAgIGF0IE1vZHVsZS5fY29tcGlsZSAobm9kZTppbnRlcm5hbC9tb2R1bGVzL2Nqcy9sb2FkZXI6MTE2MjoyNykKICAgIGF0IE9iamVjdC5Nb2R1bGUuX2V4dGVuc2lvbnMuLmpzIChub2RlOmludGVybmFsL21vZHVsZXMvY2pzL2xvYWRlcjoxMjUyOjEwKQogICAgYXQgTW9kdWxlLmxvYWQgKG5vZGU6aW50ZXJuYWwvbW9kdWxlcy9janMvbG9hZGVyOjEwNzY6MzIpCiAgICBhdCBGdW5jdGlvbi5Nb2R1bGUuX2xvYWQgKG5vZGU6aW50ZXJuYWwvbW9kdWxlcy9janMvbG9hZGVyOjkxMToxMikKICAgIGF0IE1vZHVsZS5yZXF1aXJlIChub2RlOmludGVybmFsL21vZHVsZXMvY2pzL2xvYWRlcjoxMTAwOjE5KQogICAgYXQgcmVxdWlyZSAobm9kZTppbnRlcm5hbC9tb2R1bGVzL2Nqcy9oZWxwZXJzOjExOToxOCkKICAgIGF0IE9iamVjdC48YW5vbnltb3VzPiAoL3dvcmtzcGFjZS9ub2RlX21vZHVsZXMvcHJldHR5LWZvcm1hdC9idWlsZC9wbHVnaW5zL1JlYWN0RWxlbWVudC5qczo4OjM5KQogICAgYXQgTW9kdWxlLl9jb21waWxlIChub2RlOmludGVybmFsL21vZHVsZXMvY2pzL2xvYWRlcjoxMTk4OjE0KQo=",
+    "sha256": "2713cc1ad5d675d20a03d2faa686cdfe0fa0bf1e5149c6b3c058480e833df14d",
+    "captured_bytes": 794,
+    "observed_bytes": 794,
+    "truncated": false
+  }
+}

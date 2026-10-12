@@ -2,6 +2,7 @@
 """Prepare React evaluator workspaces and run frozen probes in Linux containment."""
 from __future__ import annotations
 import argparse
+import base64
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
@@ -15,10 +16,91 @@ CASE = ROOT / 'eval/qualification/l5-real/js'
 HIDDEN = 'packages/react-reconciler/src/__tests__/XraiExternalStoreContract-test.js'
 PATCH_PATHS = ['packages/react-reconciler/src/ReactFiberHooks.new.js',
                'packages/react-reconciler/src/ReactFiberHooks.old.js']
+REACT_IS_SHA256 = '9b1850c05b4fc08e9b814a201281a103a7651ac46500dce7b6bedd0865963eb1'
 
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def bootstrap(workspace):
+    """Offline data extraction reproducing the captured pretty-format postinstall.
+
+    Yarn workspaces otherwise link pretty-format's react-is dependency to raw
+    Flow/ES module production sources before Jest's transformer can start.
+    Never execute the omitted postinstall or install a floating semver version.
+    """
+    workspace = workspace.resolve()
+    capture = json.loads((CASE / 'capture.json').read_text())
+    expected_lock = capture['snapshots']['base']['setup_and_evidence']['yarn.lock']['sha256']
+    before = sha((workspace / 'yarn.lock').read_bytes())
+    if before != expected_lock:
+        raise ValueError('bootstrap dependency lock differs from captured setup')
+    upstream_script = workspace / 'scripts/yarn/downloadReactIsForPrettyFormat.js'
+    if upstream_script.read_bytes() != (CASE / 'setup/upstream-downloadReactIsForPrettyFormat.js').read_bytes():
+        raise ValueError('captured postinstall source differs from bootstrap pin')
+    metadata = json.loads((CASE / 'setup/react-is-17.0.2.registry.json').read_text())
+    archive = CASE / 'setup/react-is-17.0.2.tgz'
+    data = archive.read_bytes()
+    integrity = 'sha512-' + base64.b64encode(hashlib.sha512(data).digest()).decode()
+    if (sha(data) != REACT_IS_SHA256 or metadata['name'] != 'react-is' or
+            metadata['version'] != '17.0.2' or metadata['license'] != 'MIT' or
+            metadata['dist']['integrity'] != integrity or
+            metadata['dist']['shasum'] != hashlib.sha1(data).hexdigest()):
+        raise ValueError('pinned react-is integrity mismatch')
+    pretty = workspace / 'node_modules/pretty-format'
+    if not pretty.resolve().is_relative_to(workspace):
+        raise ValueError('pretty-format escapes evaluator workspace')
+    package = json.loads((pretty / 'package.json').read_text())
+    if package['name'] != 'pretty-format' or package['version'] != '26.6.2' or package['dependencies']['react-is'] != '^17.0.1':
+        raise ValueError('pretty-format dependency differs from frozen setup')
+    target = pretty / 'node_modules/react-is'
+    if target.is_symlink() or not target.resolve().is_relative_to(workspace):
+        raise ValueError('react-is bootstrap target is not contained')
+    files = {}
+    with tarfile.open(archive) as tree:
+        for member in tree:
+            name = PurePosixPath(member.name)
+            if not name.parts or name.parts[0] != 'package' or name.is_absolute() or '..' in name.parts:
+                raise ValueError('unsafe react-is archive path')
+            if member.isdir():
+                continue
+            path = str(PurePosixPath(*name.parts[1:]))
+            if not member.isfile() or len(name.parts) < 2 or path in files:
+                raise ValueError('unsafe react-is archive member')
+            files[path] = tree.extractfile(member).read()
+    pinned_package = json.loads(files['package.json'])
+    if pinned_package['name'] != 'react-is' or pinned_package['version'] != '17.0.2' or b'MIT License' not in files['LICENSE']:
+        raise ValueError('react-is package identity or license mismatch')
+    if target.exists():
+        if any(p.is_symlink() for p in target.rglob('*')):
+            raise ValueError('existing react-is bootstrap contains symlink')
+        actual = {str(p.relative_to(target)):p for p in target.rglob('*') if not p.is_dir()}
+        if set(actual) != set(files) or any(p.is_symlink() or p.read_bytes() != files[n] for n,p in actual.items()):
+            raise ValueError('existing react-is bootstrap differs from pinned archive')
+    else:
+        for name, content in files.items():
+            path = target / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(content)
+    after = sha((workspace / 'yarn.lock').read_bytes())
+    if before != after:
+        raise ValueError('bootstrap modified dependency lock')
+    receipt = {'schema_version':'xrai.eval.l5.js.bootstrap.v1',
+               'method':'offline pinned data extraction; no captured hooks executed',
+               'omitted_postinstall':'scripts/yarn/downloadReactIsForPrettyFormat.js',
+               'omitted_postinstall_sha256':sha(upstream_script.read_bytes()),
+               'package':'react-is', 'version':'17.0.2', 'required_range':'^17.0.1',
+               'pretty_format_version':package['version'],
+               'registry_metadata_sha256':sha((CASE/'setup/react-is-17.0.2.registry.json').read_bytes()),
+               'registry_url':'https://registry.npmjs.org/react-is/17.0.2',
+               'archive_sha256':sha(data), 'archive_integrity':integrity,
+               'target':'node_modules/pretty-format/node_modules/react-is',
+               'files':{name:sha(content) for name,content in sorted(files.items())},
+               'lock_before':before,'lock_after':after,'network_used':False,
+               'production_modified':False,'oracle_modified':False}
+    (workspace / '.xrai-bootstrap.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    return receipt
 
 
 def materialize(destination, side):
@@ -78,6 +160,8 @@ def probe(workspace, node, side, output, timeout):
     from supervisor import verify_receipt, confirmed_receipt
     workspace = workspace.resolve()
     output.mkdir(parents=True, exist_ok=False)
+    bootstrap_receipt = bootstrap(workspace)
+    (output / 'bootstrap.json').write_text(json.dumps(bootstrap_receipt, indent=2)+'\n')
     source_node = node.resolve()
     local_node = workspace / '.xrai-node'
     shutil.copy2(source_node, local_node)
@@ -125,6 +209,7 @@ def probe(workspace, node, side, output, timeout):
                'executor_source_sha256':sha(Path(__file__).read_bytes()),
                'oracle_source_sha256':sha((CASE/'oracles/XraiExternalStoreContract-test.js').read_bytes()),
                'materialization':json.loads((workspace/'.xrai-materialization.json').read_text()),
+               'bootstrap':bootstrap_receipt,
                'configuration':{'NODE_ENV':'development','RELEASE_CHANNEL':'experimental','VARIANT':'true','config':'scripts/jest/config.source-www.js'},
                'lock_before':before,'lock_after':after,'phases':phases,
                'verified':all(p['verified'] for p in phases) and before == after,

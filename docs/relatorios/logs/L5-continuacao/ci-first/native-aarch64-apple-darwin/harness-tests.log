@@ -1,0 +1,55 @@
+test_all_sent_terminal_failures_and_missing_completion_charge_remain_unknown (test_agent_ledger.LedgerTests.test_all_sent_terminal_failures_and_missing_completion_charge_remain_unknown) ... ok
+test_cancel_possible_charge_and_rejected_before_send (test_agent_ledger.LedgerTests.test_cancel_possible_charge_and_rejected_before_send) ... ok
+test_complete_fake_and_subset_not_double_counted (test_agent_ledger.LedgerTests.test_complete_fake_and_subset_not_double_counted) ... ok
+test_concurrent_reservation_never_overcommits (test_agent_ledger.LedgerTests.test_concurrent_reservation_never_overcommits) ... ok
+test_excess_observed_charge_is_recorded_and_stops_admissions (test_agent_ledger.LedgerTests.test_excess_observed_charge_is_recorded_and_stops_admissions) ... ok
+test_partial_timeout_unknown_charge_retains_reservation (test_agent_ledger.LedgerTests.test_partial_timeout_unknown_charge_retains_reservation) ... ok
+test_readiness_d0_smoke_d1_campaign_and_no_adapter_authorization (test_agent_ledger.LedgerTests.test_readiness_d0_smoke_d1_campaign_and_no_adapter_authorization) ... ok
+test_receipt_exact_duplicate_idempotent_and_cross_attempt_rejected (test_agent_ledger.LedgerTests.test_receipt_exact_duplicate_idempotent_and_cross_attempt_rejected) ... ok
+test_retry_does_not_erase_unknown_prior_attempt (test_agent_ledger.LedgerTests.test_retry_does_not_erase_unknown_prior_attempt) ... ok
+test_streaming_receipt_cannot_release_maximum_reservation (test_agent_ledger.LedgerTests.test_streaming_receipt_cannot_release_maximum_reservation) ... ok
+test_tampered_events_response_metadata_and_summary_rejected (test_agent_ledger.LedgerTests.test_tampered_events_response_metadata_and_summary_rejected) ... ok
+test_underreservation_and_invalid_subset_rejected (test_agent_ledger.LedgerTests.test_underreservation_and_invalid_subset_rejected) ... ok
+test_unsent_rejection_frees_reservation (test_agent_ledger.LedgerTests.test_unsent_rejection_frees_reservation) ... ok
+test_bounded_fork_output_limit_and_closed_pipes (test_containment.NamespaceTests.test_bounded_fork_output_limit_and_closed_pipes) ... skipped 'Linux PID namespace native proof required'
+test_evaluator_death_destroys_namespace (test_containment.NamespaceTests.test_evaluator_death_destroys_namespace) ... skipped 'Linux PID namespace native proof required'
+test_positive_descendant_sentinel (test_containment.NamespaceTests.test_positive_descendant_sentinel) ... skipped 'Linux PID namespace native proof required'
+test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) ... skipped 'Linux PID namespace native proof required'
+test_two_arms_isolation_and_independent_cancellation (test_containment.NamespaceTests.test_two_arms_isolation_and_independent_cancellation) ... skipped 'Linux PID namespace native proof required'
+test_cancelled_before_launch_never_executes (test_containment.ReceiptTests.test_cancelled_before_launch_never_executes) ... ok
+test_exception_after_launch_always_cleans_even_exited_wrapper (test_containment.ReceiptTests.test_exception_after_launch_always_cleans_even_exited_wrapper) ... ok
+test_external_user_namespace_mapping_is_single_identity (test_containment.ReceiptTests.test_external_user_namespace_mapping_is_single_identity) ... ok
+test_incomplete_or_tampered_namespace_receipts_are_rejected (test_containment.ReceiptTests.test_incomplete_or_tampered_namespace_receipts_are_rejected) ... ok
+test_linux_adapter_requires_explicit_user_namespace (test_containment.ReceiptTests.test_linux_adapter_requires_explicit_user_namespace) ... ok
+test_mac_ancestor_permission_is_literal_directory_data_only (test_containment.ReceiptTests.test_mac_ancestor_permission_is_literal_directory_data_only) ... ok
+test_mac_disposable_is_explicitly_unavailable (test_containment.ReceiptTests.test_mac_disposable_is_explicitly_unavailable) ... ok
+test_teardown_failure_is_preserved_and_ineligible (test_containment.ReceiptTests.test_teardown_failure_is_preserved_and_ineligible) ... ok
+test_version_one_bytes_remain_replayable (test_containment.ReceiptTests.test_version_one_bytes_remain_replayable) ... ok
+test_denied_group_signal_falls_back_to_owned_live_child (test_incremental.IncrementalLifecycleTests.test_denied_group_signal_falls_back_to_owned_live_child) ... ok
+test_exited_child_is_not_signalled_and_original_error_survives (test_incremental.IncrementalLifecycleTests.test_exited_child_is_not_signalled_and_original_error_survives) ... ok
+test_live_child_is_killed_reaped_and_close_is_idempotent (test_incremental.IncrementalLifecycleTests.test_live_child_is_killed_reaped_and_close_is_idempotent) ... ok
+test_existing_v1_v2_sidecars_without_mutation (test_measurement.MeasurementTests.test_existing_v1_v2_sidecars_without_mutation) ... ok
+test_measurement_tampering_profile_projection_and_count (test_measurement.MeasurementTests.test_measurement_tampering_profile_projection_and_count) ... ok
+test_pinned_configuration_matches_upstream_constructor_offline (test_measurement.MeasurementTests.test_pinned_configuration_matches_upstream_constructor_offline) ... ok
+test_pinned_reference_vectors (test_measurement.MeasurementTests.test_pinned_reference_vectors) ... ok
+test_router_rejects_unknown_version_or_missing_original (test_measurement.MeasurementTests.test_router_rejects_unknown_version_or_missing_original) ... ok
+test_text_unicode_crlf_empty_and_binary_projection (test_measurement.MeasurementTests.test_text_unicode_crlf_empty_and_binary_projection) ... ok
+test_allowed_workspace_read_and_edit (test_runner.RunnerTests.test_allowed_workspace_read_and_edit) ... ok
+test_ancestor_directory_handles_do_not_grant_external_file_data (test_runner.RunnerTests.test_ancestor_directory_handles_do_not_grant_external_file_data) ... ok
+test_closed_pipes_do_not_disable_timeout (test_runner.RunnerTests.test_closed_pipes_do_not_disable_timeout) ... ok
+test_cross_arm_and_evaluator_absolute_read_denied (test_runner.RunnerTests.test_cross_arm_and_evaluator_absolute_read_denied) ... ok
+test_detached_descendant_cannot_block_evaluator (test_runner.RunnerTests.test_detached_descendant_cannot_block_evaluator) ... ok
+test_error_keeps_partial_output (test_runner.RunnerTests.test_error_keeps_partial_output) ... ok
+test_evaluator_hash_does_not_follow_agent_symlink (test_runner.RunnerTests.test_evaluator_hash_does_not_follow_agent_symlink) ... ok
+test_host_environment_not_inherited (test_runner.RunnerTests.test_host_environment_not_inherited) ... ok
+test_invalid_adapter_does_not_fall_back_to_unsandboxed (test_runner.RunnerTests.test_invalid_adapter_does_not_fall_back_to_unsandboxed) ... ok
+test_network_denied (test_runner.RunnerTests.test_network_denied) ... ok
+test_output_limit_is_bounded (test_runner.RunnerTests.test_output_limit_is_bounded) ... ok
+test_replay_preserves_binary_and_rejects_tampering (test_runner.RunnerTests.test_replay_preserves_binary_and_rejects_tampering) ... ok
+test_symlink_escape_and_cross_arm_write_denied (test_runner.RunnerTests.test_symlink_escape_and_cross_arm_write_denied) ... ok
+test_timeout_kills_descendants_keeps_partial (test_runner.RunnerTests.test_timeout_kills_descendants_keeps_partial) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 4.300s
+
+OK (skipped=5)

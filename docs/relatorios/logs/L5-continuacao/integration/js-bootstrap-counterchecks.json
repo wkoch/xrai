@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-p",
+    "test_l5_js_bootstrap.py",
+    "-v"
+  ],
+  "base_commit": "be1919f78cc774135efb2e334cd350669afdbc01",
+  "recorded_at": "2026-10-12T16:48:33.619347+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.469592792000185,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_archive_tamper_fails_before_install (test_l5_js_bootstrap.BootstrapTests.test_archive_tamper_fails_before_install) ... ok\ntest_exact_offline_idempotent_extraction (test_l5_js_bootstrap.BootstrapTests.test_exact_offline_idempotent_extraction) ... ok\ntest_installed_tamper_fails_without_repair (test_l5_js_bootstrap.BootstrapTests.test_installed_tamper_fails_without_repair) ... ok\ntest_lock_tamper_fails_before_install (test_l5_js_bootstrap.BootstrapTests.test_lock_tamper_fails_before_install) ... ok\ntest_symlink_target_escape_fails_without_writing (test_l5_js_bootstrap.BootstrapTests.test_symlink_target_escape_fails_without_writing) ... ok\ntest_wrong_pretty_format_dependency_fails (test_l5_js_bootstrap.BootstrapTests.test_wrong_pretty_format_dependency_fails) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.411s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "b65c87da01eff70c8d885ec64ac188dd66c3a456e137b31558841ee9b02c153d"
+}

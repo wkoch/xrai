@@ -1,0 +1,62 @@
+{
+  "phase": "upstream_behavioral_probe",
+  "command": [
+    "/usr/bin/env",
+    "PATH=/workspace/_toolchain/bin:/usr/bin:/bin",
+    "CARGO_WORKSPACE_DIR=/workspace/baseline",
+    "CARGO_HOME=/workspace/_cargo",
+    "CARGO_TARGET_DIR=/workspace/baseline-target",
+    "RUSTC=/workspace/_toolchain/bin/rustc",
+    "CARGO_BUILD_JOBS=2",
+    "CARGO_PROFILE_DEV_DEBUG=0",
+    "CARGO_PROFILE_TEST_DEBUG=0",
+    "/workspace/_toolchain/bin/cargo",
+    "test",
+    "--manifest-path",
+    "/workspace/baseline/Cargo.toml",
+    "--locked",
+    "--offline",
+    "-p",
+    "ide-diagnostics",
+    "regression_23336",
+    "--",
+    "--nocapture"
+  ],
+  "status": "error",
+  "execution_status": "error",
+  "exit_code": 101,
+  "sandbox": "Linux bubblewrap",
+  "containment": "linux_pid_namespace",
+  "cleanup_status": "confirmed",
+  "domain_id": "6b2b7f4b-c797-44cd-a3c7-4b54e99c11e1",
+  "termination_evidence": {
+    "init_pid": 3037,
+    "pid_namespace": "pid:[4026532272]",
+    "init_held_before_pin": true,
+    "pidfd_exit_observed": true,
+    "wrapper_reaped": true,
+    "user_namespace_mapping": {
+      "uid": 1001,
+      "gid": 1001,
+      "count": 1,
+      "setgroups": "deny"
+    }
+  },
+  "eligible_for_agent_run": true,
+  "diagnostic": null,
+  "elapsed_seconds": 0.30730294499998934,
+  "stdout": {
+    "base64": "",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "captured_bytes": 0,
+    "observed_bytes": 0,
+    "truncated": false
+  },
+  "stderr": {
+    "base64": "ICAgQ29tcGlsaW5nIHVuaWNvZGUtaWRlbnQgdjEuMC4yNAogICBDb21waWxpbmcgcHJvYy1tYWNybzIgdjEuMC4xMDYKICAgQ29tcGlsaW5nIHF1b3RlIHYxLjAuNDUKZXJyb3I6IGxpbmtlciBgY2NgIG5vdCBmb3VuZAogIHwKICA9IG5vdGU6IE5vIHN1Y2ggZmlsZSBvciBkaXJlY3RvcnkgKG9zIGVycm9yIDIpCgplcnJvcjogY291bGQgbm90IGNvbXBpbGUgYHByb2MtbWFjcm8yYCAoYnVpbGQgc2NyaXB0KSBkdWUgdG8gMSBwcmV2aW91cyBlcnJvcgp3YXJuaW5nOiBidWlsZCBmYWlsZWQsIHdhaXRpbmcgZm9yIG90aGVyIGpvYnMgdG8gZmluaXNoLi4uCmVycm9yOiBjb3VsZCBub3QgY29tcGlsZSBgcXVvdGVgIChidWlsZCBzY3JpcHQpIGR1ZSB0byAxIHByZXZpb3VzIGVycm9yCg==",
+    "sha256": "241a416f522a490579adb36f99142f0295823a0336f7d1637a591502970ecd3a",
+    "captured_bytes": 388,
+    "observed_bytes": 388,
+    "truncated": false
+  }
+}

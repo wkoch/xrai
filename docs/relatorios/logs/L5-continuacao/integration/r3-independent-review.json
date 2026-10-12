@@ -1,0 +1,196 @@
+{
+  "schema": "xrai.r3.independent-review.v1",
+  "recorded_at": "2026-10-12T16:42:50.109025+00:00",
+  "reviewer": "/root/corpus_js",
+  "status": "no_concrete_defect_found_in_bounded_review",
+  "scope": [
+    "R3 occurrence resolver and conservative lexical extraction",
+    "labelled matrices/counterproofs",
+    "context_spike and verify_context integration source",
+    "existing final incremental/real/P3 evidence"
+  ],
+  "sources": {
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "b2a544ccea0aab7063ec6e1c2570df850135712e35797831a75b676c3b8310b2",
+    "crates/xrai-eval/src/bin/semantics-spike.rs": "4f801649cece5c15dc0f9807b64648dcf8c593497b3a8923b5d4690b74cdad23",
+    "crates/xrai-eval/tests/semantics_spike.rs": "a3f13344e324712f009edde7f5ecb74db5c0631448c2fde169a65ce90cda6e11",
+    "eval/scripts/verify_semantics.py": "3c5c4838208e24a902c3f3c8df7c8caca95675f803d141c2ebc0ab0ff5ae0135",
+    "crates/xrai-eval/src/context_spike.rs": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+    "eval/scripts/verify_context.py": "d67d255ce6f9454d04fd70a7916c700f4693df7b60a66a6bb74a9cf7d718bc49"
+  },
+  "matrices": {
+    "eval/semantics/r3/incremental-events.json": "89c247138cb195701c0ad4cb09a31e175ce520acdfd089f9f1a8ae4b4bb84984",
+    "eval/semantics/r3/incremental-labels.json": "d15d8ad2a12e10c54e2ad1586d8068e8e5d1a4d76a42388ab350d51b86b10884",
+    "eval/semantics/r3/counterproofs-r3.json": "de0e5fae75a458a4a09dabda4c02b5843ff307f5e26909b38f0d7b72b0307b97",
+    "eval/semantics/r3/language-reference-pin.json": "ab6aceba946d0db3f12b846e0f54ac72f3a475ed64d17b2e7b25dd269b429bb8",
+    "eval/semantics/r3/rust-r3.json": "03793ea368850b427903578efd0274a1f0a317979be7568eba5e7831970ee785",
+    "eval/semantics/r3/tokio-test-development.json": "55163c9cb212b5c176a5592b1f36430661dea927e4f2c331c8028099855fed92",
+    "eval/semantics/r3/p3-consumer.json": "b008dfa3d07ec6ccba287bd62f9a9c170906a193b7bbc39ad07e98b2dcd0a572",
+    "eval/semantics/r3/counterproofs-extra.json": "077c397240586c8753c524f6fc65e45ecc8f347489e176edb633cb49c5e28656"
+  },
+  "final_evidence_hash_check": {
+    "manifest": "docs/relatorios/logs/L5-continuacao/r3/final/manifest.json",
+    "sha256": "682a84c54d2bcca49fd1a9dd5ad211135785f66e2f53ce62a049f306cfa127b2",
+    "sources": 7,
+    "matrices": 8,
+    "artifacts": 48,
+    "mismatches": []
+  },
+  "denominator": {
+    "freeze": "docs/relatorios/logs/L5-continuacao/r3/labels-first.json",
+    "freeze_sha256": "3c5e1ef0628858e1dc81533ef2cb0ed45a15b40e38b8bcb540528b2579c05867",
+    "recorded_before_implementation": "2026-10-12T16:15:23.987129+00:00",
+    "original_hashes_unchanged": true,
+    "cases": 34,
+    "correct": 34,
+    "preregistered_resolvable": 16,
+    "resolvable_correct": 16,
+    "false_promotions_final": 0,
+    "interpretation": "16/16 applies only to preregistered resolvable cases; zero final promotions is observed within labelled matrices, not proven for all Rust programs."
+  },
+  "independent_replays": {
+    "receipt": "docs/relatorios/logs/L5-continuacao/integration/r3-independent/replays.json",
+    "sha256": "fc97509e46395f559a4c0ca86a669aebff2382170a28fa242752c324aaa0943a",
+    "release_binary_sha256": "3ccd6a7d75ab086e8eb647daddda229c8564eb0478df6f3e5611800c88a1b1ca",
+    "all_driver_verifier_exits_zero": true,
+    "main": {
+      "cases": 34,
+      "correct": 34,
+      "events": 0,
+      "false_promotions": 0,
+      "resolvable": 16,
+      "resolvable_correct": 16
+    },
+    "negative_counterproofs": 7,
+    "p3_semantic_case": {
+      "cases": 1,
+      "correct": 1,
+      "events": 0,
+      "false_promotions": 0,
+      "resolvable": 1,
+      "resolvable_correct": 1
+    }
+  },
+  "additional_cases": {
+    "freeze": "docs/relatorios/logs/L5-continuacao/integration/r3-independent/additional-freeze.json",
+    "matrix": "docs/relatorios/logs/L5-continuacao/integration/r3-independent/additional-cases.json",
+    "input_sha256": "f54fbbfabf746c375e920ac0ca098b03b4d2adc3bcd6dcde3c8fb5cfb5f15b8a",
+    "counts": {
+      "cases": 12,
+      "correct": 12,
+      "events": 0,
+      "false_promotions": 0,
+      "resolvable": 2,
+      "resolvable_correct": 2
+    },
+    "added_to_original_denominator": false,
+    "negative_boundaries": [
+      "parameter-derived alias",
+      "nested local alias chain",
+      "local use",
+      "ref binding",
+      "if-let binding",
+      "closure parameter",
+      "cfg all/not unknown input",
+      "cfg raw string",
+      "inner cfg on local statement"
+    ],
+    "resolved_controls": [
+      "qualified alias ignores same-name local shadow",
+      "alias retains original target before later local shadow"
+    ]
+  },
+  "source_checks": [
+    "R3 matches exact demonstrated occurrence, file/offset/module/namespace",
+    "lexical local binding masks imported name, while direct immutable function alias can retain function_item evidence",
+    "unknown lexical syntax is an enclosing gap rather than a guessed semantic target",
+    "explicit three-valued cfg evaluation; malformed/unknown predicates are not_evaluated",
+    "methods, receivers, macros, general callable/type inference remain unsupported",
+    "P3 uses resolve_at only for R3 and recovers definitions/consumers only from resolved target_id",
+    "verify_semantics derives recall denominator from labels and validates complete source/snapshot evidence",
+    "verify_context binds exact occurrence and verifies expected old/new target and unknown fixture"
+  ],
+  "incremental": {
+    "review_method": "inspected existing final output/verifier and source, no independent context or incremental execution",
+    "events": 2,
+    "full_snapshot_equal_to_rebuild": true,
+    "generation_increment_one": true
+  },
+  "real_development": {
+    "review_method": "read retained outputs only",
+    "queries": 3,
+    "correct": 3,
+    "resolvable_queries": 1,
+    "resolvable_correct": 1,
+    "extracted_calls": 201,
+    "unknown_calls": 201,
+    "interpretation": "query-only 1/1 cannot be extrapolated to callsite recall, full crate coverage or competitive success"
+  },
+  "p3": {
+    "review_method": "source and existing final receipt inspected; independent context binary not executed",
+    "receipt": "docs/relatorios/logs/L5-continuacao/r3/final/p3-integration-verified.receipt.json",
+    "receipt_sha256": "7211d83fd10278525d6126d1ee2456b4ef745f694e99fb85b49b2713ef85da5e",
+    "receipt_exit": 0,
+    "occurrence_states": [
+      "resolved",
+      "resolved",
+      "unknown"
+    ],
+    "targets": [
+      "old::target",
+      "new::target"
+    ],
+    "resolved_definitions": 2,
+    "unknown_anchor_syntactic": true,
+    "result": "partial",
+    "competitive_or_agent_success_claim": false
+  },
+  "historical_failures": "Initial false promotions are retained by implementer; zero claim applies to final freeze-bound reruns.",
+  "findings": [],
+  "architectural_decisions_required": [],
+  "limitations": [
+    "bounded review does not establish conservatism for every unsupported Rust construct",
+    "only trusted release semantics-spike on synthetic inputs and verify_semantics executed independently",
+    "no Cargo/upstream commands executed by reviewer",
+    "native CI receipt is parent integration responsibility",
+    "R4, other languages, full semantic coverage, competitive gates remain pending"
+  ],
+  "index_coverage": {
+    "receipt": "docs/relatorios/logs/L5-continuacao/integration/r3-independent/index-coverage.json",
+    "generation": "2026-10-12T16:40:33Z",
+    "metadata_match_paths": 6,
+    "tier": 2,
+    "caveat": "best effort, not completeness proof"
+  },
+  "graft": {
+    "active_review_queries": 3,
+    "active_review_estimated_tokens_saved": 35234,
+    "cumulative_agent_queries": 12,
+    "cumulative_agent_estimated_tokens_saved": 72616
+  },
+  "artifacts": {
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/additional-cases.json": "f54fbbfabf746c375e920ac0ca098b03b4d2adc3bcd6dcde3c8fb5cfb5f15b8a",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/additional-freeze.json": "44a759997226e3b1c10791298550a0aa853f4b6da4f2b10794de2366d27964f4",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/additional-output.json": "176eba16781dbbfe484a14a5c07254cc4fedffcb80e03415d9a2f619d4a54c82",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/additional-verifier.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/additional-verifier.stdout": "c65a20ebd98dc18429b37956f7c376a8d8fa8e684aff1260d918951c28e8d25e",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-extra-driver.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-extra-output.json": "4ad8cd5f385015b09ee9fe0f2ff1e437a7921d6e8373e1ff85d6ee1428cd8562",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-extra-verifier.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-extra-verifier.stdout": "2a4b9d92fa9d595713646714e868cf26723eb56e2ad9fed3b362be442d28d932",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-r3-driver.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-r3-output.json": "4416ff6ea02d2513651d5b33efbd933f051adffe295adc6bd4ba46bdc8461442",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-r3-verifier.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-r3-verifier.stdout": "9aaa88805fa9b96d01e221a165f5d49095407fdcaad5d907e3c5a5878ecd27e1",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/index-coverage.json": "d8ae027dc8f5c4b001ed970c01234d943b30bbefe00d0b671e5cd941385dcae1",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/p3-consumer-driver.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/p3-consumer-output.json": "99d97b6595bc47eaeefcc19d5c764d0c9554e04286934c2b6f299c1c19df2ebe",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/p3-consumer-verifier.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/p3-consumer-verifier.stdout": "754f74ae8dacd5b026ca228e371c7e8959bbb0880ba56f4d7062a8cee5270b9e",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/replays.json": "fc97509e46395f559a4c0ca86a669aebff2382170a28fa242752c324aaa0943a",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/rust-r3-driver.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/rust-r3-output.json": "d4476890263defbf24290cb0764c3cc7f53a8cc9827521e38fbf3403b148e85f",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/rust-r3-verifier.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/integration/r3-independent/rust-r3-verifier.stdout": "b1bde3731b38d4991a11567067385d5ddbd584d24c67e8bf896a7705c20d0afe"
+  }
+}

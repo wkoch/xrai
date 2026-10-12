@@ -1,0 +1,106 @@
+{
+  "at": "2026-10-12T16:37:50.365996+00:00",
+  "binary_sha256": "3ccd6a7d75ab086e8eb647daddda229c8564eb0478df6f3e5611800c88a1b1ca",
+  "replays": [
+    {
+      "matrix": "eval/semantics/r3/rust-r3.json",
+      "driver_command": [
+        "/Users/wkoch/Projetos/xrai/target/release/semantics-spike",
+        "/Users/wkoch/Projetos/xrai/eval/semantics/r3/rust-r3.json"
+      ],
+      "driver_exit": 0,
+      "verifier_command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/verify_semantics.py",
+        "/Users/wkoch/Projetos/xrai/eval/semantics/r3/rust-r3.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/r3-independent/rust-r3-output.json"
+      ],
+      "verifier_exit": 0,
+      "input_sha256": "03793ea368850b427903578efd0274a1f0a317979be7568eba5e7831970ee785",
+      "output_sha256": "d4476890263defbf24290cb0764c3cc7f53a8cc9827521e38fbf3403b148e85f",
+      "counts": {
+        "cases": 34,
+        "correct": 34,
+        "events": 0,
+        "false_promotions": 0,
+        "resolvable": 16,
+        "resolvable_correct": 16
+      }
+    },
+    {
+      "matrix": "eval/semantics/r3/counterproofs-r3.json",
+      "driver_command": [
+        "/Users/wkoch/Projetos/xrai/target/release/semantics-spike",
+        "/Users/wkoch/Projetos/xrai/eval/semantics/r3/counterproofs-r3.json"
+      ],
+      "driver_exit": 0,
+      "verifier_command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/verify_semantics.py",
+        "/Users/wkoch/Projetos/xrai/eval/semantics/r3/counterproofs-r3.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-r3-output.json"
+      ],
+      "verifier_exit": 0,
+      "input_sha256": "de0e5fae75a458a4a09dabda4c02b5843ff307f5e26909b38f0d7b72b0307b97",
+      "output_sha256": "4416ff6ea02d2513651d5b33efbd933f051adffe295adc6bd4ba46bdc8461442",
+      "counts": {
+        "cases": 4,
+        "correct": 4,
+        "events": 0,
+        "false_promotions": 0,
+        "resolvable": 0,
+        "resolvable_correct": 0
+      }
+    },
+    {
+      "matrix": "eval/semantics/r3/counterproofs-extra.json",
+      "driver_command": [
+        "/Users/wkoch/Projetos/xrai/target/release/semantics-spike",
+        "/Users/wkoch/Projetos/xrai/eval/semantics/r3/counterproofs-extra.json"
+      ],
+      "driver_exit": 0,
+      "verifier_command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/verify_semantics.py",
+        "/Users/wkoch/Projetos/xrai/eval/semantics/r3/counterproofs-extra.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/r3-independent/counterproofs-extra-output.json"
+      ],
+      "verifier_exit": 0,
+      "input_sha256": "077c397240586c8753c524f6fc65e45ecc8f347489e176edb633cb49c5e28656",
+      "output_sha256": "4ad8cd5f385015b09ee9fe0f2ff1e437a7921d6e8373e1ff85d6ee1428cd8562",
+      "counts": {
+        "cases": 3,
+        "correct": 3,
+        "events": 0,
+        "false_promotions": 0,
+        "resolvable": 0,
+        "resolvable_correct": 0
+      }
+    },
+    {
+      "matrix": "eval/semantics/r3/p3-consumer.json",
+      "driver_command": [
+        "/Users/wkoch/Projetos/xrai/target/release/semantics-spike",
+        "/Users/wkoch/Projetos/xrai/eval/semantics/r3/p3-consumer.json"
+      ],
+      "driver_exit": 0,
+      "verifier_command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/verify_semantics.py",
+        "/Users/wkoch/Projetos/xrai/eval/semantics/r3/p3-consumer.json",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/integration/r3-independent/p3-consumer-output.json"
+      ],
+      "verifier_exit": 0,
+      "input_sha256": "b008dfa3d07ec6ccba287bd62f9a9c170906a193b7bbc39ad07e98b2dcd0a572",
+      "output_sha256": "99d97b6595bc47eaeefcc19d5c764d0c9554e04286934c2b6f299c1c19df2ebe",
+      "counts": {
+        "cases": 1,
+        "correct": 1,
+        "events": 0,
+        "false_promotions": 0,
+        "resolvable": 1,
+        "resolvable_correct": 1
+      }
+    }
+  ]
+}

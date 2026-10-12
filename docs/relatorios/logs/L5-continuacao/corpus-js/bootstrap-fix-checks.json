@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-12T16:47:59.115864+00:00",
+  "cause": "captured postinstall downloads compiled react-is under pretty-format; frozen install with ignore-scripts omitted that special workspace workaround",
+  "setup_deviation": "offline exact package extraction replaces upstream floating pacote.extract semver operation; no hooks or package code execute during bootstrap",
+  "package": "react-is",
+  "version": "17.0.2",
+  "integrity": "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==",
+  "archive_sha256": "9b1850c05b4fc08e9b814a201281a103a7651ac46500dce7b6bedd0865963eb1",
+  "verified_case_artifacts": 20,
+  "commands": [
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts/tests",
+        "-p",
+        "test_l5_js_bootstrap.py",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "bootstrap-fix-bootstrap-tests.stdout",
+      "stderr": "bootstrap-fix-bootstrap-tests.stderr"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/prepare_l5_js.py",
+        "verify"
+      ],
+      "exit": 0,
+      "stdout": "bootstrap-fix-capture-verify.stdout",
+      "stderr": "bootstrap-fix-capture-verify.stderr"
+    }
+  ],
+  "syntax_checked": [
+    "eval/scripts/run_l5_js.py",
+    "eval/scripts/tests/test_l5_js_bootstrap.py"
+  ],
+  "no_upstream_macOS_execution": true,
+  "production_lock_oracle_unchanged": true,
+  "CI_runtime_rerun": "pending",
+  "admitted": false,
+  "D1_admitted_delta": 0,
+  "sources": {
+    "eval/scripts/run_l5_js.py": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+    "eval/scripts/tests/test_l5_js_bootstrap.py": "612a1d65d804089d6fadf7681b3e128953f6b25548699ec1dd8f32a172938bd2",
+    "eval/qualification/l5-real/js/case.json": "f2e4c8d926f6966036f7176d3a2153bb5e83fed5ead8f087f831a671081af007",
+    "eval/qualification/l5-real/js/README.md": "4a644f7283e87486d13da9cf25b17e0b004d5a0414be2d0a99656834ad868897"
+  },
+  "evidence_hashes": {
+    "docs/relatorios/logs/L5-continuacao/corpus-js/bootstrap-fix-bootstrap-tests.stderr": "0b988ad908662efa23726040b35929f927c9b2b14d69f6005aeab90da2889c49",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/bootstrap-fix-bootstrap-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/bootstrap-fix-capture-verify.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/bootstrap-fix-capture-verify.stdout": "fbd63db92ed476024085c17fa12b74ebf884f9f2a92622b99b6495bd9753e559"
+  },
+  "first_failure": {
+    "path": "docs/relatorios/logs/L5-continuacao/corpus-js/ci-first-bootstrap-infrastructure-failure",
+    "classification": "infrastructure, not contract failure",
+    "cause": "SyntaxError: unexpected export from raw workspace react-is before Jest reports",
+    "files": {
+      "docs/relatorios/logs/L5-continuacao/corpus-js/ci-first-bootstrap-infrastructure-failure/probe.json": "037f15d2433302ae278bbc2df7140e20a09d337be0b426eea02fdda326b47371",
+      "docs/relatorios/logs/L5-continuacao/corpus-js/ci-first-bootstrap-infrastructure-failure/regression-harness.json": "2b520d957f12ce797f28168b36feaf14c196fb56e255e33d1905c18b873039cb",
+      "docs/relatorios/logs/L5-continuacao/corpus-js/ci-first-bootstrap-infrastructure-failure/regression-harness.stderr": "2713cc1ad5d675d20a03d2faa686cdfe0fa0bf1e5149c6b3c058480e833df14d",
+      "docs/relatorios/logs/L5-continuacao/corpus-js/ci-first-bootstrap-infrastructure-failure/requirement-harness.json": "07bbd1c577887f928b397c1594f3d6881b048d752c17f563e5f882e148f81870",
+      "docs/relatorios/logs/L5-continuacao/corpus-js/ci-first-bootstrap-infrastructure-failure/requirement-harness.stderr": "2713cc1ad5d675d20a03d2faa686cdfe0fa0bf1e5149c6b3c058480e833df14d"
+    }
+  },
+  "graph_coverage": "bootstrap-fix-index-coverage.json",
+  "graft": {
+    "incremental_queries": 1,
+    "incremental_tokens_saved": 2149,
+    "cumulative_agent_queries": 13,
+    "cumulative_agent_tokens_saved": 74765
+  }
+}

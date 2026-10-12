@@ -1,0 +1,46 @@
+{
+  "format": "l5-native-executables-v1",
+  "system": "Darwin",
+  "machine": "arm64",
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "code_commit": "be1919f78cc774135efb2e334cd350669afdbc01",
+  "rustc_verbose": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "executables": [
+    {
+      "name": "parsing-spike",
+      "bytes": 8162112,
+      "sha256": "f6075cb4fbb8010a21969c84f44e8d58898bfb02fd95fee5799b702504cce5ae",
+      "mode": 493
+    },
+    {
+      "name": "worker-spike",
+      "bytes": 8452352,
+      "sha256": "17a1ea17f2dde7f8bc815097b7affd49a944e713471f7715d8a6726c4c8e47ea",
+      "mode": 493
+    },
+    {
+      "name": "worker-persistent",
+      "bytes": 8615936,
+      "sha256": "2997694ce1e5b2c1d58ab84f1c8f3e1425b1248b5e817e3ae48fe9b31901073e",
+      "mode": 493
+    },
+    {
+      "name": "worker-benchmark",
+      "bytes": 8686704,
+      "sha256": "7fce0868c4968b4aa31a7445f696aceaf4a506d1942506bce473c4a27845ef47",
+      "mode": 493
+    },
+    {
+      "name": "semantics-spike",
+      "bytes": 6725600,
+      "sha256": "2ebdc96541a625ea4ba91203bc6c54622136eca34576044a24fb39f91ba05bf9",
+      "mode": 493
+    },
+    {
+      "name": "context-spike",
+      "bytes": 7483856,
+      "sha256": "6c8810b62297ac2446358b9d589e8880955644c793a29e139149c299c46b6890",
+      "mode": 493
+    }
+  ]
+}
