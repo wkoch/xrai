@@ -1,0 +1,55 @@
+{
+  "base_commit": "bab002d8c76509aa15d4e640cb659e93b999af7e",
+  "checks": [
+    {
+      "command": "env MACOSX_DEPLOYMENT_TARGET=15.0 cargo build --release -p xrai-eval --bin worker-benchmark --bin worker-spike --bin worker-persistent",
+      "exit": 0
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "exit": 0
+    },
+    {
+      "command": "cargo clippy -p xrai-eval --bin worker-benchmark -- -D warnings",
+      "exit": 0
+    },
+    {
+      "command": "python -m unittest discover -s eval/scripts/tests -p test_worker_measurement.py -v",
+      "exit": 0,
+      "tests": 14
+    },
+    {
+      "command": "python eval/scripts/measure_workers.py --output docs/relatorios/logs/L5/resources/native-macos-synthetic --timeout 600",
+      "exit": 0,
+      "measured_requests": 18900,
+      "sessions": 9
+    },
+    {
+      "command": "python eval/scripts/verify_worker_measurement.py docs/relatorios/logs/L5/resources/native-macos-synthetic",
+      "exit": 0
+    }
+  ],
+  "code_exploration": {
+    "cbm_tier": 2,
+    "coverage": "no recorded issue metadata_match; best-effort",
+    "coverage_generation": "2026-10-12T13:22:18Z",
+    "discovery_generation": "2026-10-12T12:53:43Z",
+    "graft_calls": 1,
+    "graft_saved_tokens": 16717
+  },
+  "host": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "initial_failure": "sandbox ps EPERM preserved in sandbox-calibration, not CPU/RSS zero",
+  "m0_06_complete": false,
+  "python": "3.13.13",
+  "recorded_at": "2026-10-12T13:23:42.722835+00:00",
+  "source_sha256": {
+    "crates/xrai-eval/src/bin/worker-benchmark.rs": "13246ef922f157c70cfc78b49b9dd8ff3213803ae4da8e2dd3b017796e5f19fb",
+    "eval/reports/m0-workers-persistent.md": "3f70bd314a25a17b9ac3388421db550249fe7553a764128c5f3eb6fa10ba40bb",
+    "eval/scripts/measure_workers.py": "f7426006802d1ab30cf1317763657e7e6395c896b9c2610982fcd9b921a66568",
+    "eval/scripts/tests/test_worker_measurement.py": "2dc6050044daac2f031f2d46f4d4514729ebdde35f2d0e53b54fba4c16588267",
+    "eval/scripts/verify_worker_measurement.py": "86c9346343b2ac2edac91d94092752868149f4f63cc4695c76a17d056ac5bf98",
+    "eval/workers/matrix-design.json": "529b7cd7b84a14f7fa31a85b329188ee87ed1d6970f869d53d484653da6a5d40"
+  },
+  "sources_archive_verified_before_generated_sources_removal": true,
+  "supervisors_modified": false
+}

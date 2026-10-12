@@ -1,0 +1,21 @@
+   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.91s
+     Running unittests src/lib.rs (target/debug/deps/xrai_eval-77cf3eed90cfedbd)
+
+running 1 test
+
+thread 'context_spike::tests::ended_context_handle_never_resurrects_when_same_input_is_recreated' (1358505) panicked at crates/xrai-eval/src/context_spike.rs:1407:13:
+assertion `left != right` failed: ttl
+  left: "ctx_5636e9e4dfd1cb8b3292c38237a0bb5f9212aacbc6ac6e23c33dab5f70697d2a"
+ right: "ctx_5636e9e4dfd1cb8b3292c38237a0bb5f9212aacbc6ac6e23c33dab5f70697d2a"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test context_spike::tests::ended_context_handle_never_resurrects_when_same_input_is_recreated ... FAILED
+
+failures:
+
+failures:
+    context_spike::tests::ended_context_handle_never_resurrects_when_same_input_is_recreated
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 18 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `-p xrai-eval --lib`

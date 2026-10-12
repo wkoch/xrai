@@ -1,0 +1,63 @@
+{
+  "recorded_at_utc": "2026-10-12T13:37:22.012677+00:00",
+  "base_commit": "bab002d8c76509aa15d4e640cb659e93b999af7e",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "driver_mode": "cargo run debug, development-only",
+  "python_runtime": "3.13.13",
+  "source_sha256": {
+    "crates/xrai-eval/src/context_spike.rs": "5b9e5355d716113e26a29656c678cb63ca5d858f18ac2fec1ab79c99c9ed6371",
+    "crates/xrai-eval/src/bin/context-spike.rs": "3df3f0f97fd5658b8f54dfd329c6b6f5c303baf9fa3d81bb8a9854186b735f54",
+    "eval/context/measure_wire.py": "0975200e1c49094b6ebb820aeabcfa7300fd375d5f13a43f5a840923a3b0e5de",
+    "eval/scripts/verify_context.py": "8818b3a01216ad8d0895a008fc4699b1bc2db1b6a88062c5915fb651f8f6722d",
+    "eval/context/tests/test_verify_context.py": "a3155b16f6d818624e6a23c8d4ee405e7eba4b868d0f1125b8f0d3bbc4693311",
+    "eval/context/removed-consumer-input.json": "59e4110baa8dd36893ba1750fbec864feaff24425e84e869651f97d5950c8ed4",
+    "eval/context/central-hunk-input.json": "4b113e1ab349e28020935bd277b3099bca92955b3bbb9a6b08264b6a91430bcf",
+    "eval/context/development-labels.json": "adf56b40c520663072e24eee10b53c062d5de66c6e7dfd11b03c5165418c2592",
+    "eval/context/README.md": "4198319b749c5b288f5c85a0d0d90466fd4826502a563dbb47812c709407be77"
+  },
+  "artifact_sha256": {
+    "context-removed-consumer.json": "8cec271f77b5374d719b453c39fe0718254d469dcbc33619e8c04403d1dd0715",
+    "removed-verification.json": "741216305cebac412af8d7db60d706af0a9475522d1db00b980d9a41b2b3de08",
+    "verifier-tests-stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "central-verification.json": "0a8837ed5373e3cc84c2f543048b2781747618211f5852b53bbb58153b10a618",
+    "context-central-hunk.json": "436cde55a672425268aad0f6daf91618e28b9b75f896e8554f67a03f31e86305",
+    "initial-failures.json": "de523504e8e395ba8e5d5b5ea21d5f38e18d8bf97bf2489270c7dcb748fdf34b",
+    "verifier-tests-stderr.txt": "0fdd1a1e35b7b28470d8480db6197696725c4e20c44ea29b59af096c26c068f1"
+  },
+  "observed_driver_exits": {
+    "removed": 0,
+    "central": 0
+  },
+  "verifier_tests": {
+    "command": [
+      "/private/tmp/xrai-l4-measurement/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "eval/context/tests",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 8
+  },
+  "rust_tests": {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "xrai-eval",
+      "--lib",
+      "context_spike"
+    ],
+    "observed_exit": 0,
+    "tests": 17,
+    "full_native_run_owned_by_root": true
+  },
+  "graft": {
+    "calls": 1,
+    "tokens_saved": 15274
+  },
+  "index_generation": "2026-10-12T13:35:33Z",
+  "scope": "First synthetic Rust selection/expansion development slice; M0-09 open"
+}

@@ -1,0 +1,29 @@
+   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.65s
+     Running unittests src/lib.rs (target/debug/deps/xrai_eval-77cf3eed90cfedbd)
+
+running 21 tests
+test context_spike::tests::byte_digit_boundaries_and_counter_cycles_are_bounded ... ok
+test context_spike::tests::absent_base_and_work_limits_do_not_fallback ... ok
+test context_spike::tests::absent_source_is_unavailable_not_budget ... ok
+test context_spike::tests::failed_admitted_expansions_consume_attempt_cap ... ok
+test context_spike::tests::base_consumer_and_definition_use_ir_without_promotion ... ok
+test context_spike::tests::deterministic_wire_counts_and_profile_binding ... ok
+test context_spike::tests::expansion_work_limits_are_checked_before_materializing ... ok
+test context_spike::tests::opaque_evaluator_fields_cannot_enter_typed_boundary ... ok
+test context_spike::tests::candidate_cap_has_gap_and_unknown_evidence_preserves_state ... ok
+test context_spike::tests::expansion_that_cannot_grow_reports_insufficient ... ok
+test context_spike::tests::incarnation_overflow_fails_closed ... ok
+test context_spike::tests::foreign_duplicate_ids_and_expansion_cap_are_refused ... ok
+test context_spike::tests::unknown_lookup_is_retained_without_global_fallback ... ok
+test context_spike::tests::deadline_checked_after_final_meter_and_empty_selection ... ok
+test context_spike::tests::identified_content_does_not_fit_bytes_or_tokens ... ok
+test context_spike::tests::immutable_expansion_does_not_migrate_when_new_snapshot_publishes ... ok
+test context_spike::tests::valid_changed_slice_but_wrong_unchanged_region_is_invalid_diff ... ok
+test context_spike::tests::ended_context_handle_never_resurrects_when_same_input_is_recreated ... ok
+test context_spike::tests::replacement_store_and_live_reuse_preserve_retention_domain_and_cap ... ok
+test context_spike::tests::ttl_release_and_pressure_end_whole_context ... ok
+test context_spike::tests::central_hunk_is_not_prefix_and_wrong_diff_is_rejected ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+

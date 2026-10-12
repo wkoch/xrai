@@ -1,0 +1,122 @@
+{
+  "full_response_equivalent": true,
+  "limitations": [
+    "Synthetic-only first measurement; real small/medium and real dense corpus still required",
+    "Sequential latency only; concurrency throughput separate remains pending",
+    "Cold means process/cache startup, never OS page-cache cold",
+    "CPU includes loading, warmup, validation, retention calibration and shutdown; not attributed per request",
+    "XRW2 IPC/stderr totals and queue/codec/roundtrip timings unavailable"
+  ],
+  "m0_06_complete": false,
+  "schema": "xrai.eval.worker.verification.v1",
+  "sessions": [
+    {
+      "cpu_system_seconds": 0.143237,
+      "cpu_user_seconds": 7.045227,
+      "measured_requests_per_second": 306.5440816405692,
+      "missed_worker_pids": 0,
+      "mode": "direct",
+      "p50_ms": 1.9188545000000001,
+      "p95_ms": 8.610958,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 30212096,
+      "session": 0
+    },
+    {
+      "cpu_system_seconds": 2.373284,
+      "cpu_user_seconds": 9.898026,
+      "measured_requests_per_second": 167.97889052285396,
+      "missed_worker_pids": 1666,
+      "mode": "xrw1",
+      "p50_ms": 4.640313000000001,
+      "p95_ms": 11.482042,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 22200320,
+      "session": 0
+    },
+    {
+      "cpu_system_seconds": 0.25834999999999997,
+      "cpu_user_seconds": 6.129677,
+      "measured_requests_per_second": 355.54391309893333,
+      "missed_worker_pids": 0,
+      "mode": "xrw2",
+      "p50_ms": 1.233,
+      "p95_ms": 8.272959,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 63127552,
+      "session": 0
+    },
+    {
+      "cpu_system_seconds": 2.497941,
+      "cpu_user_seconds": 10.080513,
+      "measured_requests_per_second": 162.87986114073004,
+      "missed_worker_pids": 1660,
+      "mode": "xrw1",
+      "p50_ms": 4.8192705,
+      "p95_ms": 11.804083,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 22249472,
+      "session": 1
+    },
+    {
+      "cpu_system_seconds": 0.257025,
+      "cpu_user_seconds": 6.184249,
+      "measured_requests_per_second": 354.2639774423809,
+      "missed_worker_pids": 0,
+      "mode": "xrw2",
+      "p50_ms": 1.2815625,
+      "p95_ms": 8.30225,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 65421312,
+      "session": 1
+    },
+    {
+      "cpu_system_seconds": 0.148345,
+      "cpu_user_seconds": 7.264261,
+      "measured_requests_per_second": 298.49744691978105,
+      "missed_worker_pids": 0,
+      "mode": "direct",
+      "p50_ms": 1.8618545,
+      "p95_ms": 8.651917,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 35815424,
+      "session": 1
+    },
+    {
+      "cpu_system_seconds": 0.261691,
+      "cpu_user_seconds": 6.326716,
+      "measured_requests_per_second": 338.9715617086847,
+      "missed_worker_pids": 0,
+      "mode": "xrw2",
+      "p50_ms": 1.2326039999999998,
+      "p95_ms": 8.591875,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 64077824,
+      "session": 2
+    },
+    {
+      "cpu_system_seconds": 0.13559,
+      "cpu_user_seconds": 7.082973,
+      "measured_requests_per_second": 306.05262120027345,
+      "missed_worker_pids": 0,
+      "mode": "direct",
+      "p50_ms": 1.8241455,
+      "p95_ms": 8.478583,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 29573120,
+      "session": 2
+    },
+    {
+      "cpu_system_seconds": 2.489105,
+      "cpu_user_seconds": 10.120233,
+      "measured_requests_per_second": 161.72618157110136,
+      "missed_worker_pids": 1656,
+      "mode": "xrw1",
+      "p50_ms": 4.9943335,
+      "p95_ms": 11.423875,
+      "requests": 2100,
+      "sampled_peak_sum_rss": 21889024,
+      "session": 2
+    }
+  ]
+}

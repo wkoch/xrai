@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cargo",
+    "clippy",
+    "--workspace",
+    "--all-targets",
+    "--locked",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "base_commit": "bab002d8c76509aa15d4e640cb659e93b999af7e",
+  "recorded_at": "2026-10-12T13:47:26.456081+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 1.0340261670025939,
+  "exit_code": 101,
+  "stdout": "",
+  "stderr": "    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\nerror[E0425]: cannot find value `deadline_ms` in this scope\n   --> crates/xrai-eval/src/context_spike.rs:793:54\n    |\n793 |         if started.elapsed().as_millis()>=u128::from(deadline_ms){return Err(\"work_limit:deadline\".into());}\n    |                                                      ^^^^^^^^^^^ not found in this scope\n\nFor more information about this error, try `rustc --explain E0425`.\nerror: could not compile `xrai-eval` (lib) due to 1 previous error\nwarning: build failed, waiting for other jobs to finish...\nerror: could not compile `xrai-eval` (lib test) due to 1 previous error\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "1edf2e133dbebbd1b226885e87f9423ff97602c96aef13d54429c40f99c543f5"
+}

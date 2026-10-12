@@ -29,8 +29,12 @@ Reprodução: instalar `requirements-measurement.txt` no ambiente Python 3.13.13
 
 [readiness.json](../../docs/relatorios/logs/L4/measurement/readiness.json) separa D0/seed smoke pareado de campanha D1. Offline/fake pode executar. Um run real exige adapter/modelo/versão/esforço e credencial disponíveis, teto monetário autorizado, perfil de medição e contenção descartável para agente arbitrário. D1 também exige os 32 admitidos; estado atual 0/32. No macOS smoke existente não cumpre contenção descartável. O preflight é diagnóstico de configuração, não autorização de chamada ou aprovação de gate.
 
-Pendências de execução: integrar/verificar adapter real e categorias/recibos/preços versionados efetivamente disponíveis; configurar recursos/teto monetário antes de envio; executar quatro smokes reais por família em Linux contido; macOS descartável para prova equivalente; D1 admitido antes da campanha. O schema/fake não fecha sucesso, H1 ou custo competitivo. Nenhuma decisão arquitetural nova foi assumida neste recorte.
+Pendências de execução: integrar/verificar adapter real e categorias/recibos/preços versionados efetivamente disponíveis; configurar recursos/teto monetário antes de envio; executar quatro smokes pareados reais no total, uma tarefa por família e dois braços (oito sessões antes de retries), em Linux contido; macOS descartável para prova equivalente; D1 admitido antes da campanha. O schema/fake não fecha sucesso, H1 ou custo competitivo. Nenhuma decisão arquitetural nova foi assumida neste recorte.
 
 ## Prova nativa conciliada
 
 [CI38248278388](https://github.com/wkoch/xrai/actions/runs/38248278388), código `1d2d40a221dad1a5ec9188158dbc624f329023c7`, Linux x86_64/glibc2.39 e macOS15.7.9 arm64: três jobs aprovados. [L4](../../docs/relatorios/L4.md) e [conferência dos receipts](../../docs/relatorios/logs/L4/integration/native-receipts-verification-final.json) registram comandos/hashes, resultados e limites do primeiro recorte. Prova antes pendente agora concluída para este incremento; os critérios restantes do cartão continuam abertos.
+
+## Conciliação L5 / L4-M01
+
+A [revisão L4](../../docs/relatorios/REVISAO-L4.md) esclareceu a unidade do aceite: quatro tarefas no total, uma por família, com dois braços declarados. Isso exige oito sessões mínimas antes de retries; mais braços ou repetições entram na projeção de recursos. A redação anterior deste readiness foi corrigida; os recibos históricos L4 permanecem intactos. Nenhuma sessão paga foi autorizada ou executada por essa correção.

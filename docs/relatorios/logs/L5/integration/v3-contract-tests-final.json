@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "docs/contracts/experimental-p3/tests",
+    "-v"
+  ],
+  "base_commit": "bab002d8c76509aa15d4e640cb659e93b999af7e",
+  "recorded_at": "2026-10-12T13:25:16.786364+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.42870125000081316,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_all_versioned_examples (test_verify.DocumentaryP3Tests.test_all_versioned_examples) ... ok\ntest_both_producers_have_matching_provenance (test_verify.DocumentaryP3Tests.test_both_producers_have_matching_provenance) ... ok\ntest_byte_budget_includes_full_comparison_and_receipts (test_verify.DocumentaryP3Tests.test_byte_budget_includes_full_comparison_and_receipts) ... ok\ntest_diff_path_display_cannot_override_native_identity (test_verify.DocumentaryP3Tests.test_diff_path_display_cannot_override_native_identity) ... ok\ntest_duplicate_expansion_object (test_verify.DocumentaryP3Tests.test_duplicate_expansion_object) ... ok\ntest_empty_suite_is_not_a_green_run (test_verify.DocumentaryP3Tests.test_empty_suite_is_not_a_green_run) ... ok\ntest_exact_tokens_include_unicode_crlf_escapes_and_special_text (test_verify.DocumentaryP3Tests.test_exact_tokens_include_unicode_crlf_escapes_and_special_text) ... ok\ntest_expansion_receipt_does_not_change_original_manifest (test_verify.DocumentaryP3Tests.test_expansion_receipt_does_not_change_original_manifest) ... ok\ntest_fact_producer_is_checked (test_verify.DocumentaryP3Tests.test_fact_producer_is_checked) ... ok\ntest_foreign_context (test_verify.DocumentaryP3Tests.test_foreign_context) ... ok\ntest_member_producer_cannot_use_other_fingerprint (test_verify.DocumentaryP3Tests.test_member_producer_cannot_use_other_fingerprint) ... ok\ntest_missing_other_side (test_verify.DocumentaryP3Tests.test_missing_other_side) ... ok\ntest_object_key_order_is_not_revision_order (test_verify.DocumentaryP3Tests.test_object_key_order_is_not_revision_order) ... ok\ntest_only_snapshot_pair_mode (test_verify.DocumentaryP3Tests.test_only_snapshot_pair_mode) ... ok\ntest_partial_cannot_claim_all_obligations_satisfied (test_verify.DocumentaryP3Tests.test_partial_cannot_claim_all_obligations_satisfied) ... ok\ntest_signature_cannot_satisfy_required_body (test_verify.DocumentaryP3Tests.test_signature_cannot_satisfy_required_body) ... ok\ntest_unavailable_is_not_a_budget_omission (test_verify.DocumentaryP3Tests.test_unavailable_is_not_a_budget_omission) ... ok\ntest_versions_are_not_coerced (test_verify.DocumentaryP3Tests.test_versions_are_not_coerced) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.315s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "48bef42abd522350b8df29d2b6c1090f228fbb33e1403a505ae3e80f690c7c2c"
+}

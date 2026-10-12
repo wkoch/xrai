@@ -1,0 +1,20 @@
+{
+  "schema": "xrai.eval.worker.design.v1",
+  "purpose": "L5-03 synthetic calibration first; not complete M0-06 corpus",
+  "modes": ["direct", "xrw1", "xrw2"],
+  "dialects": ["rust", "javascript", "jsx", "typescript", "tsx", "python", "go"],
+  "classes": ["small", "medium", "dense", "large-comments", "error"],
+  "patterns": ["repeated", "distinct"],
+  "sessions_per_mode": 3,
+  "requests_per_dialect_class_pattern_session": 30,
+  "warmup_requests_per_session": 2,
+  "concurrency": 1,
+  "mode_rotation": [["direct", "xrw1", "xrw2"], ["xrw1", "xrw2", "direct"], ["xrw2", "direct", "xrw1"]],
+  "source_selection": "Deterministic synthetic source generator, no task oracle; each run freezes source archive/hash and exact descriptor order before calibration/reference/measurements",
+  "cpu": "wait4 exit accounting validated on each host against parent self + individually waited child counters; session totals once, no per-request duplication",
+  "rss": "ps common process-table snapshot every requested 25 ms, timestamp begin/end, process PID/PPID/start time, sum simultaneous RSS; report gaps and actual interval",
+  "observer": "Separate observer process self CPU and ps child CPU after subtracting target terminal usage",
+  "cold": "first request per process (including separately marked warmup); not OS cache cold; direct and XRW1 recompile parser/query every request",
+  "limits": {"workers": 2, "source_bytes": 8388608, "response_bytes": 16777216, "reserved_payload_bytes": 67108864, "queue_positions": 8, "request_deadline_seconds": 5, "session_watchdog_seconds": 600, "held_ticket_ms": 100},
+  "pending": ["Real project small/medium/dense sources", "Concurrent throughput matrix", "Queue/codec/roundtrip component timing", "XRW2 IPC and observed stderr counters", "Production mode recommendation after complete evidence"]
+}

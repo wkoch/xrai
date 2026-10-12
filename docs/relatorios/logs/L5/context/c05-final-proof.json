@@ -1,0 +1,54 @@
+{
+  "recorded_at_utc": "2026-10-12T13:49:29.317091+00:00",
+  "scope": "C04 admitted attempts + C05 retention incarnation + whole-operation cooperative deadline",
+  "before_fix_exit": 101,
+  "after_fix_rust_tests": {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "xrai-eval",
+      "--lib",
+      "context_spike"
+    ],
+    "exit": 0,
+    "passed": 21,
+    "failed": 0
+  },
+  "clippy": {
+    "command": [
+      "cargo",
+      "clippy",
+      "-p",
+      "xrai-eval",
+      "--lib",
+      "--bin",
+      "context-spike",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 0
+  },
+  "cases": [
+    "TTL sameinput recreate oldhandle context_expired",
+    "eviction sameclock recreate oldhandle context_expired",
+    "release recreate oldhandle context_expired",
+    "other Store rejects priorhandle",
+    "live reuse retains originalTTL andadmittedattemptcap",
+    "incarnation overflow rejected",
+    "fourfailed admittedexpansions thenfifthrejected withoutmeasurement"
+  ],
+  "source_sha256": {
+    "crates/xrai-eval/src/context_spike.rs": "549eecd3297dcdf70a446696d895f131e6cac4e213260b12042cfb32943917e1",
+    "crates/xrai-eval/src/bin/context-spike.rs": "f1633415d8989c56ef5b0f11b9c50f7e6c79ad3ed2dfabe2ff4e0e0c18a891c0",
+    "eval/scripts/verify_context.py": "d3c4a1ed1946b78fdb0f993b63d2f225c7cde374b5f00c507296e4e4e69a7616",
+    "eval/context/tests/test_verify_context.py": "a9839c7afd9e31889e90e3a81bfc298f13cf670acea9d30a6b27d1f07cfd16bf"
+  },
+  "artifact_sha256": {
+    "c05-before-fix.txt": "028e0a884970fa13804b2531e9d9dd6b96aa30ce5453b9e79cfd30e22864ba1d",
+    "c05-final-deadline-tests.txt": "7278649171482280d391e7745e5342ac486c266abaf9e14d2505c4583448e3da",
+    "c05-final-deadline-clippy.txt": "bf8913fcdff39d7ccd32abd4f1b1b7630ca802c78728e4560cdd859870045ad7"
+  },
+  "receipt_regeneration": "Integrator generates final native release receipts; historical debug receipts retained"
+}

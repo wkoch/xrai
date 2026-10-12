@@ -1,0 +1,42 @@
+{
+  "observed_at_utc": "2026-10-12T13:28:14.370113+00:00",
+  "scope": [
+    "crates/xrai-eval/src/context_spike.rs",
+    "crates/xrai-eval/src/bin/context-spike.rs",
+    "eval/context/measure_wire.py"
+  ],
+  "method": "Tier2 graph search/trace/snippets, coverage and exact source reads; static bounded review during development; no runtime counterproof claimed",
+  "generation": "2026-10-12T13:24:13Z",
+  "coverage": "no recorded issue / metadata match; best-effort caveat",
+  "source_sha256_at_recording": "b946a1600314397a8270e25f8d3ca4e63fd225fe850605848497f5e8b29262c5",
+  "findings": [
+    {
+      "id": "C01",
+      "symbol": "Store.expand",
+      "issue": "max_files/max_source_bytes only checked positive in observed revision; new expansion work limits not enforced",
+      "state": "sent to owning implementer; correction and executable counterproof required"
+    },
+    {
+      "id": "C02",
+      "symbol": "select/Store.expand",
+      "issue": "post-final-stabilize deadline absent in observed revision; outer Store.context checks do not cover expand",
+      "state": "sent to owning implementer; correction and executable counterproof required"
+    },
+    {
+      "id": "C03",
+      "symbol": "wire_request/Manifest",
+      "issue": "projected manifest.request loses typed anchors/hunks/p2; request_id hashes typed request but returned manifest does not preserve normalized typed request/origins",
+      "state": "sent to owning implementer for explicit retained input bindings"
+    }
+  ],
+  "confirmed_positive_observations": [
+    "retained source snapshots are cloned and original manifest kept for expansion",
+    "profile fingerprint checked against original manifest before expansion",
+    "expansion unknown/duplicate IDs fail explicitly",
+    "snapshot release retires complete context; TTL and serialized-retention pressure modeled",
+    "final whole-envelope byte/token fixed point bounded and cycle-detected",
+    "base/head items preserve snapshot/configuration/source hash; no cross-time semantic relation emitted"
+  ],
+  "graft_tally_tokens_saved": 14932,
+  "graft_calls": 3
+}

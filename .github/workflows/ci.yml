@@ -30,11 +30,16 @@ jobs:
         run: python docs/contracts/verify.py
       - name: Verify rejection and failure propagation
         run: python -m unittest discover -s docs/contracts/tests -v
+      - name: Verify experimental P3 comparison profile
+        run: |
+          python docs/contracts/experimental-p3/verify.py
+          python -m unittest discover -s docs/contracts/experimental-p3/tests -v
       - name: Verify development corpus and admission gate
         run: |
           python eval/scripts/verify_corpus.py
           python -m unittest discover -s eval/scripts/tests -v
           python eval/scripts/verify_vertical.py
+          python eval/scripts/verify_slot_plan.py
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}
@@ -112,11 +117,24 @@ jobs:
       - name: Record filesystem capabilities
         run: target/debug/filesystem-spike > native-evidence/filesystem.json
       - name: Build incorporated grammars
-        run: cargo build --locked --release -p xrai-eval --bin parsing-spike --bin worker-spike --bin worker-persistent --bin semantics-spike
+        run: cargo build --locked --release -p xrai-eval --bin parsing-spike --bin worker-spike --bin worker-persistent --bin semantics-spike --bin worker-benchmark --bin context-spike
       - name: Record worker IPC and exploratory benchmark
         run: target/release/worker-spike demonstrate > native-evidence/workers.json
       - name: Record persistent worker functional proof
         run: target/release/worker-persistent demonstrate > native-evidence/workers-persistent.json
+      - name: Measure preregistered synthetic worker resources
+        run: |
+          python eval/scripts/measure_workers.py --output native-evidence/worker-resources --sessions 3 --requests 30 --timeout 600
+          python eval/scripts/verify_worker_measurement.py native-evidence/worker-resources > native-evidence/worker-resources-verification.json
+          python -c 'import shutil; shutil.rmtree("native-evidence/worker-resources/sources")'
+      - name: Prove bounded context selection and retained expansion
+        run: |
+          python -m unittest discover -s docs/contracts/experimental-p3/tests -v
+          target/release/context-spike eval/context/removed-consumer-input.json python > native-evidence/context-removed-consumer.json
+          target/release/context-spike eval/context/central-hunk-input.json python > native-evidence/context-central-hunk.json
+          python eval/scripts/verify_context.py eval/context/removed-consumer-input.json native-evidence/context-removed-consumer.json
+          python eval/scripts/verify_context.py eval/context/central-hunk-input.json native-evidence/context-central-hunk.json
+          python -m unittest discover -s eval/context/tests -v
       - name: Prove labeled Rust semantics and captured development sample
         run: |
           target/release/semantics-spike eval/semantics/rust-r1-r2.json > native-evidence/semantics-fixtures.json

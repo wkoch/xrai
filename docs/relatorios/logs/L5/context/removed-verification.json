@@ -1,0 +1,177 @@
+{
+  "verified": true,
+  "profile": "l4:d9430ef6fbbc087da841dc7433b4d31857e33f48ea1ebd8c5556db6af3fe76c7",
+  "receipts": {
+    "initial": {
+      "bytes": 8157,
+      "tokens": 3086,
+      "status": "partial",
+      "items": 3,
+      "identified": 3,
+      "included": 3
+    },
+    "expanded": {
+      "bytes": 7529,
+      "tokens": 2818,
+      "status": "partial",
+      "items": 2,
+      "identified": 3,
+      "included": 3
+    },
+    "published": {
+      "bytes": 4297,
+      "tokens": 1516,
+      "status": "partial",
+      "items": 1,
+      "identified": 1,
+      "included": 1
+    },
+    "after_new": {
+      "bytes": 7529,
+      "tokens": 2818,
+      "status": "partial",
+      "items": 2,
+      "identified": 3,
+      "included": 3
+    },
+    "insufficient": {
+      "bytes": 7526,
+      "tokens": 2816,
+      "status": "partial",
+      "items": 2,
+      "identified": 3,
+      "included": 3
+    }
+  },
+  "controls": [
+    {
+      "pair": false,
+      "p2": false,
+      "bytes": 4297,
+      "tokens": 1543,
+      "status": "partial",
+      "items": 1,
+      "identified": 1,
+      "included": 1
+    },
+    {
+      "pair": false,
+      "p2": true,
+      "bytes": 4297,
+      "tokens": 1540,
+      "status": "partial",
+      "items": 1,
+      "identified": 1,
+      "included": 1
+    },
+    {
+      "pair": true,
+      "p2": false,
+      "bytes": 7222,
+      "tokens": 2691,
+      "status": "partial",
+      "items": 2,
+      "identified": 2,
+      "included": 2
+    },
+    {
+      "pair": true,
+      "p2": true,
+      "bytes": 8157,
+      "tokens": 3086,
+      "status": "partial",
+      "items": 3,
+      "identified": 3,
+      "included": 3
+    }
+  ],
+  "curves": [
+    {
+      "max_tokens": 2000,
+      "error": "budget_below_envelope"
+    },
+    {
+      "max_tokens": 4000,
+      "initial": {
+        "bytes": 8156,
+        "tokens": 3081,
+        "status": "partial",
+        "items": 3,
+        "identified": 3,
+        "included": 3
+      },
+      "expansion": {
+        "bytes": 7528,
+        "tokens": 2814,
+        "status": "partial",
+        "items": 2,
+        "identified": 3,
+        "included": 3
+      },
+      "session_tokens": 5895
+    },
+    {
+      "max_tokens": 8000,
+      "initial": {
+        "bytes": 8156,
+        "tokens": 3089,
+        "status": "partial",
+        "items": 3,
+        "identified": 3,
+        "included": 3
+      },
+      "expansion": {
+        "bytes": 7528,
+        "tokens": 2817,
+        "status": "partial",
+        "items": 2,
+        "identified": 3,
+        "included": 3
+      },
+      "session_tokens": 5906
+    },
+    {
+      "max_tokens": 16000,
+      "initial": {
+        "bytes": 8157,
+        "tokens": 3087,
+        "status": "partial",
+        "items": 3,
+        "identified": 3,
+        "included": 3
+      },
+      "expansion": {
+        "bytes": 7529,
+        "tokens": 2817,
+        "status": "partial",
+        "items": 2,
+        "identified": 3,
+        "included": 3
+      },
+      "session_tokens": 5904
+    },
+    {
+      "max_tokens": 32000,
+      "initial": {
+        "bytes": 8157,
+        "tokens": 3085,
+        "status": "partial",
+        "items": 3,
+        "identified": 3,
+        "included": 3
+      },
+      "expansion": {
+        "bytes": 7529,
+        "tokens": 2810,
+        "status": "partial",
+        "items": 2,
+        "identified": 3,
+        "included": 3
+      },
+      "session_tokens": 5895
+    }
+  ],
+  "expired": "context_expired",
+  "labels_role": "synthetic_evaluator_only",
+  "complete_task_success": null
+}

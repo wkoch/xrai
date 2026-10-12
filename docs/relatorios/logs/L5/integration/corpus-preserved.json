@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "eval/scripts/verify_corpus.py"
+  ],
+  "base_commit": "bab002d8c76509aa15d4e640cb659e93b999af7e",
+  "recorded_at": "2026-10-12T13:31:06.329119+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 2.437605375000203,
+  "exit_code": 0,
+  "stdout": "{\n  \"status\": \"passed\",\n  \"summary\": {\n    \"tasks\": 52,\n    \"datasets\": {\n      \"D0\": 20,\n      \"D1\": 32\n    },\n    \"families\": {\n      \"Rust\": 13,\n      \"TSJS\": 13,\n      \"Python\": 13,\n      \"Go\": 13\n    },\n    \"repositories\": 12,\n    \"snapshots\": 24,\n    \"source_bytes\": 447835356,\n    \"archive_bytes\": 46661052,\n    \"reference_patches\": 12,\n    \"materialized_inputs_checked\": 52,\n    \"oracle_leaks\": 0,\n    \"origin_classes\": {\n      \"historical_upstream_fix\": 8,\n      \"local_contract_requirement\": 8,\n      \"upstream_source_question\": 8,\n      \"materialized_state_scenario\": 4,\n      \"simulated_regression_review\": 4\n    },\n    \"dataset_classes\": {\n      \"D0\": \"development\",\n      \"D1\": \"seed\"\n    },\n    \"competitive_admission\": false,\n    \"fixture_files\": 78,\n    \"fixture_generator_deterministic\": true,\n    \"duplicate_lineage_rejected\": true,\n    \"agent_success_measured\": false,\n    \"statistical_superiority_claimed\": false\n  }\n}\n",
+  "stderr": "",
+  "stdout_sha256": "a2f7ed2b8f8ba81a4aacede9c3c3cae6fe44362909054abde69d5bfa1407b8b7",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,904 @@
+{
+  "schema": "xrai.eval.qualification.slot-plan.v1",
+  "status": "conditional_planning_only",
+  "authority": [
+    "docs/decisoes/CORPUS-QUALIFICADO.md",
+    "docs/relatorios/REVISAO-L4.md"
+  ],
+  "competitive_runs_allowed": false,
+  "gate_status": "closed",
+  "admitted_tasks": 0,
+  "scope": "32 primary targets, not 32 tasks or completed dossiers; original seed/pilots unchanged",
+  "pilot_artifact": {
+    "path": "eval/qualification/vertical/candidates.jsonl",
+    "sha256": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8"
+  },
+  "selection_artifact": {
+    "path": "eval/qualification/vertical/selection.json",
+    "sha256": "32e4fb1226f18b19533d126eb50ef7bae22bbf3694802a932d08a69efcd44674"
+  },
+  "repositories": [
+    {
+      "repository": "tokio-rs/tokio",
+      "family": "Rust",
+      "triage_commit": "e279adbfcd8831412c3f19edf2e16d28345f0f95",
+      "triage_status": "existing_preliminary_counts_not_task_admission",
+      "case_baseline_reference_commits": "pending_each_new_case",
+      "size_floor_status": "pending_conservative_production_measurement_for_complex_slots",
+      "setup_status": "pending_each_new_case",
+      "language_evidence_status": "pending_for_each_task",
+      "conditions": [
+        "complete immutable checkout with license and source hashes",
+        ">=500 production files or >=50000 nonempty production lines excluding generated/vendored/tests/docs",
+        "two independent complex tasks require >=3 production modules, >=2 subsystems and >=2 relevant chained relations",
+        "fix manifests/toolchain/dependencies/probes before semantic labels",
+        "pin lineage/public origin and independently reviewed hidden oracle before admission"
+      ]
+    },
+    {
+      "repository": "rust-lang/rust-analyzer",
+      "family": "Rust",
+      "triage_commit": "2ad81e72b7e978cb800dffe1bcce5c9f98032acf",
+      "triage_status": "existing_preliminary_counts_not_task_admission",
+      "case_baseline_reference_commits": "pending_each_new_case",
+      "size_floor_status": "pending_conservative_production_measurement_for_complex_slots",
+      "setup_status": "pending_each_new_case",
+      "language_evidence_status": "pending_for_each_task",
+      "conditions": [
+        "complete immutable checkout with license and source hashes",
+        ">=500 production files or >=50000 nonempty production lines excluding generated/vendored/tests/docs",
+        "two independent complex tasks require >=3 production modules, >=2 subsystems and >=2 relevant chained relations",
+        "fix manifests/toolchain/dependencies/probes before semantic labels",
+        "pin lineage/public origin and independently reviewed hidden oracle before admission"
+      ]
+    },
+    {
+      "repository": "microsoft/TypeScript",
+      "family": "TSJS",
+      "triage_commit": "aa8149273b23401f0a79a5f0384c42de51888693",
+      "triage_status": "existing_preliminary_counts_not_task_admission",
+      "case_baseline_reference_commits": "pending_each_new_case",
+      "size_floor_status": "pending_conservative_production_measurement_for_complex_slots",
+      "setup_status": "pending_each_new_case",
+      "language_evidence_status": "pending_for_each_task",
+      "conditions": [
+        "complete immutable checkout with license and source hashes",
+        ">=500 production files or >=50000 nonempty production lines excluding generated/vendored/tests/docs",
+        "two independent complex tasks require >=3 production modules, >=2 subsystems and >=2 relevant chained relations",
+        "fix manifests/toolchain/dependencies/probes before semantic labels",
+        "pin lineage/public origin and independently reviewed hidden oracle before admission"
+      ]
+    },
+    {
+      "repository": "facebook/react",
+      "family": "TSJS",
+      "triage_commit": null,
+      "triage_status": "pending_not_measured",
+      "case_baseline_reference_commits": "pending_each_new_case",
+      "size_floor_status": "pending_conservative_production_measurement_for_complex_slots",
+      "setup_status": "pending_each_new_case",
+      "language_evidence_status": "pending_JS_production_modules_not_TypeScript_or_generated",
+      "conditions": [
+        "complete immutable checkout with license and source hashes",
+        ">=500 production files or >=50000 nonempty production lines excluding generated/vendored/tests/docs",
+        "two independent complex tasks require >=3 production modules, >=2 subsystems and >=2 relevant chained relations",
+        "fix manifests/toolchain/dependencies/probes before semantic labels",
+        "pin lineage/public origin and independently reviewed hidden oracle before admission"
+      ]
+    },
+    {
+      "repository": "django/django",
+      "family": "Python",
+      "triage_commit": "0f34a4cf9f1b5f3e68decbdca76aebb71268ba93",
+      "triage_status": "existing_preliminary_counts_not_task_admission",
+      "case_baseline_reference_commits": "pending_each_new_case",
+      "size_floor_status": "pending_conservative_production_measurement_for_complex_slots",
+      "setup_status": "pending_each_new_case",
+      "language_evidence_status": "pending_for_each_task",
+      "conditions": [
+        "complete immutable checkout with license and source hashes",
+        ">=500 production files or >=50000 nonempty production lines excluding generated/vendored/tests/docs",
+        "two independent complex tasks require >=3 production modules, >=2 subsystems and >=2 relevant chained relations",
+        "fix manifests/toolchain/dependencies/probes before semantic labels",
+        "pin lineage/public origin and independently reviewed hidden oracle before admission"
+      ]
+    },
+    {
+      "repository": "scikit-learn/scikit-learn",
+      "family": "Python",
+      "triage_commit": "102e5daf66759cf896beeee229d1bf7c80ab2ba4",
+      "triage_status": "existing_preliminary_counts_not_task_admission",
+      "case_baseline_reference_commits": "pending_each_new_case",
+      "size_floor_status": "pending_conservative_production_measurement_for_complex_slots",
+      "setup_status": "pending_each_new_case",
+      "language_evidence_status": "pending_for_each_task",
+      "conditions": [
+        "complete immutable checkout with license and source hashes",
+        ">=500 production files or >=50000 nonempty production lines excluding generated/vendored/tests/docs",
+        "two independent complex tasks require >=3 production modules, >=2 subsystems and >=2 relevant chained relations",
+        "fix manifests/toolchain/dependencies/probes before semantic labels",
+        "pin lineage/public origin and independently reviewed hidden oracle before admission"
+      ]
+    },
+    {
+      "repository": "prometheus/prometheus",
+      "family": "Go",
+      "triage_commit": "fffc15f5b5a6c3ed50282d307e96db0e5f25bcb2",
+      "triage_status": "existing_preliminary_counts_not_task_admission",
+      "case_baseline_reference_commits": "pending_each_new_case",
+      "size_floor_status": "pending_conservative_production_measurement_for_complex_slots",
+      "setup_status": "pending_each_new_case",
+      "language_evidence_status": "pending_for_each_task",
+      "conditions": [
+        "complete immutable checkout with license and source hashes",
+        ">=500 production files or >=50000 nonempty production lines excluding generated/vendored/tests/docs",
+        "two independent complex tasks require >=3 production modules, >=2 subsystems and >=2 relevant chained relations",
+        "fix manifests/toolchain/dependencies/probes before semantic labels",
+        "pin lineage/public origin and independently reviewed hidden oracle before admission"
+      ]
+    },
+    {
+      "repository": "go-gitea/gitea",
+      "family": "Go",
+      "triage_commit": "aa32eb97fad8224cc0ef9d4b40df255b8026dd49",
+      "triage_status": "existing_preliminary_counts_not_task_admission",
+      "case_baseline_reference_commits": "pending_each_new_case",
+      "size_floor_status": "pending_conservative_production_measurement_for_complex_slots",
+      "setup_status": "pending_each_new_case",
+      "language_evidence_status": "pending_for_each_task",
+      "conditions": [
+        "complete immutable checkout with license and source hashes",
+        ">=500 production files or >=50000 nonempty production lines excluding generated/vendored/tests/docs",
+        "two independent complex tasks require >=3 production modules, >=2 subsystems and >=2 relevant chained relations",
+        "fix manifests/toolchain/dependencies/probes before semantic labels",
+        "pin lineage/public origin and independently reviewed hidden oracle before admission"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "slot_id": "L5-SLOT-Rust-correction-1",
+      "family": "Rust",
+      "kind": "correction",
+      "language_target": "Rust",
+      "repository_target": "tokio-rs/tokio",
+      "status": "existing_pilot_candidate",
+      "existing_candidate_id": "Q1-Rust-8371",
+      "target": {
+        "complex": false,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": {
+        "complex": false,
+        "historical": true,
+        "multi_module_declared": true,
+        "individually_reviewed": true,
+        "globally_admitted": false
+      },
+      "unresolved": [
+        "global admission and dataset-wide quotas remain pending"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Rust-correction-2",
+      "family": "Rust",
+      "kind": "correction",
+      "language_target": "Rust",
+      "repository_target": "rust-lang/rust-analyzer",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Rust-contract_change-1",
+      "family": "Rust",
+      "kind": "contract_change",
+      "language_target": "Rust",
+      "repository_target": "tokio-rs/tokio",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Rust-contract_change-2",
+      "family": "Rust",
+      "kind": "contract_change",
+      "language_target": "Rust",
+      "repository_target": "rust-lang/rust-analyzer",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": false,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Rust-state_config-1",
+      "family": "Rust",
+      "kind": "state_config",
+      "language_target": "Rust",
+      "repository_target": "tokio-rs/tokio",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": false,
+        "multi_module": true,
+        "incremental_same_process": true
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Rust-state_config-2",
+      "family": "Rust",
+      "kind": "state_config",
+      "language_target": "Rust",
+      "repository_target": "rust-lang/rust-analyzer",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Rust-review-1",
+      "family": "Rust",
+      "kind": "review",
+      "language_target": "Rust",
+      "repository_target": "rust-lang/rust-analyzer",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": true,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Rust-control-1",
+      "family": "Rust",
+      "kind": "control",
+      "language_target": "Rust",
+      "repository_target": "tokio-rs/tokio",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-TSJS-correction-1",
+      "family": "TSJS",
+      "kind": "correction",
+      "language_target": "TypeScript",
+      "repository_target": "microsoft/TypeScript",
+      "status": "existing_pilot_candidate",
+      "existing_candidate_id": "Q1-TSJS-62656",
+      "target": {
+        "complex": false,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": {
+        "complex": false,
+        "historical": true,
+        "multi_module_declared": true,
+        "individually_reviewed": true,
+        "globally_admitted": false
+      },
+      "unresolved": [
+        "global admission and dataset-wide quotas remain pending"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-TSJS-correction-2",
+      "family": "TSJS",
+      "kind": "correction",
+      "language_target": "JavaScript",
+      "repository_target": "facebook/react",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-TSJS-contract_change-1",
+      "family": "TSJS",
+      "kind": "contract_change",
+      "language_target": "TypeScript",
+      "repository_target": "microsoft/TypeScript",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": false,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-TSJS-contract_change-2",
+      "family": "TSJS",
+      "kind": "contract_change",
+      "language_target": "JavaScript",
+      "repository_target": "facebook/react",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-TSJS-state_config-1",
+      "family": "TSJS",
+      "kind": "state_config",
+      "language_target": "TypeScript",
+      "repository_target": "microsoft/TypeScript",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": false,
+        "multi_module": true,
+        "incremental_same_process": true
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-TSJS-state_config-2",
+      "family": "TSJS",
+      "kind": "state_config",
+      "language_target": "JavaScript",
+      "repository_target": "facebook/react",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-TSJS-review-1",
+      "family": "TSJS",
+      "kind": "review",
+      "language_target": "JavaScript",
+      "repository_target": "facebook/react",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": true,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-TSJS-control-1",
+      "family": "TSJS",
+      "kind": "control",
+      "language_target": "TypeScript",
+      "repository_target": "microsoft/TypeScript",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Python-correction-1",
+      "family": "Python",
+      "kind": "correction",
+      "language_target": "Python",
+      "repository_target": "django/django",
+      "status": "existing_pilot_candidate",
+      "existing_candidate_id": "Q1-Python-22051",
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": {
+        "complex": true,
+        "historical": true,
+        "multi_module_declared": true,
+        "individually_reviewed": true,
+        "globally_admitted": false
+      },
+      "unresolved": [
+        "global admission and dataset-wide quotas remain pending"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Python-correction-2",
+      "family": "Python",
+      "kind": "correction",
+      "language_target": "Python",
+      "repository_target": "scikit-learn/scikit-learn",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Python-contract_change-1",
+      "family": "Python",
+      "kind": "contract_change",
+      "language_target": "Python",
+      "repository_target": "django/django",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Python-contract_change-2",
+      "family": "Python",
+      "kind": "contract_change",
+      "language_target": "Python",
+      "repository_target": "scikit-learn/scikit-learn",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": false,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Python-state_config-1",
+      "family": "Python",
+      "kind": "state_config",
+      "language_target": "Python",
+      "repository_target": "django/django",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": false,
+        "incremental_same_process": true
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Python-state_config-2",
+      "family": "Python",
+      "kind": "state_config",
+      "language_target": "Python",
+      "repository_target": "scikit-learn/scikit-learn",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Python-review-1",
+      "family": "Python",
+      "kind": "review",
+      "language_target": "Python",
+      "repository_target": "scikit-learn/scikit-learn",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": true,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Python-control-1",
+      "family": "Python",
+      "kind": "control",
+      "language_target": "Python",
+      "repository_target": "django/django",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Go-correction-1",
+      "family": "Go",
+      "kind": "correction",
+      "language_target": "Go",
+      "repository_target": "prometheus/prometheus",
+      "status": "existing_pilot_candidate",
+      "existing_candidate_id": "Q1-Go-19866",
+      "target": {
+        "complex": false,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": {
+        "complex": false,
+        "historical": true,
+        "multi_module_declared": true,
+        "individually_reviewed": true,
+        "globally_admitted": false
+      },
+      "unresolved": [
+        "global admission and dataset-wide quotas remain pending"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Go-correction-2",
+      "family": "Go",
+      "kind": "correction",
+      "language_target": "Go",
+      "repository_target": "go-gitea/gitea",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Go-contract_change-1",
+      "family": "Go",
+      "kind": "contract_change",
+      "language_target": "Go",
+      "repository_target": "prometheus/prometheus",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": true,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Go-contract_change-2",
+      "family": "Go",
+      "kind": "contract_change",
+      "language_target": "Go",
+      "repository_target": "go-gitea/gitea",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": false,
+        "multi_module": true,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Go-state_config-1",
+      "family": "Go",
+      "kind": "state_config",
+      "language_target": "Go",
+      "repository_target": "prometheus/prometheus",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": true,
+        "public_historical": false,
+        "multi_module": true,
+        "incremental_same_process": true
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Go-state_config-2",
+      "family": "Go",
+      "kind": "state_config",
+      "language_target": "Go",
+      "repository_target": "go-gitea/gitea",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Go-review-1",
+      "family": "Go",
+      "kind": "review",
+      "language_target": "Go",
+      "repository_target": "go-gitea/gitea",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": true,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    },
+    {
+      "slot_id": "L5-SLOT-Go-control-1",
+      "family": "Go",
+      "kind": "control",
+      "language_target": "Go",
+      "repository_target": "prometheus/prometheus",
+      "status": "conditional_slot",
+      "existing_candidate_id": null,
+      "target": {
+        "complex": false,
+        "public_historical": false,
+        "multi_module": false,
+        "incremental_same_process": false
+      },
+      "existing_evidence": null,
+      "unresolved": [
+        "natural task and independent lineage",
+        "source/configuration/setup hashes and hidden oracle",
+        "production-module necessity and semantic relations",
+        "baseline/reference/regressions and independent review"
+      ]
+    }
+  ],
+  "new_dossiers": {
+    "required": 4,
+    "completed": 0,
+    "next_slots": [
+      "L5-SLOT-Rust-correction-2",
+      "L5-SLOT-TSJS-contract_change-2",
+      "L5-SLOT-Python-contract_change-2",
+      "L5-SLOT-Go-contract_change-2"
+    ],
+    "status": "none_delivered_in_this_preparation_increment",
+    "acceptance": "Four new reproducible dossiers still require actual origins/commits/inputs, conservative size/module evidence, fixed setup, hidden reference/probes/regressions and independent review; a slot does not meet L5-04 dossier acceptance"
+  },
+  "conditional_deficits": {
+    "additional_tasks": 28,
+    "additional_complex": 15,
+    "additional_historical": 12,
+    "additional_multi_module": 16,
+    "new_dossiers_remaining": 4,
+    "admission_deficit": 32
+  },
+  "limits": [
+    "Flags under target express required future evidence, never proof",
+    "Tokio remains noncomplex as an existing pilot; two new complex Tokio slots depend on conservative size proof excluding inline tests",
+    "Only Django existing pilot is complex; other three pilot flags preserved",
+    "facebook/react is provisional JS choice: no SHA/size/setup/module or lineage proof collected in this increment",
+    "Targets overlap; 28+15+12+16 must not be summed into tasks",
+    "The global gate requires qualification/oracles/reviews/incremental events; this verifier validates allocation only"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "base": {
+    "files": {
+      "src/lib.rs": "pub fn contract() {\n    let text = \"ação <|endoftext|> \\\"quote\\\"\";\n}\npub fn consumer() {\n    contract();\n}\n"
+    },
+    "root": "src/lib.rs",
+    "edition": "2024",
+    "configuration": {
+      "cfg": "not_evaluated"
+    },
+    "rules": "rust-r1-r2-v1"
+  },
+  "head": {
+    "files": {
+      "src/lib.rs": "pub fn replacement() {}\n"
+    },
+    "root": "src/lib.rs",
+    "edition": "2024",
+    "configuration": {
+      "cfg": "not_evaluated"
+    },
+    "rules": "rust-r1-r2-v1"
+  },
+  "request": {
+    "intent": "review",
+    "description": "Synthetic development contract removal; no evaluator labels in input",
+    "anchors": [
+      {
+        "side": "base",
+        "path": "src/lib.rs",
+        "start": 7,
+        "end": 15,
+        "lookup": {
+          "module": "",
+          "path": "contract",
+          "namespace": "value"
+        }
+      },
+      {
+        "side": "head",
+        "path": "src/lib.rs",
+        "start": 7,
+        "end": 18,
+        "lookup": null
+      }
+    ],
+    "hunks": [],
+    "p2": true,
+    "limits": {
+      "max_bytes": 131072,
+      "max_tokens": 32768,
+      "max_candidates": 24,
+      "max_files": 8,
+      "max_source_bytes": 1048576,
+      "deadline_ms": 30000
+    }
+  }
+}

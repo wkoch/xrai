@@ -1,0 +1,13 @@
+{
+  "source": "observed tool output during development; not a raw command receipt",
+  "exit_code": 1,
+  "valid_accepted": 8,
+  "invalid_rejected": 17,
+  "failures": 1,
+  "case": "invalid-head-descriptor",
+  "expected": "comparison_head",
+  "actual": "derivation",
+  "cause": "fixture generator shared in-memory head/snapshot dict and mutated both; stored fixture was not the intended counterexample",
+  "resolution": "clone principal before changing its configuration; versioned negative now rejected by comparison_head",
+  "final_receipt": "v3-examples.json"
+}

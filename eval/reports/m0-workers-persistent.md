@@ -51,3 +51,32 @@ cargo run -p xrai-eval --bin worker-persistent -- demonstrate
 ## Prova nativa conciliada
 
 [CI38248278388](https://github.com/wkoch/xrai/actions/runs/38248278388), código `1d2d40a221dad1a5ec9188158dbc624f329023c7`, Linux x86_64/glibc2.39 e macOS15.7.9 arm64: três jobs aprovados. [L4](../../docs/relatorios/L4.md) e [conferência dos receipts](../../docs/relatorios/logs/L4/integration/native-receipts-verification-final.json) registram comandos/hashes, resultados e limites do primeiro recorte. Prova antes pendente agora concluída para este incremento; os critérios restantes do cartão continuam abertos.
+
+## L5-03 — medição nativa, primeira matriz sintética
+
+12/10/2026. O histórico acima conserva os campos null do smoke funcional. O novo driver `worker-benchmark` usa os supervisores entregues sem modificá-los. [Desenho](../workers/matrix-design.json), [pré-registro efetivamente congelado](../../docs/relatorios/logs/L5/resources/native-macos-synthetic/preregistered.json) e arquivo `sources.tar.gz` fixam sete dialetos, cinco classes, repetição/distintas, ordem alternada dos modos, configuração alternada, concorrência um, três sessões independentes por modo e 30 pedidos por célula. **São 18.900 pedidos medidos, 2.100 por sessão**, além dos dois warmups e da calibração de resposta retida. Fontes desta fatia são exclusivamente sintéticas; large-comments é controle, não projeto denso real.
+
+`measure_workers.py` mede CPU user/system por `wait4` do pai ao terminar, inclusivo dos filhos que o supervisor recolheu. A calibração compara esse total contra self mais contadores individuais de dois filhos sobrepostos e um filho curto. Não soma esse cumulativo por pedido nem soma CPU de históricos do observador. RSS usa snapshots `ps` comuns, timestamps início/fim, PID/PPID/start-time e soma dos processos simultaneamente vivos; série crua e custo separado do observador/self e filhos `ps` ficam em `resources.json`. Intervalo solicitado 25 ms; intervalos efetivos estão nos timestamps. Páginas compartilhadas contam mais de uma vez e picos entre snapshots podem desaparecer.
+
+No macOS27.0.1 arm64 local, [verificação offline](../../docs/relatorios/logs/L5/resources/verification-native-macos-final-with-classes.json) aprova todas as 18.900 comparações de hash BLAKE3 do `Response` inteiro codificado, contra execução direta separada. Antes de normalizar somente o número do pedido, o driver exige igualdade integral da identidade correspondente. A referência não está no domínio CPU/RSS medido. Verificador separado confronta fontes no arquivo, ordens, hashes, CPU inclusivo, soma/peak RSS, identidades de árvore, cobertura e retenção; 14 testes adversos incluem saída ausente/nonzero, sumas adulteradas, PID duplicado/externo, CPU não finita, calibração falsa, duplicação de pedido/sessão e divergência lógica mesmo com hash externo refeito.
+
+| Modo | p50 por sessão (ms) | p95 por sessão (ms) | CPU user + system por sessão (s) | sampled_peak_sum_rss por sessão (MiB) |
+|---|---|---|---|---|
+| Direto | 1,82–1,92 | 8,48–8,65 | 7,19–7,41 | 28,2–34,2 |
+| XRW1 | 4,64–4,99 | 11,42–11,80 | 12,27–12,61 | 20,9–21,2, com perda de filhos curtos |
+| XRW2 | 1,23–1,28 | 8,27–8,59 | 6,39–6,59 | 60,2–62,4 |
+
+XRW1 teve 1.656–1.666 PIDs curtos não vistos pelo sampler em cada sessão; seus contadores CPU de saída entram no total, mas RSS não visto permanece lacuna. Portanto a tabela **não prova que o pico real de XRW1 seja menor**. Os PIDs dos workers persistentes foram observados, com encarnações nos receipts de resposta. Primeiros pedidos por processo (inclusive warmups separados) distinguem startup; não há alegação de page-cache frio. Os 630 percentis por dialeto/classe/padrão/sessão constam da verificação; throughput publicado é somente de pedidos sequenciais, não concorrência. Na mediana reunida de 180 pedidos por modo/dialeto/classe, direto foi mais rápido que XRW2 em 8 das 35 células. A maior perda XRW2 foi Go/large-comments: 4,82 ms contra 4,16 ms direto (razão 1,158); JavaScript/large-comments foi 4,88 contra 4,53 ms. As perdas aparecem no campo cross_session_class_comparison, sem escondê-las na mediana global.
+
+Reserva de ticket permanece positiva durante 100 ms de consumidor lento e volta a zero na transferência. O cap lógico de 64 MiB não limita RSS: XRW2 ocupa mais RSS amostrado nessa fatia, embora tenha menor latência e CPU do que XRW1. CPU da sessão inclui leitura das fontes, warmup, validação, calibração de retenção e shutdown, enquanto latências de pedido iniciam após `Request::new`; não são contabilidades intercambiáveis. Queue/codec/roundtrip separados e bytes IPC/stderr totais XRW2 ficam indisponíveis, sem inventar zero.
+
+O primeiro run sandbox preservado em [sandbox-calibration](../../docs/relatorios/logs/L5/resources/sandbox-calibration/resources.json) falhou: `ps` EPERM, RSS null e calibração rejeitada. A repetição nativa passou. **M0-06 continua aberto:** faltam fontes reais, matriz de throughput concorrente, componentes/counters e comparação nativa dos dois alvos do produto. A CI passa a executar a matriz sintética completa em Linux/macOS; somente receipts do commit publicado podem encerrar sua prova nativa. Resultado local não fixa modo de produção nem encerra piso literal macOS15.0.
+
+```sh
+env MACOSX_DEPLOYMENT_TARGET=15.0 cargo build --release -p xrai-eval --bin worker-benchmark --bin worker-spike --bin worker-persistent
+python eval/scripts/measure_workers.py --output native-evidence/worker-resources
+python eval/scripts/verify_worker_measurement.py native-evidence/worker-resources
+python -m unittest discover -s eval/scripts/tests -p test_worker_measurement.py -v
+```
+
+Pendências para o Arquiteto: nenhuma decisão nova bloqueante; interpretar esta fatia como calibração sintética e manter abertos os critérios reais/concorrentes/componentes do ADR 026 §3. Comparação completa pode recomendar persistência, processo único por tentativa ou outro recorte contido conforme perdas demonstradas.

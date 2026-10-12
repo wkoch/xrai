@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/context/tests",
+    "-v"
+  ],
+  "base_commit": "bab002d8c76509aa15d4e640cb659e93b999af7e",
+  "recorded_at": "2026-10-12T13:48:55.202419+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.1734082920011133,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "setUpClass (test_verify_context.Verification) ... ERROR\n\n======================================================================\nERROR: setUpClass (test_verify_context.Verification)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/wkoch/Projetos/xrai/eval/context/tests/test_verify_context.py\", line 22, in setUpClass\n    cls.receipts={name:json.loads((receipts / ('context-'+name+'.json')).read_text())\n                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/Users/wkoch/.local/share/uv/python/cpython-3.13.13-macos-aarch64-none/lib/python3.13/pathlib/_local.py\", line 546, in read_text\n    return PathBase.read_text(self, encoding, errors, newline)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/wkoch/.local/share/uv/python/cpython-3.13.13-macos-aarch64-none/lib/python3.13/pathlib/_abc.py\", line 632, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/wkoch/.local/share/uv/python/cpython-3.13.13-macos-aarch64-none/lib/python3.13/pathlib/_local.py\", line 537, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'native-evidence/context-removed-consumer.json'\n\n----------------------------------------------------------------------\nRan 0 tests in 0.001s\n\nFAILED (errors=1)\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "8aca91a5c32f6daf90829486d34622400008eb8696cfac3200d18f4beed64937"
+}

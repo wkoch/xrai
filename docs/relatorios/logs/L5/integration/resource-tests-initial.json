@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-p",
+    "test_worker_measurement.py",
+    "-v"
+  ],
+  "base_commit": "bab002d8c76509aa15d4e640cb659e93b999af7e",
+  "recorded_at": "2026-10-12T13:20:02.646399+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.09465204200023436,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_direct_response_mismatch_even_with_output_hash_updated (test_worker_measurement.WorkerMeasurementTests.test_direct_response_mismatch_even_with_output_hash_updated) ... ok\ntest_dishonest_calibration_overlap (test_worker_measurement.WorkerMeasurementTests.test_dishonest_calibration_overlap) ... ok\ntest_dishonest_synthetic_completeness (test_worker_measurement.WorkerMeasurementTests.test_dishonest_synthetic_completeness) ... ok\ntest_duplicate_pid (test_worker_measurement.WorkerMeasurementTests.test_duplicate_pid) ... ok\ntest_duplicate_session (test_worker_measurement.WorkerMeasurementTests.test_duplicate_session) ... ok\ntest_foreign_process_tree (test_worker_measurement.WorkerMeasurementTests.test_foreign_process_tree) ... ok\ntest_missing_output (test_worker_measurement.WorkerMeasurementTests.test_missing_output) ... ok\ntest_nonfinite_cpu (test_worker_measurement.WorkerMeasurementTests.test_nonfinite_cpu) ... ok\ntest_nonzero_exit (test_worker_measurement.WorkerMeasurementTests.test_nonzero_exit) ... ok\ntest_request_duplicate_even_with_output_hash_updated (test_worker_measurement.WorkerMeasurementTests.test_request_duplicate_even_with_output_hash_updated) ... ok\ntest_rss_peak_is_simultaneous_sum (test_worker_measurement.WorkerMeasurementTests.test_rss_peak_is_simultaneous_sum) ... ok\ntest_source_archive_tamper (test_worker_measurement.WorkerMeasurementTests.test_source_archive_tamper) ... ok\ntest_unvalidated_host_cpu (test_worker_measurement.WorkerMeasurementTests.test_unvalidated_host_cpu) ... ok\ntest_valid (test_worker_measurement.WorkerMeasurementTests.test_valid) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.048s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "f80b9ee13d1011c69b467959df723b9bb4b0a58a1a61ea25c8ceaed1fc7f27c8"
+}

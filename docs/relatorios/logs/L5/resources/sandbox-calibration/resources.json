@@ -1,0 +1,146 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-c",
+    "\nimport json, os, resource, subprocess, sys, time\ncode = 'import time; a=bytearray(16*1024*1024); end=time.process_time()+0.15\\nwhile time.process_time()<end: pass\\ntime.sleep(0.3)'\nchildren = [subprocess.Popen([sys.executable, '-c', code]) for _ in range(2)]\nshort = subprocess.Popen([sys.executable, '-c', 'pass'])\nids=[c.pid for c in children]+[short.pid]\nusage=[]\nfor c in children+[short]:\n _, status, r=os.wait4(c.pid,0); c.returncode=os.waitstatus_to_exitcode(status); assert c.returncode==0\n usage.append({'pid':c.pid,'user':r.ru_utime,'system':r.ru_stime})\nself_usage=resource.getrusage(resource.RUSAGE_SELF)\nprint(json.dumps({'parent':os.getpid(),'children':ids,'child_usage':usage,'self_user':self_usage.ru_utime,'self_system':self_usage.ru_stime}))\n"
+  ],
+  "cpu_origin": "wait4 terminal rusage of experiment parent, including its waited descendants; host calibration must validate inclusivity",
+  "cpu_system_seconds": 0.203627,
+  "cpu_user_seconds": 0.156717,
+  "elapsed_ns": 491703125,
+  "exit": 0,
+  "observer_ps_system_seconds": 0.020084999999999992,
+  "observer_ps_user_seconds": 0.0011979999999999769,
+  "observer_self_system_seconds": 0.014757,
+  "observer_self_user_seconds": 0.005499000000000004,
+  "output_sha256": "7e2e43240f0b52d4be6d19e269e38a236a025afd8ec061cbc80515eaf7580d1c",
+  "pid": 36296,
+  "rss_limit": "ps snapshot sum of simultaneous live RSS; shared pages double count; between-sample peaks and short children can be missed",
+  "sample_interval_seconds": 0.025,
+  "sampled_peak_sum_rss": null,
+  "samples": [
+    {
+      "begin_ns": 14809815148750,
+      "end_ns": 14809817040916,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14809841090000,
+      "end_ns": 14809843240083,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14809870578583,
+      "end_ns": 14809872437166,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14809900566875,
+      "end_ns": 14809902685416,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14809929447791,
+      "end_ns": 14809931531083,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14809959505750,
+      "end_ns": 14809961248208,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14809987301541,
+      "end_ns": 14809988988833,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810016536000,
+      "end_ns": 14810018337750,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810046392583,
+      "end_ns": 14810048599916,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810072661291,
+      "end_ns": 14810074838291,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810099199583,
+      "end_ns": 14810101375875,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810126986875,
+      "end_ns": 14810129519958,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810157071041,
+      "end_ns": 14810160058375,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810187161166,
+      "end_ns": 14810189935958,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810215932666,
+      "end_ns": 14810218667000,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810246023583,
+      "end_ns": 14810248535583,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    },
+    {
+      "begin_ns": 14810276067000,
+      "end_ns": 14810279543041,
+      "error": "[Errno 1] Operation not permitted: 'ps'",
+      "processes": [],
+      "sum_rss_bytes": null
+    }
+  ],
+  "schema": "xrai.eval.worker.resources.v1",
+  "started_ns": 14809813228583,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "timed_out": false
+}

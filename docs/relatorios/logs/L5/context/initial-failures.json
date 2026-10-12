@@ -1,0 +1,10 @@
+{
+  "phase": "preintegration-local",
+  "rust_tests": "10 passed /4 failed",
+  "failures": [
+    "Fixture input.rules initially unsupported semantically; corrected to rust-r1-r2-v1",
+    "Central hunk fixture used Unicode character offsets instead of UTF8 bytes; corrected bytes",
+    "Unicode test anchor ended inside UTF8 character; changed anchor to ASCII while preserving Unicode payload"
+  ],
+  "published": false
+}

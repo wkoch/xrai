@@ -1,0 +1,560 @@
+{
+  "case_id": "invalid-member-producer",
+  "valid": false,
+  "expected_violation": "derivation",
+  "fixture_files": [
+    {
+      "file_id": "fi_base",
+      "snapshot_id": "snap_base",
+      "path": {
+        "encoding": "unix_bytes",
+        "units_hex": "7372632f6c69622e7273",
+        "display": "src/lib.rs"
+      },
+      "source_hex": "70756220666e20636f6e74726163742829207b7d0a70756220666e2063616c6c65722829207b20636f6e747261637428293b207d0a",
+      "source_hash": {
+        "algorithm": "blake3",
+        "hex": "1886f935a777f6f15ad60a8fd96bb2dec91fc01e4f76464c920d1ad2900f20ae"
+      },
+      "byte_length": 53,
+      "language": "rust"
+    },
+    {
+      "file_id": "fi_head",
+      "snapshot_id": "snap_head",
+      "path": {
+        "encoding": "unix_bytes",
+        "units_hex": "7372632f6c69622e7273",
+        "display": "src/lib.rs"
+      },
+      "source_hex": "70756220666e207265706c6163656d656e742829207b7d0a",
+      "source_hash": {
+        "algorithm": "blake3",
+        "hex": "c2513604dd5056e9451e4b52482a0f5ccfc8168a0ef8983351549e0ee47eebbc"
+      },
+      "byte_length": 24,
+      "language": "rust"
+    }
+  ],
+  "request": {
+    "schema_version": 3,
+    "request_id": "request_demo",
+    "workspace_id": "ws_demo",
+    "worktree_id": "wt_demo",
+    "operation": "context",
+    "consistency": {
+      "mode": "snapshot",
+      "scope": {
+        "kind": "workspace"
+      },
+      "revision": {
+        "kind": "fixed",
+        "snapshot_id": "snap_head"
+      }
+    },
+    "limits": {
+      "max_bytes": 16384,
+      "max_tokens": null,
+      "tokenizer": null,
+      "deadline_ms": 1000,
+      "max_candidates": 100,
+      "max_files": 100,
+      "max_source_bytes": 65536,
+      "max_expansions": 1
+    },
+    "params": {
+      "intent": "review",
+      "description": "Removed contract and consumer; synthetic development example",
+      "anchors": [
+        "sym_old"
+      ],
+      "base": "snap_base",
+      "head": "snap_head",
+      "diff": "--- a/src/lib.rs\n+++ b/src/lib.rs\n@@ -1,2 +1,1 @@\n-pub fn contract() {}\n-pub fn caller() { contract(); }\n+pub fn replacement() {}\n"
+    }
+  },
+  "response": {
+    "schema_version": 3,
+    "request_id": "request_demo",
+    "workspace_id": "ws_demo",
+    "worktree_id": "wt_demo",
+    "status": "ok",
+    "snapshot": {
+      "snapshot_id": "snap_head",
+      "workspace_id": "ws_demo",
+      "worktree_id": "wt_demo",
+      "generation": 43,
+      "input_kind": "captured_blobs",
+      "configuration_id": "cfg_head",
+      "configuration_fingerprint": {
+        "algorithm": "blake3",
+        "hex": "451f95f4db7ab5cd60210b7e6066fdef08d02f7e204cf7b0930b3ce41bfb2c64"
+      },
+      "producer_fingerprint": {
+        "algorithm": "blake3",
+        "hex": "2fbbdbe630f0e799a86a3f589dcf65dc67543097bb417066e85a2cdf42f405e0"
+      },
+      "captured_at": "2026-10-11T22:00:00Z"
+    },
+    "index": {
+      "availability": "ready"
+    },
+    "support": {
+      "status": "experimental",
+      "capability": "context.experimental.p3",
+      "languages": [
+        "rust"
+      ],
+      "scope": {
+        "kind": "workspace"
+      },
+      "limits": [
+        "synthetic_development_not_product",
+        "no_complete_call_graph"
+      ],
+      "producers": [
+        {
+          "producer_id": "prod_fixture",
+          "name": "fixture",
+          "version": "1",
+          "fingerprint": {
+            "algorithm": "blake3",
+            "hex": "2fbbdbe630f0e799a86a3f589dcf65dc67543097bb417066e85a2cdf42f405e0"
+          },
+          "frontend": "rust",
+          "grammar_version": "fixture-not-a-grammar",
+          "method": "syntactic"
+        },
+        {
+          "producer_id": "prod_wrong",
+          "name": "fixture",
+          "version": "1",
+          "fingerprint": {
+            "algorithm": "blake3",
+            "hex": "0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "frontend": "rust",
+          "grammar_version": "fixture-not-a-grammar",
+          "method": "syntactic"
+        }
+      ]
+    },
+    "freshness": {
+      "mode": "snapshot",
+      "validated_scope": {
+        "kind": "workspace"
+      },
+      "validated_at": null,
+      "validation_complete": false,
+      "atomicity": "captured_blobs",
+      "gaps": []
+    },
+    "coverage": {
+      "inventory": {
+        "scope": {
+          "kind": "workspace"
+        },
+        "denominator": "eligible_files",
+        "processed": 2,
+        "partial": 0,
+        "excluded": 0,
+        "failed": 0,
+        "stale": 0,
+        "capability_absent": 0,
+        "eligible": 2,
+        "discovered": 2
+      },
+      "files": [
+        {
+          "file_id": "fi_base",
+          "snapshot_id": "snap_base",
+          "state": "processed",
+          "tree_valid": true,
+          "symbol_count": 2,
+          "reason": null,
+          "gaps": []
+        },
+        {
+          "file_id": "fi_head",
+          "snapshot_id": "snap_head",
+          "state": "processed",
+          "tree_valid": true,
+          "symbol_count": 1,
+          "reason": null,
+          "gaps": []
+        }
+      ],
+      "relations": {
+        "denominator": "not_available",
+        "recognized": null,
+        "resolved": null,
+        "candidates": null,
+        "unknown": null,
+        "external": null
+      },
+      "query": {
+        "completeness": "complete",
+        "scope": {
+          "kind": "workspace"
+        },
+        "gaps": []
+      },
+      "by_snapshot": [
+        {
+          "inventory": {
+            "scope": {
+              "kind": "workspace"
+            },
+            "denominator": "eligible_files",
+            "processed": 1,
+            "partial": 0,
+            "excluded": 0,
+            "failed": 0,
+            "stale": 0,
+            "capability_absent": 0,
+            "eligible": 1,
+            "discovered": 1
+          },
+          "relations": {
+            "denominator": "not_available",
+            "recognized": null,
+            "resolved": null,
+            "candidates": null,
+            "unknown": null,
+            "external": null
+          },
+          "query": {
+            "completeness": "complete",
+            "scope": {
+              "kind": "workspace"
+            },
+            "gaps": []
+          },
+          "snapshot_id": "snap_base"
+        },
+        {
+          "inventory": {
+            "scope": {
+              "kind": "workspace"
+            },
+            "denominator": "eligible_files",
+            "processed": 1,
+            "partial": 0,
+            "excluded": 0,
+            "failed": 0,
+            "stale": 0,
+            "capability_absent": 0,
+            "eligible": 1,
+            "discovered": 1
+          },
+          "relations": {
+            "denominator": "not_available",
+            "recognized": null,
+            "resolved": null,
+            "candidates": null,
+            "unknown": null,
+            "external": null
+          },
+          "query": {
+            "completeness": "complete",
+            "scope": {
+              "kind": "workspace"
+            },
+            "gaps": []
+          },
+          "snapshot_id": "snap_head"
+        }
+      ]
+    },
+    "sufficiency": {
+      "state": "satisfied",
+      "identified": 2,
+      "included": 2
+    },
+    "budget": {
+      "requested_bytes": 16384,
+      "used_bytes": 5242,
+      "requested_tokens": null,
+      "used_tokens": null,
+      "counting": "not_requested",
+      "tokenizer": null,
+      "counting_scope": "domain_envelope"
+    },
+    "items": [
+      {
+        "id": "item_base",
+        "kind": "source",
+        "view": "source",
+        "file_id": "fi_base",
+        "snapshot_id": "snap_base",
+        "source_hash": {
+          "algorithm": "blake3",
+          "hex": "1886f935a777f6f15ad60a8fd96bb2dec91fc01e4f76464c920d1ad2900f20ae"
+        },
+        "byte_length": 53,
+        "span": {
+          "start": 0,
+          "end": 53
+        },
+        "content": "pub fn contract() {}\npub fn caller() { contract(); }\n",
+        "producer_id": "prod_wrong",
+        "configuration_id": "cfg_base",
+        "reason": "validated_hunk"
+      },
+      {
+        "id": "item_head",
+        "kind": "source",
+        "view": "source",
+        "file_id": "fi_head",
+        "snapshot_id": "snap_head",
+        "source_hash": {
+          "algorithm": "blake3",
+          "hex": "c2513604dd5056e9451e4b52482a0f5ccfc8168a0ef8983351549e0ee47eebbc"
+        },
+        "byte_length": 24,
+        "span": {
+          "start": 0,
+          "end": 24
+        },
+        "content": "pub fn replacement() {}\n",
+        "producer_id": "prod_fixture",
+        "configuration_id": "cfg_head",
+        "reason": "validated_hunk"
+      }
+    ],
+    "assertions": [],
+    "candidates": [],
+    "unknowns": [],
+    "omissions": [],
+    "diagnostics": [],
+    "next": [],
+    "error": null,
+    "comparison": {
+      "base": {
+        "snapshot_id": "snap_base",
+        "workspace_id": "ws_demo",
+        "worktree_id": "wt_demo",
+        "generation": 42,
+        "input_kind": "captured_blobs",
+        "configuration_id": "cfg_base",
+        "configuration_fingerprint": {
+          "algorithm": "blake3",
+          "hex": "fb481ae1bca52b5022f9d199732bef6f923eb13a85c83ea8cbec823274f41ad7"
+        },
+        "producer_fingerprint": {
+          "algorithm": "blake3",
+          "hex": "2fbbdbe630f0e799a86a3f589dcf65dc67543097bb417066e85a2cdf42f405e0"
+        },
+        "captured_at": "2026-10-11T22:00:00Z"
+      },
+      "head": {
+        "snapshot_id": "snap_head",
+        "workspace_id": "ws_demo",
+        "worktree_id": "wt_demo",
+        "generation": 43,
+        "input_kind": "captured_blobs",
+        "configuration_id": "cfg_head",
+        "configuration_fingerprint": {
+          "algorithm": "blake3",
+          "hex": "451f95f4db7ab5cd60210b7e6066fdef08d02f7e204cf7b0930b3ce41bfb2c64"
+        },
+        "producer_fingerprint": {
+          "algorithm": "blake3",
+          "hex": "2fbbdbe630f0e799a86a3f589dcf65dc67543097bb417066e85a2cdf42f405e0"
+        },
+        "captured_at": "2026-10-11T22:00:00Z"
+      }
+    },
+    "context_id": "ctx_saved",
+    "obligation_receipts": [
+      {
+        "id": "item_obligation_base",
+        "state": "satisfied",
+        "reason": "validated_hunk",
+        "item_ids": [
+          "item_base"
+        ]
+      },
+      {
+        "id": "item_obligation_head",
+        "state": "satisfied",
+        "reason": "validated_hunk",
+        "item_ids": [
+          "item_head"
+        ]
+      }
+    ]
+  },
+  "admission_error": null,
+  "fixture_version": 3,
+  "fixture_state": {
+    "published_snapshot_id": "snap_head",
+    "required_snapshot_id": "snap_head",
+    "retained_snapshot_ids": [
+      "snap_base",
+      "snap_head"
+    ],
+    "bindings": [
+      {
+        "id": "sym_old",
+        "kind": "symbol",
+        "snapshot_id": "snap_base"
+      },
+      {
+        "id": "sym_caller",
+        "kind": "symbol",
+        "snapshot_id": "snap_base"
+      },
+      {
+        "id": "sym_new",
+        "kind": "symbol",
+        "snapshot_id": "snap_head"
+      }
+    ],
+    "inventory_at_required": []
+  },
+  "fixture_manifest": {
+    "context_id": "ctx_saved",
+    "snapshots": [
+      {
+        "snapshot_id": "snap_base",
+        "workspace_id": "ws_demo",
+        "worktree_id": "wt_demo",
+        "generation": 42,
+        "input_kind": "captured_blobs",
+        "configuration_id": "cfg_base",
+        "configuration_fingerprint": {
+          "algorithm": "blake3",
+          "hex": "fb481ae1bca52b5022f9d199732bef6f923eb13a85c83ea8cbec823274f41ad7"
+        },
+        "producer_fingerprint": {
+          "algorithm": "blake3",
+          "hex": "2fbbdbe630f0e799a86a3f589dcf65dc67543097bb417066e85a2cdf42f405e0"
+        },
+        "captured_at": "2026-10-11T22:00:00Z"
+      },
+      {
+        "snapshot_id": "snap_head",
+        "workspace_id": "ws_demo",
+        "worktree_id": "wt_demo",
+        "generation": 43,
+        "input_kind": "captured_blobs",
+        "configuration_id": "cfg_head",
+        "configuration_fingerprint": {
+          "algorithm": "blake3",
+          "hex": "451f95f4db7ab5cd60210b7e6066fdef08d02f7e204cf7b0930b3ce41bfb2c64"
+        },
+        "producer_fingerprint": {
+          "algorithm": "blake3",
+          "hex": "2fbbdbe630f0e799a86a3f589dcf65dc67543097bb417066e85a2cdf42f405e0"
+        },
+        "captured_at": "2026-10-11T22:00:00Z"
+      }
+    ],
+    "request": {
+      "schema_version": 3,
+      "request_id": "request_demo",
+      "workspace_id": "ws_demo",
+      "worktree_id": "wt_demo",
+      "operation": "context",
+      "consistency": {
+        "mode": "snapshot",
+        "scope": {
+          "kind": "workspace"
+        },
+        "revision": {
+          "kind": "fixed",
+          "snapshot_id": "snap_head"
+        }
+      },
+      "limits": {
+        "max_bytes": 16384,
+        "max_tokens": null,
+        "tokenizer": null,
+        "deadline_ms": 1000,
+        "max_candidates": 100,
+        "max_files": 100,
+        "max_source_bytes": 65536,
+        "max_expansions": 1
+      },
+      "params": {
+        "intent": "review",
+        "description": "Removed contract and consumer; synthetic development example",
+        "anchors": [
+          "sym_old"
+        ],
+        "base": "snap_base",
+        "head": "snap_head",
+        "diff": "--- a/src/lib.rs\n+++ b/src/lib.rs\n@@ -1,2 +1,1 @@\n-pub fn contract() {}\n-pub fn caller() { contract(); }\n+pub fn replacement() {}\n"
+      }
+    },
+    "rules_version": "p3-development-v1",
+    "items": [
+      {
+        "id": "item_base",
+        "snapshot_id": "snap_base",
+        "file_id": "fi_base",
+        "source_hash": {
+          "algorithm": "blake3",
+          "hex": "1886f935a777f6f15ad60a8fd96bb2dec91fc01e4f76464c920d1ad2900f20ae"
+        },
+        "span": {
+          "start": 0,
+          "end": 53
+        }
+      },
+      {
+        "id": "item_head",
+        "snapshot_id": "snap_head",
+        "file_id": "fi_head",
+        "source_hash": {
+          "algorithm": "blake3",
+          "hex": "c2513604dd5056e9451e4b52482a0f5ccfc8168a0ef8983351549e0ee47eebbc"
+        },
+        "span": {
+          "start": 0,
+          "end": 24
+        }
+      }
+    ],
+    "obligations": [
+      {
+        "id": "item_obligation_base",
+        "snapshot_id": "snap_base",
+        "required": true,
+        "state": "satisfied",
+        "reason": "validated_hunk",
+        "item_ids": [
+          "item_base"
+        ],
+        "minimum_view": "source",
+        "minimum_span": {
+          "start": 0,
+          "end": 53
+        }
+      },
+      {
+        "id": "item_obligation_head",
+        "snapshot_id": "snap_head",
+        "required": true,
+        "state": "satisfied",
+        "reason": "validated_hunk",
+        "item_ids": [
+          "item_head"
+        ],
+        "minimum_view": "source",
+        "minimum_span": {
+          "start": 0,
+          "end": 24
+        }
+      }
+    ],
+    "retention": {
+      "retained_snapshot_ids": [
+        "snap_base",
+        "snap_head"
+      ],
+      "expired": false
+    }
+  }
+}

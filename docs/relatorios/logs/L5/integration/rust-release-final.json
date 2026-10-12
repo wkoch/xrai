@@ -1,0 +1,30 @@
+{
+  "command": [
+    "env",
+    "MACOSX_DEPLOYMENT_TARGET=15.0",
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "-p",
+    "xrai-eval",
+    "--bin",
+    "context-spike",
+    "--bin",
+    "worker-benchmark",
+    "--bin",
+    "worker-spike",
+    "--bin",
+    "worker-persistent"
+  ],
+  "base_commit": "bab002d8c76509aa15d4e640cb659e93b999af7e",
+  "recorded_at": "2026-10-12T13:35:19.842528+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 4.49304816699987,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `release` profile [optimized] target(s) in 4.44s\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "7dba98581426c3a481998d6969288ff30d917b3055af5bbbd2d0491f18bd84ac"
+}

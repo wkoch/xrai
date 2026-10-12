@@ -1,0 +1,14 @@
+{
+  "role": "evaluator_only",
+  "frozen_before_run": true,
+  "cases": {
+    "removed-consumer-input.json": {
+      "required_base_text": "contract();",
+      "expected_consumer_reason": "demonstrated_consumer"
+    },
+    "central-hunk-input.json": {
+      "required_head_text": "corrected_call();",
+      "prefix_only_invalid": true
+    }
+  }
+}

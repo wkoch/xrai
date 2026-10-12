@@ -1,0 +1,24 @@
+# Perfil documental experimental P3 v3
+
+Implementa a representação documental do [ADR 027](../../decisoes/CONTEXTO-P3.md), sem capability pública. `schema_version:3` e `fixture_version:3` são explícitos; [schema](schema.json), [exemplos](examples/01-comparison.json) e [verificador independente](verify.py) não alteram v2. O schema copia os campos comuns v2 e acrescenta comparação, partições e manifesto; não importa o verificador v2 nem converte gerações.
+
+`response.snapshot` é exatamente o descritor completo de head. `response.comparison` é `null` ou `{base,head}` do mesmo workspace/worktree, com IDs distintos e retidos. `params.base/head` ocorrem juntos no pedido `context`, apontam exclusivamente para IDs `snap_`, e fixam head. O único modo de comparação inicial é `snapshot`. Pedido de revisão única pode resolver `latest` publicado; seu manifesto fixa o descritor resolvido e a expansão exige o ID original, mesmo após nova publicação. Itens, fatos e evidências usam blobs/configuração/produtor de seu lado; relações semânticas possuem endpoints e evidência na mesma revisão. Não há relação causal entre tempos. Associações de comparação não são modeladas como `calls`.
+
+`coverage.by_snapshot` registra inventário, relações e limitações por snapshot. As contagens globais somam versões `(snapshot_id,file_id)`; o mesmo path em base/head conta duas vezes. Não se deduz validação de base a partir de head. `fixture_state.bindings` fornece testemunhos independentes dos endpoints/âncoras; capturas ficam em `fixture_files` e manifesto em `fixture_manifest`, fora do envelope medido.
+
+O manifesto liga pedido original, descritores completos, versão de regras, objetos e obrigações com estado inicial e requisitos `minimum_view/minimum_span`, além da retenção explícita. IDs de objetos mantêm revisão/file/hash; a representação pode crescer dentro do intervalo máximo declarado. Fonte deduplicada pode testemunhar obrigações de outros objetos do mesmo blob quando cobre seus spans mínimos. Assinatura não satisfaz corpo solicitado. `response.obligation_receipts` registra os estados atuais; expandir não reescreve as obrigações originais do manifesto. `sufficiency` conta esses recibos, e os estados `omitted_budget`, `unavailable` e `not_assessed` têm precedência verificável. Os requisitos documentais não são labels do avaliador.
+
+Expansão usa `context_id`, IDs conhecidos e seletor fixo do head original. O par vem do manifesto original. Snapshot mais novo publicado não participa da resposta. Expirar qualquer lado produz `context_expired` sem payload/fallback; comparação com base indisponível produz `snapshot_expired`. IDs de outro contexto, desconhecidos ou duplicados são recusados. Os exemplos incluem expansão de objeto inicialmente omitido, mantendo o estado original e emitindo recibo atualizado.
+
+O verificador de diff aceita hunks unificados UTF-8 com paths relativos já presentes nos dois lados, ranges e conteúdo exatos, inclusive terminações de linha. Não usa Git. Recusa marcador `No newline at end of file`, criação/remoção completa com `/dev/null`, paths opacos/Windows e cabeçalhos extras nesta primeira matriz documental; o adapter experimental deve recusar explicitamente formatos não implementados. Esta restrição do verificador não é promessa de suporte do produto nem relaxamento do ADR. A matriz atual usa remoção de contrato/consumidor dentro de um arquivo existente. Suporte mais amplo permanece parte do aceite integral M0-09.
+
+Bytes medem o JSON compacto completo UTF-8 com keys ordenadas (`sort_keys=True`, `ensure_ascii=False`, separators `(',',':')`), incluindo comparação, contadores, motivos e `next`; newline externo não faz parte da projeção. Quando tokens são pedidos, exigem `counting:exact`, perfil `l4:<fingerprint_sha256>` e replay do tokenizer vendorizado L4. Não se equiparam a usage faturado. Carregamento é tardio: exemplos com limite de tokens `null` dependem somente de `jsonschema`/`blake3` e podem rodar no job documental Python3.15; teste exato requer Python3.13.13 e requirements-measurement.
+
+```sh
+python docs/contracts/verify.py
+python -m unittest discover -s docs/contracts/tests -v
+python docs/contracts/experimental-p3/verify.py
+python -m unittest discover -s docs/contracts/experimental-p3/tests -v
+```
+
+Critério desta fatia: 11 positivos, 22 contraprovas versionadas e 18 testes dirigidos (um teste exato condicionado ao runtime L4). Inclui mistura não declarada, terceira revisão, configuração/hash, principal divergente, diff conteúdo/range, relações entre tempos, produtor ausente/trocado, colapso de denominador histórico, expansão reatada, retenção e insuficiência. Suite vazia falha. As provas do motor, retenção sob pressão/TTL, curvas e comparação de controles são entregas independentes do spike; este contrato não encerra M0-09 ou libera gates.
