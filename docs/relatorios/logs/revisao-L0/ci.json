@@ -1,0 +1,355 @@
+{
+  "base_commit": "10d9bf95490d405ea2d8014e95065295b32727c4",
+  "observed_at": "2026-10-12T01:13:15.797Z",
+  "runs": [
+    {
+      "conclusion": "success",
+      "createdAt": "2026-10-12T01:03:03Z",
+      "databaseId": 38190371800,
+      "headSha": "10d9bf95490d405ea2d8014e95065295b32727c4",
+      "status": "completed",
+      "url": "https://github.com/wkoch/xrai/actions/runs/38190371800",
+      "workflowName": "Dependency Graph"
+    },
+    {
+      "conclusion": "success",
+      "createdAt": "2026-10-12T01:03:00Z",
+      "databaseId": 38190368368,
+      "headSha": "10d9bf95490d405ea2d8014e95065295b32727c4",
+      "status": "completed",
+      "url": "https://github.com/wkoch/xrai/actions/runs/38190368368",
+      "workflowName": "Rust workspace"
+    }
+  ],
+  "workspace": {
+    "conclusion": "success",
+    "createdAt": "2026-10-12T01:03:00Z",
+    "headSha": "10d9bf95490d405ea2d8014e95065295b32727c4",
+    "jobs": [
+      {
+        "completedAt": "2026-10-12T01:03:40Z",
+        "conclusion": "success",
+        "databaseId": 114621630850,
+        "name": "x86_64-pc-windows-msvc",
+        "startedAt": "2026-10-12T01:03:03Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T01:03:05Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T01:03:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:12Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v6",
+            "number": 2,
+            "startedAt": "2026-10-12T01:03:05Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:26Z",
+            "conclusion": "success",
+            "name": "Install pinned toolchain",
+            "number": 3,
+            "startedAt": "2026-10-12T01:03:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:28Z",
+            "conclusion": "success",
+            "name": "Record and verify native environment",
+            "number": 4,
+            "startedAt": "2026-10-12T01:03:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:29Z",
+            "conclusion": "success",
+            "name": "Check formatting",
+            "number": 5,
+            "startedAt": "2026-10-12T01:03:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:31Z",
+            "conclusion": "success",
+            "name": "Lint",
+            "number": 6,
+            "startedAt": "2026-10-12T01:03:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:35Z",
+            "conclusion": "success",
+            "name": "Test",
+            "number": 7,
+            "startedAt": "2026-10-12T01:03:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:35Z",
+            "conclusion": "success",
+            "name": "Build",
+            "number": 8,
+            "startedAt": "2026-10-12T01:03:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:36Z",
+            "conclusion": "success",
+            "name": "Smoke help",
+            "number": 9,
+            "startedAt": "2026-10-12T01:03:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:36Z",
+            "conclusion": "success",
+            "name": "Smoke version",
+            "number": 10,
+            "startedAt": "2026-10-12T01:03:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:39Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v6",
+            "number": 20,
+            "startedAt": "2026-10-12T01:03:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:39Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 21,
+            "startedAt": "2026-10-12T01:03:39Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/wkoch/xrai/actions/runs/38190368368/job/114621630850"
+      },
+      {
+        "completedAt": "2026-10-12T01:03:19Z",
+        "conclusion": "success",
+        "databaseId": 114621631049,
+        "name": "aarch64-apple-darwin",
+        "startedAt": "2026-10-12T01:03:05Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T01:03:05Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T01:03:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:06Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v6",
+            "number": 2,
+            "startedAt": "2026-10-12T01:03:05Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:12Z",
+            "conclusion": "success",
+            "name": "Install pinned toolchain",
+            "number": 3,
+            "startedAt": "2026-10-12T01:03:06Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:12Z",
+            "conclusion": "success",
+            "name": "Record and verify native environment",
+            "number": 4,
+            "startedAt": "2026-10-12T01:03:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:13Z",
+            "conclusion": "success",
+            "name": "Check formatting",
+            "number": 5,
+            "startedAt": "2026-10-12T01:03:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:13Z",
+            "conclusion": "success",
+            "name": "Lint",
+            "number": 6,
+            "startedAt": "2026-10-12T01:03:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:16Z",
+            "conclusion": "success",
+            "name": "Test",
+            "number": 7,
+            "startedAt": "2026-10-12T01:03:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:16Z",
+            "conclusion": "success",
+            "name": "Build",
+            "number": 8,
+            "startedAt": "2026-10-12T01:03:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:16Z",
+            "conclusion": "success",
+            "name": "Smoke help",
+            "number": 9,
+            "startedAt": "2026-10-12T01:03:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:16Z",
+            "conclusion": "success",
+            "name": "Smoke version",
+            "number": 10,
+            "startedAt": "2026-10-12T01:03:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:16Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v6",
+            "number": 20,
+            "startedAt": "2026-10-12T01:03:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:17Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 21,
+            "startedAt": "2026-10-12T01:03:16Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/wkoch/xrai/actions/runs/38190368368/job/114621631049"
+      },
+      {
+        "completedAt": "2026-10-12T01:03:21Z",
+        "conclusion": "success",
+        "databaseId": 114621631178,
+        "name": "x86_64-unknown-linux-gnu",
+        "startedAt": "2026-10-12T01:03:03Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T01:03:04Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T01:03:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:05Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v6",
+            "number": 2,
+            "startedAt": "2026-10-12T01:03:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:15Z",
+            "conclusion": "success",
+            "name": "Install pinned toolchain",
+            "number": 3,
+            "startedAt": "2026-10-12T01:03:05Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:16Z",
+            "conclusion": "success",
+            "name": "Record and verify native environment",
+            "number": 4,
+            "startedAt": "2026-10-12T01:03:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:16Z",
+            "conclusion": "success",
+            "name": "Check formatting",
+            "number": 5,
+            "startedAt": "2026-10-12T01:03:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:16Z",
+            "conclusion": "success",
+            "name": "Lint",
+            "number": 6,
+            "startedAt": "2026-10-12T01:03:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:17Z",
+            "conclusion": "success",
+            "name": "Test",
+            "number": 7,
+            "startedAt": "2026-10-12T01:03:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:17Z",
+            "conclusion": "success",
+            "name": "Build",
+            "number": 8,
+            "startedAt": "2026-10-12T01:03:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:17Z",
+            "conclusion": "success",
+            "name": "Smoke help",
+            "number": 9,
+            "startedAt": "2026-10-12T01:03:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:17Z",
+            "conclusion": "success",
+            "name": "Smoke version",
+            "number": 10,
+            "startedAt": "2026-10-12T01:03:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:18Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v6",
+            "number": 20,
+            "startedAt": "2026-10-12T01:03:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T01:03:18Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 21,
+            "startedAt": "2026-10-12T01:03:18Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/wkoch/xrai/actions/runs/38190368368/job/114621631178"
+      }
+    ],
+    "status": "completed",
+    "updatedAt": "2026-10-12T01:03:41Z",
+    "url": "https://github.com/wkoch/xrai/actions/runs/38190368368"
+  }
+}

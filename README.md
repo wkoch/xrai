@@ -4,7 +4,7 @@ CLI em Rust para entregar contexto de código relevante, verificável e atualiza
 
 Estado: lote L0 concluído (M0-01 e M0-02). Workspace Rust mínimo compilável; `xrai --help` e `xrai --version` funcionam localmente. Parsing, consultas e MCP seguem nas tarefas posteriores. Não há resultados competitivos próprios.
 
-Para executar o scaffold: `cargo build --workspace --locked`, depois `./target/debug/xrai --help` (Windows: `target/debug/xrai.exe`). Toolchain fixada em Rust 1.98.1. [Relatório e evidências L0](docs/relatorios/L0.md). Próxima tarefa: M0-03, corpus e oracles.
+Para executar o scaffold: `cargo build --workspace --locked`, depois `./target/debug/xrai --help` (Windows: `target/debug/xrai.exe`). Toolchain fixada em Rust 1.98.1. [Relatório e evidências L0](docs/relatorios/L0.md). A [revisão arquitetural](docs/relatorios/REVISAO-L0.md) confirmou a CI nos três hosts do scaffold e definiu o lote L1: retificar contrato, preparar corpus e automatizar sua validação; spike de armazenamento pode avançar independentemente.
 
 Escopo inicial: Rust, TypeScript/JavaScript, Python e Go. Linux, macOS e Windows; um executável por plataforma/arquitetura; nenhuma GUI.
 

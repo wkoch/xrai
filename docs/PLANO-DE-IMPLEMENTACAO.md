@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 11/10/2026. Estado de execução: **L0 concluído; M0-01 e M0-02 com aceite demonstrado**. Evidências e demais tarefas em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 11/10/2026. Estado de execução: **L0 aceito no escopo entregue; M0-01 e M0-02 concluídas**. A [revisão arquitetural](relatorios/REVISAO-L0.md) acrescenta M0-01.R1 e M0-02.R1, ainda não executadas, para retificação de contrato e validação documental em CI. Evidências e demais tarefas em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -32,7 +32,7 @@ Não estabelecer prazo de calendário sem equipe e resultados dos spikes. As tar
 
 ## 2. Regras de execução e conclusão
 
-- IDs existentes são preservados; acrescentam-se `M0-11`, `M0-12`, `M1-22` e `M1-23`: **35 tarefas**, com execução individual em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md). A ordem de execução segue dependências, não numeração. M0-10 continua a saída de M0; M1-22 ocorre antes da engenharia ampla de M1.
+- IDs existentes são preservados: **35 tarefas principais e duas atividades derivadas da revisão L0**, `M0-01.R1` e `M0-02.R1`, com execução individual em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md). A ordem de execução segue dependências, não numeração. M0-10 continua a saída de M0; M1-22 ocorre antes da engenharia ampla de M1.
 - “Depende de” significa que o contrato/entregável anterior está disponível e passou nos critérios pertinentes. Preparar fixtures e especificações em paralelo é permitido; não declarar um marco concluído antecipadamente.
 - Cada tarefa deve produzir uma mudança revisável, seus testes relevantes e evidências dos critérios de aceite. Uma tarefa grande pode virar subtarefas com sufixo, preservando o ID e o aceite do conjunto.
 - Não criar testes que apenas reproduzem a implementação. Priorizar oracles independentes, fixtures rotuladas, comparação incremental/rebuild e falhas injetadas nas fronteiras reais.
@@ -102,6 +102,18 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Verificação:** revisão dos exemplos com cenários do plano de validação e registro das decisões nos ADRs existentes.
 
+### M0-01.R1 — Concretizar as decisões de revisão do contrato L0
+
+**Depende de:** M0-01. **Frente:** contratos. **ADRs:** 004, 007, 009.
+
+**Entrega:** contrato, schema, fixtures e verificador alinhados às decisões L0-A02/A03 da [revisão](relatorios/REVISAO-L0.md), com novo log de validação. Preservar evidência histórica de L0 e não anunciar API de produto.
+
+**Trabalho:** distinguir revisão fixada e seletor explícito `latest`; definir retorno após reconciliação e rejeição de revisão fixada desatualizada; preservar contexto/cursor/âncora ligados à revisão. Formalizar o cap e o alcance do diagnóstico de admissão, sem confundir bytes do objeto documental com wire MCP completo. Manter versão/compatibilidade dos exemplos identificadas.
+
+**Aceite:** exemplos demonstram snapshot fixo estável, tentativa de rebind recusada, latest que avança de A para B após validação, nova entrada no inventário de busca global, revisão fixada desatualizada, expiração e âncora de revisão incompatível. Mistura de hash/fonte continua inválida. Admissão não recupera fonte, não entrega resposta normal fora do teto e tem mensagem limitada; custo externo ao orçamento pedido é explícito. Casos de adapter/tokenizer ainda inexistentes ficam vinculados a M0-09/M1-16/17/18, sem alegar execução antecipada.
+
+**Verificação:** executar exemplos antigos compatíveis e novos casos positivos/negativos, demonstrando que a checagem de revisão foi condicionada ao seletor sem perder as rejeições anteriores. Revisar exemplos com os cenários independentes de freshness/orçamento do plano de validação.
+
 ### M0-02 — Criar o workspace Rust e a primeira matriz de CI
 
 **Depende de:** nenhuma. **Frente:** plataforma. **ADRs:** 001, 003, 009.
@@ -118,6 +130,18 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 - CI usa o lockfile. Falta de runner fica registrada para M0-05, sem alegar plataforma validada por cross-compilation. O build local precisa funcionar para liberar harness/protótipos.
 
 **Verificação:** logs de build/testes e smoke local; configuração dos três jobs revisada. CI remoto pode ser substituído por runners equivalentes enquanto não existir repositório remoto configurado. A confirmação nativa de cada SO permanece obrigatória na saída técnica de M0.
+
+### M0-02.R1 — Automatizar a validação documental do contrato
+
+**Depende de:** M0-02, M0-01.R1. **Frente:** CI de desenvolvimento.
+
+**Entrega:** job/check automatizado dos exemplos contratuais, com versões de tooling fixadas e evidência ligada ao commit.
+
+**Trabalho:** executar o verificador e seu schema/casos no ambiente de desenvolvimento da CI. Preservar os jobs Rust e o uso de lockfile. Python e bibliotecas documentais continuam fora das dependências do executável distribuído.
+
+**Aceite:** suíte documental passa na CI; um exemplo adverso realmente é rejeitado e falha inesperada do verificador impede aprovação do check. Resultado aponta commit, comandos, versões e contagens; não se limita a validar sintaxe JSON. Nenhuma capacidade do produto é inferida desse check.
+
+**Verificação:** execução local e run CI do commit; sem alegar que isso testa parser, armazenamento ou clientes MCP. Runners Rust de L0 já passaram; este cartão cobre a lacuna documental, não reabre M0-02.
 
 ### M0-03 — Construir o corpus inicial e seus oracles
 
@@ -139,7 +163,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 ### M0-04 — Implementar o harness, baseline competente e execução por agente
 
-**Depende de:** M0-01, M0-02, M0-03. **Frente:** avaliação. **ADR:** 012.
+**Depende de:** M0-01, M0-02, M0-03, M0-01.R1. **Frente:** avaliação. **ADR:** 012.
 
 **Entrega:** executor em `crates/xrai-eval/`, schema de resultados e primeiro relatório da baseline.
 
@@ -267,7 +291,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 ### M0-10 — Decidir G0 e consolidar a saída técnica de M0
 
-**Depende de:** M0-01, M0-02, M0-03, M0-04, M0-05, M0-06, M0-07, M0-08, M0-09, M0-11, M0-12. **Frente:** integração/produto.
+**Depende de:** M0-01, M0-02, M0-03, M0-04, M0-05, M0-06, M0-07, M0-08, M0-09, M0-11, M0-12, M0-02.R1. **Frente:** integração/produto.
 
 **Entrega:** `eval/reports/m0-exit.md`, ADRs atualizados e limites iniciais registrados antes dos testes de M1.
 
@@ -620,6 +644,8 @@ Relatórios de saída devem conter links para logs/resultados, critérios cumpri
 M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablations. Caso o seletor sozinho ganhe ou um índice externo resolva melhor a semântica, revisar a prioridade do motor próprio. Não financiar parser/type checker novo sem bloqueio demonstrado e comparação com integração de componentes existentes.
 
 ## 9. Primeira sequência executável
+
+L0 já executou M0-01/M0-02; não reiniciar essa sequência. **Próximo lote L1:** M0-01.R1 e M0-03, com M0-07 como frente independente; depois M0-02.R1. M0-04 aguarda corpus e retificação; M0-05/M0-08 aguardam corpus. Entrega, aceite e decisões estão na [revisão L0](relatorios/REVISAO-L0.md). A sequência original abaixo permanece como referência do desenho.
 
 1. Abrir M0-01 e M0-02: contrato mínimo e workspace/CI podem avançar juntos.
 2. Preparar D0/D1 em M0-03 e harness/agentes em M0-04; iniciar triagem dos oito concorrentes. Spikes nativos, armazenamento e filesystem seguem em frente independente.

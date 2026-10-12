@@ -1,5 +1,7 @@
 # Dependências e compatibilidade — M0-02 / L0
 
+**Atualização da revisão:** a [CI do commit L0](https://github.com/wkoch/xrai/actions/runs/38190368368) já concluiu os três jobs com sucesso. A matriz abaixo preserva o estado histórico observado pelo implementador; evidência atual e limites do aceite estão em [REVISAO-L0.md](REVISAO-L0.md).
+
 Data da decisão: 11/10/2026, America/Sao_Paulo. Escopo: esqueleto compilável; não demonstra parsing, persistência, consultas, MCP ou resultados de avaliação.
 
 ## Escolhas locais

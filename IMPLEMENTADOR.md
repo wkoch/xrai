@@ -1,6 +1,6 @@
 # Instruções para a IA implementadora do xrai
 
-Data: 11/10/2026. **L0 concluído pelo implementador.** Este arquivo preserva o handoff e seu roteiro; execução e próxima tarefa ficam em [STATUS-IMPLEMENTACAO.md](docs/STATUS-IMPLEMENTACAO.md), com evidências em [L0.md](docs/relatorios/L0.md).
+Data: 11/10/2026. **L0 concluído e revisado pelo arquiteto. Próximo lote: L1.** Leia primeiro a [revisão L0 e próximas atividades](docs/relatorios/REVISAO-L0.md) e o [estado atual](docs/STATUS-IMPLEMENTACAO.md). O roteiro L0 abaixo é histórico; não recrie o scaffold nem trate retificações planejadas como concluídas.
 
 ## 1. Papel e objetivo
 
@@ -17,12 +17,13 @@ As instruções diretas do usuário e as instruções de ambiente/AGENTS aplicá
 
 ## 2. Leitura e fontes de decisão
 
-Leia inicialmente este arquivo, o estado atual e os cartões do primeiro lote. Consulte o restante conforme a tarefa exigir; não é necessário reler toda a pesquisa a cada sessão.
+Leia inicialmente este arquivo, o estado atual, a revisão vigente e os cartões do lote atual. Consulte o restante conforme a tarefa exigir; não é necessário reler toda a pesquisa a cada sessão.
 
 | Documento | Autoridade no trabalho |
 |---|---|
 | [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
-| [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas, dependências, entregáveis e aceite; IDs são estáveis |
+| [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e duas atividades de revisão, dependências, entregáveis e aceite; IDs são estáveis |
+| [Revisão L0 / lote L1](docs/relatorios/REVISAO-L0.md) | Resposta às pendências A01/A02, nova A03, retificação do contrato, CI documental e trabalho imediato |
 | [Prova de diferenciação](docs/PROVA-DE-DIFERENCIACAO.md) | Objetivo, concorrentes, corpus, contabilidade, limites e gates G0/G1/G2 |
 | [RFC de arquitetura](docs/RFC-0001-ARQUITETURA.md) | Componentes, contratos fundamentais, trade-offs e ADRs |
 | [Plano de validação](docs/PLANO-DE-VALIDACAO.md) | Invariantes, falhas, oracles e verificação por capacidade |
@@ -114,4 +115,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Próxima ação da IA implementadora: conferir o estado local, consultar o relatório L0 e iniciar M0-03 (corpus D0/D1 e oracles). M0-01/M0-02 só precisam ser retomadas se surgir regressão ou revisão de contrato.**
+**Próxima ação da IA implementadora: executar o lote L1 da revisão L0. Iniciar M0-01.R1 e M0-03; M0-07 pode avançar como frente independente. Depois, M0-02.R1. Não repetir L0 ou antecipar M1-B; registrar evidências e atualizar o estado antes de commit/push.**

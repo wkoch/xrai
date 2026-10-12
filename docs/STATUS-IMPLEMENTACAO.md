@@ -1,10 +1,10 @@
 # Estado da implementação
 
-Atualizado em: 11/10/2026, pelo implementador, ao concluir o lote L0.
+Atualizado em: 11/10/2026, pelo arquiteto, após revisar o commit L0 `10d9bf95490d405ea2d8014e95065295b32727c4`.
 
-**Situação:** L0 concluído: M0-01 e M0-02 com aceite demonstrado em [relatório L0](relatorios/L0.md). Contrato especificado, cinco crates compiláveis e CLI de ajuda/versão funcionando localmente. Parsing, consultas e MCP ainda indisponíveis. Nenhum gate competitivo foi avaliado.
+**Situação:** L0 aceito no escopo de contrato/exemplos e scaffold, conforme [revisão arquitetural](relatorios/REVISAO-L0.md). Reexecução local passou e CI do scaffold foi confirmada em Linux x86_64, macOS arm64 e Windows x86_64. Contrato requer a retificação M0-01.R1 antes de congelamento para harness/M1; M0-02.R1 acrescentará CI dos exemplos. Parsing, consultas e MCP ainda indisponíveis. Nenhum gate competitivo foi avaliado.
 
-**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima tarefa:** M0-03, corpus D0/D1 e oracles. Pendências L0-A01/A02 para o Arquiteto não bloqueiam corpus/spikes locais; veja relatório.
+**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próximo lote L1:** M0-01.R1 e M0-03, com M0-07 como frente independente; depois M0-02.R1. M0-04 aguarda corpus/retificação; M0-05/M0-08 aguardam corpus. L0-A01 depende do mantenedor; A02/A03 já têm direção arquitetural e trabalho concreto para o implementador.
 
 ## Decisões vigentes
 
@@ -22,8 +22,10 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 
 | ID | Atividade | Estado | Evidência |
 |---|---|---|---|
-| M0-01 | Contrato mínimo | concluída | [Contrato](contracts/m1.md); [25 exemplos verificados](relatorios/logs/L0/contract-examples.json); [aceite L0](relatorios/L0.md) |
-| M0-02 | Workspace Rust e CI | concluída | [Escolhas, compatibilidade e verificações](relatorios/dependencias-L0.md); [logs](relatorios/logs/L0/workspace-checks.json) |
+| M0-01 | Contrato mínimo, escopo L0 | concluída | [Contrato](contracts/m1.md); [25 exemplos revalidados](relatorios/logs/revisao-L0/checks.json); [aceite e ressalva para promoção](relatorios/REVISAO-L0.md) |
+| M0-01.R1 | Retificação de seletor de revisão e admissão | não iniciada | [Decisões L0-A02/A03 e aceite](relatorios/REVISAO-L0.md) |
+| M0-02 | Workspace Rust e CI | concluída | [Escolhas e verificações](relatorios/dependencias-L0.md); [CI do commit](relatorios/logs/revisao-L0/ci.json) |
+| M0-02.R1 | Validação documental em CI | não iniciada | [L0-V01 e aceite](relatorios/REVISAO-L0.md) |
 | M0-03 | Corpus D0/D1 e oracles | não iniciada | — |
 | M0-04 | Harness, baseline e agentes | não iniciada | — |
 | M0-05 | Gramáticas e autonomia | não iniciada | — |
@@ -62,17 +64,20 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 
 | Gate | Situação | Próxima etapa liberada por evidência |
 |---|---|---|
-| G0 | não avaliado | nenhuma; M0 pode começar |
+| G0 | não avaliado | nenhuma; M0 em andamento, com L0 concluído |
 | G1 | não avaliado | nenhuma; M1-B depende de G1 favorável |
 | G2 | não avaliado | nenhuma; disponibilização da alpha depende de G2 |
 
-## Pendências que não bloqueiam L0
+## Pendências correntes
 
 | Item | Momento de definição |
 |---|---|
 | Toolchain, MSRV e versões das dependências | L0: Rust/MSRV 1.98.1, edição 2024, zero dependências externas; verificar bibliotecas nas tarefas consumidoras |
 | Repositórios e tarefas reais do corpus | M0-03, com versões e oracles |
-| Hardware, disponibilidade de runners e plataformas verificadas | M0-02/05; não declarar execução ausente como teste passado |
+| Licença de distribuição do produto | L0-A01: decisão do mantenedor antes de M1-20; manter publish=false |
+| Contrato de revisão e admissão | M0-01.R1: direção A02/A03 definida; implementar exemplos/schema/verificador antes de congelar harness/M1 |
+| CI dos exemplos documentais | M0-02.R1: novo check; workflow Rust atual já passou nos três hosts |
+| Hardware de referência e autonomia nativa | Hardware permanece não medido; M0-05 ainda precisa provar gramáticas/ambiente limpo. CI atual comprova somente scaffold |
 | Modelos, limites de runs, esforço e teto monetário de campanha | Antes do uso pago correspondente em M0-04/12; preparar replay/local enquanto isso |
 | Tamanho final de H1 e método estatístico | M0-10/M1-22, após dados D1 e antes de abrir H1 |
 
@@ -80,6 +85,10 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 
 [Relatório L0](relatorios/L0.md): critérios M0-01/M0-02, ambiente, escolhas, revisões, limitações e próxima ação. [Logs M0-02](relatorios/logs/L0/workspace-checks.json), [checks dos exemplos](relatorios/logs/L0/contract-examples.json), [compatibilidade/licenças](relatorios/dependencias-L0.md) e [manifesto dos entregáveis](relatorios/logs/L0/artifacts.json).
 
+[Revisão arquitetural L0](relatorios/REVISAO-L0.md): parecer de aceite, resposta às pendências, nova lacuna de seletor, CI remota confirmada e lote L1. [Checks reexecutados](relatorios/logs/revisao-L0/checks.json), [CI consultada](relatorios/logs/revisao-L0/ci.json) e [sondagens](relatorios/logs/revisao-L0/sondagens-contrato.json). Esses logs se referem ao commit L0; retificações planejadas continuam não executadas.
+
 ## Questões para o arquiteto
 
-Questões documentadas em [L0, §5](relatorios/L0.md#5-pendências-para-o-arquiteto): L0-A01, licença do produto antes de distribuir; L0-A02, analisar diagnóstico de admissão fora do teto solicitado quando o envelope mínimo não cabe. Alternativas e recomendação estão no relatório. Sem bloqueio para M0-03 ou spikes independentes. Execução nativa Linux/Windows segue pendência operacional de M0-05, sem validação alegada.
+L0-A02 foi resolvida em arquitetura com alcance explícito do cap de diagnóstico; implementação e testes ainda cabem ao implementador. L0-A03 define snapshot fixo versus latest e exige concretização em R1. L0-A01 permanece escolha do mantenedor, sem bloquear M0-03/M0-07. Referência e critérios: [revisão, decisões e lote L1](relatorios/REVISAO-L0.md).
+
+Nenhuma decisão competitiva foi tomada com base nos smokes. A preferência do usuário por qualidade e os tetos propostos de custo permanecem inalterados.

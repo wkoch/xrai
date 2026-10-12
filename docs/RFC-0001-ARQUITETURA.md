@@ -425,7 +425,7 @@ P2 antecipa semântica delimitada nas quatro famílias; P3 antecipa obrigações
 
 Próximo trabalho concreto: D0 com 20 tarefas, D1 com 32 desafios reais, harness de agentes e triagem dos oito concorrentes. O [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) define comparadores fortes, separação de holdout, contabilidade e limites de esforço. A campanha reservada começa em M1-A, antes da alpha completa.
 
-O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tarefas e seus gates. G1 tem qualidade como única rota primária: ganho pontual de sucesso ≥8 pp, com superioridade sustentada pelo intervalo; limites superiores das razões de custo por tentativa ≤1,25 e por sucesso ≤1,15, sob a análise e os guardrails do protocolo. Os números são propostas de arquitetura; a prioridade de qualidade foi definida pelo usuário. Isso testa um domínio delimitado; não promete semântica universal nem liderança nas quatro famílias sem evidência.
+O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tarefas principais, duas atividades derivadas da revisão L0 e seus gates. G1 tem qualidade como única rota primária: ganho pontual de sucesso ≥8 pp, com superioridade sustentada pelo intervalo; limites superiores das razões de custo por tentativa ≤1,25 e por sucesso ≤1,15, sob a análise e os guardrails do protocolo. Os números são propostas de arquitetura; a prioridade de qualidade foi definida pelo usuário. Isso testa um domínio delimitado; não promete semântica universal nem liderança nas quatro famílias sem evidência.
 
 ## 14. Registro das decisões propostas
 
@@ -466,7 +466,19 @@ O [contrato mínimo v1](contracts/m1.md) e o [relatório L0](relatorios/L0.md) r
 | 009 | Seis operações MCP planejadas, anunciadas apenas após implementação; tipos e domínio separados dos adapters. L0 anuncia somente ajuda/versão. Contrato §§5–6; equivalência CLI/MCP continua aceite de M1-18. |
 | 012, 019 | Correção de fonte/semântica e obrigações precede compressão. Limite por resposta, esforço experimental e autorização de gasto são conceitos distintos. Exemplos não comprovam vantagem; gates e orçamento de campanha seguem o protocolo. |
 
-Política de licença do xrai permanece aberta (L0-A01); `publish=false` não escolhe licença em nome do usuário. Questões L0-A01/A02 estão no relatório para resposta do Arquiteto, sem bloquear corpus ou spikes locais independentes.
+Política de licença do xrai permanece aberta (L0-A01); `publish=false` não escolhe licença em nome do usuário. A resposta do Arquiteto a A02 e a nova questão A03 estão na revisão abaixo; corpus e spikes independentes podem avançar.
+
+### 14.2 Decisões da revisão arquitetural L0
+
+A [revisão L0](relatorios/REVISAO-L0.md) aceita o scaffold/exemplos e define as concretizações abaixo para execução em M0-01.R1. São decisões de arquitetura nesta revisão; ainda não são código, schema atualizado ou comportamento de produto validado.
+
+| ADR | Decisão | Alternativa e consequência | Aceite restante |
+|---|---|---|---|
+| 004 | Distinguir snapshot fixado e seleção explícita `latest`. ID fixo não sofre rebind; latest pode fixar nova geração após reconciliação, com identidade explícita | Exigir igualdade com o request em todos os casos impede expressar atualização; permitir rebind sempre quebra estabilidade. A separação conserva ambas as garantias | Fixtures de avanço, revisão desatualizada, novo arquivo, âncora incompatível e rejeição de mistura; produção em M1-01/13/16 |
+| 007 | Aprovar diagnóstico de admissão separado quando o orçamento normal não comporta envelope; cap de 4096 bytes no diagnóstico da aplicação, zero fonte e custo contabilizado | Silenciar erro prejudica recuperação; furar o teto da resposta normal oculta custo. A exceção é tipada e limitada, sem promessa universal para framing/ID arbitrário | Precisar CLI/MCP/escapes/duplicação e estimativa de mínimo em R1; medir adapters/tokenizer nos cartões correspondentes |
+| 009 | Restrição de orçamento com request bem formado é erro da ferramenta; erro estrutural de protocolo segue mecanismo do protocolo | Misturar os dois torna cliente incapaz de decidir recuperação | Versão MCP escolhida e integração verificadas em M1-18; decisão detalhada e fonte primária na revisão |
+
+L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do commit L0 passou nos três hosts do scaffold; isso não encerra M0-05 ou M1-20. G0/G1/G2 permanecem sem resultado.
 
 ## 15. Questões ainda abertas
 
