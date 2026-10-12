@@ -40,6 +40,7 @@ jobs:
           python -m unittest discover -s eval/scripts/tests -v
           python -m unittest discover -s eval/scripts -p 'test_l5_*.py' -v
           python -m unittest discover -s eval/scripts -p 'test_state_events.py' -v
+          python -m unittest discover -s eval/scripts -p 'test_state_ci.py' -v
           python -m unittest discover -s eval/scripts -p 'test_gitea_exposure.py' -v
           python eval/scripts/prepare_state_events.py verify
           python eval/scripts/verify_gitea_exposure.py --check-data

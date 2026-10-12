@@ -1,0 +1,27 @@
+{
+  "started_utc": "2026-10-12T21:17:19.721586+00:00",
+  "finished_utc": "2026-10-12T21:17:19.822639+00:00",
+  "command": [
+    "/private/tmp/xrai-c02-tools/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts",
+    "-p",
+    "test_state_ci.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "tests": 37,
+  "data_only": true,
+  "native_execution": false,
+  "source_sha256": {
+    "eval/scripts/reconcile_state_ci.py": "f1a68f414cd03cfa69adf2702fdc328bdc750ca93e412d4c5b7dfddbddcf1f70",
+    "eval/scripts/test_state_ci.py": "5a0793b6b401d806c6af845f31c996b0d5b0fb37261cbf2638824cc337751d2c",
+    "eval/scripts/test_state_event_receipt.py": "962f27e3b35cbc0d5d4ad8906f447ee278e07b3b6fa06e5c1a13199c9e9e164c"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "223d6d2d41f009a4d9971be2df196971fda80c0caddd670435bf11ee6cd23ed4",
+  "change": "Artifact created_at must belong to selected attempt upload step time window; avoids previous-attempt artifact with same run/head"
+}

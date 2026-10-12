@@ -1,0 +1,50 @@
+test_collection_type_must_be_complete (test_state_event_receipt.DataOnlyStructureTests.test_collection_type_must_be_complete) ... ok
+test_configuration_fingerprint_recomputed (test_state_event_receipt.DataOnlyStructureTests.test_configuration_fingerprint_recomputed) ... ok
+test_duplicate_json_fields_rejected (test_state_event_receipt.DataOnlyStructureTests.test_duplicate_json_fields_rejected) ... ok
+test_evidence_boolean_span_rejected (test_state_event_receipt.DataOnlyStructureTests.test_evidence_boolean_span_rejected) ... ok
+test_evidence_wrong_source_hash_rejected (test_state_event_receipt.DataOnlyStructureTests.test_evidence_wrong_source_hash_rejected) ... ok
+test_illustrative_record_only_validates_structure (test_state_event_receipt.DataOnlyStructureTests.test_illustrative_record_only_validates_structure) ... ok
+test_missing_diagnostics_container_rejected (test_state_event_receipt.DataOnlyStructureTests.test_missing_diagnostics_container_rejected) ... ok
+test_unknown_cannot_promote_target (test_state_event_receipt.DataOnlyStructureTests.test_unknown_cannot_promote_target) ... ok
+test_unproven_resolved_target_rejected (test_state_event_receipt.DataOnlyStructureTests.test_unproven_resolved_target_rejected) ... ok
+test_case_swap_rejected (test_state_event_receipt.RealExportCounterproofs.test_case_swap_rejected) ... ok
+test_changed_index_session_rejected (test_state_event_receipt.RealExportCounterproofs.test_changed_index_session_rejected) ... ok
+test_changed_pid_inside_live_session_rejected (test_state_event_receipt.RealExportCounterproofs.test_changed_pid_inside_live_session_rejected) ... ok
+test_cold_b_is_not_warmed_a (test_state_event_receipt.RealExportCounterproofs.test_cold_b_is_not_warmed_a) ... ok
+test_configuration_swap_with_input_rehash_rejected (test_state_event_receipt.RealExportCounterproofs.test_configuration_swap_with_input_rehash_rejected) ... ok
+test_extra_export_path_rejected (test_state_event_receipt.RealExportCounterproofs.test_extra_export_path_rejected) ... ok
+test_hash_report_cannot_hide_snapshot_divergence (test_state_event_receipt.RealExportCounterproofs.test_hash_report_cannot_hide_snapshot_divergence) ... ok
+test_independent_rebuild_cannot_reuse_process_identity (test_state_event_receipt.RealExportCounterproofs.test_independent_rebuild_cannot_reuse_process_identity) ... ok
+test_missing_coverage_with_frame_rehash_rejected (test_state_event_receipt.RealExportCounterproofs.test_missing_coverage_with_frame_rehash_rejected) ... ok
+test_missing_diagnostics_with_frame_rehash_rejected (test_state_event_receipt.RealExportCounterproofs.test_missing_diagnostics_with_frame_rehash_rejected) ... ok
+test_native_binary_byte_swap_rejected (test_state_event_receipt.RealExportCounterproofs.test_native_binary_byte_swap_rejected) ... ERROR
+test_positive_recompute_exact_receipt (test_state_event_receipt.RealExportCounterproofs.test_positive_recompute_exact_receipt) ... ok
+test_producer_source_hash_substitution_rejected (test_state_event_receipt.RealExportCounterproofs.test_producer_source_hash_substitution_rejected) ... ok
+test_restarted_generation_rejected (test_state_event_receipt.RealExportCounterproofs.test_restarted_generation_rejected) ... ok
+test_self_asserted_admission_flag_rejected (test_state_event_receipt.RealExportCounterproofs.test_self_asserted_admission_flag_rejected) ... ok
+test_self_asserted_verification_cannot_replace_proof (test_state_event_receipt.RealExportCounterproofs.test_self_asserted_verification_cannot_replace_proof) ... ok
+test_sequence_relabel_rejected (test_state_event_receipt.RealExportCounterproofs.test_sequence_relabel_rejected) ... ok
+test_supplemental_event_cannot_fill_required_quota (test_state_event_receipt.RealExportCounterproofs.test_supplemental_event_cannot_fill_required_quota) ... ok
+test_truncated_protocol_frame_rejected (test_state_event_receipt.RealExportCounterproofs.test_truncated_protocol_frame_rejected) ... ok
+test_unknown_removed_with_frame_rehash_rejected (test_state_event_receipt.RealExportCounterproofs.test_unknown_removed_with_frame_rehash_rejected) ... ok
+test_wrong_revision_cannot_be_accepted (test_state_event_receipt.RealExportCounterproofs.test_wrong_revision_cannot_be_accepted) ... ok
+
+======================================================================
+ERROR: test_native_binary_byte_swap_rejected (test_state_event_receipt.RealExportCounterproofs.test_native_binary_byte_swap_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/eval/scripts/test_state_event_receipt.py", line 194, in test_native_binary_byte_swap_rejected
+    path.write_bytes(raw[:-1] + bytes([raw[-1] ^ 1]))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.13/x64/lib/python3.13/pathlib/_abc.py", line 641, in write_bytes
+    with self.open(mode='wb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.13/x64/lib/python3.13/pathlib/_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/tmp/xrai-state-receipt-counterproof-f_n8r744/export/native-bin/semantics-session'
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.288s
+
+FAILED (errors=1)

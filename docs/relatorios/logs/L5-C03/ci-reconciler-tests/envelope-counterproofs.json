@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/private/tmp/xrai-c02-tools/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts",
+    "-p",
+    "test_state_ci.py",
+    "-v"
+  ],
+  "data_only": true,
+  "exit_code": 0,
+  "finished_utc": "2026-10-12T21:16:17.582996+00:00",
+  "limits": "Envelope examples are not native proof; first export source behavior retained but entire original job failed on countertest filesystem permission. Fixed test changes mode only on temporary clone.",
+  "native_execution": false,
+  "proof_dir": null,
+  "source_sha256": {
+    "eval/scripts/reconcile_state_ci.py": "7ac9608a862fe7cac4ce4d3fc83b1742e9f5fb123ff4d197735b8264ca88d863",
+    "eval/scripts/test_state_ci.py": "cef6e28cb79b1e0607c36244fc37fd19edfd5350405d5d4201429b12673eba8e",
+    "eval/scripts/test_state_event_receipt.py": "962f27e3b35cbc0d5d4ad8906f447ee278e07b3b6fa06e5c1a13199c9e9e164c"
+  },
+  "started_utc": "2026-10-12T21:16:17.482003+00:00",
+  "stderr_sha256": "f7b1e0358e5ec3a68ab1e8279402233ff4a27f5b969b998914ae66e4e3d10e3e",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "upstream_execution": false
+}

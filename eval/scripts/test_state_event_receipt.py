@@ -191,6 +191,9 @@ class RealExportCounterproofs(unittest.TestCase):
     def test_native_binary_byte_swap_rejected(self):
         path = self.directory / "native-bin/semantics-session"
         raw = path.read_bytes()
+        # copytree preserves the retained binary's 0500 mode. Make only this
+        # disposable counterproof clone writable; never alter original export.
+        path.chmod(0o600)
         path.write_bytes(raw[:-1] + bytes([raw[-1] ^ 1]))
         self.rejected()
 

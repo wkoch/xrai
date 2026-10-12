@@ -183,3 +183,5 @@ Nenhum aceite, gate ou estado de cartão mudou. Oito tarefas elegíveis, zero ad
 ## Implementação C03/S01
 
 [L5-C03](relatorios/L5-C03.md) registra gate/dispatch fake consumido, 23 testes, quatro descritores state_config required preparados, 18 testes e primeiro protocolo persistente Rust com comparação integral antes/depois/rebuild. Prova nativa ainda pendente neste checkpoint; nove checks estruturais passaram, 21 contraprovas aguardam export real. [S01](relatorios/L5-S01.md): 55 decisões bloqueantes e 32 testes; guard integrado antes de download e na referência com `!cancelled()`. Nenhuma execução Go/provider ou fechamento de alerta. Quatro eventos preparados/zero executados, oito elegíveis e D1 global0/32; estados dos cartões/gates preservados.
+
+Primeira tentativa C03 publicada em `5191baa`: evento+verificador passaram, job38309110235 falhou somente na escrita da cópia readonly usada por uma contraprova. Falha/ZIP/metadata preservados; correção do teste passou30 checks offline no export real, com36 checks adicionais do reconciliador. Aceite CI integral aguarda segunda tentativa dedicada; código produtor/oracle permanecem congelados.
