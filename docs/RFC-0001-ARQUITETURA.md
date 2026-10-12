@@ -1,6 +1,6 @@
 # RFC-0001 — Arquitetura do xrai
 
-Data: 11/10/2026. Estado arquitetural: **proposta**. O scaffold L0 tem implementação local; as capacidades descritas nesta RFC continuam propostas até seu aceite. Evidências em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md); nenhum desempenho competitivo medido.
+Data: 12/10/2026. Estado arquitetural: **proposta com decisões de execução até ADR 024**. O scaffold L0 tem implementação local; as capacidades descritas nesta RFC continuam propostas até seu aceite. Evidências em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md); nenhum desempenho competitivo medido.
 
 Linguagens iniciais confirmadas: **Rust, TypeScript/JavaScript, Python e Go**.
 
@@ -114,7 +114,7 @@ Alteração das dependências de uma nota provoca revalidação. Frequência de 
 
 Incorporar runtime, gramáticas e consultas ao executável. Gramáticas são compiladas na fabricação do release; o usuário não precisa de compilador. O projeto fornece parsing incremental e recuperação diante de erros. [Documentação](https://tree-sitter.github.io/tree-sitter/), [bindings Rust](https://docs.rs/tree-sitter/latest/tree_sitter/).
 
-O trabalho próprio deve começar **acima do parser**: escopos, bindings, módulos, relações, invalidação e seleção de evidências. Reescrever o parser passa a fazer sentido se um benchmark mostrar um bloqueio concreto de precisão, memória, desempenho ou manutenção que não possa ser resolvido com extensão ou substituição pontual.
+O trabalho próprio deve começar **acima do parser**: escopos, bindings, módulos, relações, invalidação e seleção de evidências. Uma lacuna reproduzível de precisão, autonomia, recursos ou manutenção permite investigar parser próprio. Comparar extensão, fork, integração e desenvolvimento no recorte; não exigir vitória competitiva de uma implementação ainda inexistente. O [ADR 024](decisoes/BIBLIOTECAS-PROPRIAS.md) detalha experimentos, fronteiras e promoção; complexidade não é veto.
 
 ### 5.2 Interface semântica comum, detalhes por linguagem
 
@@ -427,11 +427,11 @@ P2 antecipa semântica delimitada nas quatro famílias; P3 antecipa obrigações
 
 Próximo trabalho concreto: usar D0/seed já preparados no harness, qualificar 32 desafios D1 em M0-03.R1 e triar os oito concorrentes. O [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) define comparadores fortes, separação de holdout, contabilidade e limites de esforço. A campanha reservada começa em M1-A, antes da alpha completa.
 
-O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tarefas principais, quatro atividades complementares e seus gates. G1 tem qualidade como única rota primária: ganho pontual de sucesso ≥8 pp, com superioridade sustentada pelo intervalo; limites superiores das razões de custo por tentativa ≤1,25 e por sucesso ≤1,15, sob a análise e os guardrails do protocolo. Os números são propostas de arquitetura; a prioridade de qualidade foi definida pelo usuário. Isso testa um domínio delimitado; não promete semântica universal nem liderança nas quatro famílias sem evidência.
+O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tarefas principais, seis atividades complementares e seus gates. G1 tem qualidade como única rota primária: ganho pontual de sucesso ≥8 pp, com superioridade sustentada pelo intervalo; limites superiores das razões de custo por tentativa ≤1,25 e por sucesso ≤1,15, sob a análise e os guardrails do protocolo. Os números são propostas de arquitetura; a prioridade de qualidade foi definida pelo usuário. Isso testa um domínio delimitado; não promete semântica universal nem liderança nas quatro famílias sem evidência.
 
 ## 14. Registro das decisões propostas
 
-Os ADRs 001–018 permanecem **Propostos**, com concretizações nas revisões L0/L1. No ADR 019, prioridade de qualidade e separação de papéis são **definidas pelo usuário**; os limiares numéricos continuam propostas de arquitetura. O recorte de plataformas do ADR 020 também foi **definido pelo usuário**; seus pisos de SO e os ADRs 021/022 são **decisões do Arquiteto para execução**. Cada linha resume contexto, decisão, alternativa, consequência e revisão necessária. Proposto não exige nova permissão para cada tarefa: o usuário autorizou preparar o início da implementação dentro deste plano; alterações materiais devem ser registradas.
+Os ADRs 001–018 permanecem **Propostos**, com concretizações nas revisões L0/L1. No ADR 019, prioridade de qualidade e separação de papéis são **definidas pelo usuário**; os limiares numéricos continuam propostas de arquitetura. O recorte de plataformas do ADR 020 também foi **definido pelo usuário**; seus pisos de SO e os ADRs 021–024 são **decisões do Arquiteto para execução**. Cada linha resume contexto, decisão, alternativa, consequência e revisão necessária. Proposto não exige nova permissão para cada tarefa: o usuário autorizou preparar o início da implementação dentro deste plano; alterações materiais devem ser registradas.
 
 | ADR | Contexto e decisão | Alternativa e consequência | Validação/revisão |
 |---|---|---|---|
@@ -457,6 +457,8 @@ Os ADRs 001–018 permanecem **Propostos**, com concretizações nas revisões L
 | 020 | Usuário restringe v1 a Linux x86_64 e macOS arm64; Windows após v1 | Matriz ampla desde M0 consome trabalho de plataforma; foco em dois alvos mantém as exigências de qualidade e posterga outros ports | M0-02.R2 ajusta CI; M0-05/06/07/08 e M1-19/20 provam os dois alvos; [decisão e critérios](decisoes/PLATAFORMAS-V1.md) |
 | 021 | Aceitar corpus inicial como D1-seed e qualificar 32 casos antes do piloto, com porte/complexidade, proveniência e oracles verificáveis | Aceitar bibliotecas pequenas como prova geral favorece pistas e tarefas simples; ampliar amostra agora aumenta custo. Preservar seed e substituir casos primários conforme critérios | M0-03.R1, M0-04/12 e H1; [admissão e recortes](decisoes/CORPUS-QUALIFICADO.md) |
 | 022 | Lock de dono e fencing para staging; FTS externo no SQLite por conteúdo; retenção por pins persistidos | PID/tempo podem confundir dono vivo; texto por geração cresce; GC por idade quebra contextos. Acrescenta coordenação e joins que devem ser medidos | M1-04/15/16/19 após G1; [decisão, alternativas e falhas](decisoes/PERSISTENCIA-E-RETENCAO.md) |
+| 023 | Separar contenção do harness e workers; captura por handles e Git adiado | Killpg/path checks não provam contenção; VM de avaliação não vira runtime do produto | M0-04.R1/06/08.R1 e M1-02/03; [decisão](decisoes/EXECUCAO-E-CAPTURA.md) |
+| 024 | Admitir bibliotecas próprias de qualquer porte quando necessárias; experimento vertical antes de produção ampla | Reescrita sem problema concreto dispersa investimento; complexidade não deve impedir objetivo | P2/P3, perdas por camada e B01–B08; [decisão](decisoes/BIBLIOTECAS-PROPRIAS.md) |
 
 ### 14.1 Concretizações do lote L0 nos ADRs existentes
 
@@ -489,6 +491,10 @@ L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do co
 
 [Revisão L1 e lote L2](relatorios/REVISAO-L1.md): C01 resolvida pelo ADR 021; S01/S02 resolvidas pelo ADR 022. M0-03 aceito no escopo explicitamente reduzido a preparação inicial; qualificação competitiva transferida obrigatoriamente para R1. Persistência de produção segue após G1. Histórico e logs permanecem preservados.
 
+### 14.4 Resolução arquitetural L2
+
+[Revisão L2 e lote L3](relatorios/REVISAO-L2.md): H01/F01/GIT01 resolvidas pelo ADR 023; investimento próprio detalhado pelo ADR 024. M0-04.R1/M0-08.R1 acrescentam provas explícitas; oito incrementos organizam continuação de M0, sem mudar gates ou declarar implementação.
+
 ## 15. Definições com responsável e momento
 
 | Item | Responsável e regra vigente |
@@ -501,4 +507,4 @@ L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do co
 | Manutenção e tamanho de binário | Implementador mede nos spikes; M0-10 registra custos/limites e escopo sustentáveis. Não fixar prazo/equipe fictícios. |
 | CI/runners | Bloqueio anterior superado após repo público: [CI do commit `9b5411c`](relatorios/CI-PUBLICO.md) concluiu R2/M0-07. Demais spikes e distribuição ainda exigem suas próprias provas. |
 
-Não resta decisão arquitetural de L1 exigida para iniciar o lote L2. As verificações e decisões externas acima conservam seus respectivos responsáveis e gates.
+Não resta decisão arquitetural H01/F01/GIT01 exigida para iniciar o lote L3. As verificações e decisões externas acima conservam seus respectivos responsáveis e gates.

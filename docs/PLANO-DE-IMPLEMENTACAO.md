@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 12/10/2026. **Revisão L1: decisões arquiteturais C01/S01/S02 resolvidas; próximo lote L2 preparado.** Corpus inicial aceito no escopo de desenvolvimento; M0-03.R1 qualifica o D1 antes do piloto. M0-04/05/08 podem começar. [Parecer, evidências e sequência](relatorios/REVISAO-L1.md). V1 continua Linux x86_64/macOS arm64; [CI aprovada](relatorios/CI-PUBLICO.md) concluiu R2 e M0-07 conforme o [estado](STATUS-IMPLEMENTACAO.md).
+Data: 12/10/2026. **Revisão L2: H01/F01/GIT01 resolvidas; próximo lote L3 detalhado.** L2 avançou harness e spikes; R1 ainda tem zero casos qualificados. [Parecer, evidências e oito incrementos executáveis](relatorios/REVISAO-L2.md). ADRs [023](decisoes/EXECUCAO-E-CAPTURA.md)/[024](decisoes/BIBLIOTECAS-PROPRIAS.md) definem contenção, captura e investimento próprio. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -41,12 +41,12 @@ Windows, Linux arm64 e macOS Intel estão fora do aceite e da distribuição do 
 
 ## 2. Regras de execução e conclusão
 
-- IDs existentes são preservados: **35 tarefas principais e quatro atividades complementares**, `M0-01.R1`, `M0-02.R1`, `M0-02.R2` e `M0-03.R1`, com execução individual em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md). A ordem de execução segue dependências, não numeração. M0-10 continua a saída de M0; M1-22 ocorre antes da engenharia ampla de M1.
+- IDs existentes são preservados: **35 tarefas principais e seis atividades complementares**, `M0-01.R1`, `M0-02.R1`, `M0-02.R2`, `M0-03.R1`, `M0-04.R1` e `M0-08.R1`, com execução individual em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md). A ordem de execução segue dependências, não numeração. M0-10 continua a saída de M0; M1-22 ocorre antes da engenharia ampla de M1.
 - “Depende de” significa que o contrato/entregável anterior está disponível e passou nos critérios pertinentes. Preparar fixtures e especificações em paralelo é permitido; não declarar um marco concluído antecipadamente.
 - Cada tarefa deve produzir uma mudança revisável, seus testes relevantes e evidências dos critérios de aceite. Uma tarefa grande pode virar subtarefas com sufixo, preservando o ID e o aceite do conjunto.
 - Não criar testes que apenas reproduzem a implementação. Priorizar oracles independentes, fixtures rotuladas, comparação incremental/rebuild e falhas injetadas nas fronteiras reais.
 - Resultados medidos ficam em relatórios com commit, configuração, plataforma, hardware, comandos e saídas. Metas propostas não contam como resultados.
-- Decisões seguem os ADRs 001–022 da RFC, incluindo [admissão do corpus](decisoes/CORPUS-QUALIFICADO.md) e [persistência/retenção](decisoes/PERSISTENCIA-E-RETENCAO.md). Mudança de contrato, persistência, isolamento, regime de comparação ou dependência runtime deve atualizar o ADR pertinente e os critérios afetados.
+- Decisões seguem os ADRs 001–024 da RFC, incluindo [admissão do corpus](decisoes/CORPUS-QUALIFICADO.md) e [persistência/retenção](decisoes/PERSISTENCIA-E-RETENCAO.md). Mudança de contrato, persistência, isolamento, regime de comparação ou dependência runtime deve atualizar o ADR pertinente e os critérios afetados.
 - Spikes de M0 podem ser descartados. Sua promoção para M1 exige limites, tratamento de falhas e testes de produção; um experimento que funcionou uma vez não cumpre esses requisitos.
 - Qualidade já está fixada como rota primária. Antes da campanha, congelar limites de esforço/uso de modelos, critérios de custo proporcional, amostra, comparadores e análise. M0 permite duas versões por hipótese; M1-A, uma campanha reservada e uma adicional. Inconclusivo não libera M1-B automaticamente.
 
@@ -60,6 +60,10 @@ O diagrama resume as frentes; os cartões abaixo são a lista completa de depend
 flowchart TD
     A["M0-01/03: contratos e corpus"] --> B["M0-04: harness e agentes"]
     C["M0-02: workspace"] --> D["M0-05 a 08: spikes técnicos"]
+    C --> HC["M0-04.R1: contenção de comandos"]
+    HC --> E
+    D --> FC["M0-08.R1: captura ancorada"]
+    FC --> G0
     B --> P2["M0-11: protótipo semântico P2"]
     P2 --> P3["M0-09: protótipo de contexto P3"]
     P3 --> E["M0-12: finalistas e piloto real"]
@@ -215,6 +219,16 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Verificação:** replay offline, testes de isolamento entre braços e auditoria completa de uma sessão por família. O harness deve poder avaliar um protótipo sem depender do índice ou MCP finais de M1.
 
+### M0-04.R1 — Conter o domínio de execução do harness
+
+**Depende de:** M0-01, M0-02. **Frente:** avaliação/runtime. **ADR:** 023. Usa a parte local de M0-04 já entregue; não espera seus smokes pagos.
+
+**Entrega:** adapter de domínio descartável, recibo de teardown e `eval/reports/m0-harness-containment.md`.
+
+**Trabalho e aceite:** [L3-02](relatorios/REVISAO-L2.md) e ADR 023 §1: Linux com namespace PID controlado externamente; macOS arbitrário em VM/runner descartável. Setsid/double fork, pipes, cancelamento e morte do pai não deixam domínio reutilizável sem teardown comprovado. Falha de cleanup permanece no resultado/custo. Não confundir timeout do avaliador com eliminação dos descendentes.
+
+**Verificação:** processos reais, sentinelas com controles positivos, dois braços e falhas de cleanup. Preparação local avança sem infraestrutura paga. M0-04 exige esta prova na plataforma usada antes de smokes reais; suporte ausente permanece explícito.
+
 ### M0-05 — Provar gramáticas incorporadas e distribuição autônoma
 
 **Depende de:** M0-02, M0-03. **Frente:** parsing/plataforma. **ADRs:** 001, 002.
@@ -236,7 +250,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Depende de:** M0-01, M0-05. **Frente:** runtime. **ADR:** 013.
 
-**Entrega:** spike de supervisor/worker e contrato de IPC versionado.
+**Entrega:** spike de supervisor/worker e contrato de IPC versionado. Aplicar ADR 023 §2 e [L3-03](relatorios/REVISAO-L2.md): limites iniciais, identidades, estados, retry e matriz de falhas. Provas pertinentes de M0-05 permitem começar antes de seu encerramento integral; piso literal permanece pendente.
 
 **Trabalho:** pai captura bytes; worker recebe request com ID, linguagem, hash, fingerprint e comprimento delimitado. Comparar pool persistente pequeno com parsing direto somente no harness, medindo custo de IPC e startup. Definir cancelamento, limite de entrada/resposta e retry.
 
@@ -283,6 +297,16 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Verificação:** fixtures de filesystem reais nos dois alvos do v1; registrar tipo/configuração do filesystem e capacidades que o runner não permite testar. Preservar bytes nativos, Unicode, CRLF e distinções de case sem assumir que todos os volumes macOS se comportam igualmente. Decisão no ADR explicita o que foi postergado de Git.
 
+### M0-08.R1 — Provar captura e enumeração ancoradas
+
+**Depende de:** M0-08. **Frente:** workspace. **ADR:** 023.
+
+**Entrega:** spike nativo com handles, leitura limitada e matriz adversarial; adendo ao relatório de filesystem.
+
+**Trabalho e aceite:** [L3-04](relatorios/REVISAO-L2.md), ADR 023 §3. Proteger também enumeração, componentes ancestrais e raiz; preservar paths nativos. Binding invalidado não publica fonte como atual. Documentar limite de renames de handles, hard links, mounts e árvore viva não atômica; metadata estável não prova snapshot imutável.
+
+**Verificação:** barreiras determinísticas para troca de ancestral por symlink externo, rename/unlink/recreate, edição mesmo tamanho/mtime, crescimento, arquivo especial e reconciliação. Dois alvos nativos antes de promover para M1-02/03. Fechar primeiro o escopo original M0-08 com a decisão Git do ADR 023; não reescrever sua evidência como prova da nova corrida.
+
 ### M0-09 — Prototipar P3: obrigações, base/head e seleção com orçamento
 
 **Depende de:** M0-01, M0-03, M0-04, M0-11. **Frente:** recuperação. **ADRs:** 007, 008, 012, 015, 018.
@@ -327,7 +351,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 ### M0-10 — Decidir G0 e consolidar a saída técnica de M0
 
-**Depende de:** M0-01, M0-02, M0-03, M0-04, M0-05, M0-06, M0-07, M0-08, M0-09, M0-11, M0-12, M0-02.R1, M0-02.R2. **Frente:** integração/produto.
+**Depende de:** M0-01, M0-02, M0-03, M0-04, M0-05, M0-06, M0-07, M0-08, M0-09, M0-11, M0-12, M0-02.R1, M0-02.R2, M0-04.R1, M0-08.R1. **Frente:** integração/produto.
 
 **Entrega:** `eval/reports/m0-exit.md`, ADRs atualizados e limites iniciais registrados antes dos testes de M1.
 
@@ -377,7 +401,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 ### M1-02 — Implementar configuração, descoberta e inventário
 
-**Depende de:** M1-01, M1-22. **Frente:** workspace.
+**Depende de:** M1-01, M1-22, M0-08.R1. **Frente:** workspace.
 
 **Entrega:** `crates/xrai-index/src/workspace/`, leitura de configuração e inventário explicável.
 
@@ -677,18 +701,19 @@ Relatórios de saída devem conter links para logs/resultados, critérios cumpri
 | M4 | Identidade de contratos; ligação entre duas linguagens; adapters de frameworks escolhidos pelo corpus | Usa modelo de evidências e semântica suficiente. Sai com caminhos reais corretos e invalidação contratual |
 | M5 | Slicing; recibos de contexto; memória de investigação; hidratação entre worktrees; frontends mais profundos | Cada recurso tem comparação independente que demonstra seu ganho |
 
-M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablations. Caso o seletor sozinho ganhe ou um índice externo resolva melhor a semântica, revisar a prioridade do motor próprio. Não financiar parser/type checker novo sem bloqueio demonstrado e comparação com integração de componentes existentes.
+M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablations. Caso o seletor sozinho ganhe ou um índice externo resolva melhor a semântica, revisar a prioridade do motor próprio. Bibliotecas próprias de qualquer porte são admitidas pelo [ADR 024](decisoes/BIBLIOTECAS-PROPRIAS.md): lacuna reproduzível permite experimento vertical, alternativas são comparadas e produção ampla depende de evidência. Complexidade não é veto; o roteiro B01–B08 detalha fronteiras, desenvolvimento e migração.
 
 **Plataformas após v1:** reavaliar Windows conforme demanda, orçamento e runners nativos. Antes de prometer suporte, criar pacote próprio para paths UTF-16/reparse points, processos/IPC/cancelamento, locking/SQLite, gramáticas e distribuição limpa. Linux arm64/macOS Intel também exigem decisão e evidências próprias. Nenhuma dessas expansões é dependência automática de M2/M3 ou condição de G0/G1/G2 no escopo atual.
 
-## 9. Primeira sequência executável
+## 9. Sequência executável vigente
 
-L0 e as retificações R1 já estão entregues. A [revisão L1](relatorios/REVISAO-L1.md) aceita M0-03 no escopo inicial, resolve C01/S01/S02 e prepara **L2: M0-03.R1 e trabalho local de M0-04/05/08**. Começar pelo harness/replay e triagem de candidatos; aproveitar fixtures para spikes nativos. CI R2 e prova nativa de M0-07 foram [concluídas em 12/10](relatorios/CI-PUBLICO.md). Implementação de persistência de produção fica após G1. A sequência geral é:
+[L3, na revisão L2](relatorios/REVISAO-L2.md), é a entrada operacional. L0/L1 e parte de L2 já estão entregues; não repetir trabalho aceito.
 
-1. Abrir M0-01 e M0-02: contrato mínimo e workspace/CI podem avançar juntos.
-2. Usar D0/seed de M0-03 no harness de M0-04; qualificar D1 em M0-03.R1 antes do piloto. Iniciar triagem dos oito concorrentes. Spikes nativos, armazenamento e filesystem seguem em frente independente.
-3. Implementar P2 em M0-11 e P3 em M0-09 sobre captura/extração mínima; executar piloto e ablations em M0-12. Não esperar a infraestrutura completa para descobrir ausência de sinal.
-4. Consolidar M0-10/G0. Sinal positivo e viabilidade técnica liberam apenas M1-01 e M1-22: contratos mínimos e confirmação reservada.
-5. Após G1 positivo, construir M1-B; integrar somente recortes vencedores em M1-23/16. Verificar Linux x86_64 e macOS arm64, CLI/MCP e retenção da vantagem em M1-21/G2.
+1. L3-01: quatro casos qualificados verticais, depois completar D1 conforme ADR 021.
+2. L3-02/03/04: contenção do harness, workers/IPC e captura ancorada; intercalar frentes independentes.
+3. L3-05/06: medição/adapters locais e P2. APIs pagas e piso macOS ainda indisponível não bloqueiam desenvolvimento experimental com critérios pertinentes satisfeitos.
+4. L3-07: P3 sobre P2 e snapshots capturados; limites, base/head e expansão.
+5. L3-08: preparar comparadores/manifest; executar M0-12 apenas com corpus, harness, protótipos e recursos prontos. M0-10 exige todos os critérios técnicos e competitivos.
+6. G0 favorável libera M1-A; G1 favorável libera M1-B; G2 preserva o ganho e libera alpha no domínio demonstrado. M2–M5 seguem o roadmap e os pacotes B01–B08 justificados.
 
-O próximo incremento revisável é o lote L2 da revisão vigente, com evidências por cartão. Esta entrega resolve decisões e organiza o trabalho; não executa o lote, sessões de agentes ou gates competitivos.
+Cada cartão L3 tem responsável, entradas, destinos e aceite na revisão. Esta entrega planeja e não executa o lote. Estado real e pendências permanecem no quadro de implementação.

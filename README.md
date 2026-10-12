@@ -2,7 +2,7 @@
 
 CLI em Rust para entregar contexto de código relevante, verificável e atualizado a agentes de IA.
 
-Estado: L0 e retificações concluídos; [revisão L1](docs/relatorios/REVISAO-L1.md) resolveu as pendências arquiteturais e preparou o lote L2. Corpus inicial aceito para desenvolvimento; qualificação competitiva permanece pendente. [CI aprovada nos dois alvos e contratos](docs/relatorios/CI-PUBLICO.md), concluindo M0-02.R2/M0-07 conforme o [estado atual](docs/STATUS-IMPLEMENTACAO.md). `xrai --help` e `xrai --version` funcionam; parsing, consultas e MCP seguem nas tarefas posteriores. Não há resultados competitivos próprios.
+Estado: L0 e retificações concluídos; L2 entregou spikes e harness local. A [revisão L2](docs/relatorios/REVISAO-L2.md) resolveu H01/F01/GIT01 e detalhou oito incrementos L3. Corpus inicial aceito para desenvolvimento; qualificação competitiva permanece pendente. [CI aprovada nos dois alvos e contratos](docs/relatorios/CI-PUBLICO.md), concluindo M0-02.R2/M0-07 conforme o [estado atual](docs/STATUS-IMPLEMENTACAO.md). `xrai --help` e `xrai --version` funcionam; parsing de produção, consultas e MCP seguem nas tarefas posteriores; o parser experimental já tem provas nativas. Não há resultados competitivos próprios.
 
 Para executar o scaffold: `cargo build --workspace --locked`, depois `./target/debug/xrai --help`. Toolchain fixada em Rust 1.98.1. [Relatório e evidências L0](docs/relatorios/L0.md). A atividade M0-02.R2 cobre a adaptação da CI ao [escopo do v1](docs/decisoes/PLATAFORMAS-V1.md); o estado distingue configuração e execução comprovada.
 
@@ -17,6 +17,8 @@ A prioridade é **resolver mais tarefas corretamente, com aumento de custo propo
 - [Prova de diferenciação: protótipos, concorrentes e decisão de investimento](docs/PROVA-DE-DIFERENCIACAO.md)
 - [Estudo dos oito projetos de referência](docs/ESTUDO-COMPARATIVO.md)
 - [Plano de validação e critérios de avanço](docs/PLANO-DE-VALIDACAO.md)
+
+Bibliotecas próprias, inclusive parsers e frontends complexos, são opções admitidas quando necessárias. O [ADR 024](docs/decisoes/BIBLIOTECAS-PROPRIAS.md) define fronteiras Rust, experimentos e promoção; complexidade sozinha não é veto.
 
 Direção proposta: núcleo local e determinístico; extração por Tree-sitter em workers isolados; resolução semântica por linguagem; grafo com evidências e revisões; navegação por propósito; seleção de contexto e testes por tarefa; CLI e MCP sobre o mesmo motor.
 

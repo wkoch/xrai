@@ -1,0 +1,258 @@
+{
+  "kind": "architecture_documentation_verification",
+  "at_utc": "2026-10-12T09:34:21.492565+00:00",
+  "user_date": "2026-10-12",
+  "base_commit": "db0e75491e96ca687cb388e5202572c2480714bd",
+  "branch": "main",
+  "command": "python3 /tmp/xrai-verify-architecture.py",
+  "verifier_source": "from pathlib import Path\nimport datetime, hashlib, json, re, subprocess\nroot=Path('/Users/wkoch/Projetos/xrai')\ndef git(*args): return subprocess.check_output(['git',*args],cwd=root,text=True).strip()\nfiles=['IMPLEMENTADOR.md','README.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/PLANO-DE-VALIDACAO.md','docs/RFC-0001-ARQUITETURA.md','docs/STATUS-IMPLEMENTACAO.md','docs/decisoes/EXECUCAO-E-CAPTURA.md','docs/decisoes/BIBLIOTECAS-PROPRIAS.md','docs/relatorios/REVISAO-L2.md']\noutput=root/'docs/relatorios/logs/revisao-L2/documentacao.json'\noutput.parent.mkdir(parents=True,exist_ok=True)\noutput.write_text('{}\\n')\nerrors=[]; links=0\nfor name in files:\n p=root/name\n for target in re.findall(r'\\]\\(([^)]+)\\)',p.read_text()):\n  if '://' in target or target.startswith('#'): continue\n  target=target.split('#')[0]\n  if not target: continue\n  links+=1\n  if not (p.parent/target).exists(): errors.append(f'broken link {name}: {target}')\nplan=(root/'docs/PLANO-DE-IMPLEMENTACAO.md').read_text()\nstate=(root/'docs/STATUS-IMPLEMENTACAO.md').read_text()\nsections=re.split(r'^### (M[01]-\\d+(?:\\.R\\d+)?) — ',plan,flags=re.M)\ncards={sections[i]:sections[i+1] for i in range(1,len(sections),2)}\nassert len(cards)==41,len(cards)\nstate_ids=re.findall(r'^\\| (M[01]-\\d+(?:\\.R\\d+)?) \\|',state,re.M)\nif set(cards)!=set(state_ids) or len(state_ids)!=len(cards): errors.append('plan/state IDs differ')\ndeps={}\nfor card,body in cards.items():\n m=re.search(r'\\*\\*Depende de:\\*\\*(.*?)(?=\\*\\*|\\n)',body)\n if not m: errors.append(f'no dependencies {card}'); continue\n deps[card]=re.findall(r'M[01]-\\d+(?:\\.R\\d+)?',m.group(1))\n for dep in deps[card]:\n  if dep not in cards: errors.append(f'unknown dependency {card}->{dep}')\nseen=set(); active=set()\ndef visit(card):\n if card in active: errors.append('cycle '+card);return\n if card in seen:return\n active.add(card)\n for dep in deps.get(card,[]):visit(dep)\n active.remove(card);seen.add(card)\nfor card in cards:visit(card)\nreview=(root/'docs/relatorios/REVISAO-L2.md').read_text()\nl3=re.findall(r'^### (L3-\\d+) — ',review,re.M)\nif l3!=[f'L3-{i:02d}' for i in range(1,9)]:errors.append('L3 IDs incomplete/duplicated')\nfor ident in ['M0-04.R1','M0-08.R1']:\n if not re.search(r'^\\| '+re.escape(ident)+r' \\|[^\\n]*\\| não iniciada \\|',state,re.M):errors.append('incorrect new state '+ident)\nfor gate in ['G0','G1','G2']:\n if f'| {gate} | não avaliado |' not in state:errors.append('gate changed '+gate)\nchanged=git('diff','--name-only').splitlines()+git('ls-files','--others','--exclude-standard').splitlines()\nallowed=set(files+[str(output.relative_to(root))])\nif set(changed)!=allowed:errors.append('unexpected/missing changed files '+str(set(changed)^allowed))\ncheck=subprocess.run(['git','diff','--check'],cwd=root,capture_output=True,text=True)\nif check.returncode:errors.append(check.stdout+check.stderr)\ninputs=['Cargo.toml','crates/xrai-eval/Cargo.toml','crates/xrai-eval/harness/runner.py','crates/xrai-eval/src/filesystem_spike.rs','crates/xrai-eval/src/parsing_spike.rs','docs/relatorios/L2.md','docs/relatorios/logs/L2/ci-native-validation.json','eval/qualification/admission-status.json']\ndef hashes(names):return {n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in names}\nrecord={'kind':'architecture_documentation_verification','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'user_date':'2026-10-12','base_commit':git('rev-parse','HEAD'),'branch':git('branch','--show-current'),'command':'python3 /tmp/xrai-verify-architecture.py','verifier_source':Path(__file__).read_text(),'result':'passed' if not errors else 'failed','exit_code':bool(errors)*1,'checks':{'local_links':links,'cards':len(cards),'main_cards':sum('.R' not in c for c in cards),'complementary_cards':sum('.R' in c for c in cards),'plan_status_ids_match':set(cards)==set(state_ids),'dependencies_acyclic':not any(e.startswith('cycle') for e in errors),'l3_cards':l3,'gates_unchanged':True,'only_documentation_modified':set(changed)==allowed,'git_diff_check_exit':check.returncode},'dependencies':deps,'errors':errors,'artifact_sha256':hashes(files),'evidence_inputs_sha256':hashes(inputs),'scope_limitations':['No Rust/product tests or experiments run: documentation only.','Prior native CI attributed to implementer receipts, not rerun or newly queried.','Codebase-memory first generation 2026-10-12T01:50:21Z missed L2 files: source fallback. Later documentary coverage 2026-10-12T09:29:51Z matched 15 consulted paths.','No paid calls or implementation delegated.','Publication not asserted by this pre-commit receipt.']}\noutput.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps({'result':record['result'],'checks':record['checks'],'errors':errors},ensure_ascii=False,indent=2))\nraise SystemExit(bool(errors))\n",
+  "result": "passed",
+  "exit_code": 0,
+  "checks": {
+    "local_links": 140,
+    "cards": 41,
+    "main_cards": 35,
+    "complementary_cards": 6,
+    "plan_status_ids_match": true,
+    "dependencies_acyclic": true,
+    "l3_cards": [
+      "L3-01",
+      "L3-02",
+      "L3-03",
+      "L3-04",
+      "L3-05",
+      "L3-06",
+      "L3-07",
+      "L3-08"
+    ],
+    "gates_unchanged": true,
+    "only_documentation_modified": true,
+    "git_diff_check_exit": 0
+  },
+  "dependencies": {
+    "M0-01": [],
+    "M0-01.R1": [
+      "M0-01"
+    ],
+    "M0-02": [],
+    "M0-02.R1": [
+      "M0-02",
+      "M0-01.R1"
+    ],
+    "M0-02.R2": [
+      "M0-02.R1"
+    ],
+    "M0-03": [
+      "M0-01"
+    ],
+    "M0-03.R1": [
+      "M0-03"
+    ],
+    "M0-04": [
+      "M0-01",
+      "M0-02",
+      "M0-03",
+      "M0-01.R1"
+    ],
+    "M0-04.R1": [
+      "M0-01",
+      "M0-02"
+    ],
+    "M0-05": [
+      "M0-02",
+      "M0-03"
+    ],
+    "M0-06": [
+      "M0-01",
+      "M0-05"
+    ],
+    "M0-07": [
+      "M0-01",
+      "M0-02"
+    ],
+    "M0-08": [
+      "M0-01",
+      "M0-02",
+      "M0-03"
+    ],
+    "M0-08.R1": [
+      "M0-08"
+    ],
+    "M0-09": [
+      "M0-01",
+      "M0-03",
+      "M0-04",
+      "M0-11"
+    ],
+    "M0-11": [
+      "M0-01",
+      "M0-02",
+      "M0-03",
+      "M0-04"
+    ],
+    "M0-12": [
+      "M0-03",
+      "M0-03.R1",
+      "M0-04",
+      "M0-09",
+      "M0-11"
+    ],
+    "M0-10": [
+      "M0-01",
+      "M0-02",
+      "M0-03",
+      "M0-04",
+      "M0-05",
+      "M0-06",
+      "M0-07",
+      "M0-08",
+      "M0-09",
+      "M0-11",
+      "M0-12",
+      "M0-02.R1",
+      "M0-02.R2",
+      "M0-04.R1",
+      "M0-08.R1"
+    ],
+    "M1-01": [
+      "M0-10"
+    ],
+    "M1-22": [
+      "M0-10",
+      "M1-01"
+    ],
+    "M1-02": [
+      "M1-01",
+      "M1-22",
+      "M0-08.R1"
+    ],
+    "M1-03": [
+      "M1-01",
+      "M1-02"
+    ],
+    "M1-04": [
+      "M1-01",
+      "M1-22"
+    ],
+    "M1-05": [
+      "M1-01",
+      "M1-03"
+    ],
+    "M1-06": [
+      "M1-01",
+      "M1-05"
+    ],
+    "M1-07": [
+      "M1-06",
+      "M0-03"
+    ],
+    "M1-08": [
+      "M1-06",
+      "M0-03"
+    ],
+    "M1-09": [
+      "M1-06",
+      "M0-03"
+    ],
+    "M1-10": [
+      "M1-06",
+      "M0-03"
+    ],
+    "M1-11": [
+      "M1-02",
+      "M1-03",
+      "M1-04",
+      "M1-05",
+      "M1-07",
+      "M1-08",
+      "M1-09",
+      "M1-10"
+    ],
+    "M1-12": [
+      "M1-11"
+    ],
+    "M1-13": [
+      "M1-12"
+    ],
+    "M1-14": [
+      "M1-13"
+    ],
+    "M1-15": [
+      "M1-13"
+    ],
+    "M1-23": [
+      "M1-12",
+      "M1-13",
+      "M1-14",
+      "M1-15",
+      "M1-22"
+    ],
+    "M1-16": [
+      "M1-14",
+      "M1-15",
+      "M1-23",
+      "M0-09"
+    ],
+    "M1-17": [
+      "M1-11",
+      "M1-14",
+      "M1-15",
+      "M1-16"
+    ],
+    "M1-18": [
+      "M1-14",
+      "M1-15",
+      "M1-16"
+    ],
+    "M1-19": [
+      "M1-12",
+      "M1-13",
+      "M1-17",
+      "M1-18"
+    ],
+    "M1-20": [
+      "M1-17",
+      "M1-18",
+      "M1-19"
+    ],
+    "M1-21": [
+      "M1-16",
+      "M1-17",
+      "M1-18",
+      "M1-19",
+      "M1-20",
+      "M1-22",
+      "M1-23",
+      "M0-04"
+    ]
+  },
+  "errors": [],
+  "artifact_sha256": {
+    "IMPLEMENTADOR.md": "f1920f339d264d1aa5633886eaebc8efb56484531ae69824015e557deaf3160f",
+    "README.md": "a48742171c68d9c29147f9b73cfde6318058bbbacad1f0f347246dc4b38f7c50",
+    "docs/PLANO-DE-IMPLEMENTACAO.md": "6b83af6e63a966723b41f52cf3704a8c47a2fbea4cb22577914995546870dad8",
+    "docs/PLANO-DE-VALIDACAO.md": "4aaa3fbf31674c3b186619b57f6db7cf90284dcfbb96322e1b0598a50c80ec26",
+    "docs/RFC-0001-ARQUITETURA.md": "acf0250c01382710415a720fba99d368ae2fcfa994c7149f08bfeb52189cc69e",
+    "docs/STATUS-IMPLEMENTACAO.md": "523c44c3aca36ee1a6deeed387c4763f489798576bea26ee735ee2122e7d4826",
+    "docs/decisoes/EXECUCAO-E-CAPTURA.md": "7a5e3e7475120384beeb1ba58995f2c822a6aae79c9799d25b69f72206f8e95a",
+    "docs/decisoes/BIBLIOTECAS-PROPRIAS.md": "8c679630b5953c8bfc1eec6a4e8f03dd393c9c4425cc67020e6e2a23bfa3ce8a",
+    "docs/relatorios/REVISAO-L2.md": "0ab611a2ba1cda9480c6dccbe614c381537b1f36c35b8792ce42f3d948164b27"
+  },
+  "evidence_inputs_sha256": {
+    "Cargo.toml": "6a757303d08e72b7c54472db4fafc72df75d69ae811efcc9ecd559a988974d25",
+    "crates/xrai-eval/Cargo.toml": "a4d2074865a9a56eddbaaffeb6a19e6c6961223a61bcec8d22cf4da57a9e0926",
+    "crates/xrai-eval/harness/runner.py": "a96a139174041ae8dfe7963efb7acd8c1ff59a39e1f8a5bd857f76274fc65660",
+    "crates/xrai-eval/src/filesystem_spike.rs": "c413c2295e777f0c7c1d0d11673f0b31f8ae1c8c75b97aee7626efaef83be664",
+    "crates/xrai-eval/src/parsing_spike.rs": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+    "docs/relatorios/L2.md": "affed6fde21ad936aee6f0ffee0e2e36bb587bb9b30347a12b77c23c39ecc697",
+    "docs/relatorios/logs/L2/ci-native-validation.json": "323b46152cdfda6f0b611ac168b5cbcb3ce0efd3ae9f8b3fde503aba70577b58",
+    "eval/qualification/admission-status.json": "7ed0c78941892f2fbd08421b2e3518b6cc33d464711546afe3a1ae93f1b64b86"
+  },
+  "scope_limitations": [
+    "No Rust/product tests or experiments run: documentation only.",
+    "Prior native CI attributed to implementer receipts, not rerun or newly queried.",
+    "Codebase-memory first generation 2026-10-12T01:50:21Z missed L2 files: source fallback. Later documentary coverage 2026-10-12T09:29:51Z matched 15 consulted paths.",
+    "No paid calls or implementation delegated.",
+    "Publication not asserted by this pre-commit receipt."
+  ]
+}

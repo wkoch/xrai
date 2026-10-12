@@ -1,6 +1,6 @@
 # Como demonstrar que o xrai ajuda
 
-Data: 11/10/2026. Este documento contém **experimentos e metas propostas**, não resultados obtidos.
+Data: 12/10/2026. Este documento contém **experimentos e metas propostas**, não resultados obtidos.
 
 O [plano de implementação](PLANO-DE-IMPLEMENTACAO.md) antecipa a prova competitiva: M0 testa sinal e mecanismo; M1-A confirma em dados reservados antes da engenharia ampla; M1-B verifica se a alpha preserva a vantagem. O [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) é a referência para amostras, comparadores, limiares e decisões G0/G1/G2. Os spikes e dados de desenvolvimento não comprovam superioridade estatística.
 
@@ -229,3 +229,17 @@ Uma linha de resultado deve permitir investigar: o agente errou por relação fa
 Relatórios G0/G1/G2 distinguem conclusão experimental, liberação de investimento e declaração pública. Relatório negativo também é entrega válida; não satisfaz um gate de avanço. Dados de H1 vistos na integração da alpha viram regressão e nunca são reapresentados como nova confirmação independente.
 
 Só anunciar superioridade no domínio que os dados sustentarem. O objetivo de longo prazo é amplo; a evidência precisa continuar específica.
+
+
+## 10. Provas acrescentadas pela revisão L2
+
+[ADR 023](decisoes/EXECUCAO-E-CAPTURA.md) define os contratos; [L3](relatorios/REVISAO-L2.md) define incrementos. Estas provas são planejadas, sem resultados novos nesta revisão.
+
+| Cartão | Oráculo e falhas obrigatórias | Limite da conclusão |
+|---|---|---|
+| M0-04.R1 | Setsid/double fork, pipes, morte do pai, dois braços e teardown; sentinela/controle positivo; falha impede reutilização | Timeout do avaliador não prova encerramento de descendentes. Linux e macOS têm mecanismos distintos; VM/runner é só avaliação. |
+| M0-06 | Roundtrip direto/pool, identidade de tentativa/hash/configuração, framing/overflow/limites, abort/hang/resposta tardia, progresso independente | Mesmo binário e contenção de falhas; não prometer sandbox completo ou limite rígido de RSS sem prova do SO. |
+| M0-08.R1 | Captura e enumeração por handles; barreiras nas trocas de ancestrais/raiz, symlink externo, crescimento e reconciliação | Hash dos bytes não prova árvore global atômica. Binding alterado não publica fonte como atual; modelo de rename/hard link/mount documentado. |
+| B05/B06 condicionais | Reproduções reais, alternativas, testes diferenciais, recuperação, fuzz e incremental/rebuild | [ADR 024](decisoes/BIBLIOTECAS-PROPRIAS.md): complexidade não impede experimento; promoção depende de evidência e gates do produto. |
+
+Preservar logs históricos e os estados parciais de L2. Antes de campanha, readiness inclui contenção, corpus qualificado, tokenizer/modelo e orçamento; falta de um deles bloqueia a execução correspondente e permite continuar preparação independente.
