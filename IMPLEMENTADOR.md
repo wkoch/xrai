@@ -1,8 +1,8 @@
 # Instruções para a IA implementadora do xrai
 
-Data: 12/10/2026. **Entrada vigente: [revisão L2 e atividades L3](docs/relatorios/REVISAO-L2.md).** L2 já teve implementação e provas nativas; leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md) antes de agir. H01/F01/GIT01 resolvidas em arquitetura; execução restante detalhada em L3. V1: Linux x86_64/macOS arm64. Roteiros L0/L1/L2 são históricos; não recrie entregas nem trate planejamento como código concluído.
+Data: 12/10/2026. **Entrada vigente: [revisão L3 e continuação L4](docs/relatorios/REVISAO-L3.md).** Primeiro incremento L3 entregue com CI nativa; captura original/ancorada concluída no spike. Restam medição, pool persistente, corpus completo e P2/P3. Leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md). V1: Linux x86_64/macOS arm64. Não recrie entregas nem trate planejamento como código concluído.
 
-Atualização de 12/10/2026: repositório público e [CI confirmada nos três jobs](docs/relatorios/CI-PUBLICO.md). M0-02.R2/M0-07 concluídas; bloqueio anterior superado. [L2](docs/relatorios/L2.md) avançou parsing/filesystem/harness. L3 é o próximo lote de continuação.
+Atualização de 12/10/2026: repositório público e [CI confirmada nos três jobs](docs/relatorios/CI-PUBLICO.md). M0-02.R2/M0-07 concluídas; bloqueio anterior superado. [L3](docs/relatorios/L3.md) avançou contenção, workers, captura e quatro pilotos verticais. L4 detalha o restante dos mesmos cartões; nenhum gate competitivo foi avaliado.
 
 ## 1. Papel e objetivo
 
@@ -25,7 +25,10 @@ Leia inicialmente este arquivo, o estado atual, a revisão vigente e os cartões
 |---|---|
 | [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
 | [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e seis atividades complementares, dependências, entregáveis e aceite; IDs são estáveis |
-| [Revisão L2 / lote L3](docs/relatorios/REVISAO-L2.md) | Entrada vigente: parecer L2, oito incrementos e critérios de entrada/aceite |
+| [Revisão L3 / continuação L4](docs/relatorios/REVISAO-L3.md) | Entrada vigente: parecer L3, seis incrementos restantes e critérios de entrada/aceite |
+| [Semântica P2 / ADR 025](docs/decisoes/SEMANTICA-P2.md) | IR, primeira fatia Rust, incertezas, dependências negativas e equivalência incremental |
+| [Workers e medição / ADR 026](docs/decisoes/WORKERS-E-MEDICAO.md) | XRW2 persistente, CPU/RSS, tokenizer, ledger e readiness sem alterar históricos |
+| [Revisão L2 / lote L3](docs/relatorios/REVISAO-L2.md) | Histórico do lote anterior; itens abertos continuam em L4 |
 | [Execução e captura / ADR 023](docs/decisoes/EXECUCAO-E-CAPTURA.md) | Contenção do harness, workers/IPC, captura por handles e Git adiado |
 | [Bibliotecas próprias / ADR 024](docs/decisoes/BIBLIOTECAS-PROPRIAS.md) | Investimento próprio admitido, fronteiras Rust, experimentos e promoção |
 | [Revisão L1 / lote L2](docs/relatorios/REVISAO-L1.md) | Parecer sobre corpus, resolução C01/S01/S02, próximos incrementos e impedimentos externos |
@@ -105,7 +108,7 @@ Esta tabela orienta a sequência; os cartões contêm todas as dependências. ID
 
 Há smokes e medições técnicas locais; não há resultados competitivos próprios, teto monetário da campanha nem hardware/runner completo definido. Versões já fixadas permanecem nos relatórios. O implementador deve converter as lacunas em registros concretos, sem inventar medições ou preços.
 
-- Trabalho local de L3 retoma L2 já liberado, conforme critérios da revisão vigente. Não aguardar nova decisão arquitetural sobre H01/F01/GIT01; smokes pagos/infraestrutura indisponível mantêm seus limites próprios.
+- Trabalho local de L4 continua os cartões abertos de L3, conforme critérios da revisão vigente. Não aguardar nova decisão arquitetural sobre H01/F01/GIT01; smokes pagos/infraestrutura indisponível mantêm seus limites próprios.
 - Antes de uma campanha com modelos pagos, preencher limites de uso/runs e orçamento do protocolo a partir dos recursos autorizados. A preferência por qualidade não é autorização de gasto ilimitado. Se o valor necessário não estiver definido, apresentar uma estimativa concreta e continuar as frentes locais independentes.
 - Estimar a carga da prova, não só uma chamada: a matriz ilustrativa do protocolo chega a 448 runs no piloto e 960 na confirmação principal, antes dos complementos. Não iniciar esses lotes automaticamente com orçamento ausente.
 - Manter D0/seed/D1 qualificado para ajuste; congelar candidata, prompts, adversários e critérios antes de H1. Não colocar patches/oracles ocultos no contexto do agente ou nas entradas do seletor. Se dados de H1 forem expostos durante ajuste, registrar contaminação e não tratá-los como confirmação independente.
@@ -126,4 +129,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Próxima execução: aplicar [L3](docs/relatorios/REVISAO-L2.md), começando por L3-01 e os incrementos locais L3-02/03/04.** Preparar medição real em L3-05; P2/P3 em L3-06/07; comparadores e campanha em L3-08. Não repetir scaffold/CI/SQLite já aceitos, promover seed a piloto ou antecipar M1-B. Registrar evidências e pendências por cartão; commit/push após verificar a entrega, conforme AGENTS.md.
+**Próxima execução: aplicar [L4](docs/relatorios/REVISAO-L3.md): L4-01 local (tokenizer/ledger) e L4-03 (primeira fatia Rust), intercalando L4-02 (workers persistentes/recursos) e L4-04 (corpus).** L4-05 consome P2 para contexto; L4-06 prepara comparadores e preflight. Não refazer captura concluída ou qualificação vertical aceita. Não promover quatro pilotos a D1 nem antecipar M1-B. Registrar evidências/pendências por cartão; commit/push após verificar, conforme AGENTS.md.

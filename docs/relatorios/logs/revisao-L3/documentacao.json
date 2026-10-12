@@ -1,0 +1,111 @@
+{
+  "kind": "architecture_documentation_verification",
+  "at_utc": "2026-10-12T11:26:46.973630+00:00",
+  "user_date": "2026-10-12",
+  "base_commit": "98cca55799f81d10a1d9193d3f9f6d673444443a",
+  "branch": "main",
+  "command": "python3 /tmp/xrai-verify-l4-plan.py",
+  "verifier_source": "from pathlib import Path\nfrom collections import Counter\nimport datetime, hashlib, json, re, subprocess\nroot=Path('/Users/wkoch/Projetos/xrai')\ndef git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()\nfiles=['IMPLEMENTADOR.md','README.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/PLANO-DE-VALIDACAO.md','docs/RFC-0001-ARQUITETURA.md','docs/STATUS-IMPLEMENTACAO.md','docs/decisoes/SEMANTICA-P2.md','docs/decisoes/WORKERS-E-MEDICAO.md','docs/relatorios/REVISAO-L3.md']\noutput=root/'docs/relatorios/logs/revisao-L3/documentacao.json';output.parent.mkdir(parents=True,exist_ok=True);output.write_text('{}\\n')\nerrors=[];links=0\nfor name in files:\n p=root/name\n for target in re.findall(r'\\]\\(([^)]+)\\)',p.read_text()):\n  if '://' in target or target.startswith('#'):continue\n  target=target.split('#')[0]\n  if not target:continue\n  links+=1\n  if not (p.parent/target).exists():errors.append(f'broken link {name}: {target}')\ndef cards(text):\n sections=re.split(r'^### (M[01]-\\d+(?:\\.R\\d+)?) — ',text,flags=re.M)\n result={}\n for i in range(1,len(sections),2):\n  m=re.search(r'\\*\\*Depende de:\\*\\*(.*?)(?=\\*\\*|\\n)',sections[i+1]);assert m,sections[i]\n  result[sections[i]]=re.findall(r'M[01]-\\d+(?:\\.R\\d+)?',m.group(1))\n return result\nplan=cards((root/'docs/PLANO-DE-IMPLEMENTACAO.md').read_text())\nold_plan=cards(git('show','HEAD:docs/PLANO-DE-IMPLEMENTACAO.md'))\nassert len(plan)==41\nif plan!=old_plan:errors.append('main cards/dependencies changed')\ndef states(text):return dict(re.findall(r'^\\| (M[01]-\\d+(?:\\.R\\d+)?) \\|[^\\n]*?\\| ([^|]+?) \\|',text,re.M))\nstate=(root/'docs/STATUS-IMPLEMENTACAO.md').read_text();old_state=git('show','HEAD:docs/STATUS-IMPLEMENTACAO.md')\nif states(state)!=states(old_state):errors.append('implementation states changed')\nif set(plan)!=set(states(state)):errors.append('plan/state IDs differ')\nseen=set();active=set()\ndef visit(card):\n if card in active:errors.append('cycle '+card);return\n if card in seen:return\n active.add(card)\n for dep in plan[card]:\n  if dep not in plan:errors.append('unknown dep '+dep)\n  else:visit(dep)\n active.remove(card);seen.add(card)\nfor card in plan:visit(card)\nfor gate in ['G0','G1','G2']:\n if f'| {gate} | não avaliado |' not in state:errors.append('gate changed '+gate)\nreview=(root/'docs/relatorios/REVISAO-L3.md').read_text();l4=re.findall(r'^## \\d+\\. (L4-\\d+) — ',review,re.M)\nif l4!=[f'L4-{i:02d}' for i in range(1,7)]:errors.append('L4 cards incomplete')\nrows=[json.loads(l) for l in (root/'eval/qualification/vertical/candidates.jsonl').read_text().splitlines()]\nassert len(rows)==4\nassert len({r['family'] for r in rows})==4\nassert all(r['kind']=='correction' and r['origin']['class']=='public_change' for r in rows)\ncomplex_count=sum(r['complexity']['complex'] for r in rows);relation_count=sum(len(r['production_modules'])>=2 for r in rows)\nprojection={'current_vertical_candidates':len(rows),'types':dict(Counter(r['kind'] for r in rows)),'languages':dict(Counter(r['language'] for r in rows)),'complex':complex_count,'provisional_remaining_tasks':32-len(rows),'provisional_remaining_complex':16-complex_count,'provisional_remaining_historical':16-len(rows),'provisional_remaining_inter_module':20-relation_count,'condition':'Only if all four are preserved and meet the final global admission; declarations are not revalidated as semantic truth by this check.'}\nassert projection['provisional_remaining_tasks']==28 and projection['provisional_remaining_complex']==15 and projection['provisional_remaining_historical']==12 and projection['provisional_remaining_inter_module']==16\nci=json.loads((root/'docs/relatorios/logs/L3/ci-native-run.json').read_text())\nassert ci['conclusion']=='success' and ci['headSha']=='21e9279a7502ed398e3b1d8321495142376e78af'\nassert len(ci['jobs'])==3 and all(j['conclusion']=='success' for j in ci['jobs'])\nchanged=git('diff','--name-only').splitlines()+git('ls-files','--others','--exclude-standard').splitlines();allowed=set(files+[str(output.relative_to(root))])\nif set(changed)!=allowed:errors.append('unexpected/missing changed files '+str(set(changed)^allowed))\ncheck=subprocess.run(['git','diff','--check'],cwd=root,capture_output=True,text=True)\nif check.returncode:errors.append(check.stdout+check.stderr)\ninputs=['crates/xrai-eval/src/worker_spike.rs','crates/xrai-eval/src/bin/worker-spike.rs','crates/xrai-eval/src/filesystem_spike.rs','crates/xrai-eval/harness/runner.py','crates/xrai-eval/harness/result.schema.json','crates/xrai-eval/harness/result-v2.schema.json','crates/xrai-eval/harness/verify_records.py','docs/contracts/m1.md','eval/qualification/vertical/candidates.jsonl','eval/qualification/vertical/README.md','docs/relatorios/L3.md','docs/relatorios/logs/L3/ci-native-run.json','docs/relatorios/logs/L3/native-receipts-final-verification.json','eval/reports/m0-workers.md','eval/reports/m0-harness-containment.md','eval/reports/m0-corpus-qualification.md']\ndef hashes(names):return {n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in names}\nrecord={'kind':'architecture_documentation_verification','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'user_date':'2026-10-12','base_commit':git('rev-parse','HEAD'),'branch':git('branch','--show-current'),'command':'python3 /tmp/xrai-verify-l4-plan.py','verifier_source':Path(__file__).read_text(),'result':'passed' if not errors else 'failed','exit_code':int(bool(errors)),'checks':{'local_links':links,'main_and_complementary_cards':len(plan),'implementation_states_preserved':states(state)==states(old_state),'main_card_dependencies_preserved':plan==old_plan,'dependencies_acyclic':not any(e.startswith('cycle') for e in errors),'l4_cards':l4,'gates_unchanged':all(f'| {g} | não avaliado |' in state for g in ['G0','G1','G2']),'only_documentation_modified':set(changed)==allowed,'git_diff_check_exit':check.returncode},'corpus_projection':projection,'previous_native_ci_receipt':{'head_sha':ci['headSha'],'run':ci['databaseId'],'jobs':len(ci['jobs']),'conclusion':ci['conclusion'],'new_query_or_rerun':False},'graph_coverage':json.loads(Path('/tmp/xrai-l3-coverage.json').read_text()),'artifact_sha256':hashes(files),'evidence_inputs_sha256':hashes(inputs),'errors':errors,'scope_limitations':['Documentation only; no product code, schema or runtime dependencies changed.','No Rust tests, corpus probes, paid sessions or new CI query/run performed.','Prior results attributed to Implementer receipts.','Graph lookup is bounded/best effort; JSONL candidates were read directly.','This receipt precedes commit and does not assert publication.']}\noutput.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps({'result':record['result'],'checks':record['checks'],'corpus_projection':projection,'errors':errors},ensure_ascii=False,indent=2));raise SystemExit(bool(errors))\n",
+  "result": "passed",
+  "exit_code": 0,
+  "checks": {
+    "local_links": 169,
+    "main_and_complementary_cards": 41,
+    "implementation_states_preserved": true,
+    "main_card_dependencies_preserved": true,
+    "dependencies_acyclic": true,
+    "l4_cards": [
+      "L4-01",
+      "L4-02",
+      "L4-03",
+      "L4-04",
+      "L4-05",
+      "L4-06"
+    ],
+    "gates_unchanged": true,
+    "only_documentation_modified": true,
+    "git_diff_check_exit": 0
+  },
+  "corpus_projection": {
+    "current_vertical_candidates": 4,
+    "types": {
+      "correction": 4
+    },
+    "languages": {
+      "Rust": 1,
+      "TypeScript": 1,
+      "Python": 1,
+      "Go": 1
+    },
+    "complex": 1,
+    "provisional_remaining_tasks": 28,
+    "provisional_remaining_complex": 15,
+    "provisional_remaining_historical": 12,
+    "provisional_remaining_inter_module": 16,
+    "condition": "Only if all four are preserved and meet the final global admission; declarations are not revalidated as semantic truth by this check."
+  },
+  "previous_native_ci_receipt": {
+    "head_sha": "21e9279a7502ed398e3b1d8321495142376e78af",
+    "run": 38239765003,
+    "jobs": 3,
+    "conclusion": "success",
+    "new_query_or_rerun": false
+  },
+  "graph_coverage": {
+    "first": {
+      "content": [
+        {
+          "type": "text",
+          "text": "project: Users-wkoch-Projetos-xrai\nsignal: best_effort\nindexed_at: 2026-10-12T11:08:47Z\nmetadata:\n  generation: 2026-10-12T11:08:47Z\n  index_mode: full\n  recorded_at: 2026-10-12T11:08:47Z\n  recording_status: complete\n  ignored_files_stored: 0\n  ignored_files_total: 0\n  hash_records_complete: true\n  coverage_version: 3\n  generation_matches: true\npaths: 14  (cols: requested_path path status freshness recommended_action coverage)\n  crates/xrai-eval/src/worker_spike.rs crates/xrai-eval/src/worker_spike.rs no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/src/bin/worker-spike.rs crates/xrai-eval/src/bin/worker-spike.rs no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/src/filesystem_spike.rs crates/xrai-eval/src/filesystem_spike.rs no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/harness/supervisor.py crates/xrai-eval/harness/supervisor.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/harness/runner.py crates/xrai-eval/harness/runner.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/harness/result.schema.json crates/xrai-eval/harness/result.schema.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/qualification/vertical/candidates.jsonl eval/qualification/vertical/candidates.jsonl no_recorded_issue not_tracked read_source_and_reindex []\n  docs/contracts/m1.md docs/contracts/m1.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/L3.md docs/relatorios/L3.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L3/native-receipts-final-verification.json docs/relatorios/logs/L3/native-receipts-final-verification.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L3/ci-native-run.json docs/relatorios/logs/L3/ci-native-run.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/reports/m0-workers.md eval/reports/m0-workers.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/reports/m0-harness-containment.md eval/reports/m0-harness-containment.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/reports/m0-corpus-qualification.md eval/reports/m0-corpus-qualification.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\npath_total: 14\npath_returned: 14\npath_has_more: false\nscopes: 0\nscope_total: 0\nscope_returned: 0\nscope_truncated: false\nhas_more: false\ncaveat: \"Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable.\"\n"
+        }
+      ],
+      "isError": false
+    },
+    "followup": {
+      "content": [
+        {
+          "type": "text",
+          "text": "project: Users-wkoch-Projetos-xrai\nsignal: best_effort\nindexed_at: 2026-10-12T11:23:04Z\nmetadata:\n  generation: 2026-10-12T11:23:04Z\n  index_mode: full\n  recorded_at: 2026-10-12T11:25:05Z\n  recording_status: complete\n  ignored_files_stored: 0\n  ignored_files_total: 0\n  hash_records_complete: true\n  coverage_version: 3\n  generation_matches: true\npaths: 15  (cols: requested_path path status freshness recommended_action coverage)\n  crates/xrai-eval/harness/verify_records.py crates/xrai-eval/harness/verify_records.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/harness/result-v2.schema.json crates/xrai-eval/harness/result-v2.schema.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/qualification/vertical/README.md eval/qualification/vertical/README.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/qualification/vertical/review.json eval/qualification/vertical/review.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  AGENTS.md AGENTS.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  IMPLEMENTADOR.md IMPLEMENTADOR.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  README.md README.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/PLANO-DE-IMPLEMENTACAO.md docs/PLANO-DE-IMPLEMENTACAO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/PLANO-DE-VALIDACAO.md docs/PLANO-DE-VALIDACAO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/RFC-0001-ARQUITETURA.md docs/RFC-0001-ARQUITETURA.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/STATUS-IMPLEMENTACAO.md docs/STATUS-IMPLEMENTACAO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/PROVA-DE-DIFERENCIACAO.md docs/PROVA-DE-DIFERENCIACAO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/decisoes/CORPUS-QUALIFICADO.md docs/decisoes/CORPUS-QUALIFICADO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/decisoes/EXECUCAO-E-CAPTURA.md docs/decisoes/EXECUCAO-E-CAPTURA.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/decisoes/BIBLIOTECAS-PROPRIAS.md docs/decisoes/BIBLIOTECAS-PROPRIAS.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\npath_total: 15\npath_returned: 15\npath_has_more: false\nscopes: 0\nscope_total: 0\nscope_returned: 0\nscope_truncated: false\nhas_more: false\ncaveat: \"Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable.\"\n"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "artifact_sha256": {
+    "IMPLEMENTADOR.md": "a3e3f76924a9efd3df77fd91ad958ed7c08d694c679bf30a5c418b442ed5ad64",
+    "README.md": "b0f918d145b6c1589fb3fe0b4dbb2788bce57766104eeefc1f8ab7f9ef982f77",
+    "docs/PLANO-DE-IMPLEMENTACAO.md": "e058f647bfe5417d0e57e0aaa7b3671a83d784c2e01fb06982332ececc14b2c5",
+    "docs/PLANO-DE-VALIDACAO.md": "aa872e278ea7191152aaaddddda9979df9c2af7ce77bcd34a958ffd03636211f",
+    "docs/RFC-0001-ARQUITETURA.md": "f12233cd8abe565e68cc0ae43dd65df42b2282071b12bf82bd01d154751d8553",
+    "docs/STATUS-IMPLEMENTACAO.md": "563dad30419bd6b870c9a6fdd32e9a9290aa63d43190654416178a6368cc6c54",
+    "docs/decisoes/SEMANTICA-P2.md": "1ceb455057c70520a406e80bc7b05266384ce246d9b9fe7db9ba20c1477c9956",
+    "docs/decisoes/WORKERS-E-MEDICAO.md": "8771a748c082427031fa66e5dd4fec67d7e1402f2b42b0463801a0869d7d9d8b",
+    "docs/relatorios/REVISAO-L3.md": "3b3e48e2cb465ad7bc86e8ba76f80dc0e8389fe4ec7eae0db52c2af16e34b8f1"
+  },
+  "evidence_inputs_sha256": {
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "crates/xrai-eval/src/bin/worker-spike.rs": "96f82da6f806506f888cfe3df73dd52c7e824119fbdf491638a535f77ffadb6a",
+    "crates/xrai-eval/src/filesystem_spike.rs": "dedf69e37807a8cd0aede23e37a99558448e860ce18d10d19eda08dd5b266c18",
+    "crates/xrai-eval/harness/runner.py": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "crates/xrai-eval/harness/result.schema.json": "d0219b2097427c5788b4dda9b9019cbf681ecc01ca58313fd16a3d7cfe7f0966",
+    "crates/xrai-eval/harness/result-v2.schema.json": "7fb1dcbf61dfdfede865a9de5f51220ab1f9f022eebeb999b9bbc86d95df2368",
+    "crates/xrai-eval/harness/verify_records.py": "e85d9be2cd9fbed770000990e7712cf2c1ca27db9acac83f689ca97226be900f",
+    "docs/contracts/m1.md": "ff09e3ef50d8f040a6729b1c2a6769894f41e91f40cd72b252d17a4188badbb5",
+    "eval/qualification/vertical/candidates.jsonl": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8",
+    "eval/qualification/vertical/README.md": "ae8674726951c2e96512d4c4164c4c8a9b37a3a3b737c4a3c85c60fb7bca8126",
+    "docs/relatorios/L3.md": "bfa5c3a23e5aafe5164df209b5453aee42cce44802eec092e3a7f49cd2e9e6f0",
+    "docs/relatorios/logs/L3/ci-native-run.json": "b7b7389345d79803f67d8d66ab6e676c1a75675f7c3e45e06320e4089af509ec",
+    "docs/relatorios/logs/L3/native-receipts-final-verification.json": "4430f753a45eef29d12ff1513b67e49f2474ea6d8f068c39e35131f5d231f2ad",
+    "eval/reports/m0-workers.md": "0b57f24e5b30649eb41b035f30859fb8f8bdea75ebd9f37e972277a275c79615",
+    "eval/reports/m0-harness-containment.md": "422c629ef14317bd24e2480e92e173e98fb37ca2cde9030a294cd1552851e647",
+    "eval/reports/m0-corpus-qualification.md": "8ff806b07d79af58f3d28901d6c99d8bbf3e47661925a7487315ed4e39a4aa74"
+  },
+  "errors": [],
+  "scope_limitations": [
+    "Documentation only; no product code, schema or runtime dependencies changed.",
+    "No Rust tests, corpus probes, paid sessions or new CI query/run performed.",
+    "Prior results attributed to Implementer receipts.",
+    "Graph lookup is bounded/best effort; JSONL candidates were read directly.",
+    "This receipt precedes commit and does not assert publication."
+  ]
+}

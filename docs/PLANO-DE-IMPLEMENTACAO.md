@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 12/10/2026. **Revisão L2: H01/F01/GIT01 resolvidas; próximo lote L3 detalhado.** L2 avançou harness e spikes; R1 ainda tem zero casos qualificados. [Parecer, evidências e oito incrementos executáveis](relatorios/REVISAO-L2.md). ADRs [023](decisoes/EXECUCAO-E-CAPTURA.md)/[024](decisoes/BIBLIOTECAS-PROPRIAS.md) definem contenção, captura e investimento próprio. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 12/10/2026. **Revisão L3: primeiro incremento nativo aceito; continuação L4 detalhada.** Captura original/ancorada concluída no spike; quatro pilotos não admitem D1 global. [Parecer e seis incrementos executáveis](relatorios/REVISAO-L3.md). ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md) detalham semântica, persistência dos workers e medição. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -46,7 +46,7 @@ Windows, Linux arm64 e macOS Intel estão fora do aceite e da distribuição do 
 - Cada tarefa deve produzir uma mudança revisável, seus testes relevantes e evidências dos critérios de aceite. Uma tarefa grande pode virar subtarefas com sufixo, preservando o ID e o aceite do conjunto.
 - Não criar testes que apenas reproduzem a implementação. Priorizar oracles independentes, fixtures rotuladas, comparação incremental/rebuild e falhas injetadas nas fronteiras reais.
 - Resultados medidos ficam em relatórios com commit, configuração, plataforma, hardware, comandos e saídas. Metas propostas não contam como resultados.
-- Decisões seguem os ADRs 001–024 da RFC, incluindo [admissão do corpus](decisoes/CORPUS-QUALIFICADO.md) e [persistência/retenção](decisoes/PERSISTENCIA-E-RETENCAO.md). Mudança de contrato, persistência, isolamento, regime de comparação ou dependência runtime deve atualizar o ADR pertinente e os critérios afetados.
+- Decisões seguem os ADRs 001–026 da RFC, incluindo [admissão do corpus](decisoes/CORPUS-QUALIFICADO.md) e [persistência/retenção](decisoes/PERSISTENCIA-E-RETENCAO.md). Mudança de contrato, persistência, isolamento, regime de comparação ou dependência runtime deve atualizar o ADR pertinente e os critérios afetados.
 - Spikes de M0 podem ser descartados. Sua promoção para M1 exige limites, tratamento de falhas e testes de produção; um experimento que funcionou uma vez não cumpre esses requisitos.
 - Qualidade já está fixada como rota primária. Antes da campanha, congelar limites de esforço/uso de modelos, critérios de custo proporcional, amostra, comparadores e análise. M0 permite duas versões por hipótese; M1-A, uma campanha reservada e uma adicional. Inconclusivo não libera M1-B automaticamente.
 
@@ -204,7 +204,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Depende de:** M0-01, M0-02, M0-03, M0-01.R1. **Frente:** avaliação. **ADR:** 012.
 
-**Entrega:** executor em `crates/xrai-eval/`, schema de resultados e primeiro relatório da baseline.
+**Entrega:** executor em `crates/xrai-eval/`, schema de resultados e primeiro relatório da baseline. A continuação [L4-01](relatorios/REVISAO-L3.md) segue ADR 026 §§4–6: medição offline derivada, ledger de sessão real e readiness; replay local v1/v2 permanece histórico sem custos inventados.
 
 **Trabalho:** implementar replay e execução configurada por agente, incluindo adapters para concorrentes e protótipos. Capturar todas as rodadas, uso, resultado final, setup/indexação, leitura, edição e testes. Sessões/checkouts separados, mesma tarefa/modelo/permissões; harness pode executar a suíte para julgar a tarefa, sem mudar a política do indexador.
 
@@ -250,7 +250,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Depende de:** M0-01, M0-05. **Frente:** runtime. **ADR:** 013.
 
-**Entrega:** spike de supervisor/worker e contrato de IPC versionado. Aplicar ADR 023 §2 e [L3-03](relatorios/REVISAO-L2.md): limites iniciais, identidades, estados, retry e matriz de falhas. Provas pertinentes de M0-05 permitem começar antes de seu encerramento integral; piso literal permanece pendente.
+**Entrega:** spike de supervisor/worker e contrato de IPC versionado. Primeiro recorte XRW1 entregue em L3; [L4-02](relatorios/REVISAO-L3.md) e ADR 026 §§1–3 acrescentam XRW2 persistente, retenção de respostas e CPU/RSS. Preservar limites do ADR 023 e prova pertinente de M0-05; piso literal permanece pendente. Concluir comparação mesmo se persistência não vencer; escolher modo com evidência e contenção, sem meta percentual inventada.
 
 **Trabalho:** pai captura bytes; worker recebe request com ID, linguagem, hash, fingerprint e comprimento delimitado. Comparar pool persistente pequeno com parsing direto somente no harness, medindo custo de IPC e startup. Definir cancelamento, limite de entrada/resposta e retry.
 
@@ -329,7 +329,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Depende de:** M0-01, M0-02, M0-03, M0-04. **Frente:** semântica/avaliação. **ADRs:** 002, 005, 012, 018.
 
-**Entrega:** resolvers experimentais dos quatro recortes descritos no protocolo, matriz de capacidades e corpus de relações rotuladas.
+**Entrega:** resolvers experimentais dos quatro recortes descritos no protocolo, matriz de capacidades e corpus de relações rotuladas. O [ADR 025](decisoes/SEMANTICA-P2.md) e [L4-03](relatorios/REVISAO-L3.md) especificam IR, primeira fatia Rust, incertezas e invalidação positiva/negativa. Rust sozinho não encerra este cartão.
 
 **Trabalho:** implementar imports/reexports, bindings, shadowing e alvos com receptor demonstrável conforme cada linguagem. Capturar configuração; testar reavaliação de dependências positivas e negativas. Reaproveitar a extração mínima local do spike de gramáticas quando disponível; a execução nativa completa dos dois alvos do v1 não é dependência desta experiência.
 
@@ -707,13 +707,13 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[L3, na revisão L2](relatorios/REVISAO-L2.md), é a entrada operacional. L0/L1 e parte de L2 já estão entregues; não repetir trabalho aceito.
+[L4, na revisão L3](relatorios/REVISAO-L3.md), continua os mesmos cartões abertos. Primeiro incremento L3 já entregue; M0-08/R1 concluídas no spike. Não repetir provas aceitas para preencher um novo nome de lote.
 
-1. L3-01: quatro casos qualificados verticais, depois completar D1 conforme ADR 021.
-2. L3-02/03/04: contenção do harness, workers/IPC e captura ancorada; intercalar frentes independentes.
-3. L3-05/06: medição/adapters locais e P2. APIs pagas e piso macOS ainda indisponível não bloqueiam desenvolvimento experimental com critérios pertinentes satisfeitos.
-4. L3-07: P3 sobre P2 e snapshots capturados; limites, base/head e expansão.
-5. L3-08: preparar comparadores/manifest; executar M0-12 apenas com corpus, harness, protótipos e recursos prontos. M0-10 exige todos os critérios técnicos e competitivos.
-6. G0 favorável libera M1-A; G1 favorável libera M1-B; G2 preserva o ganho e libera alpha no domínio demonstrado. M2–M5 seguem o roadmap e os pacotes B01–B08 justificados.
+1. L4-01 local: tokenizer, ledger fake/replay e readiness; sessão paga só com recursos/tetos disponíveis.
+2. L4-03: primeira fatia Rust com IR/lookup/evidência e evento negativo→resolved; depois ampliar R3/R4 e demais famílias.
+3. Intercalar L4-02 (XRW2 persistente/recursos) e L4-04 (matriz de corpus por lacunas, JavaScript e complexidade); frentes independentes.
+4. L4-05: contexto/expansão sobre primeira IR e tokenização pertinentes; aceite integral conserva dependências do cartão.
+5. L4-06: preparar comparadores/preflight; M0-12 exige D1 admitido, harness, P2/P3 e recursos. G0 também exige todas as provas técnicas.
+6. G0 favorável libera M1-A; G1 libera M1-B; G2 libera alpha no domínio comprovado. M2–M5 continuam condicionados a evidência e pacotes B01–B08.
 
-Cada cartão L3 tem responsável, entradas, destinos e aceite na revisão. Esta entrega planeja e não executa o lote. Estado real e pendências permanecem no quadro de implementação.
+Cada incremento tem escopo, destino e aceite na revisão. Esta entrega planeja; o Implementador escreve código, verifica e atualiza o estado.

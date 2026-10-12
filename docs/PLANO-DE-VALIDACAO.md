@@ -243,3 +243,18 @@ Só anunciar superioridade no domínio que os dados sustentarem. O objetivo de l
 | B05/B06 condicionais | Reproduções reais, alternativas, testes diferenciais, recuperação, fuzz e incremental/rebuild | [ADR 024](decisoes/BIBLIOTECAS-PROPRIAS.md): complexidade não impede experimento; promoção depende de evidência e gates do produto. |
 
 Preservar logs históricos e os estados parciais de L2. Antes de campanha, readiness inclui contenção, corpus qualificado, tokenizer/modelo e orçamento; falta de um deles bloqueia a execução correspondente e permite continuar preparação independente.
+
+
+## 11. Continuação L4: semântica, persistência e contabilidade
+
+[Revisão L3](relatorios/REVISAO-L3.md) preserva os aceites de L3 e detalha provas planejadas nos ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md).
+
+| Frente | Verificação adicional | O que não concluir pela prova |
+|---|---|---|
+| P2 Rust | Namespaces/escopos, alias/reexport, cfg conhecido/desconhecido, método com interferência de trait e macro; export criado invalida ausência; B incremental = rebuild B | Acerto de Rust não encerra quatro famílias; cobertura sintática não resolve chamadas; oracle não entra na IR |
+| Workers | Vários pedidos na mesma encarnação, handshake, término por Result, falha Idle/Busy, consumidor lento e cancelamento; XRW1 preservado | Persistência não herda teste de EOF por pedido; cap lógico não é teto de RSS |
+| Recursos | Cold/warm, fontes reais por dialeto, CPU de pai/filhos sem duplicação, série de soma RSS simultânea e sampler separado | Soma de picos individuais não é pico simultâneo; amostragem não é pico físico exato |
+| Sessões | Tokenizer/serializer e projeção fixados, replay legado, fake com receipt duplicado/cache subset/cobrança desconhecida e teto concorrente | Tokens locais não são usage faturado; timeout não comprova chamada gratuita |
+| Corpus | Slots por família/tipo/repo/JS/TS/complexidade; medição conservadora de produção e revisão; quatro eventos A→B | Piloto vertical aceito não é admissão global ou resultado competitivo |
+
+Critérios numéricos de qualidade/custo e gates permanecem os do protocolo. Configurações de novos benchmarks são congeladas antes dos resultados. Testes/campanhas não foram executados por esta atualização documental.

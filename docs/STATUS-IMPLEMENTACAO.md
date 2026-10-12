@@ -1,10 +1,10 @@
 # Estado da implementação
 
-Atualizado em: 12/10/2026. Execução: Implementador, primeiro incremento L3 em [L3](relatorios/L3.md). Planejamento: Arquiteto, revisão L2/ADRs023–024. Quatro dossiês verticais aceitos e CI L3 aprovada no código `21e9279`, run38239765003; primeiras falhas Linux/Seatbelt corrigidas e preservadas. A [CI pública anterior](relatorios/CI-PUBLICO.md), commit `9b5411c`, permanece aceita; [CI nativa L2](relatorios/L2.md) do commit `1e09318` passou nos três jobs; gate de admissão corrigido e revisado com nove testes e provas negativas adicionais.
+Atualizado em: 12/10/2026. Execução: Implementador, primeiro incremento L3 em [L3](relatorios/L3.md). Planejamento: Arquiteto, revisão L3/ADRs025–026 e continuação L4. Esta revisão altera somente documentos; estados executados permanecem os registrados pelo Implementador. Quatro dossiês verticais aceitos e CI L3 aprovada no código `21e9279`, run38239765003; primeiras falhas Linux/Seatbelt corrigidas e preservadas. A [CI pública anterior](relatorios/CI-PUBLICO.md), commit `9b5411c`, permanece aceita; [CI nativa L2](relatorios/L2.md) do commit `1e09318` passou nos três jobs; gate de admissão corrigido e revisado com nove testes e provas negativas adicionais.
 
 **Situação:** L0 e retificações M0-01.R1/M0-02.R1 concluídas. Revisão L1 resolveu C01/S01/S02. M0-03 foi aceita no escopo revisado de corpus inicial: 20 D0/32 D1-seed e 78 fixtures. A qualificação competitiva permanece obrigatória em M0-03.R1: gate/triagem e quatro pilotos verticais revisados; zero tarefas admitidas na matriz global32. Usuário liberou L2; harness local/replay e spikes de parsing/filesystem implementados com evidência local em [L2](relatorios/L2.md). Provas nativas de parsing/filesystem/harness passaram em Ubuntu24.04.5 e macOS15.7.9; smokes de modelos reais, execução literal15.0 e pendências de contenção permanecem separados. Com o repo público, a tentativa 2 do run `38197775334` passou nos três jobs: **M0-02.R2 e M0-07 concluídas**, com seis testes SQLite em cada alvo nativo. V1: Linux x86_64/macOS arm64. Parsing, consultas e MCP de produção continuam indisponíveis; nenhum gate competitivo avaliado.
 
-**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima execução:** [lote L3](relatorios/REVISAO-L2.md), continuação de L2. Iniciar L3-05 local e primeira fatia RustP2, expandir matriz32/eventos e medir CPU/RSS/calibrar workers; M0-12 exige qualificação R1. L0-A01 permanece escolha do mantenedor antes de distribuição, sem bloquear trabalho local. [ADR 021](decisoes/CORPUS-QUALIFICADO.md) e [ADR 022](decisoes/PERSISTENCIA-E-RETENCAO.md) fecham as decisões solicitadas ao Arquiteto.
+**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima execução:** [continuação L4](relatorios/REVISAO-L3.md). Iniciar L4-01 local e primeira fatia Rust L4-03; intercalar L4-02 (persistência/recursos) e L4-04 (matriz32/eventos); M0-12 exige qualificação R1. L0-A01 permanece escolha do mantenedor antes de distribuição, sem bloquear trabalho local. [ADR 021](decisoes/CORPUS-QUALIFICADO.md) e [ADR 022](decisoes/PERSISTENCIA-E-RETENCAO.md) fecham as decisões solicitadas ao Arquiteto.
 
 ## Decisões vigentes
 
@@ -110,10 +110,19 @@ Escopo vigente de plataformas v1: Linux x86_64 e macOS arm64. M0-02.R2 e M0-07 a
 
 ## Revisão arquitetural L2 e continuidade L3
 
-[Revisão vigente](relatorios/REVISAO-L2.md), [ADR 023](decisoes/EXECUCAO-E-CAPTURA.md) e [ADR 024](decisoes/BIBLIOTECAS-PROPRIAS.md). H01 exige domínio descartável para comandos arbitrários; F01 exige captura ancorada com modelo explícito de concorrência; Git incorporado fica adiado até consumidor. Decisão concluída não significa teste/implementação concluídos. Bibliotecas próprias de qualquer porte são admitidas por necessidade, começando por experimentos delimitados.
+[Revisão histórica L2](relatorios/REVISAO-L2.md), [ADR 023](decisoes/EXECUCAO-E-CAPTURA.md) e [ADR 024](decisoes/BIBLIOTECAS-PROPRIAS.md). H01 exige domínio descartável para comandos arbitrários; F01 exige captura ancorada com modelo explícito de concorrência; Git incorporado fica adiado até consumidor. Decisão concluída não significa teste/implementação concluídos. Bibliotecas próprias de qualquer porte são admitidas por necessidade, começando por experimentos delimitados.
 
 Primeiro incremento L3-01/02/03/04 entregue com CI e evidências em [L3](relatorios/L3.md). M0-08 original e R1 concluídas nos escopos documentados. Restam matriz global32/eventos, contenção mac descartável, CPU/RSS/pool calibrado, L3-05 medição/adapters, L3-06 P2, L3-07 P3 e L3-08 preparação/piloto; estados específicos no quadro acima.
 
 Continuam externos: host literal macOS 15.0, recursos/teto para runs reais e licença antes de distribuição. Não bloqueiam todas as frentes locais. Os gates seguem não avaliados; nenhuma biblioteca de produção foi implementada pelo Arquiteto.
 
 Verificação da entrega: [recibo documental](relatorios/logs/revisao-L2/documentacao.json), com links, IDs/dependências e hashes. Commit/push desta revisão serão informados após confirmação; este registro não atesta publicação antecipadamente.
+
+
+## Revisão arquitetural L3 e continuação L4
+
+[Revisão vigente](relatorios/REVISAO-L3.md), [ADR 025](decisoes/SEMANTICA-P2.md) e [ADR 026](decisoes/WORKERS-E-MEDICAO.md). Mantidos todos os estados de execução anteriores; nenhuma tarefa M0 foi concluída nesta revisão. Seis incrementos L4 planejados: medição/ledger, worker persistente/recursos, IR/Rust, expansão do corpus, contexto e preparação competitiva.
+
+A próxima implementação tem contrato específico: XRW2 conclui por mensagem sem EOF; reservas incluem respostas ainda retidas pelo pool; CPU/RSS identificam método e lacunas. P2 diferencia escopos/namespaces, fato/candidato/unknown e dependências negativas. Quatro pilotos históricos de correção permanecem separados da admissão global; a projeção dos slots restantes está no parecer.
+
+Host literal15.0, mac descartável, modelos/tetos e licença de distribuição permanecem pendências nos respectivos cartões. Não impedem L4-01 local/L4-03. Gates não avaliados. [Verificação documental](relatorios/logs/revisao-L3/documentacao.json) registra links, IDs/estados e hashes; publicação comunicada após commit/push.
