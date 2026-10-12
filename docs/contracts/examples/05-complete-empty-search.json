@@ -21,16 +21,19 @@
     }
   ],
   "request": {
-    "schema_version": 1,
+    "schema_version": 2,
     "request_id": "request_demo",
     "workspace_id": "ws_demo",
     "worktree_id": "wt_demo",
     "operation": "search",
     "consistency": {
       "mode": "validated",
-      "snapshot_id": "snap_demo42",
       "scope": {
         "kind": "workspace"
+      },
+      "revision": {
+        "kind": "fixed",
+        "snapshot_id": "snap_demo42"
       }
     },
     "limits": {
@@ -49,7 +52,7 @@
     }
   },
   "response": {
-    "schema_version": 1,
+    "schema_version": 2,
     "request_id": "request_demo",
     "workspace_id": "ws_demo",
     "worktree_id": "wt_demo",
@@ -176,5 +179,23 @@
     "next": [],
     "error": null
   },
-  "admission_error": null
+  "admission_error": null,
+  "fixture_version": 2,
+  "fixture_state": {
+    "published_snapshot_id": "snap_demo42",
+    "required_snapshot_id": "snap_demo42",
+    "retained_snapshot_ids": [
+      "snap_demo42"
+    ],
+    "bindings": [],
+    "inventory_at_required": [
+      {
+        "file_id": "fi_demo",
+        "source_hash": {
+          "algorithm": "blake3",
+          "hex": "9c72cf65a96fcb85444c2593783a987390d548f0defeb4651fc5a0443c12ca8a"
+        }
+      }
+    ]
+  }
 }

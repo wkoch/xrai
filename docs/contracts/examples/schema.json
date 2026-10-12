@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:xrai:contracts:m1:examples:v1",
+  "$id": "urn:xrai:contracts:m1:examples:v2",
   "type": "object",
   "properties": {
     "case_id": {
@@ -47,6 +47,12 @@
           "type": "null"
         }
       ]
+    },
+    "fixture_version": {
+      "const": 2
+    },
+    "fixture_state": {
+      "$ref": "#/$defs/fixture_state"
     }
   },
   "required": [
@@ -56,7 +62,9 @@
     "fixture_files",
     "request",
     "response",
-    "admission_error"
+    "admission_error",
+    "fixture_version",
+    "fixture_state"
   ],
   "additionalProperties": false,
   "$defs": {
@@ -784,7 +792,7 @@
       "type": "object",
       "properties": {
         "schema_version": {
-          "const": 1
+          "const": 2
         },
         "request_id": {
           "type": "string"
@@ -817,24 +825,16 @@
                 "strict"
               ]
             },
-            "snapshot_id": {
-              "anyOf": [
-                {
-                  "type": "null"
-                },
-                {
-                  "type": "string",
-                  "pattern": "^snap_[A-Za-z0-9_-]+$"
-                }
-              ]
-            },
             "scope": {
               "$ref": "#/$defs/scope"
+            },
+            "revision": {
+              "$ref": "#/$defs/revision_selector"
             }
           },
           "required": [
             "mode",
-            "snapshot_id",
+            "revision",
             "scope"
           ],
           "additionalProperties": false
@@ -1168,29 +1168,6 @@
               }
             }
           }
-        },
-        {
-          "if": {
-            "properties": {
-              "operation": {
-                "not": {
-                  "const": "status"
-                }
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "consistency": {
-                "properties": {
-                  "snapshot_id": {
-                    "type": "string",
-                    "pattern": "^snap_[A-Za-z0-9_-]+$"
-                  }
-                }
-              }
-            }
-          }
         }
       ]
     },
@@ -1198,7 +1175,7 @@
       "type": "object",
       "properties": {
         "schema_version": {
-          "const": 1
+          "const": 2
         },
         "request_id": {
           "type": "string"
@@ -1695,27 +1672,11 @@
     "admission": {
       "type": "object",
       "properties": {
-        "code": {
-          "const": "request_budget_too_small"
-        },
-        "message": {
-          "type": "string"
-        },
-        "minimum_bytes": {
-          "type": "integer",
-          "minimum": 1
-        },
-        "minimum_counting": {
-          "enum": [
-            "exact",
-            "estimated_admission_bound"
-          ]
+        "diagnostic": {
+          "$ref": "#/$defs/admission_diagnostic"
         },
         "diagnostic_hard_cap_bytes": {
           "const": 4096
-        },
-        "outside_requested_budget": {
-          "const": true
         },
         "cli_exit": {
           "const": 2
@@ -1723,20 +1684,60 @@
         "cli_stdout": {
           "const": ""
         },
-        "mcp_is_error": {
-          "const": true
+        "cli_stderr": {
+          "type": "string"
+        },
+        "cli_stderr_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mcp_result": {
+          "$ref": "#/$defs/mcp_admission_result"
+        },
+        "mcp_result_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mcp_wire": {
+          "type": "object",
+          "properties": {
+            "jsonrpc": {
+              "const": "2.0"
+            },
+            "id": {
+              "type": "string"
+            },
+            "result": {
+              "$ref": "#/$defs/mcp_admission_result"
+            }
+          },
+          "required": [
+            "jsonrpc",
+            "id",
+            "result"
+          ],
+          "additionalProperties": false
+        },
+        "mcp_wire_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "wire_counting_scope": {
+          "const": "jsonrpc_object_without_transport_framing"
         }
       },
       "required": [
-        "code",
-        "message",
-        "minimum_bytes",
-        "minimum_counting",
+        "diagnostic",
         "diagnostic_hard_cap_bytes",
-        "outside_requested_budget",
         "cli_exit",
         "cli_stdout",
-        "mcp_is_error"
+        "cli_stderr",
+        "cli_stderr_bytes",
+        "mcp_result",
+        "mcp_result_bytes",
+        "mcp_wire",
+        "mcp_wire_bytes",
+        "wire_counting_scope"
       ],
       "additionalProperties": false
     },
@@ -1873,6 +1874,222 @@
         "evidence",
         "external_identity",
         "reason"
+      ],
+      "additionalProperties": false
+    },
+    "revision_selector": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "fixed"
+            },
+            "snapshot_id": {
+              "type": "string",
+              "pattern": "^snap_[A-Za-z0-9_-]+$"
+            }
+          },
+          "required": [
+            "kind",
+            "snapshot_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "latest"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "fixture_state": {
+      "type": "object",
+      "properties": {
+        "published_snapshot_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^snap_[A-Za-z0-9_-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "required_snapshot_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^snap_[A-Za-z0-9_-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retained_snapshot_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^snap_[A-Za-z0-9_-]+$"
+          }
+        },
+        "bindings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "enum": [
+                  "symbol",
+                  "occurrence",
+                  "anchor",
+                  "context",
+                  "cursor"
+                ]
+              },
+              "snapshot_id": {
+                "type": "string",
+                "pattern": "^snap_[A-Za-z0-9_-]+$"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "snapshot_id"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "inventory_at_required": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file_id": {
+                "type": "string",
+                "pattern": "^fi_[A-Za-z0-9_-]+$"
+              },
+              "source_hash": {
+                "$ref": "#/$defs/hash"
+              }
+            },
+            "required": [
+              "file_id",
+              "source_hash"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "published_snapshot_id",
+        "required_snapshot_id",
+        "retained_snapshot_ids",
+        "bindings",
+        "inventory_at_required"
+      ],
+      "additionalProperties": false
+    },
+    "admission_diagnostic": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "const": "request_budget_too_small"
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "minimum_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimum_counting": {
+          "enum": [
+            "exact",
+            "estimated_admission_bound"
+          ]
+        },
+        "estimation_method": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "outside_requested_budget": {
+          "const": true
+        },
+        "retry_automatically": {
+          "const": false
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "minimum_bytes",
+        "minimum_counting",
+        "estimation_method",
+        "outside_requested_budget",
+        "retry_automatically"
+      ],
+      "additionalProperties": false
+    },
+    "mcp_admission_result": {
+      "type": "object",
+      "properties": {
+        "isError": {
+          "const": true
+        },
+        "content": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "text"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "text"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "structuredContent": {
+          "$ref": "#/$defs/admission_diagnostic"
+        },
+        "_meta": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "isError",
+        "content"
       ],
       "additionalProperties": false
     }

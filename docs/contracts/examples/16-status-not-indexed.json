@@ -4,16 +4,18 @@
   "expected_violation": null,
   "fixture_files": [],
   "request": {
-    "schema_version": 1,
+    "schema_version": 2,
     "request_id": "request_demo",
     "workspace_id": "ws_demo",
     "worktree_id": "wt_demo",
     "operation": "status",
     "consistency": {
       "mode": "snapshot",
-      "snapshot_id": null,
       "scope": {
         "kind": "workspace"
+      },
+      "revision": {
+        "kind": "latest"
       }
     },
     "limits": {
@@ -29,7 +31,7 @@
     "params": {}
   },
   "response": {
-    "schema_version": 1,
+    "schema_version": 2,
     "request_id": "request_demo",
     "workspace_id": "ws_demo",
     "worktree_id": "wt_demo",
@@ -120,5 +122,13 @@
     ],
     "error": null
   },
-  "admission_error": null
+  "admission_error": null,
+  "fixture_version": 2,
+  "fixture_state": {
+    "published_snapshot_id": null,
+    "required_snapshot_id": null,
+    "retained_snapshot_ids": [],
+    "bindings": [],
+    "inventory_at_required": []
+  }
 }

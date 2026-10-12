@@ -21,16 +21,19 @@
     }
   ],
   "request": {
-    "schema_version": 1,
+    "schema_version": 2,
     "request_id": "request_demo",
     "workspace_id": "ws_demo",
     "worktree_id": "wt_demo",
     "operation": "inspect",
     "consistency": {
       "mode": "snapshot",
-      "snapshot_id": "snap_demo42",
       "scope": {
         "kind": "workspace"
+      },
+      "revision": {
+        "kind": "fixed",
+        "snapshot_id": "snap_demo42"
       }
     },
     "limits": {
@@ -49,7 +52,7 @@
     }
   },
   "response": {
-    "schema_version": 1,
+    "schema_version": 2,
     "request_id": "request_demo",
     "workspace_id": "ws_demo",
     "worktree_id": "wt_demo",
@@ -197,5 +200,23 @@
     "next": [],
     "error": null
   },
-  "admission_error": null
+  "admission_error": null,
+  "fixture_version": 2,
+  "fixture_state": {
+    "published_snapshot_id": "snap_demo42",
+    "required_snapshot_id": "snap_demo42",
+    "retained_snapshot_ids": [
+      "snap_demo42"
+    ],
+    "bindings": [],
+    "inventory_at_required": [
+      {
+        "file_id": "fi_demo",
+        "source_hash": {
+          "algorithm": "blake3",
+          "hex": "af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262"
+        }
+      }
+    ]
+  }
 }

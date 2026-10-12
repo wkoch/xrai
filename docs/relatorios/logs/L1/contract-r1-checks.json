@@ -1,0 +1,303 @@
+{
+  "task": "M0-01.R1",
+  "kind": "documentary_contract_checks_not_product_runtime",
+  "date_local": "2026-10-11 America/Sao_Paulo",
+  "python": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "dependency_path": "/private/tmp/xrai-contract-blake3",
+  "counts": {
+    "positive": 26,
+    "adverse": 30
+  },
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "docs/contracts/verify.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS 01-empty-file.json: valid\nPASS 02-partial-parse.json: valid\nPASS 03-excluded-file.json: valid\nPASS 04-parser-absent.json: valid\nPASS 05-complete-empty-search.json: valid\nPASS 06-unsupported-calls.json: valid\nPASS 07-source-unicode-crlf.json: valid\nPASS 08-insufficient-budget.json: valid\nPASS 09-snapshot-expired.json: valid\nPASS 10-strict-incomplete.json: valid\nPASS 11-candidate.json: valid\nPASS 12-windows-path.json: valid\nPASS 13-unix-path-bytes.json: valid\nPASS 14-budget-below-envelope.json: valid\nPASS 15-structural-fact.json: valid\nPASS 16-status-not-indexed.json: valid\nPASS 17-latest-published-snapshot.json: valid\nPASS 18-latest-validated-new-global-file.json: valid\nPASS 19-latest-strict-new-global-file.json: valid\nPASS 20-fixed-validated-stale.json: valid\nPASS 21-fixed-strict-stale.json: valid\nPASS 22-latest-incompatible-anchor.json: valid\nPASS 23-expand-fixed-manifest.json: valid\nPASS 24-cursor-fixed-manifest.json: valid\nPASS 25-admission-long-input-wire.json: valid\nPASS 26-admission-structured-metadata-counted.json: valid\nPASS invalid-admission-auto-retry.json: schema\nPASS invalid-admission-estimate-as-exact.json: admission\nPASS invalid-admission-metadata-over-cap.json: admission\nPASS invalid-admission-source-leak.json: schema\nPASS invalid-admission-wire-not-counted.json: admission_count\nPASS invalid-anchor-silent-name-migration.json: anchor_revision\nPASS invalid-budget-exceeded.json: budget_limit\nPASS invalid-candidate-as-fact.json: schema\nPASS invalid-coverage-revision.json: snapshot_identity\nPASS invalid-cursor-latest.json: continuation_revision\nPASS invalid-expand-latest.json: continuation_revision\nPASS invalid-expand-new-manifest-generation.json: continuation_revision\nPASS invalid-expand-new-response-generation.json: snapshot_identity\nPASS invalid-fixed-response-rebind.json: snapshot_identity\nPASS invalid-fixed-validation-advances.json: snapshot_identity\nPASS invalid-global-validation-skips-new-file.json: freshness\nPASS invalid-latest-configuration.json: derivation\nPASS invalid-latest-fictitious-snapshot-id.json: schema\nPASS invalid-latest-snapshot-reconciles-silently.json: revision_policy\nPASS invalid-latest-source-hash.json: source_hash\nPASS invalid-latest-validated-old-generation.json: revision_policy\nPASS invalid-path-units.json: schema\nPASS invalid-request-operation.json: schema\nPASS invalid-revision-mix.json: snapshot_identity\nPASS invalid-source-hash.json: source_hash\nPASS invalid-span.json: source_span\nPASS invalid-stale-called-expired.json: revision_policy\nPASS invalid-status-budget.json: budget_status\nPASS invalid-strict-complete-without-validation.json: freshness\nPASS invalid-utf8-boundary.json: source_boundary\n26 valid accepted; 30 invalid rejected; 0 failures; schema valid\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs/contracts/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_documentary_suite_has_no_failure (test_verify.DocumentaryVerifierTests.test_documentary_suite_has_no_failure) ... ok\ntest_false_acceptance_of_declared_adverse_case_makes_main_nonzero (test_verify.DocumentaryVerifierTests.test_false_acceptance_of_declared_adverse_case_makes_main_nonzero) ... ok\ntest_fixed_rebind_is_rejected_as_snapshot_identity (test_verify.DocumentaryVerifierTests.test_fixed_rebind_is_rejected_as_snapshot_identity) ... ok\ntest_global_validation_cannot_ignore_a_new_file (test_verify.DocumentaryVerifierTests.test_global_validation_cannot_ignore_a_new_file) ... ok\ntest_invalid_fixture_falsely_labeled_valid_makes_main_nonzero (test_verify.DocumentaryVerifierTests.test_invalid_fixture_falsely_labeled_valid_makes_main_nonzero) ... ok\ntest_large_jsonrpc_id_is_counted_outside_application_cap (test_verify.DocumentaryVerifierTests.test_large_jsonrpc_id_is_counted_outside_application_cap) ... ok\ntest_legacy_v1_requires_explicit_migration (test_verify.DocumentaryVerifierTests.test_legacy_v1_requires_explicit_migration) ... ok\ntest_relabelled_adverse_case_is_nonzero_in_real_process (test_verify.DocumentaryVerifierTests.test_relabelled_adverse_case_is_nonzero_in_real_process) ... ok\ntest_unexpected_exception_is_not_hidden_as_success (test_verify.DocumentaryVerifierTests.test_unexpected_exception_is_not_hidden_as_success) ... ok\ntest_unexpected_rejection_of_positive_case_makes_main_nonzero (test_verify.DocumentaryVerifierTests.test_unexpected_rejection_of_positive_case_makes_main_nonzero) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.398s\n\nOK\n"
+    }
+  ],
+  "legacy_integrity": [
+    {
+      "path": "docs/contracts/examples/legacy-v1/01-empty-file.json",
+      "sha256": "2156214776d21fb528bc29e041f6314fe8c90e1179a399759c69cd6dea32a901",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/02-partial-parse.json",
+      "sha256": "b554d156f05122e1290b6960198c221be0099d243e36cc9d21a5bb96faf63392",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/03-excluded-file.json",
+      "sha256": "61918d6826b65d06e1f19b1d0bc722d7a052d892159e662f1b4e73eec3787d29",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/04-parser-absent.json",
+      "sha256": "dd0888b8c5f2615f58de8dd1cf424fbf61d5a9b9688b8fe8b56c1e618d480af4",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/05-complete-empty-search.json",
+      "sha256": "a2a26a6f738e8b4c948a43ac08875d2ef5084c39f911db3c0c373f4a2f539e39",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/06-unsupported-calls.json",
+      "sha256": "a4ff50c289dad0279a2aef61b4e57a4b84dfa9765887a9b8a54e37f63ee64e2f",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/07-source-unicode-crlf.json",
+      "sha256": "6bb551a600bb2b97ac804016a84f6e420daa323c39af1953b2359f91296649cf",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/08-insufficient-budget.json",
+      "sha256": "d8ec7a7dffd6d566d1f9232fc2502fbf124eb595bcf6fa4ddc4495eceee2b56e",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/09-snapshot-expired.json",
+      "sha256": "2356b4d3893b53def01c310d96d820a185b7e27db9d92aaf8c1c82a1257f0d99",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/10-strict-incomplete.json",
+      "sha256": "3320c6d9f8ee0e473024ea76302375dbbf97701d7c678aa22c879f374209033d",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/11-candidate.json",
+      "sha256": "f8d5d6887352f1d4569749b09dd121c73ef2422cc93790af418e7e87debef4e8",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/12-windows-path.json",
+      "sha256": "ad40fef69efe3a4b77afb2e26d707eeed31d038bff3c9c7fea8af4465a86a52d",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/13-unix-path-bytes.json",
+      "sha256": "b6516ad5f1302ebe4b81498469bfa92f5aebf34abc48aa08215f0fbb86db7369",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/14-budget-below-envelope.json",
+      "sha256": "04109c68fbf7c3b996759e72e60fff936160590655ef37765a601e9b89d2f523",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/15-structural-fact.json",
+      "sha256": "188ce8e57dbb36ac10404cc8e5cd42a5bdefce4ac45992329e8a11b0d794c5e0",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/16-status-not-indexed.json",
+      "sha256": "1ed843a1fc3013fbcb3cd89c5d2411d09c844d32bab6c25d2a8e4c9230030b21",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-budget-exceeded.json",
+      "sha256": "8e8e680adefacad73a2671c3c027b3785044839d7af4ad2a539fc1712c0e8a5f",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-candidate-as-fact.json",
+      "sha256": "963539fb2aa35d01d1506ad1657677208993564bed53f8fed0fcd1ba750b6377",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-path-units.json",
+      "sha256": "cac99a45d361e7021ec4fc6a3fcb5f0e8a73a7c19a2e554f197bf4f85efa5b40",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-request-operation.json",
+      "sha256": "5c5aa2e1772c9ad3fd4feabd3816bec3b8e129ecc7384ac23c1b8705eb88cede",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-revision-mix.json",
+      "sha256": "f1bdd1ece6db33ce52275dfa5f8d8bced105e94750d9b573dbf6bf35fe3a4a88",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-source-hash.json",
+      "sha256": "26baf6df81e19270915b76616134fe2d2544d21fd637f6304056b5e45073d30e",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-span.json",
+      "sha256": "529a0b24eb54ed70715a098bf63deebc75c3c03280e096406ca77213503ff7f2",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-status-budget.json",
+      "sha256": "589a3f9f7b3b6a18eba744607aa829847f0cd25a88d25fdf3350ce027da7baee",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-utf8-boundary.json",
+      "sha256": "6f159dcc12730ef84fa2e45c54b58512ce967736547dc7c072422ec6dd4297ee",
+      "matches_L0_commit": true
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/schema.json",
+      "sha256": "f12588f7f19e522aa6964bee6211e9ee9354ec6b79823a6b74c2f5178208fa62",
+      "matches_L0_commit": true
+    }
+  ],
+  "migration_integrity": [
+    {
+      "case_id": "01-empty-file",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "02-partial-parse",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "03-excluded-file",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "04-parser-absent",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "05-complete-empty-search",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "06-unsupported-calls",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "07-source-unicode-crlf",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "08-insufficient-budget",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "09-snapshot-expired",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "10-strict-incomplete",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "11-candidate",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "12-windows-path",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "13-unix-path-bytes",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "14-budget-below-envelope",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "15-structural-fact",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "16-status-not-indexed",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-budget-exceeded",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-candidate-as-fact",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-path-units",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-request-operation",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-revision-mix",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-source-hash",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-span",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-status-budget",
+      "source_and_oracles_preserved": true
+    },
+    {
+      "case_id": "invalid-utf8-boundary",
+      "source_and_oracles_preserved": true
+    }
+  ],
+  "admission_byte_counts": [
+    {
+      "case_id": "14-budget-below-envelope",
+      "cli_stderr_bytes": 279,
+      "mcp_result_bytes": 355,
+      "mcp_wire_bytes": 402,
+      "diagnostic_hard_cap_bytes": 4096,
+      "wire_counting_scope": "jsonrpc_object_without_transport_framing"
+    },
+    {
+      "case_id": "25-admission-long-input-wire",
+      "cli_stderr_bytes": 279,
+      "mcp_result_bytes": 355,
+      "mcp_wire_bytes": 5397,
+      "diagnostic_hard_cap_bytes": 4096,
+      "wire_counting_scope": "jsonrpc_object_without_transport_framing"
+    },
+    {
+      "case_id": "26-admission-structured-metadata-counted",
+      "cli_stderr_bytes": 279,
+      "mcp_result_bytes": 1275,
+      "mcp_wire_bytes": 1322,
+      "diagnostic_hard_cap_bytes": 4096,
+      "wire_counting_scope": "jsonrpc_object_without_transport_framing"
+    }
+  ],
+  "limits": [
+    "No parser, filesystem reconciliation, CLI/MCP adapter or tokenizer was executed by these fixtures.",
+    "All admission minimums are illustrative estimated bounds, not exact implemented adapter minimums.",
+    "JSON-RPC bytes count compact JSON object only; transport framing not implemented.",
+    "Product compatibility and database migration remain M1 tasks."
+  ]
+}

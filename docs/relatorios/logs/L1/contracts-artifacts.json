@@ -1,0 +1,458 @@
+{
+  "recorded_at": "2026-10-12T01:38:24.033068+00:00",
+  "scope": "M0-01.R1 and documentary CI configuration; SHA256 artifact receipt, not source identity",
+  "checks": [
+    "contracts-verify.json",
+    "contracts-tests.json",
+    "contracts-tooling.json",
+    "contract-r1-checks.json"
+  ],
+  "independent_review": "No material defect in fixed/latest, stale/expired, anchor/continuation or bounded admission. 10 tests and independent adversarial probes passed. Native product adapters not implemented.",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 2394,
+      "sha256": "3c259044b9a703e3bb4e75324cff273a21aaf95c24ae51c45f3bb5557c4c5f3d"
+    },
+    {
+      "path": "docs/contracts/examples/01-empty-file.json",
+      "bytes": 5406,
+      "sha256": "af62c56d4982ba910b868addc129324e47a36e4b4d87fc77f617843bf8e11c05"
+    },
+    {
+      "path": "docs/contracts/examples/02-partial-parse.json",
+      "bytes": 5871,
+      "sha256": "004c1695878eafbfb83e251c2a6862779cecb8792f25382d6e074a8210e8a082"
+    },
+    {
+      "path": "docs/contracts/examples/03-excluded-file.json",
+      "bytes": 5499,
+      "sha256": "fed72aa6d0913f75755eba625ae1f839f652fe95af78ab0a29847f155486a0de"
+    },
+    {
+      "path": "docs/contracts/examples/04-parser-absent.json",
+      "bytes": 5496,
+      "sha256": "11a7107533613827485fb9273b5e871f8abac6d421bae2afabb67ac5f5215dec"
+    },
+    {
+      "path": "docs/contracts/examples/05-complete-empty-search.json",
+      "bytes": 4918,
+      "sha256": "b666ad18451cb0c88c4105f0d1d811fe9848bccd924be83fd3c69384f6821aa8"
+    },
+    {
+      "path": "docs/contracts/examples/06-unsupported-calls.json",
+      "bytes": 5516,
+      "sha256": "067013e26b35334f712426b77ff790148b1fa0f199877f9579b475ca734c1ef8"
+    },
+    {
+      "path": "docs/contracts/examples/07-source-unicode-crlf.json",
+      "bytes": 5552,
+      "sha256": "78cdcd62906b6ef60f7b46604fa428c935a91f36f287d0025a6e61cc6384938e"
+    },
+    {
+      "path": "docs/contracts/examples/08-insufficient-budget.json",
+      "bytes": 6854,
+      "sha256": "f12d8d55a11d4d9d839f5b21344c0604b9e965fcd89524bc9829237693dd1320"
+    },
+    {
+      "path": "docs/contracts/examples/09-snapshot-expired.json",
+      "bytes": 3932,
+      "sha256": "38b477951892873e5375bbe90265bf746f3994738453c327a3546e1a17c69aaa"
+    },
+    {
+      "path": "docs/contracts/examples/10-strict-incomplete.json",
+      "bytes": 5530,
+      "sha256": "381f0de0cefd6c4e722297ddbbfb46196995a5e08da079dc089f6af2ae145d6f"
+    },
+    {
+      "path": "docs/contracts/examples/11-candidate.json",
+      "bytes": 6364,
+      "sha256": "6ae28d3dfa6a016991bf76c0513ac2198cca912926beef6da04dadbd8663d869"
+    },
+    {
+      "path": "docs/contracts/examples/12-windows-path.json",
+      "bytes": 5464,
+      "sha256": "8d3533913873fb3dbc1adf313a48067d9bfd218d7fdd7236c3f2682c94f30d35"
+    },
+    {
+      "path": "docs/contracts/examples/13-unix-path-bytes.json",
+      "bytes": 5443,
+      "sha256": "e30fa711d55d36bd25a42792722d6b84573635b055eae348be560aecc13391f0"
+    },
+    {
+      "path": "docs/contracts/examples/14-budget-below-envelope.json",
+      "bytes": 3148,
+      "sha256": "ffc86951a9398a692fbf9ad04f4de3e3982d4ce2bf43d06a3b6d3b91e3d22cc5"
+    },
+    {
+      "path": "docs/contracts/examples/15-structural-fact.json",
+      "bytes": 5801,
+      "sha256": "e6ecfaec3f77f0baaad9e868c33638c8c4df8ad7d174598246e60d850c35973b"
+    },
+    {
+      "path": "docs/contracts/examples/16-status-not-indexed.json",
+      "bytes": 2955,
+      "sha256": "3c3ce096b17822cfb8e95d42276f44c2cdbcba13226a4d6fdc5e7d326b570af3"
+    },
+    {
+      "path": "docs/contracts/examples/17-latest-published-snapshot.json",
+      "bytes": 5542,
+      "sha256": "c410ce83dc7dff0f66ca7353664531b728401fa56d4e0fb8030c1e585f844cb9"
+    },
+    {
+      "path": "docs/contracts/examples/18-latest-validated-new-global-file.json",
+      "bytes": 6425,
+      "sha256": "04e8d7b6064eb7ed704a2d293716565abdf26e2b01d9439a0a00ab6748105f91"
+    },
+    {
+      "path": "docs/contracts/examples/19-latest-strict-new-global-file.json",
+      "bytes": 6416,
+      "sha256": "79000709dd5389df709b6fa98f446e2f58b1709e92cf1ad3ff1d916e20319ffa"
+    },
+    {
+      "path": "docs/contracts/examples/20-fixed-validated-stale.json",
+      "bytes": 5269,
+      "sha256": "9e2dd88846a5e121730f0d3bfa0d69e54ad1e23254a2e15d15dcd0160d654ced"
+    },
+    {
+      "path": "docs/contracts/examples/21-fixed-strict-stale.json",
+      "bytes": 5260,
+      "sha256": "dcc04f7d5c8e7b1ef02b6c8d9191bd20b9d7b8573e0e47a93a74efa345b1b5aa"
+    },
+    {
+      "path": "docs/contracts/examples/22-latest-incompatible-anchor.json",
+      "bytes": 5414,
+      "sha256": "cc3f2a5b2919e0bb4faad07d0fbdcc744308d491061ecd0fa72ab8f2dc20087f"
+    },
+    {
+      "path": "docs/contracts/examples/23-expand-fixed-manifest.json",
+      "bytes": 5726,
+      "sha256": "6a270bc0e0aac96dc13165669a461b0b7e67fd17e418df5e96894e013b22f145"
+    },
+    {
+      "path": "docs/contracts/examples/24-cursor-fixed-manifest.json",
+      "bytes": 5070,
+      "sha256": "437fa7eeb268f86bdbcd24f1b0e47c7ea3bd8fa45cca76b65cd069cf044efdbc"
+    },
+    {
+      "path": "docs/contracts/examples/25-admission-long-input-wire.json",
+      "bytes": 34269,
+      "sha256": "366b7174e57a4d7582c455fbd0453b73da00d54971d8c29b39ec5bdd3c57a362"
+    },
+    {
+      "path": "docs/contracts/examples/26-admission-structured-metadata-counted.json",
+      "bytes": 5250,
+      "sha256": "f38d20239a52526227bc16d34005532a502027c40bad47f7ceec878a356ebbd2"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-admission-auto-retry.json",
+      "bytes": 3156,
+      "sha256": "ace8be4c2e4aaa7a2c10a6638b775ae63d5de4cd3367ba2ff29294242b502586"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-admission-estimate-as-exact.json",
+      "bytes": 3114,
+      "sha256": "41b2b4a4f45e63fb1b48c698567368639fcf38398d8044c3c2cbe6c5fade5d9f"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-admission-metadata-over-cap.json",
+      "bytes": 13265,
+      "sha256": "cbb384c526739677aaffd84e00f2772c40c7d733674302037d000cc577abcf7c"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-admission-source-leak.json",
+      "bytes": 3192,
+      "sha256": "c4aa4dc764f0e89ba3568d79c177b95265a70e59aa2c33537c4816345e1325e2"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-admission-wire-not-counted.json",
+      "bytes": 3172,
+      "sha256": "d261f6b1ae40e597be541e610a4cc5993390b227e1585ae67c5128ba74b7e131"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-anchor-silent-name-migration.json",
+      "bytes": 5843,
+      "sha256": "7a09b1b3ffc33d5e70dc8e59eca774457728cbba5ee9e66a1bca03bab8edcdf5"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-budget-exceeded.json",
+      "bytes": 5562,
+      "sha256": "e0c93df8c1e632017ab37e3ab90b6f566521a8bef082fddb3b62fb45a28d7e97"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-candidate-as-fact.json",
+      "bytes": 6382,
+      "sha256": "c7c5bc3eb0f420f3ac794ec1413c209f228f6831e485f77742911c0f6e70d2b7"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-coverage-revision.json",
+      "bytes": 5571,
+      "sha256": "828e8cc509ec9b3fa1f4946fc4fe504baebe803b6c0d6cd21c2e79ff9912b1e3"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-cursor-latest.json",
+      "bytes": 5050,
+      "sha256": "2af79d2654669f84c5d2fd5e4eeb8ec56166464732b2735a1526bef7f869f748"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-expand-latest.json",
+      "bytes": 5706,
+      "sha256": "b838a5e099f2ea26213ada53af4693f7a25d116facd34eb349d8363300e85ebe"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-expand-new-manifest-generation.json",
+      "bytes": 5767,
+      "sha256": "e2d13977d13252615349c3bcc440e91f47d2cc4fd67627c65a094c196cab37aa"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-expand-new-response-generation.json",
+      "bytes": 5763,
+      "sha256": "8329e4e7647f98bb73b33038a2e88c98bf92a6109a50b8096c8600b6fc20550a"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-fixed-response-rebind.json",
+      "bytes": 5603,
+      "sha256": "2c9ac785908ba9c188fba6a8bd9c5b9e334a8c1e81fa8316147c480ae6417c96"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-fixed-validation-advances.json",
+      "bytes": 6476,
+      "sha256": "8861b4f261740b950cb1059c61ee806568349f018a430069a8ef41743cd19fc8"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-global-validation-skips-new-file.json",
+      "bytes": 6208,
+      "sha256": "3d24c8dbfd543362407520f499abafe53f0c82d4d49ea610c1548fdb8f75827d"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-latest-configuration.json",
+      "bytes": 6428,
+      "sha256": "447f868fbdd056d2f1acf83b93a99496399db4b2466be18b213f1c230d109fe2"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-latest-fictitious-snapshot-id.json",
+      "bytes": 5568,
+      "sha256": "86ae14a1f9c48fb21f03e857bfccdce41c7f9b76c2227679b20b4899bc45df77"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-latest-snapshot-reconciles-silently.json",
+      "bytes": 5578,
+      "sha256": "a5dc9182cb525a6749bf1c870b8a70de10ea55042bdbdd8793b01085c165a7e2"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-latest-source-hash.json",
+      "bytes": 6426,
+      "sha256": "7da91001f8e6080c85678db43d228ec06b74c4dfa574a9cb97d7e53276593666"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-latest-validated-old-generation.json",
+      "bytes": 6443,
+      "sha256": "82cbbd0eeb1c642330ef9e1f5474b041ef4cdc46567550072dfcde817597894b"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-path-units.json",
+      "bytes": 5453,
+      "sha256": "6624342fc73cbf07a40665d37d72ba656819ef2afea083bc3e747127906a8fb0"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-request-operation.json",
+      "bytes": 5568,
+      "sha256": "db026bb8d9f0819e6b0c63c04bc3ee562ba10bc0504ca512846dd3a4f07d5ca6"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-revision-mix.json",
+      "bytes": 5566,
+      "sha256": "87b3c6865d11bfe46ea7b2ecd65d05991335a4ce06ebc86f289bab479d7a4a93"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-source-hash.json",
+      "bytes": 5559,
+      "sha256": "0a353b07d766fdcac82fd57c27ab9dd3804bcfc785c03a9c049a69184afc6b94"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-span.json",
+      "bytes": 5553,
+      "sha256": "774ed9aea2e342c81ea2197abc1cd3fdd4d219853819dd5c67efdef8ca65ab4d"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-stale-called-expired.json",
+      "bytes": 5289,
+      "sha256": "61cd1a9f008d28f4e6c12a5914a6373aa23ad2035f015ffea5c680017f359144"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-status-budget.json",
+      "bytes": 6853,
+      "sha256": "07d5a074dfc382f03dbc30cff434f4234586b5b3972a6166cf2f94b34cc9112d"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-strict-complete-without-validation.json",
+      "bytes": 6435,
+      "sha256": "078e7dc9687db86946848eabf45f56b7504607958b7bbaee8cc489f65b858118"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-utf8-boundary.json",
+      "bytes": 5517,
+      "sha256": "fdd2dbd7446059023349392f04100cc225f304a5dedc8bcec8aa5a2b243ec0f8"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/01-empty-file.json",
+      "bytes": 4901,
+      "sha256": "2156214776d21fb528bc29e041f6314fe8c90e1179a399759c69cd6dea32a901"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/02-partial-parse.json",
+      "bytes": 5366,
+      "sha256": "b554d156f05122e1290b6960198c221be0099d243e36cc9d21a5bb96faf63392"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/03-excluded-file.json",
+      "bytes": 4994,
+      "sha256": "61918d6826b65d06e1f19b1d0bc722d7a052d892159e662f1b4e73eec3787d29"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/04-parser-absent.json",
+      "bytes": 4991,
+      "sha256": "dd0888b8c5f2615f58de8dd1cf424fbf61d5a9b9688b8fe8b56c1e618d480af4"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/05-complete-empty-search.json",
+      "bytes": 4413,
+      "sha256": "a2a26a6f738e8b4c948a43ac08875d2ef5084c39f911db3c0c373f4a2f539e39"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/06-unsupported-calls.json",
+      "bytes": 4901,
+      "sha256": "a4ff50c289dad0279a2aef61b4e57a4b84dfa9765887a9b8a54e37f63ee64e2f"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/07-source-unicode-crlf.json",
+      "bytes": 5047,
+      "sha256": "6bb551a600bb2b97ac804016a84f6e420daa323c39af1953b2359f91296649cf"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/08-insufficient-budget.json",
+      "bytes": 6240,
+      "sha256": "d8ec7a7dffd6d566d1f9232fc2502fbf124eb595bcf6fa4ddc4495eceee2b56e"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/09-snapshot-expired.json",
+      "bytes": 3518,
+      "sha256": "2356b4d3893b53def01c310d96d820a185b7e27db9d92aaf8c1c82a1257f0d99"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/10-strict-incomplete.json",
+      "bytes": 5025,
+      "sha256": "3320c6d9f8ee0e473024ea76302375dbbf97701d7c678aa22c879f374209033d"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/11-candidate.json",
+      "bytes": 5749,
+      "sha256": "f8d5d6887352f1d4569749b09dd121c73ef2422cc93790af418e7e87debef4e8"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/12-windows-path.json",
+      "bytes": 4959,
+      "sha256": "ad40fef69efe3a4b77afb2e26d707eeed31d038bff3c9c7fea8af4465a86a52d"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/13-unix-path-bytes.json",
+      "bytes": 4938,
+      "sha256": "b6516ad5f1302ebe4b81498469bfa92f5aebf34abc48aa08215f0fbb86db7369"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/14-budget-below-envelope.json",
+      "bytes": 1146,
+      "sha256": "04109c68fbf7c3b996759e72e60fff936160590655ef37765a601e9b89d2f523"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/15-structural-fact.json",
+      "bytes": 5187,
+      "sha256": "188ce8e57dbb36ac10404cc8e5cd42a5bdefce4ac45992329e8a11b0d794c5e0"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/16-status-not-indexed.json",
+      "bytes": 2724,
+      "sha256": "1ed843a1fc3013fbcb3cd89c5d2411d09c844d32bab6c25d2a8e4c9230030b21"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/README.md",
+      "bytes": 1009,
+      "sha256": "6348cdde80c1ad2c8b6d447ca089fc42de1cdfb11b58410fb9349f701a0632f4"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-budget-exceeded.json",
+      "bytes": 5057,
+      "sha256": "8e8e680adefacad73a2671c3c027b3785044839d7af4ad2a539fc1712c0e8a5f"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-candidate-as-fact.json",
+      "bytes": 5767,
+      "sha256": "963539fb2aa35d01d1506ad1657677208993564bed53f8fed0fcd1ba750b6377"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-path-units.json",
+      "bytes": 4948,
+      "sha256": "cac99a45d361e7021ec4fc6a3fcb5f0e8a73a7c19a2e554f197bf4f85efa5b40"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-request-operation.json",
+      "bytes": 5063,
+      "sha256": "5c5aa2e1772c9ad3fd4feabd3816bec3b8e129ecc7384ac23c1b8705eb88cede"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-revision-mix.json",
+      "bytes": 5061,
+      "sha256": "f1bdd1ece6db33ce52275dfa5f8d8bced105e94750d9b573dbf6bf35fe3a4a88"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-source-hash.json",
+      "bytes": 5054,
+      "sha256": "26baf6df81e19270915b76616134fe2d2544d21fd637f6304056b5e45073d30e"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-span.json",
+      "bytes": 5048,
+      "sha256": "529a0b24eb54ed70715a098bf63deebc75c3c03280e096406ca77213503ff7f2"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-status-budget.json",
+      "bytes": 6239,
+      "sha256": "589a3f9f7b3b6a18eba744607aa829847f0cd25a88d25fdf3350ce027da7baee"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/invalid-utf8-boundary.json",
+      "bytes": 5012,
+      "sha256": "6f159dcc12730ef84fa2e45c54b58512ce967736547dc7c072422ec6dd4297ee"
+    },
+    {
+      "path": "docs/contracts/examples/legacy-v1/schema.json",
+      "bytes": 47607,
+      "sha256": "f12588f7f19e522aa6964bee6211e9ee9354ec6b79823a6b74c2f5178208fa62"
+    },
+    {
+      "path": "docs/contracts/examples/requirements.txt",
+      "bytes": 185,
+      "sha256": "f2c39ba704b36e6c884a0552e34f1eeabd02907fc8251420f9fb8bfd5d8ce9ac"
+    },
+    {
+      "path": "docs/contracts/examples/schema.json",
+      "bytes": 52680,
+      "sha256": "455d267eab45772499d0bf43362800ab3208d9ed9b21d6581d5a7597867f109b"
+    },
+    {
+      "path": "docs/contracts/m1.md",
+      "bytes": 35142,
+      "sha256": "f2d7e6cbcd6c2cfbbb0ce6a94cdb883848470541da1d9bd936adcb33c8181418"
+    },
+    {
+      "path": "docs/contracts/tests/test_verify.py",
+      "bytes": 5106,
+      "sha256": "51ba0d8ace13a6479aa94aeef4d04b9a3e99e952cd390ce029e7f8694fbc171d"
+    },
+    {
+      "path": "docs/contracts/verify.py",
+      "bytes": 15994,
+      "sha256": "bef4fb661385c1baaa6481d1d529e02b67ea496a1fb3578e399969955a82360a"
+    }
+  ]
+}

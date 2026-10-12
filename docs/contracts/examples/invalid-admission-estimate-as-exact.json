@@ -1,0 +1,98 @@
+{
+  "case_id": "invalid-admission-estimate-as-exact",
+  "valid": false,
+  "expected_violation": "admission",
+  "fixture_files": [],
+  "request": {
+    "schema_version": 2,
+    "request_id": "request_demo",
+    "workspace_id": "ws_demo",
+    "worktree_id": "wt_demo",
+    "operation": "context",
+    "consistency": {
+      "mode": "snapshot",
+      "scope": {
+        "kind": "workspace"
+      },
+      "revision": {
+        "kind": "fixed",
+        "snapshot_id": "snap_demo42"
+      }
+    },
+    "limits": {
+      "max_bytes": 1,
+      "max_tokens": null,
+      "tokenizer": null,
+      "deadline_ms": 1000,
+      "max_candidates": 100,
+      "max_files": 100,
+      "max_source_bytes": 65536,
+      "max_expansions": 1
+    },
+    "params": {
+      "intent": "fix",
+      "description": "corrigir exemplo",
+      "anchors": [
+        "fi_demo"
+      ]
+    }
+  },
+  "response": null,
+  "admission_error": {
+    "diagnostic": {
+      "code": "request_budget_too_small",
+      "message": "nenhum payload recuperado",
+      "minimum_bytes": 1024,
+      "minimum_counting": "estimated_admission_bound",
+      "outside_requested_budget": true,
+      "estimation_method": null,
+      "retry_automatically": false
+    },
+    "diagnostic_hard_cap_bytes": 4096,
+    "cli_exit": 2,
+    "cli_stdout": "",
+    "cli_stderr": "{\"code\":\"request_budget_too_small\",\"message\":\"nenhum payload recuperado\",\"minimum_bytes\":1024,\"minimum_counting\":\"estimated_admission_bound\",\"outside_requested_budget\":true,\"estimation_method\":\"illustrative envelope bound; not an exact product count\",\"retry_automatically\":false}",
+    "cli_stderr_bytes": 279,
+    "mcp_result": {
+      "isError": true,
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code\":\"request_budget_too_small\",\"message\":\"nenhum payload recuperado\",\"minimum_bytes\":1024,\"minimum_counting\":\"estimated_admission_bound\",\"outside_requested_budget\":true,\"estimation_method\":\"illustrative envelope bound; not an exact product count\",\"retry_automatically\":false}"
+        }
+      ]
+    },
+    "mcp_result_bytes": 355,
+    "mcp_wire": {
+      "jsonrpc": "2.0",
+      "id": "request_demo",
+      "result": {
+        "isError": true,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"code\":\"request_budget_too_small\",\"message\":\"nenhum payload recuperado\",\"minimum_bytes\":1024,\"minimum_counting\":\"estimated_admission_bound\",\"outside_requested_budget\":true,\"estimation_method\":\"illustrative envelope bound; not an exact product count\",\"retry_automatically\":false}"
+          }
+        ]
+      }
+    },
+    "mcp_wire_bytes": 402,
+    "wire_counting_scope": "jsonrpc_object_without_transport_framing"
+  },
+  "fixture_version": 2,
+  "fixture_state": {
+    "published_snapshot_id": "snap_demo42",
+    "required_snapshot_id": "snap_demo42",
+    "retained_snapshot_ids": [
+      "snap_demo42"
+    ],
+    "bindings": [
+      {
+        "id": "fi_demo",
+        "kind": "anchor",
+        "snapshot_id": "snap_demo42"
+      }
+    ],
+    "inventory_at_required": []
+  }
+}

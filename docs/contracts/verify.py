@@ -2,6 +2,7 @@
 """Documentary checks for M0-01 examples; not a product/domain implementation."""
 
 import json
+import argparse
 import sys
 from pathlib import Path
 
@@ -27,6 +28,101 @@ def compact_bytes(value):
     return json.dumps(value, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
 
 
+def check_admission(case):
+    """Measure illustrative application serializations, not a real adapter."""
+    q, a = case['request'], case['admission_error']
+    d = a['diagnostic']
+    require(case['response'] is None and not case['fixture_files'],
+            'admission', 'admission must recover no payload')
+    require(q['limits']['max_bytes'] < d['minimum_bytes'], 'admission', 'budget meets minimum')
+    require((d['minimum_counting'] == 'estimated_admission_bound') ==
+            (d['estimation_method'] is not None), 'admission', 'estimate must be labeled')
+    require(a['cli_stderr'] == compact_bytes(d).decode('utf-8'),
+            'admission', 'stderr differs from bounded diagnostic')
+    result = a['mcp_result']
+    require(result['content'][0]['text'] == a['cli_stderr'],
+            'admission', 'MCP diagnostic differs')
+    if 'structuredContent' in result:
+        require(result['structuredContent'] == d, 'admission', 'structured diagnostic differs')
+    for label, raw in [('cli_stderr', a['cli_stderr'].encode('utf-8')),
+                       ('mcp_result', compact_bytes(result))]:
+        require(a[label + '_bytes'] == len(raw), 'admission_count', label + ' size differs')
+        require(len(raw) <= a['diagnostic_hard_cap_bytes'],
+                'admission', label + ' exceeds application cap including metadata')
+    wire = a['mcp_wire']
+    require(wire['id'] == q['request_id'] and wire['result'] == result,
+            'admission', 'wire identity/result differs')
+    require(a['mcp_wire_bytes'] == len(compact_bytes(wire)),
+            'admission_count', 'JSON-RPC wire including ID must be counted')
+
+
+def check_selection(case):
+    """Check revision policy against a documentary state oracle."""
+    q, r, state = case['request'], case['response'], case['fixture_state']
+    revision, mode = q['consistency']['revision'], q['consistency']['mode']
+    sid = r['snapshot']['snapshot_id'] if r['snapshot'] else None
+    error = r['error']['code'] if r['error'] else None
+    has_data = any(r[k] for k in ['items', 'assertions', 'candidates', 'unknowns'])
+    retained = state['retained_snapshot_ids']
+    require(revision['kind'] == 'fixed' or (q['operation'] != 'expand' and 'cursor' not in q['params']),
+            'continuation_revision', 'expand/cursor cannot select latest')
+    if sid is not None:
+        require(sid in retained, 'snapshot_identity', 'returned generation not retained')
+    if revision['kind'] == 'fixed':
+        fixed = revision['snapshot_id']
+        require(sid is None or sid == fixed, 'snapshot_identity', 'silent fixed-ID rebind')
+        if fixed not in retained:
+            require(error == 'snapshot_expired' and sid is None and not has_data,
+                    'revision_policy', 'expired revision must be typed, not rebound')
+        elif mode != 'snapshot' and state['required_snapshot_id'] is not None and fixed != state['required_snapshot_id']:
+            require(error == 'snapshot_stale' and not has_data,
+                    'revision_policy', 'retained but stale fixed ID must be refused')
+        else:
+            require(error not in ['snapshot_expired', 'snapshot_stale'],
+                    'revision_policy', 'false expiration/staleness')
+    elif sid is not None:
+        expected = state['published_snapshot_id'] if mode == 'snapshot' else state['required_snapshot_id']
+        if mode == 'snapshot' or r['freshness']['validation_complete']:
+            require(sid == expected, 'revision_policy', 'latest resolved wrong generation')
+    if error == 'snapshot_stale':
+        require(r['status'] == 'error' and r['next'] and not r['error']['retryable'],
+                'revision_policy', 'stale requires a new explicit query')
+        require(r['coverage']['query']['completeness'] != 'complete',
+                'revision_policy', 'stale must not claim completeness')
+    bindings = {b['id']: b for b in state['bindings']}
+    params = q['params']
+    ids = params.get('anchors', []) + [params[k] for k in ['symbol_id', 'context_id', 'cursor'] if k in params]
+    for anchor in ids:
+        require(anchor in bindings, 'anchor_revision', 'anchor lacks revision oracle')
+        binding = bindings[anchor]
+        continuation = binding['kind'] in ['context', 'cursor']
+        if continuation:
+            require(revision['kind'] == 'fixed' and revision['snapshot_id'] == binding['snapshot_id'],
+                    'continuation_revision', 'expand/cursor must fix original manifest revision')
+        if sid is not None and binding['snapshot_id'] != sid:
+            require(error == 'anchor_revision_mismatch' and not has_data,
+                    'anchor_revision', 'incompatible anchor must not migrate')
+    if mode == 'snapshot':
+        require(r['freshness']['validated_at'] is None and not r['freshness']['validation_complete'],
+                'freshness', 'snapshot mode cannot claim filesystem validation')
+    elif r['freshness']['validation_complete']:
+        require(state['required_snapshot_id'] is not None and sid == state['required_snapshot_id']
+                and r['freshness']['validated_at'] is not None
+                and r['freshness']['validated_scope'] == q['consistency']['scope'],
+                'freshness', 'validation must reconcile the requested scope')
+        if q['consistency']['scope']['kind'] == 'workspace':
+            expected_files = {f['file_id']: f['source_hash'] for f in state['inventory_at_required']}
+            observed_files = {f['file_id'] for f in r['coverage']['files']}
+            require(observed_files == set(expected_files),
+                    'freshness', 'global reconciliation must include new/removed files')
+            for f in case['fixture_files']:
+                require(f['snapshot_id'] == sid and expected_files.get(f['file_id']) == f['source_hash'],
+                        'freshness', 'reconciled inventory hash differs')
+    elif r['status'] != 'error':
+        require(r['coverage']['query']['completeness'] != 'complete' and r['freshness']['gaps'],
+                'freshness', 'unfinished validation needs gaps and incomplete coverage')
+
+
 def check_case(case, validator):
     errors = list(validator.iter_errors(case))
     require(not errors, 'schema', str(errors[0]) if errors else '')
@@ -34,10 +130,7 @@ def check_case(case, validator):
     require((q['limits']['max_tokens'] is None) == (q['limits']['tokenizer'] is None),
             'tokenizer', 'tokenizer and max_tokens must be supplied together')
     if admission:
-        require(r is None and not case['fixture_files'], 'admission', 'admission must recover no payload')
-        require(q['limits']['max_bytes'] < admission['minimum_bytes'], 'admission', 'budget meets minimum')
-        require(len(compact_bytes(admission)) <= admission['diagnostic_hard_cap_bytes'],
-                'admission', 'diagnostic exceeds hard cap')
+        check_admission(case)
         return
     require(r is not None, 'response', 'normal response absent')
     for field in ['schema_version', 'request_id', 'workspace_id', 'worktree_id']:
@@ -49,6 +142,7 @@ def check_case(case, validator):
     if r['budget']['counting'] == 'not_requested':
         require(r['budget']['used_tokens'] is None and r['budget']['requested_tokens'] is None
                 and r['budget']['tokenizer'] is None, 'tokenizer', 'fictitious token count')
+    check_selection(case)
     facts = r['assertions'] + r['candidates'] + r['unknowns']
     if r['snapshot'] is None:
         require(not r['items'] and not facts, 'snapshot_identity', 'data without snapshot')
@@ -59,7 +153,6 @@ def check_case(case, validator):
         snap = r['snapshot']
         for field in ['workspace_id', 'worktree_id']:
             require(snap[field] == q[field], 'snapshot_identity', field)
-        require(snap['snapshot_id'] == q['consistency']['snapshot_id'], 'snapshot_identity', 'silent rebind')
     files = {}
     for f in case['fixture_files']:
         raw = bytes.fromhex(f['source_hex'])
@@ -112,6 +205,8 @@ def check_case(case, validator):
             'coverage', 'eligible denominator inconsistent')
     require(inv['discovered'] == inv['eligible'] + inv['excluded'], 'coverage', 'discovered denominator inconsistent')
     for f in r['coverage']['files']:
+        require(r['snapshot'] is not None and f['snapshot_id'] == r['snapshot']['snapshot_id'],
+                'snapshot_identity', 'mixed coverage revision')
         if f['state'] == 'processed':
             require(f['tree_valid'] is True, 'coverage', 'processed without valid tree')
             require(f['symbol_count'] is not None, 'coverage', 'processed without observed count')
@@ -143,12 +238,16 @@ def check_case(case, validator):
         require(r['coverage']['query']['completeness'] == 'complete', 'coverage', 'ok with gaps')
 
 
-def main():
-    schema = json.loads((EXAMPLES / 'schema.json').read_text())
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--examples', type=Path, default=EXAMPLES,
+                        help='directory with v2 schema and documentary cases')
+    examples = parser.parse_args(argv).examples
+    schema = json.loads((examples / 'schema.json').read_text())
     Draft202012Validator.check_schema(schema)
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
     valid = invalid = failed = 0
-    for path in sorted(EXAMPLES.glob('*.json')):
+    for path in sorted(examples.glob('*.json')):
         if path.name == 'schema.json':
             continue
         case = json.loads(path.read_text())

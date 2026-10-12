@@ -1,10 +1,10 @@
 # Estado da implementação
 
-Atualizado em: 11/10/2026, pelo arquiteto, após revisar o commit L0 `10d9bf95490d405ea2d8014e95065295b32727c4`.
+Atualizado em: 11/10/2026, pelo implementador, ao retomar L1 após a revisão arquitetural `257b91d`.
 
-**Situação:** L0 aceito no escopo de contrato/exemplos e scaffold, conforme [revisão arquitetural](relatorios/REVISAO-L0.md). Reexecução local passou e CI do scaffold foi confirmada em Linux x86_64, macOS arm64 e Windows x86_64. Contrato requer a retificação M0-01.R1 antes de congelamento para harness/M1; M0-02.R1 acrescentará CI dos exemplos. Parsing, consultas e MCP ainda indisponíveis. Nenhum gate competitivo foi avaliado.
+**Situação:** L0 aceito no escopo de contrato/exemplos e scaffold, conforme [revisão arquitetural](relatorios/REVISAO-L0.md). Reexecução local passou e CI do scaffold foi confirmada em Linux x86_64, macOS arm64 e Windows x86_64. M0-01.R1 foi concretizada em contrato/schema v2 e passou em 56 exemplos e dez testes locais. M0-02.R1 acrescenta CI dos exemplos, aguardando run do commit. Parsing, consultas e MCP ainda indisponíveis. Nenhum gate competitivo foi avaliado.
 
-**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próximo lote L1:** M0-01.R1 e M0-03, com M0-07 como frente independente; depois M0-02.R1. M0-04 aguarda corpus/retificação; M0-05/M0-08 aguardam corpus. L0-A01 depende do mantenedor; A02/A03 já têm direção arquitetural e trabalho concreto para o implementador.
+**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Lote L1 em execução:** M0-01.R1 e M0-03, com M0-07 como frente independente; depois M0-02.R1. M0-04 aguarda corpus/retificação; M0-05/M0-08 aguardam corpus. L0-A01 depende do mantenedor; A02/A03 já têm direção arquitetural e trabalho concreto para o implementador.
 
 ## Decisões vigentes
 
@@ -23,14 +23,14 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | ID | Atividade | Estado | Evidência |
 |---|---|---|---|
 | M0-01 | Contrato mínimo, escopo L0 | concluída | [Contrato](contracts/m1.md); [25 exemplos revalidados](relatorios/logs/revisao-L0/checks.json); [aceite e ressalva para promoção](relatorios/REVISAO-L0.md) |
-| M0-01.R1 | Retificação de seletor de revisão e admissão | não iniciada | [Decisões L0-A02/A03 e aceite](relatorios/REVISAO-L0.md) |
+| M0-01.R1 | Retificação de seletor de revisão e admissão | concluída | [Aceite L1](relatorios/L1.md); [checks e preservação L0](relatorios/logs/L1/contract-r1-checks.json) |
 | M0-02 | Workspace Rust e CI | concluída | [Escolhas e verificações](relatorios/dependencias-L0.md); [CI do commit](relatorios/logs/revisao-L0/ci.json) |
-| M0-02.R1 | Validação documental em CI | não iniciada | [L0-V01 e aceite](relatorios/REVISAO-L0.md) |
-| M0-03 | Corpus D0/D1 e oracles | não iniciada | — |
+| M0-02.R1 | Validação documental em CI | em andamento | Job documental configurado; [suíte local](relatorios/logs/L1/contracts-tests.json); aguardando CI do commit |
+| M0-03 | Corpus D0/D1 e oracles | em andamento | — |
 | M0-04 | Harness, baseline e agentes | não iniciada | — |
 | M0-05 | Gramáticas e autonomia | não iniciada | — |
 | M0-06 | Workers e IPC | não iniciada | — |
-| M0-07 | Snapshots e armazenamento | não iniciada | — |
+| M0-07 | Snapshots e armazenamento | em andamento | — |
 | M0-08 | Filesystem e checkout | não iniciada | — |
 | M0-11 | Protótipo semântico P2 | não iniciada | — |
 | M0-09 | Protótipo de contexto P3 | não iniciada | — |
@@ -75,8 +75,8 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | Toolchain, MSRV e versões das dependências | L0: Rust/MSRV 1.98.1, edição 2024, zero dependências externas; verificar bibliotecas nas tarefas consumidoras |
 | Repositórios e tarefas reais do corpus | M0-03, com versões e oracles |
 | Licença de distribuição do produto | L0-A01: decisão do mantenedor antes de M1-20; manter publish=false |
-| Contrato de revisão e admissão | M0-01.R1: direção A02/A03 definida; implementar exemplos/schema/verificador antes de congelar harness/M1 |
-| CI dos exemplos documentais | M0-02.R1: novo check; workflow Rust atual já passou nos três hosts |
+| Contrato de revisão e admissão | M0-01.R1: direção A02/A03 concretizada em exemplos/schema/verificador v2; adapters/tokenizers reais nos cartões consumidores |
+| CI dos exemplos documentais | M0-02.R1: novo check implementado, aguardando run do commit; workflow Rust L0 já passou nos três hosts |
 | Hardware de referência e autonomia nativa | Hardware permanece não medido; M0-05 ainda precisa provar gramáticas/ambiente limpo. CI atual comprova somente scaffold |
 | Modelos, limites de runs, esforço e teto monetário de campanha | Antes do uso pago correspondente em M0-04/12; preparar replay/local enquanto isso |
 | Tamanho final de H1 e método estatístico | M0-10/M1-22, após dados D1 e antes de abrir H1 |
@@ -89,6 +89,8 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 
 ## Questões para o arquiteto
 
-L0-A02 foi resolvida em arquitetura com alcance explícito do cap de diagnóstico; implementação e testes ainda cabem ao implementador. L0-A03 define snapshot fixo versus latest e exige concretização em R1. L0-A01 permanece escolha do mantenedor, sem bloquear M0-03/M0-07. Referência e critérios: [revisão, decisões e lote L1](relatorios/REVISAO-L0.md).
+L0-A02 foi resolvida em arquitetura com alcance explícito do cap de diagnóstico; contrato e testes documentais foram concretizados em R1. L0-A03 define snapshot fixo versus latest e seus exemplos passaram; implementação de produto segue os cartões consumidores. L0-A01 permanece escolha do mantenedor, sem bloquear M0-03/M0-07. Referência e critérios: [revisão, decisões e lote L1](relatorios/REVISAO-L0.md).
 
 Nenhuma decisão competitiva foi tomada com base nos smokes. A preferência do usuário por qualidade e os tetos propostos de custo permanecem inalterados.
+
+[Relatório L1](relatorios/L1.md): contrato retificado e CI em verificação; corpus e spike SQLite em execução.
