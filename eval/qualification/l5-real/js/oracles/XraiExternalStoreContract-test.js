@@ -93,7 +93,9 @@ test('regression ordinary state update remains supported', async () => {
   expect(Scheduler).toHaveYielded(['start']);
   // Negative control: the same microtask checkpoint must not drain a normal
   // transition. Only the later explicit act is allowed to complete that work.
-  React.startTransition(() => update('deferred'));
+  expect(() => {
+    React.startTransition(() => update('deferred'));
+  }).toErrorDev('An update to Stateful inside a test was not wrapped in act');
   await Promise.resolve();
   expect(Scheduler).toHaveYielded([]);
   expect(root).toMatchRenderedOutput('start');

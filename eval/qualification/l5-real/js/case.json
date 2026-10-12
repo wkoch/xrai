@@ -70,9 +70,9 @@
     "containment": "runner.execute arbitrary_agent=True; fresh Linux PID namespace per operation; verified teardown; no network during probes",
     "minimum_free_disk_per_checkout": "2 GiB recommended; check actual CI headroom",
     "setup_execution": "frozen install + pinned bootstrap passed in CI38280118706",
-    "baseline_reference_regression": "CI38280118706 baseline requirements3 failed as intended, both sides regressions2 passed; reference requirements3 failed because prior oracle skipped microtask checkpoint. Failure retained; new oracle requires fresh CI.",
+    "baseline_reference_regression": "CI38282162955 baseline requirements3 failed as intended; ordinary transition negative control observation completed but regression failed on expected DEV warning outside act. Warning-specific matcher correction now frozen; no retrospective success, fresh CI required.",
     "bootstrap": "probe installs pinned react-is17.0.2 offline under pretty-format/node_modules, reproducing captured omitted postinstall; verify SHA256/SHA512 and retain receipt; no production/lock/oracle edits",
-    "oracle_checkpoint": "SyncLane checkpoint at one Promise microtask after startTransition outside act; no flushSync or Scheduler drain. Ordinary transition regression negative control must remain pending at same checkpoint; reference success pending fresh CI."
+    "oracle_checkpoint": "Principal unchanged: SyncLane checkpoint at one Promise microtask after startTransition outside act, no flushSync/Scheduler drain. Ordinary transition negative control expects only Stateful DEV act warning via local upstream toErrorDev and must remain pending at same checkpoint."
   },
   "incremental_event": {
     "status": "not_started",
@@ -104,8 +104,8 @@
       "bytes": 7424
     },
     "eval/qualification/l5-real/js/oracles/XraiExternalStoreContract-test.js": {
-      "sha256": "7e07f66795a31c1d0877bfb992c7aa3a1c117e39ba5197d60a16572645c84872",
-      "bytes": 4980
+      "sha256": "9938be79198f975471b472f3bbfa33614fe63d46e1def912d8a827a925292d65",
+      "bytes": 5078
     },
     "eval/qualification/l5-real/js/oracles/reference.patch": {
       "sha256": "3156ac7ac3e5a2df64db9cbff7e4939da5c3dac35aa4851a0008a98e6e546733",

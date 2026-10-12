@@ -29,9 +29,11 @@ def verify_text(oracle, natural_input):
     if not re.match(r'\s*async \(\) =>', main):
         raise ValueError('main oracle must await the microtask checkpoint')
     control = code.split("test('regression ordinary state update remains supported',", 1)[1].split("test('regression layout", 1)[0]
-    negative = re.compile(r"React\.startTransition\(\(\) => update\('deferred'\)\);\s*await Promise\.resolve\(\);\s*expect\(Scheduler\)\.toHaveYielded\(\[\]\);\s*expect\(root\)\.toMatchRenderedOutput\('start'\);\s*await act\(\(\) => \{\}\);\s*expect\(Scheduler\)\.toHaveYielded\(\['deferred'\]\);")
+    negative = re.compile(r"expect\(\(\) => \{\s*React\.startTransition\(\(\) => update\('deferred'\)\);\s*\}\)\.toErrorDev\('An update to Stateful inside a test was not wrapped in act'\);\s*await Promise\.resolve\(\);\s*expect\(Scheduler\)\.toHaveYielded\(\[\]\);\s*expect\(root\)\.toMatchRenderedOutput\('start'\);\s*await act\(\(\) => \{\}\);\s*expect\(Scheduler\)\.toHaveYielded\(\['deferred'\]\);")
     if not negative.search(control):
         raise ValueError('ordinary transition negative control missing or weakened')
+    if 'console.error =' in code or 'jest.spyOn(console' in code or 'spyOnDev(console' in code:
+        raise ValueError('oracle must not globally suppress console warnings')
     for pattern in [r'await act\(\(\) => second\.publish\(', r'await act\(\(\) => source\.publish\(\{a:']:
         if not re.search(pattern, code):
             raise ValueError('store lifecycle notification is not awaited as in captured tests')

@@ -1,0 +1,48 @@
+[
+  {
+    "path": "scripts/jest/matchers/toWarnDev.js",
+    "commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+    "sha256": "2f3a71da857d731c7af7f5e215f041a11de8f2669da7a7a829e37922bac928b2",
+    "anchors": [
+      {
+        "start_line": 24,
+        "end_line": 42,
+        "source": "  function matcher(callback, expectedMessages, options = {}) {\n    if (__DEV__) {\n      // Warn about incorrect usage of matcher.\n      if (typeof expectedMessages === 'string') {\n        expectedMessages = [expectedMessages];\n      } else if (!Array.isArray(expectedMessages)) {\n        throw Error(\n          `${matcherName}() requires a parameter of type string or an array of strings ` +\n            `but was given ${typeof expectedMessages}.`\n        );\n      }\n      if (\n        options != null &&\n        (typeof options !== 'object' || Array.isArray(options))\n      ) {\n        throw new Error(\n          `${matcherName}() second argument, when present, should be an object. ` +\n            'Did you forget to wrap the messages into an array?'\n        );"
+      },
+      {
+        "start_line": 105,
+        "end_line": 118,
+        "source": "          lastWarningWithExtraComponentStack = {\n            format,\n          };\n        }\n\n        for (let index = 0; index < expectedMessages.length; index++) {\n          const expectedMessage = expectedMessages[index];\n          if (\n            normalizedMessage === expectedMessage ||\n            normalizedMessage.includes(expectedMessage)\n          ) {\n            if (isLikelyAComponentStack(normalizedMessage)) {\n              warningsWithComponentStack.push(normalizedMessage);\n            } else {"
+      },
+      {
+        "start_line": 145,
+        "end_line": 181,
+        "source": "      };\n\n      // TODO Decide whether we need to support nested toWarn* expectations.\n      // If we don't need it, add a check here to see if this is already our spy,\n      // And throw an error.\n      const originalMethod = console[consoleMethod];\n\n      // Avoid using Jest's built-in spy since it can't be removed.\n      console[consoleMethod] = consoleSpy;\n\n      try {\n        callback();\n      } catch (error) {\n        caughtError = error;\n      } finally {\n        // Restore the unspied method so that unexpected errors fail tests.\n        console[consoleMethod] = originalMethod;\n\n        // Any unexpected Errors thrown by the callback should fail the test.\n        // This should take precedence since unexpected errors could block warnings.\n        if (caughtError) {\n          throw caughtError;\n        }\n\n        // Any unexpected warnings should be treated as a failure.\n        if (unexpectedWarnings.length > 0) {\n          return {\n            message: () => unexpectedWarnings[0].stack,\n            pass: false,\n          };\n        }\n\n        // Any remaining messages indicate a failed expectations.\n        if (expectedMessages.length > 0) {\n          return {\n            message: () =>\n              `Expected warning was not recorded:\\n  ${this.utils.printReceived("
+      }
+    ]
+  },
+  {
+    "path": "packages/react-dom/src/__tests__/ReactDOMNativeEventHeuristic-test.js",
+    "commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+    "sha256": "4f28a461cb24f1f2e665d36759202adbb430c66955d6f3347f41fb81043870cb",
+    "anchors": [
+      {
+        "start_line": 76,
+        "end_line": 87,
+        "source": "    // Dispatch a click event on the Disable-button.\n    const firstEvent = document.createEvent('Event');\n    firstEvent.initEvent('click', true, true);\n    expect(() =>\n      dispatchAndSetCurrentEvent(disableButton, firstEvent),\n    ).toErrorDev(['An update to Form inside a test was not wrapped in act']);\n\n    // Discrete events should be flushed in a microtask.\n    // Verify that the second button was removed.\n    await null;\n    expect(submitButtonRef.current).toBe(null);\n    // We'll assume that the browser won't let the user click it."
+      }
+    ]
+  },
+  {
+    "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+    "commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+    "sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+    "anchors": [
+      {
+        "start_line": 2658,
+        "end_line": 2725,
+        "source": "function shouldForceFlushFallbacksInDEV() {\n  // Never force flush in production. This function should get stripped out.\n  return __DEV__ && ReactCurrentActQueue.current !== null;\n}\n\nexport function warnIfNotCurrentlyActingEffectsInDEV(fiber: Fiber): void {\n  if (__DEV__) {\n    if (\n      warnsIfNotActing === true &&\n      (fiber.mode & StrictLegacyMode) !== NoMode &&\n      ReactCurrentActQueue.current === null &&\n      // Our internal tests use a custom implementation of `act` that works by\n      // mocking the Scheduler package. Disable the `act` warning.\n      // TODO: Maybe the warning should be disabled by default, and then turned\n      // on at the testing frameworks layer? Instead of what we do now, which\n      // is check if a `jest` global is defined.\n      ReactCurrentActQueue.disableActWarning === false\n    ) {\n      console.error(\n        'An update to %s ran an effect, but was not wrapped in act(...).\\n\\n' +\n          'When testing, code that causes React state updates should be ' +\n          'wrapped into act(...):\\n\\n' +\n          'act(() => {\\n' +\n          '  /* fire events that update state */\\n' +\n          '});\\n' +\n          '/* assert on the output */\\n\\n' +\n          \"This ensures that you're testing the behavior the user would see \" +\n          'in the browser.' +\n          ' Learn more at https://reactjs.org/link/wrap-tests-with-act',\n        getComponentNameFromFiber(fiber),\n      );\n    }\n  }\n}\n\nfunction warnIfNotCurrentlyActingUpdatesInDEV(fiber: Fiber): void {\n  if (__DEV__) {\n    if (\n      warnsIfNotActing === true &&\n      executionContext === NoContext &&\n      ReactCurrentActQueue.current === null &&\n      // Our internal tests use a custom implementation of `act` that works by\n      // mocking the Scheduler package. Disable the `act` warning.\n      // TODO: Maybe the warning should be disabled by default, and then turned\n      // on at the testing frameworks layer? Instead of what we do now, which\n      // is check if a `jest` global is defined.\n      ReactCurrentActQueue.disableActWarning === false\n    ) {\n      const previousFiber = ReactCurrentFiberCurrent;\n      try {\n        setCurrentDebugFiberInDEV(fiber);\n        console.error(\n          'An update to %s inside a test was not wrapped in act(...).\\n\\n' +\n            'When testing, code that causes React state updates should be ' +\n            'wrapped into act(...):\\n\\n' +\n            'act(() => {\\n' +\n            '  /* fire events that update state */\\n' +\n            '});\\n' +\n            '/* assert on the output */\\n\\n' +\n            \"This ensures that you're testing the behavior the user would see \" +\n            'in the browser.' +\n            ' Learn more at https://reactjs.org/link/wrap-tests-with-act',\n          getComponentNameFromFiber(fiber),\n        );\n      } finally {\n        if (previousFiber) {\n          setCurrentDebugFiberInDEV(fiber);\n        } else {"
+      }
+    ]
+  }
+]

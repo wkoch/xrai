@@ -1,0 +1,354 @@
+{
+  "at": "2026-10-12T17:09:13.130327+00:00",
+  "reviewer": "independent cfg_review subagent",
+  "scope": "Source-only checkpoint harness repair; no upstream execution or runtime/admission proof",
+  "comparison_parent": "d54520b2d5f7d8fcac1e770ad06d26d1d5333a0d",
+  "freeze_sources": {
+    "eval/scripts/run_l5_js.py": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+    "eval/scripts/verify_l5_js_oracle.py": "e0773783c92021f76a8aa068727c6f36728d4b1c846d2403bb38fb86101c3f79",
+    "eval/scripts/tests/test_l5_js_oracle.py": "9c56c7ea90e66d74c6c9efa56f2cd1c433e2914ca4b0c432ce24f30abfe57555",
+    "eval/qualification/l5-real/js/case.json": "d901dcb9a638f886d64da6b371ecf371618a44ddd5c94284d31eab3f96490c00",
+    "eval/qualification/l5-real/js/oracles/XraiExternalStoreContract-test.js": "7e07f66795a31c1d0877bfb992c7aa3a1c117e39ba5197d60a16572645c84872",
+    "eval/qualification/l5-real/js/README.md": "9835c0d26a66a243853321037cec760fc4957d2d92c5a4c80c70d4320f9dc71a"
+  },
+  "freeze_all_match": true,
+  "unchanged_since_parent": {
+    "eval/qualification/l5-real/js/agent/input.md": {
+      "sha256": "f6822108434963667d2f220d60d60e134a48e93130bb25c74b4bcce5359862ef",
+      "bytes": 919,
+      "matches_parent": true
+    },
+    "eval/qualification/l5-real/js/oracles/reference.patch": {
+      "sha256": "3156ac7ac3e5a2df64db9cbff7e4939da5c3dac35aa4851a0008a98e6e546733",
+      "bytes": 11104,
+      "matches_parent": true
+    },
+    "eval/qualification/l5-real/js/sources/base.tar.gz": {
+      "sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6",
+      "bytes": 5952369,
+      "matches_parent": true
+    },
+    "eval/qualification/l5-real/js/sources/head.tar.gz": {
+      "sha256": "1d7af4d0c750af4ce19c18473e876b4bc56390f3adca22dae9a4d85304a808c9",
+      "bytes": 5955008,
+      "matches_parent": true
+    },
+    "eval/qualification/l5-real/js/setup/bootstrap-pin.json": {
+      "sha256": "8af3f4bc8001b1e3063a54fab0002dc621a19502bfd4bd440544048ae6907be2",
+      "bytes": 1087,
+      "matches_parent": true
+    },
+    "eval/qualification/l5-real/js/setup/react-is-17.0.2.tgz": {
+      "sha256": "9b1850c05b4fc08e9b814a201281a103a7651ac46500dce7b6bedd0865963eb1",
+      "bytes": 5785,
+      "matches_parent": true
+    }
+  },
+  "yarn_lock_sha256": {
+    "base": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544",
+    "head": "5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544"
+  },
+  "before_oracle_sha256": "824ec831905072619315c20ed797fd378b0487feed337b6caaa93c9ffff0ee18",
+  "current_oracle_sha256": "7e07f66795a31c1d0877bfb992c7aa3a1c117e39ba5197d60a16572645c84872",
+  "captured_anchor_checks": [
+    {
+      "side": "base",
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "sha256": "66a2e38d1d47afd70c3b487e0582716777b2174caef5e0b4ab949514eef5968f",
+      "head_anchor_verified": false
+    },
+    {
+      "side": "base",
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+      "head_anchor_verified": false
+    },
+    {
+      "side": "base",
+      "path": "packages/react-noop-renderer/src/createReactNoop.js",
+      "sha256": "974809e4e2d9ecdbf3cce713a278cfab0cd46cd0b79941e8280f633bd879dc70",
+      "head_anchor_verified": false
+    },
+    {
+      "side": "base",
+      "path": "packages/jest-react/src/internalAct.js",
+      "sha256": "3f3a3b6492e2aaa3abf62783ab18a3d22912342b459d262af794e5fd5e5b9855",
+      "head_anchor_verified": false
+    },
+    {
+      "side": "base",
+      "path": "packages/use-sync-external-store/src/__tests__/useSyncExternalStoreShared-test.js",
+      "sha256": "d174ab2c519abf18e13655899d1d4e24c1eabefe886b4dd6d6614a8eafe11cdf",
+      "head_anchor_verified": false
+    },
+    {
+      "side": "head",
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "sha256": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753",
+      "head_anchor_verified": true
+    },
+    {
+      "side": "head",
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+      "head_anchor_verified": true
+    },
+    {
+      "side": "head",
+      "path": "packages/react-noop-renderer/src/createReactNoop.js",
+      "sha256": "974809e4e2d9ecdbf3cce713a278cfab0cd46cd0b79941e8280f633bd879dc70",
+      "head_anchor_verified": true
+    },
+    {
+      "side": "head",
+      "path": "packages/jest-react/src/internalAct.js",
+      "sha256": "3f3a3b6492e2aaa3abf62783ab18a3d22912342b459d262af794e5fd5e5b9855",
+      "head_anchor_verified": true
+    },
+    {
+      "side": "head",
+      "path": "packages/use-sync-external-store/src/__tests__/useSyncExternalStoreShared-test.js",
+      "sha256": "938a7953d90ecb0a25e6967f11c0a2ce95f82de0866bb2dad8b6af806fdfd1b1",
+      "head_anchor_verified": true
+    }
+  ],
+  "anchors_terminal_newline_normalized": true,
+  "captured_source_anchors": [
+    {
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "base_sha256": "66a2e38d1d47afd70c3b487e0582716777b2174caef5e0b4ab949514eef5968f",
+      "head_sha256": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753",
+      "unchanged_outside_reference_patch": false,
+      "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+      "anchors": [
+        {
+          "start_line": 1291,
+          "end_line": 1307,
+          "source": "  // Because updates are synchronous, we don't queue them. Instead we force a\n  // re-render whenever the subscribed state changes by updating an some\n  // arbitrary useState hook. Then, during render, we call getSnapshot to read\n  // the current value.\n  //\n  // Because we don't actually use the state returned by the useState hook, we\n  // can save a bit of memory by storing other stuff in that slot.\n  //\n  // To implement the early bailout, we need to track some things on a mutable\n  // object. Usually, we would put that in a useRef hook, but we can stash it in\n  // our useState hook instead.\n  //\n  // To force a re-render, we call forceUpdate({inst}). That works because the\n  // new object always fails an equality check.\n  const [{inst}, forceUpdate] = dispatcher.useState({\n    inst: {value, getSnapshot},\n  });"
+        },
+        {
+          "start_line": 1321,
+          "end_line": 1329,
+          "source": "    if (checkIfSnapshotChanged(inst)) {\n      // Force a re-render.\n      const prevTransition = ReactCurrentBatchConfig.transition;\n      const prevPriority = getCurrentUpdatePriority();\n      ReactCurrentBatchConfig.transition = 0;\n      setCurrentUpdatePriority(DiscreteEventPriority);\n      forceUpdate({inst});\n      setCurrentUpdatePriority(prevPriority);\n      ReactCurrentBatchConfig.transition = prevTransition;"
+        },
+        {
+          "start_line": 1340,
+          "end_line": 1357,
+          "source": "      // The store changed. Check if the snapshot changed since the last time we\n      // read from the store.\n      if (checkIfSnapshotChanged(inst)) {\n        // Force a re-render.\n        const prevTransition = ReactCurrentBatchConfig.transition;\n        const prevPriority = getCurrentUpdatePriority();\n        ReactCurrentBatchConfig.transition = 0;\n        setCurrentUpdatePriority(DiscreteEventPriority);\n        forceUpdate({inst});\n        setCurrentUpdatePriority(prevPriority);\n        ReactCurrentBatchConfig.transition = prevTransition;\n      }\n    };\n    // Check for changes right before subscribing. Subsequent changes will be\n    // detected in the subscription handler.\n    handleStoreChange();\n    // Subscribe to the store and return a clean-up function.\n    return subscribe(handleStoreChange);"
+        }
+      ]
+    },
+    {
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "base_sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+      "head_sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7",
+      "unchanged_outside_reference_patch": true,
+      "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+      "anchors": [
+        {
+          "start_line": 506,
+          "end_line": 521,
+          "source": "  ensureRootIsScheduled(root, eventTime);\n  if (\n    lane === SyncLane &&\n    executionContext === NoContext &&\n    (fiber.mode & ConcurrentMode) === NoMode &&\n    // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.\n    !(__DEV__ && ReactCurrentActQueue.isBatchingLegacy)\n  ) {\n    // Flush the synchronous work now, unless we're already working or inside\n    // a batch. This is intentionally inside scheduleUpdateOnFiber instead of\n    // scheduleCallbackForFiber to preserve the ability to schedule a callback\n    // without immediately flushing it. We only do this for user-initiated\n    // updates, to preserve historical behavior of legacy mode.\n    resetRenderTimer();\n    flushSyncCallbacksOnlyInLegacyMode();\n  }"
+        },
+        {
+          "start_line": 658,
+          "end_line": 682,
+          "source": "  if (newCallbackPriority === SyncLane) {\n    // Special case: Sync React callbacks are scheduled on a special\n    // internal queue\n    if (root.tag === LegacyRoot) {\n      if (__DEV__ && ReactCurrentActQueue.isBatchingLegacy !== null) {\n        ReactCurrentActQueue.didScheduleLegacyUpdate = true;\n      }\n      scheduleLegacySyncCallback(performSyncWorkOnRoot.bind(null, root));\n    } else {\n      scheduleSyncCallback(performSyncWorkOnRoot.bind(null, root));\n    }\n    if (supportsMicrotasks) {\n      // Flush the queue in a microtask.\n      if (__DEV__ && ReactCurrentActQueue.current !== null) {\n        // Inside `act`, use our internal `act` queue so that these get flushed\n        // at the end of the current scope even when using the sync version\n        // of `act`.\n        ReactCurrentActQueue.current.push(flushSyncCallbacks);\n      } else {\n        scheduleMicrotask(flushSyncCallbacks);\n      }\n    } else {\n      // Flush the queue in an Immediate task.\n      scheduleCallback(ImmediateSchedulerPriority, flushSyncCallbacks);\n    }"
+        },
+        {
+          "start_line": 1043,
+          "end_line": 1061,
+          "source": "export function batchedUpdates<A, R>(fn: A => R, a: A): R {\n  const prevExecutionContext = executionContext;\n  executionContext |= BatchedContext;\n  try {\n    return fn(a);\n  } finally {\n    executionContext = prevExecutionContext;\n    // If there were legacy sync updates, flush them at the end of the outer\n    // most batchedUpdates-like method.\n    if (\n      executionContext === NoContext &&\n      // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.\n      !(__DEV__ && ReactCurrentActQueue.isBatchingLegacy)\n    ) {\n      resetRenderTimer();\n      flushSyncCallbacksOnlyInLegacyMode();\n    }\n  }\n}"
+        }
+      ]
+    },
+    {
+      "path": "packages/react-noop-renderer/src/createReactNoop.js",
+      "base_sha256": "974809e4e2d9ecdbf3cce713a278cfab0cd46cd0b79941e8280f633bd879dc70",
+      "head_sha256": "974809e4e2d9ecdbf3cce713a278cfab0cd46cd0b79941e8280f633bd879dc70",
+      "unchanged_outside_reference_patch": true,
+      "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+      "anchors": [
+        {
+          "start_line": 398,
+          "end_line": 419,
+          "source": "\n    scheduleTimeout: setTimeout,\n    cancelTimeout: clearTimeout,\n    noTimeout: -1,\n\n    supportsMicrotasks: true,\n    scheduleMicrotask:\n      typeof queueMicrotask === 'function'\n        ? queueMicrotask\n        : typeof Promise !== 'undefined'\n        ? callback =>\n            Promise.resolve(null)\n              .then(callback)\n              .catch(error => {\n                setTimeout(() => {\n                  throw error;\n                });\n              })\n        : setTimeout,\n\n    prepareForCommit(): null | Object {\n      return null;"
+        },
+        {
+          "start_line": 935,
+          "end_line": 945,
+          "source": "    // TODO: Replace ReactNoop.render with createRoot + root.render\n    createRoot() {\n      const container = {\n        rootID: '' + idCounter++,\n        pendingChildren: [],\n        children: [],\n      };\n      const fiberRoot = NoopRenderer.createContainer(\n        container,\n        ConcurrentRoot,\n        false,"
+        }
+      ]
+    },
+    {
+      "path": "packages/jest-react/src/internalAct.js",
+      "base_sha256": "3f3a3b6492e2aaa3abf62783ab18a3d22912342b459d262af794e5fd5e5b9855",
+      "head_sha256": "3f3a3b6492e2aaa3abf62783ab18a3d22912342b459d262af794e5fd5e5b9855",
+      "unchanged_outside_reference_patch": true,
+      "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+      "anchors": [
+        {
+          "start_line": 95,
+          "end_line": 107,
+          "source": "      };\n    } else {\n      try {\n        // TODO: Let's not support non-async scopes at all in our tests. Need to\n        // migrate existing tests.\n        let didFlushWork;\n        do {\n          didFlushWork = Scheduler.unstable_flushAllWithoutAsserting();\n        } while (didFlushWork);\n      } finally {\n        unwind();\n      }\n    }"
+        },
+        {
+          "start_line": 114,
+          "end_line": 129,
+          "source": "function flushActWork(resolve, reject) {\n  // Flush suspended fallbacks\n  // $FlowFixMe: Flow doesn't know about global Jest object\n  jest.runOnlyPendingTimers();\n  enqueueTask(() => {\n    try {\n      const didFlushWork = Scheduler.unstable_flushAllWithoutAsserting();\n      if (didFlushWork) {\n        flushActWork(resolve, reject);\n      } else {\n        resolve();\n      }\n    } catch (error) {\n      reject(error);\n    }\n  });"
+        }
+      ]
+    },
+    {
+      "path": "packages/use-sync-external-store/src/__tests__/useSyncExternalStoreShared-test.js",
+      "base_sha256": "d174ab2c519abf18e13655899d1d4e24c1eabefe886b4dd6d6614a8eafe11cdf",
+      "head_sha256": "938a7953d90ecb0a25e6967f11c0a2ce95f82de0866bb2dad8b6af806fdfd1b1",
+      "unchanged_outside_reference_patch": false,
+      "head_commit": "06f98c168060ef0213526a1aee696a568cec7f54",
+      "anchors": [
+        {
+          "start_line": 62,
+          "end_line": 73,
+          "source": "    const internalAct = require('jest-react').act;\n\n    // The internal act implementation doesn't batch updates by default, since\n    // it's mostly used to test concurrent mode. But since these tests run\n    // in both concurrent and legacy mode, I'm adding batching here.\n    act = cb => internalAct(() => ReactNoop.batchedUpdates(cb));\n\n    useSyncExternalStore = require('use-sync-external-store')\n      .useSyncExternalStore;\n    useSyncExternalStoreExtra = require('use-sync-external-store/extra')\n      .useSyncExternalStoreExtra;\n  });"
+        },
+        {
+          "start_line": 80,
+          "end_line": 105,
+          "source": "  function createRoot(element) {\n    // This wrapper function exists so we can test both legacy roots and\n    // concurrent roots.\n    if (gate(flags => flags.variant)) {\n      // The native implementation only exists in 18+, so we test using\n      // concurrent mode. To test the legacy root behavior in the native\n      // implementation (which is supported in the sense that it needs to have\n      // the correct behavior, despite the fact that the legacy root API\n      // triggers a warning in 18), write a test that uses\n      // createLegacyRoot directly.\n      return ReactNoop.createRoot();\n    } else {\n      return ReactNoop.createLegacyRoot();\n    }\n  }\n\n  function createExternalStore(initialState) {\n    const listeners = new Set();\n    let currentState = initialState;\n    return {\n      set(text) {\n        currentState = text;\n        ReactNoop.batchedUpdates(() => {\n          listeners.forEach(listener => listener());\n        });\n      },"
+        },
+        {
+          "start_line": 119,
+          "end_line": 137,
+          "source": "  test('basic usage', async () => {\n    const store = createExternalStore('Initial');\n\n    function App() {\n      const text = useSyncExternalStore(store.subscribe, store.getState);\n      return <Text text={text} />;\n    }\n\n    const root = createRoot();\n    await act(() => root.render(<App />));\n\n    expect(Scheduler).toHaveYielded(['Initial']);\n    expect(root).toMatchRenderedOutput('Initial');\n\n    await act(() => {\n      store.set('Updated');\n    });\n    expect(Scheduler).toHaveYielded(['Updated']);\n    expect(root).toMatchRenderedOutput('Updated');"
+        },
+        {
+          "start_line": 163,
+          "end_line": 212,
+          "source": "  test('switch to a different store', async () => {\n    const storeA = createExternalStore(0);\n    const storeB = createExternalStore(0);\n\n    let setStore;\n    function App() {\n      const [store, _setStore] = useState(storeA);\n      setStore = _setStore;\n      const value = useSyncExternalStore(store.subscribe, store.getState);\n      return <Text text={value} />;\n    }\n\n    const root = createRoot();\n    await act(() => root.render(<App />));\n\n    expect(Scheduler).toHaveYielded([0]);\n    expect(root).toMatchRenderedOutput('0');\n\n    await act(() => {\n      storeA.set(1);\n    });\n    expect(Scheduler).toHaveYielded([1]);\n    expect(root).toMatchRenderedOutput('1');\n\n    // Switch stores and update in the same batch\n    act(() => {\n      ReactNoop.flushSync(() => {\n        // This update will be disregarded\n        storeA.set(2);\n        setStore(storeB);\n      });\n    });\n    // Now reading from B instead of A\n    expect(Scheduler).toHaveYielded([0]);\n    expect(root).toMatchRenderedOutput('0');\n\n    // Update A\n    await act(() => {\n      storeA.set(3);\n    });\n    // Nothing happened, because we're no longer subscribed to A\n    expect(Scheduler).toHaveYielded([]);\n    expect(root).toMatchRenderedOutput('0');\n\n    // Update B\n    await act(() => {\n      storeB.set(1);\n    });\n    expect(Scheduler).toHaveYielded([1]);\n    expect(root).toMatchRenderedOutput('1');"
+        },
+        {
+          "start_line": 215,
+          "end_line": 263,
+          "source": "  test('selecting a specific value inside getSnapshot', async () => {\n    const store = createExternalStore({a: 0, b: 0});\n\n    function A() {\n      const a = useSyncExternalStore(store.subscribe, () => store.getState().a);\n      return <Text text={'A' + a} />;\n    }\n    function B() {\n      const b = useSyncExternalStore(store.subscribe, () => store.getState().b);\n      return <Text text={'B' + b} />;\n    }\n\n    function App() {\n      return (\n        <>\n          <A />\n          <B />\n        </>\n      );\n    }\n\n    const root = createRoot();\n    act(() => root.render(<App />));\n\n    expect(Scheduler).toHaveYielded(['A0', 'B0']);\n    expect(root).toMatchRenderedOutput('A0B0');\n\n    // Update b but not a\n    await act(() => {\n      store.set({a: 0, b: 1});\n    });\n    // Only b re-renders\n    expect(Scheduler).toHaveYielded(['B1']);\n    expect(root).toMatchRenderedOutput('A0B1');\n\n    // Update a but not b\n    await act(() => {\n      store.set({a: 1, b: 1});\n    });\n    // Only a re-renders\n    expect(Scheduler).toHaveYielded(['A1']);\n    expect(root).toMatchRenderedOutput('A1B1');\n  });\n\n  // In React 18, you can't observe in between a sync render and its\n  // passive effects, so this is only relevant to legacy roots\n  // @gate !variant\n  test(\n    \"compares to current state before bailing out, even when there's a \" +"
+        }
+      ]
+    }
+  ],
+  "extra_workloop_anchors": [
+    {
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "start_line": 365,
+      "end_line": 420,
+      "source": "  // Special cases\n  const mode = fiber.mode;\n  if ((mode & ConcurrentMode) === NoMode) {\n    return (SyncLane: Lane);\n  } else if (\n    !deferRenderPhaseUpdateToNextBatch &&\n    (executionContext & RenderContext) !== NoContext &&\n    workInProgressRootRenderLanes !== NoLanes\n  ) {\n    // This is a render phase update. These are not officially supported. The\n    // old behavior is to give this the same \"thread\" (lanes) as\n    // whatever is currently rendering. So if you call `setState` on a component\n    // that happens later in the same render, it will flush. Ideally, we want to\n    // remove the special case and treat them as if they came from an\n    // interleaved event. Regardless, this pattern is not officially supported.\n    // This behavior is only a fallback. The flag only exists until we can roll\n    // out the setState warning, since existing code might accidentally rely on\n    // the current behavior.\n    return pickArbitraryLane(workInProgressRootRenderLanes);\n  }\n\n  const isTransition = requestCurrentTransition() !== NoTransition;\n  if (isTransition) {\n    // The algorithm for assigning an update to a lane should be stable for all\n    // updates at the same priority within the same event. To do this, the\n    // inputs to the algorithm must be the same.\n    //\n    // The trick we use is to cache the first of each of these inputs within an\n    // event. Then reset the cached values once we can be sure the event is\n    // over. Our heuristic for that is whenever we enter a concurrent work loop.\n    if (currentEventTransitionLane === NoLane) {\n      // All transitions within the same event are assigned the same lane.\n      currentEventTransitionLane = claimNextTransitionLane();\n    }\n    return currentEventTransitionLane;\n  }\n\n  // Updates originating inside certain React methods, like flushSync, have\n  // their priority set by tracking it with a context variable.\n  //\n  // The opaque type returned by the host config is internally a lane, so we can\n  // use that directly.\n  // TODO: Move this type conversion to the event priority module.\n  const updateLane: Lane = (getCurrentUpdatePriority(): any);\n  if (updateLane !== NoLane) {\n    return updateLane;\n  }\n\n  // This update originated outside React. Ask the host environment for an\n  // appropriate priority, based on the type of event.\n  //\n  // The opaque type returned by the host config is internally a lane, so we can\n  // use that directly.\n  // TODO: Move this type conversion to the event priority module.\n  const eventLane: Lane = (getCurrentEventPriority(): any);\n  return eventLane;\n"
+    },
+    {
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "start_line": 658,
+      "end_line": 707,
+      "source": "  if (newCallbackPriority === SyncLane) {\n    // Special case: Sync React callbacks are scheduled on a special\n    // internal queue\n    if (root.tag === LegacyRoot) {\n      if (__DEV__ && ReactCurrentActQueue.isBatchingLegacy !== null) {\n        ReactCurrentActQueue.didScheduleLegacyUpdate = true;\n      }\n      scheduleLegacySyncCallback(performSyncWorkOnRoot.bind(null, root));\n    } else {\n      scheduleSyncCallback(performSyncWorkOnRoot.bind(null, root));\n    }\n    if (supportsMicrotasks) {\n      // Flush the queue in a microtask.\n      if (__DEV__ && ReactCurrentActQueue.current !== null) {\n        // Inside `act`, use our internal `act` queue so that these get flushed\n        // at the end of the current scope even when using the sync version\n        // of `act`.\n        ReactCurrentActQueue.current.push(flushSyncCallbacks);\n      } else {\n        scheduleMicrotask(flushSyncCallbacks);\n      }\n    } else {\n      // Flush the queue in an Immediate task.\n      scheduleCallback(ImmediateSchedulerPriority, flushSyncCallbacks);\n    }\n    newCallbackNode = null;\n  } else {\n    let schedulerPriorityLevel;\n    switch (lanesToEventPriority(nextLanes)) {\n      case DiscreteEventPriority:\n        schedulerPriorityLevel = ImmediateSchedulerPriority;\n        break;\n      case ContinuousEventPriority:\n        schedulerPriorityLevel = UserBlockingSchedulerPriority;\n        break;\n      case DefaultEventPriority:\n        schedulerPriorityLevel = NormalSchedulerPriority;\n        break;\n      case IdleEventPriority:\n        schedulerPriorityLevel = IdleSchedulerPriority;\n        break;\n      default:\n        schedulerPriorityLevel = NormalSchedulerPriority;\n        break;\n    }\n    newCallbackNode = scheduleCallback(\n      schedulerPriorityLevel,\n      performConcurrentWorkOnRoot.bind(null, root),\n    );\n  }\n"
+    }
+  ],
+  "guard_result": {
+    "source_guard_verified": true,
+    "requirements": 3,
+    "regressions": 2,
+    "main_checkpoint": "one Promise microtask outside act",
+    "negative_control": "ordinary transition remains pending until subsequent act",
+    "runtime_behavior_verified": false
+  },
+  "own_counterchecks": [
+    {
+      "mutation": "duplicate_microtask",
+      "rejected": true,
+      "reason": "main notification must use exactly one microtask checkpoint outside act"
+    },
+    {
+      "mutation": "remove_async_main",
+      "rejected": true,
+      "reason": "main oracle must await the microtask checkpoint"
+    },
+    {
+      "mutation": "weaken_control",
+      "rejected": true,
+      "reason": "ordinary transition negative control missing or weakened"
+    },
+    {
+      "mutation": "act_main",
+      "rejected": true,
+      "reason": "main notification must use exactly one microtask checkpoint outside act"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/prepare_l5_js.py",
+        "verify"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"schema_version\": \"xrai.eval.l5.js.capture.v1\",\n  \"repository\": \"facebook/react\",\n  \"slot\": \"L5-SLOT-TSJS-contract_change-2\",\n  \"language\": \"JavaScript (Flow annotations, not TypeScript)\",\n  \"method\": \"xrai.production.react.runtime-js.conservative.v1\",\n  \"method_source_sha256\": \"1fbdd2ed8783ed838c87c0ef016f1aca1395cecec8a48259210fb839ae48a970\",\n  \"measurement_definition\": \"ADR021 nonempty production source lines, comments included; old implementation copies and forks excluded. Comment-filtered count is diagnostic only.\",\n  \"allowlisted_runtime_packages\": [\n    \"react\",\n    \"react-cache\",\n    \"react-client\",\n    \"react-dom\",\n    \"react-is\",\n    \"react-reconciler\",\n    \"react-refresh\",\n    \"react-server\",\n    \"scheduler\",\n    \"shared\",\n    \"use-subscription\",\n    \"use-sync-external-store\"\n  ],\n  \"excluded_path_parts\": [\n    \"__fixtures__\",\n    \"__mocks__\",\n    \"__tests__\",\n    \"benchmarks\",\n    \"fixtures\",\n    \"forks\",\n    \"generated\",\n    \"npm\",\n    \"test\",\n    \"test-utils\",\n    \"tests\",\n    \"third_party\",\n    \"vendor\"\n  ],\n  \"snapshots\": {\n    \"base\": {\n      \"commit\": \"77912d9a05d7a90287fabdec76486f25869b2981\",\n      \"archive\": \"eval/qualification/l5-real/js/sources/base.tar.gz\",\n      \"archive_sha256\": \"b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6\",\n      \"upstream_url\": \"https://codeload.github.com/facebook/react/tar.gz/77912d9a05d7a90287fabdec76486f25869b2981\",\n      \"inventory\": \"eval/qualification/l5-real/js/sources/base-inventory.json.gz\",\n      \"inventory_sha256\": \"4013fd6b455f5ac891fac6492e91f5544fe8f40c633e0b97dbdb41e24356a209\",\n      \"complete_regular_files\": 2330,\n      \"source_bytes\": 21048754,\n      \"production_js_files\": 273,\n      \"production_nonempty_lines\": 56440,\n      \"comment_filtered_diagnostic\": 46766,\n      \"excluded_counts\": {\n        \"duplicate_legacy_reconciler_variant\": 32,\n        \"included\": 273,\n        \"outside_allowlisted_runtime_js\": 1714,\n        \"test_doc_vendor_generated_or_fork_path\": 311\n      },\n      \"setup_and_evidence\": {\n        \"LICENSE\": {\n          \"bytes\": 1086,\n          \"sha256\": \"52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85\"\n        },\n        \"babel.config.js\": {\n          \"bytes\": 1051,\n          \"sha256\": \"de56df93874159aa2709e47b324def6cf0ff706f8dedc42ac46cc6928718af14\"\n        },\n        \"package.json\": {\n          \"bytes\": 6710,\n          \"sha256\": \"fc9d4924264754b26826f4ac3ea40dc8335ac5c1779c1a562d6d6a0147a04aa4\"\n        },\n        \"packages/react-reconciler/src/ReactFiberHooks.new.js\": {\n          \"bytes\": 105906,\n          \"sha256\": \"66a2e38d1d47afd70c3b487e0582716777b2174caef5e0b4ab949514eef5968f\"\n        },\n        \"packages/react-reconciler/src/ReactFiberHooks.old.js\": {\n          \"bytes\": 105906,\n          \"sha256\": \"8bbba441b3bddc15730f6a322d18b878c2f5034b8fb160960c45b1c4c3f534ce\"\n        },\n        \"packages/react-reconciler/src/ReactFiberWorkLoop.new.js\": {\n          \"bytes\": 92958,\n          \"sha256\": \"1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7\"\n        },\n        \"packages/react/src/ReactHooks.js\": {\n          \"bytes\": 5778,\n          \"sha256\": \"2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353\"\n        },\n        \"scripts/jest/config.base.js\": {\n          \"bytes\": 950,\n          \"sha256\": \"82483df1e5e6591f6d47294a452a920344b9f29cc2171a7db2104c919de6baaa\"\n        },\n        \"scripts/jest/config.source-www.js\": {\n          \"bytes\": 414,\n          \"sha256\": \"2d622f0664d9def39378d1217e44977cc0633c66cc517f9797c12d50528d77d2\"\n        },\n        \"scripts/jest/jest-cli.js\": {\n          \"bytes\": 8826,\n          \"sha256\": \"561c0a2911075136bdc56dc3daf3df2da0c7c7b76459c4179d27424703d59882\"\n        },\n        \"scripts/jest/preprocessor.js\": {\n          \"bytes\": 3561,\n          \"sha256\": \"4036fd7d39aa99171436067409a086bdce7523a050e9795c8ae63c6b6517b932\"\n        },\n        \"yarn.lock\": {\n          \"bytes\": 716085,\n          \"sha256\": \"5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544\"\n        }\n      },\n      \"eligible_floor\": true\n    },\n    \"head\": {\n      \"commit\": \"06f98c168060ef0213526a1aee696a568cec7f54\",\n      \"archive\": \"eval/qualification/l5-real/js/sources/head.tar.gz\",\n      \"archive_sha256\": \"1d7af4d0c750af4ce19c18473e876b4bc56390f3adca22dae9a4d85304a808c9\",\n      \"upstream_url\": \"https://codeload.github.com/facebook/react/tar.gz/06f98c168060ef0213526a1aee696a568cec7f54\",\n      \"inventory\": \"eval/qualification/l5-real/js/sources/head-inventory.json.gz\",\n      \"inventory_sha256\": \"1130dddf3e9a68064bf16fee7f8589fe6b181e29b755046a08a55581e9a39bb8\",\n      \"complete_regular_files\": 2330,\n      \"source_bytes\": 21058141,\n      \"production_js_files\": 273,\n      \"production_nonempty_lines\": 56545,\n      \"comment_filtered_diagnostic\": 46830,\n      \"excluded_counts\": {\n        \"duplicate_legacy_reconciler_variant\": 32,\n        \"included\": 273,\n        \"outside_allowlisted_runtime_js\": 1714,\n        \"test_doc_vendor_generated_or_fork_path\": 311\n      },\n      \"setup_and_evidence\": {\n        \"LICENSE\": {\n          \"bytes\": 1086,\n          \"sha256\": \"52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85\"\n        },\n        \"babel.config.js\": {\n          \"bytes\": 1051,\n          \"sha256\": \"de56df93874159aa2709e47b324def6cf0ff706f8dedc42ac46cc6928718af14\"\n        },\n        \"package.json\": {\n          \"bytes\": 6710,\n          \"sha256\": \"fc9d4924264754b26826f4ac3ea40dc8335ac5c1779c1a562d6d6a0147a04aa4\"\n        },\n        \"packages/react-reconciler/src/ReactFiberHooks.new.js\": {\n          \"bytes\": 110416,\n          \"sha256\": \"079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753\"\n        },\n        \"packages/react-reconciler/src/ReactFiberHooks.old.js\": {\n          \"bytes\": 110416,\n          \"sha256\": \"8cd11500b4c39b9da038346a86aaaa7f8efdf04e964eb2c63c06cc6512c632d5\"\n        },\n        \"packages/react-reconciler/src/ReactFiberWorkLoop.new.js\": {\n          \"bytes\": 92958,\n          \"sha256\": \"1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7\"\n        },\n        \"packages/react/src/ReactHooks.js\": {\n          \"bytes\": 5778,\n          \"sha256\": \"2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353\"\n        },\n        \"scripts/jest/config.base.js\": {\n          \"bytes\": 950,\n          \"sha256\": \"82483df1e5e6591f6d47294a452a920344b9f29cc2171a7db2104c919de6baaa\"\n        },\n        \"scripts/jest/config.source-www.js\": {\n          \"bytes\": 414,\n          \"sha256\": \"2d622f0664d9def39378d1217e44977cc0633c66cc517f9797c12d50528d77d2\"\n        },\n        \"scripts/jest/jest-cli.js\": {\n          \"bytes\": 8826,\n          \"sha256\": \"561c0a2911075136bdc56dc3daf3df2da0c7c7b76459c4179d27424703d59882\"\n        },\n        \"scripts/jest/preprocessor.js\": {\n          \"bytes\": 3561,\n          \"sha256\": \"4036fd7d39aa99171436067409a086bdce7523a050e9795c8ae63c6b6517b932\"\n        },\n        \"yarn.lock\": {\n          \"bytes\": 716085,\n          \"sha256\": \"5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544\"\n        }\n      },\n      \"eligible_floor\": true\n    }\n  },\n  \"reference_patch_sha256\": \"3156ac7ac3e5a2df64db9cbff7e4939da5c3dac35aa4851a0008a98e6e546733\",\n  \"reference_patch_paths\": [\n    \"packages/react-reconciler/src/ReactFiberHooks.new.js\",\n    \"packages/react-reconciler/src/ReactFiberHooks.old.js\"\n  ],\n  \"qualification_status\": \"curated_candidate_probes_and_independent_review_pending\",\n  \"admitted\": false\n}\n",
+      "stderr": "",
+      "stdout_sha256": "fbd63db92ed476024085c17fa12b74ebf884f9f2a92622b99b6495bd9753e559",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts/tests",
+        "-p",
+        "test_l5_js_oracle.py",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_act_wrapped_notification_rejected (test_l5_js_oracle.OracleGuardTests.test_act_wrapped_notification_rejected) ... ok\ntest_forced_sync_rejected (test_l5_js_oracle.OracleGuardTests.test_forced_sync_rejected) ... ok\ntest_frozen_checkpoint_and_control (test_l5_js_oracle.OracleGuardTests.test_frozen_checkpoint_and_control) ... ok\ntest_same_stack_request_not_reinterpreted (test_l5_js_oracle.OracleGuardTests.test_same_stack_request_not_reinterpreted) ... ok\ntest_scheduler_drain_rejected (test_l5_js_oracle.OracleGuardTests.test_scheduler_drain_rejected) ... ok\ntest_weakened_negative_control_rejected (test_l5_js_oracle.OracleGuardTests.test_weakened_negative_control_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nOK\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "7458ad0c8fb34c1eddef552bdddf63e736a2dc5fd8dbf8af0b479ea7697b20d4"
+    }
+  ],
+  "reader_initial_errors": [
+    "Diagnostic excerpts omit terminal newline; first exact comparison failed. All15 anchor lines match with terminal newline normalized; full source SHA256 exact.",
+    "Parent committed 0d8075b while review ran, so HEAD comparison was replaced by immutable d54520b parent. Frozen source hashes remained unchanged."
+  ],
+  "graph_coverage": {
+    "project": "Users-wkoch-Projetos-xrai",
+    "generation": "2026-10-12T17:07:05Z",
+    "best_effort": true,
+    "paths": [
+      "eval/scripts/verify_l5_js_oracle.py",
+      "eval/scripts/run_l5_js.py",
+      "eval/scripts/prepare_l5_js.py",
+      "eval/scripts/tests/test_l5_js_oracle.py",
+      "eval/qualification/l5-real/js/oracles/XraiExternalStoreContract-test.js"
+    ],
+    "status": "no_recorded_issue",
+    "freshness": "metadata_match",
+    "captured_upstream_sources": "Read directly as archive data; no graph completeness claim"
+  },
+  "assessment": {
+    "same_request": true,
+    "same_reference": true,
+    "same_lock": true,
+    "production_source_contaminated": false,
+    "change_justified_by_captured_sources": true,
+    "main_requirement_not_weakened": true,
+    "rationale": [
+      "ConcurrentRoot schedules SyncLane through the host microtask; same-stack flush is legacy-only.",
+      "Main notification remains inside startTransition and outside act; exactly one Promise checkpoint observes sync work without forcing or draining Scheduler.",
+      "Ordinary state transition must remain unrendered at that checkpoint; later explicit act completes it.",
+      "Lifecycle callbacks remain synchronous. Awaiting internalAct returning undefined introduces a microtask checkpoint, not internalAct async flushActWork.",
+      "Captured upstream tests await act on lifecycle notifications, supporting this convention."
+    ],
+    "findings": [],
+    "pending": [
+      "Fresh isolated Linux CI must prove baseline failure, reference pass and negative-control regression pass.",
+      "Real A→B index proof and dossier admission remain pending."
+    ],
+    "qualification_admitted": false
+  }
+}

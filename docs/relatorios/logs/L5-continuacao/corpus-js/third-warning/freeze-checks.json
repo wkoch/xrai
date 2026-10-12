@@ -1,0 +1,84 @@
+{
+  "schema": "xrai.eval.l5.js.third-warning.v1",
+  "at": "2026-10-12T17:14:28.464981+00:00",
+  "status": "expected_DEV_warning_observation_corrected_fresh_CI_pending",
+  "CI_run": 38282162955,
+  "prior_oracle_sha256": "7e07f66795a31c1d0877bfb992c7aa3a1c117e39ba5197d60a16572645c84872",
+  "new_oracle_sha256": "9938be79198f975471b472f3bbfa33614fe63d46e1def912d8a827a925292d65",
+  "principal_literal_unchanged": true,
+  "change": "local toErrorDev matcher expects exactly the Stateful act warning for the normal useState transition; no act/flushSync/global suppression added",
+  "source_reason": "warning requires executionContext NoContext; principal store uses BatchedContext, so only ordinary transition gets expectation",
+  "source_anchors": "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/captured-warning-anchors.json",
+  "source_anchors_sha256": "cce69e655e2ff28e9e8ef1ca31edd71710b2b86326c221cd930f1ca3887634b9",
+  "commands": [
+    {
+      "name": "own-tests",
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts/tests",
+        "-p",
+        "test_l5_js*.py",
+        "-v"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "oracle-guard",
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/verify_l5_js_oracle.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "capture-verify",
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "eval/scripts/prepare_l5_js.py",
+        "verify"
+      ],
+      "exit": 0
+    }
+  ],
+  "own_tests": 20,
+  "case_digests_verified": 20,
+  "no_JS_runtime_execution": true,
+  "not_retroactive_success": true,
+  "runtime_pending": true,
+  "source_hashes": {
+    "eval/scripts/run_l5_js.py": "dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439",
+    "eval/scripts/verify_l5_js_oracle.py": "ac6c5d48a0dd3484cfbd0502a3cf543a56f430680dc615062e26d2cee278db8b",
+    "eval/scripts/tests/test_l5_js_oracle.py": "b8d676d93d6a8a18285a62b72df0f82736c2200560ded6b2998be9f790ed7c8a",
+    "eval/qualification/l5-real/js/case.json": "6bce14eae7416b8d408d75ca6141144073149415a1ba3826659c4b0a6207fac9",
+    "eval/qualification/l5-real/js/oracles/XraiExternalStoreContract-test.js": "9938be79198f975471b472f3bbfa33614fe63d46e1def912d8a827a925292d65",
+    "eval/qualification/l5-real/js/README.md": "e5e73af2151d3fb8c8a2e581ba4ade3239afc789de22a8417319b0dc2e59d934"
+  },
+  "unchanged": {
+    "natural_input": "f6822108434963667d2f220d60d60e134a48e93130bb25c74b4bcce5359862ef",
+    "reference_patch": "3156ac7ac3e5a2df64db9cbff7e4939da5c3dac35aa4851a0008a98e6e546733",
+    "base_archive": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6",
+    "head_archive": "1d7af4d0c750af4ce19c18473e876b4bc56390f3adca22dae9a4d85304a808c9"
+  },
+  "admitted": false,
+  "D1_admitted_delta": 0,
+  "artifacts": {
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/capture-verify.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/capture-verify.stdout": "fbd63db92ed476024085c17fa12b74ebf884f9f2a92622b99b6495bd9753e559",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/captured-warning-anchors.json": "cce69e655e2ff28e9e8ef1ca31edd71710b2b86326c221cd930f1ca3887634b9",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/ci-third/base/bootstrap.json": "fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/ci-third/base/probe.json": "6f4dec936fefd7a730aa90defa7b94698c169356c08029c87f59b519ab4fb2b2",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/ci-third/base/regression-harness.json": "be133fc1f827cb2882a3c611bccf676d81e660e3f27d6ba9220e8d4b2ecabaf0",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/ci-third/base/regression-jest.json": "d8edd17c491814cd0fee1c88522d7ce87fe932532e6ffdb1bbe38b2f67b4e348",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/ci-third/base/requirement-harness.json": "4d33c750e5f2e47ba639a606b5ad690e292a04bb83b0db837f27f2aacdfddc23",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/ci-third/base/requirement-jest.json": "c9056b60e29208c0d2dfd802c8c0685b810a7ddfdea794b1c5de5d93584bd387",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/oracle-before-warning.js": "7e07f66795a31c1d0877bfb992c7aa3a1c117e39ba5197d60a16572645c84872",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/oracle-guard.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/oracle-guard.stdout": "6a9683b0178fd723d731e83c3fefa30c8aa6724380d8140a7c748b3ba5d69cfe",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/own-tests.stderr": "e0b0fd7bbcc9d6097c2148e8f603264b95fbf0ce08cb38691c08a67bf638271d",
+    "docs/relatorios/logs/L5-continuacao/corpus-js/third-warning/own-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -43,6 +43,15 @@ class OracleGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'same-stack'):
             guard.verify_text(self.oracle, self.natural+' Complete before publish returns.')
 
+    def test_unrelated_warning_expectation_rejected(self):
+        changed = self.oracle.replace('An update to Stateful inside a test was not wrapped in act', 'Any warning')
+        with self.assertRaisesRegex(ValueError, 'negative control'):
+            guard.verify_text(changed, self.natural)
+
+    def test_global_warning_suppression_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'globally suppress'):
+            guard.verify_text(self.oracle+'\nconsole.error = () => {};\n', self.natural)
+
 
 if __name__ == '__main__':
     unittest.main()

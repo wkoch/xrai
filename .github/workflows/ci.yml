@@ -234,6 +234,7 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           python eval/scripts/run_l5_js.py probe --workspace "$RUNNER_TEMP/react-base" --side base --node "$(command -v node)" --output "$RUNNER_TEMP/js-probes/base"
       - name: Prepare and prove reference
+        if: ${{ !cancelled() }}
         run: |
           python eval/scripts/run_l5_js.py materialize --workspace "$RUNNER_TEMP/react-reference" --side reference
           cd "$RUNNER_TEMP/react-reference"
