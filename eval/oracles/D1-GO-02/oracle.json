@@ -1,0 +1,50 @@
+{
+  "task_id": "D1-GO-02",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "BigComma must perform division on a separate big.Int; formatting 1000000 gives 1,000,000 and argument remains 1000000; repeated formatting unchanged."
+  ],
+  "test_vectors": [
+    {
+      "input": "1000000",
+      "expected": "1,000,000",
+      "argument_after": "1000000"
+    },
+    {
+      "probe": "oracles/D1-GO-02/oracle_test.go",
+      "expected_baseline": "fail",
+      "expected_reference": "pass",
+      "expected_proposed_review": null
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "comma.go",
+      "commit": "47eb3ae4df4420a7daf4d673dfb5e2149657570c",
+      "sha256": "3707412ab314100691a4fc9f5f40f00ff2ebaac406fc317a0cb871b273eacfca",
+      "anchor": "func BigComma(",
+      "byte_start": 2091,
+      "byte_end": 2105,
+      "line": 103
+    },
+    {
+      "path": "comma.go",
+      "commit": "47eb3ae4df4420a7daf4d673dfb5e2149657570c",
+      "sha256": "3707412ab314100691a4fc9f5f40f00ff2ebaac406fc317a0cb871b273eacfca",
+      "anchor": "func Comma(",
+      "byte_start": 234,
+      "byte_end": 245,
+      "line": 15
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-GO-02/reference.patch",
+    "sha256": "2fe647941493aa5655390ae5ce0a7e9e7a1cb74d1e9dee8d4f813e75418d3f38",
+    "upstream_commit": "402bd47cf34e515e11d0dd8d04279a6b4ff04bc2",
+    "url": "https://github.com/dustin/go-humanize/commit/402bd47cf34e515e11d0dd8d04279a6b4ff04bc2"
+  },
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-GO-02/oracle_test.go"
+}

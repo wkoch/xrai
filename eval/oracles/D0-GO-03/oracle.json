@@ -1,0 +1,41 @@
+{
+  "task_id": "D0-GO-03",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "NewV7 fills random bytes then applies version/variant and time; getV7Time guards lastV7time with timeMu and increments when clock sequence would not grow."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "version7.go",
+      "commit": "0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "sha256": "8002748cc22a032c3782b42f7653a947189b8566c50d246b4a3beb2e075f8d62",
+      "anchor": "func NewV7(",
+      "byte_start": 875,
+      "byte_end": 886,
+      "line": 23
+    },
+    {
+      "path": "version7.go",
+      "commit": "0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "sha256": "8002748cc22a032c3782b42f7653a947189b8566c50d246b4a3beb2e075f8d62",
+      "anchor": "func getV7Time(",
+      "byte_start": 2982,
+      "byte_end": 2997,
+      "line": 88
+    },
+    {
+      "path": "time.go",
+      "commit": "0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "sha256": "e07999a07de5b667dd1dd5792b544ea933e7e839eca03b3469527f86a8bc2881",
+      "anchor": "timeMu",
+      "byte_start": 642,
+      "byte_end": 648,
+      "line": 26
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

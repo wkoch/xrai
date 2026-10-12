@@ -1,0 +1,23 @@
+{
+  "task_id": "D0-TJ-04",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "probe.js is created and readme.md is absent; probe requires index and calls ms(\"2s\")."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "index.js",
+      "commit": "1c6264b795492e8fdecbc82cb8802fcfbfc08d26",
+      "sha256": "e5f0b6a946a9b2b356a28557728410717df54ea2f599edb619f9839df6b7b0e9",
+      "anchor": "function parse(",
+      "byte_start": 916,
+      "byte_end": 931,
+      "line": 48
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

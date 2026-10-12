@@ -1,0 +1,51 @@
+{
+  "task_id": "D1-PY-07",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "class-level access with obj=None incorrectly attempts instance-dict caching and emits deprecation warnings; unittest.mock.create_autospec(Cached,instance=True) should emit none."
+  ],
+  "test_vectors": [
+    {
+      "probe": "oracles/D1-PY-07/probe.py",
+      "expected_baseline": "pass",
+      "expected_reference": "pass",
+      "expected_proposed_review": "fail"
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "src/cachetools/_cachedmethod.py",
+      "commit": "57d2e4813d9801f97034559e22428bac6f7c6c9b",
+      "sha256": "7208b268f4f699c14d5ba8b47a09a2b6d0f6cb02577ac06aaddfa215e7e31519",
+      "anchor": "def __get__(",
+      "byte_start": 1968,
+      "byte_end": 1980,
+      "line": 78
+    },
+    {
+      "path": "src/cachetools/__init__.py",
+      "commit": "57d2e4813d9801f97034559e22428bac6f7c6c9b",
+      "sha256": "1ea659d2725bb3b6da58fa0a5ba5e36d2dbb3d0fc167ddbd4679214eeb05a7d1",
+      "anchor": "def cachedmethod(",
+      "byte_start": 22235,
+      "byte_end": 22252,
+      "line": 750
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-PY-07/reference.patch",
+    "sha256": "678e814a17b2f23e9ac0c7a255463692e97c9c4e40f45467e628a8359b1b42bc",
+    "upstream_commit": "57d2e4813d9801f97034559e22428bac6f7c6c9b",
+    "url": "https://github.com/tkem/cachetools/commit/57d2e4813d9801f97034559e22428bac6f7c6c9b"
+  },
+  "review": {
+    "true_findings": [
+      "class-level access with obj=None incorrectly attempts instance-dict caching and emits deprecation warnings; unittest.mock.create_autospec(Cached,instance=True) should emit none."
+    ],
+    "false_positive_budget": 0,
+    "proposed_change_origin": "reverse of a distinct historical upstream fix; simulated regression review over real code"
+  },
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-PY-07/probe.py"
+}

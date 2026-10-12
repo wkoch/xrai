@@ -1,0 +1,32 @@
+{
+  "task_id": "D0-RS-02",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "quote matches escape_style; empty input uses single quotes."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "src/lib.rs",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "dabd20b4ebd5a4f248f98748346f6fe8fefd3c645f47eb6d91ed86ee5ac0180e",
+      "anchor": "fn escape_style(",
+      "byte_start": 7734,
+      "byte_end": 7750,
+      "line": 241
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "dabd20b4ebd5a4f248f98748346f6fe8fefd3c645f47eb6d91ed86ee5ac0180e",
+      "anchor": "pub fn quote(",
+      "byte_start": 8879,
+      "byte_end": 8892,
+      "line": 282
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

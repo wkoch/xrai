@@ -1,0 +1,32 @@
+{
+  "task_id": "D1-PY-06",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "consumer.py calls slugify with allow_unicode=True; special.py absent; import of special is unresolved rather than invented resolved relation."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "slugify/slugify.py",
+      "commit": "7edf477f64b65ffe22c966d6a8dcc3edd0fb6997",
+      "sha256": "6d819e9fe9a27df80742bc13f8c2106e75e8f15c46148f37ca2ab2a234d446d2",
+      "anchor": "def slugify(",
+      "byte_start": 2034,
+      "byte_end": 2046,
+      "line": 75
+    },
+    {
+      "path": "slugify/__init__.py",
+      "commit": "7edf477f64b65ffe22c966d6a8dcc3edd0fb6997",
+      "sha256": "43ef5b28242ff3db9fddb26bff21f130f84159737c602ce5c50c0afe476979f2",
+      "anchor": "from .special import *",
+      "byte_start": 0,
+      "byte_end": 22,
+      "line": 1
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

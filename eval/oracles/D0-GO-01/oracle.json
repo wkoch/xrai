@@ -1,0 +1,32 @@
+{
+  "task_id": "D0-GO-01",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Scan accepts nil, string and []byte; textual forms delegate Parse; 16-byte arrays are copied."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "sql.go",
+      "commit": "0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "sha256": "29281b11e8f97f1ddf73d087854cb401ba42a87c4f59ce45fc69763a4d927f2f",
+      "anchor": "func (uuid *UUID) Scan(",
+      "byte_start": 446,
+      "byte_end": 469,
+      "line": 15
+    },
+    {
+      "path": "uuid.go",
+      "commit": "0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "sha256": "0edec8e34c6b6fe0db31b71a29069a09ed832e3fd04ee0175916b58f2b60e5c1",
+      "anchor": "func Parse(",
+      "byte_start": 2038,
+      "byte_end": 2049,
+      "line": 68
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

@@ -1,0 +1,32 @@
+{
+  "task_id": "D0-RS-01",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "hamming delegates a.chars()/b.chars() to generic_hamming; unequal character counts return DifferentLengthArgs."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "src/lib.rs",
+      "commit": "f72cd1cbbfc0b43db217a9c57c543b025bdba863",
+      "sha256": "6f0b31f95526ccc0a88ed788b6be9b929bd8ee32fd0c3f38b0399cb7e63954e3",
+      "anchor": "pub fn hamming(",
+      "byte_start": 2413,
+      "byte_end": 2428,
+      "line": 84
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "f72cd1cbbfc0b43db217a9c57c543b025bdba863",
+      "sha256": "6f0b31f95526ccc0a88ed788b6be9b929bd8ee32fd0c3f38b0399cb7e63954e3",
+      "anchor": "pub fn generic_hamming<",
+      "byte_start": 1459,
+      "byte_end": 1482,
+      "line": 53
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

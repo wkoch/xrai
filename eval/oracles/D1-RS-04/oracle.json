@@ -1,0 +1,47 @@
+{
+  "task_id": "D1-RS-04",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Expose typed limit error; count final escaped UTF-8 byte length including spaces/quotes; exact boundary succeeds; overflow never returns truncated string; old join unchanged."
+  ],
+  "test_vectors": [
+    {
+      "words": [
+        "a b"
+      ],
+      "max_bytes": 5,
+      "expected": "'a b'"
+    },
+    {
+      "words": [
+        "a b"
+      ],
+      "max_bytes": 4,
+      "expected_error": "JoinLimitError"
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "src/lib.rs",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "dabd20b4ebd5a4f248f98748346f6fe8fefd3c645f47eb6d91ed86ee5ac0180e",
+      "anchor": "pub fn join<",
+      "byte_start": 10425,
+      "byte_end": 10437,
+      "line": 334
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "dabd20b4ebd5a4f248f98748346f6fe8fefd3c645f47eb6d91ed86ee5ac0180e",
+      "anchor": "pub fn quote(",
+      "byte_start": 8879,
+      "byte_end": 8892,
+      "line": 282
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

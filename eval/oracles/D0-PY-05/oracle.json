@@ -1,0 +1,32 @@
+{
+  "task_id": "D0-PY-05",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "slugify tries unidecode then text_unidecode; package default requires text-unidecode and optional extra selects Unidecode."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "slugify/slugify.py",
+      "commit": "7edf477f64b65ffe22c966d6a8dcc3edd0fb6997",
+      "sha256": "6d819e9fe9a27df80742bc13f8c2106e75e8f15c46148f37ca2ab2a234d446d2",
+      "anchor": "import unidecode",
+      "byte_start": 153,
+      "byte_end": 169,
+      "line": 9
+    },
+    {
+      "path": "setup.py",
+      "commit": "7edf477f64b65ffe22c966d6a8dcc3edd0fb6997",
+      "sha256": "f32c9ffaedaf9d58843932e94f9b61d7c37b30d4fc3cb2fca41436600bcb37dc",
+      "anchor": "text-unidecode",
+      "byte_start": 268,
+      "byte_end": 282,
+      "line": 14
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

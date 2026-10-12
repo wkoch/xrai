@@ -2,9 +2,9 @@
 
 Atualizado em: 11/10/2026, pelo implementador, ao retomar L1 após a revisão arquitetural `257b91d`.
 
-**Situação:** L0 aceito no escopo de contrato/exemplos e scaffold, conforme [revisão arquitetural](relatorios/REVISAO-L0.md). Reexecução local passou e CI do scaffold foi confirmada em Linux x86_64, macOS arm64 e Windows x86_64. M0-01.R1 foi concretizada em contrato/schema v2 e passou em 56 exemplos e dez testes locais. M0-02.R1 passou em CI no commit `0669f71`: job documental e os três jobs Rust aprovados. Parsing, consultas e MCP ainda indisponíveis. Nenhum gate competitivo foi avaliado.
+**Situação:** L0 aceito. M0-01.R1 concretizada em contrato/schema v2 (26 positivos/30 adversos e dez testes). M0-02.R1 aprovada na CI do commit `0669f71`, com Rust preservado nos três hosts. L1 preparou 52 tarefas D0/D1 e 78 fixtures, sem vazamento de oracles; M0-03 aguarda análise L1-C01 sobre elegibilidade D1. Spike M0-07 implementado e seis testes passaram localmente; aceite nativo bloqueado pelo billing/limite de GitHub Actions. O usuário escolheu registrar a prova pendente. Plano v1 atualizado para Linux x86_64/macOS arm64; M0-02.R2 adequou a matriz e aguarda run do commit. Parsing, consultas e MCP de produção continuam indisponíveis; nenhum gate competitivo avaliado.
 
-**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Lote L1 em execução:** M0-01.R1 e M0-03, com M0-07 como frente independente; depois M0-02.R1. M0-04 aguarda corpus/retificação; M0-05/M0-08 aguardam corpus. L0-A01 depende do mantenedor; A02/A03 já têm direção arquitetural e trabalho concreto para o implementador.
+**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **L1:** [relatório e critérios](relatorios/L1.md). M0-04 aguarda aceite do corpus; M0-05/M0-08 aguardam corpus. L0-A01 permanece escolha do mantenedor, sem bloquear trabalho local; L1-C01 requer análise do Arquiteto, L1-S01/S02 orientam eventual promoção de persistência.
 
 ## Decisões vigentes
 
@@ -26,11 +26,12 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | M0-01.R1 | Retificação de seletor de revisão e admissão | concluída | [Aceite L1](relatorios/L1.md); [checks e preservação L0](relatorios/logs/L1/contract-r1-checks.json) |
 | M0-02 | Workspace Rust e CI | concluída | [Escolhas e verificações](relatorios/dependencias-L0.md); [CI do commit](relatorios/logs/revisao-L0/ci.json) |
 | M0-02.R1 | Validação documental em CI | concluída | [CI do commit `0669f71`](relatorios/logs/L1/contracts-ci.json); [saída e contagens](relatorios/logs/L1/contracts-ci-output.json) |
-| M0-03 | Corpus D0/D1 e oracles | em andamento | — |
+| M0-02.R2 | Adequar CI aos dois alvos v1 | bloqueada | [Matriz inspecionada](relatorios/logs/L1/platform-matrix.json), Linux x86_64/macOS arm64; CI do commit pendente por billing/limite; proteção não verificável (403) |
+| M0-03 | Corpus D0/D1 e oracles | em andamento | [20 D0/32 D1 propostos, oracles e revisão](../eval/reports/m0-corpus.md); [52 materializações](relatorios/logs/L1/corpus-parent-verification.json); [12 probes](relatorios/logs/L1/corpus-parent-oracles.json); L1-C01 pendente |
 | M0-04 | Harness, baseline e agentes | não iniciada | — |
 | M0-05 | Gramáticas e autonomia | não iniciada | — |
 | M0-06 | Workers e IPC | não iniciada | — |
-| M0-07 | Snapshots e armazenamento | em andamento | [Spike e seis testes locais](relatorios/sqlite-L1.md); [workspace integrado](relatorios/logs/L1/workspace-test.json); aguarda CI dos três SOs |
+| M0-07 | Snapshots e armazenamento | bloqueada | [Spike/seis testes locais](relatorios/sqlite-L1.md); [CI sem execução por billing/limite](relatorios/logs/L1/sqlite-ci-blocked.json); usuário optou manter prova nativa v1 pendente; Windows pós-v1 |
 | M0-08 | Filesystem e checkout | não iniciada | — |
 | M0-11 | Protótipo semântico P2 | não iniciada | — |
 | M0-09 | Protótipo de contexto P3 | não iniciada | — |
@@ -72,12 +73,12 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 
 | Item | Momento de definição |
 |---|---|
-| Toolchain, MSRV e versões das dependências | L0: Rust/MSRV 1.98.1, edição 2024, zero dependências externas; verificar bibliotecas nas tarefas consumidoras |
-| Repositórios e tarefas reais do corpus | M0-03, com versões e oracles |
+| Toolchain, MSRV e versões das dependências | Rust/MSRV 1.98.1, edição 2024; runtime xrai sem deps externas. Spike dev-only usa rusqlite 0.40.2 bundled/backup e blake3 1.8.2, transitivas no lockfile |
+| Repositórios e tarefas reais do corpus | M0-03: oito repos/20 snapshots, 20 D0 e 32 propostas D1 preparados; elegibilidade D1 aguarda L1-C01 |
 | Licença de distribuição do produto | L0-A01: decisão do mantenedor antes de M1-20; manter publish=false |
 | Contrato de revisão e admissão | M0-01.R1: direção A02/A03 concretizada em exemplos/schema/verificador v2; adapters/tokenizers reais nos cartões consumidores |
 | CI dos exemplos documentais | M0-02.R1: check aprovado no commit `0669f71`, 26 positivos/30 adversos e dez testes; Rust preservado e aprovado nos três hosts |
-| Hardware de referência e autonomia nativa | Hardware permanece não medido; M0-05 ainda precisa provar gramáticas/ambiente limpo. CI atual comprova somente scaffold |
+| Hardware de referência e autonomia nativa | Hardware permanece não medido; M0-05 ainda precisa provar gramáticas/ambiente limpo. CI anterior comprova scaffold e contratos; spike SQLite local passou, CI nova bloqueada por billing/limite |
 | Modelos, limites de runs, esforço e teto monetário de campanha | Antes do uso pago correspondente em M0-04/12; preparar replay/local enquanto isso |
 | Tamanho final de H1 e método estatístico | M0-10/M1-22, após dados D1 e antes de abrir H1 |
 
@@ -85,7 +86,7 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 
 [Relatório L0](relatorios/L0.md): critérios M0-01/M0-02, ambiente, escolhas, revisões, limitações e próxima ação. [Logs M0-02](relatorios/logs/L0/workspace-checks.json), [checks dos exemplos](relatorios/logs/L0/contract-examples.json), [compatibilidade/licenças](relatorios/dependencias-L0.md) e [manifesto dos entregáveis](relatorios/logs/L0/artifacts.json).
 
-[Revisão arquitetural L0](relatorios/REVISAO-L0.md): parecer de aceite, resposta às pendências, nova lacuna de seletor, CI remota confirmada e lote L1. [Checks reexecutados](relatorios/logs/revisao-L0/checks.json), [CI consultada](relatorios/logs/revisao-L0/ci.json) e [sondagens](relatorios/logs/revisao-L0/sondagens-contrato.json). Esses logs se referem ao commit L0; retificações planejadas continuam não executadas.
+[Revisão arquitetural L0](relatorios/REVISAO-L0.md): parecer de aceite, resposta às pendências, nova lacuna de seletor, CI remota confirmada e lote L1. [Checks reexecutados](relatorios/logs/revisao-L0/checks.json), [CI consultada](relatorios/logs/revisao-L0/ci.json) e [sondagens](relatorios/logs/revisao-L0/sondagens-contrato.json). Esses logs se referem ao commit L0; a execução posterior das retificações R1 está registrada em L1.
 
 ## Questões para o arquiteto
 
@@ -93,6 +94,10 @@ L0-A02 foi resolvida em arquitetura com alcance explícito do cap de diagnóstic
 
 Nenhuma decisão competitiva foi tomada com base nos smokes. A preferência do usuário por qualidade e os tetos propostos de custo permanecem inalterados.
 
-[Relatório L1](relatorios/L1.md): contrato retificado e CI aprovados; corpus em revisão e spike SQLite implementado/verificado localmente, aguardando CI nativa.
+[Relatório L1](relatorios/L1.md): contrato retificado e CI aprovados; corpus preparado, com análise L1-C01 pendente; spike SQLite implementado/verificado localmente, bloqueado na prova nativa pela conta GitHub.
 
 L1-S01/S02: recuperação por supervisor, retenção/GC e duplicação FTS para M1-04; [detalhes do spike](relatorios/sqlite-L1.md). Não bloqueiam o experimento M0-07.
+
+L1-C01: elegibilidade/representatividade de propostas D1 antes do piloto; [origens e critérios](../eval/reports/m0-corpus.md). GitHub Actions bloqueou novos jobs por pagamento/limite; usuário pediu registrar a prova nativa pendente. Não há falha de teste demonstrada nesse run.
+
+Escopo vigente de plataformas v1: Linux x86_64 e macOS arm64, conforme plano atualizado. M0-02.R2 remove Windows da matriz obrigatória; histórico preservado. Aceite remoto R2/M0-07 continua pendente por billing/limite. Consultas de branch protection/rulesets retornaram 403, sem mudança de proteção.

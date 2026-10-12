@@ -1,0 +1,41 @@
+schema_version = 1
+purpose = "development_only"
+statistical_confirmation = false
+
+[datasets.D0]
+path = "tasks/dev.jsonl"
+expected_tasks = 20
+per_family = 5
+
+[datasets.D1]
+path = "tasks/challenge-dev.jsonl"
+expected_tasks = 32
+per_family = 8
+minimum_repositories_per_family = 2
+eligibility = "architect_review_pending_for_local_requirements_and_simulated_state_review"
+
+[provenance]
+manifest = "sources/manifest.json"
+immutable_git_commits = true
+oracles = "oracles/"
+label_method = "manual_upstream_source_and_history_review"
+
+[isolation]
+materializer = "scripts/materialize_task.py"
+agent_input = ["workspace/**", "request.json", "proposed.diff (review only)"]
+reference_patches_in_agent_input = false
+ranking_roots = ["materialized_task/workspace"]
+holdout_policy = "HOLDOUT-POLICY.md"
+
+[fixtures]
+manifest = "fixtures/manifest.json"
+generator = "scripts/generate_fixtures.py"
+seed = "no-randomness-v1"
+modules = 64
+large_function_statements = 2048
+counts_as_real_tasks = false
+
+[validation]
+manifest_and_isolation = "python3 eval/scripts/verify_corpus.py"
+local_regressions = "python3 eval/scripts/verify_oracles.py"
+agent_sessions = "not_run_requires_M0-04"

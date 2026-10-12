@@ -1,0 +1,7 @@
+# Corpus fingerprints are byte-exact on every checkout, including CRLF fixtures.
+* -text
+*.tar.gz binary
+# Byte fixtures and unified patch context intentionally preserve these bytes.
+fixtures/crlf.rs whitespace=cr-at-eol
+*.patch whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+*.diff whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab

@@ -1,0 +1,40 @@
+diff --git a/time.go b/time.go
+index aa1df76..c351129 100644
+--- a/time.go
++++ b/time.go
+@@ -113,9 +113,7 @@ func (uuid UUID) Time() Time {
+ 	var t Time
+ 	switch uuid.Version() {
+ 	case 6:
+-		time := int64(binary.BigEndian.Uint32(uuid[0:4])) << 28
+-		time |= int64(binary.BigEndian.Uint16(uuid[4:6])) << 12
+-		time |= int64(binary.BigEndian.Uint16(uuid[6:8]) & 0xfff)
++		time := binary.BigEndian.Uint64(uuid[:8]) // Ignore uuid[6] version b0110
+ 		t = Time(time)
+ 	case 7:
+ 		time := binary.BigEndian.Uint64(uuid[:8])
+diff --git a/version6.go b/version6.go
+index 77e0cef..339a959 100644
+--- a/version6.go
++++ b/version6.go
+@@ -39,16 +39,12 @@ func NewV6() (UUID, error) {
+ 	   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ 	*/
+ 
+-	timeHigh := uint32((now >> 28) & 0xffffffff)
+-	timeMid := uint16((now >> 12) & 0xffff)
+-	timeLow := uint16(now & 0x0fff)
+-	timeLow |= 0x6000 // Version 6
+-
+-	binary.BigEndian.PutUint32(uuid[0:], timeHigh)
+-	binary.BigEndian.PutUint16(uuid[4:], timeMid)
+-	binary.BigEndian.PutUint16(uuid[6:], timeLow)
++	binary.BigEndian.PutUint64(uuid[0:], uint64(now))
+ 	binary.BigEndian.PutUint16(uuid[8:], seq)
+ 
++	uuid[6] = 0x60 | (uuid[6] & 0x0F)
++	uuid[8] = 0x80 | (uuid[8] & 0x3F)
++
+ 	nodeMu.Lock()
+ 	if nodeID == zeroID {
+ 		setNodeInterface("")

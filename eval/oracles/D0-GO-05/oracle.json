@@ -1,0 +1,41 @@
+{
+  "task_id": "D0-GO-05",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "module github.com/google/uuid; pinned go.mod has no go directive: required Go version is not declared; node_js and node_net build conditions separate js/non-js."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "go.mod",
+      "commit": "0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "sha256": "73da47b6338b00a082fd451aa35a3273d3adc09b8e9bba98dab01091e402af6e",
+      "anchor": "module ",
+      "byte_start": 0,
+      "byte_end": 7,
+      "line": 1
+    },
+    {
+      "path": "node_js.go",
+      "commit": "0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "sha256": "334b6ac9f50339341696319aaf9b912ea8007d0aacf0e909a48a0bb02d982d6d",
+      "anchor": "// +build js",
+      "byte_start": 157,
+      "byte_end": 169,
+      "line": 5
+    },
+    {
+      "path": "node_net.go",
+      "commit": "0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "sha256": "78e274b465de8da8690f4ab06281f41025b142c1d093e337fda1d6726b35662b",
+      "anchor": "// +build !js",
+      "byte_start": 157,
+      "byte_end": 170,
+      "line": 5
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

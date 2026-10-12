@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-10-12T01:46:57.236653+00:00",
+  "base_commit": "31961af2fbf5193756e393b59069e15e1d9e34de",
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "command": [
+    "gh",
+    "run",
+    "view",
+    "38193062414",
+    "--repo",
+    "wkoch/xrai",
+    "--json",
+    "status,conclusion,headSha,jobs,url"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 1.417,
+  "stdout": "{\"conclusion\":\"failure\",\"headSha\":\"31961af2fbf5193756e393b59069e15e1d9e34de\",\"jobs\":[{\"completedAt\":\"2026-10-12T01:44:37Z\",\"conclusion\":\"failure\",\"databaseId\":114629764620,\"name\":\"Documentary contracts\",\"startedAt\":\"2026-10-12T01:44:35Z\",\"status\":\"completed\",\"steps\":[],\"url\":\"https://github.com/wkoch/xrai/actions/runs/38193062414/job/114629764620\"},{\"completedAt\":\"2026-10-12T01:44:37Z\",\"conclusion\":\"failure\",\"databaseId\":114629764710,\"name\":\"x86_64-unknown-linux-gnu\",\"startedAt\":\"2026-10-12T01:44:35Z\",\"status\":\"completed\",\"steps\":[],\"url\":\"https://github.com/wkoch/xrai/actions/runs/38193062414/job/114629764710\"},{\"completedAt\":\"2026-10-12T01:44:40Z\",\"conclusion\":\"failure\",\"databaseId\":114629764771,\"name\":\"aarch64-apple-darwin\",\"startedAt\":\"2026-10-12T01:44:35Z\",\"status\":\"completed\",\"steps\":[],\"url\":\"https://github.com/wkoch/xrai/actions/runs/38193062414/job/114629764771\"},{\"completedAt\":\"2026-10-12T01:44:38Z\",\"conclusion\":\"failure\",\"databaseId\":114629764843,\"name\":\"x86_64-pc-windows-msvc\",\"startedAt\":\"2026-10-12T01:44:35Z\",\"status\":\"completed\",\"steps\":[],\"url\":\"https://github.com/wkoch/xrai/actions/runs/38193062414/job/114629764843\"}],\"status\":\"completed\",\"url\":\"https://github.com/wkoch/xrai/actions/runs/38193062414\"}\n",
+  "stderr": "",
+  "scope": "development verification; not competitive evidence"
+}

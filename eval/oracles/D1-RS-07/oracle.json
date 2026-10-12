@@ -1,0 +1,51 @@
+{
+  "task_id": "D1-RS-07",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Unconditional prefix boost changes low Jaro scores that must stay unchanged when sim <=0.7; Friedrich Nietzsche / Fran-Paul Sartre regresses from approximately 0.452 to 0.562."
+  ],
+  "test_vectors": [
+    {
+      "probe": "oracles/D1-RS-07/probe.rs",
+      "expected_baseline": "pass",
+      "expected_reference": "pass",
+      "expected_proposed_review": "fail"
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "src/lib.rs",
+      "commit": "20e3bdd2ee477db368ecb41815d55ab24550e0bf",
+      "sha256": "2e340450050784ea8e6e19ea36cbedcf9084ecb7829fc206cacdca4f6f069784",
+      "anchor": "pub fn generic_jaro_winkler<",
+      "byte_start": 5440,
+      "byte_end": 5468,
+      "line": 191
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "20e3bdd2ee477db368ecb41815d55ab24550e0bf",
+      "sha256": "2e340450050784ea8e6e19ea36cbedcf9084ecb7829fc206cacdca4f6f069784",
+      "anchor": "pub fn generic_jaro<",
+      "byte_start": 2647,
+      "byte_end": 2667,
+      "line": 90
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-RS-07/reference.patch",
+    "sha256": "276142ecab5c00ff4626d0de77db146b0cea7a690a29827d60f61456d5a72864",
+    "upstream_commit": "20e3bdd2ee477db368ecb41815d55ab24550e0bf",
+    "url": "https://github.com/rapidfuzz/strsim-rs/commit/20e3bdd2ee477db368ecb41815d55ab24550e0bf"
+  },
+  "review": {
+    "true_findings": [
+      "Unconditional prefix boost changes low Jaro scores that must stay unchanged when sim <=0.7; Friedrich Nietzsche / Fran-Paul Sartre regresses from approximately 0.452 to 0.562."
+    ],
+    "false_positive_budget": 0,
+    "proposed_change_origin": "reverse of a distinct historical upstream fix; simulated regression review over real code"
+  },
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-RS-07/probe.rs"
+}

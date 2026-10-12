@@ -1,0 +1,54 @@
+{
+  "task_id": "D1-PY-01",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Bound cache_key binds self exactly once; all wrapper variants call exposed cache_key on call args; cache metadata and cachedmethod custom key share semantics."
+  ],
+  "test_vectors": [
+    {
+      "probe": "oracles/D1-PY-01/probe.py",
+      "expected_baseline": "fail",
+      "expected_reference": "pass",
+      "expected_proposed_review": null
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "src/cachetools/_cachedmethod.py",
+      "commit": "98ec79ff8be24ce1346d6a96602f11ccbda4f76f",
+      "sha256": "7208b268f4f699c14d5ba8b47a09a2b6d0f6cb02577ac06aaddfa215e7e31519",
+      "anchor": "def cache_key(",
+      "byte_start": 1145,
+      "byte_end": 1159,
+      "line": 50
+    },
+    {
+      "path": "src/cachetools/_cachedmethod.py",
+      "commit": "98ec79ff8be24ce1346d6a96602f11ccbda4f76f",
+      "sha256": "7208b268f4f699c14d5ba8b47a09a2b6d0f6cb02577ac06aaddfa215e7e31519",
+      "anchor": "def _wrapper(",
+      "byte_start": 12990,
+      "byte_end": 13003,
+      "line": 389
+    },
+    {
+      "path": "src/cachetools/__init__.py",
+      "commit": "98ec79ff8be24ce1346d6a96602f11ccbda4f76f",
+      "sha256": "d0e960a09f5d6440d4374205f3e18a75a77aef87b5192a262dc2dc0d742ace09",
+      "anchor": "def cachedmethod(",
+      "byte_start": 22235,
+      "byte_end": 22252,
+      "line": 750
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-PY-01/reference.patch",
+    "sha256": "aa6647b77e6e89a057473283da7fe19696afaa44d150a3fc096252b8d7cfa9bf",
+    "upstream_commit": "18e5930ced2cf107c273b81d949dbab8ce3f48e1",
+    "url": "https://github.com/tkem/cachetools/commit/18e5930ced2cf107c273b81d949dbab8ce3f48e1"
+  },
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-PY-01/probe.py"
+}

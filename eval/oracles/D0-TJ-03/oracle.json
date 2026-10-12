@@ -1,0 +1,32 @@
+{
+  "task_id": "D0-TJ-03",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "specific handlers run before wildcard; slice creates copies so removal during dispatch does not skip already-selected handlers."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "src/index.ts",
+      "commit": "6b41670516ed8e8b738612f60491995470aa63b3",
+      "sha256": "1536a2dd71d64785d811076beee6d970583ca555dd34ce839face641a200054b",
+      "anchor": "emit<Key extends keyof Events>(type: Key, evt?: Events[Key])",
+      "byte_start": 3286,
+      "byte_end": 3346,
+      "line": 103
+    },
+    {
+      "path": "src/index.ts",
+      "commit": "6b41670516ed8e8b738612f60491995470aa63b3",
+      "sha256": "1536a2dd71d64785d811076beee6d970583ca555dd34ce839face641a200054b",
+      "anchor": ".slice()",
+      "byte_start": 3464,
+      "byte_end": 3472,
+      "line": 107
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

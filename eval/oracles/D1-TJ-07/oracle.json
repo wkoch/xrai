@@ -1,0 +1,51 @@
+{
+  "task_id": "D1-TJ-07",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "10-.5 is wrongly matched and parseFloat returns 10; invalid input must yield undefined rather than number."
+  ],
+  "test_vectors": [
+    {
+      "probe": "oracles/D1-TJ-07/probe.js",
+      "expected_baseline": "pass",
+      "expected_reference": "pass",
+      "expected_proposed_review": "fail"
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "index.js",
+      "commit": "d1add60365fe2340b750b1f7a254b83bea34e52d",
+      "sha256": "55986972f5f3c9446f876c576e1cd30fd4f04cd26527efbb5ad834637c740e4c",
+      "anchor": "function parse(",
+      "byte_start": 915,
+      "byte_end": 930,
+      "line": 48
+    },
+    {
+      "path": "index.js",
+      "commit": "d1add60365fe2340b750b1f7a254b83bea34e52d",
+      "sha256": "55986972f5f3c9446f876c576e1cd30fd4f04cd26527efbb5ad834637c740e4c",
+      "anchor": "module.exports = function",
+      "byte_start": 405,
+      "byte_end": 430,
+      "line": 26
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-TJ-07/reference.patch",
+    "sha256": "26f26f2dfcdbbe0e674ef8e114b30296ce0348fff268ffff4ac89721ba0559ec",
+    "upstream_commit": "d1add60365fe2340b750b1f7a254b83bea34e52d",
+    "url": "https://github.com/vercel/ms/commit/d1add60365fe2340b750b1f7a254b83bea34e52d"
+  },
+  "review": {
+    "true_findings": [
+      "10-.5 is wrongly matched and parseFloat returns 10; invalid input must yield undefined rather than number."
+    ],
+    "false_positive_budget": 0,
+    "proposed_change_origin": "reverse of a distinct historical upstream fix; simulated regression review over real code"
+  },
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-TJ-07/probe.js"
+}

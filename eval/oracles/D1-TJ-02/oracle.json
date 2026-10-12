@@ -1,0 +1,53 @@
+{
+  "task_id": "D1-TJ-02",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "-10.5h must be -37800000; match numeric group must include the entire negative decimal; positive numbers and -.5h remain valid."
+  ],
+  "test_vectors": [
+    {
+      "input": "-10.5h",
+      "expected": -37800000
+    },
+    {
+      "input": "-.5h",
+      "expected": -1800000
+    },
+    {
+      "probe": "oracles/D1-TJ-02/probe.js",
+      "expected_baseline": "fail",
+      "expected_reference": "pass",
+      "expected_proposed_review": null
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "index.js",
+      "commit": "fe0bae301a6c41f68a01595658a4f4f0dcba0e84",
+      "sha256": "7c9083207b648e648c4d076e7bd7d85af73daae58738199eb8c20a465dfdcd19",
+      "anchor": "module.exports = function",
+      "byte_start": 405,
+      "byte_end": 430,
+      "line": 26
+    },
+    {
+      "path": "index.js",
+      "commit": "fe0bae301a6c41f68a01595658a4f4f0dcba0e84",
+      "sha256": "7c9083207b648e648c4d076e7bd7d85af73daae58738199eb8c20a465dfdcd19",
+      "anchor": "function parse(",
+      "byte_start": 922,
+      "byte_end": 937,
+      "line": 48
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-TJ-02/reference.patch",
+    "sha256": "58feaf90e09260b04c54d1d6b55a45afe06f6efde19ef9caeb0279f07545a945",
+    "upstream_commit": "2669f23e99be0bb6b65d365151884de52434301c",
+    "url": "https://github.com/vercel/ms/commit/2669f23e99be0bb6b65d365151884de52434301c"
+  },
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-TJ-02/probe.js"
+}

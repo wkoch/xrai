@@ -44,9 +44,6 @@ jobs:
           - runner: macos-15
             host: aarch64-apple-darwin
             binary: target/debug/xrai
-          - runner: windows-2025
-            host: x86_64-pc-windows-msvc
-            binary: target/debug/xrai.exe
     defaults:
       run:
         shell: bash

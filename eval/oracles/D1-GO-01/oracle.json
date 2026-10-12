@@ -1,0 +1,54 @@
+{
+  "task_id": "D1-GO-01",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Use monotonic shared 60-bit millisecond+sequence state under timeMu; if newly computed value <= last, increment prior state; preserve random tail, version and variant bits."
+  ],
+  "test_vectors": [
+    {
+      "probe": "oracles/D1-GO-01/oracle_test.go",
+      "expected_baseline": "fail",
+      "expected_reference": "pass",
+      "expected_proposed_review": null
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "version7.go",
+      "commit": "c58770eb495f55fe2ced6284f93c5158a62e53e3",
+      "sha256": "347ae1977a655a902f84681a5cda98fbaf3da5b11d1b875f335d90656fc1f450",
+      "anchor": "func NewV7(",
+      "byte_start": 875,
+      "byte_end": 886,
+      "line": 23
+    },
+    {
+      "path": "version7.go",
+      "commit": "c58770eb495f55fe2ced6284f93c5158a62e53e3",
+      "sha256": "347ae1977a655a902f84681a5cda98fbaf3da5b11d1b875f335d90656fc1f450",
+      "anchor": "func makeV7(",
+      "byte_start": 1542,
+      "byte_end": 1554,
+      "line": 48
+    },
+    {
+      "path": "time.go",
+      "commit": "c58770eb495f55fe2ced6284f93c5158a62e53e3",
+      "sha256": "e07999a07de5b667dd1dd5792b544ea933e7e839eca03b3469527f86a8bc2881",
+      "anchor": "timeMu",
+      "byte_start": 642,
+      "byte_end": 648,
+      "line": 26
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-GO-01/reference.patch",
+    "sha256": "28e850464acab179aa6213a18320399db62a03418f1e34651531aaed59e00bb0",
+    "upstream_commit": "a2b2b32373ff0b1a312b7fdf6d38a977099698a6",
+    "url": "https://github.com/google/uuid/commit/a2b2b32373ff0b1a312b7fdf6d38a977099698a6"
+  },
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-GO-01/oracle_test.go"
+}

@@ -1,0 +1,678 @@
+{
+  "schema_version": 1,
+  "mode": "local regression probes, no model sessions",
+  "checks": 12,
+  "passed": 12,
+  "failures": 0,
+  "results": [
+    {
+      "task": "D1-RS-01",
+      "kind": "correction",
+      "expected_baseline_pass": false,
+      "expected_changed_pass": true,
+      "baseline": [
+        {
+          "command": [
+            "rustc",
+            "--crate-type",
+            "lib",
+            "--crate-name",
+            "upstream",
+            "--edition=2021",
+            "src/lib.rs",
+            "-o",
+            "libupstream.rlib"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "rustc",
+            "--edition=2021",
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-0vem1y4g/task/workspace/probe.rs",
+            "--extern",
+            "upstream=libupstream.rlib",
+            "-o",
+            "oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-0vem1y4g/task/workspace/oracle_probe"
+          ],
+          "exit_code": 101,
+          "stdout": "",
+          "stderr": "\nthread 'main' (1221447) panicked at /var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-0vem1y4g/task/workspace/probe.rs:5:3:\nassertion failed: (upstream::jaro(x, y) - 0.6).abs() < 1e-12\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/oracles/D1-RS-01/reference.patch"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "rustc",
+            "--crate-type",
+            "lib",
+            "--crate-name",
+            "upstream",
+            "--edition=2021",
+            "src/lib.rs",
+            "-o",
+            "libupstream.rlib"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "rustc",
+            "--edition=2021",
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-0vem1y4g/task/workspace/probe.rs",
+            "--extern",
+            "upstream=libupstream.rlib",
+            "-o",
+            "oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-0vem1y4g/task/workspace/oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-RS-02",
+      "kind": "correction",
+      "expected_baseline_pass": false,
+      "expected_changed_pass": true,
+      "baseline": [
+        {
+          "command": [
+            "rustc",
+            "--crate-type",
+            "lib",
+            "--crate-name",
+            "upstream",
+            "--edition=2021",
+            "src/lib.rs",
+            "-o",
+            "libupstream.rlib"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> src/lib.rs:282:17\n    |\n282 | pub fn quote(s: &str) -> Cow<str> {\n    |                 ^^^^     ^^^^^^^^ the same lifetime is hidden here\n    |                 |\n    |                 the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\n    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default\nhelp: use `'_` for type paths\n    |\n282 | pub fn quote(s: &str) -> Cow<'_, str> {\n    |                              +++\n\nwarning: 1 warning emitted\n\n"
+        },
+        {
+          "command": [
+            "rustc",
+            "--edition=2021",
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-8my5girp/task/workspace/probe.rs",
+            "--extern",
+            "upstream=libupstream.rlib",
+            "-o",
+            "oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-8my5girp/task/workspace/oracle_probe"
+          ],
+          "exit_code": 101,
+          "stdout": "",
+          "stderr": "\nthread 'main' (1221711) panicked at /var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-8my5girp/task/workspace/probe.rs:2:12:\nassertion `left == right` failed\n  left: \"~root\"\n right: \"'~root'\"\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/oracles/D1-RS-02/reference.patch"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "rustc",
+            "--crate-type",
+            "lib",
+            "--crate-name",
+            "upstream",
+            "--edition=2021",
+            "src/lib.rs",
+            "-o",
+            "libupstream.rlib"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": "warning: hiding a lifetime that's elided elsewhere is confusing\n   --> src/lib.rs:282:17\n    |\n282 | pub fn quote(s: &str) -> Cow<str> {\n    |                 ^^^^     ^^^^^^^^ the same lifetime is hidden here\n    |                 |\n    |                 the lifetime is elided here\n    |\n    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing\n    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default\nhelp: use `'_` for type paths\n    |\n282 | pub fn quote(s: &str) -> Cow<'_, str> {\n    |                              +++\n\nwarning: 1 warning emitted\n\n"
+        },
+        {
+          "command": [
+            "rustc",
+            "--edition=2021",
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-8my5girp/task/workspace/probe.rs",
+            "--extern",
+            "upstream=libupstream.rlib",
+            "-o",
+            "oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-8my5girp/task/workspace/oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-TJ-01",
+      "kind": "correction",
+      "expected_baseline_pass": false,
+      "expected_changed_pass": true,
+      "baseline": [
+        {
+          "command": [
+            "tsc",
+            "--project",
+            "tsconfig.oracle.json"
+          ],
+          "exit_code": 1,
+          "stdout": "probe.ts(2,16): error TS2558: Expected 0 type arguments, but got 1.\nprobe.ts(5,1): error TS2578: Unused '@ts-expect-error' directive.\nprobe.ts(7,1): error TS2578: Unused '@ts-expect-error' directive.\nprobe.ts(11,30): error TS2322: Type 'EventType' is not assignable to type '\"bar\" | \"foo\"'.\n  Type 'string' is not assignable to type '\"bar\" | \"foo\"'.\n",
+          "stderr": ""
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/oracles/D1-TJ-01/reference.patch"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "tsc",
+            "--project",
+            "tsconfig.oracle.json"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-TJ-02",
+      "kind": "correction",
+      "expected_baseline_pass": false,
+      "expected_changed_pass": true,
+      "baseline": [
+        {
+          "command": [
+            "node",
+            "probe.js"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "node:internal/assert/utils:146\n  throw error;\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- -37800000\n\n    at Object.<anonymous> (/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-9zrjsx_t/task/workspace/probe.js:2:8)\n    at Module._compile (node:internal/modules/cjs/loader:1968:14)\n    at Object..js (node:internal/modules/cjs/loader:2108:10)\n    at Module.load (node:internal/modules/cjs/loader:1690:32)\n    at Module._load (node:internal/modules/cjs/loader:1480:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: undefined,\n  expected: -37800000,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.11.1\n"
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/oracles/D1-TJ-02/reference.patch"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "node",
+            "probe.js"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-PY-01",
+      "kind": "correction",
+      "expected_baseline_pass": false,
+      "expected_changed_pass": true,
+      "baseline": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.15/bin/python3.15",
+            "probe.py"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-iw6tah11/task/workspace/probe.py\", line 13, in <module>\n    c=C();assert c.f.cache_key(21)==('owner',21),(mode,info)\n                 ~~~~~~~~~~~~~^^^^\nTypeError: C.<lambda>() missing 1 required positional argument: 'x'\n"
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/oracles/D1-PY-01/reference.patch"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.15/bin/python3.15",
+            "probe.py"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-PY-02",
+      "kind": "correction",
+      "expected_baseline_pass": false,
+      "expected_changed_pass": true,
+      "baseline": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.15/bin/python3.15",
+            "probe.py"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-klwn0bhk/task/workspace/probe.py\", line 4, in <module>\n    assert params.get('regex_pattern')=='[^-a-z0-9_]+'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/oracles/D1-PY-02/reference.patch"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.15/bin/python3.15",
+            "probe.py"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-GO-01",
+      "kind": "correction",
+      "expected_baseline_pass": false,
+      "expected_changed_pass": true,
+      "baseline": [
+        {
+          "command": [
+            "go",
+            "test",
+            "-run",
+            "^TestOracle$",
+            "-count=1",
+            "."
+          ],
+          "exit_code": 1,
+          "stdout": "--- FAIL: TestOracle (0.00s)\n    oracle_test.go:7: not strictly monotonic within fixed time\nFAIL\nFAIL\tgithub.com/google/uuid\t0.242s\nFAIL\n",
+          "stderr": ""
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/oracles/D1-GO-01/reference.patch"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "go",
+            "test",
+            "-run",
+            "^TestOracle$",
+            "-count=1",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "ok  \tgithub.com/google/uuid\t0.220s\n",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-GO-02",
+      "kind": "correction",
+      "expected_baseline_pass": false,
+      "expected_changed_pass": true,
+      "baseline": [
+        {
+          "command": [
+            "go",
+            "test",
+            "-run",
+            "^TestOracle$",
+            "-count=1",
+            "."
+          ],
+          "exit_code": 1,
+          "stdout": "--- FAIL: TestOracle (0.00s)\n    oracle_test.go:3: input was mutated 1000000 1\nFAIL\nFAIL\tgithub.com/dustin/go-humanize\t0.224s\nFAIL\n",
+          "stderr": ""
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/oracles/D1-GO-02/reference.patch"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "go",
+            "test",
+            "-run",
+            "^TestOracle$",
+            "-count=1",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "ok  \tgithub.com/dustin/go-humanize\t0.227s\n",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-RS-07",
+      "kind": "review",
+      "expected_baseline_pass": true,
+      "expected_changed_pass": false,
+      "baseline": [
+        {
+          "command": [
+            "rustc",
+            "--crate-type",
+            "lib",
+            "--crate-name",
+            "upstream",
+            "--edition=2021",
+            "src/lib.rs",
+            "-o",
+            "libupstream.rlib"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "rustc",
+            "--edition=2021",
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-f9kp66ez/task/workspace/probe.rs",
+            "--extern",
+            "upstream=libupstream.rlib",
+            "-o",
+            "oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-f9kp66ez/task/workspace/oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/tasks/inputs/D1-RS-07.diff"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "rustc",
+            "--crate-type",
+            "lib",
+            "--crate-name",
+            "upstream",
+            "--edition=2021",
+            "src/lib.rs",
+            "-o",
+            "libupstream.rlib"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "rustc",
+            "--edition=2021",
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-f9kp66ez/task/workspace/probe.rs",
+            "--extern",
+            "upstream=libupstream.rlib",
+            "-o",
+            "oracle_probe"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-f9kp66ez/task/workspace/oracle_probe"
+          ],
+          "exit_code": 101,
+          "stdout": "",
+          "stderr": "\nthread 'main' (1228655) panicked at /var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-f9kp66ez/task/workspace/probe.rs:2:64:\nassertion failed: (upstream::jaro_winkler(a, b) - upstream::jaro(a, b)).abs() < 1e-12\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-TJ-07",
+      "kind": "review",
+      "expected_baseline_pass": true,
+      "expected_changed_pass": false,
+      "baseline": [
+        {
+          "command": [
+            "node",
+            "probe.js"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/tasks/inputs/D1-TJ-07.diff"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "node",
+            "probe.js"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "node:internal/assert/utils:146\n  throw error;\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n10 !== undefined\n\n    at Object.<anonymous> (/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-lobfe4m1/task/workspace/probe.js:1:73)\n    at Module._compile (node:internal/modules/cjs/loader:1968:14)\n    at Object..js (node:internal/modules/cjs/loader:2108:10)\n    at Module.load (node:internal/modules/cjs/loader:1690:32)\n    at Module._load (node:internal/modules/cjs/loader:1480:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 10,\n  expected: undefined,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.11.1\n"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-PY-07",
+      "kind": "review",
+      "expected_baseline_pass": true,
+      "expected_changed_pass": false,
+      "baseline": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.15/bin/python3.15",
+            "probe.py"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/tasks/inputs/D1-PY-07.diff"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.15/bin/python3.15",
+            "probe.py"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-oracle-tj3_s8bg/task/workspace/probe.py\", line 9, in <module>\n    assert not recorded, [str(w.message) for w in recorded]\n           ^^^^^^^^^^^^\nAssertionError: [\"No '__dict__' attribute on 'NoneType' instance to cache 'f' property.\"]\n"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "task": "D1-GO-07",
+      "kind": "review",
+      "expected_baseline_pass": true,
+      "expected_changed_pass": false,
+      "baseline": [
+        {
+          "command": [
+            "go",
+            "test",
+            "-run",
+            "^TestOracle$",
+            "-count=1",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "ok  \tgithub.com/google/uuid\t0.220s\n",
+          "stderr": ""
+        }
+      ],
+      "apply_patch": {
+        "command": [
+          "git",
+          "apply",
+          "/Users/wkoch/Projetos/xrai/eval/tasks/inputs/D1-GO-07.diff"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "changed": [
+        {
+          "command": [
+            "go",
+            "test",
+            "-run",
+            "^TestOracle$",
+            "-count=1",
+            "."
+          ],
+          "exit_code": 1,
+          "stdout": "--- FAIL: TestOracle (0.00s)\n    oracle_test.go:3: timestamp bits lost: 123456789abc6def != 123456789abcdef\nFAIL\nFAIL\tgithub.com/google/uuid\t0.221s\nFAIL\n",
+          "stderr": ""
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "agent_success_measured": false
+}

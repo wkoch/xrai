@@ -1,6 +1,6 @@
 # M0-07 — spike SQLite de desenvolvimento
 
-Implementador, 11/10/2026 America/Sao_Paulo; verificações em 12/10 UTC. **Implementação e aceite local executados; Linux/Windows ainda aguardam execução nativa da CI deste código.** O sucesso do scaffold de L0 não substitui essa execução. Este relatório não conclui M0-05 nem aprova API de persistência de produção.
+Implementador, 11/10/2026 America/Sao_Paulo; verificações em 12/10 UTC. **Implementação e aceite local executados; Linux x86_64 ainda aguarda execução nativa da CI deste código; macOS arm64 local passou. A matriz vigente v1 exclui Windows.** O sucesso do scaffold de L0 não substitui essa execução. Este relatório não conclui M0-05 nem aprova API de persistência de produção.
 
 O experimento reside somente em `crates/xrai-eval`: módulo `sqlite_spike`, executável de desenvolvimento `sqlite-spike` e seis testes de integração em `tests/sqlite_snapshots.rs`. `cargo tree -p xrai` confirma que o binário do usuário continua sem dependências externas e sem `xrai-eval`. O harness permanece em M0-04.
 
@@ -47,4 +47,10 @@ Ambiente local: Rust/Cargo 1.98.1, macOS 27.0.1 arm64, build debug. Sem campanha
 - O schema é descartável e tem application-id exclusivo do spike. Não existem migrações, lock de manutenção do diretório, recuperação automática de todos os processos, garbage collection, schema de domínio, caminhos nativos adversos ou frescor do filesystem. IDs A/B são gerações fixadas do experimento; `Reader` captura a geração publicada antes de consultar e não promete `validated/strict`.
 - Backup exige arquivo novo e rebuild valida app-id/schema antes de alterar tabelas. Proteção completa contra troca maliciosa de path/symlink concorrente pertence a M0-08/M1-04; o teste cobre destino já existente, não esse adversário.
 
-Essas questões não impedem o spike autorizado. Concluir o cartão inteiro exige observar estes testes nativamente em Linux, macOS e Windows no commit publicado e registrar a CI no relatório consolidado L1.
+Essas questões não impedem o spike autorizado. Concluir o cartão inteiro exige observar estes testes nativamente em Linux x86_64 e macOS arm64 no commit publicado e registrar a CI no relatório consolidado L1.
+
+## Situação após publicação
+
+Publicado no commit `31961af2fbf5193756e393b59069e15e1d9e34de`. A CI `38193062414` foi impedida de iniciar os quatro jobs pelo billing/limite da conta GitHub, sem executar qualquer teste. Por escolha explícita do usuário, a prova nativa Linux x86_64/macOS arm64 fica pendente (macOS local já passou; Windows é pós-v1); aceite completo M0-07 ainda não foi atingido. [Registro e diagnóstico](L1.md#impedimento-de-ci-m0-07). Os resultados locais acima continuam válidos.
+
+M0-02.R2 adequou a matriz obrigatória ao plano v1 posterior: Linux x86_64 e macOS arm64. Os testes permanecem portáveis e os logs históricos Windows foram preservados; retirado do aceite obrigatório v1. Verificação em CI dos dois alvos continua impedida pela conta GitHub.

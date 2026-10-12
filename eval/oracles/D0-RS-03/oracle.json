@@ -1,0 +1,41 @@
+{
+  "task_id": "D0-RS-03",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "join invokes quote for every argument, inserts separators and removes final space; quote escapes single quotes; split parses quoted arguments without expansion."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "src/lib.rs",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "dabd20b4ebd5a4f248f98748346f6fe8fefd3c645f47eb6d91ed86ee5ac0180e",
+      "anchor": "pub fn join<",
+      "byte_start": 10425,
+      "byte_end": 10437,
+      "line": 334
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "dabd20b4ebd5a4f248f98748346f6fe8fefd3c645f47eb6d91ed86ee5ac0180e",
+      "anchor": "pub fn quote(",
+      "byte_start": 8879,
+      "byte_end": 8892,
+      "line": 282
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "dabd20b4ebd5a4f248f98748346f6fe8fefd3c645f47eb6d91ed86ee5ac0180e",
+      "anchor": "pub fn split(",
+      "byte_start": 4222,
+      "byte_end": 4235,
+      "line": 126
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

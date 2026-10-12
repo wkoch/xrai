@@ -1,0 +1,32 @@
+{
+  "task_id": "D0-TJ-01",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Emitter.off has optional handler; implementation removes one identity when provided and all type handlers when omitted."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "src/index.ts",
+      "commit": "6b41670516ed8e8b738612f60491995470aa63b3",
+      "sha256": "1536a2dd71d64785d811076beee6d970583ca555dd34ce839face641a200054b",
+      "anchor": "off<Key",
+      "byte_start": 1003,
+      "byte_end": 1010,
+      "line": 29
+    },
+    {
+      "path": "src/index.ts",
+      "commit": "6b41670516ed8e8b738612f60491995470aa63b3",
+      "sha256": "1536a2dd71d64785d811076beee6d970583ca555dd34ce839face641a200054b",
+      "anchor": "off<Key extends keyof Events>(type: Key, handler?: GenericEventHandler)",
+      "byte_start": 2612,
+      "byte_end": 2683,
+      "line": 82
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

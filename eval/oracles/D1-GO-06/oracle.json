@@ -1,0 +1,32 @@
+{
+  "task_id": "D1-GO-06",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Caller invokes IBytes(1024) yielding 1.0 KiB; ordinals.go absent; no current Ordinal symbol."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "bytes.go",
+      "commit": "e308a8fc2981a19ebce7ae9d7c32094fe2b7baad",
+      "sha256": "9fb2391c3896a42cd4091279701f6274c19f3c3f15145503477229a67835d5da",
+      "anchor": "func IBytes(",
+      "byte_start": 1596,
+      "byte_end": 1608,
+      "line": 98
+    },
+    {
+      "path": "ordinals.go",
+      "commit": "e308a8fc2981a19ebce7ae9d7c32094fe2b7baad",
+      "sha256": "aac3d5ceefd8044baae1f3deb76613470c7eb94fc26af1ea51cec93f8eab075f",
+      "anchor": "func Ordinal(",
+      "byte_start": 124,
+      "byte_end": 137,
+      "line": 8
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

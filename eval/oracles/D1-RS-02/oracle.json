@@ -1,0 +1,58 @@
+{
+  "task_id": "D1-RS-02",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "ASCII ~ must trigger quoting; modifier tilde U+02DC is not the ASCII shell expansion trigger; quote(\"~root\") yields quoted literal and join preserves it."
+  ],
+  "test_vectors": [
+    {
+      "input": "~root",
+      "quote": "'~root'"
+    },
+    {
+      "probe": "oracles/D1-RS-02/probe.rs",
+      "expected_baseline": "fail",
+      "expected_reference": "pass",
+      "expected_proposed_review": null
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "src/lib.rs",
+      "commit": "045e4dccd2478ccc8bfa91bd0fe449dfe5473496",
+      "sha256": "be96845d39315fc620e12abd42e29a593ec5d267b9a40462a15cf5be234d3149",
+      "anchor": "fn escape_style(",
+      "byte_start": 7734,
+      "byte_end": 7750,
+      "line": 241
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "045e4dccd2478ccc8bfa91bd0fe449dfe5473496",
+      "sha256": "be96845d39315fc620e12abd42e29a593ec5d267b9a40462a15cf5be234d3149",
+      "anchor": "pub fn quote(",
+      "byte_start": 8880,
+      "byte_end": 8893,
+      "line": 282
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "045e4dccd2478ccc8bfa91bd0fe449dfe5473496",
+      "sha256": "be96845d39315fc620e12abd42e29a593ec5d267b9a40462a15cf5be234d3149",
+      "anchor": "pub fn join<",
+      "byte_start": 10426,
+      "byte_end": 10438,
+      "line": 334
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-RS-02/reference.patch",
+    "sha256": "3b584e1785cd822566e2bb98c6fb19f47ffe016c772f4c0f85796e5183f72f21",
+    "upstream_commit": "efe8162286fd684e7e4e7552c6ec303446675318",
+    "url": "https://github.com/tmiasko/shell-words/commit/efe8162286fd684e7e4e7552c6ec303446675318"
+  },
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-RS-02/probe.rs"
+}

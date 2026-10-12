@@ -1,0 +1,32 @@
+{
+  "task_id": "D1-PY-04",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Strict stdin decoding rejects invalid UTF-8 before slugify with exit 2 and no stdout; valid UTF-8 unaffected; flag absent preserves current text stdin behavior."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "slugify/__main__.py",
+      "commit": "7edf477f64b65ffe22c966d6a8dcc3edd0fb6997",
+      "sha256": "6d82e12c6195afc69b93c42c34f841f36792f434e55ffa1002d2d9f652e0c11d",
+      "anchor": "def parse_args(",
+      "byte_start": 137,
+      "byte_end": 152,
+      "line": 10
+    },
+    {
+      "path": "slugify/__main__.py",
+      "commit": "7edf477f64b65ffe22c966d6a8dcc3edd0fb6997",
+      "sha256": "6d82e12c6195afc69b93c42c34f841f36792f434e55ffa1002d2d9f652e0c11d",
+      "anchor": "def main(",
+      "byte_start": 3671,
+      "byte_end": 3680,
+      "line": 86
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

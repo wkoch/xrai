@@ -1,0 +1,32 @@
+{
+  "task_id": "D1-PY-03",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "New key function includes self identity/hash in key; default methodkey remains unchanged; distinct hashable instances in shared cache do not collide when custom function is selected."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "src/cachetools/keys.py",
+      "commit": "9e26001776993e03c81b5bba8d572c993e818dcf",
+      "sha256": "00e81fa22fa88a804e9c4124d75e7ff6ab341ca212ad89db715e05d21c99d729",
+      "anchor": "def methodkey(",
+      "byte_start": 1241,
+      "byte_end": 1255,
+      "line": 46
+    },
+    {
+      "path": "src/cachetools/__init__.py",
+      "commit": "9e26001776993e03c81b5bba8d572c993e818dcf",
+      "sha256": "591bb83df5a2763e190631516cffcb5858d54abc8afb206b718a7a05a68ee669",
+      "anchor": "def cachedmethod(",
+      "byte_start": 18653,
+      "byte_end": 18670,
+      "line": 639
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}

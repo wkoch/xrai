@@ -1,0 +1,62 @@
+{
+  "task_id": "D1-PY-02",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "--regex-pattern value must enter regex_pattern kwarg; custom underscore-preserving expression yields ___this-is-a-test___; absent flag passes None."
+  ],
+  "test_vectors": [
+    {
+      "argv": [
+        "--regex-pattern",
+        "[^-a-z0-9_]+",
+        "___This is a test___"
+      ],
+      "expected": "___this-is-a-test___"
+    },
+    {
+      "probe": "oracles/D1-PY-02/probe.py",
+      "expected_baseline": "fail",
+      "expected_reference": "pass",
+      "expected_proposed_review": null
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "slugify/__main__.py",
+      "commit": "7b6d5d96c1995e6dccb39a19a13ba78d7d0a3ee4",
+      "sha256": "93448c66a1d4206fca3a3af6cd9e8564cad176aec0908e3a5b0deb286e809ae4",
+      "anchor": "def parse_args(",
+      "byte_start": 137,
+      "byte_end": 152,
+      "line": 10
+    },
+    {
+      "path": "slugify/__main__.py",
+      "commit": "7b6d5d96c1995e6dccb39a19a13ba78d7d0a3ee4",
+      "sha256": "93448c66a1d4206fca3a3af6cd9e8564cad176aec0908e3a5b0deb286e809ae4",
+      "anchor": "def slugify_params(",
+      "byte_start": 3111,
+      "byte_end": 3130,
+      "line": 68
+    },
+    {
+      "path": "slugify/slugify.py",
+      "commit": "7b6d5d96c1995e6dccb39a19a13ba78d7d0a3ee4",
+      "sha256": "6d819e9fe9a27df80742bc13f8c2106e75e8f15c46148f37ca2ab2a234d446d2",
+      "anchor": "def slugify(",
+      "byte_start": 2034,
+      "byte_end": 2046,
+      "line": 75
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-PY-02/reference.patch",
+    "sha256": "ae63a6d9120fc913a065a189566b717d30c4fafbc9d720db5266b2809cbd21ef",
+    "upstream_commit": "7edf477f64b65ffe22c966d6a8dcc3edd0fb6997",
+    "url": "https://github.com/un33k/python-slugify/commit/7edf477f64b65ffe22c966d6a8dcc3edd0fb6997"
+  },
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-PY-02/probe.py"
+}

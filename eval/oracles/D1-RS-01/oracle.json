@@ -1,0 +1,60 @@
+{
+  "task_id": "D1-RS-01",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "Matched subsequences must be compared in their matched order, not through an incremented absolute b_index ignoring flags; count mismatches then divide by 2; all generic and string wrappers agree."
+  ],
+  "test_vectors": [
+    {
+      "a": "a jke",
+      "b": "jane a k",
+      "jaro": 0.6,
+      "tolerance": 1e-12
+    },
+    {
+      "probe": "oracles/D1-RS-01/probe.rs",
+      "expected_baseline": "fail",
+      "expected_reference": "pass",
+      "expected_proposed_review": null
+    }
+  ],
+  "relevant_sources": [
+    {
+      "path": "src/lib.rs",
+      "commit": "cd2e7b3bddceb17bcac0fe319f6fd325107be7ce",
+      "sha256": "2ef37193d29a68fbaa5e9134b914d96ca401dc95d37f8defeb77a223b8e13ef5",
+      "anchor": "pub fn generic_jaro<",
+      "byte_start": 2033,
+      "byte_end": 2053,
+      "line": 71
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "cd2e7b3bddceb17bcac0fe319f6fd325107be7ce",
+      "sha256": "2ef37193d29a68fbaa5e9134b914d96ca401dc95d37f8defeb77a223b8e13ef5",
+      "anchor": "pub fn jaro(",
+      "byte_start": 4471,
+      "byte_end": 4483,
+      "line": 165
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "cd2e7b3bddceb17bcac0fe319f6fd325107be7ce",
+      "sha256": "2ef37193d29a68fbaa5e9134b914d96ca401dc95d37f8defeb77a223b8e13ef5",
+      "anchor": "pub fn generic_jaro_winkler<",
+      "byte_start": 4640,
+      "byte_end": 4668,
+      "line": 170
+    }
+  ],
+  "reference_patch": {
+    "path": "oracles/D1-RS-01/reference.patch",
+    "sha256": "14ce1515fb357d897d2a419992e15b3d6a0cf34de3f108cc5f8f884d5026da9c",
+    "upstream_commit": "5b512dce33d186f4fbe7ed3fa7a5dc7e33d73823",
+    "url": "https://github.com/rapidfuzz/strsim-rs/commit/5b512dce33d186f4fbe7ed3fa7a5dc7e33d73823"
+  },
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending",
+  "executable_probe": "oracles/D1-RS-01/probe.rs"
+}

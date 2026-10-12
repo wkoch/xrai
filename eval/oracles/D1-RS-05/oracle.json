@@ -1,0 +1,32 @@
+{
+  "task_id": "D1-RS-05",
+  "label_method": "manual source reading and upstream patch/test review; byte anchors calculated directly, no xrai/graft/parser output used",
+  "assertions": [
+    "std feature disabled selects alloc imports and disables std Error implementation; unsupported relation must not be reported as active."
+  ],
+  "test_vectors": [],
+  "relevant_sources": [
+    {
+      "path": "Cargo.toml",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "04e120face6f0da5cd3eb7c7d9abbd3fb296bffef7cd59ffc3c7205be6756745",
+      "anchor": "[features]",
+      "byte_start": 354,
+      "byte_end": 364,
+      "line": 17
+    },
+    {
+      "path": "src/lib.rs",
+      "commit": "8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "sha256": "dabd20b4ebd5a4f248f98748346f6fe8fefd3c645f47eb6d91ed86ee5ac0180e",
+      "anchor": "#[cfg(feature = \"std\")]",
+      "byte_start": 465,
+      "byte_end": 488,
+      "line": 14
+    }
+  ],
+  "reference_patch": null,
+  "review": null,
+  "judging": "Source answers require each listed fact and correct source citation. Code changes require new assertions/test vectors and existing upstream suite; never grade patch textual equality. Review requires each known finding with affected source and trigger, with zero additional false positives. M0-04 must execute agent judging; corpus verification does not claim success.",
+  "review_status": "author source review complete; second-reader audit pending"
+}
