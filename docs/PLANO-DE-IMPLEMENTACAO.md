@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 12/10/2026. **Revisão L5: primeira vertical P3/v3 e recursos sintéticos nativos aceitos; retomada prioriza corpus real e Rust R3.** Quatro pilotos não admitem D1 global. [Parecer e continuação dos seis incrementos L5](relatorios/REVISAO-L5.md). ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md)/[027](decisoes/CONTEXTO-P3.md) detalham semântica, workers, medição e contexto/expansão. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 12/10/2026. **Continuação L5: R3 e pares comportamentais Rust/JS aceitos no recorte; faltam corpus integral, outras famílias, agente e gates.** [Parecer e próxima execução](relatorios/REVISAO-L5-CONTINUACAO.md). [Roteiro v1 / ADR028](ROTEIRO-V1.md) acrescenta seis atividades condicionais de estabilização após G2, fora dos 41 cartões M0/M1. ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md)/[027](decisoes/CONTEXTO-P3.md) detalham semântica, workers, medição e contexto/expansão. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -694,6 +694,8 @@ Relatórios de saída devem conter links para logs/resultados, critérios cumpri
 
 ## 8. Continuação após M1
 
+O [ADR028 / roteiro v1](ROTEIRO-V1.md) define a passagem alpha → estabilização → 1.0. M2–M5 não precisam terminar integralmente antes de 1.0; somente recortes necessários ao escopo comprovado entram na release. Os cartões V1-01…06 têm dependências/aceites próprios após G2 e não alteram os cartões abaixo nem autorizam M1-B antecipado.
+
 | Marco | Próximos pacotes de trabalho | Entrada e condição de saída |
 |---|---|---|
 | M2 | Ampliar recortes P2 aprovados; tipos/dispatch/configurações adicionais; ingestão SCIP opcional | G1/G2 positivos no domínio; cada expansão mede ganho marginal e custo de manutenção |
@@ -707,10 +709,11 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[Retomada L5, na revisão L5](relatorios/REVISAO-L5.md). IDs/dependências/aceites integrais preservados. Primeira vertical P3/v3 e comparação sintética nativa estão entregues; não reiniciá-las. Não há lote L6 neste parecer.
+[Continuação L5](relatorios/REVISAO-L5-CONTINUACAO.md): preservar os mesmos seis incrementos e os 41 cartões M0/M1. R3 e provas comportamentais Rust/JS já entregues; não refazê-los.
 
-1. L5-04: concretizar quatro dossiês; começar Rust e JavaScript, completar Python e Go. Slots condicionais não são qualificação.
-2. L5-02: Rust R3/bindings/configuração, incremental=rebuild e amostra real capturada; depois R4 e demais famílias.
-3. L5-01: recuperação lexical sem âncora, alternativas/ranking, labels externos e curvas em fontes reais; preservar v2/v3 e expansão fixada.
-4. L5-03: fontes reais/concorrência, decomposição e controle direto com cache equivalente; preservar matrizes históricas e reter os novos binários medidos.
-5. L5-05/06: adapter/replay, quatro smokes pareados condicionados e comparadores/preflight. M0-12 exige corpus qualificado e demais dependências; nenhum gate se altera por esta retomada.
+1. L5-04: conciliar C02 (curadoria/comportamento, evento por família e admissão global separados); novos dossiês Python/Go e matriz factual de 32 tarefas.
+2. L5-02: primeira fatia TS/JS, R4 orientado por perdas e depois Python/Go; preservar R3/cfg/contraprovas.
+3. L5-01/05: recuperação lexical e seleção em fonte real, controles comparáveis, adapter real com replay/ledger e estimativa concreta para quatro smokes condicionados.
+4. L5-03: direto com cache equivalente, fontes reais/concorrência/decomposição e calibração completa.
+5. L5-06: comparadores/preflight; D1 → M0-12/G0, H1 → G1, integração → G2. Nenhum gate aprovado por planejamento.
+6. Somente após G2: V1-01…06 do roteiro de estabilização, ainda não iniciados. Publicação 1.0 requer decisão de release; commit/push rotineiro não a substitui.

@@ -1,0 +1,131 @@
+{
+  "schema": "xrai.architecture.v1-progress.documentation.v1",
+  "at_utc": "2026-10-12T18:35:12.677177+00:00",
+  "base_commit": "27290e4308701e5b5d7ba37885e77068eb9323b6",
+  "result": "passed",
+  "checks": {
+    "existing_cards_and_dependency_text_preserved": 41,
+    "existing_states_preserved": {
+      "concluída": 9,
+      "em andamento": 7,
+      "não iniciada": 25
+    },
+    "gates": {
+      "G0": "não avaliado",
+      "G1": "não avaliado",
+      "G2": "não avaliado"
+    },
+    "new_conditional_cards": {
+      "V1-01": {
+        "heading": "### V1-01 — Congelar escopo e interfaces públicas",
+        "dependency_text": "M1-21/G2 favorável.",
+        "dependencies": [
+          "M1-21"
+        ]
+      },
+      "V1-02": {
+        "heading": "### V1-02 — Fixar envelope operacional e medir a candidate",
+        "dependency_text": "V1-01, M0-05, M0-06, M1-19, M1-20.",
+        "dependencies": [
+          "V1-01",
+          "M0-05",
+          "M0-06",
+          "M1-19",
+          "M1-20"
+        ]
+      },
+      "V1-03": {
+        "heading": "### V1-03 — Comprovar atualização, migração e recuperação",
+        "dependency_text": "V1-01, M1-04, M1-12, M1-19.",
+        "dependencies": [
+          "V1-01",
+          "M1-04",
+          "M1-12",
+          "M1-19"
+        ]
+      },
+      "V1-04": {
+        "heading": "### V1-04 — Verificar uso completo pelo artefato distribuído",
+        "dependency_text": "V1-01, V1-02, V1-03.",
+        "dependencies": [
+          "V1-01",
+          "V1-02",
+          "V1-03"
+        ]
+      },
+      "V1-05": {
+        "heading": "### V1-05 — Preparar distribuição auditável e documentação de operação",
+        "dependency_text": "V1-01, M1-20; licença definida.",
+        "dependencies": [
+          "V1-01",
+          "M1-20"
+        ]
+      },
+      "V1-06": {
+        "heading": "### V1-06 — Qualificar a release candidate e decidir 1.0",
+        "dependency_text": "V1-01, V1-02, V1-03, V1-04, V1-05; G2 preservado.",
+        "dependencies": [
+          "V1-01",
+          "V1-02",
+          "V1-03",
+          "V1-04",
+          "V1-05"
+        ]
+      }
+    },
+    "all_new_cards_transitively_depend_on_G2_card": true,
+    "dependency_graph_acyclic": true,
+    "local_link_targets_checked": 211,
+    "changed_files_within_documentation_scope": true,
+    "diff_check_exit_code": 0,
+    "evidence_data_only_commands_passed": 3
+  },
+  "files": {
+    "IMPLEMENTADOR.md": {
+      "bytes": 18754,
+      "sha256": "733771057abc4ee85207a46cb61cf158a56f8e319b795d600a7dbe91a26950b6"
+    },
+    "README.md": {
+      "bytes": 4021,
+      "sha256": "4d9543c4fd29f8f3f5e0eab99d26f3a233bd7b5cdf280ff2eb0de032fc677ee9"
+    },
+    "docs/PLANO-DE-IMPLEMENTACAO.md": {
+      "bytes": 74174,
+      "sha256": "183e320d031f41a58be7943d1a7932ce8ce84058064a1386fcf8ebfdeba4d114"
+    },
+    "docs/PLANO-DE-VALIDACAO.md": {
+      "bytes": 32520,
+      "sha256": "12fe95160aa19ac6cd113aa5454c9a1672e3841fb55eb5c24afe28e945d46326"
+    },
+    "docs/RFC-0001-ARQUITETURA.md": {
+      "bytes": 57906,
+      "sha256": "aacc653592f3aa88b16e9a67a91511528c1733e7b8e91cb204cb2f4d7c7f1983"
+    },
+    "docs/STATUS-IMPLEMENTACAO.md": {
+      "bytes": 22173,
+      "sha256": "a72e48e24ee9bec4bae9055ae3fbe88ed4cffaf16d2065a25cdbd8dc5e1d1a6d"
+    },
+    "docs/decisoes/CORPUS-QUALIFICADO.md": {
+      "bytes": 12001,
+      "sha256": "3f93fe88fccc45b4d64a37f0f5f3e6c475bd0167a44f82ef7dee79c18a28b918"
+    },
+    "docs/ROTEIRO-V1.md": {
+      "bytes": 15227,
+      "sha256": "9f74508eda2135568fc71edfd083f97c2fc1d2e9ad4193699c0dedf94acfef08"
+    },
+    "docs/relatorios/REVISAO-L5-CONTINUACAO.md": {
+      "bytes": 10743,
+      "sha256": "6def89e4f137a42b64527fc180a050acd50ee7ce3dcc2d2a6a6a617f167bd206"
+    },
+    "docs/relatorios/logs/revisao-v1/evidencias.json": {
+      "bytes": 32490,
+      "sha256": "ded0a4f916e5c2a700fbf785fc6786bc3cea12042f147c1d29a826b8361d5a98"
+    }
+  },
+  "verifier_source": "from pathlib import Path\nimport collections, datetime, hashlib, json, re, subprocess\nfrom urllib.parse import unquote\nROOT=Path('/Users/wkoch/Projetos/xrai')\nDOCS=['IMPLEMENTADOR.md','README.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/PLANO-DE-VALIDACAO.md','docs/RFC-0001-ARQUITETURA.md','docs/STATUS-IMPLEMENTACAO.md','docs/decisoes/CORPUS-QUALIFICADO.md','docs/ROTEIRO-V1.md','docs/relatorios/REVISAO-L5-CONTINUACAO.md']\nEVIDENCE='docs/relatorios/logs/revisao-v1/evidencias.json'\nOUTPUT='docs/relatorios/logs/revisao-v1/documentacao.json'\ndef git(*args): return subprocess.check_output(['git',*args],cwd=ROOT,text=True)\ndef read(p): return (ROOT/p).read_text()\ndef old(p): return git('show','HEAD:'+p)\ndef cards(text,prefix):\n matches=list(re.finditer(r'^### ('+prefix+r'-\\d+(?:\\.R\\d+)?) —[^\\n]+',text,re.M))\n result={}\n for i,m in enumerate(matches):\n  block=text[m.end():matches[i+1].start() if i+1<len(matches) else len(text)]\n  dep=re.search(r'\\*\\*Depende de:\\*\\* ([^\\n]+)',block).group(1).split(' **')[0]\n  result[m.group(1)]={'heading':m.group(0),'dependency_text':dep,'dependencies':re.findall(r'(?:M[01]|V1)-\\d+(?:\\.R\\d+)?',dep)}\n return result\ndef states(t): return dict(re.findall(r'^\\| (M[01]-\\d+(?:\\.R\\d+)?) \\| [^|]+ \\| ([^|]+?) \\|',t,re.M))\nplan=cards(read(DOCS[2]),'M[01]'); assert plan==cards(old(DOCS[2]),'M[01]') and len(plan)==41\nstatus=states(read(DOCS[5])); assert status==states(old(DOCS[5])) and set(status)==set(plan)\ncounts=dict(collections.Counter(status.values())); assert counts=={'concluída':9,'em andamento':7,'não iniciada':25},counts\ngates=re.findall(r'^\\| (G[012]) \\| ([^|]+?) \\|',read(DOCS[5]),re.M)\nassert gates==[('G0','não avaliado'),('G1','não avaliado'),('G2','não avaliado')]\nfuture=cards(read(DOCS[7]),'V1'); assert set(future)=={f'V1-{i:02d}' for i in range(1,7)}\ncombined=plan|future\nfor key,card in combined.items(): assert set(card['dependencies'])<=set(combined),(key,card)\ndef ancestors(key,active=()):\n assert key not in active,('cycle',active,key)\n result=set()\n for dep in combined[key]['dependencies']:result|={dep}|ancestors(dep,active+(key,))\n return result\nfor key in combined: ancestors(key)\nfor key in future: assert 'M1-21' in ancestors(key)\nassert 'seis cartões novos são condicionais e ainda não iniciados' in read(DOCS[7])\nlinks=[]\nfor name in DOCS:\n for target in re.findall(r'\\[[^\\]]*\\]\\(([^)]+)\\)',read(name)):\n  target=target.strip('<>')\n  if re.match(r'^[a-zA-Z]+:',target) or target.startswith('#'):continue\n  target=unquote(target.split('#')[0])\n  path=(ROOT/name).parent/target\n  assert path.exists() or path.resolve()==(ROOT/OUTPUT).resolve(),(name,target)\n  links.append({'source':name,'target':target})\nallowed=set(DOCS+[EVIDENCE,OUTPUT])\nchanged=set(git('diff','--name-only').splitlines())|set(git('ls-files','--others','--exclude-standard').splitlines())\nassert changed<=allowed,sorted(changed-allowed)\nassert not git('diff','--cached','--name-only').strip(),'pre-existing staging requires review'\ncheck=subprocess.run(['git','diff','--check'],cwd=ROOT,text=True,capture_output=True);assert check.returncode==0,check.stdout+check.stderr\nreceipt=json.loads(read(EVIDENCE));assert receipt['result']=='passed' and receipt['retained_files_verified']==55 and receipt['publication_sources_verified']==8\nassert len(receipt['commands'])==3 and all(x['exit_code']==0 for x in receipt['commands'])\nassert sum(x['recorded_binary_hashes'] for x in receipt['native_receipt_summaries'].values())==12\nfor path in ['docs/decisoes/CORPUS-QUALIFICADO.md','docs/PLANO-DE-VALIDACAO.md','docs/relatorios/REVISAO-L5-CONTINUACAO.md']:assert 'C02' in read(path)\nassert '0/32' in read(DOCS[7]) and '0/4' in read(DOCS[8])\nfiles={p:{'bytes':(ROOT/p).stat().st_size,'sha256':hashlib.sha256((ROOT/p).read_bytes()).hexdigest()} for p in DOCS+[EVIDENCE]}\nreport={'schema':'xrai.architecture.v1-progress.documentation.v1','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_commit':git('rev-parse','HEAD').strip(),'result':'passed','checks':{'existing_cards_and_dependency_text_preserved':41,'existing_states_preserved':counts,'gates':dict(gates),'new_conditional_cards':future,'all_new_cards_transitively_depend_on_G2_card':True,'dependency_graph_acyclic':True,'local_link_targets_checked':len(links),'changed_files_within_documentation_scope':True,'diff_check_exit_code':0,'evidence_data_only_commands_passed':3},'files':files,'verifier_source':Path(__file__).read_text(),'limits':['Checks validate documentary structure, local link targets and prior receipt consistency, not implementation of new release criteria.','No build, native executable, upstream behavioral test, agent campaign or paid session run by this documentary verifier.','No release approval; existing task states/gates and corpus data files unchanged.']}\n(ROOT/OUTPUT).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps({'result':'passed','cards':41,'new_conditional_cards':6,'local_links':len(links),'counts':counts,'receipt':OUTPUT},ensure_ascii=False))\n",
+  "limits": [
+    "Checks validate documentary structure, local link targets and prior receipt consistency, not implementation of new release criteria.",
+    "No build, native executable, upstream behavioral test, agent campaign or paid session run by this documentary verifier.",
+    "No release approval; existing task states/gates and corpus data files unchanged."
+  ]
+}

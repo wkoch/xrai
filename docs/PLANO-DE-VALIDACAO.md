@@ -288,3 +288,9 @@ Verificação de produto cabe ao Implementador. Não alterar limiares dos gates,
 | Workers | Direto com cache equivalente, fontes reais, concorrência, fases e novos binários recuperáveis | Ganho misto de cache/IPC não isola mecanismo; controle direto não prova contenção |
 
 Usar o escopo/recorte congelado antes dos resultados; conservar falhas, perdas, indisponibilidades e histórico de schemas. Nenhuma alteração dos limiares G0/G1/G2 nesta revisão.
+
+## 14. Continuação L5 e estabilização v1
+
+[Revisão corrente](relatorios/REVISAO-L5-CONTINUACAO.md) preserva as provas R3/pares históricos e concretiza C02. Validar separadamente status de dossiê, evento por família e admissão global; uma correção histórica não recebe obrigação automática de A→B suplementar. Baseline/reference/probes continuam obrigatórios no seu recorte. Denominadores de cobertura real incluem unknowns e não podem ser substituídos pelo subconjunto resolvível.
+
+[ADR028](ROTEIRO-V1.md) especifica as provas condicionais V1-01…06: compatibilidade pública, recursos medidos, atualização/recuperação, fluxo completo pelos artefatos CLI/MCP, distribuição nos pisos nativos e qualificação da candidate. Executar após G2; não alterar H1 ou limiares para acomodar resultados. A documentação de release só anuncia capacidades, estabilidade e reprodutibilidade efetivamente comprovadas.

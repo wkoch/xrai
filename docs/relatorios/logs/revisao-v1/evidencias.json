@@ -1,0 +1,274 @@
+{
+  "schema": "xrai.architecture.v1-progress.audit.v1",
+  "at_utc": "2026-10-12T18:25:35.306658+00:00",
+  "base_commit": "27290e4308701e5b5d7ba37885e77068eb9323b6",
+  "code_commit": "c48b5993550fd258f1efe5677704a59d9eb73de0",
+  "result": "passed",
+  "run": 38283109016,
+  "retained_files_verified": 55,
+  "publication_sources_verified": 8,
+  "native_receipt_summaries": {
+    "x86_64-unknown-linux-gnu": {
+      "semantics": {
+        "rust-r3": {
+          "cases": 34,
+          "resolvable": 16,
+          "resolvable_correct": 16,
+          "correct": 34,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "counterproofs-r3": {
+          "cases": 4,
+          "resolvable": 0,
+          "resolvable_correct": 0,
+          "correct": 4,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "counterproofs-extra": {
+          "cases": 3,
+          "resolvable": 0,
+          "resolvable_correct": 0,
+          "correct": 3,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "counterproofs-cfg": {
+          "cases": 8,
+          "resolvable": 1,
+          "resolvable_correct": 1,
+          "correct": 8,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "tokio-test-development": {
+          "cases": 3,
+          "resolvable": 1,
+          "resolvable_correct": 1,
+          "correct": 3,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "incremental-events": {
+          "cases": 0,
+          "resolvable": 0,
+          "resolvable_correct": 0,
+          "correct": 0,
+          "false_promotions": 0,
+          "events": 2
+        },
+        "p3-consumer": {
+          "cases": 1,
+          "resolvable": 1,
+          "resolvable_correct": 1,
+          "correct": 1,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "legacy-fixtures": {
+          "cases": 33,
+          "resolvable": 18,
+          "resolvable_correct": 18,
+          "correct": 33,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "legacy-tokio": {
+          "cases": 4,
+          "resolvable": 3,
+          "resolvable_correct": 3,
+          "correct": 4,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "legacy-counterproofs": {
+          "cases": 6,
+          "resolvable": 0,
+          "resolvable_correct": 0,
+          "correct": 6,
+          "false_promotions": 0,
+          "events": 0
+        }
+      },
+      "contexts": [
+        "removed-consumer",
+        "central-hunk",
+        "r3-binding"
+      ],
+      "recorded_binary_hashes": 6,
+      "environment": {
+        "system": "Linux",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "machine": "x86_64"
+      }
+    },
+    "aarch64-apple-darwin": {
+      "semantics": {
+        "rust-r3": {
+          "cases": 34,
+          "resolvable": 16,
+          "resolvable_correct": 16,
+          "correct": 34,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "counterproofs-r3": {
+          "cases": 4,
+          "resolvable": 0,
+          "resolvable_correct": 0,
+          "correct": 4,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "counterproofs-extra": {
+          "cases": 3,
+          "resolvable": 0,
+          "resolvable_correct": 0,
+          "correct": 3,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "counterproofs-cfg": {
+          "cases": 8,
+          "resolvable": 1,
+          "resolvable_correct": 1,
+          "correct": 8,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "tokio-test-development": {
+          "cases": 3,
+          "resolvable": 1,
+          "resolvable_correct": 1,
+          "correct": 3,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "incremental-events": {
+          "cases": 0,
+          "resolvable": 0,
+          "resolvable_correct": 0,
+          "correct": 0,
+          "false_promotions": 0,
+          "events": 2
+        },
+        "p3-consumer": {
+          "cases": 1,
+          "resolvable": 1,
+          "resolvable_correct": 1,
+          "correct": 1,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "legacy-fixtures": {
+          "cases": 33,
+          "resolvable": 18,
+          "resolvable_correct": 18,
+          "correct": 33,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "legacy-tokio": {
+          "cases": 4,
+          "resolvable": 3,
+          "resolvable_correct": 3,
+          "correct": 4,
+          "false_promotions": 0,
+          "events": 0
+        },
+        "legacy-counterproofs": {
+          "cases": 6,
+          "resolvable": 0,
+          "resolvable_correct": 0,
+          "correct": 6,
+          "false_promotions": 0,
+          "events": 0
+        }
+      },
+      "contexts": [
+        "removed-consumer",
+        "central-hunk",
+        "r3-binding"
+      ],
+      "recorded_binary_hashes": 6,
+      "environment": {
+        "system": "Darwin",
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "machine": "arm64"
+      }
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "docs/relatorios/logs/L5-continuacao/reconcile_corpus.py",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-continuacao/ci-fourth",
+        "--commit",
+        "c48b5993550fd258f1efe5677704a59d9eb73de0",
+        "--run",
+        "38283109016"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.23057100000005448,
+      "stdout": "{\n  \"schema\": \"xrai.eval.l5.corpus-data-reconcile.v1\",\n  \"verified\": true,\n  \"run_id\": 38283109016,\n  \"code_commit\": \"c48b5993550fd258f1efe5677704a59d9eb73de0\",\n  \"families\": {\n    \"rust\": {\n      \"verified\": true,\n      \"sides\": {\n        \"baseline\": {\n          \"tests\": 2,\n          \"passed\": 0,\n          \"failed\": 2,\n          \"archive_sha256\": \"539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f\",\n          \"hidden_probe_sha256\": \"f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b\",\n          \"lock_sha256\": \"69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4\",\n          \"namespace\": \"6c1d8c33-af20-4855-b6ae-f10b0ded5fae\"\n        },\n        \"reference\": {\n          \"tests\": 2,\n          \"passed\": 2,\n          \"failed\": 0,\n          \"archive_sha256\": \"aa9d5764517afece4c0da16b70f206c27073bff2c40399cd579e243139fa0d66\",\n          \"hidden_probe_sha256\": \"f5b8b4aadf3b0c6413b3a8464841af74cda046cd0a929582f4696f917375cd9b\",\n          \"lock_sha256\": \"69258e8a89f0a311810f942c7ef788167a8dc715476596d613ed488c749304a4\",\n          \"namespace\": \"f73d07ea-533e-49f3-88e2-04e05f6e9274\"\n        }\n      },\n      \"reference_family_regressions\": 16,\n      \"reference_patch_sha256\": \"05c3f3ba4da6d261c0719fc084a12d9592ce929b10ea1749eeec0546e21d4538\",\n      \"materialization_proof\": \"producer-bound full source archive and identical hidden handler/lock; local archived patch delta and unchanged hidden production prefix checked; exported workspaces not included\"\n    },\n    \"js\": {\n      \"verified\": true,\n      \"sides\": {\n        \"base\": {\n          \"requirement\": {\n            \"passed\": 0,\n            \"failed\": 3,\n            \"pending\": 2\n          },\n          \"regression\": {\n            \"passed\": 2,\n            \"failed\": 0,\n            \"pending\": 3\n          }\n        },\n        \"reference\": {\n          \"requirement\": {\n            \"passed\": 3,\n            \"failed\": 0,\n            \"pending\": 2\n          },\n          \"regression\": {\n            \"passed\": 2,\n            \"failed\": 0,\n            \"pending\": 3\n          }\n        }\n      },\n      \"oracle_sha256\": \"9938be79198f975471b472f3bbfa33614fe63d46e1def912d8a827a925292d65\",\n      \"node_reported_sha256\": \"8440cffda5a21bf7cfda43d2c396f79777585a4c5e03ed2801fe226953a7aa11\",\n      \"transition_guard\": \"frozen local source guard passed; runtime ordinary transition negative control included in the two passed regressions\",\n      \"materialization_proof\": \"producer-bound full base archive plus exact two reference production source digests; exported workspaces not included\"\n    }\n  },\n  \"export_provenance\": {\n    \"rust\": {\n      \"artifact_id\": 11761958158,\n      \"github_reported_zip_digest\": \"sha256:a4e697aa6135878986646fcfac155a7636a6a584694a6e011ba36a4753495012\",\n      \"job_id\": 114924905570,\n      \"zip_bytes_independently_verified\": true,\n      \"complete_file_set_verified\": true,\n      \"file_count\": 25\n    },\n    \"js\": {\n      \"artifact_id\": 11762371278,\n      \"github_reported_zip_digest\": \"sha256:b2315f23d64725699d44c2c604bfeaa0bc382e5065f0249f8062676ae6cde479\",\n      \"job_id\": 114924905412,\n      \"zip_bytes_independently_verified\": true,\n      \"complete_file_set_verified\": true,\n      \"file_count\": 12\n    }\n  },\n  \"input_sha256\": {\n    \"run.json\": \"f005c2cb71b0d55f959113f6e26227dc2dc4ac377dd930de99dea83b994fdfa0\",\n    \"artifacts.json\": \"5457ab5f0075ec47e8d2dd09986289beaf46f2590f94f72efceae5b771e18a77\",\n    \"l5-real-rust.zip\": \"a4e697aa6135878986646fcfac155a7636a6a584694a6e011ba36a4753495012\",\n    \"rust/summary.json\": \"ca183189301d553b8b6a466cf735e81edd8c0ef7de3850b4bc54426845a4e01a\",\n    \"rust/baseline/prepare.json\": \"0b99b041681f8b6e5ee21300d983de106eace5dc90fb62414490ad8c78df20c0\",\n    \"rust/baseline/prepare.stderr.log\": \"7951152bc468e80339be9d47a8f875152ffee74fe854e9f14a6d014b8a76e07a\",\n    \"rust/baseline/prepare.stdout.log\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n    \"rust/baseline/probe.json\": \"fb5dbcc188f2671eea9b60cfbd75ffeb807b4042fcd52d987e4a8cb5e36d2432\",\n    \"rust/baseline/probe.stderr.log\": \"7127614bdb7dc7f57205e32fc0e48c54d692a88523b882fe75a895ba06bcce01\",\n    \"rust/baseline/probe.stdout.log\": \"b2ba45849518239535e7518da1491f92520195254ac7dabc23f51fbb9fc8b0c5\",\n    \"rust/baseline/toolchain-location.json\": \"3cdab901b6b27c02ae8ff193fbb0929da3e878a49777fccdf1d3a469c78276d6\",\n    \"rust/baseline/toolchain-location.stderr.log\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n    \"rust/baseline/toolchain-location.stdout.log\": \"db8cdbac2cab29126c5b46b20ae50107dfe8e306ebc50f9d05896cbdf26a3b5a\",\n    \"rust/baseline/tooling.json\": \"815af0a413ee01cfbfd18de3b89d4fc59adb50126373d2e0721944663ed13656\",\n    \"rust/baseline/tooling.stderr.log\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n    \"rust/baseline/tooling.stdout.log\": \"9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503\",\n    \"rust/reference/prepare.json\": \"7d1086e92ac3920e2f687aaade54439e27e40d8ca043e3627e0b6546086b81ec\",\n    \"rust/reference/prepare.stderr.log\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n    \"rust/reference/prepare.stdout.log\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n    \"rust/reference/probe.json\": \"6a4bec9f50ba6e5607c1582ea36bd76962e98530b758cfb24a37cd50d23dc9a5\",\n    \"rust/reference/probe.stderr.log\": \"0b71150c3b11697928f62dd66df16d6651f412655343bd9c6286a00ede62fc07\",\n    \"rust/reference/probe.stdout.log\": \"a10663ad4dca8e64c876d79d62216e240361b85c41d859cadde2813e0cf93410\",\n    \"rust/reference/regressions.json\": \"00504b50f3f351eb191d90cc68cf05e65673e1470c20cb5c9f39105c6a44a6eb\",\n    \"rust/reference/regressions.stderr.log\": \"cb4185e1cc7d126c4a7c70d6f1a83831c52aca13209c16ad834c446d49e20100\",\n    \"rust/reference/regressions.stdout.log\": \"355904acee27deaffa40fe2e5314a7259f48ae29658bac689568b79cfe74468b\",\n    \"rust/reference/tooling.json\": \"0fc1194b68ece6d54ae3050f8ea36ce1295e5edbf413d112fdc93416240d8ffb\",\n    \"rust/reference/tooling.stderr.log\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n    \"rust/reference/tooling.stdout.log\": \"9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503\",\n    \"l5-real-js.zip\": \"b2315f23d64725699d44c2c604bfeaa0bc382e5065f0249f8062676ae6cde479\",\n    \"js/base/bootstrap.json\": \"fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1\",\n    \"js/base/probe.json\": \"6571ee082dd793d2433ea58ac7bc0657c4ea454f12f6bfd01d06a150db250d24\",\n    \"js/base/regression-harness.json\": \"060464b66af990df732c6a15d3c7614afae73f326e82e8ad42112f2054b5b8e7\",\n    \"js/base/regression-jest.json\": \"6fb673738af4262ff817091cb3b6449caae68dec2144f28dbf4ef901eb1cf8e3\",\n    \"js/base/requirement-harness.json\": \"cfbcafe92c066840711c12302dd32ddcb55f255044043531edcbc986da32e1fc\",\n    \"js/base/requirement-jest.json\": \"2caa1cdca362a6e63e6618b6b4e9b0b38262af38ac2eb5562e0fd892a15dbbf9\",\n    \"js/reference/bootstrap.json\": \"fbaa0241aaacc38411ba6de4ee8606048901c766692a274562ec4b8eb6909ae1\",\n    \"js/reference/probe.json\": \"bbd096757be3facd898e72e83cbcb588ad3846811573c204f45c372f018e6cdf\",\n    \"js/reference/regression-harness.json\": \"58f6e02cd194e852b55009c3370b411f3522e2153f207dbbdecf92a018268012\",\n    \"js/reference/regression-jest.json\": \"e9a96d75ddda5be86ff37bd3096a31a92167c682a9a309e97e3d3a56a8d6fcdd\",\n    \"js/reference/requirement-harness.json\": \"d9a75d6b878c1f91bdb8928641c9f654d521900bf73968af1251e1f81b80c6c8\",\n    \"js/reference/requirement-jest.json\": \"f333242e5537a548c82206060a5274cce946c63c465419dc9f76f0cbc4604f28\"\n  },\n  \"verifier_sha256\": \"687b6f3fddd522fef2f12ce3906fe70fc07b4a946ba8fe940a6fd8475e3fb6d1\",\n  \"sources_sha256\": {\n    \"eval/scripts/run_real_rust_probes.py\": \"4c917109ba4765c0b2262fc3e37d54bcc7be054c3b6546d8e163eb1750228f9c\",\n    \"eval/scripts/run_vertical_probes.py\": \"943f31fae58d99696c4bf4006af319afe54faead75ae30b4cea26f74c3f7a88d\",\n    \"eval/scripts/run_l5_js.py\": \"dfe77181f100d7af969ccad276d22942b0c1055001fa2030c86cc58a03aa0439\",\n    \"eval/scripts/verify_l5_js_oracle.py\": \"ac6c5d48a0dd3484cfbd0502a3cf543a56f430680dc615062e26d2cee278db8b\",\n    \"crates/xrai-eval/harness/supervisor.py\": \"8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571\"\n  },\n  \"data_only\": true,\n  \"admitted\": false,\n  \"competitive_runs_allowed\": false,\n  \"limits\": [\n    \"producer receipt consistency is not independent observation of the past process or workspace\",\n    \"metadata must be obtained by trusted GitHub export; supplied JSON is not authenticated by this offline verifier\",\n    \"without original ZIP, extracted file hashes are recorded but not cryptographically bound to GitHub-reported ZIP digest\",\n    \"native executable bytes are reported by producers; binaries are not retained in these corpus exports\",\n    \"Rust family regressions run on reference only; no baseline-family or full upstream suite claim\",\n    \"no agent success, incremental A-to-B proof, full semantic coverage or corpus admission inferred\"\n  ]\n}\n",
+      "stderr": "",
+      "stdout_sha256": "be4415d366df9fd075ab650f0af4f9aa18acf39cceee2ec7107f2213ae150afd"
+    },
+    {
+      "command": [
+        "python3",
+        "eval/scripts/collect_real_rust.py",
+        "verify"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.6148525840001184,
+      "stdout": "{\n  \"verified\": true,\n  \"snapshots\": {\n    \"baseline\": {\n      \"archive_sha256\": \"539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f\",\n      \"file_count\": 2345,\n      \"production_files_lower_bound\": 825,\n      \"production_nonempty_lines_lower_bound\": 220645\n    },\n    \"reference\": {\n      \"archive_sha256\": \"aa9d5764517afece4c0da16b70f206c27073bff2c40399cd579e243139fa0d66\",\n      \"file_count\": 2345,\n      \"production_files_lower_bound\": 825,\n      \"production_nonempty_lines_lower_bound\": 220645\n    }\n  },\n  \"admitted\": false,\n  \"behavioral_proof\": \"separate Linux evaluator receipts required\"\n}\n",
+      "stderr": "",
+      "stdout_sha256": "95bbf4a33c580087403024082bf5b7d8e86bfe7dde0890b6f69728e24f9788a4"
+    },
+    {
+      "command": [
+        "python3",
+        "eval/scripts/prepare_l5_js.py",
+        "verify"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.20846304200017585,
+      "stdout": "{\n  \"schema_version\": \"xrai.eval.l5.js.capture.v1\",\n  \"repository\": \"facebook/react\",\n  \"slot\": \"L5-SLOT-TSJS-contract_change-2\",\n  \"language\": \"JavaScript (Flow annotations, not TypeScript)\",\n  \"method\": \"xrai.production.react.runtime-js.conservative.v1\",\n  \"method_source_sha256\": \"1fbdd2ed8783ed838c87c0ef016f1aca1395cecec8a48259210fb839ae48a970\",\n  \"measurement_definition\": \"ADR021 nonempty production source lines, comments included; old implementation copies and forks excluded. Comment-filtered count is diagnostic only.\",\n  \"allowlisted_runtime_packages\": [\n    \"react\",\n    \"react-cache\",\n    \"react-client\",\n    \"react-dom\",\n    \"react-is\",\n    \"react-reconciler\",\n    \"react-refresh\",\n    \"react-server\",\n    \"scheduler\",\n    \"shared\",\n    \"use-subscription\",\n    \"use-sync-external-store\"\n  ],\n  \"excluded_path_parts\": [\n    \"__fixtures__\",\n    \"__mocks__\",\n    \"__tests__\",\n    \"benchmarks\",\n    \"fixtures\",\n    \"forks\",\n    \"generated\",\n    \"npm\",\n    \"test\",\n    \"test-utils\",\n    \"tests\",\n    \"third_party\",\n    \"vendor\"\n  ],\n  \"snapshots\": {\n    \"base\": {\n      \"commit\": \"77912d9a05d7a90287fabdec76486f25869b2981\",\n      \"archive\": \"eval/qualification/l5-real/js/sources/base.tar.gz\",\n      \"archive_sha256\": \"b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6\",\n      \"upstream_url\": \"https://codeload.github.com/facebook/react/tar.gz/77912d9a05d7a90287fabdec76486f25869b2981\",\n      \"inventory\": \"eval/qualification/l5-real/js/sources/base-inventory.json.gz\",\n      \"inventory_sha256\": \"4013fd6b455f5ac891fac6492e91f5544fe8f40c633e0b97dbdb41e24356a209\",\n      \"complete_regular_files\": 2330,\n      \"source_bytes\": 21048754,\n      \"production_js_files\": 273,\n      \"production_nonempty_lines\": 56440,\n      \"comment_filtered_diagnostic\": 46766,\n      \"excluded_counts\": {\n        \"duplicate_legacy_reconciler_variant\": 32,\n        \"included\": 273,\n        \"outside_allowlisted_runtime_js\": 1714,\n        \"test_doc_vendor_generated_or_fork_path\": 311\n      },\n      \"setup_and_evidence\": {\n        \"LICENSE\": {\n          \"bytes\": 1086,\n          \"sha256\": \"52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85\"\n        },\n        \"babel.config.js\": {\n          \"bytes\": 1051,\n          \"sha256\": \"de56df93874159aa2709e47b324def6cf0ff706f8dedc42ac46cc6928718af14\"\n        },\n        \"package.json\": {\n          \"bytes\": 6710,\n          \"sha256\": \"fc9d4924264754b26826f4ac3ea40dc8335ac5c1779c1a562d6d6a0147a04aa4\"\n        },\n        \"packages/react-reconciler/src/ReactFiberHooks.new.js\": {\n          \"bytes\": 105906,\n          \"sha256\": \"66a2e38d1d47afd70c3b487e0582716777b2174caef5e0b4ab949514eef5968f\"\n        },\n        \"packages/react-reconciler/src/ReactFiberHooks.old.js\": {\n          \"bytes\": 105906,\n          \"sha256\": \"8bbba441b3bddc15730f6a322d18b878c2f5034b8fb160960c45b1c4c3f534ce\"\n        },\n        \"packages/react-reconciler/src/ReactFiberWorkLoop.new.js\": {\n          \"bytes\": 92958,\n          \"sha256\": \"1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7\"\n        },\n        \"packages/react/src/ReactHooks.js\": {\n          \"bytes\": 5778,\n          \"sha256\": \"2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353\"\n        },\n        \"scripts/jest/config.base.js\": {\n          \"bytes\": 950,\n          \"sha256\": \"82483df1e5e6591f6d47294a452a920344b9f29cc2171a7db2104c919de6baaa\"\n        },\n        \"scripts/jest/config.source-www.js\": {\n          \"bytes\": 414,\n          \"sha256\": \"2d622f0664d9def39378d1217e44977cc0633c66cc517f9797c12d50528d77d2\"\n        },\n        \"scripts/jest/jest-cli.js\": {\n          \"bytes\": 8826,\n          \"sha256\": \"561c0a2911075136bdc56dc3daf3df2da0c7c7b76459c4179d27424703d59882\"\n        },\n        \"scripts/jest/preprocessor.js\": {\n          \"bytes\": 3561,\n          \"sha256\": \"4036fd7d39aa99171436067409a086bdce7523a050e9795c8ae63c6b6517b932\"\n        },\n        \"yarn.lock\": {\n          \"bytes\": 716085,\n          \"sha256\": \"5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544\"\n        }\n      },\n      \"eligible_floor\": true\n    },\n    \"head\": {\n      \"commit\": \"06f98c168060ef0213526a1aee696a568cec7f54\",\n      \"archive\": \"eval/qualification/l5-real/js/sources/head.tar.gz\",\n      \"archive_sha256\": \"1d7af4d0c750af4ce19c18473e876b4bc56390f3adca22dae9a4d85304a808c9\",\n      \"upstream_url\": \"https://codeload.github.com/facebook/react/tar.gz/06f98c168060ef0213526a1aee696a568cec7f54\",\n      \"inventory\": \"eval/qualification/l5-real/js/sources/head-inventory.json.gz\",\n      \"inventory_sha256\": \"1130dddf3e9a68064bf16fee7f8589fe6b181e29b755046a08a55581e9a39bb8\",\n      \"complete_regular_files\": 2330,\n      \"source_bytes\": 21058141,\n      \"production_js_files\": 273,\n      \"production_nonempty_lines\": 56545,\n      \"comment_filtered_diagnostic\": 46830,\n      \"excluded_counts\": {\n        \"duplicate_legacy_reconciler_variant\": 32,\n        \"included\": 273,\n        \"outside_allowlisted_runtime_js\": 1714,\n        \"test_doc_vendor_generated_or_fork_path\": 311\n      },\n      \"setup_and_evidence\": {\n        \"LICENSE\": {\n          \"bytes\": 1086,\n          \"sha256\": \"52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85\"\n        },\n        \"babel.config.js\": {\n          \"bytes\": 1051,\n          \"sha256\": \"de56df93874159aa2709e47b324def6cf0ff706f8dedc42ac46cc6928718af14\"\n        },\n        \"package.json\": {\n          \"bytes\": 6710,\n          \"sha256\": \"fc9d4924264754b26826f4ac3ea40dc8335ac5c1779c1a562d6d6a0147a04aa4\"\n        },\n        \"packages/react-reconciler/src/ReactFiberHooks.new.js\": {\n          \"bytes\": 110416,\n          \"sha256\": \"079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753\"\n        },\n        \"packages/react-reconciler/src/ReactFiberHooks.old.js\": {\n          \"bytes\": 110416,\n          \"sha256\": \"8cd11500b4c39b9da038346a86aaaa7f8efdf04e964eb2c63c06cc6512c632d5\"\n        },\n        \"packages/react-reconciler/src/ReactFiberWorkLoop.new.js\": {\n          \"bytes\": 92958,\n          \"sha256\": \"1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7\"\n        },\n        \"packages/react/src/ReactHooks.js\": {\n          \"bytes\": 5778,\n          \"sha256\": \"2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353\"\n        },\n        \"scripts/jest/config.base.js\": {\n          \"bytes\": 950,\n          \"sha256\": \"82483df1e5e6591f6d47294a452a920344b9f29cc2171a7db2104c919de6baaa\"\n        },\n        \"scripts/jest/config.source-www.js\": {\n          \"bytes\": 414,\n          \"sha256\": \"2d622f0664d9def39378d1217e44977cc0633c66cc517f9797c12d50528d77d2\"\n        },\n        \"scripts/jest/jest-cli.js\": {\n          \"bytes\": 8826,\n          \"sha256\": \"561c0a2911075136bdc56dc3daf3df2da0c7c7b76459c4179d27424703d59882\"\n        },\n        \"scripts/jest/preprocessor.js\": {\n          \"bytes\": 3561,\n          \"sha256\": \"4036fd7d39aa99171436067409a086bdce7523a050e9795c8ae63c6b6517b932\"\n        },\n        \"yarn.lock\": {\n          \"bytes\": 716085,\n          \"sha256\": \"5a5c12d6b58aa70bfc8de95a4ad5e4128a0a105344c0d1e5f6b6fdbed4d16544\"\n        }\n      },\n      \"eligible_floor\": true\n    }\n  },\n  \"reference_patch_sha256\": \"3156ac7ac3e5a2df64db9cbff7e4939da5c3dac35aa4851a0008a98e6e546733\",\n  \"reference_patch_paths\": [\n    \"packages/react-reconciler/src/ReactFiberHooks.new.js\",\n    \"packages/react-reconciler/src/ReactFiberHooks.old.js\"\n  ],\n  \"qualification_status\": \"curated_candidate_probes_and_independent_review_pending\",\n  \"admitted\": false\n}\n",
+      "stderr": "",
+      "stdout_sha256": "fbd63db92ed476024085c17fa12b74ebf884f9f2a92622b99b6495bd9753e559"
+    }
+  ],
+  "cards": {
+    "total": 41,
+    "by_phase": {
+      "M0": {
+        "concluída": 9,
+        "em andamento": 7,
+        "não iniciada": 2
+      },
+      "M1": {
+        "não iniciada": 23
+      }
+    }
+  },
+  "graph_coverage": {
+    "content": [
+      {
+        "type": "text",
+        "text": "project: Users-wkoch-Projetos-xrai\nsignal: best_effort\nindexed_at: 2026-10-12T17:47:21Z\nmetadata:\n  generation: 2026-10-12T17:47:21Z\n  index_mode: full\n  recorded_at: 2026-10-12T17:47:22Z\n  recording_status: complete\n  ignored_files_stored: 0\n  ignored_files_total: 0\n  hash_records_complete: true\n  coverage_version: 3\n  generation_matches: true\npaths: 14  (cols: requested_path path status freshness recommended_action coverage)\n  crates/xrai/src/main.rs crates/xrai/src/main.rs no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/src/semantics_spike/r3.rs crates/xrai-eval/src/semantics_spike/r3.rs no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/scripts/verify_semantics.py eval/scripts/verify_semantics.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L5-continuacao/reconcile_corpus.py docs/relatorios/logs/L5-continuacao/reconcile_corpus.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L5-continuacao/reconcile_native.py docs/relatorios/logs/L5-continuacao/reconcile_native.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/L5-CONTINUACAO.md docs/relatorios/L5-CONTINUACAO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/decisoes/CORPUS-QUALIFICADO.md docs/decisoes/CORPUS-QUALIFICADO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/qualification/l5-real/rust/case.json eval/qualification/l5-real/rust/case.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/qualification/l5-real/js/case.json eval/qualification/l5-real/js/case.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/qualification/l5-real/rust/oracles/event-plan.json eval/qualification/l5-real/rust/oracles/event-plan.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L5-continuacao/ci-fourth/native-verification.json docs/relatorios/logs/L5-continuacao/ci-fourth/native-verification.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L5-continuacao/ci-fourth/original-zip-verification.json docs/relatorios/logs/L5-continuacao/ci-fourth/original-zip-verification.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/STATUS-IMPLEMENTACAO.md docs/STATUS-IMPLEMENTACAO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/PLANO-DE-IMPLEMENTACAO.md docs/PLANO-DE-IMPLEMENTACAO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\npath_total: 14\npath_returned: 14\npath_has_more: false\nscopes: 0\nscope_total: 0\nscope_returned: 0\nscope_truncated: false\nhas_more: false\ncaveat: \"Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable.\"\n"
+      }
+    ],
+    "isError": false
+  },
+  "verifier_source": "from pathlib import Path\nimport collections, datetime, hashlib, json, os, re, subprocess, time\nroot=Path('/Users/wkoch/Projetos/xrai');here=root/'docs/relatorios/logs/L5-continuacao/ci-fourth';out=root/'docs/relatorios/logs/revisao-v1';out.mkdir(parents=True,exist_ok=True)\ncode='c48b5993550fd258f1efe5677704a59d9eb73de0'\ndef sha(b):return hashlib.sha256(b).hexdigest()\nmanifest=json.loads((here/'retained-files-manifest.json').read_text());run=json.loads((here/'run.json').read_text());native=json.loads((here/'native-verification.json').read_text())\nassert run['headSha']==code and run['conclusion']=='success' and len(run['jobs'])==5 and all(j['conclusion']=='success' for j in run['jobs'])\nfor p,r in manifest['retained_files'].items():\n b=(here/p).read_bytes();assert len(b)==r['bytes'] and sha(b)==r['sha256'],p\nfor p,h in manifest['publication_sources_sha256'].items():assert sha((root/p).read_bytes())==h,p\nassert native['verified'] and native['code_commit']==code\nsummaries={}\nfor target,r in native['targets'].items():\n b=r['binaries'];assert b['verified'] and b['code_commit']==code and len(b['executables'])==6\n m=json.loads((here/f'native-{target}/binaries/manifest.json').read_text());assert b['executables']==m['executables']\n assert r['semantics']['rust-r3']['correct']==34 and r['semantics']['rust-r3']['resolvable_correct']==16\n assert r['semantics']['counterproofs-cfg']['correct']==8\n summaries[target]={'semantics':r['semantics'],'contexts':list(r['contexts']),'recorded_binary_hashes':len(b['executables']),'environment':r['environment']}\ncommands=[['python3','docs/relatorios/logs/L5-continuacao/reconcile_corpus.py',str(here),'--commit',code,'--run','38283109016'],['python3','eval/scripts/collect_real_rust.py','verify'],['python3','eval/scripts/prepare_l5_js.py','verify']]\nreceipts=[]\nfor cmd in commands:\n start=time.monotonic();p=subprocess.run(cmd,cwd=root,env={**os.environ,'PYTHONDONTWRITEBYTECODE':'1'},text=True,capture_output=True)\n receipts.append({'command':cmd,'exit_code':p.returncode,'elapsed_seconds':time.monotonic()-start,'stdout':p.stdout,'stderr':p.stderr,'stdout_sha256':sha(p.stdout.encode())});assert p.returncode==0,p.stderr\ncorpus=json.loads(receipts[0]['stdout']);assert corpus['verified'] and all(v['complete_file_set_verified'] for v in corpus['export_provenance'].values())\nrows=re.findall(r'^\\| (M[01]-\\d+(?:\\.R\\d+)?) \\|[^\\n]*?\\| ([^|]+?) \\|',(root/'docs/STATUS-IMPLEMENTACAO.md').read_text(),re.M)\ncounts={k:dict(collections.Counter(s for i,s in rows if i.startswith(k))) for k in ['M0','M1']}\nassert len(rows)==41 and counts['M0']=={'concluída':9,'em andamento':7,'não iniciada':2} and counts['M1']=={'não iniciada':23}\nrecord={'schema':'xrai.architecture.v1-progress.audit.v1','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'code_commit':code,'result':'passed','run':38283109016,'retained_files_verified':len(manifest['retained_files']),'publication_sources_verified':len(manifest['publication_sources_sha256']),'native_receipt_summaries':summaries,'commands':receipts,'cards':{'total':41,'by_phase':counts},'graph_coverage':json.loads(Path('/tmp/xrai-v1-coverage.json').read_text()),'verifier_source':Path(__file__).read_text(),'limits':['Data-only reconciliation; no build, upstream test or paid session executed.','Native binaries/ZIPs absent from current checkout/scratch; only their prior verified receipts and committed manifests reconciled now.','Two committed corpus ZIPs and their complete exported file sets were independently reverified now.','No new GitHub metadata query; provenance relies on retained export.','No competitive admission/gates inferred; no release progress percentage.']}\n(out/'evidencias.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps({k:record[k] for k in ['result','retained_files_verified','publication_sources_verified','cards']},ensure_ascii=False,indent=2))\n",
+  "limits": [
+    "Data-only reconciliation; no build, upstream test or paid session executed.",
+    "Native binaries/ZIPs absent from current checkout/scratch; only their prior verified receipts and committed manifests reconciled now.",
+    "Two committed corpus ZIPs and their complete exported file sets were independently reverified now.",
+    "No new GitHub metadata query; provenance relies on retained export.",
+    "No competitive admission/gates inferred; no release progress percentage."
+  ]
+}

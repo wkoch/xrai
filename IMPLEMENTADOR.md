@@ -1,6 +1,6 @@
 # Instruções para a IA implementadora do xrai
 
-Data: 12/10/2026. **Entrada vigente: [revisão L5 e retomada](docs/relatorios/REVISAO-L5.md).** L5 entregou primeira vertical P3/v3 e recursos sintéticos nativos; recibos revalidados. Priorizar quatro dossiês reais e Rust R3; completar recuperação/relevância P3, recursos reais e adapters. Leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md). V1: Linux x86_64/macOS arm64. Não recrie entregas nem trate planejamento como código concluído.
+Data: 12/10/2026. **Entrada vigente: [revisão da continuação L5](docs/relatorios/REVISAO-L5-CONTINUACAO.md).** R3 e os pares comportamentais Rust/JS foram aceitos no recorte. Priorizar conciliação C02, Python/Go, primeira semântica TS/JS, recuperação real e adapter. O [roteiro v1 / ADR028](docs/ROTEIRO-V1.md) define o caminho M0 → confirmação → alpha → estabilização. Leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md). V1: Linux x86_64/macOS arm64. Não recrie entregas nem trate planejamento como código concluído.
 
 Atualização de 12/10/2026: repositório público e [CI confirmada nos três jobs](docs/relatorios/CI-PUBLICO.md). M0-02.R2/M0-07 concluídas; bloqueio anterior superado. [L3](docs/relatorios/L3.md) avançou contenção, workers, captura e quatro pilotos verticais. [L4](docs/relatorios/L4.md) entregou os recortes descritos acima; L5 organiza o restante dos mesmos cartões. Nenhum gate competitivo foi avaliado.
 
@@ -25,7 +25,9 @@ Leia inicialmente este arquivo, o estado atual, a revisão vigente e os cartões
 |---|---|
 | [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
 | [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e seis atividades complementares, dependências, entregáveis e aceite; IDs são estáveis |
-| [Revisão L5 / retomada](docs/relatorios/REVISAO-L5.md) | Entrada vigente: aceite L5, corpus/R3 prioritários, controles P3/cache e evidência restante |
+| [Revisão da continuação L5](docs/relatorios/REVISAO-L5-CONTINUACAO.md) | Entrada vigente: aceite R3/pares Rust-JS, conciliação C02 e próximos incrementos |
+| [Roteiro v1 / ADR028](docs/ROTEIRO-V1.md) | Avaliação do estágio, caminho crítico e seis atividades de estabilização após G2; não antecipar produção |
+| [Revisão L5 / retomada](docs/relatorios/REVISAO-L5.md) | Critérios anteriores que permanecem abertos, incluindo controles P3/cache |
 | [Revisão L4 / atividades L5](docs/relatorios/REVISAO-L4.md) | Critérios originais dos seis incrementos; continuam onde ainda não cumpridos |
 | [Contexto P3 / ADR 027](docs/decisoes/CONTEXTO-P3.md) | Comparação experimental versionada, obrigações, orçamento, manifesto e expansão |
 | [Revisão L3 / continuação L4](docs/relatorios/REVISAO-L3.md) | Histórico e critérios ainda abertos, retomados em L5 |
@@ -132,4 +134,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Próxima execução: [retomar L5](docs/relatorios/REVISAO-L5.md), priorizando L5-04 (quatro dossiês reais) e L5-02 (Rust R3).** L5-01 avança recuperação lexical/relevância em fontes reais; L5-03 completa recursos com controle direto de cache equivalente; L5-05/06 preparam adapter/comparadores. Perfil experimental v3 já tem primeira implementação; preservar v2/v3 e retenção comprovada. São quatro smokes pareados no total, um por família, condicionados a recursos/teto. Não refazer captura concluída ou qualificação vertical aceita. Não promover quatro pilotos a D1 nem antecipar M1-B. Registrar evidências/pendências por cartão; commit/push após verificar, conforme AGENTS.md.
+**Próxima execução: [continuação L5](docs/relatorios/REVISAO-L5-CONTINUACAO.md): L5-04 concilia dossiê/evento (C02) e entrega Python/Go; L5-02 preserva R3 e inicia fatia TS/JS, com R4 conforme perdas.** L5-01/05 aproximam contexto e agente real; L5-03/06 completam recursos/comparadores. Preservar v2/v3, retenção e provas aceitas. V1-01…06 são planejamento condicionado a G2, sem execução agora. São quatro smokes pareados no total, um por família, condicionados a recursos/teto. Não refazer captura concluída ou qualificação vertical aceita. Não promover quatro pilotos a D1 nem antecipar M1-B. Registrar evidências/pendências por cartão; commit/push após verificar, conforme AGENTS.md.
