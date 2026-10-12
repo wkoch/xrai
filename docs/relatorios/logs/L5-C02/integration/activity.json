@@ -1,5 +1,5 @@
 {
-  "scope": "C02 reconciliation and preparation of controlled real Python/Go dossiers",
+  "scope": "C02 reconciliation and verified controlled Python/Go behavioral dossiers",
   "architecture_base": "3cc26fc7b7ecc1d2cf04780e74765b74f545a653",
   "delegation": {
     "c02": "state/schema/gate/matrix",
@@ -9,7 +9,25 @@
   },
   "time_accounting": {
     "active_wall_time": "not independently sampled; no calendar estimate inferred",
-    "external_wait": "behavioral CI will be recorded per run timestamps; no model/campaign authorized"
+    "external_wait": {
+      "run_id": 38294106923,
+      "created_at": "2026-10-12T18:54:52Z",
+      "updated_at": "2026-10-12T18:59:35Z",
+      "seconds_between_run_timestamps": 283,
+      "jobs": [
+        {
+          "name": "L5 real Python behavioral pair",
+          "started_at": "2026-10-12T18:54:55Z",
+          "completed_at": "2026-10-12T18:55:44Z"
+        },
+        {
+          "name": "L5 real Go behavioral pair",
+          "started_at": "2026-10-12T18:54:56Z",
+          "completed_at": "2026-10-12T18:59:34Z"
+        }
+      ],
+      "not_active_engineering_hours": true
+    }
   },
   "accepted_history": "CI38283109016 behavior/native/R3 proofs preserved; no manual reexecution of accepted Rust/JS pairs"
 }

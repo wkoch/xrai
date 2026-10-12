@@ -1,0 +1,90 @@
+{
+  "schema": "xrai.eval.c02.evidence-publication.v1",
+  "publication_parent": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+  "native_behavior_code": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+  "dedicated_ci_run": 38294106923,
+  "regular_ci_run": 38294095468,
+  "native_reexecution_at_this_receipt": false,
+  "counts": {
+    "admitted_tasks": 0,
+    "competitive_runs_allowed": false,
+    "conditional_projection": {
+      "additional_complex": 11,
+      "additional_historical": 10,
+      "additional_multi_module": 12,
+      "additional_tasks": 24,
+      "admission_deficit": 32,
+      "new_dossiers_remaining": 0
+    },
+    "eligible_complex": 5,
+    "eligible_historical": 6,
+    "eligible_multi_module": 8,
+    "eligible_tasks": 8,
+    "new_dossiers_behavior_verified": 4,
+    "new_dossiers_curated_reviewed": 4,
+    "new_dossiers_individually_eligible": 4,
+    "new_dossiers_required": 4,
+    "required_state_events_prepared": {
+      "Go": 0,
+      "Python": 0,
+      "Rust": 0,
+      "TSJS": 0
+    }
+  },
+  "final_data_only_commands_verified": true,
+  "global_guard_reason_verified": {
+    "status": "not_admitted",
+    "error": "qualified admission requires exactly 32 primary tasks",
+    "competitive_runs_allowed": false
+  },
+  "own_countertests": {
+    "export_authentication": 12,
+    "python_export": 19,
+    "go_export": 28,
+    "c02": {
+      "test_methods": 28,
+      "elapsed_seconds": 5.267512166000415,
+      "receipt": "docs/relatorios/logs/L5-C02/c02/controlled-behavior-proof-binding-unit.json"
+    },
+    "slots": {
+      "test_methods": 26,
+      "elapsed_seconds": 256.6428197079995,
+      "receipt": "docs/relatorios/logs/L5-C02/c02/controlled-behavior-final-slots-unit.json"
+    }
+  },
+  "source_sha256": {
+    "docs/STATUS-IMPLEMENTACAO.md": "4d69deec5eee43afa23fcd8823e3e2e95cbf6062e4e6223853c8b525b9cf2e9b",
+    "docs/relatorios/L5-C02.md": "e3bf0d2a1762a08554129339174345d4a095eecc29d8606a319262a62b8bde09",
+    "eval/reports/m0-corpus-qualification.md": "d350d5abda44d535d974c8ecaa48ccdc792129d7e7f2a8bd9b0dd56cba73b666",
+    "eval/scripts/verify_c02.py": "da40b94fe09e241747fc2f49195967799b18752ebf1f84e6a03ede4d0f3bfe96",
+    "eval/scripts/tests/test_c02.py": "066011b6c41fefbf85d3a161e883b4d589fbab753991deda3c77d2ae4596b25c",
+    "eval/scripts/tests/test_slot_plan.py": "6685cba9c59e4d5fa319d2c0ee27201f73460620ea18d84b16a1b5ac799829d2",
+    "eval/qualification/c02-status-matrix.json": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+    "eval/qualification/l5-slot-plan.json": "ec4f37722ba944af7ef29004b77594a5414df5d8a5625dc4abd6e560aff7765b",
+    "docs/relatorios/logs/L5-C02/reconcile_new_corpus.py": "c3f88baf9fa230827485ff5dc4a066b2502cd3f47012767020c037886c13e1da",
+    "docs/relatorios/logs/L5-C02/verify_python_export.py": "d51b6223bfabe1af9d9a8a68bfa093c94342ccf49f9aefca26b56791b4eb3960",
+    "docs/relatorios/logs/L5-C02/verify_go_export.py": "900825b2cfd26b90862a3b4591ebacdfe4693380233d2b936925ea43732cf9d2",
+    "docs/relatorios/logs/L5-C02/ci-next-first/verification.json": "b1e99988a361c750761fc883034edbffb8a2a4f96b36b2cbff5c84ce59087d4b",
+    "docs/relatorios/logs/L5-C02/integration/final-root-review.json": "acf2a0c7811a2bb5d793b63e85bfb0732669d5e56682df5aeead3f70fbffa559",
+    "docs/relatorios/logs/L5-C02/integration/final-integration-checks-v2.json": "0fae349910200e9faa75d5c702be15e73139091730b902845cd2a0160ac427aa",
+    "docs/relatorios/logs/L5-C02/c02/controlled-behavior-proof-binding-unit.json": "568fc40f26953bce637d4192fd48f2e0daa841e4216f83afe97ba7ca93bffdfd",
+    "docs/relatorios/logs/L5-C02/c02/controlled-behavior-final-slots-unit.json": "2d4eefdcb1b2222dea69fb4ad2847eb3628addfedadee14c98288643964da60b"
+  },
+  "first_slot_failure": {
+    "receipt": "final-integration-checks.json",
+    "reason": "Root checked plan while the final matrix SHA was not yet synchronized; plan was updated to final fresh matrix SHA, then all three CLI checks passed. Original failure retained."
+  },
+  "pending_architectural_decision": null,
+  "remaining_execution": [
+    "Select/freeze four distinct real state/config cases, then preserve index/process across A-to-B and compare complete rebuild B.",
+    "Expand eligible set to quotas before global admission.",
+    "TS/JS semantic slice followed by outstanding L5 tasks according to current plan."
+  ],
+  "limits": [
+    "No state/config A-to-B proof or global admission.",
+    "Native binary bytes reported, not retained in Python/Go exports.",
+    "Go full post-probe source/tool/cache inventory not produced.",
+    "Active engineering hours not independently sampled.",
+    "Final evidence commit is not the code SHA of the two already-successful CI runs."
+  ]
+}

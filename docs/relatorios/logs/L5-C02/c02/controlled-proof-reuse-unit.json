@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/private/tmp/xrai-c02-tools/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-p",
+    "test_c02.py",
+    "-v"
+  ],
+  "base_commit": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+  "recorded_at": "2026-10-12T19:01:16.865389+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 13.715972999999849,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_behavior_proof_does_not_resolve_pending_review (test_c02.C02Tests.test_behavior_proof_does_not_resolve_pending_review) ... ok\ntest_duplicate_lineage_is_not_independent_task (test_c02.C02Tests.test_duplicate_lineage_is_not_independent_task) ... ok\ntest_escaping_receipt_rejected (test_c02.C02Tests.test_escaping_receipt_rejected) ... ok\ntest_event_execution_receipt_cannot_be_inferred_from_plan (test_c02.C02Tests.test_event_execution_receipt_cannot_be_inferred_from_plan) ... ok\ntest_event_execution_requires_same_index_and_full_snapshot (test_c02.C02Tests.test_event_execution_requires_same_index_and_full_snapshot) ... ok\ntest_four_curated_dossiers_do_not_imply_four_behavioral_pairs (test_c02.C02Tests.test_four_curated_dossiers_do_not_imply_four_behavioral_pairs) ... ok\ntest_global_admission_cannot_be_set_by_case (test_c02.C02Tests.test_global_admission_cannot_be_set_by_case) ... ok\ntest_historical_pair_without_event_is_individually_eligible (test_c02.C02Tests.test_historical_pair_without_event_is_individually_eligible) ... ok\ntest_integer_eligibility_rejected (test_c02.C02Tests.test_integer_eligibility_rejected) ... ok\ntest_js_complexity_cannot_inflate_duplicate_or_unreviewed_modules (test_c02.C02Tests.test_js_complexity_cannot_inflate_duplicate_or_unreviewed_modules) ... ok\ntest_js_complexity_needs_actual_two_edge_chain (test_c02.C02Tests.test_js_complexity_needs_actual_two_edge_chain) ... ok\ntest_missing_hash_evidence_not_verified (test_c02.C02Tests.test_missing_hash_evidence_not_verified) ... ok\ntest_missing_review_not_silently_eligible (test_c02.C02Tests.test_missing_review_not_silently_eligible) ... ok\ntest_nonstate_event_cannot_be_labeled_required (test_c02.C02Tests.test_nonstate_event_cannot_be_labeled_required) ... ok\ntest_other_state_task_can_be_configuration_without_selected_event (test_c02.C02Tests.test_other_state_task_can_be_configuration_without_selected_event) ... ok\ntest_prepared_reviewed_python_go_are_ineligible_without_behavior (test_c02.C02Tests.test_prepared_reviewed_python_go_are_ineligible_without_behavior) ... ok\ntest_projection_is_six_eligible_never_six_admitted (test_c02.C02Tests.test_projection_is_six_eligible_never_six_admitted) ... ok\ntest_repository_fifth_task_rejected (test_c02.C02Tests.test_repository_fifth_task_rejected) ... ok\ntest_required_event_not_allowed_on_correction (test_c02.C02Tests.test_required_event_not_allowed_on_correction) ... ok\ntest_state_requires_prepared_descriptor_but_tracks_execution_separately (test_c02.C02Tests.test_state_requires_prepared_descriptor_but_tracks_execution_separately) ... ok\ntest_supplemental_contract_event_never_fills_family_quota (test_c02.C02Tests.test_supplemental_contract_event_never_fills_family_quota) ... ok\ntest_supplemental_corrective_event_never_fills_family_quota (test_c02.C02Tests.test_supplemental_corrective_event_never_fills_family_quota) ... ok\ntest_supplemental_prepared_unexecuted_does_not_block (test_c02.C02Tests.test_supplemental_prepared_unexecuted_does_not_block) ... ok\ntest_tampered_evidence_rejected (test_c02.C02Tests.test_tampered_evidence_rejected) ... ok\ntest_unfinished_dossier_cannot_reduce_projection (test_c02.C02Tests.test_unfinished_dossier_cannot_reduce_projection) ... ok\n\n----------------------------------------------------------------------\nRan 25 tests in 12.809s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "4904446e06f57e328d511daf14934359d7be558a9e9ee2c71f85b79b3abc68e0"
+}

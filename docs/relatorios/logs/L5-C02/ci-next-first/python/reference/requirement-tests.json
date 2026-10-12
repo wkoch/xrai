@@ -1,0 +1,33 @@
+{
+  "phase": "requirement",
+  "tests_run": 3,
+  "success": true,
+  "tests": [
+    {
+      "id": "__main__.Contract.test_column_transformer_pipeline_and_context",
+      "status": "passed"
+    },
+    {
+      "id": "__main__.Contract.test_feature_union_pipeline_and_context",
+      "status": "passed"
+    },
+    {
+      "id": "__main__.Contract.test_transformer_dense_and_masked",
+      "status": "passed"
+    }
+  ],
+  "module_origins": {
+    "sklearn.utils._set_output": {
+      "path": "/workspace/sklearn/utils/_set_output.py",
+      "sha256": "fc3cbdf8e4c698ddc029df2ec80a292530fbabc053b614b658a87d1c7193d7b3"
+    },
+    "sklearn.pipeline": {
+      "path": "/workspace/sklearn/pipeline.py",
+      "sha256": "34feed2873e05bfd0519497fdda2627b3af3e323ac9ef22558b021ad1669d072"
+    },
+    "sklearn.compose._column_transformer": {
+      "path": "/workspace/sklearn/compose/_column_transformer.py",
+      "sha256": "6dbae22a517ffae811a8bfc258d83758a8f5d0583147641338b114973042aa3c"
+    }
+  }
+}

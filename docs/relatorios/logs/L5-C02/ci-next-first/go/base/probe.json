@@ -1,0 +1,81 @@
+{
+  "schema_version": "xrai.eval.l5.go.probe.v1",
+  "side": "base",
+  "materialization": {
+    "side": "base",
+    "commit": "8eefa1f6dedf2488db2c9e12c916e8e51f673160",
+    "archive_sha256": "3cd918c96a563db6a64e8c9717d556097240de799f9f0948ba50060e6143c190",
+    "reference_changed_paths": [],
+    "oracle_sha256": "79821b7011b6145def1266cf9bffb97c3034ffc49a8c41ec41556a29a06d4f59",
+    "lock_sha256": {
+      "go.mod": "29f295d7e8f60ffad2245b64498ee0d3268a0a97b199da41872cd34009cf3127",
+      "go.sum": "3b0849aae4c1c40fbebb12d3f0b40809f86fe866e2d561d4c38c09188b32e115"
+    },
+    "agent_workspace": false,
+    "hidden_evaluator_only": true
+  },
+  "source_validation": {
+    "full_pinned_source_files_verified": 6127,
+    "additional_go_sources": [
+      "services/convert/xrai_url_contract_test.go"
+    ],
+    "reference_changed_paths": []
+  },
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "go_version": "go1.22.12",
+  "native_compilers": {
+    "/usr/bin/x86_64-linux-gnu-gcc-13": "1b99826121ae6682a634e5efe09bd3e3df58ce58e0b28f849114ab5b89139c26",
+    "/usr/bin/x86_64-linux-gnu-g++-13": "1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769"
+  },
+  "go_executable_sha256": "929407e69c08952cd944a7457ae4eb289078a35473dd5dad2179369db7c5a6ec",
+  "toolchain_manifest_sha256": "366ebed478775dc2298e0401908fc44f35236409b35d5b6fbbc2d413b541d13f",
+  "module_cache_manifest_sha256": "86dd3184b3b3e300c595cd2b9c7b71222e0a0cf7a26889b4dc6e7a0e742311ad",
+  "executor_source_sha256": "2ad65bba0e27f572adc51f2a91ab48943a40c54c0e4ac5ee7bbb1ee48ee1f597",
+  "oracle_sha256": "79821b7011b6145def1266cf9bffb97c3034ffc49a8c41ec41556a29a06d4f59",
+  "lock_before": {
+    "go.mod": "29f295d7e8f60ffad2245b64498ee0d3268a0a97b199da41872cd34009cf3127",
+    "go.sum": "3b0849aae4c1c40fbebb12d3f0b40809f86fe866e2d561d4c38c09188b32e115"
+  },
+  "lock_after": {
+    "go.mod": "29f295d7e8f60ffad2245b64498ee0d3268a0a97b199da41872cd34009cf3127",
+    "go.sum": "3b0849aae4c1c40fbebb12d3f0b40809f86fe866e2d561d4c38c09188b32e115"
+  },
+  "phases": [
+    {
+      "name": "requirement",
+      "expected_tests": [
+        "TestXraiContractHelper",
+        "TestXraiContractModel",
+        "TestXraiContractAPI"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "behavioral_result_verified": true,
+      "teardown_verified": true,
+      "execution_status": "error",
+      "harness": "requirement-harness.json",
+      "jsonl": "requirement-go-test.jsonl",
+      "jsonl_sha256": "9eda78fa47cbf59b8b7b244687bc11ace9a5cd9177a83ba53028792fdcf6580b",
+      "verified": true
+    },
+    {
+      "name": "regression",
+      "expected_tests": [
+        "TestXraiRegressionOrdinaryURL",
+        "TestXraiRegressionUserinfoAndInvalidURL"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "behavioral_result_verified": true,
+      "teardown_verified": true,
+      "execution_status": "ok",
+      "harness": "regression-harness.json",
+      "jsonl": "regression-go-test.jsonl",
+      "jsonl_sha256": "11fe6fb3e42ec7a7726ad3ffbb4c0a52c19dc14be6f48cefd5241b6d2e1431d5",
+      "verified": true
+    }
+  ],
+  "verified": true,
+  "admitted": false,
+  "competitive_runs_allowed": false
+}

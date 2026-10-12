@@ -1,0 +1,86 @@
+{
+  "schema_version": "xrai.eval.l5.python.export_verified.v1",
+  "verified_behavioral_pair": true,
+  "commit": "156ef141f3b270edb06c8ae9af37c55253c0aabe",
+  "source_archive_sha256": "70f9d47a3aba04faf22b150075283b0a4311f8b665bf2ab3e447cd5c3685b70b",
+  "executor_source_sha256": "dcae5c976c6281fc6174376db4abe765634110628c9b06ec4546d5e78a16076f",
+  "oracle_sha256": "edbbdb303732bb799395caed5e094750fd0daffff00e39a9effbec5ef1544837",
+  "full_source_files_per_side": 1424,
+  "production_files": 315,
+  "nonempty_production_lines": 159398,
+  "dependency_lock_sha256": "d60b33931674ea0cc3d38d97b513ecdd0dfc53f8be0dff9c29a6743ab06d1f50",
+  "reported_python_executable_sha256": "22088c72b8918b89ff4aa6d66870ae5e97402fb00b2bb34ae36f64280a177c5b",
+  "reported_runtime_files": 2489,
+  "reported_compiled_extensions": 68,
+  "fresh_confirmed_domains": 4,
+  "phases": [
+    {
+      "side": "base",
+      "phase": "requirement",
+      "tests": 3,
+      "passed": 0,
+      "expected_contract_errors": 3,
+      "domain_id": "2948c1a0-035a-4211-9a9c-b4b9945fbb4d",
+      "namespace": "pid:[4026532318]",
+      "report_sha256": "0dac91aa1164e153a451bc789050835cf2da2d03cc6acf36598c4272580447e0",
+      "harness_sha256": "a700db39ff05cb5ed8d068f3227497897ab5f8ef6ee5e03af788c1db131ddb0e"
+    },
+    {
+      "side": "base",
+      "phase": "regression",
+      "tests": 2,
+      "passed": 2,
+      "expected_contract_errors": 0,
+      "domain_id": "59d47a46-931b-4868-b455-3d41cc07ab68",
+      "namespace": "pid:[4026532380]",
+      "report_sha256": "02883fb5bcccd867bf828b1532dd7075f7761f11ca9023ef3dfd9e12ec381546",
+      "harness_sha256": "e6642b85bcb9d9db665581eec5ec77dcf81d91a9c5bd881909a1f77ac7ba33ca"
+    },
+    {
+      "side": "reference",
+      "phase": "requirement",
+      "tests": 3,
+      "passed": 3,
+      "expected_contract_errors": 0,
+      "domain_id": "fc95154b-7dbb-46b0-b7e9-c6ff69db0d2d",
+      "namespace": "pid:[4026532320]",
+      "report_sha256": "beade60df9fc84c752821d4a36ea9bd6d96a8a128b5077ee9acda3b1a29ed48f",
+      "harness_sha256": "0fb8b7f9925bf14ff7be482da0d90748a4576147117ede3f2213b170ce860533"
+    },
+    {
+      "side": "reference",
+      "phase": "regression",
+      "tests": 2,
+      "passed": 2,
+      "expected_contract_errors": 0,
+      "domain_id": "919b1e07-44f7-4ff9-83de-447121261d45",
+      "namespace": "pid:[4026532381]",
+      "report_sha256": "e42294db6c6c6cc21b4faacb51993e0b4165e8820495a85aa1ae1af5659a82da",
+      "harness_sha256": "5ddbcabcad209b75b9ed614b6556171520817e10def539d60a946aa7fa9b7576"
+    }
+  ],
+  "file_sha256": {
+    "base/bootstrap.json": "c3c4a1dd666b65298c71522304898448a78936e2e1ba3cc46d39ccec7a2b9c17",
+    "base/receipt.json": "fe1946f10359e0bac9a8de56cd7ca445f6731787cf016e7ef470c42b1acea0e2",
+    "base/regression-harness.json": "e6642b85bcb9d9db665581eec5ec77dcf81d91a9c5bd881909a1f77ac7ba33ca",
+    "base/regression-tests.json": "02883fb5bcccd867bf828b1532dd7075f7761f11ca9023ef3dfd9e12ec381546",
+    "base/requirement-harness.json": "a700db39ff05cb5ed8d068f3227497897ab5f8ef6ee5e03af788c1db131ddb0e",
+    "base/requirement-tests.json": "0dac91aa1164e153a451bc789050835cf2da2d03cc6acf36598c4272580447e0",
+    "pair.json": "2747866e014ef8d33f6113b1594b37ee257fcf43b3b315e27a5c46a48ac30189",
+    "reference/bootstrap.json": "c3c4a1dd666b65298c71522304898448a78936e2e1ba3cc46d39ccec7a2b9c17",
+    "reference/receipt.json": "36636f7fa77e17631b6ee8fb1d33dff8e56898518caa0e8b6b2e5e9deebdc639",
+    "reference/regression-harness.json": "5ddbcabcad209b75b9ed614b6556171520817e10def539d60a946aa7fa9b7576",
+    "reference/regression-tests.json": "e42294db6c6c6cc21b4faacb51993e0b4165e8820495a85aa1ae1af5659a82da",
+    "reference/requirement-harness.json": "0fb8b7f9925bf14ff7be482da0d90748a4576147117ede3f2213b170ce860533",
+    "reference/requirement-tests.json": "beade60df9fc84c752821d4a36ea9bd6d96a8a128b5077ee9acda3b1a29ed48f"
+  },
+  "limits": [
+    "API/run/commit/job/ZIP authentication delegated to caller",
+    "bootstrap runtime and native extension binary bytes not retained in this export: only consistent reported hashes, shape, pins and cross-side identity verified",
+    "receipt evidence reverified, not independent historical process/workspace observation",
+    "three controlled requirements and two regressions; no full upstream suite or comparative agent run claim",
+    "individual contract case behavioral evidence does not close global corpus quotas or external incremental quota"
+  ],
+  "qualified": false,
+  "admitted": false
+}

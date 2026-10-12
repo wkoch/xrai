@@ -16,6 +16,9 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 SCHEMA = ROOT / 'eval/qualification/c02-state.schema.json'
 REAL = ('rust', 'js')
+CONTROLLED = ('python', 'go')
+CONTROLLED_PROOF = ROOT / 'docs/relatorios/logs/L5-C02/ci-next-first/verification.json'
+CONTROLLED_VERIFIER = ROOT / 'docs/relatorios/logs/L5-C02/reconcile_new_corpus.py'
 
 
 def require(condition, message):
@@ -186,6 +189,8 @@ def summarize(rows):
             'eligible_historical': sum(r['historical'] for r in eligible),
             'eligible_multi_module': sum(r['multi_module'] for r in eligible),
             'new_dossiers_behavior_verified': sum(r['states']['behavior']['status'] == 'verified' for r in new),
+            'new_dossiers_curated_reviewed': sum(r['states']['curation']['status'] == 'verified'
+                    and r['states']['review']['status'] == 'verified' for r in new),
             'new_dossiers_individually_eligible': sum(r['individually_eligible'] for r in new),
             'new_dossiers_required': 4, 'admitted_tasks': 0, 'competitive_runs_allowed': False,
             'required_state_events_prepared': {f: sum(r['family'] == f and r['states']['event']['role'] == 'required'
@@ -196,6 +201,132 @@ def summarize(rows):
                 'additional_multi_module': max(0, 20-sum(r['multi_module'] for r in eligible)),
                 'new_dossiers_remaining': max(0, 4-sum(r['individually_eligible'] for r in new)),
                 'admission_deficit': 32}}
+
+
+def controlled_state(family, review_receipt):
+    """Curated controlled dossiers remain ineligible until behavioral proof.
+
+    Case flags/counts are intentionally not inputs to this state transition.
+    Python's future supplemental exercise does not block contract eligibility.
+    """
+    event = {'role': 'supplemental' if family == 'python' else 'not_applicable',
+             'preparation': 'not_prepared' if family == 'python' else 'not_applicable',
+             'execution': 'not_executed' if family == 'python' else 'not_applicable',
+             'descriptor': None, 'execution_receipt': None}
+    return {'schema': 'xrai.eval.c02.state.v1',
+        'curation': {'status': 'verified', 'receipts': [receipt('eval/qualification/l5-real/'+family+'/capture.json')]},
+        'review': {'status': 'verified', 'receipts': [review_receipt]},
+        'behavior': {'status': 'pending', 'receipts': []}, 'event': event,
+        'individual_eligibility': {'eligible': False, 'blockers': ['behavior_not_verified']},
+        'global_admission': {'admitted': False, 'competitive_runs_allowed': False}}
+
+
+def controlled_behavior():
+    """A complete verified export, not a declared case status, advances C02."""
+    if not CONTROLLED_PROOF.exists():
+        return None
+    require(CONTROLLED_PROOF.is_file() and not CONTROLLED_PROOF.is_symlink(), 'C02 controlled proof is not a regular file')
+    expected = json.loads(CONTROLLED_PROOF.read_bytes())
+    verifier = load_module(CONTROLLED_VERIFIER, 'c02_controlled_export_closure')
+    actual = verifier.reconcile(CONTROLLED_PROOF.parent)
+    require(actual == expected, 'C02 controlled behavioral proof differs from fresh export reconciliation')
+    require(actual['verified'] is True and actual['data_only'] is True and actual['admitted'] is False
+            and actual['competitive_execution'] is False and actual['run_id'] == 38294106923
+            and actual['code_commit'] == 'e02370ab63aaf47356f986bd2a35c20adfe848f1',
+            'C02 controlled behavioral provenance/admission mismatch')
+    require(set(actual['families']) == set(CONTROLLED)
+            and all(r['verified'] is True for r in actual['families'].values()), 'C02 controlled behavioral family set')
+    mandatory = {'docs/relatorios/logs/L5-C02/reconcile_new_corpus.py',
+                 'docs/relatorios/logs/L5-C02/verify_python_export.py',
+                 'docs/relatorios/logs/L5-C02/verify_go_export.py'}
+    require(mandatory <= actual['sources_sha256'].keys(), 'C02 controlled proof missing verifier fingerprints')
+    for path, sha in actual['sources_sha256'].items():
+        bind({'path': path, 'sha256': sha})
+    return actual
+
+
+def verify_controlled_cases(*, include_behavior=True):
+    from prepare_l5_python import prepare, MODULES, COMMIT as PY_COMMIT
+    from prepare_l5_go import verify, PATHS, COMMIT as GO_COMMIT
+    captures = {'python': prepare(write=False), 'go': verify()}
+    behavior = controlled_behavior() if include_behavior else None
+    rows = []
+    for family in CONTROLLED:
+        folder = ROOT / 'eval/qualification/l5-real' / family
+        case = json.loads((folder / 'case.json').read_bytes())
+        expected = ('L5-SLOT-PY-contract_change-2', 'Python', 'scikit-learn/scikit-learn',
+                    'L5-SLOT-Python-contract_change-2') if family == 'python' else (
+                    'L5-GO-GITEA-URL-QUERY-CREDENTIALS', 'Go', 'go-gitea/gitea', 'L5-SLOT-Go-contract_change-2')
+        require((case.get('id', case.get('case_id')), case['family'], case['repository'], case['slot']) == expected,
+                'C02 controlled dossier identity relabeled')
+        require(case['qualification']['admitted'] is False and case['qualification']['competitive_runs_allowed'] is False,
+                'C02 controlled case falsely admitted')
+        if family == 'python':
+            require(case['task_type'] == 'controlled_contract_change' and case['historical_issue'] is None
+                    and case['upstream_commit'] == PY_COMMIT, 'C02 Python source/origin relabeled')
+            cap = captures['python']
+            modules = MODULES
+            source_hashes = cap['required_modules']
+            prompt, oracle = 'agent/input.md', 'oracles/probe.py'
+        else:
+            require(case['origin'] == 'controlled_contract_change' and case['historical_change_claimed'] is False
+                    and case['base'] == GO_COMMIT, 'C02 Go source/origin relabeled')
+            cap = json.loads((folder / 'capture.json').read_bytes())
+            modules = PATHS
+            rel = json.loads((folder / 'oracles/source-relations.json').read_bytes())
+            source_hashes = {r['path']: r['sha256'] for r in rel['modules']}
+            prompt, oracle = 'agent/input.md', 'oracles/xrai_url_contract_test.go'
+        review_receipt = case['independent_review']['receipt']
+        require(review_receipt['path'] == 'docs/relatorios/logs/L5-C02/integration/'+family+'-source-review-root.json',
+                'C02 controlled independent review provenance')
+        review = json.loads(bind(review_receipt))
+        require(review['author'] and review['second_reader'] and review['author'] != review['second_reader']
+                and review['status'] == 'accepted' and review['findings'] == [], 'C02 controlled independent review unresolved')
+        hashes = review['reviewed_artifact_hashes']
+        for path, sha in hashes.items():
+            bind({'path': path, 'sha256': sha})
+        prefix = 'eval/qualification/l5-real/'+family+'/'
+        require(review['prompt_sha256'] == receipt(prefix+prompt)['sha256']
+                and review['oracle_sha256'] == receipt(prefix+oracle)['sha256']
+                and prefix+prompt in hashes and prefix+oracle in hashes,
+                'C02 controlled review does not bind current prompt/oracle')
+        require(all(prefix+p in hashes for p in ['capture.json', 'oracles/reference.patch']),
+                'C02 controlled reviewed capture/reference missing')
+        require(set(case['complexity']['required_production_modules']) == set(modules)
+                and len(case['complexity']['required_production_modules']) == len(modules) == 3,
+                'C02 controlled modules differ from reviewed production scope')
+        require({a['path'] for a in review['source_anchors']} == set(modules), 'C02 controlled review anchors missing')
+        for anchor in review['source_anchors']:
+            # Both capture verifiers above already compared these module hashes
+            # with bytes in the complete archive. Reuse that fresh proof rather
+            # than decompress the entire source a second time for the review.
+            require(source_hashes[anchor['path']] == anchor['sha256'], 'C02 controlled reviewed source changed')
+        require(review['assessment']['three_necessary_modules_two_subsystems_two_edge_chain'] is True,
+                'C02 controlled semantic necessity review missing')
+        if family == 'python':
+            require(set(case['complexity']['subsystems']) == {
+                'composite-estimator orchestration (ColumnTransformer/FeatureUnion)',
+                'configured transformer output wrapping/container concatenation'}, 'C02 Python reviewed subsystems changed')
+            require(case['complexity']['necessary_edges'] == [
+                {'caller': 'ColumnTransformer._call_func_on_transformers', 'callee': 'FeatureUnion.fit_transform/transform',
+                 'reason': 'nested branch emits a multi-feature masked result whose mask and branch order must survive the outer composition'},
+                {'caller': 'FeatureUnion._hstack', 'callee': '_get_container_adapter / MaskedArrayAdapter.hstack',
+                 'reason': 'inner FeatureUnion must concatenate masks rather than numpy.hstack discarding them'}],
+                'C02 Python reviewed two-edge scope changed')
+        else:
+            require(set(case['complexity']['subsystems']) == set(rel['subsystems']), 'C02 Go reviewed subsystems changed')
+            require([(e['from'], e['to']) for e in rel['edges']] == [(modules[0], modules[1]), (modules[1], modules[2])]
+                    and all(e['relation'] for e in rel['edges']), 'C02 Go reviewed two-edge scope changed')
+        state = controlled_state(family, review_receipt)
+        if behavior is not None:
+            state['behavior'] = {'status': 'verified', 'receipts': [receipt(CONTROLLED_PROOF.relative_to(ROOT).as_posix())]}
+            state['individual_eligibility'] = {'eligible': True, 'blockers': []}
+        eligible = validate_state(state, 'contract_change')
+        rows.append({'id': expected[0], 'family': expected[1], 'kind': 'contract_change',
+                     'repository': expected[2], 'change_lineage': 'controlled:'+expected[2]+':'+cap['commit']+':'+expected[0],
+                     'complex': True, 'historical': False, 'multi_module': True,
+                     'states': state, 'individually_eligible': eligible, 'source': 'l5_real_dossier'})
+    return rows
 
 
 def reconcile():
@@ -221,9 +352,15 @@ def reconcile():
                      'states': state, 'individually_eligible': True, 'source': 'preserved_l3_pilot'})
     cases = [json.loads((ROOT / 'eval/qualification/l5-real' / f / 'case.json').read_bytes()) for f in REAL]
     rows += verify_real_cases(cases)
+    rows += verify_controlled_cases()
     source_paths = [pilot_path, 'eval/sources/manifest.json', 'eval/qualification/c02-state.schema.json',
                     'eval/qualification/qualified-task.schema.json', 'eval/scripts/verify_c02.py',
-                    'eval/scripts/verify_qualified.py'] + ['eval/qualification/l5-real/' + f + '/case.json' for f in REAL]
+                    'eval/scripts/verify_qualified.py', 'eval/scripts/prepare_l5_python.py',
+                    'eval/scripts/prepare_l5_go.py'] + ['eval/qualification/l5-real/' + f + '/case.json' for f in REAL+CONTROLLED]
+    if CONTROLLED_PROOF.exists():
+        proof = json.loads(CONTROLLED_PROOF.read_bytes())
+        source_paths += [CONTROLLED_PROOF.relative_to(ROOT).as_posix()] + list(proof['sources_sha256'])
+    source_paths = list(dict.fromkeys(source_paths))
     return {'schema': 'xrai.eval.c02.factual-matrix.v1', 'data_only': True,
             'summary': summarize(rows), 'tasks': rows, 'sources': [receipt(p) for p in source_paths],
             'limits': ['Individual eligibility and conditional deficits never admit the global dataset.',

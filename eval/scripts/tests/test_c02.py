@@ -5,6 +5,8 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import verify_c02 as V
@@ -187,6 +189,55 @@ class C02Tests(unittest.TestCase):
                                    {'from': modules[0]+'::a', 'to': modules[2]+'::c', 'why_required': 'other'}]}
         with self.assertRaisesRegex(ValueError, 'two-edge path'):
             V.reviewed_js_modules(case, review, edges)
+
+    def test_prepared_reviewed_python_go_are_ineligible_without_behavior(self):
+        rows = V.verify_controlled_cases(include_behavior=False)
+        self.assertEqual([r['family'] for r in rows], ['Python', 'Go'])
+        for row in rows:
+            self.assertFalse(row['historical'])
+            self.assertFalse(row['individually_eligible'])
+            self.assertEqual(row['states']['curation']['status'], 'verified')
+            self.assertEqual(row['states']['review']['status'], 'verified')
+            self.assertEqual(row['states']['behavior'], {'status': 'pending', 'receipts': []})
+            self.assertEqual(row['states']['individual_eligibility']['blockers'], ['behavior_not_verified'])
+        self.assertEqual(rows[0]['states']['event']['role'], 'supplemental')
+        self.assertEqual(rows[0]['states']['event']['preparation'], 'not_prepared')
+        self.assertEqual(rows[1]['states']['event']['role'], 'not_applicable')
+
+    def test_four_curated_dossiers_do_not_imply_four_behavioral_pairs(self):
+        rows = self.rows() + V.verify_controlled_cases(include_behavior=False)
+        result = V.summarize(rows)
+        self.assertEqual(result['new_dossiers_curated_reviewed'], 4)
+        self.assertEqual(result['new_dossiers_behavior_verified'], 2)
+        self.assertEqual(result['new_dossiers_individually_eligible'], 2)
+        self.assertEqual(result['eligible_tasks'], 6)
+        self.assertEqual(result['eligible_historical'], 6)
+        self.assertEqual(result['conditional_projection']['additional_historical'], 10)
+        self.assertFalse(result['competitive_runs_allowed'])
+
+    def test_controlled_behavior_requires_exact_fresh_reconciliation(self):
+        proof=self.root/'verification.json'
+        declared={'verified':True,'data_only':True,'families':{'python':{'verified':True},'go':{'verified':True}}}
+        proof.write_text(json.dumps(declared))
+        module=SimpleNamespace(reconcile=lambda directory:{**declared,'families':{'python':{'verified':False},'go':{'verified':True}}})
+        with patch.object(V,'CONTROLLED_PROOF',proof),patch.object(V,'load_module',return_value=module):
+            with self.assertRaisesRegex(ValueError,'differs from fresh export reconciliation'):
+                V.controlled_behavior()
+
+    def test_controlled_behavior_cannot_ignore_missing_reader_fingerprints(self):
+        proof=self.root/'verification.json'
+        declared={'verified':True,'data_only':True,'admitted':False,'competitive_execution':False,
+                  'run_id':38294106923,'code_commit':'e02370ab63aaf47356f986bd2a35c20adfe848f1',
+                  'families':{'python':{'verified':True},'go':{'verified':True}},'sources_sha256':{}}
+        proof.write_text(json.dumps(declared))
+        module=SimpleNamespace(reconcile=lambda directory:declared)
+        with patch.object(V,'CONTROLLED_PROOF',proof),patch.object(V,'load_module',return_value=module):
+            with self.assertRaisesRegex(ValueError,'missing verifier fingerprints'):
+                V.controlled_behavior()
+
+    def test_absent_controlled_behavior_remains_pending(self):
+        with patch.object(V,'CONTROLLED_PROOF',self.root/'absent.json'):
+            self.assertIsNone(V.controlled_behavior())
 
 
 if __name__ == '__main__':

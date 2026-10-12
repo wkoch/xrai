@@ -20,9 +20,11 @@ class SlotPlanTests(unittest.TestCase):
         self.assertTrue(result['allocation_consistent'])
         self.assertEqual(result['admitted_tasks'],0)
         self.assertFalse(result['competitive_runs_allowed'])
-        self.assertEqual(result['conditional_deficits']['additional_complex'],13)
-        self.assertEqual(result['factual_summary']['eligible_tasks'],6)
-        self.assertEqual(result['new_dossiers_delivered'],2)
+        proof_ready=(V.ROOT/'docs/relatorios/logs/L5-C02/ci-next-first/verification.json').exists()
+        self.assertEqual(result['conditional_deficits']['additional_complex'],11 if proof_ready else 13)
+        self.assertEqual(result['factual_summary']['eligible_tasks'],8 if proof_ready else 6)
+        self.assertEqual(result['new_dossiers_delivered'],4 if proof_ready else 2)
+        self.assertEqual(result['factual_summary']['new_dossiers_curated_reviewed'],4)
         self.assertEqual(result['multi_module_targets'],20)
     def test_false_admission(self):
         self.plan['admitted_tasks']=32; self.rejects('false admission')
@@ -62,13 +64,13 @@ class SlotPlanTests(unittest.TestCase):
         next(r for r in self.plan['repositories'] if r['repository']=='facebook/react')['language_evidence_status']='JS_assumed'
         self.rejects('JS production evidence')
     def test_new_dossiers_not_delivered(self):
-        self.plan['new_dossiers']['completed']=4; self.rejects('falsely delivered')
+        self.plan['new_dossiers']['completed']+=1; self.rejects('falsely delivered')
     def test_dossier_targets_distinct(self):
         work=self.plan['new_dossiers']['next_slots']; work[1]=work[0]; self.rejects('four new dossier targets')
     def test_production_size_not_claimed_proven(self):
         self.plan['repositories'][0]['size_floor_status']='proven'; self.rejects('conditional size')
     def test_deficits_cannot_hide_remaining_work(self):
-        self.plan['conditional_deficits']['new_dossiers_remaining']=0; self.rejects('deficits mismatch')
+        self.plan['conditional_deficits']['new_dossiers_remaining']+=1; self.rejects('deficits mismatch')
     def test_artifact_tamper(self):
         self.plan['pilot_artifact']['sha256']='0'*64; self.rejects('pilot artifact hash')
     def test_boolean_targets_not_integer_estimates(self):
@@ -101,5 +103,25 @@ class SlotPlanTests(unittest.TestCase):
                 plan['new_dossiers']['completed']=altered['summary']['new_dossiers_individually_eligible']
                 with self.assertRaisesRegex(ValueError,'differs from recomputed dossier evidence'):
                     V.validate(plan)
+    def test_pending_controlled_behavior_cannot_be_promoted_by_rehashed_counts(self):
+        matrix=json.loads((V.ROOT/self.plan['factual_progress']['path']).read_bytes())
+        row=next(r for r in matrix['tasks'] if r['family']=='Python' and r['source']=='l5_real_dossier')
+        # A verified Rust receipt is never a proof for the controlled Python
+        # task, including after the real Python proof has become available.
+        rust_behavior=copy.deepcopy(next(r for r in matrix['tasks'] if r['id']=='L5-Rust-RA-23422')['states']['behavior'])
+        row['states']['behavior']=rust_behavior
+        row['states']['individual_eligibility']={'eligible':True,'blockers':[]}
+        row['individually_eligible']=True
+        spec=importlib.util.spec_from_file_location('test_controlled_summary',V.ROOT/'eval/scripts/verify_c02.py')
+        c02=importlib.util.module_from_spec(spec);spec.loader.exec_module(c02)
+        matrix['summary']=c02.summarize(matrix['tasks'])
+        with tempfile.TemporaryDirectory(dir=V.ROOT/'eval/qualification') as temp:
+            path=Path(temp)/'matrix.json';raw=json.dumps(matrix).encode();path.write_bytes(raw)
+            plan=copy.deepcopy(self.plan)
+            plan['factual_progress']={'path':path.relative_to(V.ROOT).as_posix(),'sha256':hashlib.sha256(raw).hexdigest()}
+            plan['conditional_deficits']=matrix['summary']['conditional_projection']
+            plan['new_dossiers']['completed']=matrix['summary']['new_dossiers_individually_eligible']
+            with self.assertRaisesRegex(ValueError,'differs from recomputed dossier evidence'):
+                V.validate(plan)
 
 if __name__=='__main__': unittest.main()

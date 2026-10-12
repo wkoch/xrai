@@ -1,0 +1,62 @@
+{
+  "schema": "xrai.eval.c02.controlled-pending.delivery.v1",
+  "recorded_utc": "2026-10-12T19:02:47.998970+00:00",
+  "files": {
+    "eval/scripts/verify_c02.py": {
+      "sha256": "381c3c5474d6ede6d3cb4d0f4f157bcea1f0642b4f3d00667ba64e4a29e2ffb6",
+      "bytes": 22786
+    },
+    "eval/scripts/tests/test_c02.py": {
+      "sha256": "2094b331699c2d0324a7e9a80322b6a13090bbdee0b9cd7c17bcb6cbc52f49f2",
+      "bytes": 12242
+    },
+    "eval/scripts/tests/test_slot_plan.py": {
+      "sha256": "2b4052568d907116662420eac7c21a7d446b7d2a9eecfae4e418cd0bf2af15bf",
+      "bytes": 8250
+    },
+    "eval/qualification/c02-status-matrix.json": {
+      "sha256": "7de1d3d0e79d52c6d12a13af80a9d283d724f6d505b1b27d4cd63062d244a510",
+      "bytes": 17439
+    },
+    "eval/qualification/l5-slot-plan.json": {
+      "sha256": "6be0c210995dca6f4bb936306f8f9a33f2470a544d1d5ece0df990e6d01a087c",
+      "bytes": 33728
+    },
+    "docs/relatorios/logs/L5-C02/c02/controlled-proof-reuse-guard.json": {
+      "sha256": "879dedd2933859ade2ee080e075a5cabe70f1a335a79c4505d47ff26f1daa952",
+      "bytes": 965
+    },
+    "docs/relatorios/logs/L5-C02/c02/controlled-pending-unit.json": {
+      "sha256": "518e79ceb801e777a0356034083501f0f08a2938772bc078f5ecac37f83994b4",
+      "bytes": 3998
+    },
+    "docs/relatorios/logs/L5-C02/c02/controlled-pending-matrix.json": {
+      "sha256": "e303e2972acf74b5e02b2c11685bdcd62c2b32275cbb16dedde16630f0119934",
+      "bytes": 19701
+    },
+    "docs/relatorios/logs/L5-C02/c02/controlled-capture-proof-reuse.json": {
+      "sha256": "2417bc166c7de366e7cf161044ae2cbdbe7000d5a61bddbcdac954e408a6b1a5",
+      "bytes": 19701
+    },
+    "docs/relatorios/logs/L5-C02/c02/controlled-pending-promotion-counterproof.json": {
+      "sha256": "248c6374eb0fea16eda9166b4d9b412e86cbcd9a891332e8011ea6ef54d66995",
+      "bytes": 964
+    },
+    "docs/relatorios/logs/L5-C02/c02/controlled-proof-reuse-unit.json": {
+      "sha256": "3cd605578859f0b469e38f5a205067e88efa21e80c4cc1b5620bdcbb5a946ae6",
+      "bytes": 3998
+    },
+    "docs/relatorios/logs/L5-C02/c02/controlled-pending.md": {
+      "sha256": "ddf4cc110882b37a06df474f75b6ffca1c77553e30379b23c6d1a6ff9e0adf06",
+      "bytes": 1931
+    }
+  },
+  "tasks": 8,
+  "eligible_tasks": 6,
+  "new_dossiers_curated_reviewed": 4,
+  "new_dossiers_behavior_verified": 2,
+  "new_dossiers_individually_eligible": 2,
+  "admitted_tasks": 0,
+  "upstream_runtime_reexecuted": false,
+  "limits": "CI38294106923 success reported by root; its new raw behavioral exports are not yet reconciled in this pending-state checkpoint."
+}

@@ -27,11 +27,19 @@
     },
     {
       "path": "eval/scripts/verify_c02.py",
-      "sha256": "ff23de735c13a2fd1e984ee79b3e3c54dc24c8ce30fddcfd1f2c1a5afea9a272"
+      "sha256": "da40b94fe09e241747fc2f49195967799b18752ebf1f84e6a03ede4d0f3bfe96"
     },
     {
       "path": "eval/scripts/verify_qualified.py",
       "sha256": "2bfdf70dc122484ebf7017fa4d9b25fd69dbece4a380fe7ce47d356eb9283526"
+    },
+    {
+      "path": "eval/scripts/prepare_l5_python.py",
+      "sha256": "4b6277c7d974e192ca123410accd27bedb9ed870ab09b102acb1c7074193da45"
+    },
+    {
+      "path": "eval/scripts/prepare_l5_go.py",
+      "sha256": "9a00a0db03f066dc19b2c845b967b95ffb28f7e5942735027ecc54fbafe8ea26"
     },
     {
       "path": "eval/qualification/l5-real/rust/case.json",
@@ -40,25 +48,66 @@
     {
       "path": "eval/qualification/l5-real/js/case.json",
       "sha256": "4d2af9a5ab50c9a9df950a01385410a8076ca7def1885288047afee2258164da"
+    },
+    {
+      "path": "eval/qualification/l5-real/python/case.json",
+      "sha256": "8976e5ff5ee366103de7bf67e65ccc23a10b40d869098dfc806eddf8962f154f"
+    },
+    {
+      "path": "eval/qualification/l5-real/go/case.json",
+      "sha256": "d83f69c80b85af39aa80adfeff5e927e5375757efc6d4e53428abff36e7329d9"
+    },
+    {
+      "path": "docs/relatorios/logs/L5-C02/ci-next-first/verification.json",
+      "sha256": "b1e99988a361c750761fc883034edbffb8a2a4f96b36b2cbff5c84ce59087d4b"
+    },
+    {
+      "path": "docs/relatorios/logs/L5-C02/reconcile_new_corpus.py",
+      "sha256": "c3f88baf9fa230827485ff5dc4a066b2502cd3f47012767020c037886c13e1da"
+    },
+    {
+      "path": "docs/relatorios/logs/L5-C02/verify_go_export.py",
+      "sha256": "900825b2cfd26b90862a3b4591ebacdfe4693380233d2b936925ea43732cf9d2"
+    },
+    {
+      "path": "docs/relatorios/logs/L5-C02/verify_python_export.py",
+      "sha256": "d51b6223bfabe1af9d9a8a68bfa093c94342ccf49f9aefca26b56791b4eb3960"
+    },
+    {
+      "path": "eval/qualification/l5-real/go/agent/input.md",
+      "sha256": "cb46defe2ed2730ab6dbf7666470f649fae6fb36a7f90d471736ebb0f79aed82"
+    },
+    {
+      "path": "eval/qualification/l5-real/go/oracles/xrai_url_contract_test.go",
+      "sha256": "79821b7011b6145def1266cf9bffb97c3034ffc49a8c41ec41556a29a06d4f59"
+    },
+    {
+      "path": "eval/qualification/l5-real/python/agent/input.md",
+      "sha256": "768ab3bf6870dc77d52f44d57966b48846e88c60f2be86b51f6f25388f1189d6"
+    },
+    {
+      "path": "eval/qualification/l5-real/python/oracles/probe.py",
+      "sha256": "edbbdb303732bb799395caed5e094750fd0daffff00e39a9effbec5ef1544837"
     }
   ],
   "summary": {
     "admitted_tasks": 0,
     "competitive_runs_allowed": false,
     "conditional_projection": {
-      "additional_complex": 13,
+      "additional_complex": 11,
       "additional_historical": 10,
-      "additional_multi_module": 14,
-      "additional_tasks": 26,
+      "additional_multi_module": 12,
+      "additional_tasks": 24,
       "admission_deficit": 32,
-      "new_dossiers_remaining": 2
+      "new_dossiers_remaining": 0
     },
-    "eligible_complex": 3,
+    "eligible_complex": 5,
     "eligible_historical": 6,
-    "eligible_multi_module": 6,
-    "eligible_tasks": 6,
-    "new_dossiers_behavior_verified": 2,
-    "new_dossiers_individually_eligible": 2,
+    "eligible_multi_module": 8,
+    "eligible_tasks": 8,
+    "new_dossiers_behavior_verified": 4,
+    "new_dossiers_curated_reviewed": 4,
+    "new_dossiers_individually_eligible": 4,
     "new_dossiers_required": 4,
     "required_state_events_prepared": {
       "Go": 0,
@@ -410,6 +459,120 @@
             {
               "path": "docs/relatorios/logs/L5-C02/integration/js-final-artifact-review.json",
               "sha256": "c535a559ebcde0e94861301fcff9d76dbaf71afbd81c83891d371c3db25196ed"
+            }
+          ],
+          "status": "verified"
+        },
+        "schema": "xrai.eval.c02.state.v1"
+      }
+    },
+    {
+      "change_lineage": "controlled:scikit-learn/scikit-learn:156ef141f3b270edb06c8ae9af37c55253c0aabe:L5-SLOT-PY-contract_change-2",
+      "complex": true,
+      "family": "Python",
+      "historical": false,
+      "id": "L5-SLOT-PY-contract_change-2",
+      "individually_eligible": true,
+      "kind": "contract_change",
+      "multi_module": true,
+      "repository": "scikit-learn/scikit-learn",
+      "source": "l5_real_dossier",
+      "states": {
+        "behavior": {
+          "receipts": [
+            {
+              "path": "docs/relatorios/logs/L5-C02/ci-next-first/verification.json",
+              "sha256": "b1e99988a361c750761fc883034edbffb8a2a4f96b36b2cbff5c84ce59087d4b"
+            }
+          ],
+          "status": "verified"
+        },
+        "curation": {
+          "receipts": [
+            {
+              "path": "eval/qualification/l5-real/python/capture.json",
+              "sha256": "ec546414b369fdd54f302678aa88ac4becf0391885e6c9ca95a8afa2f6c36f3a"
+            }
+          ],
+          "status": "verified"
+        },
+        "event": {
+          "descriptor": null,
+          "execution": "not_executed",
+          "execution_receipt": null,
+          "preparation": "not_prepared",
+          "role": "supplemental"
+        },
+        "global_admission": {
+          "admitted": false,
+          "competitive_runs_allowed": false
+        },
+        "individual_eligibility": {
+          "blockers": [],
+          "eligible": true
+        },
+        "review": {
+          "receipts": [
+            {
+              "path": "docs/relatorios/logs/L5-C02/integration/python-source-review-root.json",
+              "sha256": "bf1f7f43c1d9f3bb6667ac1d9b2dfa45cc5616b82a6ec25d657abd991886a5d4"
+            }
+          ],
+          "status": "verified"
+        },
+        "schema": "xrai.eval.c02.state.v1"
+      }
+    },
+    {
+      "change_lineage": "controlled:go-gitea/gitea:8eefa1f6dedf2488db2c9e12c916e8e51f673160:L5-GO-GITEA-URL-QUERY-CREDENTIALS",
+      "complex": true,
+      "family": "Go",
+      "historical": false,
+      "id": "L5-GO-GITEA-URL-QUERY-CREDENTIALS",
+      "individually_eligible": true,
+      "kind": "contract_change",
+      "multi_module": true,
+      "repository": "go-gitea/gitea",
+      "source": "l5_real_dossier",
+      "states": {
+        "behavior": {
+          "receipts": [
+            {
+              "path": "docs/relatorios/logs/L5-C02/ci-next-first/verification.json",
+              "sha256": "b1e99988a361c750761fc883034edbffb8a2a4f96b36b2cbff5c84ce59087d4b"
+            }
+          ],
+          "status": "verified"
+        },
+        "curation": {
+          "receipts": [
+            {
+              "path": "eval/qualification/l5-real/go/capture.json",
+              "sha256": "53e99c53811a8a3be619a5506e79b221f31a70af1e722453849d0ca126aea6c3"
+            }
+          ],
+          "status": "verified"
+        },
+        "event": {
+          "descriptor": null,
+          "execution": "not_applicable",
+          "execution_receipt": null,
+          "preparation": "not_applicable",
+          "role": "not_applicable"
+        },
+        "global_admission": {
+          "admitted": false,
+          "competitive_runs_allowed": false
+        },
+        "individual_eligibility": {
+          "blockers": [],
+          "eligible": true
+        },
+        "review": {
+          "receipts": [
+            {
+              "path": "docs/relatorios/logs/L5-C02/integration/go-source-review-root.json",
+              "sha256": "679cdb2e844e8c27416c88099dcde48ab1d87f7a79d63cdf11092b72527e16b2"
             }
           ],
           "status": "verified"

@@ -1,0 +1,72 @@
+{
+  "schema": "xrai.eval.l5.c02.root-independent-review.v1",
+  "reviewer": "python_dossier subagent independent of root helper/reports ownership",
+  "status": "accepted_scoped_data_only",
+  "reviewed_sha256": {
+    "docs/relatorios/logs/L5-C02/reconcile_new_corpus.py": "c3f88baf9fa230827485ff5dc4a066b2502cd3f47012767020c037886c13e1da",
+    "docs/relatorios/logs/L5-C02/test_reconcile_new_corpus.py": "bd483d8fd54f8a0fc69fe7c3124259f10ef00ee83bc5d7b5fc7a63d880258389",
+    "docs/relatorios/L5-C02.md": "e3bf0d2a1762a08554129339174345d4a095eecc29d8606a319262a62b8bde09",
+    "docs/STATUS-IMPLEMENTACAO.md": "4d69deec5eee43afa23fcd8823e3e2e95cbf6062e4e6223853c8b525b9cf2e9b",
+    "eval/reports/m0-corpus-qualification.md": "d350d5abda44d535d974c8ecaa48ccdc792129d7e7f2a8bd9b0dd56cba73b666",
+    "eval/qualification/c02-status-matrix.json": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+    "docs/relatorios/logs/L5-C02/ci-next-first/verification.json": "b1e99988a361c750761fc883034edbffb8a2a4f96b36b2cbff5c84ce59087d4b"
+  },
+  "ci_run": 38294106923,
+  "code_commit": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+  "fresh_reconciliation_equals_retained_proof": true,
+  "fresh_reconciliation_json_canonical_sha256": "da026014801bd26c69f0c984d25ebd537554d8368ba336e325b7e58de133514f",
+  "checks": {
+    "root_counterproof_methods": 12,
+    "root_counterproof_result": "all passed in scoped own/data-only execution;3.279s",
+    "zip_python_files": 13,
+    "zip_go_files": 14,
+    "fixed_API_ZIP_bindings": "constants artifact IDs/digests/run/head/jobs + original retained ZIP bytes + exact extracted file closure checked by fresh reconciliation",
+    "python_behavior": "base3 exact masked ValueErrors/ref3pass/reg2per side; four confirmed fresh domains; fullsource+oracle inventory unchanged; origin/source hashes checked",
+    "go_behavior": "family data-only verifier accepted base3 expected contract failures/ref3pass/reg2per side; four confirmed fresh domains; materialization/locks; full post-probe inventory not produced",
+    "current_factual_counts": {
+      "eligible_tasks": 8,
+      "eligible_complex": 5,
+      "eligible_historical": 6,
+      "eligible_multi_module": 8
+    },
+    "new_dossiers_individually_eligible": 4,
+    "conditional_deficits": {
+      "tasks": 24,
+      "complex": 11,
+      "historical": 10,
+      "multi_module": 12
+    },
+    "global_admitted": 0,
+    "required_state_events_prepared": {
+      "Go": 0,
+      "Python": 0,
+      "Rust": 0,
+      "TSJS": 0
+    },
+    "matrix_bound_current_receipts": "hashes of behavior/curation/review receipts checked for all eight rows",
+    "reports_counts_match_current_matrix": true
+  },
+  "findings": [
+    {
+      "finding": "STATUS current M0-03.R1 row initially still said2/4/six/PythonGo preparation while current header/adendum said4/4/eight",
+      "resolution": "root corrected row31 before final review; final file re-read and fingerprinted",
+      "blocking": false
+    }
+  ],
+  "coverage": {
+    "tier": 2,
+    "project": "Users-wkoch-Projetos-xrai",
+    "generation": "2026-10-12T19:02:23Z",
+    "log_helpers": "not_tracked; full direct source read fallback; no graph completeness assertion",
+    "non_code_reports_and_JSON": "direct targeted reads, source/receipt byte checks"
+  },
+  "limits": [
+    "Authenticated GitHub API captures are retained local data; no offline signature attestation or fresh remote query by this reviewer.",
+    "Runtime/compiler/extension binary bytes are not retained in Python/Go exports; hashes are reported, not independent native-byte observation.",
+    "Go family verifier implementation reviewed by owning Go agent/root; this scoped review executes only its owned data checks and checks root integration/source bindings.",
+    "Older report sections retain historical pending/count states; latest C02 section and current STATUS table give current eight-eligible/zero-global state.",
+    "No local upstream import/build/test, comparative sessions, full upstream suite, or actual required state/config A-to-B proof performed by this review."
+  ],
+  "qualified_global": false,
+  "competitive_execution_allowed": false
+}

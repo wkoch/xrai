@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/private/tmp/xrai-c02-tools/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-p",
+    "test_slot_plan.py",
+    "-v"
+  ],
+  "base_commit": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+  "recorded_at": "2026-10-12T19:14:49.067221+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 256.6428197079995,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_artifact_tamper (test_slot_plan.SlotPlanTests.test_artifact_tamper) ... ok\ntest_boolean_targets_not_integer_estimates (test_slot_plan.SlotPlanTests.test_boolean_targets_not_integer_estimates) ... ok\ntest_competition_enabled (test_slot_plan.SlotPlanTests.test_competition_enabled) ... ok\ntest_controls_cannot_fill_quotas (test_slot_plan.SlotPlanTests.test_controls_cannot_fill_quotas) ... ok\ntest_deficits_cannot_hide_remaining_work (test_slot_plan.SlotPlanTests.test_deficits_cannot_hide_remaining_work) ... ok\ntest_dossier_targets_distinct (test_slot_plan.SlotPlanTests.test_dossier_targets_distinct) ... ok\ntest_duplicate_slot (test_slot_plan.SlotPlanTests.test_duplicate_slot) ... ok\ntest_factual_matrix_hash_tamper (test_slot_plan.SlotPlanTests.test_factual_matrix_hash_tamper) ... ok\ntest_factual_progress_cannot_be_inferred_from_target_count (test_slot_plan.SlotPlanTests.test_factual_progress_cannot_be_inferred_from_target_count) ... ok\ntest_false_admission (test_slot_plan.SlotPlanTests.test_false_admission) ... ok\ntest_historical_floor (test_slot_plan.SlotPlanTests.test_historical_floor) ... ok\ntest_incorrect_count (test_slot_plan.SlotPlanTests.test_incorrect_count) ... ok\ntest_incremental_cold_not_silent_substitute (test_slot_plan.SlotPlanTests.test_incremental_cold_not_silent_substitute) ... ok\ntest_js_module_evidence_pending_explicit (test_slot_plan.SlotPlanTests.test_js_module_evidence_pending_explicit) ... ok\ntest_js_quota_not_imputed_to_typescript (test_slot_plan.SlotPlanTests.test_js_quota_not_imputed_to_typescript) ... ok\ntest_multi_module_floor (test_slot_plan.SlotPlanTests.test_multi_module_floor) ... ok\ntest_new_dossiers_not_delivered (test_slot_plan.SlotPlanTests.test_new_dossiers_not_delivered) ... ok\ntest_new_slot_fake_evidence (test_slot_plan.SlotPlanTests.test_new_slot_fake_evidence) ... ok\ntest_noncomplex_target_distribution (test_slot_plan.SlotPlanTests.test_noncomplex_target_distribution) ... ok\ntest_pending_controlled_behavior_cannot_be_promoted_by_rehashed_counts (test_slot_plan.SlotPlanTests.test_pending_controlled_behavior_cannot_be_promoted_by_rehashed_counts) ... ok\ntest_pilot_relabeling (test_slot_plan.SlotPlanTests.test_pilot_relabeling) ... ok\ntest_production_size_not_claimed_proven (test_slot_plan.SlotPlanTests.test_production_size_not_claimed_proven) ... ok\ntest_rehashed_factual_claims_must_match_underlying_dossiers (test_slot_plan.SlotPlanTests.test_rehashed_factual_claims_must_match_underlying_dossiers) ... ok\ntest_repo_over_cap (test_slot_plan.SlotPlanTests.test_repo_over_cap) ... ok\ntest_stratum_violation (test_slot_plan.SlotPlanTests.test_stratum_violation) ... ok\ntest_valid_allocation_is_not_admission (test_slot_plan.SlotPlanTests.test_valid_allocation_is_not_admission) ... ok\n\n----------------------------------------------------------------------\nRan 26 tests in 256.250s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "2c853230e9fc25c4580f3e5d636b7278cb567883fc505bc3c4cca38e202191b3"
+}

@@ -1,0 +1,56 @@
+{
+  "phase": "qualification-regression",
+  "command": [
+    "/usr/bin/env",
+    "HOME=/workspace",
+    "TMPDIR=/tmp",
+    "PYTHONHOME=/workspace/.xrai-python",
+    "PYTHONPATH=/workspace:/workspace/.xrai-deps",
+    "LD_LIBRARY_PATH=/workspace/.xrai-python/lib",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "/workspace/.xrai-python/bin/python3",
+    "/workspace/.xrai-probe.py",
+    "regression",
+    "--report",
+    ".xrai-regression.json"
+  ],
+  "status": "ok",
+  "execution_status": "ok",
+  "exit_code": 0,
+  "sandbox": "Linux bubblewrap",
+  "containment": "linux_pid_namespace",
+  "cleanup_status": "confirmed",
+  "domain_id": "59d47a46-931b-4868-b455-3d41cc07ab68",
+  "termination_evidence": {
+    "init_pid": 2752,
+    "pid_namespace": "pid:[4026532380]",
+    "init_held_before_pin": true,
+    "pidfd_exit_observed": true,
+    "wrapper_reaped": true,
+    "user_namespace_mapping": {
+      "uid": 1001,
+      "gid": 1001,
+      "count": 1,
+      "setgroups": "deny"
+    }
+  },
+  "eligible_for_agent_run": true,
+  "diagnostic": null,
+  "elapsed_seconds": 1.5695634359999957,
+  "stdout": {
+    "base64": "",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "captured_bytes": 0,
+    "observed_bytes": 0,
+    "truncated": false
+  },
+  "stderr": {
+    "base64": "dGVzdF9kZWZhdWx0X2RlbnNlX2FuZF9jb250ZXh0X3Jlc3RvcmVkIChfX21haW5fXy5SZWdyZXNzaW9uLnRlc3RfZGVmYXVsdF9kZW5zZV9hbmRfY29udGV4dF9yZXN0b3JlZCkgLi4uIG9rCnRlc3Rfc3BhcnNlX3JlamVjdGlvbl9hbmRfaW52YWxpZF9tb2RlIChfX21haW5fXy5SZWdyZXNzaW9uLnRlc3Rfc3BhcnNlX3JlamVjdGlvbl9hbmRfaW52YWxpZF9tb2RlKSAuLi4gb2sKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KUmFuIDIgdGVzdHMgaW4gMC4wMTVzCgpPSwo=",
+    "sha256": "e00aaeec39a645569e64423536bd08396a422ee96b8eccab0b14bb1b402438eb",
+    "captured_bytes": 314,
+    "observed_bytes": 314,
+    "truncated": false
+  }
+}

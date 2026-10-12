@@ -1,0 +1,56 @@
+{
+  "phase": "qualification-requirement",
+  "command": [
+    "/usr/bin/env",
+    "HOME=/workspace",
+    "TMPDIR=/tmp",
+    "PYTHONHOME=/workspace/.xrai-python",
+    "PYTHONPATH=/workspace:/workspace/.xrai-deps",
+    "LD_LIBRARY_PATH=/workspace/.xrai-python/lib",
+    "OPENBLAS_NUM_THREADS=1",
+    "OMP_NUM_THREADS=1",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "/workspace/.xrai-python/bin/python3",
+    "/workspace/.xrai-probe.py",
+    "requirement",
+    "--report",
+    ".xrai-requirement.json"
+  ],
+  "status": "ok",
+  "execution_status": "ok",
+  "exit_code": 0,
+  "sandbox": "Linux bubblewrap",
+  "containment": "linux_pid_namespace",
+  "cleanup_status": "confirmed",
+  "domain_id": "fc95154b-7dbb-46b0-b7e9-c6ff69db0d2d",
+  "termination_evidence": {
+    "init_pid": 2756,
+    "pid_namespace": "pid:[4026532320]",
+    "init_held_before_pin": true,
+    "pidfd_exit_observed": true,
+    "wrapper_reaped": true,
+    "user_namespace_mapping": {
+      "uid": 1001,
+      "gid": 1001,
+      "count": 1,
+      "setgroups": "deny"
+    }
+  },
+  "eligible_for_agent_run": true,
+  "diagnostic": null,
+  "elapsed_seconds": 1.5805720909999934,
+  "stdout": {
+    "base64": "",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "captured_bytes": 0,
+    "observed_bytes": 0,
+    "truncated": false
+  },
+  "stderr": {
+    "base64": "dGVzdF9jb2x1bW5fdHJhbnNmb3JtZXJfcGlwZWxpbmVfYW5kX2NvbnRleHQgKF9fbWFpbl9fLkNvbnRyYWN0LnRlc3RfY29sdW1uX3RyYW5zZm9ybWVyX3BpcGVsaW5lX2FuZF9jb250ZXh0KSAuLi4gb2sKdGVzdF9mZWF0dXJlX3VuaW9uX3BpcGVsaW5lX2FuZF9jb250ZXh0IChfX21haW5fXy5Db250cmFjdC50ZXN0X2ZlYXR1cmVfdW5pb25fcGlwZWxpbmVfYW5kX2NvbnRleHQpIC4uLiBvawp0ZXN0X3RyYW5zZm9ybWVyX2RlbnNlX2FuZF9tYXNrZWQgKF9fbWFpbl9fLkNvbnRyYWN0LnRlc3RfdHJhbnNmb3JtZXJfZGVuc2VfYW5kX21hc2tlZCkgLi4uIG9rCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tClJhbiAzIHRlc3RzIGluIDAuMDE3cwoKT0sK",
+    "sha256": "45f39b4f0fb403c2e1f7002143658bc755e16324fead0e8165e7a74792e472a5",
+    "captured_bytes": 417,
+    "observed_bytes": 417,
+    "truncated": false
+  }
+}

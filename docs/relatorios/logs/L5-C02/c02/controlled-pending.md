@@ -1,0 +1,9 @@
+# C02 — quatro dossiês, duas provas comportamentais conciliadas
+
+Este incremento acrescenta Python/scikit-learn e Go/Gitea à matriz factual. Os dois contratos são controlados, não históricos. Capturas completas, produção/porte, referência, setup, input/oracle e três módulos com relações necessárias foram verificados como dados e ligados aos hashes da revisão independente atual.
+
+As oito linhas incluem os quatro pilotos e quatro novos dossiês. Curadoria/revisão novas: **4/4**; comportamento/elegibilidade novas: **2/4**; seis tarefas individualmente elegíveis, três complexas, seis históricas e seis multimódulo. A projeção permanece **26/13/10/14**, sem admissão global. Python e Go têm apenas `behavior_not_verified` como bloqueio individual nesta fase. O exercício Python é suplementar, não preparado e não executado; não acrescenta bloqueio de contrato ou outra tarefa primária. Os quatro casos reais de estado da amostra permanecem separados.
+
+`controlled-capture-proof-reuse.json` concilia a matriz atual. `controlled-proof-reuse-unit.json` registra25 testes próprios aprovados, incluindo estados pendentes dos novos dossiês; `controlled-proof-reuse-guard.json` rejeita promoção falsa do Python por receipt comportamental Rust, rehash da matriz e contadores recalculados. Fontes/módulos são vinculados à verificação fresca do arquivo completo, sem descompactar novamente todo o arquivo só para comparar os mesmos hashes da revisão.
+
+Nenhum resultado de CI ou campo de status declarado nos casos muda automaticamente a elegibilidade. A promoção dependerá de conciliação completa dos novos ZIPs, jobs, execuções, identidade de fontes e oracles; presença de artefato ou contagem declarada de testes não basta. Nenhum comando upstream é executado por este conciliador. Este recibo de estado pendente será preservado quando a próxima prova comportamental for conciliada.

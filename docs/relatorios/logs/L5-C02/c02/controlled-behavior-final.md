@@ -1,0 +1,13 @@
+# C02 — conciliação final dos contratos Python/Go
+
+O checkpoint `controlled-pending-manifest.json` permanece preservado como histórico: quatro dossiês curados/revisados, apenas dois comportamentos então reconciliados. Esta entrega acrescenta prova comportamental verificável aos contratos controlados Python e Go, sem usar flags de elegibilidade ou contagens declaradas nos casos.
+
+`verify_c02.controlled_behavior()` recompõe exatamente `ci-next-first/verification.json` com `reconcile_new_corpus.reconcile()`: metadados oficiais do run 38294106923, head e02370ab63aaf47356f986bd2a35c20adfe848f1, jobs/artefatos e digests, bytes dos ZIPs e sua correspondência integral às exportações, leitores independentes, títulos/domínios/origens/locks e fontes atuais. Os três verificadores e prompts/oráculos atuais entram nos fingerprints da matriz. Ausência da prova preserva comportamento pendente; prova alterada ou desatualizada falha. Nenhum código upstream é executado localmente.
+
+As curadorias próprias recompõem arquivos completos, inventários conservadores, captura e referência controlada. Revisões independentes obrigatórias vinculam prompt, oráculo, captura, patch e hashes dos três módulos de produção; dois subsistemas e relações encadeadas permanecem necessários. Python/Go continuam controlados, sem origem histórica inferida. O exercício suplementar Python pendente não bloqueia a elegibilidade do contrato nem satisfaz a quota de estado/configuração.
+
+Resultado factual: quatro novos dossiês elegíveis de quatro; oito tarefas individuais elegíveis no conjunto observado, cinco complexas, seis históricas e oito multimódulo. Projeção condicional restante: 24 tarefas, 11 complexas, 10 históricas e 12 multimódulo. Admissão global: 0/32; execução competitiva desabilitada. As quatro famílias ainda precisam selecionar, preparar e executar seu caso obrigatório de estado/configuração.
+
+A matriz e o slot plan são vinculados por SHA; o verificador do plano exige igualdade com uma conciliação nova dos dossiês. Contraprovas alteram origem, família, complexidade, multimódulo, elegibilidade e provas comportamentais, refazendo os hashes do relatório/plano; a conciliação rejeita a promoção. A CLI C02 apenas imprime por padrão e escreve a matriz somente com `--output`.
+
+Limites preservados: os contratos não provam a suíte upstream completa nem um bug histórico. Hashes de binários de runtime são relatos do produtor, pois esses bytes não estão retidos. Go não possui inventário completo após os probes. Metadados GitHub estão retidos, sem assinatura offline. O manifest desta entrega fixa os recibos de testes e as fontes finais; os logs anteriores, inclusive checkpoints e falhas, não são reescritos.

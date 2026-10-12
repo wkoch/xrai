@@ -78,3 +78,10 @@ Estado dos dois: `reviewed_behavioral_pair_verified_incremental_pending`. **Novo
 A decisão da [revisão corrente](../../docs/relatorios/REVISAO-L5-CONTINUACAO.md) foi implementada: `c02-state.schema.json`, `verify_c02.py` e matriz factual distinguem curadoria/revisão/comportamento, evento/preparo/execução, elegibilidade individual e admissão global. A revisão JS final vincula input/oracle atuais; recibos anteriores ficam intactos. Rust/JS passam a2/4 novos dossiês individualmente elegíveis. Somados aos quatro pilotos preservados: seis elegíveis, três complexas/seis históricas/seis multimódulo; projeção26/13/10/14, sem somar categorias.
 
 Guard32 continua fechado; eventos suplementares de correção/contrato não suprem a quota state_config por família. Os quatro casos reais requeridos ainda precisam de seleção/preparo/execução, separadamente dos dois pares aceitos. Python/Go seguem em curadoria/provas pendentes, não entram nos seis. Admissão global0/32, M0-03.R1 em andamento. Checks e limites em [L5-C02](../../docs/relatorios/L5-C02.md).
+
+
+## Aceite C02 dos novos contratos Python/Go
+
+[CI38294106923](https://github.com/wkoch/xrai/actions/runs/38294106923), código e02370a: Python3 requisitos falham na base por ValueError masked e passam na referência; Go3 falham na base por asserção de credencial e passam na referência. Duas regressões aprovadas por lado/família e quatro domínios encerrados por família. ZIPs originais oficiais e todos os27 arquivos exportados foram reconciliados data-only; detalhes, testes negativos e limites em [L5-C02](../../docs/relatorios/L5-C02.md). São contratos controlados, sem acrescentar históricos.
+
+Estado factual atual:4/4 novos dossiês comportamentais/revisados individualmente elegíveis; com os quatro pilotos, oito tarefas, cinco complexas, seis históricas e oito multimódulo. Projeção condicional24/11/10/12, categorias sobrepostas. Eventos requeridos reais ainda0/4 famílias, global0/32, M0-03.R1 continua em andamento. O quadro anterior2/4 registra o preparo publicado antes desta CI; recibos históricos são preservados.

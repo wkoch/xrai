@@ -1,0 +1,105 @@
+{
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "file_sha256": {
+    "base/module-cache-manifest.json": "86dd3184b3b3e300c595cd2b9c7b71222e0a0cf7a26889b4dc6e7a0e742311ad",
+    "base/probe.json": "84095c688a068dcaf594c5326ebab709ac1863250884d46f8a89ed8c9cbb910c",
+    "base/regression-go-test.jsonl": "11fe6fb3e42ec7a7726ad3ffbb4c0a52c19dc14be6f48cefd5241b6d2e1431d5",
+    "base/regression-harness.json": "ff2163dd4320b6b83a17e2111b358937a3f5ea64b01c120909b78fcf1ef6bc32",
+    "base/requirement-go-test.jsonl": "9eda78fa47cbf59b8b7b244687bc11ace9a5cd9177a83ba53028792fdcf6580b",
+    "base/requirement-harness.json": "6c4e122b875a4604124b171a2ba1c184a43d2043482e6aac245e947fbbc8253c",
+    "base/toolchain-manifest.json": "366ebed478775dc2298e0401908fc44f35236409b35d5b6fbbc2d413b541d13f",
+    "reference/module-cache-manifest.json": "86dd3184b3b3e300c595cd2b9c7b71222e0a0cf7a26889b4dc6e7a0e742311ad",
+    "reference/probe.json": "7ba733667a407845fc28dcba7e2c46c6d2af91d25bb9b9e3b9a43d58400b93f9",
+    "reference/regression-go-test.jsonl": "0a936e4dc3673d42ba32d65cbca0cabd1fc6da61935fca5c495cad96493c3cec",
+    "reference/regression-harness.json": "2533e17c30a52e9e8bde512e3dcc26dbcbf56928b6fa565e162ffcecbe533b99",
+    "reference/requirement-go-test.jsonl": "8771487e454d2aaee05964c630475e9cba2b4e4203115643aa039de3c1d90089",
+    "reference/requirement-harness.json": "07f2b4340f8162a4a82e2ffb9473147534b3183b116fd4bf8a7feee6d4514eb9",
+    "reference/toolchain-manifest.json": "366ebed478775dc2298e0401908fc44f35236409b35d5b6fbbc2d413b541d13f"
+  },
+  "fresh_namespace_domains": [
+    "7c67a1d9-1500-433d-a4d7-276d46202cf3",
+    "974be1cb-00bd-4e66-a856-0ad92d853d45",
+    "289e2c0c-1bb7-4090-8a50-10cbbb0bcaca",
+    "a96445df-1ff2-4f2c-ade4-f92d61ca893f"
+  ],
+  "fresh_pid_namespaces": [
+    "pid:[4026532319]",
+    "pid:[4026532380]",
+    "pid:[4026532321]",
+    "pid:[4026532322]"
+  ],
+  "limits": [
+    "Caller must authenticate CI commit/jobs and original ZIP plus exact membership independently.",
+    "Toolchain/cache/compiler bytes are reported hashes and copied-file inventories; binaries are not retained in this export.",
+    "Source validation and teardown are receipt consistency, not independent observation of past workspace or processes.",
+    "No full post-probe source/toolchain/cache inventory was produced; locks before/after are checked, materialization and copied inventories describe pre-probe state.",
+    "No same-process/index Go state A-to-B, agent success or global admission inferred."
+  ],
+  "schema_version": "xrai.eval.l5.go.export-verified.v1",
+  "sides": {
+    "base": {
+      "go_executable_sha256": "929407e69c08952cd944a7457ae4eb289078a35473dd5dad2179369db7c5a6ec",
+      "locks_unchanged": true,
+      "module_cache_files": 36892,
+      "regression": {
+        "failed": 0,
+        "passed": 2,
+        "skipped": 0,
+        "test_names": [
+          "TestXraiRegressionOrdinaryURL",
+          "TestXraiRegressionUserinfoAndInvalidURL"
+        ]
+      },
+      "requirement": {
+        "failed": 3,
+        "passed": 0,
+        "skipped": 0,
+        "test_names": [
+          "TestXraiContractHelper",
+          "TestXraiContractModel",
+          "TestXraiContractAPI"
+        ]
+      },
+      "toolchain_files": 12901
+    },
+    "reference": {
+      "go_executable_sha256": "929407e69c08952cd944a7457ae4eb289078a35473dd5dad2179369db7c5a6ec",
+      "locks_unchanged": true,
+      "module_cache_files": 36892,
+      "regression": {
+        "failed": 0,
+        "passed": 2,
+        "skipped": 0,
+        "test_names": [
+          "TestXraiRegressionOrdinaryURL",
+          "TestXraiRegressionUserinfoAndInvalidURL"
+        ]
+      },
+      "requirement": {
+        "failed": 0,
+        "passed": 3,
+        "skipped": 0,
+        "test_names": [
+          "TestXraiContractHelper",
+          "TestXraiContractModel",
+          "TestXraiContractAPI"
+        ]
+      },
+      "toolchain_files": 12901
+    }
+  },
+  "source": {
+    "archive_sha256": "3cd918c96a563db6a64e8c9717d556097240de799f9f0948ba50060e6143c190",
+    "file_count": 6127,
+    "locks": {
+      "go.mod": "29f295d7e8f60ffad2245b64498ee0d3268a0a97b199da41872cd34009cf3127",
+      "go.sum": "3b0849aae4c1c40fbebb12d3f0b40809f86fe866e2d561d4c38c09188b32e115"
+    },
+    "oracle_sha256": "79821b7011b6145def1266cf9bffb97c3034ffc49a8c41ec41556a29a06d4f59",
+    "production_files": 1740,
+    "production_nonempty_lines": 247058
+  },
+  "source_commit": "8eefa1f6dedf2488db2c9e12c916e8e51f673160",
+  "verified": true
+}

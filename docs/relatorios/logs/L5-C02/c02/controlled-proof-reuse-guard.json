@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/private/tmp/xrai-c02-tools/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-p",
+    "test_slot_plan.py",
+    "-k",
+    "pending_controlled",
+    "-v"
+  ],
+  "base_commit": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+  "recorded_at": "2026-10-12T19:01:30.244086+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 26.058022207999784,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_pending_controlled_behavior_cannot_be_promoted_by_rehashed_counts (test_slot_plan.SlotPlanTests.test_pending_controlled_behavior_cannot_be_promoted_by_rehashed_counts) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 25.699s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "36014b780c539b4d5c02cc328b01ceb16fc39dd4285640d5e6fed2a1373950f6"
+}

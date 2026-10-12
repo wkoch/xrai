@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_c02.py"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "elapsed_seconds": 23.207,
+      "stdout_sha256": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "data_only": true
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_slot_plan.py"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "elapsed_seconds": 30.488,
+      "stdout_sha256": "f3f85653d3ee3531ec42eaee4355232c7e722f5778ab129c6ef4885b677a3d15",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "data_only": true
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_qualified.py"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "passed": true,
+      "elapsed_seconds": 0.163,
+      "stdout_sha256": "7ed0c78941892f2fbd08421b2e3518b6cc33d464711546afe3a1ae93f1b64b86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "data_only": true
+    }
+  ],
+  "passed": true,
+  "supersedes": "final-integration-checks.json; first slot binding ran before final plan SHA was synchronized; original failure retained"
+}

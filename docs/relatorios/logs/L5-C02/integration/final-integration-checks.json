@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_c02.py"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "elapsed_seconds": 20.665,
+      "stdout_sha256": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "data_only": true
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_slot_plan.py"
+      ],
+      "exit": 1,
+      "expected_exit": 0,
+      "passed": false,
+      "elapsed_seconds": 0.214,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b38dcd72d4ce99bd7c07ee48c725e089be702d29a5ace02ba735282008918f3e",
+      "data_only": true
+    }
+  ],
+  "passed": false
+}

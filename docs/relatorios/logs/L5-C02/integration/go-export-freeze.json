@@ -1,0 +1,54 @@
+{
+  "recorded_at_utc": "2026-10-12T19:08:25.661719+00:00",
+  "ci_run": 38294106923,
+  "code_commit_prefix": "e02370a",
+  "cli_result": "verified:true, verified_behavioral_pair:true",
+  "countertests": {
+    "ran": 28,
+    "passed": 28,
+    "seconds": 44.209
+  },
+  "source_hashes": {
+    "docs/relatorios/logs/L5-C02/verify_go_export.py": {
+      "sha256": "900825b2cfd26b90862a3b4591ebacdfe4693380233d2b936925ea43732cf9d2",
+      "bytes": 16304
+    },
+    "docs/relatorios/logs/L5-C02/test_verify_go_export.py": {
+      "sha256": "e8b2a73ebc98f43c23aa5d1f608a6debd6e5efaf6068a7625e5c86b6914726ec",
+      "bytes": 6675
+    },
+    "crates/xrai-eval/harness/supervisor.py": {
+      "sha256": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571",
+      "bytes": 16306
+    },
+    "crates/xrai-eval/harness/adapters.py": {
+      "sha256": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "bytes": 3314
+    },
+    "docs/relatorios/logs/L5-C02/integration/go-export-verification-final.json": {
+      "sha256": "71fdc45bc3e33bb2d330d0316793d07b8e0f7a817b8fe73ef68ed5fa62182028",
+      "bytes": 4559
+    },
+    "docs/relatorios/logs/L5-C02/integration/go-export-countertests-final.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/relatorios/logs/L5-C02/integration/go-export-countertests-final.stderr": {
+      "sha256": "1c7ed5697430a2811ff8606b938166a92124a94553d90256e6b489195274212b",
+      "bytes": 128
+    }
+  },
+  "commands": [
+    "python3 docs/relatorios/logs/L5-C02/verify_go_export.py docs/relatorios/logs/L5-C02/ci-next-first/go",
+    "python3 docs/relatorios/logs/L5-C02/test_verify_go_export.py docs/relatorios/logs/L5-C02/ci-next-first/go",
+    "python3 -m py_compile docs/relatorios/logs/L5-C02/verify_go_export.py docs/relatorios/logs/L5-C02/test_verify_go_export.py"
+  ],
+  "execution_scope": "stdlib own artifact verifier and own supervisor receipt validation only; no upstream imports/commands/compilation/tests",
+  "coverage": "Tier2 generation2026-10-12T19:02:23Z supervisor/adapters metadata_match, new owned verifier/tests not_tracked; exact authored source fallback read and tested, no completeness claim",
+  "scope_limits": [
+    "Outer root verifier authenticates API/run/jobs/commit/ZIP and exact member set independently",
+    "No post-probe full source/toolchain/cache inventory retained; go.mod/go.sum before/after checked",
+    "Actual Go/tool/compiler binary bytes not retained; reported manifests and hashes reconciled only",
+    "No incremental event/global admission/agent advantage inferred"
+  ]
+}

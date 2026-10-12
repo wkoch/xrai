@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/verify_slot_plan.py", line 125, in <module>
+    if __name__=='__main__': main()
+                             ~~~~^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/verify_slot_plan.py", line 123, in main
+    args=parser.parse_args(); print(json.dumps(validate(json.loads(args.plan.read_bytes())),indent=2,sort_keys=True))
+                                               ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/verify_slot_plan.py", line 102, in validate
+    matrix=factual_matrix(plan,root) if 'factual_progress' in plan else None
+           ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/verify_slot_plan.py", line 30, in factual_matrix
+    matrix=json.loads(bind(root,plan['factual_progress']))
+                      ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/verify_slot_plan.py", line 22, in bind
+    require(hashlib.sha256(data).hexdigest()==receipt['sha256'],'pilot artifact hash')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/verify_slot_plan.py", line 16, in require
+    if not condition: raise ValueError(message)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: pilot artifact hash

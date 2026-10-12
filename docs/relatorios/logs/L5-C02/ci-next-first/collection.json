@@ -1,0 +1,47 @@
+{
+  "schema_version": "xrai.eval.c02.ci_collection.v1",
+  "run_id": 38294106923,
+  "code_commit": "e02370ab63aaf47356f986bd2a35c20adfe848f1",
+  "api_source": "Authenticated gh API, repos/wkoch/xrai/actions/runs/38294106923/artifacts",
+  "retrieved_at_utc": "2026-10-12T19:02:00Z",
+  "timestamp_note": "Approximate collector interval; official job times retained in run.json",
+  "operations": [
+    {
+      "operation": "gh run view --json databaseId,headSha,status,conclusion,jobs,url,createdAt,updatedAt",
+      "exit": 0
+    },
+    {
+      "operation": "gh api actions/runs/38294106923/artifacts",
+      "exit": 0
+    },
+    {
+      "operation": "gh api actions/artifacts/{11768465101,11767189393}/zip",
+      "exit": 0
+    },
+    {
+      "operation": "initial extractor invoked python",
+      "exit": 127,
+      "stderr": "zsh: command not found: python",
+      "recovery": "python3 extractor; ZIPs unchanged"
+    },
+    {
+      "operation": "follow-on cp before extraction",
+      "exit": 1,
+      "stderr": "No such file or directory",
+      "recovery": "extract with python3 then copy succeeded"
+    },
+    {
+      "operation": "python3 byte-digest, bounded path checks and ZIP extraction",
+      "exit": 0
+    }
+  ],
+  "files_sha256": {
+    "artifacts.json": "aac969973a586e547d2c087e5ce87ec6249d01a435cf89716aeafffcbf00091f",
+    "l5-real-go.zip": "9fbdfef0962e483310dc0ea983ed7e9077f4a0c33c64c8e972d492b5116449a0",
+    "l5-real-python.zip": "da370edb40c9c3bcd0030bbecec0bf1d142a6dca5faafd44c5f58f903190a5a5",
+    "regular-ci.json": "413e122bd2fee59fa3106305ccd91f592a003d9e7f756b60ddcbe40c04d23d00",
+    "run.json": "1da159ffe5f731b9976cc2279f8cd3371321c56758d35617fd229d095cd2032c"
+  },
+  "full_file_closure_verified_by": "../reconcile_new_corpus.py",
+  "not_execution_of_upstream": true
+}

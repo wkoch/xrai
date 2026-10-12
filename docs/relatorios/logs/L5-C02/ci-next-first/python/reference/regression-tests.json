@@ -1,0 +1,29 @@
+{
+  "phase": "regression",
+  "tests_run": 2,
+  "success": true,
+  "tests": [
+    {
+      "id": "__main__.Regression.test_default_dense_and_context_restored",
+      "status": "passed"
+    },
+    {
+      "id": "__main__.Regression.test_sparse_rejection_and_invalid_mode",
+      "status": "passed"
+    }
+  ],
+  "module_origins": {
+    "sklearn.utils._set_output": {
+      "path": "/workspace/sklearn/utils/_set_output.py",
+      "sha256": "fc3cbdf8e4c698ddc029df2ec80a292530fbabc053b614b658a87d1c7193d7b3"
+    },
+    "sklearn.pipeline": {
+      "path": "/workspace/sklearn/pipeline.py",
+      "sha256": "34feed2873e05bfd0519497fdda2627b3af3e323ac9ef22558b021ad1669d072"
+    },
+    "sklearn.compose._column_transformer": {
+      "path": "/workspace/sklearn/compose/_column_transformer.py",
+      "sha256": "6dbae22a517ffae811a8bfc258d83758a8f5d0583147641338b114973042aa3c"
+    }
+  }
+}
