@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-v"
+  ],
+  "base_commit": "09c016f7a6df03ceda2ffcf782d64385b6a22ddc",
+  "recorded_at": "2026-10-12T12:13:51.048336+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 2.140976916998625,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_complete_synthetic_shape (test_qualification.AdmissionTests.test_complete_synthetic_shape) ... ok\ntest_empty_and_seed_fail_closed (test_qualification.AdmissionTests.test_empty_and_seed_fail_closed) ... ok\ntest_event_refuses_agent_symlink_escape (test_qualification.AdmissionTests.test_event_refuses_agent_symlink_escape) ... ok\ntest_event_refuses_hardlink_and_parent_symlink_escape (test_qualification.AdmissionTests.test_event_refuses_hardlink_and_parent_symlink_escape) ... ok\ntest_mutations_reject_false_admission (test_qualification.AdmissionTests.test_mutations_reject_false_admission) ... ok\ntest_phase_A_event_B_matches_cold_checkout_each_family (test_qualification.AdmissionTests.test_phase_A_event_B_matches_cold_checkout_each_family) ... ok\ntest_qualified_and_supplementary_are_explicit_empty (test_qualification.AdmissionTests.test_qualified_and_supplementary_are_explicit_empty) ... ok\ntest_real_mode_binds_snapshots_sources_measurements_and_event_oracle (test_qualification.AdmissionTests.test_real_mode_binds_snapshots_sources_measurements_and_event_oracle) ... ok\ntest_schema_types_language_and_incremental_oracle_both_modes (test_qualification.AdmissionTests.test_schema_types_language_and_incremental_oracle_both_modes) ... ok\ntest_changed_source_hash (test_semantics_verifier.SemanticVerifierTests.test_changed_source_hash) ... ok\ntest_configuration_mismatch (test_semantics_verifier.SemanticVerifierTests.test_configuration_mismatch) ... ok\ntest_cross_snapshot_evidence (test_semantics_verifier.SemanticVerifierTests.test_cross_snapshot_evidence) ... ok\ntest_forged_summary (test_semantics_verifier.SemanticVerifierTests.test_forged_summary) ... ok\ntest_original_receipt (test_semantics_verifier.SemanticVerifierTests.test_original_receipt) ... ok\ntest_out_of_bounds (test_semantics_verifier.SemanticVerifierTests.test_out_of_bounds) ... ok\ntest_unknown_promoted_to_fact (test_semantics_verifier.SemanticVerifierTests.test_unknown_promoted_to_fact) ... ok\ntest_compressed_inventory_is_bound_to_fingerprint (test_vertical.VerticalTests.test_compressed_inventory_is_bound_to_fingerprint) ... ok\ntest_internal_link_materialization_has_explicit_receipt (test_vertical.VerticalTests.test_internal_link_materialization_has_explicit_receipt) ... ok\ntest_links_cannot_escape_or_cycle_or_target_directories (test_vertical.VerticalTests.test_links_cannot_escape_or_cycle_or_target_directories) ... ok\ntest_partial_requires_one_per_family_and_full_evidence (test_vertical.VerticalTests.test_partial_requires_one_per_family_and_full_evidence) ... ok\ntest_partial_success_cannot_admit_campaign (test_vertical.VerticalTests.test_partial_success_cannot_admit_campaign) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 1.887s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "9744e2ef17340c2994e9cb2a6180dda4b10dcfc9e826ad73376ef76794c3e48e"
+}

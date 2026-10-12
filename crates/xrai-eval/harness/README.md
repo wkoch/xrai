@@ -1,12 +1,13 @@
 # Harness local M0-04
 
-Executor de desenvolvimento em Python std, fora do runtime da CLI. Requer Seatbelt (`sandbox-exec`) no macOS ou bubblewrap no Linux; recusa fallback sem sandbox. `verify_records.py` usa jsonschema fixado em `docs/contracts/examples/requirements.txt`.
+Executor de desenvolvimento em Python, fora do runtime da CLI. Requer Seatbelt (`sandbox-exec`) no macOS ou bubblewrap no Linux; recusa fallback sem sandbox. `verify_records.py` usa jsonschema fixado em `docs/contracts/examples/requirements.txt`. Para a medição L4 e a suíte completa, usar Python3.13.13 e instalar também `requirements-measurement.txt` num ambiente isolado.
 
 ```sh
 python3 -m unittest discover -s crates/xrai-eval/harness/tests -v
 python3 crates/xrai-eval/harness/runner.py baseline --output /tmp/xrai-baseline
 python3 crates/xrai-eval/harness/verify_records.py /tmp/xrai-baseline
 python3 crates/xrai-eval/harness/runner.py replay /tmp/xrai-baseline/D0-RS-01.json
+python3 crates/xrai-eval/harness/demonstrate_measurement.py --baseline /tmp/xrai-baseline --output /tmp/xrai-measurement
 cargo build --locked -p xrai-eval --bin incremental-probe
 python3 crates/xrai-eval/harness/incremental.py --binary target/debug/incremental-probe --output /tmp/xrai-incremental.json
 ```
@@ -27,4 +28,6 @@ macOS local permanece `macos_local_known_smoke`, `cleanup_status=not_proven`, in
 
 A matriz Linux roda duas repetições dos ataques finitos: setsid/double fork/pipes/saída contínua/fork de quatro filhos/timeout/saída normal com filho e morte do avaliador. Sentinelas positivas comprovam execução; pidfd externo comprova init morto após morte do avaliador. Dois braços concorrentes verificam leitura/escrita isoladas e cancelamento independente. `XRAI_CONTAINMENT_EVIDENCE=/caminho/containment.jsonl` salva recibos por teste no avaliador e não é herdado pelo executor. Mac não recebe aceite Linux por analogia. Relatório: `eval/reports/m0-harness-containment.md`.
 
-Limites restantes: medição/tokenizer/adapters/modelos reais, quatro smokes pareados e orçamento (L3-05); VM macOS indisponível. O namespace não é limite de CPU/RSS/disco nem defesa contra kernel vulnerável/escritor hostil do mesmo usuário. Os testes evitam fork bomb/OOM global e não tornam builds não materializados disponíveis. Supervisor não integra o runtime obrigatório do produto.
+L4-01 acrescenta medição offline versionada e ledger de sessões fake. O sidecar fixa tokenizer/serializer e preserva históricos v1/v2 com usage/custo null; o roteador `agent_ledger.py replay` valida cada versão. Timeout/stream parcial sem receipt conserva reserva financeira e lacuna de cobrança. Readiness separa D0/seed de D1 e informa os recursos ausentes; não autoriza chamadas. Critérios e evidências: [medição/readiness](../../../eval/reports/m0-agent-readiness.md).
+
+Limites restantes: adapter/modelos reais, quatro smokes pareados e orçamento; VM macOS indisponível. O namespace não é limite de CPU/RSS/disco nem defesa contra kernel vulnerável/escritor hostil do mesmo usuário. Os testes evitam fork bomb/OOM global e não tornam builds não materializados disponíveis. Supervisor não integra o runtime obrigatório do produto.

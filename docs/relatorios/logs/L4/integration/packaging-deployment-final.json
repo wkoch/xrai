@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "crates/xrai-eval/scripts/verify_packaging.py",
+    "--binary",
+    "target/release/parsing-spike",
+    "--output",
+    "docs/relatorios/logs/L4/integration/packaging-deployment.json"
+  ],
+  "base_commit": "09c016f7a6df03ceda2ffcf782d64385b6a22ddc",
+  "recorded_at": "2026-10-12T12:17:59.405636+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.5482434580007975,
+  "exit_code": 0,
+  "stdout": "{\"output\": \"/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L4/integration/packaging-deployment.json\", \"fixtures\": 14, \"binary_bytes\": 8162048, \"baseline_exactly_executed\": false}\n",
+  "stderr": "",
+  "stdout_sha256": "74c02af4abe5de4f0925fc24b0fcb3f153cbd791513fbec2a92fdc5bdcf97a5d",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,102 @@
+{
+  "captured_at": "2026-10-12T12:12:11.055858+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "clippy",
+        "--offline",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "semantics-spike",
+        "--test",
+        "semantics_spike",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.47s\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--test",
+        "semantics_spike"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 10 tests\ntest macro_namespace_and_constructor_namespace_never_fuse ... ok\ntest references_are_calls_with_evidence_not_textual_name_matches ... ok\ntest safe_attribute_identifier_does_not_allow_qualified_procedural_path ... ok\ntest reexports_have_each_import_and_destination_in_evidence ... ok\ntest duplicate_module_does_not_publish_unique_function_from_invalid_environment ... ok\ntest unicode_crlf_empty_and_path_validation ... ok\ntest local_bindings_parameters_macros_and_methods_do_not_promote_calls ... ok\ntest negative_export_then_module_create_and_remove_are_full_rebuilds ... ok\ntest config_rules_path_rename_and_shadow_updates_compare_every_field ... ok\ntest pre_registered_matrix_and_real_sample_are_verified ... ok\n\ntest result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s\n\n",
+      "stderr": "   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.50s\n     Running tests/semantics_spike.rs (target/debug/deps/semantics_spike-09ec135e89c79a0e)\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts/tests",
+        "-p",
+        "test_semantics_verifier.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_changed_source_hash (test_semantics_verifier.SemanticVerifierTests.test_changed_source_hash) ... ok\ntest_configuration_mismatch (test_semantics_verifier.SemanticVerifierTests.test_configuration_mismatch) ... ok\ntest_cross_snapshot_evidence (test_semantics_verifier.SemanticVerifierTests.test_cross_snapshot_evidence) ... ok\ntest_forged_summary (test_semantics_verifier.SemanticVerifierTests.test_forged_summary) ... ok\ntest_original_receipt (test_semantics_verifier.SemanticVerifierTests.test_original_receipt) ... ok\ntest_out_of_bounds (test_semantics_verifier.SemanticVerifierTests.test_out_of_bounds) ... ok\ntest_unknown_promoted_to_fact (test_semantics_verifier.SemanticVerifierTests.test_unknown_promoted_to_fact) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.012s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/rust-r1-r2.json",
+        "docs/relatorios/logs/L4/semantics/rust-r1-r2.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"cases\": 33, \"correct\": 33, \"false_promotions\": 0, \"resolvable\": 18, \"resolvable_correct\": 18}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/tokio-development.json",
+        "docs/relatorios/logs/L4/semantics/tokio-development.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"cases\": 4, \"correct\": 4, \"false_promotions\": 0, \"resolvable\": 3, \"resolvable_correct\": 3}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "eval/scripts/verify_semantics.py",
+        "eval/semantics/rust-counterproofs.json",
+        "docs/relatorios/logs/L4/semantics/rust-counterproofs.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"cases\": 6, \"correct\": 6, \"false_promotions\": 0, \"resolvable\": 0, \"resolvable_correct\": 0}\n",
+      "stderr": ""
+    }
+  ]
+}

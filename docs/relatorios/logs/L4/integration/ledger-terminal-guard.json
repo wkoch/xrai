@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "crates/xrai-eval/harness/tests",
+    "-p",
+    "test_agent_ledger.py",
+    "-v"
+  ],
+  "base_commit": "09c016f7a6df03ceda2ffcf782d64385b6a22ddc",
+  "recorded_at": "2026-10-12T12:13:17.423573+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.41457354099838994,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "test_all_sent_terminal_failures_and_missing_completion_charge_remain_unknown (test_agent_ledger.LedgerTests.test_all_sent_terminal_failures_and_missing_completion_charge_remain_unknown) ... ok\ntest_cancel_possible_charge_and_rejected_before_send (test_agent_ledger.LedgerTests.test_cancel_possible_charge_and_rejected_before_send) ... ok\ntest_complete_fake_and_subset_not_double_counted (test_agent_ledger.LedgerTests.test_complete_fake_and_subset_not_double_counted) ... ok\ntest_concurrent_reservation_never_overcommits (test_agent_ledger.LedgerTests.test_concurrent_reservation_never_overcommits) ... ok\ntest_excess_observed_charge_is_recorded_and_stops_admissions (test_agent_ledger.LedgerTests.test_excess_observed_charge_is_recorded_and_stops_admissions) ... ok\ntest_partial_timeout_unknown_charge_retains_reservation (test_agent_ledger.LedgerTests.test_partial_timeout_unknown_charge_retains_reservation) ... ok\ntest_readiness_d0_smoke_d1_campaign_and_no_adapter_authorization (test_agent_ledger.LedgerTests.test_readiness_d0_smoke_d1_campaign_and_no_adapter_authorization) ... ok\ntest_receipt_exact_duplicate_idempotent_and_cross_attempt_rejected (test_agent_ledger.LedgerTests.test_receipt_exact_duplicate_idempotent_and_cross_attempt_rejected) ... ok\ntest_retry_does_not_erase_unknown_prior_attempt (test_agent_ledger.LedgerTests.test_retry_does_not_erase_unknown_prior_attempt) ... ok\ntest_streaming_receipt_cannot_release_maximum_reservation (test_agent_ledger.LedgerTests.test_streaming_receipt_cannot_release_maximum_reservation) ... ok\ntest_tampered_events_response_metadata_and_summary_rejected (test_agent_ledger.LedgerTests.test_tampered_events_response_metadata_and_summary_rejected) ... ok\ntest_underreservation_and_invalid_subset_rejected (test_agent_ledger.LedgerTests.test_underreservation_and_invalid_subset_rejected) ... FAIL\ntest_unsent_rejection_frees_reservation (test_agent_ledger.LedgerTests.test_unsent_rejection_frees_reservation) ... ok\n\n======================================================================\nFAIL: test_underreservation_and_invalid_subset_rejected (test_agent_ledger.LedgerTests.test_underreservation_and_invalid_subset_rejected)\n----------------------------------------------------------------------\nValueError: final receipt requires terminal attempt; streaming charge remains reserved\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/tests/test_agent_ledger.py\", line 128, in test_underreservation_and_invalid_subset_rejected\n    with self.assertRaisesRegex(ValueError, 'subset'):\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: \"subset\" does not match \"final receipt requires terminal attempt; streaming charge remains reserved\"\n\n----------------------------------------------------------------------\nRan 13 tests in 0.356s\n\nFAILED (failures=1)\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "f61f71e89f88667ac671c7238f16da0b8812817274ba530fce724edee03e2f5e"
+}

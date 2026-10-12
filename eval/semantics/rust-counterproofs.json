@@ -1,0 +1,90 @@
+{
+  "cases": [
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "fn f() {} use self::f as x; use self::f as x;"
+      },
+      "id": "duplicate-same-target",
+      "module": "",
+      "namespace": "value",
+      "path": "x",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a { fn f() {} pub use self::f as x; }"
+      },
+      "id": "public-private-reexport",
+      "module": "",
+      "namespace": "value",
+      "path": "a::x",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a { pub(crate) fn f() {} pub use self::f as x; }"
+      },
+      "id": "public-crate-reexport",
+      "module": "",
+      "namespace": "value",
+      "path": "a::x",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a { fn f() {} pub(crate) use self::f as x; }"
+      },
+      "id": "crate-private-reexport",
+      "module": "",
+      "namespace": "value",
+      "path": "a::x",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "#[inline_generated] fn f() {}"
+      },
+      "id": "attribute-prefix-procedural",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a {pub fn f(){}} type a = ();"
+      },
+      "id": "module-type-conflict",
+      "module": "",
+      "namespace": "value",
+      "path": "a::f",
+      "rules": "rust-r1-r2-v1"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "counterexamples reviewed before fitting fixes; supplements original preregistered labels"
+}

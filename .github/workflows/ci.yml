@@ -64,9 +64,11 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@v6
         with:
-          python-version: '3.15.0'
+          python-version: '3.13.13'
       - name: Install pinned evaluator tooling
         run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Install pinned offline measurement tooling
+        run: python -m pip install -r crates/xrai-eval/harness/requirements-measurement.txt
       - name: Prepare Linux evaluator sandbox
         if: runner.os == 'Linux'
         run: |
@@ -105,12 +107,24 @@ jobs:
           python crates/xrai-eval/harness/runner.py baseline --output native-evidence/baseline > native-evidence/baseline-summary.json
           python crates/xrai-eval/harness/verify_records.py native-evidence/baseline
           python crates/xrai-eval/harness/incremental.py --binary target/debug/incremental-probe --output native-evidence/incremental.json
+      - name: Prove controlled token measurement and fake session ledger
+        run: python crates/xrai-eval/harness/demonstrate_measurement.py --baseline native-evidence/baseline --output native-evidence/measurement
       - name: Record filesystem capabilities
         run: target/debug/filesystem-spike > native-evidence/filesystem.json
       - name: Build incorporated grammars
-        run: cargo build --locked --release -p xrai-eval --bin parsing-spike --bin worker-spike
+        run: cargo build --locked --release -p xrai-eval --bin parsing-spike --bin worker-spike --bin worker-persistent --bin semantics-spike
       - name: Record worker IPC and exploratory benchmark
         run: target/release/worker-spike demonstrate > native-evidence/workers.json
+      - name: Record persistent worker functional proof
+        run: target/release/worker-persistent demonstrate > native-evidence/workers-persistent.json
+      - name: Prove labeled Rust semantics and captured development sample
+        run: |
+          target/release/semantics-spike eval/semantics/rust-r1-r2.json > native-evidence/semantics-fixtures.json
+          target/release/semantics-spike eval/semantics/tokio-development.json > native-evidence/semantics-tokio.json
+          target/release/semantics-spike eval/semantics/rust-counterproofs.json > native-evidence/semantics-counterproofs.json
+          python eval/scripts/verify_semantics.py eval/semantics/rust-r1-r2.json native-evidence/semantics-fixtures.json
+          python eval/scripts/verify_semantics.py eval/semantics/tokio-development.json native-evidence/semantics-tokio.json
+          python eval/scripts/verify_semantics.py eval/semantics/rust-counterproofs.json native-evidence/semantics-counterproofs.json
       - name: Prove standalone parsing with network blocked
         run: python crates/xrai-eval/scripts/verify_packaging.py --binary target/release/parsing-spike --output native-evidence/packaging.json
       - name: Preserve native receipts

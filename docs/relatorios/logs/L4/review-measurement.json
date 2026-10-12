@@ -1,0 +1,80 @@
+{
+  "schema": "xrai.eval.review.measurement.v1",
+  "reviewer": "l4_pool-independent-review",
+  "recorded_at": "2026-10-12T12:14:02.046539+00:00",
+  "base_head": "09c016f7a6df03ceda2ffcf782d64385b6a22ddc",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "status": "approved_first_offline_fake_increment",
+  "scope": "L4-01 derived offline measurement and fake ledger only; no real provider dependencies or calls; readonly source review",
+  "checks": [
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_measurement.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.9263432080006169,
+      "stdout": "",
+      "stderr": "test_existing_v1_v2_sidecars_without_mutation (test_measurement.MeasurementTests.test_existing_v1_v2_sidecars_without_mutation) ... ok\ntest_measurement_tampering_profile_projection_and_count (test_measurement.MeasurementTests.test_measurement_tampering_profile_projection_and_count) ... ok\ntest_pinned_configuration_matches_upstream_constructor_offline (test_measurement.MeasurementTests.test_pinned_configuration_matches_upstream_constructor_offline) ... ok\ntest_pinned_reference_vectors (test_measurement.MeasurementTests.test_pinned_reference_vectors) ... ok\ntest_router_rejects_unknown_version_or_missing_original (test_measurement.MeasurementTests.test_router_rejects_unknown_version_or_missing_original) ... ok\ntest_text_unicode_crlf_empty_and_binary_projection (test_measurement.MeasurementTests.test_text_unicode_crlf_empty_and_binary_projection) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.873s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-l4-measurement/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_agent_ledger.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.38981650000096124,
+      "stdout": "",
+      "stderr": "test_all_sent_terminal_failures_and_missing_completion_charge_remain_unknown (test_agent_ledger.LedgerTests.test_all_sent_terminal_failures_and_missing_completion_charge_remain_unknown) ... ok\ntest_cancel_possible_charge_and_rejected_before_send (test_agent_ledger.LedgerTests.test_cancel_possible_charge_and_rejected_before_send) ... ok\ntest_complete_fake_and_subset_not_double_counted (test_agent_ledger.LedgerTests.test_complete_fake_and_subset_not_double_counted) ... ok\ntest_concurrent_reservation_never_overcommits (test_agent_ledger.LedgerTests.test_concurrent_reservation_never_overcommits) ... ok\ntest_excess_observed_charge_is_recorded_and_stops_admissions (test_agent_ledger.LedgerTests.test_excess_observed_charge_is_recorded_and_stops_admissions) ... ok\ntest_partial_timeout_unknown_charge_retains_reservation (test_agent_ledger.LedgerTests.test_partial_timeout_unknown_charge_retains_reservation) ... ok\ntest_readiness_d0_smoke_d1_campaign_and_no_adapter_authorization (test_agent_ledger.LedgerTests.test_readiness_d0_smoke_d1_campaign_and_no_adapter_authorization) ... ok\ntest_receipt_exact_duplicate_idempotent_and_cross_attempt_rejected (test_agent_ledger.LedgerTests.test_receipt_exact_duplicate_idempotent_and_cross_attempt_rejected) ... ok\ntest_retry_does_not_erase_unknown_prior_attempt (test_agent_ledger.LedgerTests.test_retry_does_not_erase_unknown_prior_attempt) ... ok\ntest_streaming_receipt_cannot_release_maximum_reservation (test_agent_ledger.LedgerTests.test_streaming_receipt_cannot_release_maximum_reservation) ... ok\ntest_tampered_events_response_metadata_and_summary_rejected (test_agent_ledger.LedgerTests.test_tampered_events_response_metadata_and_summary_rejected) ... ok\ntest_underreservation_and_invalid_subset_rejected (test_agent_ledger.LedgerTests.test_underreservation_and_invalid_subset_rejected) ... ok\ntest_unsent_rejection_frees_reservation (test_agent_ledger.LedgerTests.test_unsent_rejection_frees_reservation) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.348s\n\nOK\n"
+    }
+  ],
+  "source_sha256": {
+    "crates/xrai-eval/harness/agent_ledger.py": "6d9538dbf0a6e545133b7f310e73d39f687dd43fb227f688511a69394a2dc4d8",
+    "crates/xrai-eval/harness/offline_measurement.py": "ed012342617a4b8df45b9ade742b9335caca454e014114ddcc99bb23c32886af",
+    "crates/xrai-eval/harness/demonstrate_measurement.py": "4a444b31a0d0bd292968a7e779c3a84be4b119ed186439bc65de1d0546cc76d6",
+    "crates/xrai-eval/harness/agent-v1.schema.json": "6c4e54b0abc65afe657a3e29879fa0b2df8ba345e53fe36019924f341e219b5b",
+    "crates/xrai-eval/harness/measurement-v1.schema.json": "7a0168db27b10635919c48aa4840af047938ff7e119c501be8a7a89650ffb082",
+    "crates/xrai-eval/harness/requirements-measurement.txt": "afde332bc2606dc380966862f23bc0fba52b2bb6cb38091dbc9c69a15e4abefd",
+    "crates/xrai-eval/harness/tests/test_agent_ledger.py": "553f7f5f4b1096f662a1a9384406a7de1dce1c0009f3ad2528ed21166d2b8730",
+    "crates/xrai-eval/harness/tests/test_measurement.py": "867a02d43a02da33556f4fd0dd6dd036b1be62f142e0b5ac740a8ce45a53893e",
+    "crates/xrai-eval/harness/tokenizer-assets/cl100k-config.json": "446859e7b320ef64f363d3134f6bf8d8171f844c01c8af9173764d26a022d6f1",
+    "crates/xrai-eval/harness/tokenizer-assets/cl100k_base.tiktoken": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+    "crates/xrai-eval/harness/tokenizer-assets/reference-vectors.json": "0f2213955959a30df0d7a4fd84c1aebc02180da333b332a3be59409e48cb815a",
+    "crates/xrai-eval/harness/tokenizer-assets/README.md": "357a2c87ec0ead3b6401eea13daf7aa0a0182b779d5a145eb4d52f57ebb80b75",
+    "eval/reports/m0-agent-readiness.md": "4711aeea5c3cca4b38888d40048c550e6cd59dd270d5d47cd416bbf2e3038341"
+  },
+  "blocking_findings": [],
+  "notes": [
+    {
+      "severity": "informational",
+      "location": "crates/xrai-eval/harness/tests/test_measurement.py:28",
+      "message": "Frozen reference vectors and upstream constructor comparison use the same pinned tiktoken implementation; verification establishes profile compatibility and deterministic vectors, not an independent second-tokenizer algorithm. Existing documentation does not claim the latter."
+    }
+  ],
+  "verified_properties": [
+    "Concurrent reservation uses one RLock and incorporates known charges plus retained unknown maxima.",
+    "Timeout/cancellation/partial/sent-without-receipt retain charge uncertainty and reservation; retry leaves prior attempt in denominator.",
+    "Exact duplicate receipt is idempotent; cross-attempt/changed receipt identity is rejected.",
+    "Observed charge beyond reservedmaximum is preserved as incident and closes new admissions.",
+    "Versioned replay reconstructs all events and compares complete record, hashes, summaries and budget incidents.",
+    "Vendored vocabulary/merge SHA256 and implementation/runtime versions are checked; controlled bytes and token IDs have independent hashes.",
+    "Historical local-v1/v2 preserve null model/tokenizer/usage/cost; sidecar tampering and unknown versions rejected.",
+    "Readiness always reports paid_adapter_enabled=false and does not authorize calls; D1 requires32 admitted cases.",
+    "Final receipt requires terminal attempt; an early streaming receipt is rejected and the maximum reservation is retained. Root added this guard after review note."
+  ],
+  "coverage": "CBM fresh metadata_match for both modules/tests; best-effort graph coverage, direct source reads completed for schemas/config/profile/docs."
+}

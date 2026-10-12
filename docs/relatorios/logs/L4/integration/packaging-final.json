@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/private/tmp/xrai-l4-measurement/bin/python",
+    "crates/xrai-eval/scripts/verify_packaging.py",
+    "--binary",
+    "target/release/parsing-spike",
+    "--output",
+    "docs/relatorios/logs/L4/integration/packaging.json"
+  ],
+  "base_commit": "09c016f7a6df03ceda2ffcf782d64385b6a22ddc",
+  "recorded_at": "2026-10-12T12:15:20.691332+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.48079041699929803,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/Users/wkoch/Projetos/xrai/crates/xrai-eval/scripts/verify_packaging.py\", line 114, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/wkoch/Projetos/xrai/crates/xrai-eval/scripts/verify_packaging.py\", line 110, in main\n    run_proof(args.binary.resolve(), args.output.resolve())\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/wkoch/Projetos/xrai/crates/xrai-eval/scripts/verify_packaging.py\", line 93, in run_proof\n    assert re.search(r'\\bminos\\s+15\\.0\\b', abi), 'deployment target is not macOS 15.0'\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: deployment target is not macOS 15.0\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "606833d816d17daa64b56fd5ed293fa1600eeec298cf1cc1657b2f8285de867c"
+}

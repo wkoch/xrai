@@ -1,0 +1,21 @@
+{
+  "method": "Each Popen used start_new_session=True; on observer timeout os.killpg(driver_pid,SIGKILL), then Popen.communicate waits/reaps the direct driver. Peer uses same process group and has no children.",
+  "driver_wait_confirmed": true,
+  "peer_pid": 44974,
+  "peer_pid_absence_check": {
+    "command": [
+      "ps",
+      "-p",
+      "44974",
+      "-o",
+      "pid=,stat=,command="
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "",
+    "tool_verification": "exec_command escalated native read-only process query; sandbox ordinary ps denied, then authorized native check succeeded with no PID row."
+  },
+  "peer_absent_at_check": true,
+  "does_not_claim_parent_pool_reaped_peer": true,
+  "scope": "External observer required cleanup due stalled pool; peer absence is checked after external group kill, not proof that pool lifecycle succeeded."
+}

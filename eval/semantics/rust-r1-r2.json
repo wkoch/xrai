@@ -1,0 +1,476 @@
+{
+  "cases": [
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::same",
+      "files": {
+        "src/lib.rs": "mod a { pub fn same() {} } mod b { pub fn same() {} }"
+      },
+      "id": "homonym-a",
+      "module": "",
+      "namespace": "value",
+      "path": "a::same",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:b::same",
+      "files": {
+        "src/lib.rs": "mod a { pub fn same() {} } mod b { pub fn same() {} }"
+      },
+      "id": "homonym-b",
+      "module": "",
+      "namespace": "value",
+      "path": "b::same",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a { pub fn same() {} } mod b { pub fn same() {} }"
+      },
+      "id": "homonym-no-global",
+      "module": "",
+      "namespace": "value",
+      "path": "same",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:Same",
+      "files": {
+        "src/lib.rs": "type Same = (); fn Same() {}"
+      },
+      "id": "type-value",
+      "module": "",
+      "namespace": "type",
+      "path": "Same",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:Same",
+      "files": {
+        "src/lib.rs": "type Same = (); fn Same() {}"
+      },
+      "id": "value-type",
+      "module": "",
+      "namespace": "value",
+      "path": "Same",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::same",
+      "files": {
+        "src/lib.rs": "mod a { pub fn same() {} } mod b { pub fn same() {} }"
+      },
+      "id": "crate-path",
+      "module": "b",
+      "namespace": "value",
+      "path": "crate::a::same",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::same",
+      "files": {
+        "src/lib.rs": "mod a { pub fn same() {} } mod b { pub fn same() {} }"
+      },
+      "id": "self-path",
+      "module": "a",
+      "namespace": "value",
+      "path": "self::same",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:b::same",
+      "files": {
+        "src/lib.rs": "mod a { pub fn same() {} } mod b { pub fn same() {} }"
+      },
+      "id": "super-path",
+      "module": "a",
+      "namespace": "value",
+      "path": "super::b::same",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/a.rs:a::target",
+      "files": {
+        "src/a.rs": "pub fn target() {}",
+        "src/lib.rs": "mod a;"
+      },
+      "id": "module-file",
+      "module": "",
+      "namespace": "value",
+      "path": "a::target",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/a/mod.rs:a::target",
+      "files": {
+        "src/a/mod.rs": "pub fn target() {}",
+        "src/lib.rs": "mod a;"
+      },
+      "id": "module-mod-file",
+      "module": "",
+      "namespace": "value",
+      "path": "a::target",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/a/b.rs:a::b::target",
+      "files": {
+        "src/a.rs": "pub mod b;",
+        "src/a/b.rs": "pub fn target() {}",
+        "src/lib.rs": "mod a;"
+      },
+      "id": "nested-conventional",
+      "module": "",
+      "namespace": "value",
+      "path": "a::b::target",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a;"
+      },
+      "id": "module-missing",
+      "module": "",
+      "namespace": "value",
+      "path": "a::target",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/a.rs": "pub fn target() {}",
+        "src/a/mod.rs": "pub fn target() {}",
+        "src/lib.rs": "mod a;"
+      },
+      "id": "module-conflict",
+      "module": "",
+      "namespace": "value",
+      "path": "a::target",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a { fn hidden() {} }"
+      },
+      "id": "private-denied",
+      "module": "",
+      "namespace": "value",
+      "path": "a::hidden",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::hidden",
+      "files": {
+        "src/lib.rs": "mod a { fn hidden() {} mod b {} }"
+      },
+      "id": "private-descendant",
+      "module": "a::b",
+      "namespace": "value",
+      "path": "super::hidden",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::target",
+      "files": {
+        "src/lib.rs": "mod a { pub(crate) fn target() {} }"
+      },
+      "id": "pub-crate",
+      "module": "",
+      "namespace": "value",
+      "path": "a::target",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::target",
+      "files": {
+        "src/lib.rs": "mod a { pub fn target() {} } use a::target as chosen;"
+      },
+      "id": "alias",
+      "module": "",
+      "namespace": "value",
+      "path": "chosen",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::y",
+      "files": {
+        "src/lib.rs": "mod a { pub fn x() {} pub fn y() {} } use a::{x, y as chosen};"
+      },
+      "id": "group",
+      "module": "",
+      "namespace": "value",
+      "path": "chosen",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::b::target",
+      "files": {
+        "src/lib.rs": "mod a { pub mod b { pub fn target() {} } } use a::{b::{target as chosen}};"
+      },
+      "id": "nested-group",
+      "module": "",
+      "namespace": "value",
+      "path": "chosen",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:a::target",
+      "files": {
+        "src/lib.rs": "mod a { pub fn target() {} } mod b { pub use crate::a::target as chosen; } use b::chosen as entry;"
+      },
+      "id": "reexport-chain",
+      "module": "",
+      "namespace": "value",
+      "path": "entry",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "use self::b as a; use self::a as b;"
+      },
+      "id": "cycle",
+      "module": "",
+      "namespace": "value",
+      "path": "a",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "candidate",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a {pub fn f() {}} mod b {pub fn f() {}} use a::f; use b::f;"
+      },
+      "id": "duplicate-import",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "fn f() {} use unknown::*;"
+      },
+      "id": "glob-gap",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "#[cfg(feature=\"x\")] fn f() {}"
+      },
+      "id": "cfg-gap",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "unknown!(); fn f() {}"
+      },
+      "id": "macro-gap",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "fn f() {} fn broken("
+      },
+      "id": "parse-gap",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "use dependency::f;"
+      },
+      "id": "external-unverified",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2024",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:f",
+      "files": {
+        "src/lib.rs": "fn f() {}"
+      },
+      "id": "edition-2024",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2018",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "fn f() {}"
+      },
+      "id": "edition-unsupported",
+      "module": "",
+      "namespace": "value",
+      "path": "f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "src/lib.rs:ação",
+      "files": {
+        "src/lib.rs": "// café\r\nfn ação() {}\r\n"
+      },
+      "id": "unicode-crlf",
+      "module": "",
+      "namespace": "value",
+      "path": "ação",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": ""
+      },
+      "id": "empty",
+      "module": "",
+      "namespace": "value",
+      "path": "missing",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/lib.rs": "mod a { pub(super) fn f() {} }"
+      },
+      "id": "restricted-visibility",
+      "module": "",
+      "namespace": "value",
+      "path": "a::f",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {},
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "src/a.rs": "pub fn f(){}",
+        "src/lib.rs": "#[path=\"other.rs\"] mod a;",
+        "src/other.rs": "pub fn f(){}"
+      },
+      "id": "path-attribute",
+      "module": "",
+      "namespace": "value",
+      "path": "a::f",
+      "rules": "rust-r1-r2-v1"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "R1/R2 module lookup; R3/R4 deferred"
+}

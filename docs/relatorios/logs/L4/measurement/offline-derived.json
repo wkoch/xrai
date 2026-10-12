@@ -1,0 +1,131 @@
+{
+  "schema_version": "xrai.eval.measurement.v1",
+  "original_record_sha256": "eeadb97c2983b1ec59fa91ecca2d7008e73148fa8fecbe5cc72f350a426c78d6",
+  "transcript_sha256": "87890c5c8e7b06a63e298b3082081b7ca261b5a7876f87b7c88b425fbb7a16b2",
+  "profile": {
+    "config": {
+      "name": "cl100k_base",
+      "packages": {
+        "tiktoken": "0.12.0",
+        "regex": "2026.9.29"
+      },
+      "vocab_merges_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "pattern": "'(?i:[sdmt]|ll|ve|re)|[^\\r\\n\\p{L}\\p{N}]?+\\p{L}++|\\p{N}{1,3}+| ?[^\\s\\p{L}\\p{N}]++[\\r\\n]*+|\\s++$|\\s*[\\r\\n]|\\s+(?!\\S)|\\s",
+      "special_tokens": {
+        "<|endoftext|>": 100257,
+        "<|fim_prefix|>": 100258,
+        "<|fim_middle|>": 100259,
+        "<|fim_suffix|>": 100260,
+        "<|endofprompt|>": 100276
+      },
+      "normalization": "none",
+      "special_token_policy": "encode-all-as-ordinary-text",
+      "source": "https://raw.githubusercontent.com/openai/tiktoken/0.12.0/tiktoken_ext/openai_public.py",
+      "python_version": "3.13.13"
+    },
+    "config_sha256": "5d30acd957f9c266c8c26e6516a76ed76188ee15ada8e50d685cfd8a30979f73",
+    "serializer": {
+      "name": "xrai.canonical-json.v1",
+      "encoding": "utf-8",
+      "ensure_ascii": false,
+      "sort_keys": true,
+      "separators": [
+        ",",
+        ":"
+      ],
+      "normalization": "none",
+      "truncation": "captured-prefix-only",
+      "binary_projection": "base64-on-invalid-utf8",
+      "special_tokens": "ordinary-text"
+    },
+    "serializer_sha256": "42cbab430bcb47be562e52c5f9289bcdd226555e691a87f13b185d727b222867",
+    "fingerprint_sha256": "d9430ef6fbbc087da841dc7433b4d31857e33f48ea1ebd8c5556db6af3fe76c7"
+  },
+  "projection": {
+    "projection_version": "xrai.local-tool-projection.v1",
+    "tool_definitions": [
+      {
+        "name": "read_source",
+        "input": {
+          "path": "relative_path"
+        }
+      }
+    ],
+    "rounds": [
+      {
+        "phase": "inventory",
+        "command": [
+          "/usr/bin/find",
+          ".",
+          "-type",
+          "f"
+        ],
+        "stdout": {
+          "encoding": "utf-8",
+          "content": "./benches/benches.rs\n./CHANGELOG.md\n./dev\n./.github/FUNDING.yml\n./.github/workflows/ci.yml\n./LICENSE\n./.gitignore\n./SECURITY.md\n./tests/lib.rs\n./.gitattributes\n./.editorconfig\n./Cargo.toml\n./src/lib.rs\n./README.md\n",
+          "source_sha256": "234c56e46de441e3a3ddafe77312272ca919a1642f940e6cd0fa804e1d2af142",
+          "observed_bytes": 214,
+          "captured_bytes": 214,
+          "truncated": false
+        },
+        "stderr": {
+          "encoding": "utf-8",
+          "content": "",
+          "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "observed_bytes": 0,
+          "captured_bytes": 0,
+          "truncated": false
+        }
+      },
+      {
+        "phase": "selective_reading",
+        "command": [
+          "/usr/bin/grep",
+          "-R",
+          "-n",
+          "-I",
+          "-i",
+          "-m",
+          "3",
+          "-C",
+          "3",
+          "-E",
+          "--include=*.rs",
+          "--include=*.ts",
+          "--include=*.tsx",
+          "--include=*.js",
+          "--include=*.jsx",
+          "--include=*.py",
+          "--include=*.go",
+          "--exclude-dir=.git",
+          "API|compara|Hamming|caracteres|delegada",
+          "."
+        ],
+        "stdout": {
+          "encoding": "utf-8",
+          "content": "./benches/benches.rs-7-use self::test::Bencher;\n./benches/benches.rs-8-\n./benches/benches.rs-9-#[bench]\n./benches/benches.rs:10:fn bench_hamming(bencher: &mut Bencher) {\n./benches/benches.rs-11-    let a = \"ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGG\";\n./benches/benches.rs-12-    let b = \"CCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGC\";\n./benches/benches.rs-13-    bencher.iter(|| {\n./benches/benches.rs:14:        strsim::hamming(a, b).unwrap();\n./benches/benches.rs-15-    })\n./benches/benches.rs-16-}\n./benches/benches.rs-17-\n--\n./tests/lib.rs-1-extern crate strsim;\n./tests/lib.rs-2-\n./tests/lib.rs-3-use strsim::{\n./tests/lib.rs:4:    damerau_levenshtein, hamming, jaro, jaro_winkler, levenshtein, normalized_damerau_levenshtein,\n./tests/lib.rs-5-    normalized_levenshtein, osa_distance,\n./tests/lib.rs-6-};\n./tests/lib.rs-7-\n--\n./tests/lib.rs-21-}\n./tests/lib.rs-22-\n./tests/lib.rs-23-#[test]\n./tests/lib.rs:24:fn hamming_works() {\n./tests/lib.rs:25:    match hamming(\"hamming\", \"hammers\") {\n./tests/lib.rs-26-        Ok(distance) => assert_eq!(3, distance),\n./tests/lib.rs-27-        Err(why) => panic!(\"{:?}\", why),\n./tests/lib.rs-28-    }\n--\n./src/lib.rs-15-    clippy::missing_errors_doc,\n./src/lib.rs-16-    clippy::missing_panics_doc,\n./src/lib.rs-17-    clippy::must_use_candidate,\n./src/lib.rs:18:    // todo https://github.com/rapidfuzz/strsim-rs/issues/59\n./src/lib.rs-19-    clippy::range_plus_one\n./src/lib.rs-20-)]\n./src/lib.rs-21-\n--\n./src/lib.rs-46-\n./src/lib.rs-47-impl Error for StrSimError {}\n./src/lib.rs-48-\n./src/lib.rs:49:pub type HammingResult = Result<usize, StrSimError>;\n./src/lib.rs-50-\n./src/lib.rs-51-/// Calculates the number of positions in the two sequences where the elements\n./src/lib.rs-52-/// differ. Returns an error if the sequences have different lengths.\n./src/lib.rs:53:pub fn generic_hamming<Iter1, Iter2, Elem1, Elem2>(a: Iter1, b: Iter2) -> HammingResult\n./src/lib.rs-54-where\n./src/lib.rs-55-    Iter1: IntoIterator<Item = Elem1>,\n./src/lib.rs-56-    Iter2: IntoIterator<Item = Elem2>,\n",
+          "source_sha256": "9ff47cbe72c80d185cd939b4867d6d18726314e356d0fec5a1b427f95d562b18",
+          "observed_bytes": 2047,
+          "captured_bytes": 2047,
+          "truncated": false
+        },
+        "stderr": {
+          "encoding": "utf-8",
+          "content": "",
+          "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "observed_bytes": 0,
+          "captured_bytes": 0,
+          "truncated": false
+        }
+      }
+    ]
+  },
+  "serialized_base64": "eyJwcm9qZWN0aW9uX3ZlcnNpb24iOiJ4cmFpLmxvY2FsLXRvb2wtcHJvamVjdGlvbi52MSIsInJvdW5kcyI6W3siY29tbWFuZCI6WyIvdXNyL2Jpbi9maW5kIiwiLiIsIi10eXBlIiwiZiJdLCJwaGFzZSI6ImludmVudG9yeSIsInN0ZGVyciI6eyJjYXB0dXJlZF9ieXRlcyI6MCwiY29udGVudCI6IiIsImVuY29kaW5nIjoidXRmLTgiLCJvYnNlcnZlZF9ieXRlcyI6MCwic291cmNlX3NoYTI1NiI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJ0cnVuY2F0ZWQiOmZhbHNlfSwic3Rkb3V0Ijp7ImNhcHR1cmVkX2J5dGVzIjoyMTQsImNvbnRlbnQiOiIuL2JlbmNoZXMvYmVuY2hlcy5yc1xuLi9DSEFOR0VMT0cubWRcbi4vZGV2XG4uLy5naXRodWIvRlVORElORy55bWxcbi4vLmdpdGh1Yi93b3JrZmxvd3MvY2kueW1sXG4uL0xJQ0VOU0Vcbi4vLmdpdGlnbm9yZVxuLi9TRUNVUklUWS5tZFxuLi90ZXN0cy9saWIucnNcbi4vLmdpdGF0dHJpYnV0ZXNcbi4vLmVkaXRvcmNvbmZpZ1xuLi9DYXJnby50b21sXG4uL3NyYy9saWIucnNcbi4vUkVBRE1FLm1kXG4iLCJlbmNvZGluZyI6InV0Zi04Iiwib2JzZXJ2ZWRfYnl0ZXMiOjIxNCwic291cmNlX3NoYTI1NiI6IjIzNGM1NmU0NmRlNDQxZTNhM2RkYWZlNzczMTIyNzJjYTkxOWExNjQyZjk0MGU2Y2QwZmE4MDRlMWQyYWYxNDIiLCJ0cnVuY2F0ZWQiOmZhbHNlfX0seyJjb21tYW5kIjpbIi91c3IvYmluL2dyZXAiLCItUiIsIi1uIiwiLUkiLCItaSIsIi1tIiwiMyIsIi1DIiwiMyIsIi1FIiwiLS1pbmNsdWRlPSoucnMiLCItLWluY2x1ZGU9Ki50cyIsIi0taW5jbHVkZT0qLnRzeCIsIi0taW5jbHVkZT0qLmpzIiwiLS1pbmNsdWRlPSouanN4IiwiLS1pbmNsdWRlPSoucHkiLCItLWluY2x1ZGU9Ki5nbyIsIi0tZXhjbHVkZS1kaXI9LmdpdCIsIkFQSXxjb21wYXJhfEhhbW1pbmd8Y2FyYWN0ZXJlc3xkZWxlZ2FkYSIsIi4iXSwicGhhc2UiOiJzZWxlY3RpdmVfcmVhZGluZyIsInN0ZGVyciI6eyJjYXB0dXJlZF9ieXRlcyI6MCwiY29udGVudCI6IiIsImVuY29kaW5nIjoidXRmLTgiLCJvYnNlcnZlZF9ieXRlcyI6MCwic291cmNlX3NoYTI1NiI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJ0cnVuY2F0ZWQiOmZhbHNlfSwic3Rkb3V0Ijp7ImNhcHR1cmVkX2J5dGVzIjoyMDQ3LCJjb250ZW50IjoiLi9iZW5jaGVzL2JlbmNoZXMucnMtNy11c2Ugc2VsZjo6dGVzdDo6QmVuY2hlcjtcbi4vYmVuY2hlcy9iZW5jaGVzLnJzLTgtXG4uL2JlbmNoZXMvYmVuY2hlcy5ycy05LSNbYmVuY2hdXG4uL2JlbmNoZXMvYmVuY2hlcy5yczoxMDpmbiBiZW5jaF9oYW1taW5nKGJlbmNoZXI6ICZtdXQgQmVuY2hlcikge1xuLi9iZW5jaGVzL2JlbmNoZXMucnMtMTEtICAgIGxldCBhID0gXCJBQ0FBR0FUR0NDQVRUR1RDQ0NDQ0dHQ0NUQ0NUR0NUR0NUR0NUR0NUQ1RDQ0dHR0dcIjtcbi4vYmVuY2hlcy9iZW5jaGVzLnJzLTEyLSAgICBsZXQgYiA9IFwiQ0NUR0dBR0dHVEdHQ0NDQ0FDQ0dHQ0NHQUdBQ0FHQ0dBR0NBVEFUR0NBR0dBQUdDXCI7XG4uL2JlbmNoZXMvYmVuY2hlcy5ycy0xMy0gICAgYmVuY2hlci5pdGVyKHx8IHtcbi4vYmVuY2hlcy9iZW5jaGVzLnJzOjE0OiAgICAgICAgc3Ryc2ltOjpoYW1taW5nKGEsIGIpLnVud3JhcCgpO1xuLi9iZW5jaGVzL2JlbmNoZXMucnMtMTUtICAgIH0pXG4uL2JlbmNoZXMvYmVuY2hlcy5ycy0xNi19XG4uL2JlbmNoZXMvYmVuY2hlcy5ycy0xNy1cbi0tXG4uL3Rlc3RzL2xpYi5ycy0xLWV4dGVybiBjcmF0ZSBzdHJzaW07XG4uL3Rlc3RzL2xpYi5ycy0yLVxuLi90ZXN0cy9saWIucnMtMy11c2Ugc3Ryc2ltOjp7XG4uL3Rlc3RzL2xpYi5yczo0OiAgICBkYW1lcmF1X2xldmVuc2h0ZWluLCBoYW1taW5nLCBqYXJvLCBqYXJvX3dpbmtsZXIsIGxldmVuc2h0ZWluLCBub3JtYWxpemVkX2RhbWVyYXVfbGV2ZW5zaHRlaW4sXG4uL3Rlc3RzL2xpYi5ycy01LSAgICBub3JtYWxpemVkX2xldmVuc2h0ZWluLCBvc2FfZGlzdGFuY2UsXG4uL3Rlc3RzL2xpYi5ycy02LX07XG4uL3Rlc3RzL2xpYi5ycy03LVxuLS1cbi4vdGVzdHMvbGliLnJzLTIxLX1cbi4vdGVzdHMvbGliLnJzLTIyLVxuLi90ZXN0cy9saWIucnMtMjMtI1t0ZXN0XVxuLi90ZXN0cy9saWIucnM6MjQ6Zm4gaGFtbWluZ193b3JrcygpIHtcbi4vdGVzdHMvbGliLnJzOjI1OiAgICBtYXRjaCBoYW1taW5nKFwiaGFtbWluZ1wiLCBcImhhbW1lcnNcIikge1xuLi90ZXN0cy9saWIucnMtMjYtICAgICAgICBPayhkaXN0YW5jZSkgPT4gYXNzZXJ0X2VxISgzLCBkaXN0YW5jZSksXG4uL3Rlc3RzL2xpYi5ycy0yNy0gICAgICAgIEVycih3aHkpID0+IHBhbmljIShcIns6P31cIiwgd2h5KSxcbi4vdGVzdHMvbGliLnJzLTI4LSAgICB9XG4tLVxuLi9zcmMvbGliLnJzLTE1LSAgICBjbGlwcHk6Om1pc3NpbmdfZXJyb3JzX2RvYyxcbi4vc3JjL2xpYi5ycy0xNi0gICAgY2xpcHB5OjptaXNzaW5nX3Bhbmljc19kb2MsXG4uL3NyYy9saWIucnMtMTctICAgIGNsaXBweTo6bXVzdF91c2VfY2FuZGlkYXRlLFxuLi9zcmMvbGliLnJzOjE4OiAgICAvLyB0b2RvIGh0dHBzOi8vZ2l0aHViLmNvbS9yYXBpZGZ1enovc3Ryc2ltLXJzL2lzc3Vlcy81OVxuLi9zcmMvbGliLnJzLTE5LSAgICBjbGlwcHk6OnJhbmdlX3BsdXNfb25lXG4uL3NyYy9saWIucnMtMjAtKV1cbi4vc3JjL2xpYi5ycy0yMS1cbi0tXG4uL3NyYy9saWIucnMtNDYtXG4uL3NyYy9saWIucnMtNDctaW1wbCBFcnJvciBmb3IgU3RyU2ltRXJyb3Ige31cbi4vc3JjL2xpYi5ycy00OC1cbi4vc3JjL2xpYi5yczo0OTpwdWIgdHlwZSBIYW1taW5nUmVzdWx0ID0gUmVzdWx0PHVzaXplLCBTdHJTaW1FcnJvcj47XG4uL3NyYy9saWIucnMtNTAtXG4uL3NyYy9saWIucnMtNTEtLy8vIENhbGN1bGF0ZXMgdGhlIG51bWJlciBvZiBwb3NpdGlvbnMgaW4gdGhlIHR3byBzZXF1ZW5jZXMgd2hlcmUgdGhlIGVsZW1lbnRzXG4uL3NyYy9saWIucnMtNTItLy8vIGRpZmZlci4gUmV0dXJucyBhbiBlcnJvciBpZiB0aGUgc2VxdWVuY2VzIGhhdmUgZGlmZmVyZW50IGxlbmd0aHMuXG4uL3NyYy9saWIucnM6NTM6cHViIGZuIGdlbmVyaWNfaGFtbWluZzxJdGVyMSwgSXRlcjIsIEVsZW0xLCBFbGVtMj4oYTogSXRlcjEsIGI6IEl0ZXIyKSAtPiBIYW1taW5nUmVzdWx0XG4uL3NyYy9saWIucnMtNTQtd2hlcmVcbi4vc3JjL2xpYi5ycy01NS0gICAgSXRlcjE6IEludG9JdGVyYXRvcjxJdGVtID0gRWxlbTE+LFxuLi9zcmMvbGliLnJzLTU2LSAgICBJdGVyMjogSW50b0l0ZXJhdG9yPEl0ZW0gPSBFbGVtMj4sXG4iLCJlbmNvZGluZyI6InV0Zi04Iiwib2JzZXJ2ZWRfYnl0ZXMiOjIwNDcsInNvdXJjZV9zaGEyNTYiOiI5ZmY0N2NiZTcyYzgwZDE4NWNkOTM5YjQ4NjdkNmQxODcyNjMxNGUzNTZkMGZlYzVhMWI0MjdmOTVkNTYyYjE4IiwidHJ1bmNhdGVkIjpmYWxzZX19XSwidG9vbF9kZWZpbml0aW9ucyI6W3siaW5wdXQiOnsicGF0aCI6InJlbGF0aXZlX3BhdGgifSwibmFtZSI6InJlYWRfc291cmNlIn1dfQ==",
+  "serialized_sha256": "53d54bb6a363fd18550da0206cbdb84b5b9b6a97eb2f4d515bcaad696e7bde69",
+  "serialized_bytes": 3568,
+  "controlled_content_tokens": 1285,
+  "token_ids_sha256": "ce8ea23847561da31f05d39ce5c453531118a006abd3f48939a0e03bb5371b48",
+  "provider_usage": null,
+  "provider_cost": null,
+  "scope": "exact-controlled-content-profile-only-not-provider-wire-or-billing"
+}

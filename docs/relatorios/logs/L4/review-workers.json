@@ -1,0 +1,69 @@
+{
+  "recorded_at_utc": "2026-10-12T12:13:35.865225+00:00",
+  "review_scope": "READONLY independent XRW2 framing/correlation/deadline/reaping/reservation review; no source mutation",
+  "status": "changes_requested_pending_owner_fixes",
+  "source_sha256_at_receipt": {
+    "crates/xrai-eval/src/worker_persistent.rs": "84c08b832a0861bb94c9a9b7f6ee0aea8916dfa17999c9f5cdd28639955fca15",
+    "crates/xrai-eval/tests/workers_persistent.rs": "fdda895012216a9d83f480189f187fb0d58cd9c4862a4a34bc6168fd6bd15850",
+    "crates/xrai-eval/src/bin/worker-persistent.rs": "0dd2bcec6b9debdc1c7e71c4f1cef03d19e3c72a7b67580a684dc330d1566b9c",
+    "eval/reports/m0-workers-persistent.md": "496fe02089b6d34df1f6eae2c9f251a5cf06909e5f627ea0a9fba23d48001335"
+  },
+  "coverage": "CBM Tier2 paths checked no_recorded_issue metadata_match; broad call graph resolved ambiguous Rust parse callers, so exact source inspection verified runtime path",
+  "findings": [
+    {
+      "id": "XRW2-R1",
+      "priority": "P1",
+      "location": "Session::parse writer.join before validating received frame",
+      "evidence": "review-workers/xrai-review-xrw2-blocked-writer.json",
+      "finding": "Unexpected READY after Parse header, without draining8MiB body, makes receive succeed then writer.join block;0.5s caller deadline and cancel/shutdown cannot interrupt join. Independent observer killed after3s.",
+      "requested_fix": "Validate message before join and supervise writer completion within original deadline/cancel; retire/reap then join on violation/deadline."
+    },
+    {
+      "id": "XRW2-R2",
+      "priority": "P2",
+      "location": "validate_payload per-diagnostic prefix scan",
+      "evidence": "review-workers/xrai-review-xrw2-validation.json",
+      "finding": "1MiB source,2000 consistent diagnostics,282133byte payload exceeds6s debug validation. Repeated prefix scans grow source*diagnostics and parent validation has no deadline checks. Not honest parser benchmark; valid hostile/corrupt bounded frame robustness case.",
+      "requested_fix": "Compute newline index once, query positions by bounded lookup; check deadline/cancellation before publishing after validation."
+    }
+  ],
+  "positive_source_findings": [
+    "Reservation RAII follows completed Delivered until Ticket.wait/drop; errors and disconnected consumer release through ownership, no manual double-free path found.",
+    "Frame caps/type/version checked before allocation; incarnation and full response identity validated; old attempt/wrong envelope is definitive.",
+    "XRW1 response codec caps entire response; XRW2 uses it and caps outer frames separately.",
+    "Retries at most2 total attempts and transport prefix only; timeout/cancel/identity/protocol definitive.",
+    "Normal retire kill/wait confirms reaped before joining reader/stderr; pool shutdown sets stop and drains cancellation. Writerjoin exception isR1.",
+    "Idle duplicate error retained once for next request; result-after-death immutable response preserved.",
+    "Product containment,CPU/RSS/comparison remain explicit pending,no scientific measurement approval."
+  ],
+  "cleanup": {
+    "method": "Each Popen used start_new_session=True; on observer timeout os.killpg(driver_pid,SIGKILL), then Popen.communicate waits/reaps the direct driver. Peer uses same process group and has no children.",
+    "driver_wait_confirmed": true,
+    "peer_pid": 44974,
+    "peer_pid_absence_check": {
+      "command": [
+        "ps",
+        "-p",
+        "44974",
+        "-o",
+        "pid=,stat=,command="
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "",
+      "tool_verification": "exec_command escalated native read-only process query; sandbox ordinary ps denied, then authorized native check succeeded with no PID row."
+    },
+    "peer_absent_at_check": true,
+    "does_not_claim_parent_pool_reaped_peer": true,
+    "scope": "External observer required cleanup due stalled pool; peer absence is checked after external group kill, not proof that pool lifecycle succeeded."
+  },
+  "probe_source_sha256": {
+    "docs/relatorios/logs/L4/review-workers/xrai-review-xrw2-validation.rs": "5b4428590665242cd30538778914939ccf5fc0468391deed981cea2f7df1cbd0",
+    "docs/relatorios/logs/L4/review-workers/xrai-review-xrw2-peer.py": "14a74ce2fe1f55de4b6a15df47f9ca2df11ebd1e1ea30d07f160f2728bcd646b",
+    "docs/relatorios/logs/L4/review-workers/cleanup.json": "913f164bd3332362ee29bb2a8a76e64e53551a9ab7a813ceffa8e3370aacb144",
+    "docs/relatorios/logs/L4/review-workers/xrai-review-xrw2-validation.json": "4aa8bc1e9fa31f63fb7e0b140999fd7c064761718ad55d0f5c7df5bc7e104b18",
+    "docs/relatorios/logs/L4/review-workers/xrai-review-xrw2-driver.rs": "a5eb5bb032e72e96559b0ffa2e2fea42c2b4e02bd092bf51efafbe3041bd3d8a",
+    "docs/relatorios/logs/L4/review-workers/xrai-review-xrw2-blocked-writer.json": "00b05a1b6d2d1a1e6a2078d0880ec915b8c382f0d9d637c6bff7fbee3d0e7fd4"
+  },
+  "reproduction_portability": "Archived scratch files preserve original paths/interpreter. For replay copy to original /private/tmp names, use matching Python3.13.13 env and Rust deps; commands embedded in probe receipts. Sources were live during owner fix; linked debug rlib was previously built and affected old methods read before mutation. Source hash at receipt can differ from compiled rlib: it is explicitly not a linked-build certification. Final source must be rerun after fixes."
+}

@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-10-12T12:13:57.444140+00:00",
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "xrai-eval",
+    "--test",
+    "workers_persistent",
+    "--",
+    "--test-threads=1"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 12.081999124999129,
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "base_head": "09c016f7a6df03ceda2ffcf782d64385b6a22ddc",
+  "source_sha256": {
+    "crates/xrai-eval/src/worker_persistent.rs": "84c08b832a0861bb94c9a9b7f6ee0aea8916dfa17999c9f5cdd28639955fca15",
+    "crates/xrai-eval/src/bin/worker-persistent.rs": "0dd2bcec6b9debdc1c7e71c4f1cef03d19e3c72a7b67580a684dc330d1566b9c",
+    "crates/xrai-eval/tests/workers_persistent.rs": "fdda895012216a9d83f480189f187fb0d58cd9c4862a4a34bc6168fd6bd15850"
+  },
+  "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s\n     Running tests/workers_persistent.rs (target/debug/deps/workers_persistent-b78ad79786fd7fb8)\n",
+  "stdout": "\nrunning 20 tests\ntest abandoned_busy_ticket_releases_and_pool_recovers ... ok\ntest cached_seven_dialects_configs_errors_and_repeat_equal_direct ... ok\ntest caller_cannot_extend_reference_deadline ... ok\ntest cancel_busy_retires_while_other_worker_progresses_and_releases ... ok\ntest codec_rejects_wrong_magic_type_and_limit_before_allocation ... ok\ntest completed_cancel_is_checked_at_transfer_and_releases_reservation ... ok\ntest completed_tickets_retain_cap_until_wait_or_drop ... ok\ntest crash_retry_reaped_replacement_then_healthy ... ok\ntest dense_diagnostic_positions_validate_with_linear_source_scan ... ok\ntest duplicate_never_publishes_as_next_request ... ok\ntest envelope_json_and_positions_cannot_disagree ... ok\ntest handshake_invalid_and_death_fail_without_leak ... ok\ntest partial_frame_transient_once_recovers ... ok\ntest premature_frame_with_blocked_large_writer_is_rejected_and_reaped_in_deadline ... ok\ntest protocol_identity_payload_and_oversized_are_definitive ... ok\ntest result_then_death_does_not_revoke_accepted_immutable_answer ... ok\ntest retry_attempt_overflow_is_definitive_without_panicking ... ok\ntest stderr_above_retention_limit_is_drained_without_backpressure_deadlock ... ok\ntest timeout_has_no_retry_and_shutdown_unblocks_reader_and_writer ... ok\ntest valid_result_without_draining_large_write_still_obeys_timeout_and_cancel ... ok\n\ntest result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 11.98s\n\n"
+}

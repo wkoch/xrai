@@ -1,0 +1,31 @@
+{
+  "command": [
+    "rustc",
+    "--edition=2024",
+    "/private/tmp/xrai-review-xrw2-driver.rs",
+    "-L",
+    "dependency=target/debug/deps",
+    "--extern",
+    "xrai_eval=target/debug/deps/libxrai_eval-e4964f2758e45b2f.rlib",
+    "-o",
+    "/private/tmp/xrai-review-xrw2-driver"
+  ],
+  "linked_rlib": "target/debug/deps/libxrai_eval-e4964f2758e45b2f.rlib",
+  "probe_executable": "/private/tmp/xrai-review-xrw2-driver",
+  "timeout_seconds": 3,
+  "advertised_parent_deadline_seconds": 0.5,
+  "probe_timed_out": true,
+  "stdout": "started=Ok((44974, [49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]))\n",
+  "stderr": "",
+  "exit_code": -9,
+  "peer_evidence": {
+    "pid": 44974,
+    "parse_header_received": 47,
+    "advertised_parse_bytes": 8388738
+  },
+  "source_sha256": {
+    "crates/xrai-eval/src/worker_persistent.rs": "367fd25596d9dcc43cddf5470a3c7eb1c1ff3c8a3707f36fd7cb53d6e36b5184",
+    "/private/tmp/xrai-review-xrw2-driver.rs": "a5eb5bb032e72e96559b0ffa2e2fea42c2b4e02bd092bf51efafbe3041bd3d8a",
+    "/private/tmp/xrai-review-xrw2-peer.py": "14a74ce2fe1f55de4b6a15df47f9ca2df11ebd1e1ea30d07f160f2728bcd646b"
+  }
+}

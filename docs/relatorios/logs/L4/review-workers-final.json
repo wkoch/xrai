@@ -1,0 +1,97 @@
+{
+  "recorded_at_utc": "2026-10-12T12:14:58.662705+00:00",
+  "status": "both_initial_reproducers_pass_after_owner_fix",
+  "linked_rlib": "target/debug/deps/libxrai_eval-e4964f2758e45b2f.rlib",
+  "linked_rlib_sha256": "929453457ca2f603dad3c11768936d0090f11c6bf5dcb5397dc2b041ef87c441",
+  "linked_rlib_sha256_after": "929453457ca2f603dad3c11768936d0090f11c6bf5dcb5397dc2b041ef87c441",
+  "source_sha256_before": "84c08b832a0861bb94c9a9b7f6ee0aea8916dfa17999c9f5cdd28639955fca15",
+  "source_sha256_after": "84c08b832a0861bb94c9a9b7f6ee0aea8916dfa17999c9f5cdd28639955fca15",
+  "probes": [
+    {
+      "probe": "driver",
+      "compile_command": [
+        "rustc",
+        "--edition=2024",
+        "/private/tmp/xrai-review-xrw2-driver.rs",
+        "-L",
+        "dependency=target/debug/deps",
+        "--extern",
+        "xrai_eval=target/debug/deps/libxrai_eval-e4964f2758e45b2f.rlib",
+        "-o",
+        "/private/tmp/xrai-review-xrw2-driver"
+      ],
+      "observer_timeout_seconds": 3,
+      "probe_timed_out": false,
+      "stdout": "started=Ok((53250, [49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49]))\nresult=Err(\"protocol:result/identity\") elapsed=219.477875ms\n",
+      "stderr": "",
+      "exit_code": 0,
+      "direct_driver_wait_confirmed": true
+    },
+    {
+      "probe": "validation",
+      "compile_command": [
+        "rustc",
+        "--edition=2024",
+        "/private/tmp/xrai-review-xrw2-validation.rs",
+        "-L",
+        "dependency=target/debug/deps",
+        "--extern",
+        "xrai_eval=target/debug/deps/libxrai_eval-e4964f2758e45b2f.rlib",
+        "--extern",
+        "serde_json=target/debug/deps/libserde_json-5c288c25cbccb273.rlib",
+        "-o",
+        "/private/tmp/xrai-review-xrw2-validation"
+      ],
+      "observer_timeout_seconds": 6,
+      "probe_timed_out": false,
+      "stdout": "source_bytes=1048576 diagnostics=2000 payload_bytes=282133\nresult=Ok(()) elapsed=15.929ms\n",
+      "stderr": "",
+      "exit_code": 0,
+      "direct_driver_wait_confirmed": true
+    }
+  ],
+  "peer_evidence": {
+    "pid": 53250,
+    "parse_header_received": 47,
+    "advertised_parse_bytes": 8388738
+  },
+  "initial_failures_preserved": "docs/relatorios/logs/L4/review-workers.json",
+  "scope": "Functional adversarial consistency/framing verification only; not honest-corpus performance or native CPU/RSS benchmark.",
+  "build_verification": {
+    "command": [
+      "cargo",
+      "build",
+      "-p",
+      "xrai-eval",
+      "--lib",
+      "--locked"
+    ],
+    "exit_code": 0,
+    "output": "Finished dev profile [unoptimized + debuginfo] target(s) in0.15s"
+  },
+  "peer_cleanup_final": {
+    "command": [
+      "ps",
+      "-p",
+      "53250",
+      "-o",
+      "pid=,stat=,command="
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "",
+    "peer_absent": true,
+    "external_kill_required": false,
+    "pool_returned_protocol_error_and_driver_exited": true
+  },
+  "review_conclusion": {
+    "XRW2-R1": "resolved: unexpected message validated before join; writer completion has original deadline/cancel/stop; retirement unblocks blocked pipe before join",
+    "XRW2-R2": "resolved: line starts indexed once, positions partition_point, deadline checked during index/diagnostics and before publish",
+    "remaining_blocking_findings": [],
+    "limitations": [
+      "debug functional probes on available macOS host only",
+      "CPU/RSS/corpus matrix/native final CI evidence belong to separate integration",
+      "all existing pool tests are run by owner/root; this independent review only ran two newly motivated probes"
+    ]
+  }
+}

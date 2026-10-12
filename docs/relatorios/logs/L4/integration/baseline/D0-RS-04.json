@@ -1,0 +1,128 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-RS-04",
+  "family": "Rust",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.004197749998638756,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "python": "3.13.13",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "f9a8e4aa35b2151a40395da905d012490184793a517b1e28ae39e7dced5d495a",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "containment": "macos_local_known_smoke",
+      "cleanup_status": "not_proven",
+      "domain_id": "c9c48495-9405-469f-b1da-765bf0ceb1f3",
+      "termination_evidence": {
+        "wrapper_reaped": true,
+        "scope": "process_group_only_no_daemon_guarantee"
+      },
+      "eligible_for_agent_run": false,
+      "diagnostic": null,
+      "elapsed_seconds": 0.008418041999902925,
+      "stdout": {
+        "base64": "Li9DYXJnby50b21sCi4vTElDRU5TRQouL0NIQU5HRUxPRy5tZAouL3Rlc3RzL2xpYi5ycwouLy5lZGl0b3Jjb25maWcKLi9SRUFETUUubWQKLi8uZ2l0aWdub3JlCi4vLmdpdGh1Yi9GVU5ESU5HLnltbAouLy5naXRodWIvd29ya2Zsb3dzL2NpLnltbAouLy5naXRhdHRyaWJ1dGVzCi4vYmVuY2hlcy9iZW5jaGVzLnJzCi4vZGV2Ci4vU0VDVVJJVFkubWQKLi9zcmMvbGliLnJzCi4vc3JjL3Byb2JlLnJzCg==",
+        "sha256": "a675639af2db418efc3f6d819883b079b9bcfe3c0d3e199cf1ec22e14672f159",
+        "captured_bytes": 229,
+        "observed_bytes": 229,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "Após|criação|src|probe|probe|forneça|bytes|revisão|atual|não|responda|índice|anterior",
+        "."
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "containment": "macos_local_known_smoke",
+      "cleanup_status": "not_proven",
+      "domain_id": "31d0db53-07db-4342-a8c2-52f7b440f889",
+      "termination_evidence": {
+        "wrapper_reaped": true,
+        "scope": "process_group_only_no_daemon_guarantee"
+      },
+      "eligible_for_agent_run": false,
+      "diagnostic": null,
+      "elapsed_seconds": 0.035197166000216384,
+      "stdout": {
+        "base64": "Li9zcmMvbGliLnJzLTcyMC0vLy8gYGBgCi4vc3JjL2xpYi5ycy03MjEtcHViIGZuIHNvcmVuc2VuX2RpY2UoYTogJnN0ciwgYjogJnN0cikgLT4gZjY0IHsKLi9zcmMvbGliLnJzLTcyMi0gICAgLy8gaW1wbGVtZW50YXRpb24gZ3VpZGVkIGJ5Ci4vc3JjL2xpYi5yczo3MjM6ICAgIC8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hY2Vha2FzaC9zdHJpbmctc2ltaWxhcml0eS9ibG9iL2Y4M2JhM2NkN2JhZTg3NGMyMGM0Mjk3NzRlOTExYWU4Y2ZmOGJjZWQvc3JjL2luZGV4LmpzI0w2Ci4vc3JjL2xpYi5ycy03MjQtCi4vc3JjL2xpYi5ycy03MjUtICAgIGxldCBhOiBTdHJpbmcgPSBhLmNoYXJzKCkuZmlsdGVyKHwmeHwgIWNoYXI6OmlzX3doaXRlc3BhY2UoeCkpLmNvbGxlY3QoKTsKLi9zcmMvbGliLnJzLTcyNi0gICAgbGV0IGI6IFN0cmluZyA9IGIuY2hhcnMoKS5maWx0ZXIofCZ4fCAhY2hhcjo6aXNfd2hpdGVzcGFjZSh4KSkuY29sbGVjdCgpOwotLQouL3NyYy9saWIucnMtMTI1NC0gICAgI1t0ZXN0XQouL3NyYy9saWIucnMtMTI1NS0gICAgZm4gc29yZW5zZW5fZGljZV9hbGwoKSB7Ci4vc3JjL2xpYi5ycy0xMjU2LSAgICAgICAgLy8gdGVzdCBjYXNlcyB0YWtlbiBmcm9tCi4vc3JjL2xpYi5yczoxMjU3OiAgICAgICAgLy8gaHR0cHM6Ly9naXRodWIuY29tL2FjZWFrYXNoL3N0cmluZy1zaW1pbGFyaXR5L2Jsb2IvZjgzYmEzY2Q3YmFlODc0YzIwYzQyOTc3NGU5MTFhZThjZmY4YmNlZC9zcmMvc3BlYy9pbmRleC5zcGVjLmpzI0wxMQouL3NyYy9saWIucnMtMTI1OC0KLi9zcmMvbGliLnJzLTEyNTktICAgICAgICBhc3NlcnRfZGVsdGEhKDEuMCwgc29yZW5zZW5fZGljZSgiYSIsICJhIikpOwouL3NyYy9saWIucnMtMTI2MC0gICAgICAgIGFzc2VydF9kZWx0YSEoMC4wLCBzb3JlbnNlbl9kaWNlKCJhIiwgImIiKSk7Ci0tCi4vc3JjL3Byb2JlLnJzOjE6cHViIGZuIHByb2JlKCkgLT4gYm9vbCB7IHN0cnNpbTo6aGFtbWluZygiw6EiLCAiYSIpLmlzX29rKCkgfQo=",
+        "sha256": "a071df35f2eb62a3e058e5b700071b95b972d8d114c8440b7f6cfdb0ed85082e",
+        "captured_bytes": 1001,
+        "observed_bytes": 1001,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 1230,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "fb1c8f89f5e9af839005b0764dda99667eaedad70793c202649f69b728168179",
+  "workspace_sha256": "662df00a95b47426d008ac32430e4b6dd1904527fff0e86f5746e6e0a7ce2d63"
+}

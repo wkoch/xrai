@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python3",
+    "docs/contracts/verify.py"
+  ],
+  "base_commit": "09c016f7a6df03ceda2ffcf782d64385b6a22ddc",
+  "recorded_at": "2026-10-12T11:58:23.769659+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.21906154099997366,
+  "exit_code": 0,
+  "stdout": "PASS 01-empty-file.json: valid\nPASS 02-partial-parse.json: valid\nPASS 03-excluded-file.json: valid\nPASS 04-parser-absent.json: valid\nPASS 05-complete-empty-search.json: valid\nPASS 06-unsupported-calls.json: valid\nPASS 07-source-unicode-crlf.json: valid\nPASS 08-insufficient-budget.json: valid\nPASS 09-snapshot-expired.json: valid\nPASS 10-strict-incomplete.json: valid\nPASS 11-candidate.json: valid\nPASS 12-windows-path.json: valid\nPASS 13-unix-path-bytes.json: valid\nPASS 14-budget-below-envelope.json: valid\nPASS 15-structural-fact.json: valid\nPASS 16-status-not-indexed.json: valid\nPASS 17-latest-published-snapshot.json: valid\nPASS 18-latest-validated-new-global-file.json: valid\nPASS 19-latest-strict-new-global-file.json: valid\nPASS 20-fixed-validated-stale.json: valid\nPASS 21-fixed-strict-stale.json: valid\nPASS 22-latest-incompatible-anchor.json: valid\nPASS 23-expand-fixed-manifest.json: valid\nPASS 24-cursor-fixed-manifest.json: valid\nPASS 25-admission-long-input-wire.json: valid\nPASS 26-admission-structured-metadata-counted.json: valid\nPASS invalid-admission-auto-retry.json: schema\nPASS invalid-admission-estimate-as-exact.json: admission\nPASS invalid-admission-metadata-over-cap.json: admission\nPASS invalid-admission-source-leak.json: schema\nPASS invalid-admission-wire-not-counted.json: admission_count\nPASS invalid-anchor-silent-name-migration.json: anchor_revision\nPASS invalid-budget-exceeded.json: budget_limit\nPASS invalid-candidate-as-fact.json: schema\nPASS invalid-coverage-revision.json: snapshot_identity\nPASS invalid-cursor-latest.json: continuation_revision\nPASS invalid-expand-latest.json: continuation_revision\nPASS invalid-expand-new-manifest-generation.json: continuation_revision\nPASS invalid-expand-new-response-generation.json: snapshot_identity\nPASS invalid-fixed-response-rebind.json: snapshot_identity\nPASS invalid-fixed-validation-advances.json: snapshot_identity\nPASS invalid-global-validation-skips-new-file.json: freshness\nPASS invalid-latest-configuration.json: derivation\nPASS invalid-latest-fictitious-snapshot-id.json: schema\nPASS invalid-latest-snapshot-reconciles-silently.json: revision_policy\nPASS invalid-latest-source-hash.json: source_hash\nPASS invalid-latest-validated-old-generation.json: revision_policy\nPASS invalid-path-units.json: schema\nPASS invalid-request-operation.json: schema\nPASS invalid-revision-mix.json: snapshot_identity\nPASS invalid-source-hash.json: source_hash\nPASS invalid-span.json: source_span\nPASS invalid-stale-called-expired.json: revision_policy\nPASS invalid-status-budget.json: budget_status\nPASS invalid-strict-complete-without-validation.json: freshness\nPASS invalid-utf8-boundary.json: source_boundary\n26 valid accepted; 30 invalid rejected; 0 failures; schema valid\n",
+  "stderr": "",
+  "stdout_sha256": "93b91b97144510ab7d4032178f5e9c564f6e835048122e90f9903433c5bacc94",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

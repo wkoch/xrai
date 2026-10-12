@@ -1,0 +1,83 @@
+{
+  "archive_sha256": "aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88",
+  "captured_edition_manifest": "tokio/Cargo.toml",
+  "cases": [
+    {
+      "configuration": {
+        "features": "not_evaluated",
+        "target": "not_evaluated"
+      },
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "tokio/src/io/uring/utils.rs:cstr",
+      "files": {
+        "tokio/src/io/uring/utils.rs": "use std::os::fd::{AsRawFd, OwnedFd, RawFd};\nuse std::os::unix::ffi::OsStrExt;\nuse std::sync::Arc;\nuse std::{ffi::CString, io, path::Path};\n\npub(crate) type ArcFd = Arc<dyn AsRawFd + Send + Sync + 'static>;\n\n/// Raw file descriptor trait for io-uring operations.\n///\n/// `Arc<dyn AsRawFd>` does not satisfy `AsRawFd` because the blanket impl\n/// for `Arc<T>` requires `T: Sized`. This trait bridges that gap so both\n/// `OwnedFd` and `ArcFd` can be used generically with `Op::read_at`.\npub(crate) trait UringFd: Send + Sync + 'static {\n    fn as_raw_fd(&self) -> RawFd;\n}\n\nimpl UringFd for OwnedFd {\n    fn as_raw_fd(&self) -> RawFd {\n        AsRawFd::as_raw_fd(self)\n    }\n}\n\nimpl UringFd for ArcFd {\n    fn as_raw_fd(&self) -> RawFd {\n        (**self).as_raw_fd()\n    }\n}\n\npub(crate) fn cstr(p: &Path) -> io::Result<CString> {\n    Ok(CString::new(p.as_os_str().as_bytes())?)\n}\n"
+      },
+      "id": "tokio-utils-cstr",
+      "module": "",
+      "namespace": "value",
+      "path": "cstr",
+      "root": "tokio/src/io/uring/utils.rs",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {
+        "features": "not_evaluated",
+        "target": "not_evaluated"
+      },
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "tokio/src/io/uring/utils.rs:ArcFd",
+      "files": {
+        "tokio/src/io/uring/utils.rs": "use std::os::fd::{AsRawFd, OwnedFd, RawFd};\nuse std::os::unix::ffi::OsStrExt;\nuse std::sync::Arc;\nuse std::{ffi::CString, io, path::Path};\n\npub(crate) type ArcFd = Arc<dyn AsRawFd + Send + Sync + 'static>;\n\n/// Raw file descriptor trait for io-uring operations.\n///\n/// `Arc<dyn AsRawFd>` does not satisfy `AsRawFd` because the blanket impl\n/// for `Arc<T>` requires `T: Sized`. This trait bridges that gap so both\n/// `OwnedFd` and `ArcFd` can be used generically with `Op::read_at`.\npub(crate) trait UringFd: Send + Sync + 'static {\n    fn as_raw_fd(&self) -> RawFd;\n}\n\nimpl UringFd for OwnedFd {\n    fn as_raw_fd(&self) -> RawFd {\n        AsRawFd::as_raw_fd(self)\n    }\n}\n\nimpl UringFd for ArcFd {\n    fn as_raw_fd(&self) -> RawFd {\n        (**self).as_raw_fd()\n    }\n}\n\npub(crate) fn cstr(p: &Path) -> io::Result<CString> {\n    Ok(CString::new(p.as_os_str().as_bytes())?)\n}\n"
+      },
+      "id": "tokio-utils-ArcFd",
+      "module": "",
+      "namespace": "type",
+      "path": "ArcFd",
+      "root": "tokio/src/io/uring/utils.rs",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {
+        "features": "not_evaluated",
+        "target": "not_evaluated"
+      },
+      "edition": "2021",
+      "expected_state": "resolved",
+      "expected_target": "tokio/src/io/uring/utils.rs:UringFd",
+      "files": {
+        "tokio/src/io/uring/utils.rs": "use std::os::fd::{AsRawFd, OwnedFd, RawFd};\nuse std::os::unix::ffi::OsStrExt;\nuse std::sync::Arc;\nuse std::{ffi::CString, io, path::Path};\n\npub(crate) type ArcFd = Arc<dyn AsRawFd + Send + Sync + 'static>;\n\n/// Raw file descriptor trait for io-uring operations.\n///\n/// `Arc<dyn AsRawFd>` does not satisfy `AsRawFd` because the blanket impl\n/// for `Arc<T>` requires `T: Sized`. This trait bridges that gap so both\n/// `OwnedFd` and `ArcFd` can be used generically with `Op::read_at`.\npub(crate) trait UringFd: Send + Sync + 'static {\n    fn as_raw_fd(&self) -> RawFd;\n}\n\nimpl UringFd for OwnedFd {\n    fn as_raw_fd(&self) -> RawFd {\n        AsRawFd::as_raw_fd(self)\n    }\n}\n\nimpl UringFd for ArcFd {\n    fn as_raw_fd(&self) -> RawFd {\n        (**self).as_raw_fd()\n    }\n}\n\npub(crate) fn cstr(p: &Path) -> io::Result<CString> {\n    Ok(CString::new(p.as_os_str().as_bytes())?)\n}\n"
+      },
+      "id": "tokio-utils-UringFd",
+      "module": "",
+      "namespace": "type",
+      "path": "UringFd",
+      "root": "tokio/src/io/uring/utils.rs",
+      "rules": "rust-r1-r2-v1"
+    },
+    {
+      "configuration": {
+        "features": "not_evaluated",
+        "target": "not_evaluated"
+      },
+      "edition": "2021",
+      "expected_state": "unknown",
+      "expected_target": null,
+      "files": {
+        "tokio/src/io/uring/utils.rs": "use std::os::fd::{AsRawFd, OwnedFd, RawFd};\nuse std::os::unix::ffi::OsStrExt;\nuse std::sync::Arc;\nuse std::{ffi::CString, io, path::Path};\n\npub(crate) type ArcFd = Arc<dyn AsRawFd + Send + Sync + 'static>;\n\n/// Raw file descriptor trait for io-uring operations.\n///\n/// `Arc<dyn AsRawFd>` does not satisfy `AsRawFd` because the blanket impl\n/// for `Arc<T>` requires `T: Sized`. This trait bridges that gap so both\n/// `OwnedFd` and `ArcFd` can be used generically with `Op::read_at`.\npub(crate) trait UringFd: Send + Sync + 'static {\n    fn as_raw_fd(&self) -> RawFd;\n}\n\nimpl UringFd for OwnedFd {\n    fn as_raw_fd(&self) -> RawFd {\n        AsRawFd::as_raw_fd(self)\n    }\n}\n\nimpl UringFd for ArcFd {\n    fn as_raw_fd(&self) -> RawFd {\n        (**self).as_raw_fd()\n    }\n}\n\npub(crate) fn cstr(p: &Path) -> io::Result<CString> {\n    Ok(CString::new(p.as_os_str().as_bytes())?)\n}\n"
+      },
+      "id": "tokio-utils-OwnedFd",
+      "module": "",
+      "namespace": "type",
+      "path": "OwnedFd",
+      "root": "tokio/src/io/uring/utils.rs",
+      "rules": "rust-r1-r2-v1"
+    }
+  ],
+  "manifest_sha256": "82882b1a31e9105381166f589d7b87aa11a958abf2b7f8a12f5987aa280c26fb",
+  "schema_version": 1,
+  "scope": "independent development sample; captured source unit, not full Tokio crate",
+  "source_archive": "eval/sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz",
+  "upstream_commit": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6"
+}

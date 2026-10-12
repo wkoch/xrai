@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xrai.local/eval/measurement-v1.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "xrai.eval.measurement.v1"
+    },
+    "original_record_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "transcript_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "object"
+        },
+        "config_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "serializer": {
+          "type": "object"
+        },
+        "serializer_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "fingerprint_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "config",
+        "config_sha256",
+        "serializer",
+        "serializer_sha256",
+        "fingerprint_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "projection": {
+      "type": "object",
+      "properties": {
+        "projection_version": {
+          "const": "xrai.local-tool-projection.v1"
+        },
+        "tool_definitions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "rounds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "phase": {
+                "type": "string"
+              },
+              "command": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "stdout": {
+                "type": "object",
+                "properties": {
+                  "encoding": {
+                    "enum": [
+                      "utf-8",
+                      "base64"
+                    ]
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "source_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "observed_bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "captured_bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "truncated": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "encoding",
+                  "content",
+                  "source_sha256",
+                  "observed_bytes",
+                  "captured_bytes",
+                  "truncated"
+                ],
+                "additionalProperties": false
+              },
+              "stderr": {
+                "type": "object",
+                "properties": {
+                  "encoding": {
+                    "enum": [
+                      "utf-8",
+                      "base64"
+                    ]
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "source_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "observed_bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "captured_bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "truncated": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "encoding",
+                  "content",
+                  "source_sha256",
+                  "observed_bytes",
+                  "captured_bytes",
+                  "truncated"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "phase",
+              "command",
+              "stdout",
+              "stderr"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "projection_version",
+        "tool_definitions",
+        "rounds"
+      ],
+      "additionalProperties": false
+    },
+    "serialized_base64": {
+      "type": "string"
+    },
+    "serialized_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "serialized_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "controlled_content_tokens": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "token_ids_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "provider_usage": {
+      "type": "null"
+    },
+    "provider_cost": {
+      "type": "null"
+    },
+    "scope": {
+      "const": "exact-controlled-content-profile-only-not-provider-wire-or-billing"
+    }
+  },
+  "required": [
+    "schema_version",
+    "original_record_sha256",
+    "transcript_sha256",
+    "profile",
+    "projection",
+    "serialized_base64",
+    "serialized_sha256",
+    "serialized_bytes",
+    "controlled_content_tokens",
+    "token_ids_sha256",
+    "provider_usage",
+    "provider_cost",
+    "scope"
+  ],
+  "additionalProperties": false
+}

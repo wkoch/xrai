@@ -1,0 +1,25 @@
+{
+  "command": [
+    "rustc",
+    "--edition=2024",
+    "/private/tmp/xrai-review-xrw2-validation.rs",
+    "-L",
+    "dependency=target/debug/deps",
+    "--extern",
+    "xrai_eval=target/debug/deps/libxrai_eval-e4964f2758e45b2f.rlib",
+    "--extern",
+    "serde_json=target/debug/deps/libserde_json-5c288c25cbccb273.rlib",
+    "-o",
+    "/private/tmp/xrai-review-xrw2-validation"
+  ],
+  "timeout_seconds": 6,
+  "probe_timed_out": true,
+  "stdout": "source_bytes=1048576 diagnostics=2000 payload_bytes=282133\n",
+  "stderr": "",
+  "exit_code": -9,
+  "scope": "Direct bounded-payload consistency validation; deliberately repetitive missing diagnostics. This is not an honest parser-performance sample. Debug build used. No validation deadline parameter/check.",
+  "source_sha256": {
+    "crates/xrai-eval/src/worker_persistent.rs": "f933e739c320823b48adc329114a3536d6728b324277a8e917389823032efd31",
+    "/private/tmp/xrai-review-xrw2-validation.rs": "5b4428590665242cd30538778914939ccf5fc0468391deed981cea2f7df1cbd0"
+  }
+}
