@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 12/10/2026. **Revisão L3: primeiro incremento nativo aceito; continuação L4 detalhada.** Captura original/ancorada concluída no spike; quatro pilotos não admitem D1 global. [Parecer e seis incrementos executáveis](relatorios/REVISAO-L3.md). ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md) detalham semântica, persistência dos workers e medição. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 12/10/2026. **Revisão L4: medição offline, XRW2 e Rust R1/R2 aceitos nos recortes entregues; atividades L5 detalhadas.** Quatro pilotos não admitem D1 global. [Parecer e seis incrementos executáveis](relatorios/REVISAO-L4.md). ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md)/[027](decisoes/CONTEXTO-P3.md) detalham semântica, workers, medição e contexto/expansão. V1 continua Linux x86_64/macOS arm64; estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -309,9 +309,9 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 ### M0-09 — Prototipar P3: obrigações, base/head e seleção com orçamento
 
-**Depende de:** M0-01, M0-03, M0-04, M0-11. **Frente:** recuperação. **ADRs:** 007, 008, 012, 015, 018.
+**Depende de:** M0-01, M0-03, M0-04, M0-11. **Frente:** recuperação. **ADRs:** 007, 008, 012, 015, 018, 027.
 
-**Entrega:** protótipo P3, variante lexical/estrutural de controle e relatório de perdas por orçamento.
+**Entrega:** protótipo P3, variante lexical/estrutural de controle e relatório de perdas por orçamento. [ADR 027](decisoes/CONTEXTO-P3.md) e [L5-01](relatorios/REVISAO-L4.md) concretizam comparação v3 experimental (v2 preservado), obrigações, contagem e expansão. A primeira integração pode começar com os recortes disponíveis; aceite integral conserva as dependências acima.
 
 **Trabalho:** derivar obrigações da tarefa e das relações disponíveis; consultar base/head capturados; comparar ponteiro, assinatura, trecho, símbolo e arquivo; deduplicar spans e permitir expansão pelo agente. Usar funções grandes, classes e arquivos pequenos. Avaliar 2 mil, 4 mil, 8 mil, 16 mil e 32 mil tokens, além de extremos, com tokenizer identificado e teto de bytes. Escolher pela qualidade sob limites de sessão/custo, sem tratar o menor pacote como vencedor automático. Snapshot em memória/arquivo capturado basta: SQLite de produção e histórico Git completo não bloqueiam a prova.
 
@@ -707,13 +707,10 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[L4, na revisão L3](relatorios/REVISAO-L3.md), continua os mesmos cartões abertos. Primeiro incremento L3 já entregue; M0-08/R1 concluídas no spike. Não repetir provas aceitas para preencher um novo nome de lote.
+[L5, na revisão L4](relatorios/REVISAO-L4.md), continua os mesmos cartões abertos. Medição offline, ledger fake, XRW2 e primeira IR Rust estão entregues; não refazê-los para preencher lote novo.
 
-1. L4-01 local: tokenizer, ledger fake/replay e readiness; sessão paga só com recursos/tetos disponíveis.
-2. L4-03: primeira fatia Rust com IR/lookup/evidência e evento negativo→resolved; depois ampliar R3/R4 e demais famílias.
-3. Intercalar L4-02 (XRW2 persistente/recursos) e L4-04 (matriz de corpus por lacunas, JavaScript e complexidade); frentes independentes.
-4. L4-05: contexto/expansão sobre primeira IR e tokenização pertinentes; aceite integral conserva dependências do cartão.
-5. L4-06: preparar comparadores/preflight; M0-12 exige D1 admitido, harness, P2/P3 e recursos. G0 também exige todas as provas técnicas.
-6. G0 favorável libera M1-A; G1 libera M1-B; G2 libera alpha no domínio comprovado. M2–M5 continuam condicionados a evidência e pacotes B01–B08.
-
-Cada incremento tem escopo, destino e aceite na revisão. Esta entrega planeja; o Implementador escreve código, verifica e atualiza o estado.
+1. L5-01: perfil experimental v3, contexto e expansão com fonte/revisão/orçamento verificáveis; preservar v2.
+2. Intercalar L5-03 (comparação direto/XRW1/XRW2 e CPU/RSS) e L5-04 (slots globais e quatro dossiês novos).
+3. L5-02: Rust R3/configuração, depois R4 e outras famílias; aceitar recortes separadamente sem encerrar M0-11 cedo.
+4. L5-05: adapter real testável offline e quatro smokes pareados condicionados a recursos/teto; uma tarefa por família.
+5. L5-06: comparadores fortes, preflight e projeção de campanha. M0-12 exige D1 admitido, harness/P2/P3 e recursos; G0 exige todas as provas técnicas e competitivas.

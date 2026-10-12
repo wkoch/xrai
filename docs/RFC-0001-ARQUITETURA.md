@@ -1,6 +1,6 @@
 # RFC-0001 — Arquitetura do xrai
 
-Data: 12/10/2026. Estado arquitetural: **proposta com decisões de execução até ADR 026**. O scaffold L0 tem implementação local; as capacidades descritas nesta RFC continuam propostas até seu aceite. Evidências em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md); nenhum desempenho competitivo medido.
+Data: 12/10/2026. Estado arquitetural: **proposta com decisões de execução até ADR 027**. O scaffold L0 tem implementação local; as capacidades descritas nesta RFC continuam propostas até seu aceite. Evidências em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md); nenhum desempenho competitivo medido.
 
 Linguagens iniciais confirmadas: **Rust, TypeScript/JavaScript, Python e Go**.
 
@@ -431,7 +431,7 @@ O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tare
 
 ## 14. Registro das decisões propostas
 
-Os ADRs 001–018 permanecem **Propostos**, com concretizações nas revisões L0/L1. No ADR 019, prioridade de qualidade e separação de papéis são **definidas pelo usuário**; os limiares numéricos continuam propostas de arquitetura. O recorte de plataformas do ADR 020 também foi **definido pelo usuário**; seus pisos de SO e os ADRs 021–026 são **decisões do Arquiteto para execução**. Cada linha resume contexto, decisão, alternativa, consequência e revisão necessária. Proposto não exige nova permissão para cada tarefa: o usuário autorizou preparar o início da implementação dentro deste plano; alterações materiais devem ser registradas.
+Os ADRs 001–018 permanecem **Propostos**, com concretizações nas revisões L0/L1. No ADR 019, prioridade de qualidade e separação de papéis são **definidas pelo usuário**; os limiares numéricos continuam propostas de arquitetura. O recorte de plataformas do ADR 020 também foi **definido pelo usuário**; seus pisos de SO e os ADRs 021–027 são **decisões do Arquiteto para execução**. Cada linha resume contexto, decisão, alternativa, consequência e revisão necessária. Proposto não exige nova permissão para cada tarefa: o usuário autorizou preparar o início da implementação dentro deste plano; alterações materiais devem ser registradas.
 
 | ADR | Contexto e decisão | Alternativa e consequência | Validação/revisão |
 |---|---|---|---|
@@ -461,6 +461,7 @@ Os ADRs 001–018 permanecem **Propostos**, com concretizações nas revisões L
 | 024 | Admitir bibliotecas próprias de qualquer porte quando necessárias; experimento vertical antes de produção ampla | Reescrita sem problema concreto dispersa investimento; complexidade não deve impedir objetivo | P2/P3, perdas por camada e B01–B08; [decisão](decisoes/BIBLIOTECAS-PROPRIAS.md) |
 | 025 | IR semântica com evidências, namespaces por linguagem e primeira fatia Rust; dependências negativas explícitas | Busca por nome pode confundir homônimos; inferência ampla prematura amplia falsas afirmações | M0-11/P2; [semântica e matriz](decisoes/SEMANTICA-P2.md) |
 | 026 | Protocolo persistente separado de XRW1; retenção e CPU/RSS; tokens, usage e cobrança separados | EOF não conclui pedido persistente; custos desconhecidos não são zero | M0-04/06/09/12; [workers e medição](decisoes/WORKERS-E-MEDICAO.md) |
+| 027 | P3 determinístico, comparação v3 experimental explícita, obrigações atribuídas e expansão fixada por manifesto | v2 aceita somente uma revisão; só head perde fatos removidos; memória implícita do agente não justifica omissão | M0-09 e promoção posterior; [contexto e expansão](decisoes/CONTEXTO-P3.md) |
 
 ### 14.1 Concretizações do lote L0 nos ADRs existentes
 
@@ -501,6 +502,10 @@ L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do co
 
 [Revisão L3 e continuação L4](relatorios/REVISAO-L3.md): manter aceites nativos do primeiro incremento, detalhar primeira IR/resolução Rust (ADR 025), XRW2 e medição (ADR 026). Sem reabrir captura concluída, ampliar gates ou concluir corpus/sessões reais por planejamento.
 
+### 14.6 Concretização arquitetural L4
+
+[Revisão L4 e atividades L5](relatorios/REVISAO-L4.md): aceitar os recortes offline/XRW2/Rust entregues; ADR 027 resolve a representação de comparação ainda não suportada pelo verificador v2 e define obrigações/expansão. Quatro smokes pareados no total, um por família. Nenhum cartão ou gate é concluído por planejamento.
+
 ## 15. Definições com responsável e momento
 
 | Item | Responsável e regra vigente |
@@ -513,4 +518,4 @@ L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do co
 | Manutenção e tamanho de binário | Implementador mede nos spikes; M0-10 registra custos/limites e escopo sustentáveis. Não fixar prazo/equipe fictícios. |
 | CI/runners | Bloqueio anterior superado após repo público: [CI do commit `9b5411c`](relatorios/CI-PUBLICO.md) concluiu R2/M0-07. Demais spikes e distribuição ainda exigem suas próprias provas. |
 
-Não resta decisão arquitetural necessária para iniciar as frentes locais de L4; H01/F01/GIT01 continuam decididas e os próximos contratos estão nos ADRs 025/026. As verificações e decisões externas acima conservam seus respectivos responsáveis e gates.
+Não resta decisão arquitetural necessária para iniciar as frentes locais de L5; H01/F01/GIT01 continuam decididas e os próximos contratos estão nos ADRs 025/026/027. As verificações e decisões externas acima conservam seus respectivos responsáveis e gates.

@@ -1,0 +1,104 @@
+{
+  "kind": "architecture_documentation_verification",
+  "at_utc": "2026-10-12T12:53:18.263110+00:00",
+  "base_commit": "9a6b23f587ac5e4c0993fba1926be7f0b056a86e",
+  "branch": "main",
+  "command": "python3 /tmp/xrai-verify-l5-plan.py",
+  "verifier_source": "from pathlib import Path\nfrom collections import Counter\nimport datetime, hashlib, json, re, subprocess, os, platform, time\nroot=Path('/Users/wkoch/Projetos/xrai')\ndef git(*args): return subprocess.check_output(['git',*args],cwd=root,text=True).strip()\ndef sha(path): return hashlib.sha256((root/path).read_bytes()).hexdigest()\nfiles=['IMPLEMENTADOR.md','README.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/PLANO-DE-VALIDACAO.md','docs/RFC-0001-ARQUITETURA.md','docs/STATUS-IMPLEMENTACAO.md','docs/contracts/m1.md','docs/decisoes/WORKERS-E-MEDICAO.md','docs/decisoes/CONTEXTO-P3.md','docs/relatorios/REVISAO-L4.md']\nlog=root/'docs/relatorios/logs/revisao-L4';log.mkdir(parents=True,exist_ok=True)\noutput=log/'documentacao.json';output.write_text('{}\\n')\n# Reuse the already recorded, successful offline reconciliation. No source edits since it ran.\nnative=json.loads((log/'recibos-nativos.json').read_text())\nrun=subprocess.CompletedProcess(native['command'],native['exit_code'],native['stdout'],native['stderr'])\nerrors=[];links=0\nif run.returncode:errors.append('native receipt replay failed')\nelse:\n n=json.loads(run.stdout)\n assert n['status']=='native_L4_receipts_verified' and len(n['hosts'])==2\nfor name in files:\n p=root/name\n for target in re.findall(r'\\]\\(([^)]+)\\)',p.read_text()):\n  if '://' in target or target.startswith('#'):continue\n  target=target.split('#')[0]\n  if not target:continue\n  links+=1\n  if not (p.parent/target).exists():errors.append(f'broken link {name}: {target}')\ndef cards(text):\n sections=re.split(r'^### (M[01]-\\d+(?:\\.R\\d+)?) — ',text,flags=re.M); result={}\n for i in range(1,len(sections),2):\n  m=re.search(r'\\*\\*Depende de:\\*\\*(.*?)(?=\\*\\*|\\n)',sections[i+1]);assert m,sections[i]\n  result[sections[i]]=re.findall(r'M[01]-\\d+(?:\\.R\\d+)?',m.group(1))\n return result\nplan=cards((root/'docs/PLANO-DE-IMPLEMENTACAO.md').read_text());old_plan=cards(git('show','HEAD:docs/PLANO-DE-IMPLEMENTACAO.md'))\nassert len(plan)==41\nif plan!=old_plan:errors.append('cards/dependencies changed')\ndef states(text):return dict(re.findall(r'^\\| (M[01]-\\d+(?:\\.R\\d+)?) \\|[^\\n]*?\\| ([^|]+?) \\|',text,re.M))\nstate=(root/'docs/STATUS-IMPLEMENTACAO.md').read_text();old_state=git('show','HEAD:docs/STATUS-IMPLEMENTACAO.md')\nif states(state)!=states(old_state):errors.append('implementation states changed')\nif set(plan)!=set(states(state)):errors.append('plan/state IDs differ')\nseen=set();active=set()\ndef visit(card):\n if card in active:errors.append('cycle '+card);return\n if card in seen:return\n active.add(card)\n for dep in plan[card]:\n  if dep not in plan:errors.append('unknown dependency '+dep)\n  else:visit(dep)\n active.remove(card);seen.add(card)\nfor card in plan:visit(card)\ngates=all(f'| {g} | não avaliado |' in state for g in ['G0','G1','G2'])\nif not gates:errors.append('gate changed')\nreview=(root/'docs/relatorios/REVISAO-L4.md').read_text();l5=re.findall(r'^## \\d+\\. (L5-\\d+) — ',review,re.M)\nif l5!=[f'L5-{i:02d}' for i in range(1,7)]:errors.append('L5 cards incomplete')\n# Read source directly: JSONL freshness is not tracked by graph.\nrows=[json.loads(l) for l in (root/'eval/qualification/vertical/candidates.jsonl').read_text().splitlines()]\nassert len(rows)==4 and len({r['family'] for r in rows})==4\nassert all(r['kind']=='correction' and r['origin']['class']=='public_change' for r in rows)\nprojection={'candidates':len(rows),'families':dict(Counter(r['family'] for r in rows)),'languages':dict(Counter(r['language'] for r in rows)),'complex':sum(r['complexity']['complex'] for r in rows),'remaining_tasks':32-len(rows),'remaining_complex':16-sum(r['complexity']['complex'] for r in rows),'remaining_historical':16-len(rows),'conditional_on_all_four_passing_final_gate':True}\nassert projection['complex']==1 and projection['remaining_complex']==15\nschema=json.loads((root/'docs/contracts/examples/schema.json').read_text())\nassert 'comparison' not in schema['$defs']['response']['properties']\nassert \"item['snapshot_id'] == r['snapshot']['snapshot_id']\" in (root/'docs/contracts/verify.py').read_text()\nmanifest=json.loads((root/'docs/relatorios/logs/L4/implementation-manifest.json').read_text())\nassert len(manifest['source_sha256'])==28\nci=json.loads((root/'docs/relatorios/logs/L4/ci-native-run.json').read_text())\nassert ci['conclusion']=='success' and ci['headSha']=='1d2d40a221dad1a5ec9188158dbc624f329023c7'\nassert len(ci['jobs'])==3 and all(j['conclusion']=='success' for j in ci['jobs'])\nchanged=git('diff','--name-only').splitlines()+git('ls-files','--others','--exclude-standard').splitlines()\nallowed=set(files+[str(p.relative_to(root)) for p in [output,log/'recibos-nativos.json']])\nif set(changed)!=allowed:errors.append('unexpected/missing files '+str(set(changed)^allowed))\ncheck=subprocess.run(['git','diff','--check'],cwd=root,capture_output=True,text=True)\nif check.returncode:errors.append(check.stdout+check.stderr)\ninputs=['docs/contracts/verify.py','docs/contracts/examples/schema.json','docs/relatorios/L4.md','docs/relatorios/dependencias-L4.md','docs/relatorios/logs/L4/ci-native-run.json','docs/relatorios/logs/L4/implementation-manifest.json','docs/relatorios/logs/L4/verify-native.py','eval/qualification/vertical/candidates.jsonl','eval/reports/m0-agent-readiness.md','eval/reports/m0-workers-persistent.md','eval/reports/m0-semantics.md','crates/xrai-eval/src/semantics_spike.rs','crates/xrai-eval/src/worker_persistent.rs','crates/xrai-eval/harness/agent_ledger.py','crates/xrai-eval/harness/offline_measurement.py']\nrecord={'kind':'architecture_documentation_verification','at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_commit':git('rev-parse','HEAD'),'branch':git('branch','--show-current'),'command':'python3 /tmp/xrai-verify-l5-plan.py','verifier_source':Path(__file__).read_text(),'result':'passed' if not errors else 'failed','exit_code':int(bool(errors)),'checks':{'local_links':links,'cards':len(plan),'states_preserved':states(state)==states(old_state),'dependencies_preserved':plan==old_plan,'dependencies_acyclic':not any(e.startswith('cycle') for e in errors),'l5_cards':l5,'gates_unchanged':gates,'only_documentation_modified':set(changed)==allowed,'git_diff_check_exit':check.returncode,'offline_receipts_exit':run.returncode,'v2_comparison_gap_confirmed':True},'corpus_projection':projection,'prior_ci':{'head_sha':ci['headSha'],'run_url':ci['url'],'conclusion':ci['conclusion'],'jobs':len(ci['jobs']),'new_query_or_rerun':False},'graph_coverage':json.loads(Path('/tmp/xrai-l4-coverage.json').read_text()),'artifact_sha256':{p:sha(p) for p in files+[str((log/'recibos-nativos.json').relative_to(root))]},'evidence_sha256':{p:sha(p) for p in inputs},'errors':errors,'limitations':['Only documentation changed; experimental v3 is planned, not implemented.','Offline reconciliation executed locally; native tests/results remain Implementer evidence.','No paid sessions, product builds, new remote CI run/query or competitive gates.','Graph is best effort; untracked JSONL read directly; cross-file trace not treated as proof.','Receipt precedes commit/push; publication not asserted.']}\noutput.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps({'result':record['result'],'checks':record['checks'],'corpus_projection':projection,'errors':errors},ensure_ascii=False,indent=2));raise SystemExit(bool(errors))\n",
+  "result": "passed",
+  "exit_code": 0,
+  "checks": {
+    "local_links": 198,
+    "cards": 41,
+    "states_preserved": true,
+    "dependencies_preserved": true,
+    "dependencies_acyclic": true,
+    "l5_cards": [
+      "L5-01",
+      "L5-02",
+      "L5-03",
+      "L5-04",
+      "L5-05",
+      "L5-06"
+    ],
+    "gates_unchanged": true,
+    "only_documentation_modified": true,
+    "git_diff_check_exit": 0,
+    "offline_receipts_exit": 0,
+    "v2_comparison_gap_confirmed": true
+  },
+  "corpus_projection": {
+    "candidates": 4,
+    "families": {
+      "Rust": 1,
+      "TSJS": 1,
+      "Python": 1,
+      "Go": 1
+    },
+    "languages": {
+      "Rust": 1,
+      "TypeScript": 1,
+      "Python": 1,
+      "Go": 1
+    },
+    "complex": 1,
+    "remaining_tasks": 28,
+    "remaining_complex": 15,
+    "remaining_historical": 12,
+    "conditional_on_all_four_passing_final_gate": true
+  },
+  "prior_ci": {
+    "head_sha": "1d2d40a221dad1a5ec9188158dbc624f329023c7",
+    "run_url": "https://github.com/wkoch/xrai/actions/runs/38248278388",
+    "conclusion": "success",
+    "jobs": 3,
+    "new_query_or_rerun": false
+  },
+  "graph_coverage": {
+    "content": [
+      {
+        "type": "text",
+        "text": "project: Users-wkoch-Projetos-xrai\nsignal: best_effort\nindexed_at: 2026-10-12T12:48:34Z\nmetadata:\n  generation: 2026-10-12T12:48:34Z\n  index_mode: full\n  recorded_at: 2026-10-12T12:50:46Z\n  recording_status: complete\n  ignored_files_stored: 0\n  ignored_files_total: 0\n  hash_records_complete: true\n  coverage_version: 3\n  generation_matches: true\npaths: 20  (cols: requested_path path status freshness recommended_action coverage)\n  crates/xrai-eval/src/semantics_spike.rs crates/xrai-eval/src/semantics_spike.rs no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/src/worker_persistent.rs crates/xrai-eval/src/worker_persistent.rs no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/harness/agent_ledger.py crates/xrai-eval/harness/agent_ledger.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  crates/xrai-eval/harness/offline_measurement.py crates/xrai-eval/harness/offline_measurement.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/contracts/verify.py docs/contracts/verify.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/contracts/examples/schema.json docs/contracts/examples/schema.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/contracts/m1.md docs/contracts/m1.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L4/verify-native.py docs/relatorios/logs/L4/verify-native.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/scripts/verify_semantics.py eval/scripts/verify_semantics.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/L4.md docs/relatorios/L4.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/dependencias-L4.md docs/relatorios/dependencias-L4.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L4/ci-native-run.json docs/relatorios/logs/L4/ci-native-run.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/logs/L4/implementation-manifest.json docs/relatorios/logs/L4/implementation-manifest.json no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/reports/m0-agent-readiness.md eval/reports/m0-agent-readiness.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/reports/m0-workers-persistent.md eval/reports/m0-workers-persistent.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/reports/m0-semantics.md eval/reports/m0-semantics.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  eval/qualification/vertical/candidates.jsonl eval/qualification/vertical/candidates.jsonl no_recorded_issue not_tracked read_source_and_reindex []\n  docs/decisoes/SEMANTICA-P2.md docs/decisoes/SEMANTICA-P2.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/decisoes/WORKERS-E-MEDICAO.md docs/decisoes/WORKERS-E-MEDICAO.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  docs/relatorios/REVISAO-L3.md docs/relatorios/REVISAO-L3.md no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\npath_total: 20\npath_returned: 20\npath_has_more: false\nscopes: 0\nscope_total: 0\nscope_returned: 0\nscope_truncated: false\nhas_more: false\ncaveat: \"Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable.\"\n"
+      }
+    ],
+    "isError": false
+  },
+  "artifact_sha256": {
+    "IMPLEMENTADOR.md": "2cc512af35e4a202c38ec6746841b0141d10858f7ce23d92ed909d9c6276805b",
+    "README.md": "27ca4ba28cb3986d0d9025b8c4881fe54433e4fd995f387b43307c164f746bd0",
+    "docs/PLANO-DE-IMPLEMENTACAO.md": "b807da208e2d3c8c1c488233ba46f9f47821c1de0d49de304b3a6b2b3586b972",
+    "docs/PLANO-DE-VALIDACAO.md": "db76ec7f3447165402e0016c189c070530873ab886437eee0ea3e585b3d9a8df",
+    "docs/RFC-0001-ARQUITETURA.md": "5f57620ba7ce2a20b215464086eb5f056e39e27d32af135dd8329e3dee11ecae",
+    "docs/STATUS-IMPLEMENTACAO.md": "b5badc2397e95cd03d9e437018f32e25aeb48a1047c1077e7cbe44e1f2244555",
+    "docs/contracts/m1.md": "1ff5670c64be4cb3d6c350b31eb1052cb12d6c450cc51e2b762501930af968b6",
+    "docs/decisoes/WORKERS-E-MEDICAO.md": "996eba70e0dd873bb247e36a8747370d770f7d96664912f312f41c78f86a56af",
+    "docs/decisoes/CONTEXTO-P3.md": "933d71f3b76bd592ced7e349b03b795ee91becf3b1872651927fbf639fd9df84",
+    "docs/relatorios/REVISAO-L4.md": "174ce3141ea0f5c1f0e68eabeb21e5e79c4821cf7043369080051697c1c686dc",
+    "docs/relatorios/logs/revisao-L4/recibos-nativos.json": "80a8a854962329385be187f4bd4d03f76aa62e4b400997990e2fc34f41fef62f"
+  },
+  "evidence_sha256": {
+    "docs/contracts/verify.py": "bef4fb661385c1baaa6481d1d529e02b67ea496a1fb3578e399969955a82360a",
+    "docs/contracts/examples/schema.json": "455d267eab45772499d0bf43362800ab3208d9ed9b21d6581d5a7597867f109b",
+    "docs/relatorios/L4.md": "e07ee7587129be2424786ef35364bbaf5d83bc799b4b39222434b4191f275b2c",
+    "docs/relatorios/dependencias-L4.md": "993e0efe09c07a9d388dbb3e54649ec41c865c01a23d56aa1401be6d235b1644",
+    "docs/relatorios/logs/L4/ci-native-run.json": "3f3593cbc8fb71ff0a1fbae58fa9ce4ab2c8daedab7f52fac40c5ea9784beb51",
+    "docs/relatorios/logs/L4/implementation-manifest.json": "edf51b9d043e0d9daa22382464481be8fde973f47dfacf4e78efb61e5d32bcfb",
+    "docs/relatorios/logs/L4/verify-native.py": "40c01fde1e465ec940c69779d97e57c2f93d714bef0a46cab40470d9fcb6d4d7",
+    "eval/qualification/vertical/candidates.jsonl": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8",
+    "eval/reports/m0-agent-readiness.md": "f47c8a4974ca543c8d63d32c80f49407d596d41e57c3fad65fa7827296cbc9cd",
+    "eval/reports/m0-workers-persistent.md": "e1eb0798b5b7e335c0aec3fce890c369ac7aed2e5b6c68ec5dd26b8994d53a96",
+    "eval/reports/m0-semantics.md": "2e4f9adc821e76e359f1d3020bf15f18f6b69da80f61d708334de4f012068a00",
+    "crates/xrai-eval/src/semantics_spike.rs": "f0252b05694b8632ebdece8d4fd525f5a41ebd3a5c18b6f68188611830d827bc",
+    "crates/xrai-eval/src/worker_persistent.rs": "84c08b832a0861bb94c9a9b7f6ee0aea8916dfa17999c9f5cdd28639955fca15",
+    "crates/xrai-eval/harness/agent_ledger.py": "6d9538dbf0a6e545133b7f310e73d39f687dd43fb227f688511a69394a2dc4d8",
+    "crates/xrai-eval/harness/offline_measurement.py": "ed012342617a4b8df45b9ade742b9335caca454e014114ddcc99bb23c32886af"
+  },
+  "errors": [],
+  "limitations": [
+    "Only documentation changed; experimental v3 is planned, not implemented.",
+    "Offline reconciliation executed locally; native tests/results remain Implementer evidence.",
+    "No paid sessions, product builds, new remote CI run/query or competitive gates.",
+    "Graph is best effort; untracked JSONL read directly; cross-file trace not treated as proof.",
+    "Receipt precedes commit/push; publication not asserted."
+  ]
+}

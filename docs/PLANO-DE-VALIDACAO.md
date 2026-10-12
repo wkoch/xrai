@@ -258,3 +258,19 @@ Preservar logs históricos e os estados parciais de L2. Antes de campanha, readi
 | Corpus | Slots por família/tipo/repo/JS/TS/complexidade; medição conservadora de produção e revisão; quatro eventos A→B | Piloto vertical aceito não é admissão global ou resultado competitivo |
 
 Critérios numéricos de qualidade/custo e gates permanecem os do protocolo. Configurações de novos benchmarks são congeladas antes dos resultados. Testes/campanhas não foram executados por esta atualização documental.
+
+## 12. L5: contexto/expansão e fechamento das provas restantes
+
+[Revisão L4](relatorios/REVISAO-L4.md) e [ADR 027](decisoes/CONTEXTO-P3.md) definem as provas seguintes. Recibos L4 foram revalidados; a tabela abaixo é trabalho planejado.
+
+| Frente | Prova exigida | Limite |
+|---|---|---|
+| Comparação experimental v3 | Base/head explícitos, snapshot principal=head; rejeitar terceira revisão, diff inválido, hash/config errada e expansão que troca geração; manter v2 | Verificador v2 atual não comprova comparação |
+| Seleção e orçamento | Fonte/spans exatos, hunk central, alternativas/dedup, obrigações omitidas e envelope completo em bytes/tokens; metadados extensos e contadores | Obrigações próprias satisfeitas não significam todas as evidências relevantes encontradas |
+| Expansão | Manifesto imutável, duas revisões retidas, item omitido expansível, item de outro contexto rejeitado, expiração e pressão de memória | Entrega anterior não prova memória atual do agente |
+| Qualidade P3 | Mesmo pedido/fontes/perfil/limites nos controles; oracle isolado mede também omissões não identificadas; curvas 2k–32k | Recall de evidência não é sucesso de tarefa real |
+| Rust seguinte | R3/configuração e R4, contraprovas e incremental=rebuild; amostra real com escopo de captura | Arquivo Tokio de L4 não prova crate completa |
+| Recursos e corpus | Matriz direto/XRW1/XRW2, CPU/RSS dos dois alvos; quatro dossiês novos com revisão e slots globais | Persistência funcional não fecha recursos; dossiê vertical não abre D1 global |
+| Adapter/smokes | Protocolo/ledger testado offline; quatro smokes pareados totais, um por família, quando houver recursos/teto | Fake e readiness não substituem uso real; oito sessões mínimas não autorizam despesa |
+
+Verificação de produto cabe ao Implementador. Não alterar limiares dos gates, denominadores ou dados reservados para acomodar resultados.
