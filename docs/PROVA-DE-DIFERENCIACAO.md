@@ -60,13 +60,18 @@ Ficam fora da prova inicial: parser próprio, type checker universal, embeddings
 | Conjunto | Tamanho inicial | Uso |
 |---|---|---|
 | D0 — desenvolvimento | 20 tarefas, cinco por família | Contratos, smoke, replay e triagem de ferramentas |
-| D1 — desafios de desenvolvimento | 32 tarefas, oito por família; pelo menos dois repositórios por família | Ajustar protótipos, comparar finalistas e decidir G0; nunca alegar confirmação estatística |
+| D1-seed — propostas já preparadas | 32 casos iniciais de bibliotecas pequenas | Desenvolver harness e regressões; não decide G0 nem aumenta a amostra primária |
+| D1 — desafios qualificados | 32 tarefas, oito por família; pelo menos dois repositórios por família; admissão em M0-03.R1 | Ajustar protótipos, comparar finalistas e decidir G0; nunca alegar confirmação estatística |
 | H1 — confirmação reservada | Proposta inicial de 120 tarefas, 30 por família | Decidir G1; tamanho final fixado antes de abrir resultados |
 | H2 — campanha adicional | Até o teto total pré-registrado | Uma única extensão/replicação com tarefas novas, se necessária; sem ajuste retroativo de H1 |
 
 Em D1, cada família contribui com duas correções que exigem seguir relações, duas mudanças de contrato, duas tarefas após alteração/configuração, uma revisão por diff e um controle simples. Revisão recebe orçamento de falsos positivos e oracle próprio. TS e JS têm tarefas reais; TSX/JSX também aparecem nas fixtures. Tarefas pequenas continuam no relatório para revelar overhead.
 
+O [ADR 021](decisoes/CORPUS-QUALIFICADO.md) define admissão: pelo menos 20 tarefas com relações entre módulos, 16 complexas em bases de porte elegível e 16 ligadas a necessidades históricas públicas, com pisos por família. Preservar pedidos naturais, testes de sucesso independentes e revisão cega ao braço. Pelo menos um cenário por família altera A→B com índice já existente; edição aplicada antes da primeira indexação não prova atualização. As 32 propostas seed são aceitas para desenvolvimento, sem promover automaticamente elegibilidade ou inflar o denominador do piloto.
+
 H1 mantém estratos de linguagem e tarefa definidos antes dos resultados, com pelo menos três repositórios por família, dois deles ausentes de D0/D1. Separar também linhagens de mudanças e patches semelhantes. Se não houver dados suficientes, reduzir explicitamente o domínio da conclusão; não preencher o conjunto com duplicatas sintéticas. Fixtures não contam como tarefas reais independentes.
+
+Para novidade de H1, D1 inclui tanto seed quanto conjunto qualificado. Pelo menos metade de H1 e de cada família atende ao recorte complexo do ADR 021; reportar esse estrato separadamente. Redução do domínio precisa ser explícita antes dos resultados e não sustenta uma alegação geral sobre bases grandes.
 
 Usar D1 para estimar variância, discordância pareada e efeito de agrupamento por repositório. Simular o tamanho necessário para detectar ganho de sucesso e verificar os limites de custo. **120 tarefas não garantem potência suficiente para confirmar a vantagem.** O teto proposto de H1 + H2 é 240 tarefas únicas; se a potência necessária exceder o teto ou o orçamento financeiro, reformular o experimento antes de abrir H1 ou registrar que a confirmação não é viável neste ciclo. A dimensão da amostra não deve ser escolhida após observar um resultado favorável.
 
@@ -133,7 +138,7 @@ Exemplos aritméticos hipotéticos, sem constituir resultados: sucesso de 60% pa
 
 ### G0 — sinal suficiente para financiar M1-A
 
-Nas 32 tarefas D1, contra os finalistas relevantes e a baseline textual, cumprir simultaneamente:
+Nas 32 tarefas D1 qualificadas e congeladas, contra os finalistas relevantes e a baseline textual, cumprir simultaneamente os critérios abaixo. O recorte complexo também deve melhorar sucesso em pelo menos duas famílias e respeitar os tetos pontuais de custo por tentativa/sucesso. Não exigir significância estatística desse pequeno recorte exploratório; vitória concentrada em controles/tarefas pequenas não aprova a tese de bases grandes. Reportar os mesmos recortes em G1 sem alterar seus intervalos ou guardrails.
 
 | Medida | Sinal exploratório exigido |
 |---|---|

@@ -10,7 +10,15 @@ Data: 11/10/2026. **Decisão definida pelo usuário:** focar Linux x86_64 e macO
 | macOS arm64 / Apple Silicon | `aarch64-apple-darwin` | Obrigatório desde M0 até a alpha/v1 |
 | Windows, Linux arm64, macOS Intel | A definir após v1 | Fora dos gates e dos artefatos obrigatórios do v1 |
 
-“V1” significa aqui a primeira versão do produto, incluindo a alpha planejada em M1-B; não altera a numeração do schema documental. M0-05/M1-20 devem explicitar baseline Linux/glibc, versão mínima macOS e bibliotecas do sistema. Musl pode ser avaliado futuramente, sem acrescentar agora outro artefato obrigatório.
+“V1” significa aqui a primeira versão do produto, incluindo a alpha planejada em M1-B; não altera a numeração do schema documental. Musl pode ser avaliado futuramente, sem acrescentar agora outro artefato obrigatório.
+
+### Baseline definido pelo Arquiteto na revisão L1
+
+- **Linux:** Ubuntu 24.04 LTS x86_64, glibc 2.39, como ambiente inicial de fabricação e aceite. Outras distribuições GNU/Linux com ABI compatível podem funcionar, mas só entram na lista de ambientes verificados após smoke próprio. Não prometer todas as distribuições apenas pelo target Rust. A versão de glibc dessa baseline consta no [pacote oficial Ubuntu](https://packages.ubuntu.com/noble/amd64/libc6).
+- **macOS:** piso inicial 15.0 em arm64, com `MACOSX_DEPLOYMENT_TARGET=15.0` aplicado a Rust e componentes C. Testar nativamente no piso e registrar SDK/flags/dependências. Execução em versão posterior não comprova o piso. O mecanismo de deployment target é documentado pelo [Rust](https://doc.rust-lang.org/stable/rustc/platform-support/apple-darwin.html); o piso 15.0 é uma escolha do xrai, não uma limitação universal do Rust.
+- M0-05 inspeciona ABI/dependências e comprova autonomia nesses ambientes; M1-20 repete com o artefato distribuído. Não aceitar dependência de biblioteca de desenvolvimento instalada só no runner. SDK/compilador são ferramentas de build, não requisitos do usuário.
+
+O objetivo é começar com os ambientes de referência já previstos na CI e uma promessa verificável. Não aumentar o piso silenciosamente se uma dependência falhar; corrigir a dependência ou registrar proposta fundamentada. Versões mais antigas e musl ficam fora do compromisso inicial, sem demandar trabalho de compatibilidade antecipado. Estes pisos fecham a escolha arquitetural, mas não declaram os testes executados.
 
 A decisão concentra trabalho nos dois alvos sem reduzir qualidade, linguagens ou autonomia. Rust, TS/JS, Python e Go permanecem no escopo. Um executável por alvo, CLI/MCP, uso básico offline e sem runtimes auxiliares continuam obrigatórios. Amostras, limiares e tetos de G0/G1/G2 permanecem os mesmos.
 
@@ -28,7 +36,7 @@ A decisão concentra trabalho nos dois alvos sem reduzir qualidade, linguagens o
 
 Detalhes, dependências e critérios estão no [plano](../PLANO-DE-IMPLEMENTACAO.md); execução e impedimentos no [estado](../STATUS-IMPLEMENTACAO.md). M0-02.R2 depende de M0-02.R1 e é requisito de M0-10. Pode ser executada sem aguardar corpus ou retomar entregas concluídas.
 
-O implementador continua responsável por alterações de workflow e código. Remover Windows do aceite não comprova execução nos outros alvos. Se billing, runner ou infraestrutura impedir a prova Linux/macOS, preservar a pendência e continuar trabalho independente; não mascarar falha, dispensar check ou usar smokes antigos como prova do spike novo. Os impedimentos e a elegibilidade do corpus registrados em L1 não são resolvidos por esta mudança de plataforma.
+O implementador continua responsável por alterações de workflow e código. Remover Windows do aceite não comprova execução nos outros alvos. Se billing, runner ou infraestrutura impedir a prova Linux/macOS, preservar a pendência e continuar trabalho independente; não mascarar falha, dispensar check ou usar smokes antigos como prova do spike novo. A elegibilidade do corpus foi resolvida separadamente no [ADR 021](CORPUS-QUALIFICADO.md); os impedimentos de infraestrutura registrados em L1 continuam externos.
 
 ## Contratos e histórico
 

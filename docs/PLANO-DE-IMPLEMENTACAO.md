@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 11/10/2026. **Escopo de plataformas do v1 definido pelo usuário: Linux x86_64 e macOS arm64.** A retificação de contrato e a CI documental de L1 já constam como concluídas no [estado da implementação](STATUS-IMPLEMENTACAO.md). Esta atualização acrescenta M0-02.R2 para adequar a CI; não conclui sua execução. Decisão e impactos em [PLATAFORMAS-V1.md](decisoes/PLATAFORMAS-V1.md).
+Data: 11/10/2026. **Revisão L1: decisões arquiteturais C01/S01/S02 resolvidas; próximo lote L2 preparado.** Corpus inicial aceito no escopo de desenvolvimento; M0-03.R1 qualifica o D1 antes do piloto. M0-04/05/08 podem começar. [Parecer, evidências e sequência](relatorios/REVISAO-L1.md). V1 continua Linux x86_64/macOS arm64; CI nativa permanece pendente conforme o [estado](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -34,19 +34,19 @@ Não estabelecer prazo de calendário sem equipe e resultados dos spikes. As tar
 
 | Alvo obrigatório de M0 até a alpha/v1 | Target Rust inicial | Prova exigida |
 |---|---|---|
-| Linux x86_64 | `x86_64-unknown-linux-gnu` | Build e execução nativa; documentar baseline de SO/glibc e dependências em M0-05/M1-20 |
-| macOS arm64 (Apple Silicon) | `aarch64-apple-darwin` | Build e execução nativa; documentar versão mínima do macOS em M0-05/M1-20 |
+| Linux x86_64 | `x86_64-unknown-linux-gnu` | Ubuntu 24.04 LTS/glibc 2.39 como baseline inicial; ABI e autonomia verificadas em M0-05/M1-20 |
+| macOS arm64 (Apple Silicon) | `aarch64-apple-darwin` | Piso macOS 15.0 e deployment target explícito; execução nativa no piso em M0-05/M1-20 |
 
 Windows, Linux arm64 e macOS Intel estão fora do aceite e da distribuição do v1. Musl não é um terceiro artefato obrigatório. Remover Windows da CI obrigatória é trabalho de M0-02.R2; resultados históricos são preservados. O aceite técnico passa a exigir ambos os alvos acima, com os mesmos critérios de correção, autonomia, recuperação e qualidade. CRLF, Unicode, paths nativos sem perda e case sensitivity continuam relevantes nos dois sistemas. Reparse points, processos/locking e instalação específicos do Windows ficam para depois do v1; formatos documentais já existentes podem ser preservados como extensão futura, sem anunciar suporte.
 
 ## 2. Regras de execução e conclusão
 
-- IDs existentes são preservados: **35 tarefas principais e três atividades complementares**, `M0-01.R1`, `M0-02.R1` e `M0-02.R2`, com execução individual em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md). A ordem de execução segue dependências, não numeração. M0-10 continua a saída de M0; M1-22 ocorre antes da engenharia ampla de M1.
+- IDs existentes são preservados: **35 tarefas principais e quatro atividades complementares**, `M0-01.R1`, `M0-02.R1`, `M0-02.R2` e `M0-03.R1`, com execução individual em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md). A ordem de execução segue dependências, não numeração. M0-10 continua a saída de M0; M1-22 ocorre antes da engenharia ampla de M1.
 - “Depende de” significa que o contrato/entregável anterior está disponível e passou nos critérios pertinentes. Preparar fixtures e especificações em paralelo é permitido; não declarar um marco concluído antecipadamente.
 - Cada tarefa deve produzir uma mudança revisável, seus testes relevantes e evidências dos critérios de aceite. Uma tarefa grande pode virar subtarefas com sufixo, preservando o ID e o aceite do conjunto.
 - Não criar testes que apenas reproduzem a implementação. Priorizar oracles independentes, fixtures rotuladas, comparação incremental/rebuild e falhas injetadas nas fronteiras reais.
 - Resultados medidos ficam em relatórios com commit, configuração, plataforma, hardware, comandos e saídas. Metas propostas não contam como resultados.
-- Decisões seguem os ADRs 001–020 da RFC. Mudança de contrato, persistência, isolamento, regime de comparação ou dependência runtime deve atualizar o ADR pertinente e os critérios afetados.
+- Decisões seguem os ADRs 001–022 da RFC, incluindo [admissão do corpus](decisoes/CORPUS-QUALIFICADO.md) e [persistência/retenção](decisoes/PERSISTENCIA-E-RETENCAO.md). Mudança de contrato, persistência, isolamento, regime de comparação ou dependência runtime deve atualizar o ADR pertinente e os critérios afetados.
 - Spikes de M0 podem ser descartados. Sua promoção para M1 exige limites, tratamento de falhas e testes de produção; um experimento que funcionou uma vez não cumpre esses requisitos.
 - Qualidade já está fixada como rota primária. Antes da campanha, congelar limites de esforço/uso de modelos, critérios de custo proporcional, amostra, comparadores e análise. M0 permite duas versões por hipótese; M1-A, uma campanha reservada e uma adicional. Inconclusivo não libera M1-B automaticamente.
 
@@ -63,6 +63,8 @@ flowchart TD
     B --> P2["M0-11: protótipo semântico P2"]
     P2 --> P3["M0-09: protótipo de contexto P3"]
     P3 --> E["M0-12: finalistas e piloto real"]
+    A --> R1["M0-03.R1: qualificar D1"]
+    R1 --> E
     E --> G0["M0-10 / G0: há sinal?"]
     D --> G0
     G0 --> F["M1-01: contratos mínimos"]
@@ -164,13 +166,13 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Verificação:** inspecionar matriz/host e logs de cada check; registrar commit, plataforma e conclusão. Reclassificar pendências Windows como pós-v1 e manter abertas as de Linux/macOS sem evidência suficiente. Corpus e protótipos locais podem avançar enquanto o run estiver pendente; R2 precisa estar concluída para M0-10.
 
-### M0-03 — Construir o corpus inicial e seus oracles
+### M0-03 — Construir o corpus inicial de desenvolvimento
 
 **Depende de:** M0-01. **Frente:** avaliação.
 
 **Entrega:** `eval/corpus.toml`, `eval/tasks/dev.jsonl`, `eval/tasks/challenge-dev.jsonl`, `eval/fixtures/` e dados esperados separados das entradas do agente.
 
-**Trabalho:** manter D0 com 20 tarefas, cinco por família: duas de localização, uma de compreensão, uma após edição e uma de configuração/limite. Acrescentar D1 com 32 desafios reais, oito por família, pelo menos dois repositórios por família, conforme o protocolo de diferenciação. Preparar fixtures e gerador determinístico de bases maiores; definir separação de H1 sem expor soluções aos implementadores.
+**Trabalho:** manter D0 com 20 tarefas, cinco por família: duas de localização, uma de compreensão, uma após edição e uma de configuração/limite. Preparar 32 propostas D1-seed, oito por família e dois repositórios por família. Preparar fixtures e gerador determinístico de bases maiores; definir separação de H1 sem expor soluções aos implementadores. A revisão L1 separou explicitamente a preparação inicial, aceita neste cartão, da qualificação de desafios reais em M0-03.R1; o requisito competitivo original permanece obrigatório antes de M0-12/G0.
 
 **Aceite:**
 
@@ -178,9 +180,21 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 - Fixtures incluem CRLF, Unicode, nomes homônimos, arquivo sem símbolos, código incompleto, funções grandes, configuração alterada, arquivo criado/removido e arquivo com timestamps preservados.
 - Os resultados esperados são rotulados e revisados a partir das fontes; não são gerados pelo mesmo extrator a ser avaliado.
 - Fontes, tamanhos, versões e licenças são reproduzíveis. Dados reservados e patches de referência não entram no contexto do agente nem no ranking.
-- D1 inclui correção, mudança de contrato, revisão e estado/configuração alterados, além de controles simples. Cada tarefa tem oracle independente do extrator e critério de sucesso do agente; TS e JS têm casos reais. O manifest impede contar variantes do mesmo patch como tarefas independentes.
+- D1-seed inclui correção, mudança de contrato, revisão e estado/configuração alterados, além de controles simples. Cada tarefa tem oracle independente do extrator e critério de sucesso do agente; TS e JS têm casos sobre fontes reais. O manifest impede contar variantes do mesmo patch como tarefas independentes; qualificação e testes executáveis restantes pertencem a R1.
 
-**Verificação:** um segundo leitor consegue reconstruir as tarefas a partir do manifest e conferir os resultados. D0/D1 são desenvolvimento, sem uso para alegação estatística de superioridade.
+**Verificação:** um segundo leitor consegue reconstruir as tarefas a partir do manifest e conferir os resultados. D0/D1-seed são desenvolvimento, sem uso para alegação estatística de superioridade. Revisão dos recibos dos oracles e testes executáveis adicionais pertencem a R1; aceite deste escopo inicial não declara sua conclusão.
+
+### M0-03.R1 — Qualificar o D1 para a prova de diferenciação
+
+**Depende de:** M0-03. **Frente:** avaliação. **ADR:** 021.
+
+**Entrega:** `eval/tasks/challenge-qualified.jsonl`, manifest/materializador/verificador com papéis explícitos, oracles e relatório de admissão. Preservar o seed e resultados históricos.
+
+**Trabalho:** seguir o [contrato de admissão](decisoes/CORPUS-QUALIFICADO.md). Selecionar projetos/casos por critérios e proveniência; corrigir pistas artificiais nos pedidos, tornar os contratos julgáveis por testes, preparar eventos A→B e conciliar os recibos de revisão. Escolhas rotineiras de candidatos não exigem novo parecer arquitetural.
+
+**Aceite:** 32 tarefas primárias, estratos originais; pelo menos 20 com relações entre módulos, 16 complexas em bases de porte elegível (quatro por família, dois projetos por família) e 16 ligadas a necessidades históricas públicas. Quatro controles simples; TS e JS representados. Probes demonstram direção baseline/referência, julgador de revisão admite achados válidos não previstos e há um evento incremental por família. Nenhum oracle chega ao agente; linhagens/reaproveitamentos explícitos. Relatório comprova todos os pisos e revisões, sem inflar amostra com seed ou fixtures.
+
+**Verificação:** reconstrução e probes independentes; inspeção de prompts, relações necessárias e porte; testes negativos do manifest. M0-04 integra os eventos e impõe isolamento; R1 pode preparar dados sem depender do harness. M0-12 recusa corpus não qualificado. O seed continua suficiente para iniciar M0-04/05/08.
 
 ### M0-04 — Implementar o harness, baseline competente e execução por agente
 
@@ -197,6 +211,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 - Cada resultado identifica `scripted_retrieval`, `human` ou `agent_run`. Roteiro determinístico não é apresentado como medição de comportamento de um agente.
 - Um cenário de timeout, um de erro e um de saída parcial preservam o registro necessário ao diagnóstico. Usage do modelo só é registrado quando realmente observado.
 - Smoke pareado com agente real funciona em uma tarefa por família; orçamento financeiro/runs está configurado antes de usar modelos pagos. Custo inclui schema, orientação, follow-ups, falhas e retries, com amortização explícita. M0-12 ampliará a campanha; quatro smokes não demonstram vantagem.
+- Executor de eventos distingue indexar checkout já alterado de atualizar A→B com índice/processo preservado. Inputs não incluem oracles, relatório, rótulos ou histórico com solução; isolamento de processo/FS é testado, não inferido da allowlist. Julgamento segue ADR 021. Replay e adapters locais podem avançar antes da disponibilidade de modelo pago.
 
 **Verificação:** replay offline, testes de isolamento entre braços e auditoria completa de uma sessão por família. O harness deve poder avaliar um protótipo sem depender do índice ou MCP finais de M1.
 
@@ -212,7 +227,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 - O executável copia-se para ambiente limpo e faz parsing de todas as famílias sem Node, Python, Go, Git CLI, compilador, arquivo externo de gramática ou download.
 - Execução nativa em Linux x86_64 e macOS arm64; falhas de sintaxe retornam árvores/diagnósticos com posições úteis, sem serem reportadas como sucesso completo.
-- O relatório registra fingerprints de gramáticas/consultas, bibliotecas dinâmicas exigidas e licenças. Dependências do próprio SO são explicitadas.
+- O relatório registra fingerprints de gramáticas/consultas, bibliotecas dinâmicas exigidas e licenças. Verifica o [baseline de SO/ABI](decisoes/PLATAFORMAS-V1.md) nos dois alvos; um smoke em macOS mais recente não prova o piso 15.0.
 - Tamanho, tempo e RSS são observações do spike; eventual problema tem decisão de corrigir, trocar componente ou registrar bloqueio para revisão do plano. Não remover silenciosamente uma linguagem ou plataforma exigida nem ocultar dependência runtime.
 
 **Verificação:** rede bloqueada, ambiente sem runtimes auxiliares e fixtures válidas/incompletas das gramáticas e dialetos contratados.
@@ -300,13 +315,13 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 ### M0-12 — Triar concorrentes e executar o piloto competitivo
 
-**Depende de:** M0-03, M0-04, M0-09, M0-11. **Frente:** avaliação/produto. **ADR:** 018.
+**Depende de:** M0-03, M0-03.R1, M0-04, M0-09, M0-11. **Frente:** avaliação/produto. **ADRs:** 018, 021.
 
 **Entrega:** `eval/competitors/`, protocolo de campanha, resultados D1 por braço e ablations A/B/C/D.
 
 **Trabalho:** começar a triagem dos oito assim que o harness estiver disponível; selecionar configurações fortes por domínio, incluindo modos enriquecidos relevantes. Executar D1 com agente real, baseline `rg`/leitura seletiva, finalistas e quatro variantes xrai. Registrar custos de sessões inteiras e falhas; comparar também orçamentos iguais para separar compressão de qualidade.
 
-**Aceite:** versões/configurações/instalação dos oito documentadas; exclusões justificadas por escopo ou limitação observada; nenhum concorrente relevante mantido em modo inferior por conveniência. Pelo menos duas execuções por tarefa/braço principal, mesmas condições e nenhuma troca de dados entre braços. Resultados identificam mecanismo, perdas por família/repo e o sinal de G0, inclusive quando ausente.
+**Aceite:** D1 qualificado e congelado por R1; versões/configurações/instalação dos oito documentadas; exclusões justificadas por escopo ou limitação observada; nenhum concorrente relevante mantido em modo inferior por conveniência. Pelo menos duas execuções por tarefa/braço principal, mesmas condições e nenhuma troca de dados entre braços. Resultados identificam mecanismo, perdas por família/repo e o sinal de G0, inclusive quando ausente; recorte complexo reportado separadamente, conforme ADR 021.
 
 **Verificação:** auditoria de transcripts e configurações; reproduzir uma vitória e uma perda. Até duas versões experimentais por hipótese; registrar horas de ajuste também para xrai. Os dados de D1 não são confirmação reservada.
 
@@ -323,7 +338,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 - Fixar limites iniciais de arquivos, bytes em trânsito, workers, timeout, saída e retenção. Distinguir limites verificáveis de aplicação de metas de RSS/latência a observar.
 - Listar o que será reaproveitado, refeito ou descartado, com motivo; registrar riscos, responsáveis por frente e critérios de revisão das decisões.
 - Nenhum bloqueio de distribuição, integridade de fonte, isolamento básico ou recuperação fica sem tratamento. Uma medição inconclusiva não vira confirmação de viabilidade.
-- G0 registra sinal exploratório contra os finalistas: +10 pp em sucesso, razão pontual de custo por tentativa ≤1,25 e de custo por sucesso ≤1,15; repetido em duas famílias e dois repos de cada uma. Ablations e ausência de falhas críticas são obrigatórias. Só economia ou volume menor de resposta não passa.
+- G0 registra sinal exploratório contra os finalistas: +10 pp em sucesso, razão pontual de custo por tentativa ≤1,25 e de custo por sucesso ≤1,15; repetido em duas famílias e dois repos de cada uma. Recorte complexo também precisa melhorar sucesso em duas famílias e respeitar os tetos pontuais, conforme ADR 021. Ablations e ausência de falhas críticas são obrigatórias. Só economia ou volume menor de resposta não passa.
 - Fixar para M1-A domínio/regime, orçamento de esforço/modelos, finalistas e plano de amostragem, mantendo qualidade como objetivo primário. Sinal restrito produz decisão de foco; ausência de sinal após duas versões encerra a tese atual.
 
 **Decisão de saída:** G0 favorável e critérios técnicos cumpridos liberam **M1-A somente**. Relatório negativo é resultado válido do experimento, mas não libera a próxima etapa. Se a tese falhar antes de terminar os spikes, é permitido encerrar o investimento restante e registrar tarefas não executadas; não é preciso completar infraestrutura para justificar a parada.
@@ -390,11 +405,11 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Entrega:** schema/migração inicial, blobs, inventário, fatos, diagnósticos, capacidades e geração publicada em `crates/xrai-index/src/store/`.
 
-**Trabalho:** implementar o resultado de M0-07; um escritor por índice entre processos, leitores com snapshot, staging, recuperação e retenção de fontes ainda referenciadas. Adiar tabelas de experiência/sessão que não tenham consumidor em M1.
+**Trabalho:** promover o resultado de M0-07 seguindo o [ADR 022](decisoes/PERSISTENCIA-E-RETENCAO.md): lock de dono, encarnação/epoch/tentativa, staging recuperável, fonte imutável deduplicada, FTS de conteúdo externo e GC com pins persistidos. Adiar tabelas de experiência/sessão que não tenham consumidor em M1.
 
-**Aceite:** commit publica fatos e seus blobs juntos; leitor nunca combina gerações; interrupção recupera último estado íntegro; foreign keys impedem fonte órfã em fato publicado. Limpeza respeita consultas/contextos ainda válidos e não toca dados fora do cache derivado.
+**Aceite:** commit publica fatos, blobs, ponteiro e estado da tentativa juntos; leitor nunca combina gerações. Recuperação distingue commit sem confirmação de staging abandonado; PID/tempo não autorizam roubo de lock. Token antigo não publica. Pins são registrados atomicamente contra GC, conservando base/head válidos; pressão recusa novo trabalho antes de violar retenção. Foreign keys e integridade do FTS preservam fontes. Cache local e dados humanos permanecem separados.
 
-**Verificação:** transações reais, crash antes/depois do commit, writer concorrente com espera limitada e banco de versão futura recusado sem destruição.
+**Verificação:** matriz de posse/GC do ADR 022 em processos reais, crash antes/depois do commit, writer concorrente com espera limitada, banco futuro preservado e 100 gerações iguais versus alteração/GC. Registrar tamanho lógico, SQLite/WAL/SHM/temporários, tempo/RSS e comparação com o layout do spike. Nenhuma cópia de corpo FTS por geração sem justificativa medida e revisão registrada.
 
 ### M1-05 — Implementar o supervisor de extração
 
@@ -526,7 +541,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Aceite:** nomes exatos são encontrados nas fixtures suportadas; `camelCase`, `snake_case`, Unicode e paths têm comportamento documentado. Há paginação e indicação de truncamento/candidatos. Arquivos excluídos não entram silenciosamente pelo fallback; homônimos exibem identidade e linguagem.
 
-**Verificação:** tarefas de localização do corpus, arquivo criado após o índice, palavras reservadas da sintaxe FTS e consultas que produzem muitos resultados. Ranking é avaliado separadamente de precisão das relações.
+**Verificação:** tarefas de localização do corpus, arquivo criado após o índice, palavras reservadas da sintaxe FTS e consultas que produzem muitos resultados. Filtrar membership da revisão antes de top-k; publicar/remover B não muda ranking/cursor de A. Cobrir delete/rebuild e fonte compartilhada conforme ADR 022. Ranking é avaliado separadamente de precisão das relações.
 
 ### M1-23 — Integrar somente os recortes P2/P3 que justificaram investimento
 
@@ -550,7 +565,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Aceite:** ao menos um perfil de tokenizer fixado em M0 conta exatamente o payload controlado pelo xrai; outros perfis declaram estimativa e há teto de bytes independente. Itens identificados como obrigatórios que não cabem geram insuficiência explícita. `expand` usa a mesma geração ou retorna expiração; nunca muda de revisão em silêncio.
 
-**Verificação:** limites extremos, source após centenas de linhas, arquivo pequeno versus símbolo, classe/membros, base/head e expiração de contexto. A resposta declara suporte experimental e escopo; resultados de G1 não autorizam promessa de suficiência universal ou economia para qualquer linguagem/tarefa.
+**Verificação:** limites extremos, source após centenas de linhas, arquivo pequeno versus símbolo, classe/membros, base/head e expiração de contexto. Pin antes da emissão, corrida contra GC, limites de retenção e ociosidade sem transação WAL aberta, conforme ADR 022. A resposta declara suporte experimental e escopo; resultados de G1 não autorizam promessa de suficiência universal ou economia para qualquer linguagem/tarefa.
 
 ### M1-17 — Entregar a CLI sobre a API de domínio
 
@@ -586,7 +601,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Aceite:** nenhuma mistura de fonte/revisão nos cenários testados; cache recupera ou pede rebuild com diagnóstico; nenhuma publicação parcial se apresenta como completa. Pools, filas e respostas respeitam limites configurados. Timeout e retry não geram ciclo infinito; consultas mantêm origem/estado explícitos durante falha.
 
-**Verificação:** executar em processos e filesystem reais de Linux x86_64 e macOS arm64; registrar seeds e falhas. Testar exceder limites sem provocar OOM global deliberado; não confundir RSS amostrado com garantia rígida de memória do SO.
+**Verificação:** executar em processos e filesystem reais de Linux x86_64 e macOS arm64; registrar seeds e falhas. Incluir a matriz integrada do ADR 022: transporte lento, dono pausado, confirmação perdida, pins/GC e espaço insuficiente. Testar exceder limites sem provocar OOM global deliberado; não confundir RSS amostrado com garantia rígida de memória do SO.
 
 ### M1-20 — Produzir e verificar os artefatos da alpha
 
@@ -594,7 +609,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Entrega:** pipeline de pacotes, checksums, inventário de licenças, instruções e relatório de suporte.
 
-**Trabalho:** construir somente Linux x86_64 (`x86_64-unknown-linux-gnu`) e macOS arm64 (`aarch64-apple-darwin`) para a alpha/v1. Fixar e documentar baseline de SO/glibc e deployment target macOS; verificar dependências dinâmicas, flags e inclusão das gramáticas. Cada alvo distribui um executável; arquivos de documentação/licença não são assets necessários ao runtime. Musl, Windows e outras arquiteturas não são entregáveis obrigatórios do v1.
+**Trabalho:** construir somente Linux x86_64 (`x86_64-unknown-linux-gnu`) e macOS arm64 (`aarch64-apple-darwin`) para a alpha/v1. Aplicar baseline Ubuntu 24.04/glibc 2.39 e deployment target macOS 15.0, conforme ADR 020; verificar dependências dinâmicas, flags e inclusão das gramáticas. Cada alvo distribui um executável; arquivos de documentação/licença não são assets necessários ao runtime. Musl, Windows e outras arquiteturas não são entregáveis obrigatórios do v1.
 
 **Aceite:** em cada alvo anunciado, executar `index → search → inspect → context` e MCP stdio em ambiente limpo, sem rede e runtimes auxiliares. Startup dos workers usa o mesmo binário. Checksums e fontes de dependências são rastreáveis.
 
@@ -668,12 +683,12 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Primeira sequência executável
 
-L0 já executou M0-01/M0-02; L1 já registrou M0-01.R1/M0-02.R1. **Próxima atividade de plataforma: concluir o aceite de M0-02.R2**, adequação da CI ao v1, e registrar evidência Linux x86_64/macOS arm64 para M0-07. O implementador já está registrando a adaptação em L1; falta de execução nativa permanece pendente. Continuar M0-03 e M0-07 conforme o [estado](STATUS-IMPLEMENTACAO.md), sem refazer entregas. M0-04 aguarda aceite do corpus; M0-05/M0-08 também. A [decisão de plataformas](decisoes/PLATAFORMAS-V1.md) atualiza o escopo da revisão L0. A sequência original abaixo permanece como referência do desenho.
+L0 e as retificações R1 já estão entregues. A [revisão L1](relatorios/REVISAO-L1.md) aceita M0-03 no escopo inicial, resolve C01/S01/S02 e prepara **L2: M0-03.R1 e trabalho local de M0-04/05/08**. Começar pelo harness/replay e triagem de candidatos; aproveitar fixtures para spikes nativos. CI R2 e prova Linux de M0-07 continuam pendentes externamente e não bloqueiam esse lote. Implementação de persistência de produção fica após G1. A sequência geral é:
 
 1. Abrir M0-01 e M0-02: contrato mínimo e workspace/CI podem avançar juntos.
-2. Preparar D0/D1 em M0-03 e harness/agentes em M0-04; iniciar triagem dos oito concorrentes. Spikes nativos, armazenamento e filesystem seguem em frente independente.
+2. Usar D0/seed de M0-03 no harness de M0-04; qualificar D1 em M0-03.R1 antes do piloto. Iniciar triagem dos oito concorrentes. Spikes nativos, armazenamento e filesystem seguem em frente independente.
 3. Implementar P2 em M0-11 e P3 em M0-09 sobre captura/extração mínima; executar piloto e ablations em M0-12. Não esperar a infraestrutura completa para descobrir ausência de sinal.
 4. Consolidar M0-10/G0. Sinal positivo e viabilidade técnica liberam apenas M1-01 e M1-22: contratos mínimos e confirmação reservada.
 5. Após G1 positivo, construir M1-B; integrar somente recortes vencedores em M1-23/16. Verificar Linux x86_64 e macOS arm64, CLI/MCP e retenção da vantagem em M1-21/G2.
 
-O primeiro incremento revisável continua M0-01 + M0-02, acompanhado da definição de D0/D1 e limites da campanha. Este pedido revisou o plano; não executou implementação ou experimentos.
+O próximo incremento revisável é o lote L2 da revisão vigente, com evidências por cartão. Esta entrega resolve decisões e organiza o trabalho; não executa o lote, sessões de agentes ou gates competitivos.

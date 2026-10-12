@@ -1,0 +1,563 @@
+{
+  "recorded_at_utc": "2026-10-12T02:50:05.609320+00:00",
+  "reviewer": "architect",
+  "base_commit": "0ae00e58f557489dc31348c4accced725c012cca",
+  "method": "Direct JSON reads, unique path count per task and manifest snapshot sizes; source review of materialize_task and sqlite_spike. Counts are not semantic difficulty scores. Probes not rerun in this review; prior results remain attributed to L1.",
+  "source_sha256": {
+    "eval/tasks/challenge-dev.jsonl": "e7c9172c857a0016b70b793db62308c1fe123161f672c1782593a99e4222f8f5",
+    "eval/corpus.toml": "a3435cbcec6ab01d1bd760431ef9d36d40f65ac53e6c7f830cbfe26a72f5e5a6",
+    "eval/sources/manifest.json": "84253c4517f8472515528526f11de0f6def2128825d90d552bbd2222b4275a75",
+    "eval/scripts/materialize_task.py": "868add6aa2095278226162f3ec26ed6299b9bdca6e0293f3ebbcda469023342c",
+    "eval/scripts/verify_corpus.py": "38bf0890d70212dff20d45405bcfdaf3c7ae8a778a6484cf86af2b03cb1dfc2c",
+    "crates/xrai-eval/src/sqlite_spike.rs": "2fa7234566ca5ea8cc9fd933bcd584af241e60c038ed4cc9c2b7f6c1e4d2acb3",
+    "docs/relatorios/logs/L1/corpus-source-review.json": "9b8fc48602c57712a47f88bb4a5a37b94e8705fe602ac8d3679f6c9caa0acbc3",
+    "docs/relatorios/logs/L1/sqlite-storage-cost.json": "36f9ae3dd64ee0db9d29cf9f10c490e2ea20223ca662f43138837f3885a499d5",
+    "eval/oracles/D1-RS-01/oracle.json": "f3ab3efacfb92ea0caddd5d1036a310dc9b8eda88a161e0e9e3cc0c2298b16a9",
+    "eval/oracles/D1-RS-02/oracle.json": "03b7826ce5863513f58a936e8228f84442c3e57d912878a6b799296f76617a69",
+    "eval/oracles/D1-TJ-01/oracle.json": "ff0a2b593e0d4741dd8cf4e5871a57f381ced56c8f6348092c8a97c275a65df1",
+    "eval/oracles/D1-TJ-02/oracle.json": "637b8b0b312ebb0d3e973e27418122df6891c451ed5ba0a678d1c45e26483b09",
+    "eval/oracles/D1-PY-01/oracle.json": "8694f703081d00af26e8b208f6bf5a40c1b39ea0cdcfac7d3aa0c733e99ad806",
+    "eval/oracles/D1-PY-02/oracle.json": "9b126c6144a05a774b45881e38c83b126242f148ea63b36e366169c87e07ede4",
+    "eval/oracles/D1-GO-01/oracle.json": "46c05bee1535e2f1f2dc2bea94cec0e8271171f361b9d2aff94cb20ea62a2102",
+    "eval/oracles/D1-GO-02/oracle.json": "dba35fe2a93395b9ddd3da781d20820201d6fc6d89eeb7c558ffa17aeec0108c",
+    "eval/oracles/D1-RS-03/oracle.json": "6d5a6b208d4d98d71c8ebc0350bc5af1f09ec7beee571a93430c1c0bbc0f56dc",
+    "eval/oracles/D1-RS-04/oracle.json": "7068f6c679a6f95c860b199d94d4828b7f7b687ab34d48ad9b5c0a6bd421c73d",
+    "eval/oracles/D1-TJ-03/oracle.json": "da893d296deee5b265077b4f8295397807d8f61c3e942ec38a0fc76e92f30dba",
+    "eval/oracles/D1-TJ-04/oracle.json": "c24c69dcc0b6a93a55b11bd1afba4d1a81fe829c50789f8b2ab85bc019516a3e",
+    "eval/oracles/D1-PY-03/oracle.json": "15a11763122374806ef777bc2d1b171c509f43802f4f164a0fb80d40c1c8d11b",
+    "eval/oracles/D1-PY-04/oracle.json": "2c902733acbf61d7bf8378405790aeaad4f92331cf81c1b63e44591f22a7b215",
+    "eval/oracles/D1-GO-03/oracle.json": "4cdafd3b365ccad43481b35a8e983d02c2932b950d340b13511a90bb82ffb05c",
+    "eval/oracles/D1-GO-04/oracle.json": "64add281063eb501c01be44f977e5acab2f8df00f0d6f29542216b02914eb1cd",
+    "eval/oracles/D1-RS-05/oracle.json": "dee6809ab2cc2a0db90931c4e1a89d9fa9b6510c148f5fb0adf4d35ab171cef7",
+    "eval/oracles/D1-RS-06/oracle.json": "1e14c46a367059e459e7a90fc54a5bdcad5acb338e56ab990ac1819940d3b6ac",
+    "eval/oracles/D1-TJ-05/oracle.json": "3043540e180228600945bc29e599aa053b2696bf7c96f4a9cabe8f19fdd5478b",
+    "eval/oracles/D1-TJ-06/oracle.json": "7d2acff2e229ebabdab9e5afe96a9fbe71dc210778219ec1bc18ea31f185996f",
+    "eval/oracles/D1-PY-05/oracle.json": "9fd14000b85748c784e9b4d9a79b480a4ac8e257b116b54abee2dbe125d97443",
+    "eval/oracles/D1-PY-06/oracle.json": "fe286ef57106de6a4ef38667d14d8080f9aab7bd829ab7fce8c95624d751b001",
+    "eval/oracles/D1-GO-05/oracle.json": "788b6b7e61eda6bc5ed9065724969840a52df60ff72647b5312bc35803ea0afa",
+    "eval/oracles/D1-GO-06/oracle.json": "ceb8ae16c5947d28be3825d35614b32094fb49e2ad89579e67dade72e80ac14f",
+    "eval/oracles/D1-RS-07/oracle.json": "d6fc11dd803915bf56f9140756b4578f09403ec61ca2f97e7acb77dc489d0652",
+    "eval/oracles/D1-TJ-07/oracle.json": "9c500af675ba81e9952af75b467867f9c95c96b3df4468f8b585d2386e2167ab",
+    "eval/oracles/D1-PY-07/oracle.json": "dac5cc7ac1e59436d6047e3d8a8be74ea8805d4adbcd2f2008efe74b067a7ff7",
+    "eval/oracles/D1-GO-07/oracle.json": "dc2b1569b2d72955bc34e6b6ed95cfc5d26964a4e3cac2d04e49095bf09b9088",
+    "eval/oracles/D1-RS-08/oracle.json": "1789de95445e8fd5e6fe86aa60ed30954036a19a6a6443e3e4043dd4af0394e9",
+    "eval/oracles/D1-TJ-08/oracle.json": "b90e8d86ede5c4135587993ba0fd510538a62b67158c018626db77672b6c30db",
+    "eval/oracles/D1-PY-08/oracle.json": "117c878a9511b3566f0329f2eeffd4bf3a4c7ebfefbd00a136b7bbcf8e47df90",
+    "eval/oracles/D1-GO-08/oracle.json": "72e21c787817d57c2d347d1a699fe5ad7fbab68b8417fbebeca94d23c4ce17b4"
+  },
+  "summary": {
+    "D1_seed_tasks": 32,
+    "origins": {
+      "historical_upstream_fix": 8,
+      "local_contract_requirement": 8,
+      "upstream_source_question": 8,
+      "materialized_state_scenario": 4,
+      "simulated_regression_review": 4
+    },
+    "relevant_file_count_distribution": {
+      "1": 19,
+      "2": 11,
+      "3": 2
+    },
+    "oracle_review_statuses": {
+      "author source review complete; second-reader audit pending": 32
+    },
+    "executable_probes": 12,
+    "snapshot_count": 20,
+    "snapshot_file_min": 7,
+    "snapshot_file_max": 37,
+    "snapshot_bytes_min": 18072,
+    "snapshot_bytes_max": 200965,
+    "source_bytes_summed_over_snapshots": 1546610,
+    "agent_runs_executed": 0,
+    "product_code_changed": false
+  },
+  "snapshots": [
+    {
+      "id": "strsim@f72cd1cbbfc0b43db217a9c57c543b025bdba863",
+      "files": 14,
+      "bytes": 55827
+    },
+    {
+      "id": "shellwords@8d2868b0edadbd5572acd7ed25b6be890c2781b7",
+      "files": 7,
+      "bytes": 29514
+    },
+    {
+      "id": "mitt@6b41670516ed8e8b738612f60491995470aa63b3",
+      "files": 13,
+      "bytes": 23251
+    },
+    {
+      "id": "ms@1c6264b795492e8fdecbc82cb8802fcfbfc08d26",
+      "files": 9,
+      "bytes": 82813
+    },
+    {
+      "id": "cachetools@9e26001776993e03c81b5bba8d572c993e818dcf",
+      "files": 36,
+      "bytes": 151074
+    },
+    {
+      "id": "slugify@7edf477f64b65ffe22c966d6a8dcc3edd0fb6997",
+      "files": 22,
+      "bytes": 59115
+    },
+    {
+      "id": "uuid@0f11ee6918f41a04c201eceeadf612a377bc7fbc",
+      "files": 31,
+      "bytes": 78244
+    },
+    {
+      "id": "humanize@e308a8fc2981a19ebce7ae9d7c32094fe2b7baad",
+      "files": 27,
+      "bytes": 66536
+    },
+    {
+      "id": "strsim@cd2e7b3bddceb17bcac0fe319f6fd325107be7ce",
+      "files": 12,
+      "bytes": 44933
+    },
+    {
+      "id": "shellwords@045e4dccd2478ccc8bfa91bd0fe449dfe5473496",
+      "files": 7,
+      "bytes": 29468
+    },
+    {
+      "id": "mitt@22c5dcba10736aecb1f39ee88d9f85278108c988",
+      "files": 10,
+      "bytes": 18072
+    },
+    {
+      "id": "ms@fe0bae301a6c41f68a01595658a4f4f0dcba0e84",
+      "files": 9,
+      "bytes": 82854
+    },
+    {
+      "id": "cachetools@98ec79ff8be24ce1346d6a96602f11ccbda4f76f",
+      "files": 37,
+      "bytes": 200965
+    },
+    {
+      "id": "slugify@7b6d5d96c1995e6dccb39a19a13ba78d7d0a3ee4",
+      "files": 22,
+      "bytes": 58644
+    },
+    {
+      "id": "uuid@c58770eb495f55fe2ced6284f93c5158a62e53e3",
+      "files": 31,
+      "bytes": 76137
+    },
+    {
+      "id": "humanize@47eb3ae4df4420a7daf4d673dfb5e2149657570c",
+      "files": 35,
+      "bytes": 72031
+    },
+    {
+      "id": "strsim@20e3bdd2ee477db368ecb41815d55ab24550e0bf",
+      "files": 13,
+      "bytes": 54572
+    },
+    {
+      "id": "ms@d1add60365fe2340b750b1f7a254b83bea34e52d",
+      "files": 9,
+      "bytes": 83206
+    },
+    {
+      "id": "cachetools@57d2e4813d9801f97034559e22428bac6f7c6c9b",
+      "files": 37,
+      "bytes": 200848
+    },
+    {
+      "id": "uuid@53dda83ebe99c23d0e66c2472abdbf178097c3b8",
+      "files": 31,
+      "bytes": 78506
+    }
+  ],
+  "tasks": [
+    {
+      "id": "D1-RS-01",
+      "family": "Rust",
+      "repository": "strsim",
+      "kind": "correction",
+      "origin_class": "historical_upstream_fix",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-RS-01/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-RS-01/probe.rs",
+      "prompt": "Corrija transposições de Jaro para elementos repetidos seguindo os wrappers genéricos e Jaro-Winkler. Preserve Unicode e simetria."
+    },
+    {
+      "id": "D1-RS-02",
+      "family": "Rust",
+      "repository": "shellwords",
+      "kind": "correction",
+      "origin_class": "historical_upstream_fix",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-RS-02/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-RS-02/probe.rs",
+      "prompt": "quote(\"~root\") não preserva o til no shell POSIX: corrija a escolha de escape e verifique a propagação via join sem executar comandos do usuário."
+    },
+    {
+      "id": "D1-TJ-01",
+      "family": "TSJS",
+      "repository": "mitt",
+      "kind": "correction",
+      "origin_class": "historical_upstream_fix",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-TJ-01/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-TJ-01/probe.ts",
+      "prompt": "Fortaleça os tipos: listeners específicos não devem receber união de todos os payloads; emissão deve rejeitar payload errado e permitir omitir payload apenas quando undefined é válido. Preserve wildcard."
+    },
+    {
+      "id": "D1-TJ-02",
+      "family": "TSJS",
+      "repository": "ms",
+      "kind": "correction",
+      "origin_class": "historical_upstream_fix",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-TJ-02/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-TJ-02/probe.js",
+      "prompt": "Corrija a leitura de decimais negativos de dois dígitos, como -10.5h, seguindo export -> parse -> multiplicação da unidade. Preserve sinais e decimais menores."
+    },
+    {
+      "id": "D1-PY-01",
+      "family": "Python",
+      "repository": "cachetools",
+      "kind": "correction",
+      "origin_class": "historical_upstream_fix",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-PY-01/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-PY-01/probe.py",
+      "prompt": "Corrija cache_key em métodos decorados: chave exposta no método vinculado deve ser calculável pelos mesmos args do método, incluindo key customizada que usa self, em todos os modos lock/info/condition."
+    },
+    {
+      "id": "D1-PY-02",
+      "family": "Python",
+      "repository": "slugify",
+      "kind": "correction",
+      "origin_class": "historical_upstream_fix",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-PY-02/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-PY-02/probe.py",
+      "prompt": "A CLI aceita --regex-pattern mas perde o parâmetro antes de chamar slugify. Corrija propagação do parser até função e mantenha defaults."
+    },
+    {
+      "id": "D1-GO-01",
+      "family": "Go",
+      "repository": "uuid",
+      "kind": "correction",
+      "origin_class": "historical_upstream_fix",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-GO-01/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-GO-01/oracle_test.go",
+      "prompt": "Corrija geração UUIDv7 para monotonicidade de timestamp/seq quando múltiplas gerações caem no mesmo instante ou o relógio recua. Siga o caminho de NewV7 e sincronização compartilhada."
+    },
+    {
+      "id": "D1-GO-02",
+      "family": "Go",
+      "repository": "humanize",
+      "kind": "correction",
+      "origin_class": "historical_upstream_fix",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-GO-02/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-GO-02/oracle_test.go",
+      "prompt": "BigComma altera o big.Int do chamador. Corrija a aliasing entre formatter e aritmética e preserve saída/reutilização do argumento."
+    },
+    {
+      "id": "D1-RS-03",
+      "family": "Rust",
+      "repository": "strsim",
+      "kind": "contract_change",
+      "origin_class": "local_contract_requirement",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-RS-03/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Adicione normalized_hamming(&str,&str)->Result<f64,StrSimError>: similaridade 1-distance/character_count; dois vazios retornam 1; comprimentos diferentes mantêm erro. Reuse caminho genérico; documente e teste Unicode."
+    },
+    {
+      "id": "D1-RS-04",
+      "family": "Rust",
+      "repository": "shellwords",
+      "kind": "contract_change",
+      "origin_class": "local_contract_requirement",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-RS-04/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Adicione join_checked(words,max_bytes)->Result<String,JoinLimitError>, rejeitando resultado escapado maior que max_bytes sem truncar UTF-8. Limite conta bytes de quotes/separadores; join existente permanece compatível."
+    },
+    {
+      "id": "D1-TJ-03",
+      "family": "TSJS",
+      "repository": "mitt",
+      "kind": "contract_change",
+      "origin_class": "local_contract_requirement",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-TJ-03/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Adicione once<Key>(type,handler) com mesmos tipos de on; remova listener antes de invocar callback para que reemissão reentrante não repita. Retorne disposer idempotente e preserve APIs existentes."
+    },
+    {
+      "id": "D1-TJ-04",
+      "family": "TSJS",
+      "repository": "ms",
+      "kind": "contract_change",
+      "origin_class": "local_contract_requirement",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-TJ-04/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Estenda opção long com precisão explicitamente opt-in: options.precision de 0 a 3 casas decimais; fmtLong não deve arredondar inteiro nessa opção. Rejeite precisão inválida; chamadas antigas continuam iguais."
+    },
+    {
+      "id": "D1-PY-03",
+      "family": "Python",
+      "repository": "cachetools",
+      "kind": "contract_change",
+      "origin_class": "local_contract_requirement",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-PY-03/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Adicione função methodkey_with_self(self,*args,**kwargs), que sempre inclui self na chave; não altere methodkey nem default cachedmethod. Quando usada como key customizada, instâncias distintas devem separar cache compartilhado."
+    },
+    {
+      "id": "D1-PY-04",
+      "family": "Python",
+      "repository": "slugify",
+      "kind": "contract_change",
+      "origin_class": "local_contract_requirement",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-PY-04/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Adicione opção CLI --strict-input: erro exit 2 quando stdin não for UTF-8 válido, preservando comportamento atual quando flag ausente. Propague escolha até leitura e não mude a API slugify."
+    },
+    {
+      "id": "D1-GO-03",
+      "family": "Go",
+      "repository": "uuid",
+      "kind": "contract_change",
+      "origin_class": "local_contract_requirement",
+      "unique_relevant_files": 3,
+      "oracle": "eval/oracles/D1-GO-03/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Adicione ParseCanonical(string)(UUID,error): aceite apenas 36 caracteres com hífens 8/13/18/23, hex case-insensitive. Parse atual continua aceitando formas históricas; Scan e UnmarshalText permanecem compatíveis."
+    },
+    {
+      "id": "D1-GO-04",
+      "family": "Go",
+      "repository": "humanize",
+      "kind": "contract_change",
+      "origin_class": "local_contract_requirement",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-GO-04/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Adicione ParseBytesStrict(string)(uint64,error): valor fracionário só válido se resultado em bytes é inteiro; overflow retorna erro. ParseBytes existente mantém compatibilidade."
+    },
+    {
+      "id": "D1-RS-05",
+      "family": "Rust",
+      "repository": "shellwords",
+      "kind": "state_config",
+      "origin_class": "upstream_source_question",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-RS-05/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Com no_std selecionado, explique quais imports/impl são ativos e por que std::error::Error deixa de ser uma relação possível."
+    },
+    {
+      "id": "D1-RS-06",
+      "family": "Rust",
+      "repository": "strsim",
+      "kind": "state_config",
+      "origin_class": "materialized_state_scenario",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-RS-06/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Após criar consumidor externo examples/current.rs e remover dev, localize a chamada genérica atual e exclua dev do estado atual."
+    },
+    {
+      "id": "D1-TJ-05",
+      "family": "TSJS",
+      "repository": "mitt",
+      "kind": "state_config",
+      "origin_class": "upstream_source_question",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-TJ-05/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Configuração exclui test/** mas inclui src/**; descubra emit e informe cobertura excluída dos testes, sem afirmar que inexistem testes."
+    },
+    {
+      "id": "D1-TJ-06",
+      "family": "TSJS",
+      "repository": "ms",
+      "kind": "state_config",
+      "origin_class": "materialized_state_scenario",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-TJ-06/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Depois de criar consumer.js e alterar seu número mantendo mtime/tamanho, identifique o valor atual passado ao formatter."
+    },
+    {
+      "id": "D1-PY-05",
+      "family": "Python",
+      "repository": "cachetools",
+      "kind": "state_config",
+      "origin_class": "upstream_source_question",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-PY-05/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Com escopo somente src/cachetools/keys.py, localize methodkey, mas diagnostique a relação cachedmethod fora do escopo como excluída."
+    },
+    {
+      "id": "D1-PY-06",
+      "family": "Python",
+      "repository": "slugify",
+      "kind": "state_config",
+      "origin_class": "materialized_state_scenario",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-PY-06/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Depois de criar consumer.py que usa allow_unicode=True e remover slugify/special.py, localize consumidor e relate a importação agora sem alvo."
+    },
+    {
+      "id": "D1-GO-05",
+      "family": "Go",
+      "repository": "uuid",
+      "kind": "state_config",
+      "origin_class": "upstream_source_question",
+      "unique_relevant_files": 3,
+      "oracle": "eval/oracles/D1-GO-05/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Selecione GOOS=js GOARCH=wasm: identifique implementação node_js ativa e não reporte imports net do arquivo excluído como dependência ativa."
+    },
+    {
+      "id": "D1-GO-06",
+      "family": "Go",
+      "repository": "humanize",
+      "kind": "state_config",
+      "origin_class": "materialized_state_scenario",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-GO-06/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Após criar caller.go e remover ordinals.go, localize Caller e identifique que Ordinal deixou de existir na revisão atual."
+    },
+    {
+      "id": "D1-RS-07",
+      "family": "Rust",
+      "repository": "strsim",
+      "kind": "review",
+      "origin_class": "simulated_regression_review",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-RS-07/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-RS-07/probe.rs",
+      "prompt": "Revise proposed.diff que remove o limiar do boost Jaro-Winkler. Identifique regressão funcional com caso concreto; não relate estilo como bug."
+    },
+    {
+      "id": "D1-TJ-07",
+      "family": "TSJS",
+      "repository": "ms",
+      "kind": "review",
+      "origin_class": "simulated_regression_review",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-TJ-07/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-TJ-07/probe.js",
+      "prompt": "Revise proposed.diff relaxando posição do sinal numérico. Identifique aceitação incorreta que alcança parseFloat, com zero achados inventados."
+    },
+    {
+      "id": "D1-PY-07",
+      "family": "Python",
+      "repository": "cachetools",
+      "kind": "review",
+      "origin_class": "simulated_regression_review",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-PY-07/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-PY-07/probe.py",
+      "prompt": "Revise proposed.diff removendo guarda obj=None no descriptor. Identifique impacto de introspecção de classe/autospec e evite alegações de thread-safety não ligadas ao diff."
+    },
+    {
+      "id": "D1-GO-07",
+      "family": "Go",
+      "repository": "uuid",
+      "kind": "review",
+      "origin_class": "simulated_regression_review",
+      "unique_relevant_files": 2,
+      "oracle": "eval/oracles/D1-GO-07/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": "oracles/D1-GO-07/oracle_test.go",
+      "prompt": "Revise proposed.diff simplificando layout de v6 e Time. Mostre perda de bits do timestamp que cruza version6.go e time.go; zero falsos positivos."
+    },
+    {
+      "id": "D1-RS-08",
+      "family": "Rust",
+      "repository": "strsim",
+      "kind": "control",
+      "origin_class": "upstream_source_question",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-RS-08/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Controle: informe a implementação de hamming e resultado para abc/axc."
+    },
+    {
+      "id": "D1-TJ-08",
+      "family": "TSJS",
+      "repository": "mitt",
+      "kind": "control",
+      "origin_class": "upstream_source_question",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-TJ-08/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Controle: informe o tipo do container all e como remover todos os handlers."
+    },
+    {
+      "id": "D1-PY-08",
+      "family": "Python",
+      "repository": "cachetools",
+      "kind": "control",
+      "origin_class": "upstream_source_question",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-PY-08/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Controle: localize hashkey e explique ordem de kwargs."
+    },
+    {
+      "id": "D1-GO-08",
+      "family": "Go",
+      "repository": "humanize",
+      "kind": "control",
+      "origin_class": "upstream_source_question",
+      "unique_relevant_files": 1,
+      "oracle": "eval/oracles/D1-GO-08/oracle.json",
+      "review_status": "author source review complete; second-reader audit pending",
+      "executable_probe": null,
+      "prompt": "Controle: informe diferença decimal/binária entre Bytes(1024) e IBytes(1024)."
+    }
+  ]
+}

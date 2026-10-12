@@ -22,6 +22,8 @@ Melhorar uma não prova automaticamente as outras.
 
 Começar com D0: 20 tarefas de desenvolvimento para ajustar o harness, distribuídas por Rust, TS/JS, Python e Go. Acrescentar D1: 32 desafios reais, oito por família e pelo menos dois repositórios por família, incluindo correção, contrato, revisão, mudança de configuração/estado e controles simples. Não usar D0/D1 para anunciar vitória estatística.
 
+A revisão L1 aceita as 32 propostas atuais como D1-seed para desenvolvimento. M0-03.R1 precisa cumprir a [admissão do ADR 021](decisoes/CORPUS-QUALIFICADO.md) antes de M0-12: porte/complexidade, proveniência, prompts sem pistas artificiais, testes independentes, revisão dos rótulos e eventos com índice aquecido. Seed e fixtures não aumentam a amostra primária. H1 herda pelo menos metade de casos complexos por família, com novidade em relação a todos os conjuntos de desenvolvimento.
+
 Preparar H1 reservado **para M1-A**, inicialmente 120 tarefas, 30 por família, pelo menos três repos por família, dois ausentes de D0/D1. Dimensionar a amostra conforme variância, discordância pareada, agrupamento e hipótese pré-registrada; 120 não garante potência para confirmar ganho de sucesso e limites de custo. O protocolo propõe teto H1+H2 de 240 tarefas únicas e uma só campanha adicional, limitada por esforço/custo registrados antes de executar. Separar repositórios, linhagens de mudanças e patches semelhantes para reduzir vazamento.
 
 | Classe | O que exige |
@@ -154,6 +156,8 @@ Comparar JSON compacto, texto estruturado e eventuais codecs especializados no m
 
 Testes metamórficos: comparar índice incremental versus completo após sequências de operações; repetir com renames, erros sintáticos, mudanças de configuração e concorrência. Comparar o significado dos fatos, sem exigir IDs internos ou timestamps idênticos.
 
+Persistência segue o [ADR 022](decisoes/PERSISTENCIA-E-RETENCAO.md): testar posse/epoch, dono pausado e PID reciclado, commit sem confirmação, disputa GC/pin, base/head retidos, quota com tudo pinado, FTS sem corpo duplicado por geração e ranking de A estável quando B entra/sai. Sessão ociosa e transporte lento não mantêm transação WAL indefinida. A matriz especifica quais provas pertencem a M1-04/15/16/19; decisões documentadas não equivalem à execução desses testes.
+
 Fuzzing nos parsers/adapters, leitores de índice externo e limites de saída. Testes de integração em ambientes limpos de Linux x86_64 e macOS arm64. Não depender exclusivamente de mocks para provar filesystem, SQLite, protocolos e comportamento de processo. Unicode, CRLF, espaços, bytes nativos e case sensitivity continuam no aceite; documentar filesystem/configuração efetivamente testados. Paths UTF-16/reparse points e particularidades de processos Windows ficam pós-v1; fixtures documentais existentes não anunciam suporte runtime.
 
 A fixture de métodos homônimos é motivada pela [checagem exploratória com codebase-memory](evidencias/CBM-TOKENSAVE-FAST.md). Usá-la como caso de regressão; não ajustar o sistema somente a esse exemplo nem extrapolar um erro para a qualidade global do concorrente.
@@ -182,7 +186,7 @@ Gates de investimento propostos, detalhados no protocolo:
 
 | Gate | Evidência mínima |
 |---|---|
-| G0, fim de M0 | Em D1, +10 pp em sucesso, razões pontuais de custo por tentativa ≤1,25 e por sucesso ≤1,15; sinal em duas famílias e dois repos de cada uma; ablations e invariantes |
+| G0, fim de M0 | Em D1 qualificado, +10 pp em sucesso, razões pontuais de custo por tentativa ≤1,25 e por sucesso ≤1,15; sinal em duas famílias e dois repos de cada uma; ablations e invariantes; recorte complexo melhora sucesso em duas famílias dentro dos tetos |
 | G1, M1-A, qualidade obrigatória | Ganho pontual ≥8 pp em sucesso, limite inferior do intervalo da diferença acima de zero |
 | G1, M1-A, custo limitado simultaneamente | Limites superiores dos intervalos das razões: custo por tentativa ≤1,25 e por sucesso ≤1,15 |
 | G2, fim de M1-B | Produto integrado preserva ganho pontual de sucesso e tetos/guardrails de G1, com invariantes e distribuição cumpridas |

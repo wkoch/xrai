@@ -384,7 +384,7 @@ Cache por workspace/worktree em diretório de cache do SO; configuração compar
 
 ### Distribuição
 
-Pipeline de build/testes nativos desde M0 e release da alpha/v1 em **Linux x86_64** (`x86_64-unknown-linux-gnu`) e **macOS arm64** (`aarch64-apple-darwin`). M0-05/M1-20 devem fixar baseline de SO/glibc, versão mínima do macOS e bibliotecas do sistema exigidas. Linux musl é uma alternativa futura a medir, sem artefato adicional obrigatório. Windows, Linux arm64 e macOS Intel ficam fora dos gates e da distribuição do v1; sua inclusão exige decisão e validação próprias após v1.
+Pipeline de build/testes nativos desde M0 e release da alpha/v1 em **Linux x86_64** (`x86_64-unknown-linux-gnu`) e **macOS arm64** (`aarch64-apple-darwin`). O [ADR 020](decisoes/PLATAFORMAS-V1.md) fixa baseline Ubuntu 24.04/glibc 2.39 e piso macOS 15.0; M0-05/M1-20 verificam ABI, autonomia e bibliotecas do sistema exigidas. Linux musl é uma alternativa futura a medir, sem artefato adicional obrigatório. Windows, Linux arm64 e macOS Intel ficam fora dos gates e da distribuição do v1; sua inclusão exige decisão e validação próprias após v1.
 
 Testar binários em ambientes limpos, sem runtimes auxiliares e sem rede. Medir tamanho, startup e memória. Reproduzir build e publicar checksums e inventário de licenças das gramáticas/dependências. Gramáticas compiladas podem aumentar o binário; medir antes de impor meta de tamanho.
 
@@ -425,13 +425,13 @@ Stack/scope graphs são boas referências para nomes, mas não substituem tipos,
 
 P2 antecipa semântica delimitada nas quatro famílias; P3 antecipa obrigações, consulta base/head e expansão por orçamento. Executam sobre snapshots capturados e adapters experimentais, sem depender do banco ou integração Git completos. M2/M3 amadurecem os componentes que demonstrarem ganho, em vez de receber a primeira prova da tese. Não fixar semanas sem equipe, corpus e resultados do spike.
 
-Próximo trabalho concreto: D0 com 20 tarefas, D1 com 32 desafios reais, harness de agentes e triagem dos oito concorrentes. O [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) define comparadores fortes, separação de holdout, contabilidade e limites de esforço. A campanha reservada começa em M1-A, antes da alpha completa.
+Próximo trabalho concreto: usar D0/seed já preparados no harness, qualificar 32 desafios D1 em M0-03.R1 e triar os oito concorrentes. O [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) define comparadores fortes, separação de holdout, contabilidade e limites de esforço. A campanha reservada começa em M1-A, antes da alpha completa.
 
-O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tarefas principais, três atividades complementares e seus gates. G1 tem qualidade como única rota primária: ganho pontual de sucesso ≥8 pp, com superioridade sustentada pelo intervalo; limites superiores das razões de custo por tentativa ≤1,25 e por sucesso ≤1,15, sob a análise e os guardrails do protocolo. Os números são propostas de arquitetura; a prioridade de qualidade foi definida pelo usuário. Isso testa um domínio delimitado; não promete semântica universal nem liderança nas quatro famílias sem evidência.
+O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tarefas principais, quatro atividades complementares e seus gates. G1 tem qualidade como única rota primária: ganho pontual de sucesso ≥8 pp, com superioridade sustentada pelo intervalo; limites superiores das razões de custo por tentativa ≤1,25 e por sucesso ≤1,15, sob a análise e os guardrails do protocolo. Os números são propostas de arquitetura; a prioridade de qualidade foi definida pelo usuário. Isso testa um domínio delimitado; não promete semântica universal nem liderança nas quatro famílias sem evidência.
 
 ## 14. Registro das decisões propostas
 
-Os ADRs 001–018 permanecem **Propostos**. No ADR 019, prioridade de qualidade e separação de papéis são **definidas pelo usuário**; os limiares numéricos continuam propostas de arquitetura. O recorte de plataformas do ADR 020 também foi **definido pelo usuário**. Cada linha resume contexto, decisão, alternativa, consequência e revisão necessária. Proposto não exige nova permissão para cada tarefa: o usuário autorizou preparar o início da implementação dentro deste plano; alterações materiais devem ser registradas.
+Os ADRs 001–018 permanecem **Propostos**, com concretizações nas revisões L0/L1. No ADR 019, prioridade de qualidade e separação de papéis são **definidas pelo usuário**; os limiares numéricos continuam propostas de arquitetura. O recorte de plataformas do ADR 020 também foi **definido pelo usuário**; seus pisos de SO e os ADRs 021/022 são **decisões do Arquiteto para execução**. Cada linha resume contexto, decisão, alternativa, consequência e revisão necessária. Proposto não exige nova permissão para cada tarefa: o usuário autorizou preparar o início da implementação dentro deste plano; alterações materiais devem ser registradas.
 
 | ADR | Contexto e decisão | Alternativa e consequência | Validação/revisão |
 |---|---|---|---|
@@ -455,6 +455,8 @@ Os ADRs 001–018 permanecem **Propostos**. No ADR 019, prioridade de qualidade 
 | 018 | Antecipar P2/P3 e confirmação competitiva em M0/M1-A; engenharia ampla só após G1 | Completar infraestrutura antes da prova reduz incerteza técnica, mas pode financiar produto sem ganho; protótipos custam descarte/reintegração | Finalistas fortes, holdout, ablations, custo completo, tetos e decisões do protocolo de diferenciação |
 | 019 | Usuário prioriza sucesso com custo aceitável e separa arquiteto de implementador; qualidade é a única rota de avanço | Economia sozinha poderia aprovar produto menos útil; gasto irrestrito poderia comprar pouco ganho. Arquiteto planeja; outra IA implementa e mede | Proposta G1: ganho ≥8 pp, razões de custo por tentativa ≤1,25 e por sucesso ≤1,15 sob intervalos; handoff e estado locais |
 | 020 | Usuário restringe v1 a Linux x86_64 e macOS arm64; Windows após v1 | Matriz ampla desde M0 consome trabalho de plataforma; foco em dois alvos mantém as exigências de qualidade e posterga outros ports | M0-02.R2 ajusta CI; M0-05/06/07/08 e M1-19/20 provam os dois alvos; [decisão e critérios](decisoes/PLATAFORMAS-V1.md) |
+| 021 | Aceitar corpus inicial como D1-seed e qualificar 32 casos antes do piloto, com porte/complexidade, proveniência e oracles verificáveis | Aceitar bibliotecas pequenas como prova geral favorece pistas e tarefas simples; ampliar amostra agora aumenta custo. Preservar seed e substituir casos primários conforme critérios | M0-03.R1, M0-04/12 e H1; [admissão e recortes](decisoes/CORPUS-QUALIFICADO.md) |
+| 022 | Lock de dono e fencing para staging; FTS externo no SQLite por conteúdo; retenção por pins persistidos | PID/tempo podem confundir dono vivo; texto por geração cresce; GC por idade quebra contextos. Acrescenta coordenação e joins que devem ser medidos | M1-04/15/16/19 após G1; [decisão, alternativas e falhas](decisoes/PERSISTENCIA-E-RETENCAO.md) |
 
 ### 14.1 Concretizações do lote L0 nos ADRs existentes
 
@@ -483,12 +485,20 @@ A [revisão L0](relatorios/REVISAO-L0.md) aceita o scaffold/exemplos e define as
 
 L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do commit L0 passou nos três hosts do scaffold; isso não encerra M0-05 ou M1-20. G0/G1/G2 permanecem sem resultado.
 
-## 15. Questões ainda abertas
+### 14.3 Resolução arquitetural L1
 
-- Repositórios reais de referência e os primeiros frameworks dentro das linguagens escolhidas.
-- Limites de hardware, tamanho de base e latência aceitável no ambiente do usuário.
-- Profundidade autônoma exigida por linguagem versus uso opcional de índices produzidos externamente.
-- Política de licenciamento/distribuição do xrai e tamanho aceitável do executável.
-- Disponibilidade de equipe para manter semântica, compatibilidade de clientes e corpus de avaliação.
+[Revisão L1 e lote L2](relatorios/REVISAO-L1.md): C01 resolvida pelo ADR 021; S01/S02 resolvidas pelo ADR 022. M0-03 aceito no escopo explicitamente reduzido a preparação inicial; qualificação competitiva transferida obrigatoriamente para R1. Persistência de produção segue após G1. Histórico e logs permanecem preservados.
 
-Essas questões calibram profundidade e cronograma. Não impedem M0 nem mudam as interfaces fundamentais propostas.
+## 15. Definições com responsável e momento
+
+| Item | Responsável e regra vigente |
+|---|---|
+| Projetos/casos e frameworks iniciais | Implementador seleciona em M0-03.R1 pelos critérios do ADR 021; sem nova aprovação por candidato. Frameworks extras dependem de erro/ganho medidos. |
+| Hardware, tamanhos e metas operacionais | Implementador inventaria máquina disponível em M0-04/05; fixa referência comparável antes do piloto e limites medidos em M0-10. Sem necessidade de comprar hardware para iniciar. |
+| Profundidade semântica e enriquecimento | Recortes P2 e regimes do protocolo; ampliar apenas com ablation/ganho demonstrados. Não implementar type checker completo para cumprir uma lacuna abstrata. |
+| Licença do produto | L0-A01, mantenedor, antes de distribuição M1-20; preservar `publish=false`. Não impede trabalho local. |
+| Orçamento monetário | Mantenedor autoriza o teto antes do uso pago. Implementador entrega estimativa e manifest de campanha concretos; replay e preparação continuam. |
+| Manutenção e tamanho de binário | Implementador mede nos spikes; M0-10 registra custos/limites e escopo sustentáveis. Não fixar prazo/equipe fictícios. |
+| CI/runners | Impedimento externo registrado em L1; reexecutar quando houver mudança da condição ou runner equivalente disponível. Não converter não execução em sucesso. |
+
+Não resta decisão arquitetural de L1 exigida para iniciar o lote L2. As verificações e decisões externas acima conservam seus respectivos responsáveis e gates.

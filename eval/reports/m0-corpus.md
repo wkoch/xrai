@@ -1,6 +1,6 @@
 # M0-03 — preparação do corpus de desenvolvimento
 
-Data do projeto: 11/10/2026, America/Sao_Paulo. Implementador. Corpus preparado; elegibilidade de parte dos desafios D1 será analisada pelo Arquiteto antes do piloto competitivo. Não houve sessão de agente nem campanha paga.
+Data do projeto: 11/10/2026, America/Sao_Paulo. Implementador. Corpus preparado. **Adendo do Arquiteto:** [L1-C01 resolvida no ADR 021](../../docs/decisoes/CORPUS-QUALIFICADO.md); preparação inicial aceita, 32 propostas passam a D1-seed. M0-03.R1 qualifica o conjunto obrigatório para o piloto. Os achados e a solicitação histórica abaixo são preservados; não houve sessão de agente nem campanha paga.
 
 ## Entrega e evidências
 
@@ -45,7 +45,7 @@ Ambiente em `../../docs/relatorios/logs/L1/corpus-environment.json`: macOS arm64
 
 Codebase-memory Tier 2 retornou `not_tracked` para os seis scripts novos na geração 2026-10-12T01:26:56Z. Verificação foi por fonte direta, bytes, materializações e execução local; a ausência no grafo não foi usada como prova. Graft consultou materializador (957 tokens estimados poupados, uma consulta).
 
-## Pendência L1-C01 para o Arquiteto
+## Solicitação L1-C01 original — resolvida na revisão
 
 D1 contém oito correções históricas públicas, oito requisitos novos locais de contrato sobre APIs upstream, quatro perguntas de configuração ativa mais quatro cenários de estado materializado, quatro revisões de regressão simulada pela reversão de fixes históricos distintos e quatro controles sobre fontes upstream. Não são 32 issues/PRs novos upstream. Nenhum patch foi duplicado para inflar independência; os casos compartilham repos e sua dependência deve ser considerada na análise.
 

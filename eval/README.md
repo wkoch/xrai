@@ -1,6 +1,6 @@
 # Corpus de desenvolvimento M0-03
 
-20 tarefas D0 e 32 propostas D1, em quatro famílias e oito upstreams reais. Os 20 snapshots são cópias de árvores Git fixadas por SHA completo, com arquivos/tamanhos/hashes e licenças no manifest. Não há histórico `.git` nos inputs. O corpus é material de desenvolvimento; a elegibilidade de requisitos locais e cenários simulados como desafios reais D1 está pendente de análise arquitetural L1-C01.
+20 tarefas D0 e 32 propostas D1-seed, em quatro famílias e oito upstreams reais. Os 20 snapshots são cópias de árvores Git fixadas por SHA completo, com arquivos/tamanhos/hashes e licenças no manifest. Não há histórico `.git` nos inputs. A [decisão L1-C01 / ADR 021](../docs/decisoes/CORPUS-QUALIFICADO.md) aceita este material para desenvolver o harness; o piloto exige 32 casos qualificados em M0-03.R1. Scripts/manifest ainda usam o nome `D1` e campo de análise pendente: são metadados legados a atualizar em R1, sem promoção automática a G0. Os comandos abaixo operam o corpus inicial existente.
 
 ```sh
 python3 eval/scripts/verify_corpus.py

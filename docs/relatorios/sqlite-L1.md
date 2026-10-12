@@ -40,7 +40,9 @@ Dois documentos pequenos A/B retêm **82 bytes** de fonte em banco/backup de **9
 
 Ambiente local: Rust/Cargo 1.98.1, macOS 27.0.1 arm64, build debug. Sem campanha de modelos, medição de RSS, pressão de disco, benchmark real de repo, retenção com GC ou simulação de perda de energia.
 
-## Limites e pendências para o Arquiteto
+## Limites e pendências registradas para o Arquiteto
+
+**Adendo da revisão L1:** L1-S01/S02 resolvidas no [ADR 022](../decisoes/PERSISTENCIA-E-RETENCAO.md): lock/epoch/tentativa, FTS de conteúdo externo e pins/GC. Os itens abaixo preservam os achados originais; implementar a decisão em M1-04/15/16/19 após G1. Não ampliar o spike agora nem converter a definição em aceite de produção.
 
 - **L1-S01, M1-04:** o supervisor deve distinguir processo vivo de tentativa abandonada antes de recuperar staging. O spike exige confirmação externa de `kill` + `wait`; abrir o banco ou ver `pending` não autoriza concluir que o dono morreu. Produção ainda precisa política de lease/dono, recuperação e retenção. Recomendação: manter a confirmação explícita e definir identidade/estado de tentativa antes da promoção, sem heurística baseada só em PID.
 - **L1-S02, M1-04:** medir/revisar duplicação da fonte no FTS e retenção de gerações com contextos válidos; esta entrega retém todos os snapshots até rebuild. O custo sintético sugere investigar FTS com conteúdo externo ou indexação de termos, preservando sempre bytes e hash da geração.
