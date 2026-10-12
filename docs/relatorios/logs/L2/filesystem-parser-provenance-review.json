@@ -1,0 +1,175 @@
+{
+  "reviewer": "/root/l2_filesystem",
+  "recorded_at": "2026-10-12T03:32:03.389843+00:00",
+  "scope": "Independent M0-05 parser/autonomy/provenance/ABI review, before final native CI",
+  "coverage": "CBM generation2026-10-12T01:50:21Z reports not_tracked; new sources read directly. Graft skeleton used for parse source shape.",
+  "source_sha256": {
+    "crates/xrai-eval/src/parsing_spike.rs": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+    "crates/xrai-eval/src/bin/parsing-spike.rs": "cac9c452d77b841e35f3e7bf3ff6ac6f87c71020f9c870ee2b348e59b53e64a0",
+    "crates/xrai-eval/tests/parsing.rs": "73473dfedbfa7619ba9e73a2bd0082369d33b2b76e5eba4228f55e75fce47995",
+    "crates/xrai-eval/scripts/verify_packaging.py": "819df9b1dbb2f743a96edb2560bcdedcdd0071d30bd80fc7aff284922e65d211",
+    "crates/xrai-eval/scripts/record_parser_provenance.py": "d20898e63c182ee8abfe1118d152017453ef0c8a6d46785c8d85ac3489c4b2fb",
+    "crates/xrai-eval/parsing-provenance.json": "8d3dadf8c870f44f32516fe2585ba64438959caa1243ba2596457eb581c641ba",
+    "eval/reports/m0-packaging.md": "3d521440e9a5f2054982405dfa790b7d5dc38b99e51f1d30e44d059ab19fd954"
+  },
+  "provenance_checks": [
+    {
+      "crate": "tree-sitter",
+      "version": "0.27.1",
+      "checks": {
+        "crate_archive_checksum_matches": true,
+        "license_matches_cargo_metadata": true,
+        "native_source_fingerprints_match": true,
+        "recorded_legal_notices_hashes_match": true,
+        "embedded_legal_notice_texts_match": true,
+        "recursive_registry_notices_covered": true
+      },
+      "notice_origins_in_registry": [
+        "LICENSE",
+        "src/unicode/LICENSE",
+        "src/wasm-stdlib/libc/LICENSE"
+      ],
+      "recorded_notice_origins": [
+        "LICENSE",
+        "src/unicode/LICENSE",
+        "src/wasm-stdlib/libc/LICENSE"
+      ]
+    },
+    {
+      "crate": "tree-sitter-language",
+      "version": "0.1.9",
+      "checks": {
+        "crate_archive_checksum_matches": true,
+        "license_matches_cargo_metadata": true,
+        "native_source_fingerprints_match": true,
+        "recorded_legal_notices_hashes_match": true,
+        "embedded_legal_notice_texts_match": true,
+        "recursive_registry_notices_covered": true
+      },
+      "notice_origins_in_registry": [
+        "LICENSE"
+      ],
+      "recorded_notice_origins": [
+        "LICENSE"
+      ]
+    },
+    {
+      "crate": "tree-sitter-rust",
+      "version": "0.24.2",
+      "checks": {
+        "crate_archive_checksum_matches": true,
+        "license_matches_cargo_metadata": true,
+        "native_source_fingerprints_match": true,
+        "recorded_legal_notices_hashes_match": true,
+        "embedded_legal_notice_texts_match": true,
+        "recursive_registry_notices_covered": true
+      },
+      "notice_origins_in_registry": [
+        "LICENSE"
+      ],
+      "recorded_notice_origins": [
+        "LICENSE"
+      ]
+    },
+    {
+      "crate": "tree-sitter-javascript",
+      "version": "0.25.0",
+      "checks": {
+        "crate_archive_checksum_matches": true,
+        "license_matches_cargo_metadata": true,
+        "native_source_fingerprints_match": true,
+        "recorded_legal_notices_hashes_match": true,
+        "embedded_legal_notice_texts_match": true,
+        "recursive_registry_notices_covered": true
+      },
+      "notice_origins_in_registry": [
+        "LICENSE"
+      ],
+      "recorded_notice_origins": [
+        "LICENSE"
+      ]
+    },
+    {
+      "crate": "tree-sitter-typescript",
+      "version": "0.23.2",
+      "checks": {
+        "crate_archive_checksum_matches": true,
+        "license_matches_cargo_metadata": true,
+        "native_source_fingerprints_match": true,
+        "recorded_legal_notices_hashes_match": true,
+        "embedded_legal_notice_texts_match": true,
+        "recursive_registry_notices_covered": true
+      },
+      "notice_origins_in_registry": [],
+      "recorded_notice_origins": [
+        "LICENSE"
+      ]
+    },
+    {
+      "crate": "tree-sitter-python",
+      "version": "0.25.0",
+      "checks": {
+        "crate_archive_checksum_matches": true,
+        "license_matches_cargo_metadata": true,
+        "native_source_fingerprints_match": true,
+        "recorded_legal_notices_hashes_match": true,
+        "embedded_legal_notice_texts_match": true,
+        "recursive_registry_notices_covered": true
+      },
+      "notice_origins_in_registry": [
+        "LICENSE"
+      ],
+      "recorded_notice_origins": [
+        "LICENSE"
+      ]
+    },
+    {
+      "crate": "tree-sitter-go",
+      "version": "0.25.0",
+      "checks": {
+        "crate_archive_checksum_matches": true,
+        "license_matches_cargo_metadata": true,
+        "native_source_fingerprints_match": true,
+        "recorded_legal_notices_hashes_match": true,
+        "embedded_legal_notice_texts_match": true,
+        "recursive_registry_notices_covered": true
+      },
+      "notice_origins_in_registry": [
+        "LICENSE"
+      ],
+      "recorded_notice_origins": [
+        "LICENSE"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "L2-PARSER-R01",
+      "severity": "acceptance gap",
+      "summary": "Native Tree-sitter Unicode/ICU notice omitted by top-level legal scan",
+      "file": "crates/xrai-eval/scripts/record_parser_provenance.py",
+      "evidence": "tree-sitter-0.27.1 src/unicode/LICENSE and copyrighted src/unicode/utf8.h used by compiled runtime; only top-level LICENSE captured",
+      "requested_correction": "Preserve nested upstream legal notices with provenance and distinguish metadata MIT label from third-party Unicode notices",
+      "status": "resolved",
+      "resolution": "Recursive legal scan preserves nested source_path/hash/text; Unicode ICU notice and optional wasm license copied, source provenance embedded in binary inventory, report distinguishes package MIT declaration from component notices.",
+      "resolution_evidence": {
+        "unicode_notice_path": "licenses/parsing/tree-sitter-0.27.1-src--unicode--LICENSE",
+        "unicode_notice_sha256": "6a18c5fac70d7860b57f5b72b4e2c9a1ba6b3d2741eef7ff9767c5379364f10d",
+        "binary_sha256": "810b93b3f51022e977b2284fc93b860850669cb7d82885ffc76bbc9b666235ed",
+        "binary_inventory_matches_current_provenance": true,
+        "test_source": "crates/xrai-eval/tests/parsing.rs::incorporated_unicode_notice_is_preserved_in_binary_inventory",
+        "test_execution": "Previously verified by parsing worker; not rerun by independent reviewer"
+      }
+    }
+  ],
+  "limitations": [
+    "Native Linux/macOS15 CI not reviewed yet",
+    "Exact macOS15.0 baseline unproven locally",
+    "Full final-product transitive license/notice packaging remains M1-20; this review covers spike recorded runtime/grammars"
+  ],
+  "filesystem_isolation_alias_probe": "filesystem-parser-review.json; /System/Volumes/Data/private path alias denied; port9 deliberately not used as network proof",
+  "graft_tokens_saved": 4219,
+  "graft_calls": 2,
+  "revalidated_at": "2026-10-12T03:35:52.811167+00:00",
+  "blocking_review_findings_remaining": []
+}

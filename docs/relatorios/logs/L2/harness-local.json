@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "crates/xrai-eval/harness/tests",
+    "-v"
+  ],
+  "base_commit": "0cb0329234e491954ee06a030860fc9cbcc594f2",
+  "time_utc": "2026-10-12T03:33:43.194050+00:00",
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 1.2177097919993685,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_allowed_workspace_read_and_edit (test_runner.RunnerTests.test_allowed_workspace_read_and_edit) ... ok\ntest_closed_pipes_do_not_disable_timeout (test_runner.RunnerTests.test_closed_pipes_do_not_disable_timeout) ... ok\ntest_cross_arm_and_evaluator_absolute_read_denied (test_runner.RunnerTests.test_cross_arm_and_evaluator_absolute_read_denied) ... ok\ntest_detached_descendant_cannot_block_evaluator (test_runner.RunnerTests.test_detached_descendant_cannot_block_evaluator) ... ok\ntest_error_keeps_partial_output (test_runner.RunnerTests.test_error_keeps_partial_output) ... ok\ntest_evaluator_hash_does_not_follow_agent_symlink (test_runner.RunnerTests.test_evaluator_hash_does_not_follow_agent_symlink) ... ok\ntest_host_environment_not_inherited (test_runner.RunnerTests.test_host_environment_not_inherited) ... ok\ntest_invalid_adapter_does_not_fall_back_to_unsandboxed (test_runner.RunnerTests.test_invalid_adapter_does_not_fall_back_to_unsandboxed) ... ok\ntest_network_denied (test_runner.RunnerTests.test_network_denied) ... ok\ntest_output_limit_is_bounded (test_runner.RunnerTests.test_output_limit_is_bounded) ... ok\ntest_replay_preserves_binary_and_rejects_tampering (test_runner.RunnerTests.test_replay_preserves_binary_and_rejects_tampering) ... ok\ntest_symlink_escape_and_cross_arm_write_denied (test_runner.RunnerTests.test_symlink_escape_and_cross_arm_write_denied) ... ok\ntest_timeout_kills_descendants_keeps_partial (test_runner.RunnerTests.test_timeout_kills_descendants_keeps_partial) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 1.126s\n\nOK\n"
+}

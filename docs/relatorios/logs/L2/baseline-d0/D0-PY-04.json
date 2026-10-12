@@ -1,0 +1,106 @@
+{
+  "schema_version": "xrai.eval.local.v1",
+  "task_id": "D0-PY-04",
+  "family": "Python",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.005534457999601727,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "executor_sha256": "a96a139174041ae8dfe7963efb7acd8c1ff59a39e1f8a5bd857f76274fc65660"
+  },
+  "input_sha256": "b54812eaed47e422ad5bbc9d94db0590ebe70a2d07347d95d04d2018e6b7a119",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "diagnostic": null,
+      "elapsed_seconds": 0.008668624999700114,
+      "stdout": {
+        "base64": "Li9MSUNFTlNFCi4vcHlwcm9qZWN0LnRvbWwKLi90ZXN0cy90ZXN0X2ZpZm8ucHkKLi90ZXN0cy90ZXN0X2NhY2hlZG1ldGhvZC5weQouL3Rlc3RzL3Rlc3Rfa2V5cy5weQouL3Rlc3RzL19faW5pdF9fLnB5Ci4vdGVzdHMvdGVzdF9yci5weQouL3Rlc3RzL3Rlc3RfZnVuYy5weQouL3Rlc3RzL3Rlc3RfdGxydS5weQouL3Rlc3RzL3Rlc3RfdHRsLnB5Ci4vdGVzdHMvdGVzdF9scnUucHkKLi90ZXN0cy90ZXN0X2NhY2hlLnB5Ci4vdGVzdHMvdGVzdF9sZnUucHkKLi90ZXN0cy90ZXN0X2NhY2hlZC5weQouL01BTklGRVNULmluCi4vZG9jcy9pbmRleC5yc3QKLi9kb2NzL2NvbmYucHkKLi9zZXR1cC5weQouLy5naXRpZ25vcmUKLi9wcm9iZS5weQouLy5naXRodWIvRlVORElORy55bWwKLi8uZ2l0aHViL3dvcmtmbG93cy9jaS55bWwKLi8uZ2l0aHViL0lTU1VFX1RFTVBMQVRFL2ZlYXR1cmVfcmVxdWVzdC5tZAouLy5naXRodWIvSVNTVUVfVEVNUExBVEUvYnVnX3JlcG9ydC5tZAouLy5naXRodWIvSVNTVUVfVEVNUExBVEUvY29uZmlnLnltbAouLy5naXRodWIvZGVwZW5kYWJvdC55bWwKLi8uZ2l0aHViL1NFQ1VSSVRZLm1kCi4vdG94LmluaQouL3NldHVwLmNmZwouL1JFQURNRS5yc3QKLi9DSEFOR0VMT0cucnN0Ci4vLnJlYWR0aGVkb2NzLnlhbWwKLi9zcmMvY2FjaGV0b29scy9fY2FjaGVkbWV0aG9kLnB5Ci4vc3JjL2NhY2hldG9vbHMvX19pbml0X18ucHkKLi9zcmMvY2FjaGV0b29scy9rZXlzLnB5Ci4vc3JjL2NhY2hldG9vbHMvX2NhY2hlZC5weQouL3NyYy9jYWNoZXRvb2xzL2Z1bmMucHkK",
+        "sha256": "1465d4a6e67df360dfe13fed90a6783d6441e09a18e9f3620603b800a9bbc287",
+        "captured_bytes": 792,
+        "observed_bytes": 792,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "Após|alteração|mesmo|mtime|mesmo|tamanho|probe|devolva|atual|identifique|marcador",
+        "."
+      ],
+      "status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "diagnostic": null,
+      "elapsed_seconds": 0.019330333001562394,
+      "stdout": {
+        "base64": "Li9wcm9iZS5weToxOmRlZiBwcm9iZSgpOgouL3Byb2JlLnB5LTItICAgIHJldHVybiAyCg==",
+        "sha256": "aae2d2db453dc5fa1def25833f595959165e797e80db81fac40b93d0cfeaf10d",
+        "captured_bytes": 52,
+        "observed_bytes": 52,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 844,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "b6d4daf56c3d7a5c2be6b8226ee6942847a32df18947860d586cd5d2e4424e38",
+  "workspace_sha256": "3c48e960a245cbc8979be2547b881e752559d9b58ca537f09946a33ffd832f46"
+}

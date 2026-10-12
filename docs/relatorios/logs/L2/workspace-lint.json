@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cargo",
+    "clippy",
+    "--workspace",
+    "--all-targets",
+    "--locked",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "base_commit": "0cb0329234e491954ee06a030860fc9cbcc594f2",
+  "time_utc": "2026-10-12T03:37:32.185650+00:00",
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.35792291599864257,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.25s\n"
+}

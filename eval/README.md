@@ -1,13 +1,17 @@
 # Corpus de desenvolvimento M0-03
 
-20 tarefas D0 e 32 propostas D1-seed, em quatro famílias e oito upstreams reais. Os 20 snapshots são cópias de árvores Git fixadas por SHA completo, com arquivos/tamanhos/hashes e licenças no manifest. Não há histórico `.git` nos inputs. A [decisão L1-C01 / ADR 021](../docs/decisoes/CORPUS-QUALIFICADO.md) aceita este material para desenvolver o harness; o piloto exige 32 casos qualificados em M0-03.R1. Scripts/manifest ainda usam o nome `D1` e campo de análise pendente: são metadados legados a atualizar em R1, sem promoção automática a G0. Os comandos abaixo operam o corpus inicial existente.
+20 tarefas D0 e 32 propostas D1-seed, em quatro famílias e oito upstreams reais. Os 20 snapshots são cópias de árvores Git fixadas por SHA completo, com arquivos/tamanhos/hashes e licenças no manifest. Não há histórico `.git` nos inputs. A [decisão L1-C01 / ADR 021](../docs/decisoes/CORPUS-QUALIFICADO.md) aceita este material para desenvolver o harness; o piloto exige 32 casos qualificados em M0-03.R1. IDs/bytes `D1` históricos são preservados e `corpus.toml` os classifica como seed. `challenge-qualified.jsonl` e `supplementary.jsonl` têm carregamento explícito e começam vazios. O gate recusa esse estado antes de qualquer campanha; não há promoção automática a G0. Os comandos abaixo operam o corpus inicial existente.
 
 ```sh
 python3 eval/scripts/verify_corpus.py
 python3 eval/scripts/materialize_task.py D1-PY-02 /tmp/xrai-task-py02
+python3 -m unittest discover -s eval/scripts/tests -v
+python3 eval/scripts/verify_qualified.py # exit 1 enquanto as 32 qualificadas não forem admitidas
 ```
 
 Entregar ao agente somente `/tmp/xrai-task-py02/workspace` e `request.json`; `proposed.diff` existe apenas nas revisões. Não dar ao agente acesso ao checkout deste projeto. `relevant_sources`, critérios de aceite, oracles, patches de referência e probes são metadados do avaliador. O verificador materializa todas as 52 tarefas e confere ausência de arquivos do oracle; sandbox do processo de avaliação é trabalho de M0-04.
+
+Para evento incremental, o avaliador chama `materialize(id, destino, phase='A')`, inicia/aquece seu braço e chama `apply_event(id, destino/'workspace')` mantendo processo/cache/índice. A função retorna hashes/tamanho/mtime antes/depois. O request público não contém operações do evento. O default `cold` continua aplicando mudanças antes da primeira consulta e é classificado `cold_changed_checkout`. [Triagem, admissão e pendências R1](reports/m0-corpus-qualification.md) incluem os oito projetos medidos e os 32 recibos seed ainda sem revisão semântica individual comprovada.
 
 Todos os rótulos foram selecionados lendo fonte upstream/patch/testes públicos. Nenhum extrator xrai, parser ou grafo gerou a verdade esperada. Campos `recovery_criteria` cobrem fonte/revisão/configuração; `agent_success_criteria` apontam oracle distinto com fatos, vetores e julgamento do resultado. Doze probes executáveis demonstram a regressão de oito correções e quatro revisões. Os oito requisitos de contrato precisam ser implementados pelo agente antes de executar novos testes: probes de correção não provam sucesso do agente.
 

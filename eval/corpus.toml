@@ -1,4 +1,4 @@
-schema_version = 1
+schema_version = 2
 purpose = "development_only"
 statistical_confirmation = false
 
@@ -12,7 +12,20 @@ path = "tasks/challenge-dev.jsonl"
 expected_tasks = 32
 per_family = 8
 minimum_repositories_per_family = 2
-eligibility = "architect_review_pending_for_local_requirements_and_simulated_state_review"
+class = "seed"
+eligibility = "development_and_regression_only_ADR021"
+
+[datasets.qualified]
+path = "tasks/challenge-qualified.jsonl"
+class = "qualified"
+expected_tasks = 32
+admission = "python3 eval/scripts/verify_qualified.py"
+competitive_runs_allowed_without_admission = false
+
+[datasets.supplementary]
+path = "tasks/supplementary.jsonl"
+class = "supplementary"
+counts_as_primary = false
 
 [provenance]
 manifest = "sources/manifest.json"
@@ -38,4 +51,6 @@ counts_as_real_tasks = false
 [validation]
 manifest_and_isolation = "python3 eval/scripts/verify_corpus.py"
 local_regressions = "python3 eval/scripts/verify_oracles.py"
+qualified_admission = "python3 eval/scripts/verify_qualified.py"
+admission_tests = "python3 -m unittest discover -s eval/scripts/tests -v"
 agent_sessions = "not_run_requires_M0-04"

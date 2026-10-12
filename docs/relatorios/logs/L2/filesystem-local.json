@@ -1,0 +1,117 @@
+{
+  "recorded_at": "2026-10-12T03:28:15.330475+00:00",
+  "base_commit": "0cb0329234e491954ee06a030860fc9cbcc594f2",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "scope": "M0-08 local smoke, not macOS 15 floor",
+  "source_sha256": {
+    "crates/xrai-eval/src/filesystem_spike.rs": "c413c2295e777f0c7c1d0d11673f0b31f8ae1c8c75b97aee7626efaef83be664",
+    "crates/xrai-eval/src/bin/filesystem-spike.rs": "8f321241857eaa1df6b6829bc4ac3a2db71d7cd6c1d118652ca1b441276d72e2",
+    "crates/xrai-eval/tests/filesystem_inventory.rs": "9cea39c6e6f2843389f693f95c20a1c8211c92aa41af91962bf930e093c452f1"
+  },
+  "checks": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--test",
+        "filesystem_inventory",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.582,
+      "stdout": "\nrunning 14 tests\ntest invalid_configuration_fails_before_inventory ... ok\npermission_denial_supported=true\ncase_sensitive=false\ntest removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok\ntest removal_between_discovery_and_capture_has_typed_diagnostic ... ok\ntest permission_failure_is_diagnostic_or_records_privileged_capability ... ok\ntest filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok\ntest replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok\ninvalid_utf8_filename_supported=false: Operation not permitted (os error 1)\ntest gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok\ntest same_size_and_mtime_change_is_detected_by_content_hash ... ok\ntest unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok\ntest linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok\ntest symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok\ntest explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok\ntest no_git_and_identical_named_checkouts_have_independent_writable_state ... ok\ntest actual_git_linked_worktrees_have_independent_checkout_state ... ok\n\ntest result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s\n\n",
+      "stderr": "   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.24s\n     Running tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-36b664a48431443a)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "filesystem-spike",
+        "--test",
+        "filesystem_inventory",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.649,
+      "stdout": "",
+      "stderr": "    Checking libsqlite3-sys v0.38.2\n    Checking tree-sitter-rust v0.24.2\n    Checking tree-sitter-go v0.25.0\n    Checking tree-sitter-python v0.25.0\n    Checking tree-sitter-javascript v0.25.0\n    Checking tree-sitter-typescript v0.23.2\n    Checking rusqlite v0.40.2\n    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.59s\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "filesystem-spike"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.293,
+      "stdout": "{\"schema\":\"xrai-filesystem-spike-receipt-v1\",\"os\":\"macos\",\"arch\":\"aarch64\",\"root_native_hex\":\"2f7661722f666f6c646572732f6a322f5f72747162746a6e315f733237703237305f39396736726d30303030676e2f542f787261692d66732d726563656970742d32353836332d313739313737353639363836333338323030302f636865636b6f7574\",\"checkout_id\":\"467ac48384b2571bd42de649fbab2e636950d5135162c7eeaeeb283d00284aae\",\"case_sensitive\":false,\"normalization_distinct\":false,\"invalid_utf8_name_supported\":false,\"invalid_utf8_name_error\":\"Operation not permitted (os error 1)\",\"permission_denial_supported\":true,\"df_exit_success\":true,\"df\":\"Filesystem   512-blocks      Used Available Capacity  Mounted on\\n/dev/disk3s5  478724992 411200000  15680000    97%    /System/Volumes/Data\\n\",\"filesystem_probe_exit_success\":true,\"filesystem_probe\":\"/dev/disk3s5 on /System/Volumes/Data (apfs, local, journaled, nobrowse, protect, root data)\",\"filesystem_probe_stderr\":\"\",\"observed_names_hex\":[\"436173652e7273\",\"636166c3a92e7079\",\"6379636c65\",\"64656e696564\",\"6c696e6b\"],\"sources\":[{\"path_hex\":\"436173652e7273\",\"hash\":\"e988f649445375c06fba82e313175ffc7627abb07c4be999c0dfc5f54e820bfe\",\"bytes\":8},{\"path_hex\":\"636166c3a92e7079\",\"hash\":\"e78790bcdb802a495508c37af1407d7905cb60dbdb1f39aff607f0072d26ee9b\",\"bytes\":3},{\"path_hex\":\"64656e696564\",\"hash\":\"5fbf08af2b116ab8f7f3c14b8ec01a46ce23d290e2ebc7a752d0982d54c054f2\",\"bytes\":6}],\"diagnostics\":[{\"path_hex\":\"6379636c65\",\"reason\":\"Symlink\"},{\"path_hex\":\"6c696e6b\",\"reason\":\"Symlink\"}]}\n",
+      "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running `target/debug/filesystem-spike`\n"
+    }
+  ],
+  "native_filesystem": {
+    "schema": "xrai-filesystem-spike-receipt-v1",
+    "os": "macos",
+    "arch": "aarch64",
+    "root_native_hex": "2f7661722f666f6c646572732f6a322f5f72747162746a6e315f733237703237305f39396736726d30303030676e2f542f787261692d66732d726563656970742d32353836332d313739313737353639363836333338323030302f636865636b6f7574",
+    "checkout_id": "467ac48384b2571bd42de649fbab2e636950d5135162c7eeaeeb283d00284aae",
+    "case_sensitive": false,
+    "normalization_distinct": false,
+    "invalid_utf8_name_supported": false,
+    "invalid_utf8_name_error": "Operation not permitted (os error 1)",
+    "permission_denial_supported": true,
+    "df_exit_success": true,
+    "df": "Filesystem   512-blocks      Used Available Capacity  Mounted on\n/dev/disk3s5  478724992 411200000  15680000    97%    /System/Volumes/Data\n",
+    "filesystem_probe_exit_success": true,
+    "filesystem_probe": "/dev/disk3s5 on /System/Volumes/Data (apfs, local, journaled, nobrowse, protect, root data)",
+    "filesystem_probe_stderr": "",
+    "observed_names_hex": [
+      "436173652e7273",
+      "636166c3a92e7079",
+      "6379636c65",
+      "64656e696564",
+      "6c696e6b"
+    ],
+    "sources": [
+      {
+        "path_hex": "436173652e7273",
+        "hash": "e988f649445375c06fba82e313175ffc7627abb07c4be999c0dfc5f54e820bfe",
+        "bytes": 8
+      },
+      {
+        "path_hex": "636166c3a92e7079",
+        "hash": "e78790bcdb802a495508c37af1407d7905cb60dbdb1f39aff607f0072d26ee9b",
+        "bytes": 3
+      },
+      {
+        "path_hex": "64656e696564",
+        "hash": "5fbf08af2b116ab8f7f3c14b8ec01a46ce23d290e2ebc7a752d0982d54c054f2",
+        "bytes": 6
+      }
+    ],
+    "diagnostics": [
+      {
+        "path_hex": "6379636c65",
+        "reason": "Symlink"
+      },
+      {
+        "path_hex": "6c696e6b",
+        "reason": "Symlink"
+      }
+    ]
+  }
+}

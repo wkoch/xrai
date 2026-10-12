@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-12T03:36:53.423867+00:00",
+  "reviewer": "/root/l2_corpus",
+  "author": "/root",
+  "scope": "independent review of bounded local scripted harness after fixes; no full M0-04 acceptance",
+  "base_commit": "0cb0329234e491954ee06a030860fc9cbcc594f2",
+  "environment": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "python": "3.15.0"
+  },
+  "source_sha256": {
+    "crates/xrai-eval/harness/runner.py": "a96a139174041ae8dfe7963efb7acd8c1ff59a39e1f8a5bd857f76274fc65660",
+    "crates/xrai-eval/harness/incremental.py": "d1d957a90a4624b368964b889ae4acd2af9b0c055819c1ccc3eb55958bd86199",
+    "crates/xrai-eval/harness/tests/test_runner.py": "d8eb99118ed596aa5394d6833fc7d1439238006e17d429247bbae18fefb3f581",
+    "crates/xrai-eval/harness/result.schema.json": "d0219b2097427c5788b4dda9b9019cbf681ecc01ca58313fd16a3d7cfe7f0966",
+    "crates/xrai-eval/harness/verify_records.py": "5ef508161ae3cc128a6ba7ae6739614df8aec1c41a7ed6d22c74cfd7cb5e8e32",
+    "crates/xrai-eval/src/bin/incremental-probe.rs": "ab827d2cf4dca3fff08d369f0680094427a72b64d12b93b52345529b0d82e813"
+  },
+  "coverage": {
+    "graph_generation": "2026-10-12T01:50:21Z",
+    "paths_status": "not_tracked",
+    "fallback": "exact source reads; no complete graph coverage claim"
+  },
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-v"
+      ],
+      "sandbox": "require_escalated to launch mandatory Seatbelt; adapter commands remain Seatbelt confined",
+      "exit_code": 0,
+      "tests": 13,
+      "result": "PASS",
+      "observed_elapsed_seconds": 1.133
+    },
+    {
+      "command": [
+        "python3",
+        "crates/xrai-eval/harness/verify_records.py",
+        "docs/relatorios/logs/L2/baseline-d0"
+      ],
+      "pythonpath": "/private/tmp/xrai-contract-blake3",
+      "exit_code": 0,
+      "unique_D0_records": 20,
+      "schema_and_replay": "passed"
+    },
+    {
+      "check": "independent existing incremental receipt validation",
+      "events": 4,
+      "same_pid_checkout_for_A_warm_oldA_updateB_queryB": true,
+      "B_equals_fresh_rebuild_B": true,
+      "B_matches_cold_B_source_bytes": true,
+      "note": "reviewer checked recorded receipts; execution performed by root"
+    }
+  ],
+  "evidence_fingerprints_current": {
+    "baseline_executor_current": true,
+    "incremental_executor_current": true,
+    "probe_binary_current": true
+  },
+  "findings": [
+    {
+      "id": "execute_closed_pipes_wait",
+      "status": "resolved_for_local_scope",
+      "resolution": "loop retains process.poll pending even after both pipe EOFs; deadline sets timeout; postloop wait bounded",
+      "evidence": "test_closed_pipes_do_not_disable_timeout passed"
+    },
+    {
+      "id": "execute_detached_pipe_EOF",
+      "status": "evaluator_hang_resolved_cleanup_pending_H01",
+      "resolution": "postkill drain closes pipes after .25 s; evaluator wait bounded; kill errors included in diagnostic",
+      "evidence": "test_detached_descendant_cannot_block_evaluator passed; does not assert all descendants terminated"
+    },
+    {
+      "id": "incremental_unterminated_output_buffer",
+      "status": "resolved_source_verified",
+      "resolution": "after every chunk enforce total data+pending buffer+stderr <=1MiB; newline absence no bypass",
+      "limitation": "malformed flood binary not executed in this review; four legitimate recorded events verified"
+    },
+    {
+      "id": "replay_fabricated_local_model_cost",
+      "status": "resolved",
+      "resolution": "usage/model_tokens/model/tokenizer/financial_cost required null",
+      "evidence": "test_replay_preserves_binary_and_rejects_tampering passed and 20 original transcripts verified"
+    },
+    {
+      "id": "record_stationary_symlink_escape",
+      "status": "resolved_for_quiescent_workspace",
+      "resolution": "record inventory skips symlinks; hidden-target edits do not affect source inventory hash",
+      "evidence": "test_evaluator_hash_does_not_follow_agent_symlink passed",
+      "limitation": "concurrent hostile mutation between check/read is not proven safe; must not enable real arbitrary agents until H01 cleanup addressed"
+    }
+  ],
+  "pending": [
+    {
+      "id": "L2-H01",
+      "status": "architectural_pending_before_real_agent",
+      "description": "macOS group kill can leave a detached child until its natural exit; bounded evaluator and Seatbelt filesystem/network constraints do not prove complete process cleanup. No model/real-agent adapters admitted."
+    }
+  ],
+  "conclusion": "local scripted increment accepted with explicit H01; full M0-04 remains pending; native Linux/macOS minimum OS verification belongs upcoming CI",
+  "graft_saved_tokens_this_review": 3069,
+  "graft_calls_this_review": 1
+}

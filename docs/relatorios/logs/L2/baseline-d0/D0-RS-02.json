@@ -1,0 +1,106 @@
+{
+  "schema_version": "xrai.eval.local.v1",
+  "task_id": "D0-RS-02",
+  "family": "Rust",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.0025827079989539925,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "executor_sha256": "a96a139174041ae8dfe7963efb7acd8c1ff59a39e1f8a5bd857f76274fc65660"
+  },
+  "input_sha256": "7157ea0e8b354262f47e11d0beca17640ab32a8437fd9fa206a2c3ca481e2ab3",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "diagnostic": null,
+      "elapsed_seconds": 0.008556707998650381,
+      "stdout": {
+        "base64": "Li9DYXJnby50b21sCi4vTElDRU5TRS1BUEFDSEUKLi9ydXN0Zm10LnRvbWwKLi9SRUFETUUubWQKLi8uZ2l0aWdub3JlCi4vTElDRU5TRS1NSVQKLi9zcmMvbGliLnJzCg==",
+        "sha256": "23f0c3c3eb21fbcb77adbfb03bde2f386d25bce3c125c8dd16e24c62f0669df6",
+        "captured_bytes": 97,
+        "observed_bytes": 97,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "escolhe|estilo|escape|consumidor",
+        "."
+      ],
+      "status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "diagnostic": null,
+      "elapsed_seconds": 0.008820625000225846,
+      "stdout": {
+        "base64": "Li9zcmMvbGliLnJzLTkyLS8vLyBpbXBsZW1lbnRhdGlvbiBkaXZlcmdlcyBmcm9tIFBPU0lYLCBhbmQgZnJvbSBpbXBsZW1lbnRhdGlvbiBjb250YWluZWQgaGVyZWluCi4vc3JjL2xpYi5ycy05My0vLy8gaW4gdGhyZWUgYXNwZWN0cy4gRmlyc3QsIGl0IGRvZXNuJ3Qgc3VwcG9ydCBsaW5lIGNvbnRpbnVhdGlvbnMuCi4vc3JjL2xpYi5ycy05NC0vLy8gU2Vjb25kLCBpbnNpZGUgZG91YmxlIHF1b3RlcywgdGhlIGJhY2tzbGFzaCBjaGFyYWN0ZXJzIHJldGFpbnMgaXRzIHNwZWNpYWwKLi9zcmMvbGliLnJzOjk1Oi8vLyBtZWFuaW5nIGFzIGFuIGVzY2FwZSBjaGFyYWN0ZXIgb25seSB3aGVuIGZvbGxvd2VkIGJ5IFxcIG9yIFwiLCB3aGVyZWFzIFBPU0lYCi4vc3JjL2xpYi5ycy05Ni0vLy8gc3BlY2lmaWVzIHRoYXQgaXQgc2hvdWxkIHJldGFpbiBpdHMgc3BlY2lhbCBtZWFuaW5nIHdoZW4gZm9sbG93ZWQgYnk6ICQsIFxgLAouL3NyYy9saWIucnMtOTctLy8vIFwiLCBcXCwgb3IgYSBuZXdsaW5lLiBUaGlyZCwgaXQgdHJlYXRzIGNhcnJpYWdlIHJldHVybiBhcyBvbmUgb2YgZGVsaW1pdGVycy4KLi9zcmMvbGliLnJzLTk4LS8vLwotLQouL3NyYy9saWIucnMtMjI4LSAgICBPayh3b3JkcykKLi9zcmMvbGliLnJzLTIyOS19Ci4vc3JjL2xpYi5ycy0yMzAtCi4vc3JjL2xpYi5yczoyMzE6ZW51bSBFc2NhcGVTdHlsZSB7Ci4vc3JjL2xpYi5ycy0yMzItICAgIC8vLyBObyBlc2NhcGluZy4KLi9zcmMvbGliLnJzLTIzMy0gICAgTm9uZSwKLi9zcmMvbGliLnJzLTIzNC0gICAgLy8vIFdyYXAgaW4gc2luZ2xlIHF1b3Rlcy4KLS0KLi9zcmMvbGliLnJzLTIzOC19Ci4vc3JjL2xpYi5ycy0yMzktCi4vc3JjL2xpYi5ycy0yNDAtLy8vIERldGVybWluZXMgZXNjYXBpbmcgc3R5bGUgdG8gdXNlLgouL3NyYy9saWIucnM6MjQxOmZuIGVzY2FwZV9zdHlsZShzOiAmc3RyKSAtPiBFc2NhcGVTdHlsZSB7Ci4vc3JjL2xpYi5ycy0yNDItICAgIGlmIHMuaXNfZW1wdHkoKSB7Ci4vc3JjL2xpYi5ycy0yNDMtICAgICAgICByZXR1cm4gRXNjYXBlU3R5bGU6OlNpbmdsZVF1b3RlZDsKLi9zcmMvbGliLnJzLTI0NC0gICAgfQo=",
+        "sha256": "970404c09b49483b73e5f592460b77d155e480aa38c62ef084205a7d4517fe0d",
+        "captured_bytes": 1082,
+        "observed_bytes": 1082,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 1179,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "4cb84f49fe726bea6a6fe10f0e2dba7cadb0e7f49b574398c3396c46d12f6bca",
+  "workspace_sha256": "476f5598a61aa647bbb35ca9ca66cc1bfbfa5fc4f2e3b121f292ff30dc6a9793"
+}

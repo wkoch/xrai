@@ -75,7 +75,7 @@ def validate(rows, sources):
             destination=Path(temp)
             materialize(task['id'], destination)
             request=json.loads((destination/'request.json').read_text(encoding="utf-8"))
-            require(set(request)<= {'id','family','language','prompt','context_policy','state_changes','proposed_diff'}, 'unexpected input metadata')
+            require(set(request)<= {'id','family','language','prompt','context_policy','proposed_diff'}, 'unexpected input metadata')
             require(not any('oracle' in str(p.relative_to(destination)).lower() or '.git' in p.parts for p in destination.rglob('*')), 'oracle/git leaked to input')
             for path in task['recovery_criteria']['required_sources']:
                 require((destination/'workspace'/path).is_file(), 'missing head source '+task['id']+' '+path)
@@ -108,16 +108,22 @@ def verify():
         a=Path(temp)/'a/mtime/base.py';b=Path(temp)/'a/mtime/head.py'
         require(a.stat().st_mtime_ns==b.stat().st_mtime_ns and a.stat().st_size==b.stat().st_size and a.read_bytes()!=b.read_bytes(), 'preserved timestamp fixture')
         require(b'\r\n' in (ROOT/'fixtures/crlf.rs').read_bytes(), 'CRLF fixture normalized')
-    summary.update({'fixture_files':len(first['files']),'fixture_generator_deterministic':True,'duplicate_lineage_rejected':True,'agent_success_measured':False,'statistical_superiority_claimed':False})
+    summary.update({'dataset_classes':{'D0':'development','D1':'seed'},'competitive_admission':False,'fixture_files':len(first['files']),'fixture_generator_deterministic':True,'duplicate_lineage_rejected':True,'agent_success_measured':False,'statistical_superiority_claimed':False})
     return summary
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',type=Path)
+    parser.add_argument('--qualified', action='store_true', help='ADR021 gate; never fall back to development seed')
     args=parser.parse_args()
     try:
-        summary=verify();result={'status':'passed','summary':summary}
+        if args.qualified:
+            from verify_qualified import validate as validate_qualified
+            summary = validate_qualified(tasks('qualified'))
+        else:
+            summary = verify()
+        result={'status':'passed','summary':summary}
     except (ValueError,KeyError,OSError) as error:
         result={'status':'failed','error':str(error)}
     text=json.dumps(result,ensure_ascii=False,indent=2)+'\n'

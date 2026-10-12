@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "summary": {
+    "tasks": 52,
+    "datasets": {
+      "D0": 20,
+      "D1": 32
+    },
+    "families": {
+      "Rust": 13,
+      "TSJS": 13,
+      "Python": 13,
+      "Go": 13
+    },
+    "repositories": 8,
+    "snapshots": 20,
+    "source_bytes": 1546610,
+    "archive_bytes": 360234,
+    "reference_patches": 12,
+    "materialized_inputs_checked": 52,
+    "oracle_leaks": 0,
+    "origin_classes": {
+      "historical_upstream_fix": 8,
+      "local_contract_requirement": 8,
+      "upstream_source_question": 8,
+      "materialized_state_scenario": 4,
+      "simulated_regression_review": 4
+    },
+    "dataset_classes": {
+      "D0": "development",
+      "D1": "seed"
+    },
+    "competitive_admission": false,
+    "fixture_files": 78,
+    "fixture_generator_deterministic": true,
+    "duplicate_lineage_rejected": true,
+    "agent_success_measured": false,
+    "statistical_superiority_claimed": false
+  }
+}

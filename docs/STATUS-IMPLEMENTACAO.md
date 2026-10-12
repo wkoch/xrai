@@ -1,8 +1,8 @@
 # Estado da implementação
 
-Atualizado em: 12/10/2026, pelo Arquiteto, após [CI bem-sucedida com o repositório público](relatorios/CI-PUBLICO.md), no commit verificado `9b5411c`.
+Atualizado em: 12/10/2026, pelo Implementador, após o primeiro incremento L2. A [CI pública anterior](relatorios/CI-PUBLICO.md), commit `9b5411c`, permanece aceita; CI do incremento corrente em execução após publicação.
 
-**Situação:** L0 e retificações M0-01.R1/M0-02.R1 concluídas. Revisão L1 resolveu C01/S01/S02. M0-03 foi aceita no escopo revisado de corpus inicial: 20 D0/32 D1-seed e 78 fixtures. A qualificação competitiva permanece obrigatória em M0-03.R1, ainda não executada. L2 está pronto para o usuário liberar: harness local, qualificação e spikes. Com o repo público, a tentativa 2 do run `38197775334` passou nos três jobs: **M0-02.R2 e M0-07 concluídas**, com seis testes SQLite em cada alvo nativo. V1: Linux x86_64/macOS arm64. Parsing, consultas e MCP de produção continuam indisponíveis; nenhum gate competitivo avaliado.
+**Situação:** L0 e retificações M0-01.R1/M0-02.R1 concluídas. Revisão L1 resolveu C01/S01/S02. M0-03 foi aceita no escopo revisado de corpus inicial: 20 D0/32 D1-seed e 78 fixtures. A qualificação competitiva permanece obrigatória em M0-03.R1: gate/triagem iniciados, zero casos qualificados. Usuário liberou L2; harness local/replay e spikes de parsing/filesystem implementados com evidência local em [L2](relatorios/L2.md). Aceite nativo do novo código, smokes de modelos reais e pendências de contenção permanecem separados. Com o repo público, a tentativa 2 do run `38197775334` passou nos três jobs: **M0-02.R2 e M0-07 concluídas**, com seis testes SQLite em cada alvo nativo. V1: Linux x86_64/macOS arm64. Parsing, consultas e MCP de produção continuam indisponíveis; nenhum gate competitivo avaliado.
 
 **Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima execução:** [lote L2](relatorios/REVISAO-L1.md). M0-04/05/08 podem começar com o corpus inicial; M0-12 exige qualificação R1. L0-A01 permanece escolha do mantenedor antes de distribuição, sem bloquear trabalho local. [ADR 021](decisoes/CORPUS-QUALIFICADO.md) e [ADR 022](decisoes/PERSISTENCIA-E-RETENCAO.md) fecham as decisões solicitadas ao Arquiteto.
 
@@ -28,12 +28,12 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | M0-02.R1 | Validação documental em CI | concluída | [CI do commit `0669f71`](relatorios/logs/L1/contracts-ci.json); [saída e contagens](relatorios/logs/L1/contracts-ci-output.json) |
 | M0-02.R2 | Adequar CI aos dois alvos v1 | concluída | [CI do commit `9b5411c`, tentativa 2](relatorios/CI-PUBLICO.md); dois hosts Rust e contratos passaram; proteção/rulesets consultados, sem check Windows exigido |
 | M0-03 | Corpus inicial D0/D1-seed e fixtures | concluída | [Aceite no escopo revisado](relatorios/REVISAO-L1.md); [52 materializações revalidadas](relatorios/logs/revisao-L1/corpus-check.json); qualificação original transferida para R1, sem aceite competitivo |
-| M0-03.R1 | Qualificar D1 para piloto/G0 | não iniciada | [Admissão definida em ADR 021](decisoes/CORPUS-QUALIFICADO.md); nova tarefa obrigatória antes de M0-12 |
-| M0-04 | Harness, baseline e agentes | não iniciada | — |
-| M0-05 | Gramáticas e autonomia | não iniciada | — |
+| M0-03.R1 | Qualificar D1 para piloto/G0 | em andamento | [Gate fechado e oito candidatos medidos](../eval/reports/m0-corpus-qualification.md); 0/32 qualificados, seed preservado |
+| M0-04 | Harness, baseline e agentes | em andamento | [20 D0, replay, isolamento e quatro eventos A→B](relatorios/L2.md); 13 testes locais; modelos/tokenizer/custo reais e H01 pendentes |
+| M0-05 | Gramáticas e autonomia | em andamento | [Sete dialetos e autonomia local](../eval/reports/m0-packaging.md); matriz CI corrente e host literal15.0 pendentes |
 | M0-06 | Workers e IPC | não iniciada | — |
 | M0-07 | Snapshots e armazenamento | concluída | [Seis testes SQLite passaram em Linux x86_64 e macOS arm64](relatorios/logs/ci-publico/output.json); [aceite e limites](relatorios/CI-PUBLICO.md); spike experimental, produção permanece M1 |
-| M0-08 | Filesystem e checkout | não iniciada | — |
+| M0-08 | Filesystem e checkout | em andamento | [14 testes e capacidades reais locais](../eval/reports/m0-filesystem.md); CI corrente e análise F01/Git pendentes |
 | M0-11 | Protótipo semântico P2 | não iniciada | — |
 | M0-09 | Protótipo de contexto P3 | não iniciada | — |
 | M0-12 | Piloto competitivo | não iniciada | — |
@@ -74,7 +74,7 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 
 | Item | Momento de definição |
 |---|---|
-| Toolchain, MSRV e versões das dependências | Rust/MSRV 1.98.1, edição 2024; runtime xrai sem deps externas. Spike dev-only usa rusqlite 0.40.2 bundled/backup e blake3 1.8.2, transitivas no lockfile |
+| Toolchain, MSRV e versões das dependências | Rust/MSRV 1.98.1, edição 2024; runtime xrai sem deps externas. Spike dev-only usa rusqlite 0.40.2 bundled/backup, blake3 1.8.2 e Tree-sitter/gramáticas com pins exatos e avisos em [packaging](../eval/reports/m0-packaging.md), transitivas no lockfile |
 | Repositórios e tarefas reais do corpus | M0-03 inicial aceita; M0-03.R1 qualifica 32 desafios com porte, relações e oracles independentes; escolha de candidatos cabe ao implementador pelos critérios do ADR 021 |
 | Licença de distribuição do produto | L0-A01: decisão do mantenedor antes de M1-20; manter publish=false |
 | Contrato de revisão e admissão | M0-01.R1: direção A02/A03 concretizada em exemplos/schema/verificador v2; adapters/tokenizers reais nos cartões consumidores |
@@ -103,3 +103,5 @@ L1-S01/S02 **resolvidas** no ADR 022: lock/epoch/tentativa, FTS por conteúdo e 
 L1-C01 **resolvida** no ADR 021: seed aceito para desenvolvimento; M0-03.R1 qualifica o corpus antes do piloto. Campos legados do manifest/oracles ainda serão conciliados pelo implementador nessa tarefa; não são nova pendência arquitetural. Nenhuma decisão do Arquiteto bloqueia iniciar L2.
 
 Escopo vigente de plataformas v1: Linux x86_64 e macOS arm64. M0-02.R2 e M0-07 aceitas após [CI pública bem-sucedida](relatorios/CI-PUBLICO.md). Os bloqueios/403 anteriores permanecem históricos. Consulta atual: main sem proteção ativa e rulesets vazios, sem alteração de configuração pelo assistente. Provas dos demais cartões e gates continuam pendentes.
+
+[Relatório L2](relatorios/L2.md): primeiro incremento de corpus/harness/spikes e evidências por critério. Pendências arquiteturais novas L2-H01, M0-08.F01 e L2-GIT01 registradas para análise; externas L2-E01/E02 distinguem piso de SO e recursos dos smokes reais. Sem alteração dos gates ou decisões vigentes.

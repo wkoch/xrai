@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xrai.dev/eval/qualified-task-v1",
+  "title": "ADR021 qualified primary task; cross-row rules enforced by verify_qualified.py",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "dataset",
+    "family",
+    "kind",
+    "language",
+    "repository",
+    "change_lineage",
+    "derived_from",
+    "origin",
+    "input",
+    "production_modules",
+    "relations",
+    "complexity",
+    "snapshot_proof",
+    "oracle_receipt",
+    "review_receipt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^Q1-"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "dataset": {
+      "const": "qualified"
+    },
+    "family": {
+      "enum": [
+        "Rust",
+        "TSJS",
+        "Python",
+        "Go"
+      ]
+    },
+    "kind": {
+      "enum": [
+        "correction",
+        "contract_change",
+        "state_config",
+        "review",
+        "control"
+      ]
+    },
+    "language": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string",
+      "minLength": 1
+    },
+    "change_lineage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "derived_from": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "origin": {
+      "type": "object",
+      "required": [
+        "class",
+        "url",
+        "motivation"
+      ]
+    },
+    "input": {
+      "type": "object",
+      "required": [
+        "prompt",
+        "snapshot"
+      ]
+    },
+    "production_modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "subsystem",
+          "necessity"
+        ]
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "to",
+          "reason"
+        ]
+      }
+    },
+    "complexity": {
+      "type": "object",
+      "required": [
+        "complex"
+      ]
+    },
+    "snapshot_proof": {
+      "type": "object",
+      "required": [
+        "commit",
+        "archive",
+        "complete_checkout",
+        "license_files",
+        "measurement_method",
+        "exclusions",
+        "production_files",
+        "production_nonempty_lines"
+      ]
+    },
+    "oracle_receipt": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ]
+    },
+    "review_receipt": {
+      "type": "object",
+      "required": [
+        "author",
+        "second_reader",
+        "status",
+        "prompt_sha256",
+        "oracle_sha256",
+        "findings",
+        "corrections",
+        "evidence"
+      ]
+    }
+  }
+}

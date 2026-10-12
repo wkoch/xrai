@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:xrai:eval:local:v1",
+  "title": "Local scripted development run; null means unknown",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "family",
+    "run_kind",
+    "adapter",
+    "model",
+    "tokenizer",
+    "usage",
+    "financial_cost",
+    "outcome",
+    "setup_seconds",
+    "permission_policy",
+    "environment",
+    "input_sha256",
+    "workspace_sha256",
+    "transcript_sha256",
+    "limitations",
+    "measurement",
+    "rounds"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xrai.eval.local.v1"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "run_kind": {
+      "enum": [
+        "scripted_retrieval",
+        "human",
+        "agent_run"
+      ]
+    },
+    "adapter": {
+      "type": "string"
+    },
+    "model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tokenizer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "usage": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "financial_cost": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "outcome": {
+      "type": "string"
+    },
+    "setup_seconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "permission_policy": {
+      "const": "workspace_only_no_network"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "input_sha256": {
+      "type": "string"
+    },
+    "workspace_sha256": {
+      "type": "string"
+    },
+    "transcript_sha256": {
+      "type": "string"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "captured_bytes",
+        "model_tokens"
+      ],
+      "properties": {
+        "captured_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "model_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "rounds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "phase",
+          "command",
+          "status",
+          "exit_code",
+          "sandbox",
+          "diagnostic",
+          "elapsed_seconds",
+          "stdout",
+          "stderr"
+        ],
+        "properties": {
+          "phase": {
+            "type": "string"
+          },
+          "command": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "status": {
+            "enum": [
+              "ok",
+              "error",
+              "timeout",
+              "output_limit",
+              "spawn_error"
+            ]
+          },
+          "exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "sandbox": {
+            "enum": [
+              "macOS Seatbelt",
+              "Linux bubblewrap"
+            ]
+          },
+          "diagnostic": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "elapsed_seconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "stdout": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "base64",
+              "sha256",
+              "captured_bytes",
+              "observed_bytes",
+              "truncated"
+            ],
+            "properties": {
+              "base64": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "captured_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "observed_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "truncated": {
+                "type": "boolean"
+              }
+            }
+          },
+          "stderr": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "base64",
+              "sha256",
+              "captured_bytes",
+              "observed_bytes",
+              "truncated"
+            ],
+            "properties": {
+              "base64": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "captured_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "observed_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "truncated": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "run_kind": {
+            "const": "scripted_retrieval"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "model": {
+            "type": "null"
+          },
+          "tokenizer": {
+            "type": "null"
+          },
+          "usage": {
+            "type": "null"
+          },
+          "financial_cost": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

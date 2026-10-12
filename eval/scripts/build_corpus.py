@@ -1,7 +1,7 @@
 import gzip, hashlib, io, json, subprocess, tarfile
 from pathlib import Path
 import argparse
-parser=argparse.ArgumentParser(description='Rebuild D0/D1 from already-cloned official upstream histories; no extractor is used.')
+parser=argparse.ArgumentParser(description='Rebuild development D0/D1-seed only from cloned histories; never generate qualified or supplementary tasks.')
 parser.add_argument('upstream_directory', type=Path)
 args=parser.parse_args()
 R=Path(__file__).resolve().parents[1]; U=args.upstream_directory
@@ -133,4 +133,4 @@ for fam,repo,prompt,anchors,facts in [('Rust','strsim','Controle: informe a impl
 for name,rows in [('dev.jsonl',D0),('challenge-dev.jsonl',D1)]:
  (R/'tasks'/name).write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in rows), encoding="utf-8", newline="\n")
 jwrite(R/'sources'/'manifest.json',manifest)
-print(json.dumps({'D0':len(D0),'D1':len(D1),'repos':len(repos),'snapshots':len(manifest['snapshots']),'archive_bytes':sum(s['archive_bytes'] for s in manifest['snapshots'].values())}))
+print(json.dumps({'D0':len(D0),'D1_seed':len(D1),'dataset_class':'development_only','qualified_generated':0,'repos':len(repos),'snapshots':len(manifest['snapshots']),'archive_bytes':sum(s['archive_bytes'] for s in manifest['snapshots'].values())}))

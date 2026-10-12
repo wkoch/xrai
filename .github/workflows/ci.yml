@@ -30,6 +30,10 @@ jobs:
         run: python docs/contracts/verify.py
       - name: Verify rejection and failure propagation
         run: python -m unittest discover -s docs/contracts/tests -v
+      - name: Verify development corpus and admission gate
+        run: |
+          python eval/scripts/verify_corpus.py
+          python -m unittest discover -s eval/scripts/tests -v
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}
@@ -51,10 +55,26 @@ jobs:
       CARGO_TERM_COLOR: always
       EXPECTED_HOST: ${{ matrix.host }}
       XRAI_BINARY: ${{ matrix.binary }}
+      MACOSX_DEPLOYMENT_TARGET: '15.0'
     steps:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.15.0'
+      - name: Install pinned evaluator tooling
+        run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Prepare Linux evaluator sandbox
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          bwrap --version
+          sysctl kernel.apparmor_restrict_unprivileged_userns
+          if ! bwrap --unshare-all --ro-bind / / /usr/bin/true; then
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
       - name: Install pinned toolchain
         run: rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
       - name: Record and verify native environment
@@ -74,3 +94,23 @@ jobs:
         run: '"./$XRAI_BINARY" --help'
       - name: Smoke version
         run: '"./$XRAI_BINARY" --version'
+      - name: Prove local harness isolation and replay
+        run: |
+          mkdir -p native-evidence
+          python -m unittest discover -s crates/xrai-eval/harness/tests -v
+          python crates/xrai-eval/harness/runner.py baseline --output native-evidence/baseline > native-evidence/baseline-summary.json
+          python crates/xrai-eval/harness/verify_records.py native-evidence/baseline
+          python crates/xrai-eval/harness/incremental.py --binary target/debug/incremental-probe --output native-evidence/incremental.json
+      - name: Record filesystem capabilities
+        run: target/debug/filesystem-spike > native-evidence/filesystem.json
+      - name: Build incorporated grammars
+        run: cargo build --locked --release -p xrai-eval --bin parsing-spike
+      - name: Prove standalone parsing with network blocked
+        run: python crates/xrai-eval/scripts/verify_packaging.py --binary target/release/parsing-spike --output native-evidence/packaging.json
+      - name: Preserve native receipts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: native-${{ matrix.host }}
+          path: native-evidence
+          if-no-files-found: error

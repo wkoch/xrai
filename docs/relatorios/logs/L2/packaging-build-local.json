@@ -1,0 +1,28 @@
+{
+  "utc": "2026-10-12T03:34:15.798841+00:00",
+  "command": [
+    "cargo",
+    "build",
+    "--locked",
+    "--release",
+    "-p",
+    "xrai-eval",
+    "--bin",
+    "parsing-spike"
+  ],
+  "environment_overrides": {
+    "MACOSX_DEPLOYMENT_TARGET": "15.0",
+    "CARGO_TARGET_DIR": "/private/tmp/xrai-parser-final-fovqubes"
+  },
+  "fresh_target_directory": true,
+  "elapsed_seconds": 15.646670040998288,
+  "source_sha256": {
+    "crates/xrai-eval/src/parsing_spike.rs": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+    "crates/xrai-eval/src/bin/parsing-spike.rs": "cac9c452d77b841e35f3e7bf3ff6ac6f87c71020f9c870ee2b348e59b53e64a0",
+    "crates/xrai-eval/parsing-provenance.json": "8d3dadf8c870f44f32516fe2585ba64438959caa1243ba2596457eb581c641ba",
+    "Cargo.lock": "1548452ff28a020005e36a3f92be1f890e6d067f2d001a3188102bff7749dbe1"
+  },
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "   Compiling find-msvc-tools v0.1.14\n   Compiling shlex v2.0.1\n   Compiling tree-sitter-language v0.1.9\n   Compiling zmij v1.0.23\n   Compiling serde_core v1.0.229\n   Compiling equivalent v1.0.2\n   Compiling hashbrown v0.17.1\n   Compiling serde_json v1.0.154\n   Compiling pkg-config v0.3.34\n   Compiling vcpkg v0.2.15\n   Compiling foldhash v0.2.0\n   Compiling cc v1.8.0\n   Compiling itoa v1.0.18\n   Compiling memchr v2.8.3\n   Compiling regex-syntax v0.8.11\n   Compiling indexmap v2.14.2\n   Compiling xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n   Compiling aho-corasick v1.1.5\n   Compiling constant_time_eq v0.3.1\n   Compiling fallible-iterator v0.3.0\n   Compiling bitflags v2.13.2\n   Compiling cfg-if v1.0.5\n   Compiling arrayref v0.3.9\n   Compiling streaming-iterator v0.1.9\n   Compiling arrayvec v0.7.8\n   Compiling smallvec v1.16.3\n   Compiling fallible-streaming-iterator v0.1.9\n   Compiling xrai-index v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-index)\n   Compiling xrai-query v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-query)\n   Compiling libsqlite3-sys v0.38.2\n   Compiling tree-sitter-javascript v0.25.0\n   Compiling tree-sitter-typescript v0.23.2\n   Compiling tree-sitter-rust v0.24.2\n   Compiling tree-sitter-python v0.25.0\n   Compiling blake3 v1.8.2\n   Compiling tree-sitter-go v0.25.0\n   Compiling regex-automata v0.4.18\n   Compiling tree-sitter v0.27.1\n   Compiling regex v1.13.1\n   Compiling rusqlite v0.40.2\n   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `release` profile [optimized] target(s) in 15.62s\n"
+}

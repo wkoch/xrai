@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-v"
+  ],
+  "base_commit": "0cb0329234e491954ee06a030860fc9cbcc594f2",
+  "time_utc": "2026-10-12T03:29:32.742957+00:00",
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.23718654199910816,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_complete_synthetic_shape (test_qualification.AdmissionTests.test_complete_synthetic_shape) ... ok\ntest_empty_and_seed_fail_closed (test_qualification.AdmissionTests.test_empty_and_seed_fail_closed) ... ok\ntest_event_refuses_agent_symlink_escape (test_qualification.AdmissionTests.test_event_refuses_agent_symlink_escape) ... ok\ntest_event_refuses_hardlink_and_parent_symlink_escape (test_qualification.AdmissionTests.test_event_refuses_hardlink_and_parent_symlink_escape) ... ok\ntest_mutations_reject_false_admission (test_qualification.AdmissionTests.test_mutations_reject_false_admission) ... ok\ntest_phase_A_event_B_matches_cold_checkout_each_family (test_qualification.AdmissionTests.test_phase_A_event_B_matches_cold_checkout_each_family) ... ok\ntest_qualified_and_supplementary_are_explicit_empty (test_qualification.AdmissionTests.test_qualified_and_supplementary_are_explicit_empty) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.161s\n\nOK\n"
+}

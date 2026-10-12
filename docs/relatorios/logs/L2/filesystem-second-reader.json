@@ -1,0 +1,28 @@
+{
+  "schema": "m0-spike-review-v1",
+  "utc": "2026-10-12T03:29:40.744674+00:00",
+  "reviewer": "/root/l2_parsing",
+  "scope": [
+    "crates/xrai-eval/src/filesystem_spike.rs",
+    "crates/xrai-eval/tests/filesystem_inventory.rs"
+  ],
+  "source_sha256": {
+    "crates/xrai-eval/src/filesystem_spike.rs": "c413c2295e777f0c7c1d0d11673f0b31f8ae1c8c75b97aee7626efaef83be664",
+    "crates/xrai-eval/tests/filesystem_inventory.rs": "9cea39c6e6f2843389f693f95c20a1c8211c92aa41af91962bf930e093c452f1"
+  },
+  "method": "Independent complete source/test review against M0-08 card; graph coverage not_tracked, direct source fallback. No duplicate test execution; native CI owned by parent.",
+  "checked": [
+    "native path bytes and root dev/inode identity, no lossy display identity",
+    "disjoint writable state keys for same filenames/contents and actual Git linked worktrees",
+    "symlink nofollow and loop/escape diagnostics",
+    "relative exclusion validation, internal state precedence, reason diagnostics",
+    "same-size preserved mtime content BLAKE3 detection",
+    "permission/removal/replacement typed diagnostics and explicit capability reporting"
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "Concurrent ancestor-directory replacement is explicitly outside the spike model; do not claim this inventory is a filesystem security sandbox. Production design needs a separate race model.",
+    "Permission test on privileged hosts documents capability rather than claiming a negative proof.",
+    "Case sensitivity and invalid-UTF8 filename support depend on measured host filesystem capabilities."
+  ]
+}

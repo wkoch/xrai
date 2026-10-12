@@ -1,0 +1,4 @@
+# Preserve parser source bytes, including CRLF and incomplete trailing tokens.
+* -text
+*.valid whitespace=cr-at-eol
+*.incomplete whitespace=-blank-at-eol

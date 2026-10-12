@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "selection_basis": "ADR021 size/build/probe/history triage before any arm results",
+  "candidates": [
+    {
+      "family": "Rust",
+      "repository": "rust-lang/rust-analyzer",
+      "build_manifest": "Cargo.toml",
+      "probe_entrypoint": "cargo test -p ide --lib",
+      "public_history": "https://github.com/rust-lang/rust-analyzer/pulls?q=is%3Apr+is%3Amerged+bug",
+      "commit": "2ad81e72b7e978cb800dffe1bcce5c9f98032acf"
+    },
+    {
+      "family": "Rust",
+      "repository": "tokio-rs/tokio",
+      "build_manifest": "Cargo.toml",
+      "probe_entrypoint": "cargo test -p tokio --test macros_test",
+      "public_history": "https://github.com/tokio-rs/tokio/pulls?q=is%3Apr+is%3Amerged+bug",
+      "commit": "e279adbfcd8831412c3f19edf2e16d28345f0f95"
+    },
+    {
+      "family": "TSJS",
+      "repository": "microsoft/TypeScript",
+      "build_manifest": "package.json",
+      "probe_entrypoint": "npm ci && npx hereby runtests",
+      "public_history": "https://github.com/microsoft/TypeScript/pulls?q=is%3Apr+is%3Amerged+bug",
+      "commit": "aa8149273b23401f0a79a5f0384c42de51888693"
+    },
+    {
+      "family": "TSJS",
+      "repository": "microsoft/vscode",
+      "build_manifest": "package.json",
+      "probe_entrypoint": "npm ci && npm run test-node",
+      "public_history": "https://github.com/microsoft/vscode/pulls?q=is%3Apr+is%3Amerged+bug",
+      "commit": "ff00e788322523ee1e9e8ee2c9bb4b89af93a3c2"
+    },
+    {
+      "family": "Python",
+      "repository": "django/django",
+      "build_manifest": "pyproject.toml",
+      "probe_entrypoint": "python tests/runtests.py --settings=test_sqlite",
+      "public_history": "https://github.com/django/django/pulls?q=is%3Apr+is%3Amerged+bug",
+      "commit": "0f34a4cf9f1b5f3e68decbdca76aebb71268ba93"
+    },
+    {
+      "family": "Python",
+      "repository": "scikit-learn/scikit-learn",
+      "build_manifest": "pyproject.toml",
+      "probe_entrypoint": "python -m pytest sklearn/tests",
+      "public_history": "https://github.com/scikit-learn/scikit-learn/pulls?q=is%3Apr+is%3Amerged+bug",
+      "commit": "102e5daf66759cf896beeee229d1bf7c80ab2ba4"
+    },
+    {
+      "family": "Go",
+      "repository": "prometheus/prometheus",
+      "build_manifest": "go.mod",
+      "probe_entrypoint": "go test ./promql/...",
+      "public_history": "https://github.com/prometheus/prometheus/pulls?q=is%3Apr+is%3Amerged+bug",
+      "commit": "fffc15f5b5a6c3ed50282d307e96db0e5f25bcb2"
+    },
+    {
+      "family": "Go",
+      "repository": "go-gitea/gitea",
+      "build_manifest": "go.mod",
+      "probe_entrypoint": "go test ./modules/...",
+      "public_history": "https://github.com/go-gitea/gitea/pulls?q=is%3Apr+is%3Amerged+bug",
+      "commit": "aa32eb97fad8224cc0ef9d4b40df255b8026dd49"
+    }
+  ]
+}

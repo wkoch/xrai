@@ -1,0 +1,115 @@
+{
+  "recorded_at": "2026-10-12T03:25:04.794888+00:00",
+  "base_commit": "0cb0329234e491954ee06a030860fc9cbcc594f2",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "scope": "M0-08 local smoke, not macOS 15 floor",
+  "source_sha256": {
+    "crates/xrai-eval/src/filesystem_spike.rs": "c413c2295e777f0c7c1d0d11673f0b31f8ae1c8c75b97aee7626efaef83be664",
+    "crates/xrai-eval/src/bin/filesystem-spike.rs": "d058a476900f0572f02085986661bba8d507705a320aa81fbc1f93cd40b3a401",
+    "crates/xrai-eval/tests/filesystem_inventory.rs": "77add2c0606222d33b472c3d2045922b0d2a6cd08d4406b3170d3f2bdb49eda0"
+  },
+  "checks": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--test",
+        "filesystem_inventory",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.846,
+      "stdout": "\nrunning 14 tests\npermission_denial_supported=true\ntest invalid_configuration_fails_before_inventory ... ok\ntest removal_between_discovery_and_capture_has_typed_diagnostic ... ok\ntest removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok\ncase_sensitive=false\ntest permission_failure_is_diagnostic_or_records_privileged_capability ... ok\ntest filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok\ntest gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok\ninvalid_utf8_filename_supported=false: Operation not permitted (os error 1)\ntest explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok\ntest same_size_and_mtime_change_is_detected_by_content_hash ... ok\ntest replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok\ntest unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok\ntest linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok\ntest symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok\ntest no_git_and_identical_named_checkouts_have_independent_writable_state ... ok\ntest actual_git_linked_worktrees_have_independent_checkout_state ... ok\n\ntest result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s\n\n",
+      "stderr": "   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.55s\n     Running tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-18ef4101a5540975)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "filesystem-spike",
+        "--test",
+        "filesystem_inventory",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 101,
+      "elapsed_seconds": 0.205,
+      "stdout": "",
+      "stderr": "    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\nerror: using a non-octal value to set unix file permissions\n  --> crates/xrai-eval/src/bin/filesystem-spike.rs:59:73\n   |\n59 |     fs::set_permissions(root.join(\"denied\"), fs::Permissions::from_mode(0))?;\n   |                                                                         ^ help: consider using an octal literal instead: `0o0`\n   |\n   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#non_octal_unix_permissions\n   = note: `#[deny(clippy::non_octal_unix_permissions)]` on by default\n\nerror: could not compile `xrai-eval` (bin \"filesystem-spike\") due to 1 previous error\nwarning: build failed, waiting for other jobs to finish...\nerror: using a non-octal value to set unix file permissions\n   --> crates/xrai-eval/tests/filesystem_inventory.rs:277:59\n    |\n277 |     fs::set_permissions(&path, fs::Permissions::from_mode(0)).unwrap();\n    |                                                           ^ help: consider using an octal literal instead: `0o0`\n    |\n    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#non_octal_unix_permissions\n    = note: `#[deny(clippy::non_octal_unix_permissions)]` on by default\n\nerror: could not compile `xrai-eval` (test \"filesystem_inventory\") due to 1 previous error\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "filesystem-spike"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.3,
+      "stdout": "{\"schema\":\"xrai-filesystem-spike-receipt-v1\",\"os\":\"macos\",\"arch\":\"aarch64\",\"root_native_hex\":\"2f7661722f666f6c646572732f6a322f5f72747162746a6e315f733237703237305f39396736726d30303030676e2f542f787261692d66732d726563656970742d32323333312d313739313737353530363135303133343030302f636865636b6f7574\",\"checkout_id\":\"89eda366adbc8e5bed84cd601cda0f3ee270cb2f63466453335ddd1d81a1a7ce\",\"case_sensitive\":false,\"normalization_distinct\":false,\"invalid_utf8_name_supported\":false,\"permission_denial_supported\":true,\"df_exit_success\":true,\"df\":\"Filesystem   512-blocks      Used Available Capacity  Mounted on\\n/dev/disk3s5  478724992 411200000  15760000    97%    /System/Volumes/Data\\n\",\"filesystem_probe_exit_success\":false,\"filesystem_probe\":\"\",\"observed_names_hex\":[\"436173652e7273\",\"636166c3a92e7079\",\"6379636c65\",\"64656e696564\",\"6c696e6b\"],\"sources\":[{\"path_hex\":\"436173652e7273\",\"hash\":\"e988f649445375c06fba82e313175ffc7627abb07c4be999c0dfc5f54e820bfe\",\"bytes\":8},{\"path_hex\":\"636166c3a92e7079\",\"hash\":\"e78790bcdb802a495508c37af1407d7905cb60dbdb1f39aff607f0072d26ee9b\",\"bytes\":3},{\"path_hex\":\"64656e696564\",\"hash\":\"5fbf08af2b116ab8f7f3c14b8ec01a46ce23d290e2ebc7a752d0982d54c054f2\",\"bytes\":6}],\"diagnostics\":[{\"path_hex\":\"6379636c65\",\"reason\":\"Symlink\"},{\"path_hex\":\"6c696e6b\",\"reason\":\"Symlink\"}]}\n",
+      "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running `target/debug/filesystem-spike`\n"
+    }
+  ],
+  "native_filesystem": {
+    "schema": "xrai-filesystem-spike-receipt-v1",
+    "os": "macos",
+    "arch": "aarch64",
+    "root_native_hex": "2f7661722f666f6c646572732f6a322f5f72747162746a6e315f733237703237305f39396736726d30303030676e2f542f787261692d66732d726563656970742d32323333312d313739313737353530363135303133343030302f636865636b6f7574",
+    "checkout_id": "89eda366adbc8e5bed84cd601cda0f3ee270cb2f63466453335ddd1d81a1a7ce",
+    "case_sensitive": false,
+    "normalization_distinct": false,
+    "invalid_utf8_name_supported": false,
+    "permission_denial_supported": true,
+    "df_exit_success": true,
+    "df": "Filesystem   512-blocks      Used Available Capacity  Mounted on\n/dev/disk3s5  478724992 411200000  15760000    97%    /System/Volumes/Data\n",
+    "filesystem_probe_exit_success": false,
+    "filesystem_probe": "",
+    "observed_names_hex": [
+      "436173652e7273",
+      "636166c3a92e7079",
+      "6379636c65",
+      "64656e696564",
+      "6c696e6b"
+    ],
+    "sources": [
+      {
+        "path_hex": "436173652e7273",
+        "hash": "e988f649445375c06fba82e313175ffc7627abb07c4be999c0dfc5f54e820bfe",
+        "bytes": 8
+      },
+      {
+        "path_hex": "636166c3a92e7079",
+        "hash": "e78790bcdb802a495508c37af1407d7905cb60dbdb1f39aff607f0072d26ee9b",
+        "bytes": 3
+      },
+      {
+        "path_hex": "64656e696564",
+        "hash": "5fbf08af2b116ab8f7f3c14b8ec01a46ce23d290e2ebc7a752d0982d54c054f2",
+        "bytes": 6
+      }
+    ],
+    "diagnostics": [
+      {
+        "path_hex": "6379636c65",
+        "reason": "Symlink"
+      },
+      {
+        "path_hex": "6c696e6b",
+        "reason": "Symlink"
+      }
+    ]
+  }
+}
