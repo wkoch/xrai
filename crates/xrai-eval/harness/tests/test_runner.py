@@ -1,6 +1,8 @@
+import base64
 import copy
 import json
 import os
+import platform
 import socket
 from pathlib import Path
 import sys
@@ -39,6 +41,19 @@ class RunnerTests(unittest.TestCase):
     def test_cross_arm_and_evaluator_absolute_read_denied(self):
         for path in [self.other / 'secret.txt', Path(__file__).resolve()]:
             result = self.run_cmd(['/bin/cat', str(path)])
+            self.assertEqual(result['status'], 'error', result)
+            self.assertEqual(result['stdout']['captured_bytes'], 0)
+
+    @unittest.skipUnless(platform.system() == 'Darwin', 'Seatbelt literal ancestor policy')
+    def test_ancestor_directory_handles_do_not_grant_external_file_data(self):
+        parent = self.workspace.resolve().parent
+        result = self.run_cmd(['/bin/ls', str(parent)])
+        self.assertEqual(result['status'], 'ok', result)
+        self.assertIn(b'arm-A', base64.b64decode(result['stdout']['base64']))
+        oracle = self.root / 'oracle.txt'; oracle.write_text('evaluator-oracle')
+        escape = self.workspace / 'ancestor-secret'; escape.symlink_to(oracle)
+        for path in [oracle, self.other / 'secret.txt', escape]:
+            result = self.run_cmd(['/bin/cat', str(path.resolve() if path != escape else path)])
             self.assertEqual(result['status'], 'error', result)
             self.assertEqual(result['stdout']['captured_bytes'], 0)
 

@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/incremental.py", line 93, in verify
+    a=original.query('INDEX')
+  File "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/incremental.py", line 47, in query
+    raise RuntimeError(f'probe closed stream: {errors.decode(errors="replace")}')
+RuntimeError: probe closed stream: Error: Os { code: 1, kind: PermissionDenied, message: "Operation not permitted" }
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/incremental.py", line 138, in <module>
+    print(json.dumps(verify(args.binary,args.output),indent=2))
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/incremental.py", line 124, in verify
+    original.close()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/incremental.py", line 70, in close
+    os.killpg(self.process.pid,signal.SIGKILL)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted

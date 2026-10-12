@@ -22,6 +22,7 @@ class Session:
                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                         env={'PATH':'/usr/bin:/bin', 'LANG':'C.UTF-8'}, start_new_session=True)
         self.buffer = b''
+        self._close_receipt = None
         self.selector = selectors.DefaultSelector()
         for name in ['stdout','stderr']:
             pipe = getattr(self.process,name)
@@ -66,15 +67,34 @@ class Session:
         raise TimeoutError('incremental probe timeout')
 
     def close(self):
+        if self._close_receipt is not None:
+            return self._close_receipt
+        errors = []
         try:
-            os.killpg(self.process.pid,signal.SIGKILL)
-        except ProcessLookupError:
-            pass
-        self.process.wait(timeout=5)
-        self.selector.close()
-        for name in ['stdin','stdout','stderr']:
-            getattr(self.process,name).close()
-        self.profiles.cleanup()
+            # poll reaps an exited child; never signal its former process group.
+            if self.process.poll() is None:
+                try:
+                    os.killpg(self.process.pid,signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                except PermissionError as error:
+                    errors.append(str(error))
+                    if self.process.poll() is None:
+                        self.process.kill()
+            self.process.wait(timeout=5)
+            status = 'child_reaped'
+        except (OSError, subprocess.TimeoutExpired) as error:
+            errors.append(str(error))
+            status = 'inconclusive_child_cleanup'
+        finally:
+            self.selector.close()
+            for name in ['stdin','stdout','stderr']:
+                getattr(self.process,name).close()
+            self.profiles.cleanup()
+        # Cleanup diagnostics must not replace the original query exception.
+        self._close_receipt = {'status':status, 'errors':errors,
+                               'limitation':'known-smoke child lifecycle; no disposable-domain proof'}
+        return self._close_receipt
 
 
 def verify(binary,output):
@@ -100,7 +120,8 @@ def verify(binary,output):
                 try:
                     full_b=rebuilt.query('INDEX')
                 finally:
-                    rebuilt.close()
+                    rebuilt_cleanup=rebuilt.close()
+                assert rebuilt_cleanup['status']=='child_reaped', rebuilt_cleanup
                 assert a['sources']==warm['sources']==still_a['sources']
                 assert a['sources']!=b['sources']
                 assert b['sources']==query_b['sources']==full_b['sources']
@@ -118,10 +139,13 @@ def verify(binary,output):
                 receipts.append({'task_id':task['id'],'family':task['family'],
                                  'mode':'incremental_same_process', 'prototype':'hash_inventory_probe',
                                  'event':event, 'phases':[a,warm,still_a,b,query_b,full_b],
+                                 'rebuild_child_cleanup':rebuilt_cleanup,
                                  'cold_B_comparison':'equal_source_bytes',
                                  'limitation':'inventory update; semantic retrieval/staleness and model success not measured'})
             finally:
-                original.close()
+                original_cleanup=original.close()
+            assert original_cleanup['status']=='child_reaped', original_cleanup
+            receipts[-1]['original_child_cleanup']=original_cleanup
     assert len(receipts)==4, 'one incremental event per family required'
     result={'schema_version':'xrai.eval.incremental.v1','events':receipts,'count':len(receipts),
             'executor_sha256':sha(Path(__file__).read_bytes()),

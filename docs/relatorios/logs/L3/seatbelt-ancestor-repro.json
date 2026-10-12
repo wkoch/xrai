@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "fixed": false,
+      "probe_exit": 1,
+      "stdout": "",
+      "stderr": "Error: Os { code: 1, kind: PermissionDenied, message: \"Operation not permitted\" }\n",
+      "ancestors": [
+        "/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested",
+        "/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b",
+        "/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T",
+        "/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn",
+        "/private/var/folders/j2",
+        "/private/var/folders",
+        "/private/var",
+        "/private",
+        "/"
+      ],
+      "profile": "(version 1)(deny default)(allow process-fork)(allow process-exec)(allow sysctl-read)(allow mach-lookup)(allow file-read-metadata)(allow file-read* (subpath \"/System\") (subpath \"/usr\") (subpath \"/bin\") (subpath \"/dev\") (subpath \"/etc\") (subpath \"/private/etc\") (subpath \"/Library/Apple\") (subpath \"/private/var/db/dyld\") (subpath \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested/workspace\") (literal \"/Users/wkoch/Projetos/xrai/target/debug/incremental-probe\"))(allow file-map-executable (subpath \"/System\") (subpath \"/usr\") (subpath \"/bin\") (subpath \"/dev\") (subpath \"/etc\") (subpath \"/private/etc\") (subpath \"/Library/Apple\") (subpath \"/private/var/db/dyld\") (subpath \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested/workspace\") (literal \"/Users/wkoch/Projetos/xrai/target/debug/incremental-probe\"))(allow file-read* (literal \"/\"))(allow file-write* (subpath \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested/workspace\") (literal \"/dev/null\"))",
+      "binary_sha256": "6d70a19546162d2763a9484f96e954d7f11f559e74fa99fad88314bfb13f1475"
+    },
+    {
+      "fixed": true,
+      "probe_exit": 0,
+      "stdout": "SOURCE\t736f757263652e7273\t3747bb86885fd1dc29addd5d65ca679f1bda8fa9f376dd6109bdb6eaa7688ee4\nDIAGNOSTIC\tDiagnostic { path: [101, 120, 116, 101, 114, 110, 97, 108, 45, 108, 105, 110, 107], reason: Symlink }\nEND\t44084\t94eb9434c4f9572a2ca198d95bfed2c92cdc78ecde9cf7ffbb9694f433090422\n",
+      "stderr": "",
+      "ancestors": [
+        "/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested",
+        "/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b",
+        "/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T",
+        "/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn",
+        "/private/var/folders/j2",
+        "/private/var/folders",
+        "/private/var",
+        "/private",
+        "/"
+      ],
+      "profile": "(version 1)(deny default)(allow process-fork)(allow process-exec)(allow sysctl-read)(allow mach-lookup)(allow file-read-metadata)(allow file-read* (subpath \"/System\") (subpath \"/usr\") (subpath \"/bin\") (subpath \"/dev\") (subpath \"/etc\") (subpath \"/private/etc\") (subpath \"/Library/Apple\") (subpath \"/private/var/db/dyld\") (subpath \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested/workspace\") (literal \"/Users/wkoch/Projetos/xrai/target/debug/incremental-probe\"))(allow file-map-executable (subpath \"/System\") (subpath \"/usr\") (subpath \"/bin\") (subpath \"/dev\") (subpath \"/etc\") (subpath \"/private/etc\") (subpath \"/Library/Apple\") (subpath \"/private/var/db/dyld\") (subpath \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested/workspace\") (literal \"/Users/wkoch/Projetos/xrai/target/debug/incremental-probe\"))(allow file-read* (literal \"/\"))(allow file-write* (subpath \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested/workspace\") (literal \"/dev/null\"))(allow file-read-data (literal \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested\") (literal \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b\") (literal \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T\") (literal \"/private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn\") (literal \"/private/var/folders/j2\") (literal \"/private/var/folders\") (literal \"/private/var\") (literal \"/private\") (literal \"/\"))",
+      "binary_sha256": "6d70a19546162d2763a9484f96e954d7f11f559e74fa99fad88314bfb13f1475",
+      "sentinels": [
+        {
+          "label": "workspace",
+          "exit_code": 0,
+          "stdout": "pub fn visible() {}\n",
+          "stderr": ""
+        },
+        {
+          "label": "oracle",
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "cat: /private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/oracle: Operation not permitted\n"
+        },
+        {
+          "label": "other_arm",
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "cat: /private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/other-arm/secret: Operation not permitted\n"
+        },
+        {
+          "label": "symlink",
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "cat: /private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-anchor-seatbelt-5spcpc6b/nested/workspace/external-link: Operation not permitted\n"
+        }
+      ]
+    }
+  ]
+}

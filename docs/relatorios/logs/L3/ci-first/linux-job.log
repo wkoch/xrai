@@ -1,0 +1,1163 @@
+x86_64-unknown-linux-gnu	Set up job	﻿2026-10-12T10:49:51.9035839Z Current runner version: '2.337.0'
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9061216Z ##[group]Runner Image Provisioner
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9062125Z Hosted Compute Agent
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9063096Z Version: 20261002.596
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9063733Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9064525Z Build Date: 2026-10-02T22:28:27Z
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9065255Z Worker ID: {e3920fe5-26fb-4cd4-a6d8-239b076ba000}
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9065954Z Region: westus2
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9066541Z Cloud: Azure
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9067070Z ##[endgroup]
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9069079Z ##[group]Operating System
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9069870Z Ubuntu
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9070430Z 24.04.5
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9070962Z LTS
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9071476Z ##[endgroup]
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9072014Z ##[group]Runner Image
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9072706Z Image: ubuntu-24.04
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9073272Z Version: 20261004.327.1
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9074361Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9076098Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9077160Z ##[endgroup]
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9078477Z ##[group]GITHUB_TOKEN Permissions
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9080626Z Contents: read
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9081238Z Metadata: read
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9081843Z ##[endgroup]
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9083897Z Secret source: Actions
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9084974Z Cache mode: write
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9085691Z Prepare workflow directory
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9635239Z Prepare all required actions
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:51.9684783Z Getting action download info
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:52.3007171Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:52.4145384Z Download action repository 'actions/setup-python@v6' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:52.4865110Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+x86_64-unknown-linux-gnu	Set up job	2026-10-12T10:49:52.8849697Z Complete job name: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	﻿2026-10-12T10:49:52.9606691Z ##[group]Run actions/checkout@v6
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9607567Z with:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9608226Z   persist-credentials: false
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9608752Z   repository: wkoch/xrai
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9612606Z   token: ***
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9613027Z   ssh-strict: true
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9613459Z   ssh-user: git
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9613871Z   clean: true
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9614312Z   sparse-checkout-cone-mode: true
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9614834Z   fetch-depth: 1
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9615260Z   fetch-tags: false
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9615702Z   show-progress: true
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9616136Z   lfs: false
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9616539Z   submodules: false
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9616981Z   set-safe-directory: true
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9617480Z   allow-unsafe-pr-checkout: false
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9618463Z env:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9618898Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9619415Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9620013Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9620566Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9621225Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:52.9621902Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0613130Z Syncing repository: wkoch/xrai
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0615612Z ##[group]Getting Git version info
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0616669Z Working directory is '/home/runner/work/xrai/xrai'
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0618482Z [command]/usr/bin/git version
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0674072Z git version 2.55.0
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0699780Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0716051Z Temporarily overriding HOME='/home/runner/work/_temp/85304765-3c98-46e7-9dcd-fe9920436519' before making global git config changes
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0718490Z Adding repository directory to the temporary git global config as a safe directory
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0724652Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/xrai/xrai
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0782224Z Deleting the contents of '/home/runner/work/xrai/xrai'
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0786098Z ##[group]Determining repository object format
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0788757Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0790043Z ##[group]Initializing the repository
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0794477Z [command]/usr/bin/git init /home/runner/work/xrai/xrai
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0905622Z hint: Using 'master' as the name for the initial branch. This default branch name
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0907637Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0909670Z hint: to use in all of your new repositories, which will suppress this warning,
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0911112Z hint: call:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0912030Z hint:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0913151Z hint: 	git config --global init.defaultBranch <name>
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0914513Z hint:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0915733Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0917513Z hint: 'development'. The just-created branch can be renamed via this command:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0919390Z hint:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0920335Z hint: 	git branch -m <name>
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0921362Z hint:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0922660Z hint: Disable this message with "git config set advice.defaultBranchName false"
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0924559Z Initialized empty Git repository in /home/runner/work/xrai/xrai/.git/
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0928142Z [command]/usr/bin/git remote add origin https://github.com/wkoch/xrai
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0971627Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0972983Z ##[group]Disabling automatic garbage collection
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.0976685Z [command]/usr/bin/git config --local gc.auto 0
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1009938Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1011753Z ##[group]Setting up auth
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1012727Z Removing SSH command configuration
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1018945Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1053766Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1526843Z Removing HTTP extra header
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1528931Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1591748Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1859913Z Removing includeIf entries pointing to credentials config files
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1868848Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.1906270Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.2134412Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.2521564Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/xrai/xrai/.git.path /home/runner/work/_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.3982077Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/xrai/xrai/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.4569481Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.4624922Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.4688601Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.4691391Z ##[group]Fetching the repository
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:53.4695024Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a1126ad55c1e3ede192c3de659a1a7a6ac728ef2:refs/remotes/origin/main
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1554134Z From https://github.com/wkoch/xrai
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1554933Z  * [new ref]         a1126ad55c1e3ede192c3de659a1a7a6ac728ef2 -> origin/main
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1565331Z [command]/usr/bin/git branch --list --remote origin/main
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1593559Z   origin/main
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1602829Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1630159Z a1126ad55c1e3ede192c3de659a1a7a6ac728ef2
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1639457Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1639995Z ##[group]Determining the checkout info
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1640499Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1642353Z [command]/usr/bin/git sparse-checkout disable
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1693774Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1726514Z ##[group]Checking out the ref
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.1730712Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3524285Z Switched to a new branch 'main'
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3529076Z branch 'main' set up to track 'origin/main'.
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3550953Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3602884Z [command]/usr/bin/git log -1 --format=%H
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3632246Z a1126ad55c1e3ede192c3de659a1a7a6ac728ef2
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3642514Z ##[group]Removing auth
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3643027Z Removing SSH command configuration
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3647478Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3689187Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3934872Z Removing HTTP extra header
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3941398Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.3977772Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4200095Z Removing includeIf entries pointing to credentials config files
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4204692Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4236078Z includeif.gitdir:/home/runner/work/xrai/xrai/.git.path
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4237032Z includeif.gitdir:/home/runner/work/xrai/xrai/.git/worktrees/*.path
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4237477Z includeif.gitdir:/github/workspace/.git.path
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4238132Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4246503Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/xrai/xrai/.git.path
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4272580Z /home/runner/work/_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4283281Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/xrai/xrai/.git.path /home/runner/work/_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4320643Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/xrai/xrai/.git/worktrees/*.path
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4350440Z /home/runner/work/_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4360335Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/xrai/xrai/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4396719Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4459231Z /github/runner_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4470442Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4504705Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4528764Z /github/runner_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4536997Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4573056Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4788255Z Removing credentials config '/home/runner/work/_temp/git-credentials-df9e041e-3f0a-457b-ab83-206259669ae0.config'
+x86_64-unknown-linux-gnu	Run actions/checkout@v6	2026-10-12T10:49:55.4796576Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	﻿2026-10-12T10:49:55.5049742Z ##[group]Run actions/setup-python@v6
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5050091Z with:
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5050315Z   python-version: 3.15.0
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5050563Z   check-latest: false
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5052907Z   token: ***
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5053129Z   update-environment: true
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5053439Z   allow-prereleases: false
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5053684Z   freethreaded: false
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5053894Z env:
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5054082Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5054342Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5054630Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5054887Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5055214Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.5055556Z ##[endgroup]
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.6325059Z ##[group]Installed versions
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:55.6346183Z Version 3.15.0 was not found in the local cache
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:56.2259323Z Version 3.15.0 is available for downloading
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:56.2260839Z Download from "https://github.com/actions/python-versions/releases/download/3.15.0-38076878863/python-3.15.0-linux-24.04-x64.tar.gz"
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:56.9842867Z Extract downloaded archive
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:56.9993328Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/272baf80-6280-4b29-9aeb-27880ff388d7 -f /home/runner/work/_temp/af4c9389-9638-4a1f-8529-1fc48887f427
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:59.3867356Z Execute installation script
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:59.3964654Z Check if Python hostedtoolcache folder exist...
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:59.3965091Z Create Python 3.15.0 folder
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:59.4528030Z Copy Python binaries to hostedtoolcache folder
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:59.9951818Z Create additional symlinks (Required for the UsePythonVersion Azure Pipelines task and the setup-python GitHub Action)
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:49:59.9994411Z Upgrading pip...
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:01.9297643Z Collecting pip
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:01.9893129Z Downloading pip-26.2.1-py3-none-any.whl.metadata (4.6 kB)
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:02.0397994Z Downloading pip-26.2.1-py3-none-any.whl (1.8 MB)
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:02.1503275Z ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 19.4 MB/s  0:00:00
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:02.1503944Z 
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:02.2947677Z Installing collected packages: pip
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:02.2948652Z Attempting uninstall: pip
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:02.2970320Z Found existing installation: pip 26.2.1
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:02.3278861Z Uninstalling pip-26.2.1:
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:02.3334125Z Successfully uninstalled pip-26.2.1
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:03.4300071Z Successfully installed pip-26.2.1
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:03.4906564Z Create complete file
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:03.4946223Z Successfully set up CPython (3.15.0)
+x86_64-unknown-linux-gnu	Run actions/setup-python@v6	2026-10-12T10:50:03.4949791Z ##[endgroup]
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	﻿2026-10-12T10:50:03.5103886Z ##[group]Run python -m pip install -r docs/contracts/examples/requirements.txt
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5104506Z ^[[36;1mpython -m pip install -r docs/contracts/examples/requirements.txt^[[0m
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5354037Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5354733Z env:
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5354972Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5355299Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5355650Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5355988Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5356394Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5356889Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5357411Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5358162Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5358629Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5359134Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5359592Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:03.5359993Z ##[endgroup]
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.5976349Z Collecting blake3==1.0.11 (from -r docs/contracts/examples/requirements.txt (line 2))
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.6590085Z   Downloading blake3-1.0.11-cp315-cp315-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.6953378Z Collecting jsonschema==4.25.1 (from -r docs/contracts/examples/requirements.txt (line 3))
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.7022102Z   Downloading jsonschema-4.25.1-py3-none-any.whl.metadata (7.6 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.7389383Z Collecting attrs==26.1.0 (from -r docs/contracts/examples/requirements.txt (line 4))
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.7456564Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.7749978Z Collecting jsonschema-specifications==2025.9.1 (from -r docs/contracts/examples/requirements.txt (line 5))
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.7823560Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.8119769Z Collecting referencing==0.37.0 (from -r docs/contracts/examples/requirements.txt (line 6))
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:04.8187176Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.1069138Z Collecting rpds-py==2026.9.1 (from -r docs/contracts/examples/requirements.txt (line 7))
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.1148254Z   Downloading rpds_py-2026.9.1-cp315-cp315-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.4223155Z Downloading blake3-1.0.11-cp315-cp315-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (382 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.4613868Z Downloading jsonschema-4.25.1-py3-none-any.whl (90 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.4700706Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.4797049Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.4880175Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.4982872Z Downloading rpds_py-2026.9.1-cp315-cp315-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (372 kB)
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.5426433Z Installing collected packages: rpds-py, blake3, attrs, referencing, jsonschema-specifications, jsonschema
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.7366210Z 
+x86_64-unknown-linux-gnu	Install pinned evaluator tooling	2026-10-12T10:50:05.7378880Z Successfully installed attrs-26.1.0 blake3-1.0.11 jsonschema-4.25.1 jsonschema-specifications-2025.9.1 referencing-0.37.0 rpds-py-2026.9.1
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	﻿2026-10-12T10:50:05.8020068Z ##[group]Run sudo apt-get update
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8020421Z ^[[36;1msudo apt-get update^[[0m
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8020707Z ^[[36;1msudo apt-get install -y bubblewrap^[[0m
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8021005Z ^[[36;1mbwrap --version^[[0m
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8021318Z ^[[36;1msysctl kernel.apparmor_restrict_unprivileged_userns^[[0m
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8021753Z ^[[36;1mif ! bwrap --unshare-all --ro-bind / / /usr/bin/true; then^[[0m
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8022226Z ^[[36;1m  sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0^[[0m
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8022588Z ^[[36;1mfi^[[0m
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8088159Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8088510Z env:
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8088704Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8089137Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8089428Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8089686Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8090001Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8090446Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8091301Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8091707Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8092071Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8092443Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8092842Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8093160Z ##[endgroup]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.8966386Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.9360717Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.9361879Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.9385978Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.9432671Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:05.9477681Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.0701107Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [549 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.0967498Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main all Packages [640 B]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1001341Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [492 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1068896Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.3 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1165466Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1375 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1264303Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [306 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1299256Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1702 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1393545Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [342 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1422334Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1765 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1525769Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [402 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1565036Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [50.7 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.1569703Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.0 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.2227772Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1121 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.2286622Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [228 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.2747802Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1220 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.2811071Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [245 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.2835803Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1674 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.2930819Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [383 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.2975266Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [45.4 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:06.2989140Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [12.1 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:09.0517384Z Fetched 12.3 MB in 1s (9839 kB/s)
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:09.8939847Z Reading package lists...
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:09.9237718Z Reading package lists...
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.1009109Z Building dependency tree...
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.1017442Z Reading state information...
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.2507470Z The following NEW packages will be installed:
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.2513100Z   bubblewrap
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.2675258Z 0 upgraded, 1 newly installed, 0 to remove and 23 not upgraded.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.2675762Z Need to get 50.4 kB of archives.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.2676122Z After this operation, 133 kB of additional disk space will be used.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.2676549Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:10.4911138Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 bubblewrap amd64 0.9.0-1ubuntu0.3 [50.4 kB]
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0330906Z Fetched 50.4 kB in 0s (214 kB/s)
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0545950Z Selecting previously unselected package bubblewrap.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0809272Z (Reading database ... 
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0810039Z (Reading database ... 5%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0810497Z (Reading database ... 10%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0810939Z (Reading database ... 15%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0811371Z (Reading database ... 20%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0811639Z (Reading database ... 25%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0811908Z (Reading database ... 30%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0812184Z (Reading database ... 35%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0812462Z (Reading database ... 40%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0812724Z (Reading database ... 45%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0812986Z (Reading database ... 50%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.0859391Z (Reading database ... 55%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.1991029Z (Reading database ... 60%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.4062694Z (Reading database ... 65%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.5973258Z (Reading database ... 70%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.7597373Z (Reading database ... 75%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:11.9421260Z (Reading database ... 80%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.1482379Z (Reading database ... 85%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.3558121Z (Reading database ... 90%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.5149253Z (Reading database ... 95%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.5149754Z (Reading database ... 100%
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.5150254Z (Reading database ... 203191 files and directories currently installed.)
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.5195346Z Preparing to unpack .../bubblewrap_0.9.0-1ubuntu0.3_amd64.deb ...
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.5219770Z Unpacking bubblewrap (0.9.0-1ubuntu0.3) ...
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.5629579Z Setting up bubblewrap (0.9.0-1ubuntu0.3) ...
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.5677078Z Processing triggers for man-db (2.12.0-4build2) ...
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:12.5695788Z Not building database; man-db/auto-update is not 'true'.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1739336Z 
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1740006Z Running kernel seems to be up-to-date.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1740390Z 
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1740573Z No services need to be restarted.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1740821Z 
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1740950Z No containers need to be restarted.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1741154Z 
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1741300Z No user sessions are running outdated binaries.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1741547Z 
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:13.1741766Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:14.0043910Z bubblewrap 0.9.0
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:14.0054004Z kernel.apparmor_restrict_unprivileged_userns = 1
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:14.0076535Z bwrap: loopback: Failed RTM_NEWADDR: Operation not permitted
+x86_64-unknown-linux-gnu	Prepare Linux evaluator sandbox	2026-10-12T10:50:14.0147241Z kernel.apparmor_restrict_unprivileged_userns = 0
+x86_64-unknown-linux-gnu	Install pinned toolchain	﻿2026-10-12T10:50:14.0193718Z ##[group]Run rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0194464Z ^[[36;1mrustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy^[[0m
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0257595Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0258402Z env:
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0258735Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0259155Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0259603Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0259984Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0260482Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0261184Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0262108Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0262798Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0263385Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0264036Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0264692Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0265231Z ##[endgroup]
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.0426609Z info: syncing channel updates for 1.98.1-x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.1829994Z info: latest update on 2026-09-03 for version 1.98.1 (48a229cea 2026-09-01)
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:14.1830610Z info: downloading 5 components
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:21.9367552Z 
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:21.9438143Z   1.98.1-x86_64-unknown-linux-gnu installed - rustc 1.98.1 (48a229cea 2026-09-01)
+x86_64-unknown-linux-gnu	Install pinned toolchain	2026-10-12T10:50:21.9438745Z 
+x86_64-unknown-linux-gnu	Record and verify native environment	﻿2026-10-12T10:50:21.9541701Z ##[group]Run mkdir -p native-evidence
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9542078Z ^[[36;1mmkdir -p native-evidence^[[0m
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9542855Z ^[[36;1mpython -c 'import json,platform; print(json.dumps({"system": platform.system(), "platform": platform.platform(), "machine": platform.machine()}))' > native-evidence/environment.json^[[0m
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9543657Z ^[[36;1mrustc --version --verbose^[[0m
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9543926Z ^[[36;1mcargo --version^[[0m
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9544317Z ^[[36;1mtest "$(rustc --version --verbose | awk '/^host:/ {print $2}')" = "$EXPECTED_HOST"^[[0m
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9609245Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9609589Z env:
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9609785Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9610038Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9610322Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9610584Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9610948Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9611387Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9611808Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9612223Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9612590Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9612963Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9613334Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:21.9613649Z ##[endgroup]
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:22.0313080Z rustc 1.98.1 (48a229cea 2026-09-01)
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:22.0313732Z binary: rustc
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:22.0314339Z commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:22.0314890Z commit-date: 2026-09-01
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:22.0315311Z host: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:22.0315738Z release: 1.98.1
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:22.0315960Z LLVM version: 22.1.8
+x86_64-unknown-linux-gnu	Record and verify native environment	2026-10-12T10:50:22.0581564Z cargo 1.98.1 (797e8a9bc 2026-08-05)
+x86_64-unknown-linux-gnu	Check formatting	﻿2026-10-12T10:50:22.0927749Z ##[group]Run cargo fmt --all -- --check
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0928419Z ^[[36;1mcargo fmt --all -- --check^[[0m
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0990586Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0990932Z env:
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0991124Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0991378Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0991674Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0991926Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0992242Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0992652Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0993071Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0993498Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0993872Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0994248Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0994851Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Check formatting	2026-10-12T10:50:22.0995173Z ##[endgroup]
+x86_64-unknown-linux-gnu	Lint	﻿2026-10-12T10:50:22.2195823Z ##[group]Run cargo clippy --workspace --all-targets --locked -- -D warnings
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2196392Z ^[[36;1mcargo clippy --workspace --all-targets --locked -- -D warnings^[[0m
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2259185Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2259532Z env:
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2259732Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2259993Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2260294Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2260555Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2260880Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2261300Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2261734Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2262172Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2262548Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2262959Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2263337Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.2263662Z ##[endgroup]
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.3038895Z ^[[1m^[[92m    Updating^[[0m crates.io index
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.5037542Z ^[[1m^[[92m Downloading^[[0m crates ...
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.7858528Z ^[[1m^[[92m  Downloaded^[[0m arrayref v0.3.9
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.7887579Z ^[[1m^[[92m  Downloaded^[[0m arrayvec v0.7.8
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.7945636Z ^[[1m^[[92m  Downloaded^[[0m bitflags v2.13.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8018897Z ^[[1m^[[92m  Downloaded^[[0m itoa v1.0.18
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8094135Z ^[[1m^[[92m  Downloaded^[[0m find-msvc-tools v0.1.14
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8120953Z ^[[1m^[[92m  Downloaded^[[0m constant_time_eq v0.3.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8138479Z ^[[1m^[[92m  Downloaded^[[0m fallible-streaming-iterator v0.1.9
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8148931Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-language v0.1.9
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8169863Z ^[[1m^[[92m  Downloaded^[[0m equivalent v1.0.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8186444Z ^[[1m^[[92m  Downloaded^[[0m errno v0.3.14
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8216027Z ^[[1m^[[92m  Downloaded^[[0m fallible-iterator v0.3.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8239562Z ^[[1m^[[92m  Downloaded^[[0m shlex v2.0.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8252604Z ^[[1m^[[92m  Downloaded^[[0m aho-corasick v1.1.5
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8314517Z ^[[1m^[[92m  Downloaded^[[0m serde_core v1.0.229
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8349093Z ^[[1m^[[92m  Downloaded^[[0m smallvec v1.16.3
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8374286Z ^[[1m^[[92m  Downloaded^[[0m streaming-iterator v0.1.9
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8388769Z ^[[1m^[[92m  Downloaded^[[0m zmij v1.0.23
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8429411Z ^[[1m^[[92m  Downloaded^[[0m cfg-if v1.0.5
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8461834Z ^[[1m^[[92m  Downloaded^[[0m foldhash v0.2.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8485624Z ^[[1m^[[92m  Downloaded^[[0m pkg-config v0.3.34
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8527023Z ^[[1m^[[92m  Downloaded^[[0m memchr v2.8.3
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8626332Z ^[[1m^[[92m  Downloaded^[[0m indexmap v2.14.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8670349Z ^[[1m^[[92m  Downloaded^[[0m serde_json v1.0.154
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8747643Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-go v0.25.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8787767Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-javascript v0.25.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8846021Z ^[[1m^[[92m  Downloaded^[[0m cc v1.8.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8885852Z ^[[1m^[[92m  Downloaded^[[0m rusqlite v0.40.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.8955456Z ^[[1m^[[92m  Downloaded^[[0m regex v1.13.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.9009614Z ^[[1m^[[92m  Downloaded^[[0m hashbrown v0.17.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.9062742Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-python v0.25.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.9125633Z ^[[1m^[[92m  Downloaded^[[0m blake3 v1.8.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.9206429Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter v0.27.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.9293285Z ^[[1m^[[92m  Downloaded^[[0m vcpkg v0.2.15
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.9849697Z ^[[1m^[[92m  Downloaded^[[0m regex-syntax v0.8.11
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:22.9916296Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-rust v0.24.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.0020022Z ^[[1m^[[92m  Downloaded^[[0m rustix v1.1.5
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.0344674Z ^[[1m^[[92m  Downloaded^[[0m regex-automata v0.4.18
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.0539939Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-typescript v0.23.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.0793034Z ^[[1m^[[92m  Downloaded^[[0m libc v0.2.190
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.1289879Z ^[[1m^[[92m  Downloaded^[[0m linux-raw-sys v0.12.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.1919901Z ^[[1m^[[92m  Downloaded^[[0m libsqlite3-sys v0.38.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.2864526Z ^[[1m^[[92m   Compiling^[[0m find-msvc-tools v0.1.14
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.2865267Z ^[[1m^[[92m   Compiling^[[0m shlex v2.0.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.2879457Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-language v0.1.9
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.2923883Z ^[[1m^[[92m    Checking^[[0m xrai-core v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-core)
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.3339699Z ^[[1m^[[92m   Compiling^[[0m zmij v1.0.23
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.4099335Z ^[[1m^[[92m   Compiling^[[0m cc v1.8.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.4493105Z ^[[1m^[[92m   Compiling^[[0m serde_core v1.0.229
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.4644525Z ^[[1m^[[92m   Compiling^[[0m hashbrown v0.17.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.4915586Z ^[[1m^[[92m   Compiling^[[0m serde_json v1.0.154
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.6090054Z ^[[1m^[[92m   Compiling^[[0m equivalent v1.0.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:23.9076444Z ^[[1m^[[92m   Compiling^[[0m itoa v1.0.18
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:24.0192559Z ^[[1m^[[92m   Compiling^[[0m indexmap v2.14.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:24.0279345Z ^[[1m^[[92m   Compiling^[[0m pkg-config v0.3.34
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:24.4749220Z ^[[1m^[[92m    Checking^[[0m memchr v2.8.3
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:24.8309275Z ^[[1m^[[92m   Compiling^[[0m foldhash v0.2.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:24.9179446Z ^[[1m^[[92m   Compiling^[[0m vcpkg v0.2.15
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:25.1785077Z ^[[1m^[[92m    Checking^[[0m aho-corasick v1.1.5
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:25.2570115Z ^[[1m^[[92m    Checking^[[0m xrai-index v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-index)
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:25.2859570Z ^[[1m^[[92m    Checking^[[0m xrai-query v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-query)
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:25.3069425Z ^[[1m^[[92m    Checking^[[0m regex-syntax v0.8.11
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:25.5149828Z ^[[1m^[[92m   Compiling^[[0m libsqlite3-sys v0.38.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:25.8551500Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-go v0.25.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:25.9849353Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-typescript v0.23.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:26.1060786Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-python v0.25.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:26.2269388Z ^[[1m^[[92m   Compiling^[[0m blake3 v1.8.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:26.4199540Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-javascript v0.25.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:26.5299846Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-rust v0.24.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:26.6399683Z ^[[1m^[[92m    Checking^[[0m bitflags v2.13.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:26.6729569Z ^[[1m^[[92m    Checking^[[0m regex-automata v0.4.18
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:26.7449449Z ^[[1m^[[92m   Compiling^[[0m rustix v1.1.5
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:27.0699829Z ^[[1m^[[92m   Compiling^[[0m tree-sitter v0.27.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:28.1611092Z ^[[1m^[[92m    Checking^[[0m regex v1.13.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:29.6309333Z ^[[1m^[[92m    Checking^[[0m smallvec v1.16.3
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:29.7389391Z ^[[1m^[[92m    Checking^[[0m linux-raw-sys v0.12.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:29.7749601Z ^[[1m^[[92m    Checking^[[0m streaming-iterator v0.1.9
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:30.0239567Z ^[[1m^[[92m    Checking^[[0m fallible-iterator v0.3.0
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:30.0393294Z ^[[1m^[[92m    Checking^[[0m cfg-if v1.0.5
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:30.0819064Z ^[[1m^[[92m    Checking^[[0m constant_time_eq v0.3.1
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:30.1349193Z ^[[1m^[[92m    Checking^[[0m arrayref v0.3.9
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:30.1689306Z ^[[1m^[[92m    Checking^[[0m arrayvec v0.7.8
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:30.3179444Z ^[[1m^[[92m    Checking^[[0m fallible-streaming-iterator v0.1.9
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:30.9074243Z ^[[1m^[[92m    Checking^[[0m xrai v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai)
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:33.9563918Z ^[[1m^[[92m    Checking^[[0m rusqlite v0.40.2
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:34.3480859Z ^[[1m^[[92m    Checking^[[0m xrai-eval v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-eval)
+x86_64-unknown-linux-gnu	Lint	2026-10-12T10:50:35.0006101Z ^[[1m^[[92m    Finished^[[0m `dev` profile [unoptimized + debuginfo] target(s) in 12.72s
+x86_64-unknown-linux-gnu	Test	﻿2026-10-12T10:50:35.0264645Z ##[group]Run cargo test --workspace --locked 2>&1 | tee native-evidence/workspace-tests.log
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0265826Z ^[[36;1mcargo test --workspace --locked 2>&1 | tee native-evidence/workspace-tests.log^[[0m
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0347711Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0348393Z env:
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0348599Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0348860Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0349151Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0349402Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0349719Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0350132Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0350552Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0350974Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0351363Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0351797Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0352171Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.0352499Z ##[endgroup]
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.1339571Z ^[[1m^[[92m   Compiling^[[0m xrai-core v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-core)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.1340469Z ^[[1m^[[92m   Compiling^[[0m memchr v2.8.3
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.1341403Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-language v0.1.9
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.1396731Z ^[[1m^[[92m   Compiling^[[0m regex-syntax v0.8.11
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.1606066Z ^[[1m^[[92m   Compiling^[[0m xrai-query v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-query)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.1660033Z ^[[1m^[[92m   Compiling^[[0m xrai-index v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-index)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.1850254Z ^[[1m^[[92m   Compiling^[[0m bitflags v2.13.2
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.1892320Z ^[[1m^[[92m   Compiling^[[0m libsqlite3-sys v0.38.2
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.3476001Z ^[[1m^[[92m   Compiling^[[0m streaming-iterator v0.1.9
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.3649557Z ^[[1m^[[92m   Compiling^[[0m fallible-streaming-iterator v0.1.9
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.4484596Z ^[[1m^[[92m   Compiling^[[0m smallvec v1.16.3
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.6032677Z ^[[1m^[[92m   Compiling^[[0m aho-corasick v1.1.5
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.6163145Z ^[[1m^[[92m   Compiling^[[0m serde_json v1.0.154
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.8839855Z ^[[1m^[[92m   Compiling^[[0m cfg-if v1.0.5
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:35.9139364Z ^[[1m^[[92m   Compiling^[[0m arrayvec v0.7.8
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:36.0510588Z ^[[1m^[[92m   Compiling^[[0m constant_time_eq v0.3.1
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:36.0930482Z ^[[1m^[[92m   Compiling^[[0m arrayref v0.3.9
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:36.1179454Z ^[[1m^[[92m   Compiling^[[0m fallible-iterator v0.3.0
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:36.4084337Z ^[[1m^[[92m   Compiling^[[0m linux-raw-sys v0.12.1
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:36.7334374Z ^[[1m^[[92m   Compiling^[[0m rustix v1.1.5
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:36.7375097Z ^[[1m^[[92m   Compiling^[[0m tree-sitter v0.27.1
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:36.8719815Z ^[[1m^[[92m   Compiling^[[0m regex-automata v0.4.18
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:38.2621823Z ^[[1m^[[92m   Compiling^[[0m rusqlite v0.40.2
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:38.6959807Z ^[[1m^[[92m   Compiling^[[0m blake3 v1.8.2
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:39.1382836Z ^[[1m^[[92m   Compiling^[[0m regex v1.13.1
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:39.4639442Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-python v0.25.0
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:39.4978703Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-go v0.25.0
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:39.5309506Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-rust v0.24.2
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:39.5484984Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-typescript v0.23.2
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:39.5622975Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-javascript v0.25.0
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:39.5919953Z ^[[1m^[[92m   Compiling^[[0m xrai v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:39.9855816Z ^[[1m^[[92m   Compiling^[[0m xrai-eval v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-eval)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7374227Z ^[[1m^[[92m    Finished^[[0m `test` profile [unoptimized + debuginfo] target(s) in 8.66s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7546018Z ^[[1m^[[92m     Running^[[0m unittests src/main.rs (target/debug/deps/xrai-a7be12092be90a2e)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7558779Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7558997Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7560495Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7560896Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7561351Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7562379Z ^[[1m^[[92m     Running^[[0m tests/cli.rs (target/debug/deps/cli-eb381197ce171f36)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7571881Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7572065Z running 3 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7609589Z test version_reports_package_version_and_native_platform ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7611580Z test help_only_advertises_available_options ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7632343Z test unsupported_operations_and_extra_arguments_fail_without_data ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7632741Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7633038Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7633586Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7634957Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_core-a634cf6e76f1e98d)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7644599Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7644833Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7646623Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7647274Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7648126Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7649287Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_eval-fefaba7a12424d6f)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7658802Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7659002Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7659243Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7659679Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7660126Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7661548Z ^[[1m^[[92m     Running^[[0m unittests src/bin/filesystem-spike.rs (target/debug/deps/filesystem_spike-a9f00b2e0f2ba42b)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7671431Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7671618Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7671966Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7672399Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7672991Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7674871Z ^[[1m^[[92m     Running^[[0m unittests src/bin/incremental-probe.rs (target/debug/deps/incremental_probe-5187740386636f48)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7684620Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7684803Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7685067Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7685498Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7686108Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7688321Z ^[[1m^[[92m     Running^[[0m unittests src/bin/parsing-spike.rs (target/debug/deps/parsing_spike-2d4a3e4645734c81)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7697604Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7697812Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7698260Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7698566Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7698931Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7701207Z ^[[1m^[[92m     Running^[[0m unittests src/bin/sqlite-spike.rs (target/debug/deps/sqlite_spike-20452a173cec9fa1)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7710987Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7711193Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7711434Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7711749Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7712116Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7714144Z ^[[1m^[[92m     Running^[[0m unittests src/bin/worker-spike.rs (target/debug/deps/worker_spike-46837c7e37a5894b)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7724196Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7724570Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7724813Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7725257Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7725871Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7727178Z ^[[1m^[[92m     Running^[[0m tests/filesystem_anchored.rs (target/debug/deps/filesystem_anchored-d8cd0a2fd3b06d05)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7738339Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7738532Z running 21 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7752740Z test ancestor_symlink_before_open_never_delivers_external_sentinel ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7753896Z test ancestor_symlink_after_source_open_never_publishes_as_current ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7757808Z test barrier_swap_after_ancestor_handle_open_invalidates_binding ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7765412Z test anchored_enumeration_of_moved_directory_returns_partial_inventory ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7766652Z test existing_proc_mount_is_refused_by_linux_no_xdev ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7767768Z test hard_link_captures_shared_object_and_does_not_claim_link_confinement ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7782893Z test empty_directory_addition_and_removal_are_reconciled_before_publication ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7792632Z test last_publication_reconciles_previously_captured_ancestor ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7798801Z test moving_open_directory_outside_without_link_is_diagnosed ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7808559Z test new_file_after_enumeration_marks_root_coverage_partial ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7814920Z test original_file_unlink_and_recreate_cannot_reuse_old_binding ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7824595Z test rejects_invalid_native_components_and_internal_capture_inventory_exclusions ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7834829Z test replaced_root_invalidates_all_inventory_sources ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7842456Z test replacing_checkout_parent_with_alias_of_moved_parent_invalidates_locator ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.7994462Z test seeded_adversarial_schedule_supplements_deterministic_barriers ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8115528Z test seeded_concurrent_writer_stress_never_delivers_external_sentinel ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8448395Z test ceiling_is_enforced_for_initial_size_and_during_growth ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8910631Z test inventory_final_reconciliation_rejects_changed_source_revision ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8911645Z test in_place_same_size_and_restored_mtime_is_not_a_snapshot_guarantee ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8912889Z test stabilized_update_equals_independent_rebuild_and_old_bytes_remain_immutable ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8933653Z test special_files_are_refused_without_fifo_blocking ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8933986Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8934280Z test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8934690Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8937242Z ^[[1m^[[92m     Running^[[0m tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-2d364704b37a2ef5)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8947479Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8947699Z running 14 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8962297Z test explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8964038Z test filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8965613Z test invalid_configuration_fails_before_inventory ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8966899Z test gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8971993Z test permission_failure_is_diagnostic_or_records_privileged_capability ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8986982Z test linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8988921Z test removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8990251Z test no_git_and_identical_named_checkouts_have_independent_writable_state ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8991663Z test removal_between_discovery_and_capture_has_typed_diagnostic ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8994808Z test replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.8998496Z test same_size_and_mtime_change_is_detected_by_content_hash ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9003675Z test symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9006504Z test unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9167576Z test actual_git_linked_worktrees_have_independent_checkout_state ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9168432Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9168918Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9169595Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9170495Z ^[[1m^[[92m     Running^[[0m tests/parsing.rs (target/debug/deps/parsing-573077007bf5ac06)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9183336Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9183538Z running 4 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9349480Z test copied_binary_reports_incomplete_exit_status_and_refuses_unknown_dialect ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:43.9823861Z test fingerprints_cover_distinct_queries_and_grammars ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0066326Z test incorporated_unicode_notice_is_preserved_in_binary_inventory ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0450721Z test every_embedded_dialect_parses_valid_and_reports_incomplete_sources ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0451528Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0452128Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0452813Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0463145Z ^[[1m^[[92m     Running^[[0m tests/sqlite_snapshots.rs (target/debug/deps/sqlite_snapshots-22b338926ff39f00)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0477221Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0477531Z running 6 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0684381Z test bundled_sqlite_fts5_and_trigram_are_available_without_load_extension ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0754733Z test future_schema_and_foreign_application_are_refused_without_recreation ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0814277Z test source_foreign_keys_hashes_and_invalid_spans_are_enforced ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0884822Z test two_readers_keep_a_bytes_facts_and_fts_while_writer_publishes_b ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.0895378Z test backup_rebuild_preserve_human_files_and_readers_and_refuse_overwrite ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2339373Z test killed_writer_rolls_back_b_keeps_a_and_records_abandoned_staging ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2339970Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2340422Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2341090Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2344101Z ^[[1m^[[92m     Running^[[0m tests/workers.rs (target/debug/deps/workers-8bc236b46e4d6525)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2357596Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2357763Z running 13 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2454108Z test admission_overload_and_duplicate_requests_do_not_grow_memory ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2634680Z test decoder_refuses_huge_header_before_payload_read_and_corrupt_enums ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2811441Z test executable_path_with_spaces_roundtrips_real_worker ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.2939502Z test identities_spans_and_extra_bytes_refused ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.3589626Z test deadlines_cancel_late_and_shutdown_are_bounded ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.4056606Z test finite_retry_in_new_process_and_stderr_capture_bounded ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.4452736Z test queue_wait_consumes_total_deadline_before_spawn ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.5400624Z test simultaneous_configurations_remain_distinct ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.5588862Z test shutdown_with_inflight_failure_reaps_child ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.6222928Z test faulty_worker_cannot_publish_and_independent_work_progresses ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.6289853Z test worker_is_given_bytes_and_does_not_reopen_source ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:44.7817274Z test roundtrip_and_direct_pool_equivalence_all_dialects ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2934646Z test valid_frame_requires_successful_exit_and_roundtrips_repeat ... ok
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2935309Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2935748Z test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.06s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2936350Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2949384Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_index-d89e7505ec0753a9)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2959298Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2959542Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2959772Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2960195Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2960817Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2962947Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_query-96914637e2eedb4c)
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2974509Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2974743Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2974991Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2976070Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2976925Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.2977141Z ^[[1m^[[92m   Doc-tests^[[0m xrai_core
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3100167Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3100523Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3100772Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3101061Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3101423Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3110314Z ^[[1m^[[92m   Doc-tests^[[0m xrai_eval
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3430310Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3430559Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3430733Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3431149Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3431578Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3443908Z ^[[1m^[[92m   Doc-tests^[[0m xrai_index
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3566096Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3566467Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3566746Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3567196Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3568062Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3576128Z ^[[1m^[[92m   Doc-tests^[[0m xrai_query
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3693055Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3693420Z running 0 tests
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3693689Z 
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3694144Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+x86_64-unknown-linux-gnu	Test	2026-10-12T10:50:45.3694776Z 
+x86_64-unknown-linux-gnu	Build	﻿2026-10-12T10:50:45.3763417Z ##[group]Run cargo build --workspace --locked
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3763785Z ^[[36;1mcargo build --workspace --locked^[[0m
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3826206Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3826552Z env:
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3826745Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3827013Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3827301Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3827556Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3828183Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3828628Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3829062Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3829490Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3829869Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3830253Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3830666Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.3830987Z ##[endgroup]
+x86_64-unknown-linux-gnu	Build	2026-10-12T10:50:45.4516213Z ^[[1m^[[92m    Finished^[[0m `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
+x86_64-unknown-linux-gnu	Smoke help	﻿2026-10-12T10:50:45.4597751Z ##[group]Run "./$XRAI_BINARY" --help
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4598633Z ^[[36;1m"./$XRAI_BINARY" --help^[[0m
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4679799Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4680167Z env:
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4680367Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4680641Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4680928Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4681188Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4681514Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4681922Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4682342Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4682761Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4683140Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4683519Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4684379Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4685002Z ##[endgroup]
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4776097Z xrai — development scaffold
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4776564Z 
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4776963Z Usage: xrai [OPTION]
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4777242Z 
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4777620Z Options:
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4778250Z -h, --help       Print help
+x86_64-unknown-linux-gnu	Smoke help	2026-10-12T10:50:45.4778730Z -V, --version    Print version and platform
+x86_64-unknown-linux-gnu	Smoke version	﻿2026-10-12T10:50:45.4805544Z ##[group]Run "./$XRAI_BINARY" --version
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4805874Z ^[[36;1m"./$XRAI_BINARY" --version^[[0m
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4861418Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4861753Z env:
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4861946Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4862200Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4862487Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4862750Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4863076Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4863487Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4863909Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4864326Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4864720Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4865108Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4865517Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4865831Z ##[endgroup]
+x86_64-unknown-linux-gnu	Smoke version	2026-10-12T10:50:45.4948152Z xrai 0.1.0-dev (x86_64-linux)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	﻿2026-10-12T10:50:45.4977607Z ##[group]Run mkdir -p native-evidence
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.4978279Z ^[[36;1mmkdir -p native-evidence^[[0m
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.4978904Z ^[[36;1mpython -m unittest discover -s crates/xrai-eval/harness/tests -v 2>&1 | tee native-evidence/harness-tests.log^[[0m
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.4979785Z ^[[36;1mpython crates/xrai-eval/harness/runner.py baseline --output native-evidence/baseline > native-evidence/baseline-summary.json^[[0m
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.4980525Z ^[[36;1mpython crates/xrai-eval/harness/verify_records.py native-evidence/baseline^[[0m
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.4981274Z ^[[36;1mpython crates/xrai-eval/harness/incremental.py --binary target/debug/incremental-probe --output native-evidence/incremental.json^[[0m
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5036845Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5037196Z env:
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5037389Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5037643Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5038244Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5038563Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5038890Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5039298Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5039713Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5040123Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5040494Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5040880Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5041250Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.5041571Z ##[endgroup]
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:45.8300498Z test_bounded_fork_output_limit_and_closed_pipes (test_containment.NamespaceTests.test_bounded_fork_output_limit_and_closed_pipes) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8387430Z test_evaluator_death_destroys_namespace (test_containment.NamespaceTests.test_evaluator_death_destroys_namespace) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8414140Z test_positive_descendant_sentinel (test_containment.NamespaceTests.test_positive_descendant_sentinel) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8434377Z test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) ... 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8436793Z   test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='setsid', parent_wait=True) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8455895Z   test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='doublefork', parent_wait=True) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8475854Z   test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='pipes', parent_wait=True) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8495431Z   test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='setsid', parent_wait=False) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8516024Z   test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='setsid', parent_wait=True) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8537050Z   test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='doublefork', parent_wait=True) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8557274Z   test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='pipes', parent_wait=True) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:49.8577636Z   test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='setsid', parent_wait=False) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8667485Z test_two_arms_isolation_and_independent_cancellation (test_containment.NamespaceTests.test_two_arms_isolation_and_independent_cancellation) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8675627Z test_cancelled_before_launch_never_executes (test_containment.ReceiptTests.test_cancelled_before_launch_never_executes) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8751947Z test_exception_after_launch_always_cleans_even_exited_wrapper (test_containment.ReceiptTests.test_exception_after_launch_always_cleans_even_exited_wrapper) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8770759Z test_external_user_namespace_mapping_is_single_identity (test_containment.ReceiptTests.test_external_user_namespace_mapping_is_single_identity) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8786482Z test_incomplete_or_tampered_namespace_receipts_are_rejected (test_containment.ReceiptTests.test_incomplete_or_tampered_namespace_receipts_are_rejected) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8794052Z test_mac_disposable_is_explicitly_unavailable (test_containment.ReceiptTests.test_mac_disposable_is_explicitly_unavailable) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8847684Z test_teardown_failure_is_preserved_and_ineligible (test_containment.ReceiptTests.test_teardown_failure_is_preserved_and_ineligible) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8931833Z test_version_one_bytes_remain_replayable (test_containment.ReceiptTests.test_version_one_bytes_remain_replayable) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8954339Z test_allowed_workspace_read_and_edit (test_runner.RunnerTests.test_allowed_workspace_read_and_edit) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.8978219Z test_closed_pipes_do_not_disable_timeout (test_runner.RunnerTests.test_closed_pipes_do_not_disable_timeout) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9002956Z test_cross_arm_and_evaluator_absolute_read_denied (test_runner.RunnerTests.test_cross_arm_and_evaluator_absolute_read_denied) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9025953Z test_detached_descendant_cannot_block_evaluator (test_runner.RunnerTests.test_detached_descendant_cannot_block_evaluator) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9049429Z test_error_keeps_partial_output (test_runner.RunnerTests.test_error_keeps_partial_output) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9067319Z test_evaluator_hash_does_not_follow_agent_symlink (test_runner.RunnerTests.test_evaluator_hash_does_not_follow_agent_symlink) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9090944Z test_host_environment_not_inherited (test_runner.RunnerTests.test_host_environment_not_inherited) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9099405Z test_invalid_adapter_does_not_fall_back_to_unsandboxed (test_runner.RunnerTests.test_invalid_adapter_does_not_fall_back_to_unsandboxed) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9120214Z test_network_denied (test_runner.RunnerTests.test_network_denied) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9143351Z test_output_limit_is_bounded (test_runner.RunnerTests.test_output_limit_is_bounded) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9173580Z test_replay_preserves_binary_and_rejects_tampering (test_runner.RunnerTests.test_replay_preserves_binary_and_rejects_tampering) ... ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9194810Z test_symlink_escape_and_cross_arm_write_denied (test_runner.RunnerTests.test_symlink_escape_and_cross_arm_write_denied) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9218555Z test_timeout_kills_descendants_keeps_partial (test_runner.RunnerTests.test_timeout_kills_descendants_keeps_partial) ... FAIL
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9221003Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9221225Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9222438Z FAIL: test_bounded_fork_output_limit_and_closed_pipes (test_containment.NamespaceTests.test_bounded_fork_output_limit_and_closed_pipes)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9223810Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9224466Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9232692Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 237, in test_bounded_fork_output_limit_and_closed_pipes
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9234439Z     self.assertEqual(result['status'],'timeout',result); self.confirmed(result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9235178Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9235710Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9236166Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9236481Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9241224Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nfor i in range(4):\n    if os.fork()==0:\n        open('child'+str(i),'w').write('started'); time.sleep(6); os._exit(0)\nwhile not all(os.path.exists('child'+str(i)) for i in range(4)): time.sleep(.01)\nprint('all-started',flush=True); time.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '65145665-86e2-44b3-b6ae-59c54a5ab840', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0018541440000063858, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9245529Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9245651Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9246242Z FAIL: test_evaluator_death_destroys_namespace (test_containment.NamespaceTests.test_evaluator_death_destroys_namespace)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9246857Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9247202Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9248200Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 281, in test_evaluator_death_destroys_namespace
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9248870Z     wait_file(self.workspace/'started')
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9249140Z     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9249657Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 35, in wait_file
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9250313Z     raise AssertionError(f'positive control did not execute: {path}')
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9250835Z AssertionError: positive control did not execute: /tmp/xrai-containment-9o_8d_j2/started
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9251349Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9251465Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9251996Z FAIL: test_positive_descendant_sentinel (test_containment.NamespaceTests.test_positive_descendant_sentinel)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9252560Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9252903Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9253533Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 223, in test_positive_descendant_sentinel
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9254175Z     self.assertEqual(result['status'], 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9254494Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9254786Z AssertionError: 'spawn_error' != 'ok'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9255039Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9255232Z + ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9259002Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time; open('started','w').write('executed'); open('late','w').write('survived')"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '21e639e0-5c5a-4bd8-8261-b375d0695878', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0018786800000043513, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9262804Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9262919Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9263776Z FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='setsid', parent_wait=True)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9264652Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9264986Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9265686Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9266470Z     self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9266908Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9267243Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9267510Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9267696Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9272834Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='setsid'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'ca87d8d1-b40f-4120-bf03-4d11aa36dd88', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001495531000003325, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9277816Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9278249Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9279120Z FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='doublefork', parent_wait=True)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9279992Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9280329Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9281034Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9281814Z     self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9282393Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9282727Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9282992Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9283177Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9288119Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='doublefork'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'ce659622-b2f6-4da3-8f3c-7b83c5909bb3', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001412246000001005, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9292993Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9293102Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9293950Z FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='pipes', parent_wait=True)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9294813Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9295146Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9295838Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9296609Z     self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9297050Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9297523Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9297788Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9298330Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9303041Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='pipes'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '8186a1f7-1834-4fd7-9108-48152f85efa2', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013684540000014067, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9308295Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9308416Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9309265Z FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='setsid', parent_wait=False)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9310132Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9310466Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9311179Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9311960Z     self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9312400Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9312773Z AssertionError: 'spawn_error' != 'ok'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9313023Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9313205Z + ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9318042Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='setsid'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\nos._exit(0)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'b4c2beb4-db6b-4606-ad39-208302cfb2ee', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013509710000079167, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9323064Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9323178Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9324075Z FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='setsid', parent_wait=True)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9324942Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9325294Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9326032Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9326822Z     self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9327264Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9327599Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9327990Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9328183Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9332909Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='setsid'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '1ad4fdbc-55f5-4fb4-bf4b-2a328909dddf', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0014423719999996365, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9338011Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9338243Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9339187Z FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='doublefork', parent_wait=True)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9340073Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9340405Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9341129Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9341916Z     self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9342349Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9342678Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9342939Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9343121Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9348029Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='doublefork'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '5746af8b-ce69-48e6-b8f4-c6539f7d9f8b', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001478520000006256, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9353060Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9353168Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9354197Z FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='pipes', parent_wait=True)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9355056Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9355388Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9356095Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9356866Z     self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9357307Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9357643Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9358070Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9358260Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9362976Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='pipes'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'f4b444be-0931-40ef-82c5-a82931c7bde1', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.00140549299999293, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9367802Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9368022Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9368877Z FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='setsid', parent_wait=False)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9369868Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9370203Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9370900Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9371686Z     self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9372130Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9372458Z AssertionError: 'spawn_error' != 'ok'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9372710Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9372893Z + ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9377562Z  : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='setsid'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\nos._exit(0)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '43514ba5-40e6-4b84-8212-5e565a9dd529', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0014156919999948059, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9382824Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9382951Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9383621Z FAIL: test_two_arms_isolation_and_independent_cancellation (test_containment.NamespaceTests.test_two_arms_isolation_and_independent_cancellation)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9384311Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9384651Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9385379Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 262, in test_two_arms_isolation_and_independent_cancellation
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9386081Z     wait_file(arm_a/'started'); wait_file(arm_b/'started')
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9386393Z     ~~~~~~~~~^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9386928Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 35, in wait_file
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9387591Z     raise AssertionError(f'positive control did not execute: {path}')
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9388245Z AssertionError: positive control did not execute: /tmp/xrai-containment-lu0qdaod/A/started
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9388610Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9388724Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9389260Z FAIL: test_allowed_workspace_read_and_edit (test_runner.RunnerTests.test_allowed_workspace_read_and_edit)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9389824Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9390163Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9390782Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 33, in test_allowed_workspace_read_and_edit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9391589Z     self.assertEqual(result['status'], 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9391909Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9392194Z AssertionError: 'spawn_error' != 'ok'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9392472Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9392657Z + ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9395935Z  : {'phase': 'reading', 'command': ['/bin/cat', 'public.txt'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '3d59fbf1-9719-4d6b-ac22-4a84723364ba', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001434287000009249, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9399299Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9399541Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9400091Z FAIL: test_closed_pipes_do_not_disable_timeout (test_runner.RunnerTests.test_closed_pipes_do_not_disable_timeout)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9400654Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9400985Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9401607Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 94, in test_closed_pipes_do_not_disable_timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9402247Z     self.assertEqual(result['status'], 'timeout', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9402587Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9402893Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9403156Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9403338Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9406628Z  : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'exec 1>&- 2>&-; sleep 2'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'ade57acc-fa7c-4baf-8229-1b136266a6a3', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013721400000008543, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9409964Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9410075Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9410994Z FAIL: test_cross_arm_and_evaluator_absolute_read_denied (test_runner.RunnerTests.test_cross_arm_and_evaluator_absolute_read_denied)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9411847Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9412413Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9413554Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 42, in test_cross_arm_and_evaluator_absolute_read_denied
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9414930Z     self.assertEqual(result['status'], 'error', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9415535Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9416094Z AssertionError: 'spawn_error' != 'error'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9416458Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9416782Z + error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9421116Z  : {'phase': 'reading', 'command': ['/bin/cat', '/tmp/xrai-isolation-test-c676r3_6/arm-B/secret.txt'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'f6e6f652-f1d9-42de-9ffd-219060a40a1c', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0014979729999993197, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9424999Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9425115Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9425831Z FAIL: test_detached_descendant_cannot_block_evaluator (test_runner.RunnerTests.test_detached_descendant_cannot_block_evaluator)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9426719Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9427099Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9428160Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 101, in test_detached_descendant_cannot_block_evaluator
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9428984Z     self.assertEqual(result['status'], 'timeout', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9429372Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9429734Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9430057Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9430270Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9434309Z  : {'phase': 'reading', 'command': ['/usr/bin/perl', '-MPOSIX', '-e', 'if (fork() == 0) { POSIX::setsid(); sleep 2; exit 0; } print "partial"; sleep 2;'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '6ce2edd4-fc38-483f-9d3b-4b681add7e4d', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013968169999998281, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9438861Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9438983Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9439551Z FAIL: test_error_keeps_partial_output (test_runner.RunnerTests.test_error_keeps_partial_output)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9440141Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9440512Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9441212Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 75, in test_error_keeps_partial_output
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9442157Z     self.assertEqual(result['status'], 'error', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9442648Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9493959Z AssertionError: 'spawn_error' != 'error'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9494667Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9494963Z + error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9500882Z  : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'printf partial; printf diagnosis >&2; exit 7'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'c9e71c27-05f8-4175-96ae-f1d1818f8a52', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001384083000004921, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9505383Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9505520Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9506055Z FAIL: test_host_environment_not_inherited (test_runner.RunnerTests.test_host_environment_not_inherited)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9506804Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9507150Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9507803Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 70, in test_host_environment_not_inherited
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9508770Z     self.assertEqual(result['status'], 'ok', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9509090Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9509382Z AssertionError: 'spawn_error' != 'ok'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9509640Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9509826Z + ok
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9513172Z  : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'printf "%s" "${XRAI_TEST_SECRET-unset}"'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '63e72e70-e477-4a9a-84fa-5471e520a63a', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0015085360000028913, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9516466Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9516579Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9516988Z FAIL: test_network_denied (test_runner.RunnerTests.test_network_denied)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9517408Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9517745Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9518636Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 60, in test_network_denied
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9519219Z     self.assertEqual(result['status'], 'error', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9519543Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9519837Z AssertionError: 'spawn_error' != 'error'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9520101Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9520299Z + error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9523714Z  : {'phase': 'reading', 'command': ['/usr/bin/curl', '--noproxy', '*', '--max-time', '.5', 'http://127.0.0.1:42231'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '0a8e9097-9aff-4a50-9ceb-77612227a8c9', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001351271000004317, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9527446Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9527562Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9528304Z FAIL: test_output_limit_is_bounded (test_runner.RunnerTests.test_output_limit_is_bounded)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9528809Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9529156Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9529754Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 88, in test_output_limit_is_bounded
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9530515Z     self.assertEqual(result['status'], 'output_limit', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9530875Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9531208Z AssertionError: 'spawn_error' != 'output_limit'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9531496Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9531692Z + output_limit
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9535017Z  : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'while :; do printf 0123456789; done'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '0dddf15b-a6cf-4d28-8151-01f6c285c50e', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0014142290000052071, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9538520Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9538642Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9539234Z FAIL: test_symlink_escape_and_cross_arm_write_denied (test_runner.RunnerTests.test_symlink_escape_and_cross_arm_write_denied)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9539842Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9540175Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9540822Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 48, in test_symlink_escape_and_cross_arm_write_denied
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9541489Z     self.assertEqual(result['status'], 'error', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9541815Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9542108Z AssertionError: 'spawn_error' != 'error'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9542371Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9542556Z + error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9545823Z  : {'phase': 'reading', 'command': ['/bin/cat', 'escape'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'e7758bd3-f91c-475b-bf90-4e4df6556532', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001396846999995205, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9549397Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9549522Z ======================================================================
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9550113Z FAIL: test_timeout_kills_descendants_keeps_partial (test_runner.RunnerTests.test_timeout_kills_descendants_keeps_partial)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9550717Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9551046Z Traceback (most recent call last):
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9551684Z   File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 82, in test_timeout_kills_descendants_keeps_partial
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9552346Z     self.assertEqual(result['status'], 'timeout', result)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9552820Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9553122Z AssertionError: 'spawn_error' != 'timeout'
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9553385Z - spawn_error
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9553574Z + timeout
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9556850Z  : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'printf partial; sleep 10 & wait'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '7d7a3550-34ab-4d5b-9142-055078b3b0ae', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013640749999979107, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9560380Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9560531Z ----------------------------------------------------------------------
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9560865Z Ran 25 tests in 8.095s
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9561002Z 
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9561085Z FAILED (failures=22)
+x86_64-unknown-linux-gnu	Prove local harness isolation and replay	2026-10-12T10:50:53.9570428Z ##[error]Process completed with exit code 1.
+x86_64-unknown-linux-gnu	Preserve native receipts	﻿2026-10-12T10:50:53.9683826Z ##[group]Run actions/upload-artifact@v7
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9684126Z with:
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9684337Z   name: native-x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9684618Z   path: native-evidence
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9684852Z   if-no-files-found: error
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9685084Z   compression-level: 6
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9685296Z   overwrite: false
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9685513Z   include-hidden-files: false
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9685743Z   archive: true
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9685926Z env:
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9686107Z   CARGO_TERM_COLOR: always
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9686348Z   EXPECTED_HOST: x86_64-unknown-linux-gnu
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9686630Z   XRAI_BINARY: target/debug/xrai
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9686882Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9687196Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9687600Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9688208Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib/pkgconfig
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9688814Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9689193Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9689563Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.0/x64
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9689940Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.0/x64/lib
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:53.9690256Z ##[endgroup]
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.1148292Z With the provided path, there will be 4 files uploaded
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.1159018Z Artifact name is valid!
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.1159916Z Root directory input is valid!
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.4956711Z Uploading artifact: native-x86_64-unknown-linux-gnu.zip
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.5003090Z Beginning upload of artifact content to blob storage
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.8225062Z Uploaded bytes 8881
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.9059914Z Finished uploading artifact content to blob storage!
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.9060976Z SHA256 digest of uploaded artifact is 25906456f29bd3e352ac2fc93d051d17aa72b3d00d9f138089ee3217f0475362
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:54.9062118Z Finalizing artifact upload
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:55.3412457Z Artifact native-x86_64-unknown-linux-gnu successfully finalized. Artifact ID 11742340095
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:55.3413579Z Artifact native-x86_64-unknown-linux-gnu has been successfully uploaded! Final size is 8881 bytes. Artifact ID is 11742340095
+x86_64-unknown-linux-gnu	Preserve native receipts	2026-10-12T10:50:55.3416952Z Artifact download URL: https://github.com/wkoch/xrai/actions/runs/38238745914/artifacts/11742340095
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	﻿2026-10-12T10:50:55.3598559Z Post job cleanup.
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4429012Z [command]/usr/bin/git version
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4470261Z git version 2.55.0
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4543366Z Temporarily overriding HOME='/home/runner/work/_temp/1505eb3f-1820-4cf5-90aa-438e11559895' before making global git config changes
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4544703Z Adding repository directory to the temporary git global config as a safe directory
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4549723Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/xrai/xrai
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4581684Z Removing SSH command configuration
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4588063Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4630042Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4880743Z Removing HTTP extra header
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4887329Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.4924587Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.5185969Z Removing includeIf entries pointing to credentials config files
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.5194397Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+x86_64-unknown-linux-gnu	Post Run actions/checkout@v6	2026-10-12T10:50:55.5237769Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+x86_64-unknown-linux-gnu	Complete job	﻿2026-10-12T10:50:55.5635132Z Cleaning up orphan processes

@@ -1,0 +1,17 @@
+{
+  "code_commit": "a1126ad55c1e3ede192c3de659a1a7a6ac728ef2",
+  "run": 38238745914,
+  "url": "https://github.com/wkoch/xrai/actions/runs/38238745914",
+  "contracts": "passed",
+  "rust_workspace_both_hosts": "passed",
+  "filesystem_tests": {
+    "linux": 35,
+    "macos": 34
+  },
+  "worker_tests_each_host": 13,
+  "linux_harness": "failed_before_payload_missing_explicit_unshare_user",
+  "macos_harness_tests": "20_passed_5_linux_skipped",
+  "macos_baseline_replay": 20,
+  "macos_incremental": "failed_anchored_directory_handles_denied_by_seatbelt",
+  "native_full_acceptance": false
+}

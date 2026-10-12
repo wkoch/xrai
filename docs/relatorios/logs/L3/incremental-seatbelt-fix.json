@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "problem": "CI a1126ad macOS anchored root admission needs directory-data permission for physical workspace ancestors; cleanup formerly masked INDEX error",
+  "fix": "Seatbelt file-read-data literal physical ancestor directories only, incremental child poll before signal and idempotent finite cleanup",
+  "checks": {
+    "incremental_families": 4,
+    "lifecycle_tests": 3,
+    "workspace_read": "PASS",
+    "oracle_read": "DENIED_NO_BYTES",
+    "other_arm_read": "DENIED_NO_BYTES",
+    "external_symlink_read": "DENIED_NO_BYTES"
+  },
+  "limitations": [
+    "Ancestor directory entries can be listed; descendant file data stays denied outside existing runtime/workspace policy.",
+    "Known-smoke child lifecycle only; no macOS disposable-domain containment proof."
+  ],
+  "artifacts": [
+    {
+      "path": "crates/xrai-eval/harness/incremental.py",
+      "sha256": "e4c47ec13c3e354e7c3e2e6bc71f62c462e421dbd1ca266f8b31e4cb367ad9de",
+      "bytes": 8150
+    },
+    {
+      "path": "crates/xrai-eval/harness/adapters.py",
+      "sha256": "90218bd545a99dee1a4530a2b1155f69b0ece2e3dcaf8fbd07fd89c88b8041e4",
+      "bytes": 3314
+    },
+    {
+      "path": "crates/xrai-eval/harness/tests/test_incremental.py",
+      "sha256": "623296f0d114e0d545ce3e70138385e557d1393db8bc6c0e8013415049abdb22",
+      "bytes": 2492
+    },
+    {
+      "path": "docs/relatorios/logs/L3/incremental-macos-first.stderr.log",
+      "sha256": "403b9fba5545e52a2f4d7b7269425fd0c1b0b524bc03e33fe0f541952c75a2b3",
+      "bytes": 1156
+    },
+    {
+      "path": "docs/relatorios/logs/L3/incremental-macos-final.json",
+      "sha256": "848f88e367f4c84801e745a5288e5de6eea97f1a9a8f07a53e830b44264b80e0",
+      "bytes": 160234
+    },
+    {
+      "path": "docs/relatorios/logs/L3/incremental-macos-final.stdout.log",
+      "sha256": "88f021153e91354aafbf0ae1941de4e77cfcb58f13af1cdb5f1038d64466b965",
+      "bytes": 66
+    },
+    {
+      "path": "docs/relatorios/logs/L3/incremental-macos-final.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/relatorios/logs/L3/incremental-lifecycle-tests.stderr.log",
+      "sha256": "d71aa242fa89b9e094db696ccdd2618f8c8c90ad3d070044db3881ac1730cdac",
+      "bytes": 606
+    },
+    {
+      "path": "docs/relatorios/logs/L3/seatbelt-ancestor-repro.json",
+      "sha256": "c25d1836fdca40fa1fecc3f496ab1ad8bf0055f10d9036c335ac9efdc7b64187",
+      "bytes": 5530
+    },
+    {
+      "path": "docs/relatorios/logs/L3/seatbelt-ancestor-repro-final.json",
+      "sha256": "ae2ac88792af019f3a1be43616ba43dc2f1d9693fab05b74b509371a8c0039ee",
+      "bytes": 5530
+    },
+    {
+      "path": "docs/relatorios/logs/L3/seatbelt-ancestor-repro.py",
+      "sha256": "36c96f5b9986eb5e8a28daf03b199fff14d781ae29c5018e6684c3d2edbfc145",
+      "bytes": 2576
+    }
+  ],
+  "graph": {
+    "project": "Users-wkoch-Projetos-xrai",
+    "generation": "2026-10-12T10:53:07Z",
+    "coverage": "metadata_match filesystem_spike.rs, incremental.py, incremental-probe.rs; actual adapters.py read directly after wrong path coverage gap",
+    "trace": "Root.admit both depth1 plus full absolute_directory snippet; resolver metadata edge qualified",
+    "graft_calls": 1,
+    "graft_estimated_tokens_saved": 8031
+  }
+}

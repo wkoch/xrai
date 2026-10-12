@@ -1,0 +1,300 @@
+test_bounded_fork_output_limit_and_closed_pipes (test_containment.NamespaceTests.test_bounded_fork_output_limit_and_closed_pipes) ... FAIL
+test_evaluator_death_destroys_namespace (test_containment.NamespaceTests.test_evaluator_death_destroys_namespace) ... FAIL
+test_positive_descendant_sentinel (test_containment.NamespaceTests.test_positive_descendant_sentinel) ... FAIL
+test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) ... 
+  test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='setsid', parent_wait=True) ... FAIL
+  test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='doublefork', parent_wait=True) ... FAIL
+  test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='pipes', parent_wait=True) ... FAIL
+  test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='setsid', parent_wait=False) ... FAIL
+  test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='setsid', parent_wait=True) ... FAIL
+  test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='doublefork', parent_wait=True) ... FAIL
+  test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='pipes', parent_wait=True) ... FAIL
+  test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='setsid', parent_wait=False) ... FAIL
+test_two_arms_isolation_and_independent_cancellation (test_containment.NamespaceTests.test_two_arms_isolation_and_independent_cancellation) ... FAIL
+test_cancelled_before_launch_never_executes (test_containment.ReceiptTests.test_cancelled_before_launch_never_executes) ... ok
+test_exception_after_launch_always_cleans_even_exited_wrapper (test_containment.ReceiptTests.test_exception_after_launch_always_cleans_even_exited_wrapper) ... ok
+test_external_user_namespace_mapping_is_single_identity (test_containment.ReceiptTests.test_external_user_namespace_mapping_is_single_identity) ... ok
+test_incomplete_or_tampered_namespace_receipts_are_rejected (test_containment.ReceiptTests.test_incomplete_or_tampered_namespace_receipts_are_rejected) ... ok
+test_mac_disposable_is_explicitly_unavailable (test_containment.ReceiptTests.test_mac_disposable_is_explicitly_unavailable) ... ok
+test_teardown_failure_is_preserved_and_ineligible (test_containment.ReceiptTests.test_teardown_failure_is_preserved_and_ineligible) ... ok
+test_version_one_bytes_remain_replayable (test_containment.ReceiptTests.test_version_one_bytes_remain_replayable) ... ok
+test_allowed_workspace_read_and_edit (test_runner.RunnerTests.test_allowed_workspace_read_and_edit) ... FAIL
+test_closed_pipes_do_not_disable_timeout (test_runner.RunnerTests.test_closed_pipes_do_not_disable_timeout) ... FAIL
+test_cross_arm_and_evaluator_absolute_read_denied (test_runner.RunnerTests.test_cross_arm_and_evaluator_absolute_read_denied) ... FAIL
+test_detached_descendant_cannot_block_evaluator (test_runner.RunnerTests.test_detached_descendant_cannot_block_evaluator) ... FAIL
+test_error_keeps_partial_output (test_runner.RunnerTests.test_error_keeps_partial_output) ... FAIL
+test_evaluator_hash_does_not_follow_agent_symlink (test_runner.RunnerTests.test_evaluator_hash_does_not_follow_agent_symlink) ... ok
+test_host_environment_not_inherited (test_runner.RunnerTests.test_host_environment_not_inherited) ... FAIL
+test_invalid_adapter_does_not_fall_back_to_unsandboxed (test_runner.RunnerTests.test_invalid_adapter_does_not_fall_back_to_unsandboxed) ... ok
+test_network_denied (test_runner.RunnerTests.test_network_denied) ... FAIL
+test_output_limit_is_bounded (test_runner.RunnerTests.test_output_limit_is_bounded) ... FAIL
+test_replay_preserves_binary_and_rejects_tampering (test_runner.RunnerTests.test_replay_preserves_binary_and_rejects_tampering) ... ok
+test_symlink_escape_and_cross_arm_write_denied (test_runner.RunnerTests.test_symlink_escape_and_cross_arm_write_denied) ... FAIL
+test_timeout_kills_descendants_keeps_partial (test_runner.RunnerTests.test_timeout_kills_descendants_keeps_partial) ... FAIL
+
+======================================================================
+FAIL: test_bounded_fork_output_limit_and_closed_pipes (test_containment.NamespaceTests.test_bounded_fork_output_limit_and_closed_pipes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 237, in test_bounded_fork_output_limit_and_closed_pipes
+    self.assertEqual(result['status'],'timeout',result); self.confirmed(result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nfor i in range(4):\n    if os.fork()==0:\n        open('child'+str(i),'w').write('started'); time.sleep(6); os._exit(0)\nwhile not all(os.path.exists('child'+str(i)) for i in range(4)): time.sleep(.01)\nprint('all-started',flush=True); time.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '65145665-86e2-44b3-b6ae-59c54a5ab840', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0018541440000063858, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_evaluator_death_destroys_namespace (test_containment.NamespaceTests.test_evaluator_death_destroys_namespace)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 281, in test_evaluator_death_destroys_namespace
+    wait_file(self.workspace/'started')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 35, in wait_file
+    raise AssertionError(f'positive control did not execute: {path}')
+AssertionError: positive control did not execute: /tmp/xrai-containment-9o_8d_j2/started
+
+======================================================================
+FAIL: test_positive_descendant_sentinel (test_containment.NamespaceTests.test_positive_descendant_sentinel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 223, in test_positive_descendant_sentinel
+    self.assertEqual(result['status'], 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'ok'
+- spawn_error
++ ok
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time; open('started','w').write('executed'); open('late','w').write('survived')"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '21e639e0-5c5a-4bd8-8261-b375d0695878', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0018786800000043513, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='setsid', parent_wait=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+    self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='setsid'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'ca87d8d1-b40f-4120-bf03-4d11aa36dd88', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001495531000003325, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='doublefork', parent_wait=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+    self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='doublefork'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'ce659622-b2f6-4da3-8f3c-7b83c5909bb3', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001412246000001005, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='pipes', parent_wait=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+    self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='pipes'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '8186a1f7-1834-4fd7-9108-48152f85efa2', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013684540000014067, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=0, kind='setsid', parent_wait=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+    self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'ok'
+- spawn_error
++ ok
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='setsid'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\nos._exit(0)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'b4c2beb4-db6b-4606-ad39-208302cfb2ee', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013509710000079167, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='setsid', parent_wait=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+    self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='setsid'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '1ad4fdbc-55f5-4fb4-bf4b-2a328909dddf', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0014423719999996365, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='doublefork', parent_wait=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+    self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='doublefork'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '5746af8b-ce69-48e6-b8f4-c6539f7d9f8b', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001478520000006256, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='pipes', parent_wait=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+    self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='pipes'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\ntime.sleep(6)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'f4b444be-0931-40ef-82c5-a82931c7bde1', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.00140549299999293, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) (repetition=1, kind='setsid', parent_wait=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 217, in test_repeated_adverse_descendants_and_normal_child_exit
+    self.assertEqual(result['status'], 'timeout' if parent_wait else 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'ok'
+- spawn_error
++ ok
+ : {'phase': 'reading', 'command': ['/usr/bin/python3', '-c', "import os,time\nkind='setsid'\nif os.fork()==0:\n    if kind in ('setsid','doublefork'): os.setsid()\n    if kind=='doublefork' and os.fork()!=0: os._exit(0)\n    open('started','w').write('executed')\n    end=time.monotonic()+6\n    while time.monotonic()<end and not os.path.exists('release'): time.sleep(.01)\n    if os.path.exists('release'): open('late','w').write('survived')\n    os._exit(0)\nwhile not os.path.exists('started'): time.sleep(.01)\nprint('positive',flush=True)\nos._exit(0)\n"], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '43514ba5-40e6-4b84-8212-5e565a9dd529', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0014156919999948059, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_two_arms_isolation_and_independent_cancellation (test_containment.NamespaceTests.test_two_arms_isolation_and_independent_cancellation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 262, in test_two_arms_isolation_and_independent_cancellation
+    wait_file(arm_a/'started'); wait_file(arm_b/'started')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_containment.py", line 35, in wait_file
+    raise AssertionError(f'positive control did not execute: {path}')
+AssertionError: positive control did not execute: /tmp/xrai-containment-lu0qdaod/A/started
+
+======================================================================
+FAIL: test_allowed_workspace_read_and_edit (test_runner.RunnerTests.test_allowed_workspace_read_and_edit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 33, in test_allowed_workspace_read_and_edit
+    self.assertEqual(result['status'], 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'ok'
+- spawn_error
++ ok
+ : {'phase': 'reading', 'command': ['/bin/cat', 'public.txt'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '3d59fbf1-9719-4d6b-ac22-4a84723364ba', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001434287000009249, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_closed_pipes_do_not_disable_timeout (test_runner.RunnerTests.test_closed_pipes_do_not_disable_timeout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 94, in test_closed_pipes_do_not_disable_timeout
+    self.assertEqual(result['status'], 'timeout', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'exec 1>&- 2>&-; sleep 2'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'ade57acc-fa7c-4baf-8229-1b136266a6a3', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013721400000008543, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_cross_arm_and_evaluator_absolute_read_denied (test_runner.RunnerTests.test_cross_arm_and_evaluator_absolute_read_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 42, in test_cross_arm_and_evaluator_absolute_read_denied
+    self.assertEqual(result['status'], 'error', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'error'
+- spawn_error
++ error
+ : {'phase': 'reading', 'command': ['/bin/cat', '/tmp/xrai-isolation-test-c676r3_6/arm-B/secret.txt'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'f6e6f652-f1d9-42de-9ffd-219060a40a1c', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0014979729999993197, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_detached_descendant_cannot_block_evaluator (test_runner.RunnerTests.test_detached_descendant_cannot_block_evaluator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 101, in test_detached_descendant_cannot_block_evaluator
+    self.assertEqual(result['status'], 'timeout', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/usr/bin/perl', '-MPOSIX', '-e', 'if (fork() == 0) { POSIX::setsid(); sleep 2; exit 0; } print "partial"; sleep 2;'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '6ce2edd4-fc38-483f-9d3b-4b681add7e4d', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013968169999998281, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_error_keeps_partial_output (test_runner.RunnerTests.test_error_keeps_partial_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 75, in test_error_keeps_partial_output
+    self.assertEqual(result['status'], 'error', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'error'
+- spawn_error
++ error
+ : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'printf partial; printf diagnosis >&2; exit 7'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'c9e71c27-05f8-4175-96ae-f1d1818f8a52', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001384083000004921, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_host_environment_not_inherited (test_runner.RunnerTests.test_host_environment_not_inherited)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 70, in test_host_environment_not_inherited
+    self.assertEqual(result['status'], 'ok', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'ok'
+- spawn_error
++ ok
+ : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'printf "%s" "${XRAI_TEST_SECRET-unset}"'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '63e72e70-e477-4a9a-84fa-5471e520a63a', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0015085360000028913, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_network_denied (test_runner.RunnerTests.test_network_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 60, in test_network_denied
+    self.assertEqual(result['status'], 'error', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'error'
+- spawn_error
++ error
+ : {'phase': 'reading', 'command': ['/usr/bin/curl', '--noproxy', '*', '--max-time', '.5', 'http://127.0.0.1:42231'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '0a8e9097-9aff-4a50-9ceb-77612227a8c9', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001351271000004317, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_output_limit_is_bounded (test_runner.RunnerTests.test_output_limit_is_bounded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 88, in test_output_limit_is_bounded
+    self.assertEqual(result['status'], 'output_limit', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'output_limit'
+- spawn_error
++ output_limit
+ : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'while :; do printf 0123456789; done'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '0dddf15b-a6cf-4d28-8151-01f6c285c50e', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0014142290000052071, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_symlink_escape_and_cross_arm_write_denied (test_runner.RunnerTests.test_symlink_escape_and_cross_arm_write_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 48, in test_symlink_escape_and_cross_arm_write_denied
+    self.assertEqual(result['status'], 'error', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'error'
+- spawn_error
++ error
+ : {'phase': 'reading', 'command': ['/bin/cat', 'escape'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': 'e7758bd3-f91c-475b-bf90-4e4df6556532', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.001396846999995205, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+======================================================================
+FAIL: test_timeout_kills_descendants_keeps_partial (test_runner.RunnerTests.test_timeout_kills_descendants_keeps_partial)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/xrai/xrai/crates/xrai-eval/harness/tests/test_runner.py", line 82, in test_timeout_kills_descendants_keeps_partial
+    self.assertEqual(result['status'], 'timeout', result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'spawn_error' != 'timeout'
+- spawn_error
++ timeout
+ : {'phase': 'reading', 'command': ['/bin/sh', '-c', 'printf partial; sleep 10 & wait'], 'status': 'spawn_error', 'execution_status': 'spawn_error', 'exit_code': None, 'sandbox': 'Linux bubblewrap', 'containment': 'linux_pid_namespace', 'cleanup_status': 'not_created', 'domain_id': '7d7a3550-34ab-4d5b-9142-055078b3b0ae', 'termination_evidence': {'init_pid': None, 'pid_namespace': None, 'init_held_before_pin': False, 'pidfd_exit_observed': False, 'wrapper_reaped': False}, 'eligible_for_agent_run': False, 'diagnostic': 'bubblewrap failed before init identity', 'elapsed_seconds': 0.0013640749999979107, 'stdout': {'base64': '', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'captured_bytes': 0, 'observed_bytes': 0, 'truncated': False}, 'stderr': {'base64': 'YndyYXA6IC0tdXNlcm5zLWJsb2NrLWZkIHJlcXVpcmVzIC0tdW5zaGFyZS11c2VyCg==', 'sha256': '5501305e9db1dcf0f41b039e0f746e6498a73937af4bead1ae6051243f792f9f', 'captured_bytes': 49, 'observed_bytes': 49, 'truncated': False}}
+
+----------------------------------------------------------------------
+Ran 25 tests in 8.095s
+
+FAILED (failures=22)

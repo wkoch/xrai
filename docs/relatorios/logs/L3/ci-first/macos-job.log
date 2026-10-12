@@ -1,0 +1,1023 @@
+aarch64-apple-darwin	Set up job	﻿2026-10-12T10:49:57.6814590Z Current runner version: '2.337.0'
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6831760Z ##[group]Runner Image Provisioner
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6832320Z Hosted Compute Agent
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6832710Z Version: 20260828.587
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6833120Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6833600Z Build Date: 2026-08-28T16:44:25Z
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6834050Z Worker ID: {4b375fbd-9242-4de8-a3fe-2793b7d0cae6}
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6834510Z Azure Region: westus
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6834880Z ##[endgroup]
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6835780Z ##[group]Operating System
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6836180Z macOS
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6836510Z 15.7.9
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6836840Z 24G830
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6837160Z ##[endgroup]
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6837500Z ##[group]Runner Image
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6837870Z Image: macos-15-arm64
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6838240Z Version: 20260907.0337.1
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6838970Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6840050Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6840710Z ##[endgroup]
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6841420Z ##[group]GITHUB_TOKEN Permissions
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6842470Z Contents: read
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6842830Z Metadata: read
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6843180Z ##[endgroup]
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6844810Z Secret source: Actions
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6845370Z Cache mode: write
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.6845900Z Prepare workflow directory
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.7427950Z Prepare all required actions
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:57.7465980Z Getting action download info
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:58.0603000Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:59.1047170Z Download action repository 'actions/setup-python@v6' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+aarch64-apple-darwin	Set up job	2026-10-12T10:49:59.2005620Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+aarch64-apple-darwin	Set up job	2026-10-12T10:50:00.2573390Z Complete job name: aarch64-apple-darwin
+aarch64-apple-darwin	Run actions/checkout@v6	﻿2026-10-12T10:50:00.3310800Z ##[group]Run actions/checkout@v6
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3311290Z with:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3311480Z   persist-credentials: false
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3312280Z   repository: wkoch/xrai
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3314890Z   token: ***
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3315070Z   ssh-strict: true
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3315260Z   ssh-user: git
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3315430Z   clean: true
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3315630Z   sparse-checkout-cone-mode: true
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3315860Z   fetch-depth: 1
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3316040Z   fetch-tags: false
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3316240Z   show-progress: true
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3316450Z   lfs: false
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3316620Z   submodules: false
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3316820Z   set-safe-directory: true
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3317040Z   allow-unsafe-pr-checkout: false
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3317740Z env:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3317930Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3318150Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3318510Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3318780Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3319070Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:00.3319380Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.1923590Z Syncing repository: wkoch/xrai
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.1926780Z ##[group]Getting Git version info
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.1927270Z Working directory is '/Users/runner/work/xrai/xrai'
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.1928300Z [command]/opt/homebrew/bin/git version
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.2960770Z git version 2.55.0
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.2980960Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.2995000Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/3bf5cf94-e091-4ba1-a92c-5093e0a532a5/.gitconfig'
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3007850Z Temporarily overriding HOME='/Users/runner/work/_temp/3bf5cf94-e091-4ba1-a92c-5093e0a532a5' before making global git config changes
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3009730Z Adding repository directory to the temporary git global config as a safe directory
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3013220Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/xrai/xrai
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3260390Z Deleting the contents of '/Users/runner/work/xrai/xrai'
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3266380Z ##[group]Determining repository object format
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3268770Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3269630Z ##[group]Initializing the repository
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3270880Z [command]/opt/homebrew/bin/git init /Users/runner/work/xrai/xrai
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3919970Z hint: Using 'master' as the name for the initial branch. This default branch name
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3921460Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3922040Z hint: to use in all of your new repositories, which will suppress this warning,
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3922430Z hint: call:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3922630Z hint:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3923060Z hint: 	git config --global init.defaultBranch <name>
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3923420Z hint:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3923830Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3924310Z hint: 'development'. The just-created branch can be renamed via this command:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3924670Z hint:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3925390Z hint: 	git branch -m <name>
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3926590Z hint:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3928510Z hint: Disable this message with "git config set advice.defaultBranchName false"
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3936930Z Initialized empty Git repository in /Users/runner/work/xrai/xrai/.git/
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.3951030Z [command]/opt/homebrew/bin/git remote add origin https://github.com/wkoch/xrai
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.4106380Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.4108020Z ##[group]Disabling automatic garbage collection
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.4113320Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.4276490Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.4277820Z ##[group]Setting up auth
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.4278850Z Removing SSH command configuration
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.4289670Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.4373260Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.6425520Z Removing HTTP extra header
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.6445920Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.6514450Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.7972570Z Removing includeIf entries pointing to credentials config files
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.7974550Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.8091350Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.9399040Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.9589890Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/xrai/xrai/.git.path /Users/runner/work/_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.9708340Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/xrai/xrai/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.9781330Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:01.9944520Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:02.0089620Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:02.0090810Z ##[group]Fetching the repository
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:02.0094250Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a1126ad55c1e3ede192c3de659a1a7a6ac728ef2:refs/remotes/origin/main
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4039270Z From https://github.com/wkoch/xrai
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4042120Z  * [new ref]         a1126ad55c1e3ede192c3de659a1a7a6ac728ef2 -> origin/main
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4080900Z [command]/opt/homebrew/bin/git branch --list --remote origin/main
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4266590Z   origin/main
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4278540Z [command]/opt/homebrew/bin/git rev-parse refs/remotes/origin/main
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4392670Z a1126ad55c1e3ede192c3de659a1a7a6ac728ef2
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4468070Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4469250Z ##[group]Determining the checkout info
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4471000Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.4471830Z [command]/opt/homebrew/bin/git sparse-checkout disable
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.5833960Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.6139280Z ##[group]Checking out the ref
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:06.6217020Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.4732500Z Switched to a new branch 'main'
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.4746480Z branch 'main' set up to track 'origin/main'.
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.4930000Z ##[endgroup]
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.5012420Z [command]/opt/homebrew/bin/git log -1 --format=%H
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.5081650Z a1126ad55c1e3ede192c3de659a1a7a6ac728ef2
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.5143690Z ##[group]Removing auth
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.5150130Z Removing SSH command configuration
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.5155550Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.5334370Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.6489010Z Removing HTTP extra header
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.6495830Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.6608090Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.7897490Z Removing includeIf entries pointing to credentials config files
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8005320Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8118580Z includeif.gitdir:/Users/runner/work/xrai/xrai/.git.path
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8208850Z includeif.gitdir:/Users/runner/work/xrai/xrai/.git/worktrees/*.path
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8283100Z includeif.gitdir:/github/workspace/.git.path
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8392590Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8435120Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/xrai/xrai/.git.path
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8435880Z /Users/runner/work/_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8455070Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/xrai/xrai/.git.path /Users/runner/work/_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8457220Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/xrai/xrai/.git/worktrees/*.path
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8461550Z /Users/runner/work/_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8507650Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/xrai/xrai/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8511570Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8513810Z /github/runner_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8516890Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8593960Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8605600Z /github/runner_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8611610Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.8809520Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.9706000Z Removing credentials config '/Users/runner/work/_temp/git-credentials-4ef56d67-c227-4a57-a2b8-77769ec6aa84.config'
+aarch64-apple-darwin	Run actions/checkout@v6	2026-10-12T10:50:07.9708640Z ##[endgroup]
+aarch64-apple-darwin	Run actions/setup-python@v6	﻿2026-10-12T10:50:08.0124790Z ##[group]Run actions/setup-python@v6
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0125250Z with:
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0125500Z   python-version: 3.15.0
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0125890Z   check-latest: false
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0128400Z   token: ***
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0128740Z   update-environment: true
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0128980Z   allow-prereleases: false
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0129330Z   freethreaded: false
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0129590Z env:
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0129870Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0130260Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0130620Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0131060Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0131420Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.0132060Z ##[endgroup]
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.3816470Z ##[group]Installed versions
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:08.4176080Z Version 3.15.0 was not found in the local cache
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:09.7904120Z Version 3.15.0 is available for downloading
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:09.7956570Z Download from "https://github.com/actions/python-versions/releases/download/3.15.0-38076878863/python-3.15.0-darwin-arm64.tar.gz"
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:11.1284390Z Extract downloaded archive
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:11.1542270Z [command]/usr/bin/tar xz -C /Users/runner/work/_temp/fc45eaff-f59d-40b9-8e6f-693351ab30b8 -f /Users/runner/work/_temp/273f3248-15ec-4a40-abbf-f3d012c4b312
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:11.3406180Z Execute installation script
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:11.3711560Z Check if Python hostedtoolcache folder exist...
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:11.3884160Z Install Python binaries from prebuilt package
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:41.3814090Z installer: Package name is Python
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:41.3817680Z installer: choices changes file '/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/tmp.jpn2JRYk8K' applied
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:41.3821220Z installer: Upgrading at base path /
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:41.3821940Z installer: The upgrade was successful.
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:41.3847450Z Create hostedtoolcach symlinks (Required for the backward compatibility)
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:41.3853110Z Create Python 3.15.0 folder
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:41.4033480Z Create additional symlinks (Required for the UsePythonVersion Azure Pipelines task and the setup-python GitHub Action)
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:41.4203390Z Upgrading pip...
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:42.2834760Z Collecting pip
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:42.3053870Z Using cached pip-26.2.1-py3-none-any.whl.metadata (4.6 kB)
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:42.3179520Z Using cached pip-26.2.1-py3-none-any.whl (1.8 MB)
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:42.3480970Z Installing collected packages: pip
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:42.3491430Z Attempting uninstall: pip
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:42.3517300Z Found existing installation: pip 26.2.1
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:42.3839330Z Uninstalling pip-26.2.1:
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:42.5303130Z Successfully uninstalled pip-26.2.1
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:43.4939790Z Successfully installed pip-26.2.1
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:43.5960020Z Install OpenSSL certificates
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:43.9816470Z Collecting certifi
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:43.9837880Z Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:43.9905300Z Using cached certifi-2026.7.22-py3-none-any.whl (136 kB)
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.0039910Z Installing collected packages: certifi
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.0109160Z Successfully installed certifi-2026.7.22
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.0976490Z -- pip install --upgrade certifi
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.0978260Z  -- removing any existing file or link
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.0979940Z  -- creating symlink to certifi certificate bundle
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.0980490Z  -- setting permissions
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.0980800Z  -- update complete
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.1052490Z Create complete file
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.1154120Z Successfully set up CPython (3.15.0)
+aarch64-apple-darwin	Run actions/setup-python@v6	2026-10-12T10:50:44.1155650Z ##[endgroup]
+aarch64-apple-darwin	Install pinned evaluator tooling	﻿2026-10-12T10:50:44.1482280Z ##[group]Run python -m pip install -r docs/contracts/examples/requirements.txt
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1483040Z ^[[36;1mpython -m pip install -r docs/contracts/examples/requirements.txt^[[0m
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1586290Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1586720Z env:
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1586920Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1587230Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1587590Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1587910Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1589450Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1590550Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1591320Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1591960Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1593100Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1594640Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:44.1594970Z ##[endgroup]
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.1539620Z Collecting blake3==1.0.11 (from -r docs/contracts/examples/requirements.txt (line 2))
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.2239120Z   Downloading blake3-1.0.11-cp315-cp315-macosx_11_0_arm64.whl.metadata (4.9 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.2558030Z Collecting jsonschema==4.25.1 (from -r docs/contracts/examples/requirements.txt (line 3))
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.2705880Z   Downloading jsonschema-4.25.1-py3-none-any.whl.metadata (7.6 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.2969830Z Collecting attrs==26.1.0 (from -r docs/contracts/examples/requirements.txt (line 4))
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.3106350Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.3358170Z Collecting jsonschema-specifications==2025.9.1 (from -r docs/contracts/examples/requirements.txt (line 5))
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.3485140Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.3730710Z Collecting referencing==0.37.0 (from -r docs/contracts/examples/requirements.txt (line 6))
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.3863500Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.5488180Z Collecting rpds-py==2026.9.1 (from -r docs/contracts/examples/requirements.txt (line 7))
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.5628560Z   Downloading rpds_py-2026.9.1-cp315-cp315-macosx_11_0_arm64.whl.metadata (4.1 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.5828360Z Downloading blake3-1.0.11-cp315-cp315-macosx_11_0_arm64.whl (325 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.6380160Z Downloading jsonschema-4.25.1-py3-none-any.whl (90 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.6559600Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.6730950Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.6901970Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.7066520Z Downloading rpds_py-2026.9.1-cp315-cp315-macosx_11_0_arm64.whl (342 kB)
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.7333760Z Installing collected packages: rpds-py, blake3, attrs, referencing, jsonschema-specifications, jsonschema
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.8545380Z 
+aarch64-apple-darwin	Install pinned evaluator tooling	2026-10-12T10:50:45.8553050Z Successfully installed attrs-26.1.0 blake3-1.0.11 jsonschema-4.25.1 jsonschema-specifications-2025.9.1 referencing-0.37.0 rpds-py-2026.9.1
+aarch64-apple-darwin	Install pinned toolchain	﻿2026-10-12T10:50:45.9309930Z ##[group]Run rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9310530Z ^[[36;1mrustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy^[[0m
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9346460Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9346710Z env:
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9346840Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9347030Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9347240Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9347430Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9347670Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9348020Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9348410Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9348800Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9349160Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9349710Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9350070Z ##[endgroup]
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:45.9787150Z info: syncing channel updates for 1.98.1-aarch64-apple-darwin
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:46.1469800Z info: latest update on 2026-09-03 for version 1.98.1 (48a229cea 2026-09-01)
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:46.1471370Z info: downloading 5 components
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:52.1012550Z 
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:52.1388140Z   1.98.1-aarch64-apple-darwin installed - rustc 1.98.1 (48a229cea 2026-09-01)
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:52.1388870Z info: self-update is disabled for this build of rustup
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:52.1389310Z info: any updates to rustup will need to be fetched with your system package manager
+aarch64-apple-darwin	Install pinned toolchain	2026-10-12T10:50:52.1389640Z 
+aarch64-apple-darwin	Record and verify native environment	﻿2026-10-12T10:50:52.1615530Z ##[group]Run mkdir -p native-evidence
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1616210Z ^[[36;1mmkdir -p native-evidence^[[0m
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1617000Z ^[[36;1mpython -c 'import json,platform; print(json.dumps({"system": platform.system(), "platform": platform.platform(), "machine": platform.machine()}))' > native-evidence/environment.json^[[0m
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1617860Z ^[[36;1mrustc --version --verbose^[[0m
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1618150Z ^[[36;1mcargo --version^[[0m
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1618650Z ^[[36;1mtest "$(rustc --version --verbose | awk '/^host:/ {print $2}')" = "$EXPECTED_HOST"^[[0m
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1666340Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1666790Z env:
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1667000Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1667340Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1667680Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1667960Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1668410Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1669070Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1670290Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1670950Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1671390Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1671920Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.1672310Z ##[endgroup]
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.3035160Z rustc 1.98.1 (48a229cea 2026-09-01)
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.3042560Z binary: rustc
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.3042850Z commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.3043240Z commit-date: 2026-09-01
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.3043480Z host: aarch64-apple-darwin
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.3043660Z release: 1.98.1
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.3051440Z LLVM version: 22.1.8
+aarch64-apple-darwin	Record and verify native environment	2026-10-12T10:50:52.3594770Z cargo 1.98.1 (797e8a9bc 2026-08-05)
+aarch64-apple-darwin	Check formatting	﻿2026-10-12T10:50:52.3999650Z ##[group]Run cargo fmt --all -- --check
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.3999990Z ^[[36;1mcargo fmt --all -- --check^[[0m
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4031700Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4031960Z env:
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4032100Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4032300Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4032520Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4032710Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4032980Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4033330Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4033820Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4034210Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4034570Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4034940Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Check formatting	2026-10-12T10:50:52.4035270Z ##[endgroup]
+aarch64-apple-darwin	Lint	﻿2026-10-12T10:50:52.5657590Z ##[group]Run cargo clippy --workspace --all-targets --locked -- -D warnings
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5658050Z ^[[36;1mcargo clippy --workspace --all-targets --locked -- -D warnings^[[0m
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5688500Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5688860Z env:
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5689040Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5689230Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5689510Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5689820Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5690280Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5690630Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5691050Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5691440Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5691780Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5692180Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.5692450Z ##[endgroup]
+aarch64-apple-darwin	Lint	2026-10-12T10:50:52.7089050Z ^[[1m^[[92m    Updating^[[0m crates.io index
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.0463730Z ^[[1m^[[92m Downloading^[[0m crates ...
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1198030Z ^[[1m^[[92m  Downloaded^[[0m itoa v1.0.18
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1232840Z ^[[1m^[[92m  Downloaded^[[0m equivalent v1.0.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1248540Z ^[[1m^[[92m  Downloaded^[[0m errno v0.3.14
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1272820Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-language v0.1.9
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1303540Z ^[[1m^[[92m  Downloaded^[[0m fallible-streaming-iterator v0.1.9
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1318150Z ^[[1m^[[92m  Downloaded^[[0m arrayref v0.3.9
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1352560Z ^[[1m^[[92m  Downloaded^[[0m constant_time_eq v0.3.1
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1370060Z ^[[1m^[[92m  Downloaded^[[0m cfg-if v1.0.5
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1392460Z ^[[1m^[[92m  Downloaded^[[0m foldhash v0.2.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1412880Z ^[[1m^[[92m  Downloaded^[[0m zmij v1.0.23
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1442430Z ^[[1m^[[92m  Downloaded^[[0m fallible-iterator v0.3.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1459120Z ^[[1m^[[92m  Downloaded^[[0m streaming-iterator v0.1.9
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1477690Z ^[[1m^[[92m  Downloaded^[[0m shlex v2.0.1
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1504650Z ^[[1m^[[92m  Downloaded^[[0m find-msvc-tools v0.1.14
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1539280Z ^[[1m^[[92m  Downloaded^[[0m pkg-config v0.3.34
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1563960Z ^[[1m^[[92m  Downloaded^[[0m smallvec v1.16.3
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1588820Z ^[[1m^[[92m  Downloaded^[[0m arrayvec v0.7.8
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1640040Z ^[[1m^[[92m  Downloaded^[[0m bitflags v2.13.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1729680Z ^[[1m^[[92m  Downloaded^[[0m serde_core v1.0.229
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1776760Z ^[[1m^[[92m  Downloaded^[[0m hashbrown v0.17.1
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1872940Z ^[[1m^[[92m  Downloaded^[[0m memchr v2.8.3
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.1971540Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-go v0.25.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2018710Z ^[[1m^[[92m  Downloaded^[[0m cc v1.8.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2069090Z ^[[1m^[[92m  Downloaded^[[0m indexmap v2.14.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2126260Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-javascript v0.25.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2188930Z ^[[1m^[[92m  Downloaded^[[0m serde_json v1.0.154
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2311800Z ^[[1m^[[92m  Downloaded^[[0m aho-corasick v1.1.5
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2384880Z ^[[1m^[[92m  Downloaded^[[0m regex v1.13.1
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2459220Z ^[[1m^[[92m  Downloaded^[[0m rusqlite v0.40.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2565000Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-python v0.25.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2632010Z ^[[1m^[[92m  Downloaded^[[0m blake3 v1.8.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2747030Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter v0.27.1
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.2882370Z ^[[1m^[[92m  Downloaded^[[0m vcpkg v0.2.15
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.3680290Z ^[[1m^[[92m  Downloaded^[[0m regex-syntax v0.8.11
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.3775340Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-rust v0.24.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.3886280Z ^[[1m^[[92m  Downloaded^[[0m rustix v1.1.5
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.4309760Z ^[[1m^[[92m  Downloaded^[[0m regex-automata v0.4.18
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.4504350Z ^[[1m^[[92m  Downloaded^[[0m tree-sitter-typescript v0.23.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.4745160Z ^[[1m^[[92m  Downloaded^[[0m libc v0.2.190
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.5798700Z ^[[1m^[[92m  Downloaded^[[0m libsqlite3-sys v0.38.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.6793520Z ^[[1m^[[92m   Compiling^[[0m find-msvc-tools v0.1.14
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.6795690Z ^[[1m^[[92m   Compiling^[[0m shlex v2.0.1
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.6796080Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-language v0.1.9
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.8901290Z ^[[1m^[[92m    Checking^[[0m xrai-core v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-core)
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.9511890Z ^[[1m^[[92m   Compiling^[[0m cc v1.8.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:53.9726080Z ^[[1m^[[92m   Compiling^[[0m serde_core v1.0.229
+aarch64-apple-darwin	Lint	2026-10-12T10:50:55.3081450Z ^[[1m^[[92m   Compiling^[[0m zmij v1.0.23
+aarch64-apple-darwin	Lint	2026-10-12T10:50:56.3951240Z ^[[1m^[[92m   Compiling^[[0m hashbrown v0.17.1
+aarch64-apple-darwin	Lint	2026-10-12T10:50:56.3952600Z ^[[1m^[[92m   Compiling^[[0m serde_json v1.0.154
+aarch64-apple-darwin	Lint	2026-10-12T10:50:56.4054730Z ^[[1m^[[92m   Compiling^[[0m equivalent v1.0.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:56.6833160Z ^[[1m^[[92m   Compiling^[[0m pkg-config v0.3.34
+aarch64-apple-darwin	Lint	2026-10-12T10:50:56.7460660Z ^[[1m^[[92m   Compiling^[[0m indexmap v2.14.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:56.9564870Z ^[[1m^[[92m   Compiling^[[0m memchr v2.8.3
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.1506630Z ^[[1m^[[92m   Compiling^[[0m foldhash v0.2.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.2371550Z ^[[1m^[[92m   Compiling^[[0m vcpkg v0.2.15
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.2413370Z ^[[1m^[[92m   Compiling^[[0m itoa v1.0.18
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.5409420Z ^[[1m^[[92m   Compiling^[[0m libc v0.2.190
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.6374910Z ^[[1m^[[92m   Compiling^[[0m libsqlite3-sys v0.38.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.8306440Z ^[[1m^[[92m    Checking^[[0m aho-corasick v1.1.5
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.8676260Z ^[[1m^[[92m    Checking^[[0m xrai-query v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-query)
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.9035330Z ^[[1m^[[92m    Checking^[[0m xrai-index v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-index)
+aarch64-apple-darwin	Lint	2026-10-12T10:50:57.9411600Z ^[[1m^[[92m    Checking^[[0m regex-syntax v0.8.11
+aarch64-apple-darwin	Lint	2026-10-12T10:50:58.4919430Z ^[[1m^[[92m   Compiling^[[0m tree-sitter v0.27.1
+aarch64-apple-darwin	Lint	2026-10-12T10:50:58.7904550Z ^[[1m^[[92m    Checking^[[0m regex-automata v0.4.18
+aarch64-apple-darwin	Lint	2026-10-12T10:50:59.0266000Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-rust v0.24.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:59.1432410Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-go v0.25.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:59.2485530Z ^[[1m^[[92m   Compiling^[[0m blake3 v1.8.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:59.4349750Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-javascript v0.25.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:59.5601030Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-python v0.25.0
+aarch64-apple-darwin	Lint	2026-10-12T10:50:59.7662250Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-typescript v0.23.2
+aarch64-apple-darwin	Lint	2026-10-12T10:50:59.9482270Z ^[[1m^[[92m   Compiling^[[0m rustix v1.1.5
+aarch64-apple-darwin	Lint	2026-10-12T10:51:00.2610700Z ^[[1m^[[92m    Checking^[[0m bitflags v2.13.2
+aarch64-apple-darwin	Lint	2026-10-12T10:51:00.2928220Z ^[[1m^[[92m    Checking^[[0m regex v1.13.1
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.0471260Z ^[[1m^[[92m    Checking^[[0m errno v0.3.14
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.3031020Z ^[[1m^[[92m    Checking^[[0m streaming-iterator v0.1.9
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.3380650Z ^[[1m^[[92m    Checking^[[0m arrayvec v0.7.8
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.4237300Z ^[[1m^[[92m    Checking^[[0m arrayref v0.3.9
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.4508640Z ^[[1m^[[92m    Checking^[[0m fallible-iterator v0.3.0
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.4523240Z ^[[1m^[[92m    Checking^[[0m smallvec v1.16.3
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.5719760Z ^[[1m^[[92m    Checking^[[0m constant_time_eq v0.3.1
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.6001400Z ^[[1m^[[92m    Checking^[[0m cfg-if v1.0.5
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.6238480Z ^[[1m^[[92m    Checking^[[0m fallible-streaming-iterator v0.1.9
+aarch64-apple-darwin	Lint	2026-10-12T10:51:03.6780870Z ^[[1m^[[92m    Checking^[[0m rusqlite v0.40.2
+aarch64-apple-darwin	Lint	2026-10-12T10:51:04.0860040Z ^[[1m^[[92m    Checking^[[0m xrai v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai)
+aarch64-apple-darwin	Lint	2026-10-12T10:51:04.5101950Z ^[[1m^[[92m    Checking^[[0m xrai-eval v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-eval)
+aarch64-apple-darwin	Lint	2026-10-12T10:51:05.3117160Z ^[[1m^[[92m    Finished^[[0m `dev` profile [unoptimized + debuginfo] target(s) in 12.66s
+aarch64-apple-darwin	Test	﻿2026-10-12T10:51:05.3601250Z ##[group]Run cargo test --workspace --locked 2>&1 | tee native-evidence/workspace-tests.log
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3603210Z ^[[36;1mcargo test --workspace --locked 2>&1 | tee native-evidence/workspace-tests.log^[[0m
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3656280Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3656580Z env:
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3656830Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3657020Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3657220Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3657480Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3657780Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3658170Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3658670Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3659210Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3659710Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3660180Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.3660530Z ##[endgroup]
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.5659290Z ^[[1m^[[92m   Compiling^[[0m xrai-core v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-core)
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.5659960Z ^[[1m^[[92m   Compiling^[[0m memchr v2.8.3
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.5660270Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-language v0.1.9
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.6026350Z ^[[1m^[[92m   Compiling^[[0m xrai-query v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-query)
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.6076940Z ^[[1m^[[92m   Compiling^[[0m xrai-index v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-index)
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.6417820Z ^[[1m^[[92m   Compiling^[[0m regex-syntax v0.8.11
+aarch64-apple-darwin	Test	2026-10-12T10:51:05.6419170Z ^[[1m^[[92m   Compiling^[[0m libc v0.2.190
+aarch64-apple-darwin	Test	2026-10-12T10:51:06.0261070Z ^[[1m^[[92m   Compiling^[[0m serde_json v1.0.154
+aarch64-apple-darwin	Test	2026-10-12T10:51:06.4224110Z ^[[1m^[[92m   Compiling^[[0m aho-corasick v1.1.5
+aarch64-apple-darwin	Test	2026-10-12T10:51:07.0575460Z ^[[1m^[[92m   Compiling^[[0m tree-sitter v0.27.1
+aarch64-apple-darwin	Test	2026-10-12T10:51:07.2312390Z ^[[1m^[[92m   Compiling^[[0m regex-automata v0.4.18
+aarch64-apple-darwin	Test	2026-10-12T10:51:08.1866190Z ^[[1m^[[92m   Compiling^[[0m bitflags v2.13.2
+aarch64-apple-darwin	Test	2026-10-12T10:51:08.5594520Z ^[[1m^[[92m   Compiling^[[0m errno v0.3.14
+aarch64-apple-darwin	Test	2026-10-12T10:51:08.6470900Z ^[[1m^[[92m   Compiling^[[0m libsqlite3-sys v0.38.2
+aarch64-apple-darwin	Test	2026-10-12T10:51:08.7652700Z ^[[1m^[[92m   Compiling^[[0m cfg-if v1.0.5
+aarch64-apple-darwin	Test	2026-10-12T10:51:08.7923370Z ^[[1m^[[92m   Compiling^[[0m fallible-streaming-iterator v0.1.9
+aarch64-apple-darwin	Test	2026-10-12T10:51:08.8709370Z ^[[1m^[[92m   Compiling^[[0m constant_time_eq v0.3.1
+aarch64-apple-darwin	Test	2026-10-12T10:51:08.9265020Z ^[[1m^[[92m   Compiling^[[0m smallvec v1.16.3
+aarch64-apple-darwin	Test	2026-10-12T10:51:09.0412240Z ^[[1m^[[92m   Compiling^[[0m regex v1.13.1
+aarch64-apple-darwin	Test	2026-10-12T10:51:09.0689900Z ^[[1m^[[92m   Compiling^[[0m streaming-iterator v0.1.9
+aarch64-apple-darwin	Test	2026-10-12T10:51:09.2182750Z ^[[1m^[[92m   Compiling^[[0m arrayvec v0.7.8
+aarch64-apple-darwin	Test	2026-10-12T10:51:09.3435390Z ^[[1m^[[92m   Compiling^[[0m arrayref v0.3.9
+aarch64-apple-darwin	Test	2026-10-12T10:51:09.3456320Z ^[[1m^[[92m   Compiling^[[0m fallible-iterator v0.3.0
+aarch64-apple-darwin	Test	2026-10-12T10:51:09.3713890Z ^[[1m^[[92m   Compiling^[[0m blake3 v1.8.2
+aarch64-apple-darwin	Test	2026-10-12T10:51:09.5415130Z ^[[1m^[[92m   Compiling^[[0m rusqlite v0.40.2
+aarch64-apple-darwin	Test	2026-10-12T10:51:10.2460670Z ^[[1m^[[92m   Compiling^[[0m rustix v1.1.5
+aarch64-apple-darwin	Test	2026-10-12T10:51:10.4572540Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-python v0.25.0
+aarch64-apple-darwin	Test	2026-10-12T10:51:10.4989150Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-javascript v0.25.0
+aarch64-apple-darwin	Test	2026-10-12T10:51:10.5360730Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-go v0.25.0
+aarch64-apple-darwin	Test	2026-10-12T10:51:10.5674570Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-rust v0.24.2
+aarch64-apple-darwin	Test	2026-10-12T10:51:10.6124900Z ^[[1m^[[92m   Compiling^[[0m tree-sitter-typescript v0.23.2
+aarch64-apple-darwin	Test	2026-10-12T10:51:10.6559760Z ^[[1m^[[92m   Compiling^[[0m xrai v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai)
+aarch64-apple-darwin	Test	2026-10-12T10:51:11.0532670Z ^[[1m^[[92m   Compiling^[[0m xrai-eval v0.1.0-dev (/Users/runner/work/xrai/xrai/crates/xrai-eval)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.7973980Z ^[[1m^[[92m    Finished^[[0m `test` profile [unoptimized + debuginfo] target(s) in 9.35s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8060430Z ^[[1m^[[92m     Running^[[0m unittests src/main.rs (target/debug/deps/xrai-ba4f32348ba588f5)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8104200Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8105000Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8105610Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8105880Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8106320Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8106840Z ^[[1m^[[92m     Running^[[0m tests/cli.rs (target/debug/deps/cli-1427b58f7f811a40)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8142430Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8144080Z running 3 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8310900Z test help_only_advertises_available_options ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8315970Z test version_reports_package_version_and_native_platform ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8327970Z test unsupported_operations_and_extra_arguments_fail_without_data ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8329140Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8330440Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8332830Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8337360Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_core-2e8b6dc476131edd)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8414370Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8415620Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8416090Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8416980Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8417770Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8420590Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_eval-c7fcf8b973f60bd2)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8462600Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8463500Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8466140Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8468630Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8469370Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8470170Z ^[[1m^[[92m     Running^[[0m unittests src/bin/filesystem-spike.rs (target/debug/deps/filesystem_spike-c42d7e64c7eeab0a)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8504090Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8504780Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8505940Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8506700Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8507240Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8507810Z ^[[1m^[[92m     Running^[[0m unittests src/bin/incremental-probe.rs (target/debug/deps/incremental_probe-76668fbec328d298)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8540060Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8540640Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8540790Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8541130Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8541510Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8542040Z ^[[1m^[[92m     Running^[[0m unittests src/bin/parsing-spike.rs (target/debug/deps/parsing_spike-03471ae05fe87f05)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8584370Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8585410Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8586180Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8586930Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8587920Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8588920Z ^[[1m^[[92m     Running^[[0m unittests src/bin/sqlite-spike.rs (target/debug/deps/sqlite_spike-fe282a42726dea67)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8620240Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8622220Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8622480Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8623040Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8623630Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8624220Z ^[[1m^[[92m     Running^[[0m unittests src/bin/worker-spike.rs (target/debug/deps/worker_spike-2426e86fdc423bf5)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8657260Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8658480Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8659070Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8659730Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8660670Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8661950Z ^[[1m^[[92m     Running^[[0m tests/filesystem_anchored.rs (target/debug/deps/filesystem_anchored-d1e9af92b09f5f16)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8690070Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8691250Z running 20 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8723740Z test ancestor_symlink_before_open_never_delivers_external_sentinel ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8827320Z test ancestor_symlink_after_source_open_never_publishes_as_current ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8836790Z test anchored_enumeration_of_moved_directory_returns_partial_inventory ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8837470Z test barrier_swap_after_ancestor_handle_open_invalidates_binding ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8837940Z test ceiling_is_enforced_for_initial_size_and_during_growth ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8838560Z test hard_link_captures_shared_object_and_does_not_claim_link_confinement ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8839160Z test empty_directory_addition_and_removal_are_reconciled_before_publication ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8839820Z test in_place_same_size_and_restored_mtime_is_not_a_snapshot_guarantee ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8840370Z test inventory_final_reconciliation_rejects_changed_source_revision ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8840960Z test moving_open_directory_outside_without_link_is_diagnosed ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8841470Z test last_publication_reconciles_previously_captured_ancestor ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8843420Z test original_file_unlink_and_recreate_cannot_reuse_old_binding ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8843910Z test new_file_after_enumeration_marks_root_coverage_partial ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8844430Z test replaced_root_invalidates_all_inventory_sources ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8844930Z test rejects_invalid_native_components_and_internal_capture_inventory_exclusions ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.8845570Z test replacing_checkout_parent_with_alias_of_moved_parent_invalidates_locator ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9114910Z test seeded_concurrent_writer_stress_never_delivers_external_sentinel ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9150890Z test stabilized_update_equals_independent_rebuild_and_old_bytes_remain_immutable ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9187290Z test special_files_are_refused_without_fifo_blocking ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9365940Z test seeded_adversarial_schedule_supplements_deterministic_barriers ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9366330Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9366670Z test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9367100Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9367780Z ^[[1m^[[92m     Running^[[0m tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-a70bf0dc2ecd8063)
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9394370Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9394860Z running 14 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9414510Z test filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9415860Z test explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9417120Z test invalid_configuration_fails_before_inventory ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9423110Z test gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9441090Z test linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9441860Z test permission_failure_is_diagnostic_or_records_privileged_capability ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9442980Z test removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9446900Z test removal_between_discovery_and_capture_has_typed_diagnostic ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9449210Z test no_git_and_identical_named_checkouts_have_independent_writable_state ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9450880Z test replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9457900Z test same_size_and_mtime_change_is_detected_by_content_hash ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9462390Z test symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:14.9466070Z test unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0221190Z test actual_git_linked_worktrees_have_independent_checkout_state ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0222720Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0223080Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0223530Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0224100Z ^[[1m^[[92m     Running^[[0m tests/parsing.rs (target/debug/deps/parsing-9a885fae689dae33)
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0259370Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0260710Z running 4 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0463950Z test copied_binary_reports_incomplete_exit_status_and_refuses_unknown_dialect ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0835480Z test fingerprints_cover_distinct_queries_and_grammars ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.0872920Z test incorporated_unicode_notice_is_preserved_in_binary_inventory ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1032450Z test every_embedded_dialect_parses_valid_and_reports_incomplete_sources ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1032990Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1033320Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1033670Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1038620Z ^[[1m^[[92m     Running^[[0m tests/sqlite_snapshots.rs (target/debug/deps/sqlite_snapshots-d95072b5b4e346a5)
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1072360Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1076880Z running 6 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1206980Z test bundled_sqlite_fts5_and_trigram_are_available_without_load_extension ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1243690Z test future_schema_and_foreign_application_are_refused_without_recreation ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1328810Z test source_foreign_keys_hashes_and_invalid_spans_are_enforced ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1452900Z test two_readers_keep_a_bytes_facts_and_fts_while_writer_publishes_b ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.1520460Z test backup_rebuild_preserve_human_files_and_readers_and_refuse_overwrite ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.5694210Z test killed_writer_rolls_back_b_keeps_a_and_records_abandoned_staging ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.5694960Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.5695340Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.46s
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.5695800Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.5696410Z ^[[1m^[[92m     Running^[[0m tests/workers.rs (target/debug/deps/workers-2c16a12c3caa26aa)
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.5729200Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.5730800Z running 13 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.6059380Z test decoder_refuses_huge_header_before_payload_read_and_corrupt_enums ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.6156100Z test admission_overload_and_duplicate_requests_do_not_grow_memory ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.6572740Z test executable_path_with_spaces_roundtrips_real_worker ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.7379500Z test deadlines_cancel_late_and_shutdown_are_bounded ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.7656380Z test identities_spans_and_extra_bytes_refused ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.7900970Z test faulty_worker_cannot_publish_and_independent_work_progresses ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.7956970Z test finite_retry_in_new_process_and_stderr_capture_bounded ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.9456750Z test queue_wait_consumes_total_deadline_before_spawn ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:15.9761640Z test shutdown_with_inflight_failure_reaps_child ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:16.0180520Z test simultaneous_configurations_remain_distinct ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:16.0472580Z test worker_is_given_bytes_and_does_not_reopen_source ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:16.5167290Z test roundtrip_and_direct_pool_equivalence_all_dialects ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3159460Z test valid_frame_requires_successful_exit_and_roundtrips_repeat ... ok
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3164750Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3174860Z test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.74s
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3184580Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3186030Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_index-f4aae305fdd75544)
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3224710Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3232980Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3233510Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3233970Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3234550Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3235530Z ^[[1m^[[92m     Running^[[0m unittests src/lib.rs (target/debug/deps/xrai_query-bc231698edb02897)
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3304780Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3308440Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3310200Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3311130Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3312100Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.3313760Z ^[[1m^[[92m   Doc-tests^[[0m xrai_core
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4166440Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4167830Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4168470Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4169460Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4170410Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4178360Z ^[[1m^[[92m   Doc-tests^[[0m xrai_eval
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4921790Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4922200Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4922450Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4922800Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4923200Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.4932200Z ^[[1m^[[92m   Doc-tests^[[0m xrai_index
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5304460Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5307460Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5307890Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5308250Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5308720Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5311050Z ^[[1m^[[92m   Doc-tests^[[0m xrai_query
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5803970Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5804480Z running 0 tests
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5804640Z 
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5805010Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+aarch64-apple-darwin	Test	2026-10-12T10:51:17.5805380Z 
+aarch64-apple-darwin	Build	﻿2026-10-12T10:51:17.6365590Z ##[group]Run cargo build --workspace --locked
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6366050Z ^[[36;1mcargo build --workspace --locked^[[0m
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6417280Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6417540Z env:
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6417680Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6417890Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6418160Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6418410Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6418710Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6419180Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6419650Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6420200Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6420600Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6421080Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.6421530Z ##[endgroup]
+aarch64-apple-darwin	Build	2026-10-12T10:51:17.8992990Z ^[[1m^[[92m    Finished^[[0m `dev` profile [unoptimized + debuginfo] target(s) in 0.10s
+aarch64-apple-darwin	Smoke help	﻿2026-10-12T10:51:17.9067300Z ##[group]Run "./$XRAI_BINARY" --help
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9067620Z ^[[36;1m"./$XRAI_BINARY" --help^[[0m
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9107040Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9107340Z env:
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9107490Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9107710Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9107930Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9108170Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9108480Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9108870Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9109300Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9109700Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9110090Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9110510Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9110900Z ##[endgroup]
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9659210Z xrai — development scaffold
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9675950Z 
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9676640Z Usage: xrai [OPTION]
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9676940Z 
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9677790Z Options:
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9680310Z -h, --help       Print help
+aarch64-apple-darwin	Smoke help	2026-10-12T10:51:17.9681720Z -V, --version    Print version and platform
+aarch64-apple-darwin	Smoke version	﻿2026-10-12T10:51:18.0100360Z ##[group]Run "./$XRAI_BINARY" --version
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0101460Z ^[[36;1m"./$XRAI_BINARY" --version^[[0m
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0185860Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0186630Z env:
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0187080Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0187630Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0188200Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0188760Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0189460Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0190430Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0191540Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0192670Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0193720Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0194750Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.0195630Z ##[endgroup]
+aarch64-apple-darwin	Smoke version	2026-10-12T10:51:18.1032070Z xrai 0.1.0-dev (aarch64-macos)
+aarch64-apple-darwin	Prove local harness isolation and replay	﻿2026-10-12T10:51:18.1592630Z ##[group]Run mkdir -p native-evidence
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1593490Z ^[[36;1mmkdir -p native-evidence^[[0m
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1594670Z ^[[36;1mpython -m unittest discover -s crates/xrai-eval/harness/tests -v 2>&1 | tee native-evidence/harness-tests.log^[[0m
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1596610Z ^[[36;1mpython crates/xrai-eval/harness/runner.py baseline --output native-evidence/baseline > native-evidence/baseline-summary.json^[[0m
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1598280Z ^[[36;1mpython crates/xrai-eval/harness/verify_records.py native-evidence/baseline^[[0m
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1599950Z ^[[36;1mpython crates/xrai-eval/harness/incremental.py --binary target/debug/incremental-probe --output native-evidence/incremental.json^[[0m
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1677930Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1678280Z env:
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1678460Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1678680Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1678890Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1679200Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1679470Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1679830Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1680250Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1680650Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1681020Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1681720Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.1682040Z ##[endgroup]
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4146330Z test_bounded_fork_output_limit_and_closed_pipes (test_containment.NamespaceTests.test_bounded_fork_output_limit_and_closed_pipes) ... skipped 'Linux PID namespace native proof required'
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4147500Z test_evaluator_death_destroys_namespace (test_containment.NamespaceTests.test_evaluator_death_destroys_namespace) ... skipped 'Linux PID namespace native proof required'
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4148520Z test_positive_descendant_sentinel (test_containment.NamespaceTests.test_positive_descendant_sentinel) ... skipped 'Linux PID namespace native proof required'
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4149560Z test_repeated_adverse_descendants_and_normal_child_exit (test_containment.NamespaceTests.test_repeated_adverse_descendants_and_normal_child_exit) ... skipped 'Linux PID namespace native proof required'
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4151930Z test_two_arms_isolation_and_independent_cancellation (test_containment.NamespaceTests.test_two_arms_isolation_and_independent_cancellation) ... skipped 'Linux PID namespace native proof required'
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4155540Z test_cancelled_before_launch_never_executes (test_containment.ReceiptTests.test_cancelled_before_launch_never_executes) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4349770Z test_exception_after_launch_always_cleans_even_exited_wrapper (test_containment.ReceiptTests.test_exception_after_launch_always_cleans_even_exited_wrapper) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4370900Z test_external_user_namespace_mapping_is_single_identity (test_containment.ReceiptTests.test_external_user_namespace_mapping_is_single_identity) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4386340Z test_incomplete_or_tampered_namespace_receipts_are_rejected (test_containment.ReceiptTests.test_incomplete_or_tampered_namespace_receipts_are_rejected) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4392150Z test_mac_disposable_is_explicitly_unavailable (test_containment.ReceiptTests.test_mac_disposable_is_explicitly_unavailable) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4531730Z test_teardown_failure_is_preserved_and_ineligible (test_containment.ReceiptTests.test_teardown_failure_is_preserved_and_ineligible) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4684370Z test_version_one_bytes_remain_replayable (test_containment.ReceiptTests.test_version_one_bytes_remain_replayable) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.4965830Z test_allowed_workspace_read_and_edit (test_runner.RunnerTests.test_allowed_workspace_read_and_edit) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.6702370Z test_closed_pipes_do_not_disable_timeout (test_runner.RunnerTests.test_closed_pipes_do_not_disable_timeout) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:18.7251260Z test_cross_arm_and_evaluator_absolute_read_denied (test_runner.RunnerTests.test_cross_arm_and_evaluator_absolute_read_denied) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.1443480Z test_detached_descendant_cannot_block_evaluator (test_runner.RunnerTests.test_detached_descendant_cannot_block_evaluator) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.1680450Z test_error_keeps_partial_output (test_runner.RunnerTests.test_error_keeps_partial_output) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.1697600Z test_evaluator_hash_does_not_follow_agent_symlink (test_runner.RunnerTests.test_evaluator_hash_does_not_follow_agent_symlink) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.1858920Z test_host_environment_not_inherited (test_runner.RunnerTests.test_host_environment_not_inherited) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.1866520Z test_invalid_adapter_does_not_fall_back_to_unsandboxed (test_runner.RunnerTests.test_invalid_adapter_does_not_fall_back_to_unsandboxed) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.3116770Z test_network_denied (test_runner.RunnerTests.test_network_denied) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.3349640Z test_output_limit_is_bounded (test_runner.RunnerTests.test_output_limit_is_bounded) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.3510870Z test_replay_preserves_binary_and_rejects_tampering (test_runner.RunnerTests.test_replay_preserves_binary_and_rejects_tampering) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.4078460Z test_symlink_escape_and_cross_arm_write_denied (test_runner.RunnerTests.test_symlink_escape_and_cross_arm_write_denied) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.6706030Z test_timeout_kills_descendants_keeps_partial (test_runner.RunnerTests.test_timeout_kills_descendants_keeps_partial) ... ok
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.6707810Z 
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.6708690Z ----------------------------------------------------------------------
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.6710110Z Ran 25 tests in 1.256s
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.6711820Z 
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:19.6712230Z OK (skipped=5)
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1219890Z {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1220670Z   "count": 20,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1221880Z   "status": "schema_and_replay_passed",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1222650Z   "records": [
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1223630Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1224400Z       "task_id": "D0-GO-01",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1225140Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1225940Z         "transcript_sha256": "5dfb99fbbc7d51a6d41381a03b3512df95c2df3f2ad58aa655e1ba49474ab469",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1226810Z         "captured_bytes": 13611,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1227630Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1228470Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1229140Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1230000Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1230680Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1231180Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1231730Z       "task_id": "D0-GO-02",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1232230Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1233060Z         "transcript_sha256": "513ecbf590782370f3dd1cba382d22a17788d985aab72ecde932db5188190a83",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1234070Z         "captured_bytes": 13021,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1234760Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1235390Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1236070Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1236730Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1237260Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1237830Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1238250Z       "task_id": "D0-GO-03",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1238860Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1239860Z         "transcript_sha256": "1bbdfc93c5385551e490bb63552ad8776cc19494d7bfcbbf9fe40a22d544e291",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1241050Z         "captured_bytes": 5600,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1242070Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1242880Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1243680Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1244310Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1244880Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1245310Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1245990Z       "task_id": "D0-GO-04",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1247170Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1247970Z         "transcript_sha256": "57b9a3b992029366b98f0d6a6c82efdb2b202e8b602dbe07223f2853a1c91dc7",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1248680Z         "captured_bytes": 6911,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1249400Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1250060Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1250450Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1250860Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1251120Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1253180Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1253840Z       "task_id": "D0-GO-05",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1254170Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1254620Z         "transcript_sha256": "3b018b90721a828bbd868333624c7a3fd7872923b924ef94b007f96f52650d02",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1255040Z         "captured_bytes": 3354,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1255380Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1255650Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1256010Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1256370Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1256640Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1256850Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1257160Z       "task_id": "D0-PY-01",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1257380Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1257680Z         "transcript_sha256": "04e8744765bac81e24810600fa3ac91d415ce6bc1b46f7ac080439f987231b93",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1258070Z         "captured_bytes": 9889,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1258250Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1258450Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1258660Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1259520Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1259670Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1259810Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1259960Z       "task_id": "D0-PY-02",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1260140Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1260460Z         "transcript_sha256": "71b612f657675849347a4b8c3f70977877ece983be3b6fb1fe5fff77f019f41c",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1260840Z         "captured_bytes": 3929,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1261030Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1261240Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1261470Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1261750Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1261910Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1262050Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1262200Z       "task_id": "D0-PY-03",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1262480Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1262800Z         "transcript_sha256": "be538293f3205cc425d340c1bde9639219c8fa6aa85340f006da497f6df42dea",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1263260Z         "captured_bytes": 5959,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1263480Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1263670Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1263960Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1264250Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1264420Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1264550Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1264710Z       "task_id": "D0-PY-04",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1264900Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1265230Z         "transcript_sha256": "97cf9a9f860eb2a941c89f6267f3f78485c6cf402855a2a3f005512d716760da",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1265630Z         "captured_bytes": 844,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1265810Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1266150Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1280770Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1281020Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1281140Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1281410Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1281600Z       "task_id": "D0-PY-05",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1281820Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1282140Z         "transcript_sha256": "ea10708da1248d7092c65f97099490b3c5789ebdb2e346042a76b6265b4f832d",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1282520Z         "captured_bytes": 396,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1282700Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1282920Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1283150Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1283360Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1283500Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1283630Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1284360Z       "task_id": "D0-RS-01",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1284520Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1284840Z         "transcript_sha256": "84e5707f330cc21ddbc7c418685019d9a2d8acf08e6815c6a2e7ab9cd12c6923",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1285200Z         "captured_bytes": 2261,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1285370Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1285530Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1285760Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1285970Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1286090Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1286240Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1286380Z       "task_id": "D0-RS-02",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1286570Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1286870Z         "transcript_sha256": "7165408985a6fead662900044ab4be07deda2e1165954cbfdf6a67af65e98e70",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1287230Z         "captured_bytes": 1179,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1287420Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1287630Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1287850Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1288050Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1288200Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1288320Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1288480Z       "task_id": "D0-RS-03",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1288660Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1288990Z         "transcript_sha256": "25860f1950797aa156d07942260253323e82f7d2c41146322f49d3f39963da10",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1289340Z         "captured_bytes": 722,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1289570Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1289780Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1290350Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1290590Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1290720Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1290830Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1290990Z       "task_id": "D0-RS-04",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1291170Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1291680Z         "transcript_sha256": "1055ece7a9e9ba3d5fa391b2bf7467c6476d88cd7a2120bb7d07c27de310482c",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1292060Z         "captured_bytes": 1230,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1292310Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1292500Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1292770Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1292980Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1293170Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1293310Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1293470Z       "task_id": "D0-RS-05",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1293640Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1293930Z         "transcript_sha256": "f0d3233ac52143f2264442312beac7fd2a1d72370be76447304a9b536fcbedda",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1294280Z         "captured_bytes": 654,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1294460Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1294630Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1294820Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1295020Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1295160Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1295330Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1295480Z       "task_id": "D0-TJ-01",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1295670Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1295990Z         "transcript_sha256": "4f5ff4f2630cf4e988567db002bb76bd902dd24eca4e0dd84745db430b87bd85",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1296350Z         "captured_bytes": 3096,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1296530Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1296700Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1296970Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1297170Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1297290Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1297400Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1297530Z       "task_id": "D0-TJ-02",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1297700Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1297980Z         "transcript_sha256": "38fd4d997e4f62737a5285b7cdcba30d14675e5fcde5278928652c527167c2f9",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1298340Z         "captured_bytes": 1006,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1298510Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1298690Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1298880Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1299080Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1299200Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1299600Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1299780Z       "task_id": "D0-TJ-03",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1299940Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1300230Z         "transcript_sha256": "3b7c5984c23815d0089ae7bc4e32944fdd266702ec05979fba547c8b8bcde193",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1300600Z         "captured_bytes": 3494,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1300770Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1300940Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1301140Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1301350Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1301460Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1301580Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1301710Z       "task_id": "D0-TJ-04",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1301880Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1302170Z         "transcript_sha256": "79d42dcd507d32f1ed744ee87d6bb40c7162713fc13abb6bfb307f03b0eb6e04",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1302530Z         "captured_bytes": 130,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1302730Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1302900Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1303110Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1303320Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1303430Z     },
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1303540Z     {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1303670Z       "task_id": "D0-TJ-05",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1303930Z       "replay": {
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1304350Z         "transcript_sha256": "015a1807974ed852f0f035bb00f642e6c107c446ffef76bbbbfeeeeea401cb31",
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1304780Z         "captured_bytes": 1261,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1305040Z         "tokenizer": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1305510Z         "model_tokens": null,
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1305740Z         "status": "verified_bytes_tokens_unknown"
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1305970Z       }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1306180Z     }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1306350Z   ]
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.1306480Z }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2303710Z Traceback (most recent call last):
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2311620Z   File "/Users/runner/work/xrai/xrai/crates/xrai-eval/harness/incremental.py", line 93, in verify
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2312110Z     a=original.query('INDEX')
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2312490Z   File "/Users/runner/work/xrai/xrai/crates/xrai-eval/harness/incremental.py", line 47, in query
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2313090Z     raise RuntimeError(f'probe closed stream: {errors.decode(errors="replace")}')
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2313640Z RuntimeError: probe closed stream: Error: Os { code: 1, kind: PermissionDenied, message: "Operation not permitted" }
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2313990Z 
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2314000Z 
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2314150Z During handling of the above exception, another exception occurred:
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2314420Z 
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2314540Z Traceback (most recent call last):
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2314990Z   File "/Users/runner/work/xrai/xrai/crates/xrai-eval/harness/incremental.py", line 138, in <module>
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2315430Z     print(json.dumps(verify(args.binary,args.output),indent=2))
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2315760Z                      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2316190Z   File "/Users/runner/work/xrai/xrai/crates/xrai-eval/harness/incremental.py", line 124, in verify
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2316640Z     original.close()
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2316800Z     ~~~~~~~~~~~~~~^^
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2317170Z   File "/Users/runner/work/xrai/xrai/crates/xrai-eval/harness/incremental.py", line 70, in close
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2317580Z     os.killpg(self.process.pid,signal.SIGKILL)
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2317880Z     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2318180Z PermissionError: [Errno 1] Operation not permitted
+aarch64-apple-darwin	Prove local harness isolation and replay	2026-10-12T10:51:21.2407550Z ##[error]Process completed with exit code 1.
+aarch64-apple-darwin	Preserve native receipts	﻿2026-10-12T10:51:21.2516560Z ##[group]Run actions/upload-artifact@v7
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2516820Z with:
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2516970Z   name: native-aarch64-apple-darwin
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2517160Z   path: native-evidence
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2517330Z   if-no-files-found: error
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2517600Z   compression-level: 6
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2517770Z   overwrite: false
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2518010Z   include-hidden-files: false
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2518210Z   archive: true
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2527390Z env:
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2527580Z   CARGO_TERM_COLOR: always
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2527790Z   EXPECTED_HOST: aarch64-apple-darwin
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2528000Z   XRAI_BINARY: target/debug/xrai
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2528180Z   MACOSX_DEPLOYMENT_TARGET: 15.0
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2528480Z   XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2528890Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2529310Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.15.0/arm64/lib/pkgconfig
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2529730Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2530080Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2530430Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.15.0/arm64
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.2530700Z ##[endgroup]
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.4526700Z With the provided path, there will be 24 files uploaded
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.4532520Z Artifact name is valid!
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.4533330Z Root directory input is valid!
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.7372440Z Uploading artifact: native-aarch64-apple-darwin.zip
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:21.7395220Z Beginning upload of artifact content to blob storage
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:22.0501620Z Uploaded bytes 77508
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:22.0951750Z Finished uploading artifact content to blob storage!
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:22.0952600Z SHA256 digest of uploaded artifact is a4b87ea38c658861224a60991d29b37071e2aa6051e326a7fd612deeb08dee76
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:22.0954480Z Finalizing artifact upload
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:22.4046180Z Artifact native-aarch64-apple-darwin successfully finalized. Artifact ID 11742505124
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:22.4048000Z Artifact native-aarch64-apple-darwin has been successfully uploaded! Final size is 77508 bytes. Artifact ID is 11742505124
+aarch64-apple-darwin	Preserve native receipts	2026-10-12T10:51:22.4056630Z Artifact download URL: https://github.com/wkoch/xrai/actions/runs/38238745914/artifacts/11742505124
+aarch64-apple-darwin	Post Run actions/checkout@v6	﻿2026-10-12T10:51:22.4205980Z Post job cleanup.
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5156360Z [command]/opt/homebrew/bin/git version
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5225750Z git version 2.55.0
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5244790Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/d1985f63-f8b3-43b8-aa93-035b3a346660/.gitconfig'
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5251150Z Temporarily overriding HOME='/Users/runner/work/_temp/d1985f63-f8b3-43b8-aa93-035b3a346660' before making global git config changes
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5251890Z Adding repository directory to the temporary git global config as a safe directory
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5255260Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/xrai/xrai
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5379420Z Removing SSH command configuration
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5383820Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.5450480Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.6280180Z Removing HTTP extra header
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.6284820Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.6341350Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.7064790Z Removing includeIf entries pointing to credentials config files
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.7070570Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+aarch64-apple-darwin	Post Run actions/checkout@v6	2026-10-12T10:51:22.7127970Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+aarch64-apple-darwin	Complete job	﻿2026-10-12T10:51:22.7917630Z Cleaning up orphan processes

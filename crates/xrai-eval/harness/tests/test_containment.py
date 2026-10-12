@@ -21,7 +21,7 @@ import uuid
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from adapters import MacDisposableAdapter
+from adapters import MacDisposableAdapter, sandbox
 from runner import execute, record, replay, payload
 from supervisor import KnownSmokeDomain, supervise, verify_receipt, map_held_user_namespace
 
@@ -36,6 +36,31 @@ def wait_file(path, seconds=4):
 
 
 class ReceiptTests(unittest.TestCase):
+    def test_mac_ancestor_permission_is_literal_directory_data_only(self):
+        with tempfile.TemporaryDirectory() as temp, patch('adapters.platform.system', return_value='Darwin'):
+            workspace = Path(temp, 'nested', 'workspace'); workspace.mkdir(parents=True)
+            sandbox(['/bin/sh', '-c', 'true'], workspace, temp)
+            profile = Path(temp, 'sandbox.sb').read_text()
+            literals = ' '.join('(literal ' + json.dumps(str(p)) + ')' for p in workspace.resolve().parents)
+            self.assertIn('(allow file-read-data ' + literals + ')', profile)
+            for ancestor in workspace.resolve().parents:
+                self.assertNotIn('(subpath ' + json.dumps(str(ancestor)) + ')', profile)
+            self.assertNotIn('(allow file-read* (literal "/"))', profile)
+
+    def test_linux_adapter_requires_explicit_user_namespace(self):
+        with tempfile.TemporaryDirectory() as temp, patch('adapters.platform.system', return_value='Linux'), patch('adapters.shutil.which', return_value='/usr/bin/bwrap'):
+            command, mechanism = sandbox(['/bin/sh', '-c', 'true'], temp, temp)
+            self.assertEqual(mechanism, 'Linux bubblewrap')
+            # Bubblewrap validates the userns gate before resolving the optional
+            # user namespace implied by --unshare-all. Never fall back to try.
+            options = command[:command.index('--')]
+            self.assertIn('--unshare-all', options)
+            self.assertIn('--unshare-user', options)
+            self.assertNotIn('--unshare-user-try', options)
+        with tempfile.TemporaryDirectory() as temp, patch('adapters.platform.system', return_value='Linux'), patch('adapters.shutil.which', return_value=None):
+            with self.assertRaises(RuntimeError):
+                sandbox(['/bin/sh', '-c', 'true'], temp, temp)
+
     def test_mac_disposable_is_explicitly_unavailable(self):
         self.assertFalse(MacDisposableAdapter.available)
         with self.assertRaises(RuntimeError):

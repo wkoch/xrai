@@ -1,0 +1,128 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-TJ-04",
+  "family": "TSJS",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.013286666999988483,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Darwin",
+    "release": "24.6.0",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "92eb8334bf8cf0f436e64cfa27a601438376210786ff3df03bf22f9118c17c9b",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "e229b748fab18b98b507f2c99118a56819141c66a631c4cadde1cf5bcbac5d33",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "containment": "macos_local_known_smoke",
+      "cleanup_status": "not_proven",
+      "domain_id": "8cfebec0-a7d1-4633-ad8f-00682de7a4d3",
+      "termination_evidence": {
+        "wrapper_reaped": true,
+        "scope": "process_group_only_no_daemon_guarantee"
+      },
+      "eligible_for_agent_run": false,
+      "diagnostic": null,
+      "elapsed_seconds": 0.014170167000003175,
+      "stdout": {
+        "base64": "Li9saWNlbnNlLm1kCi4vaW5kZXguanMKLi8ubnBtcmMKLi90ZXN0cy5qcwouLy5naXRpZ25vcmUKLi9wYWNrYWdlLWxvY2suanNvbgouL3BhY2thZ2UuanNvbgouLy5naXRodWIvd29ya2Zsb3dzL2NpLnltbAouL3Byb2JlLmpzCg==",
+        "sha256": "d5417c5667c03314853fd2df4fe51853e444f483abb4bdc95d92a6a8bca5e39f",
+        "captured_bytes": 130,
+        "observed_bytes": 130,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "Após|criar|probe|remover|readme|probe|revisão|atual|reporte|readme|não|existe",
+        "."
+      ],
+      "status": "error",
+      "execution_status": "error",
+      "exit_code": 1,
+      "sandbox": "macOS Seatbelt",
+      "containment": "macos_local_known_smoke",
+      "cleanup_status": "not_proven",
+      "domain_id": "61a236df-e455-42a9-b8a2-438ab161587f",
+      "termination_evidence": {
+        "wrapper_reaped": true,
+        "scope": "process_group_only_no_daemon_guarantee"
+      },
+      "eligible_for_agent_run": false,
+      "diagnostic": null,
+      "elapsed_seconds": 0.014851082999996379,
+      "stdout": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 130,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "79d42dcd507d32f1ed744ee87d6bb40c7162713fc13abb6bfb307f03b0eb6e04",
+  "workspace_sha256": "34eff78e1ac9eeddbd53474ef48460612abfaee1e34737acb01a7977a57d2b30"
+}

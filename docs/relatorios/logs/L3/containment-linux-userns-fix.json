@@ -1,0 +1,26 @@
+{
+  "issue": "CI Linux rejects setup gate without explicit mandatory user namespace",
+  "failed_ci_commit": "a1126ad",
+  "ci_log_sha256": "5557428fad14489d09ba8e5d3f8f3d18dc088269a1b43dc9eccc8b90dd4a2308",
+  "bubblewrap_version": "0.9.0",
+  "source_url": "https://github.com/containers/bubblewrap/blob/v0.9.0/bubblewrap.c",
+  "source_ranges": {
+    "unshare_all_optional_user": [
+      1630,
+      1639
+    ],
+    "user_gate_guard": [
+      2532,
+      2536
+    ],
+    "identity_before_gate": [
+      2757,
+      2781
+    ]
+  },
+  "correction": "--unshare-all --unshare-user; no fallback",
+  "local_evidence": "docs/relatorios/logs/L3/containment-local.json",
+  "local_evidence_sha256": "8c22652f10dc9407863508a35aab982e87783b763a90afa1074ae939d97fef53",
+  "native_proof": "pending corrected CI",
+  "decisions": "implementation compatibility correction; no architecture change"
+}

@@ -18,7 +18,10 @@ def sandbox(command, workspace, profile_dir):
         profile = '(version 1)(deny default)(allow process-fork)(allow process-exec)(allow sysctl-read)(allow mach-lookup)(allow file-read-metadata)'
         profile += '(allow file-read* ' + rules + ' (literal ' + json.dumps(executable) + '))'
         profile += '(allow file-map-executable ' + rules + ' (literal ' + json.dumps(executable) + '))'
-        profile += '(allow file-read* (literal "/"))'
+        # Anchored traversal opens directory handles for every ancestor. Literal
+        # directory data permits that traversal/listing, never descendants' data.
+        ancestors = ' '.join('(literal ' + json.dumps(str(p)) + ')' for p in workspace.parents)
+        profile += '(allow file-read-data ' + ancestors + ')'
         profile += '(allow file-write* (subpath ' + json.dumps(str(workspace)) + ') (literal "/dev/null"))'
         p = Path(profile_dir) / 'sandbox.sb'
         p.write_text(profile, encoding='utf-8')
@@ -27,7 +30,9 @@ def sandbox(command, workspace, profile_dir):
         bwrap = shutil.which('bwrap')
         if not bwrap:
             raise RuntimeError('bubblewrap required: refusing an unsandboxed run')
-        args = [bwrap, '--unshare-all', '--die-with-parent', '--new-session']
+        # --unshare-all only requests userns opportunistically; the supervisor's
+        # --userns-block-fd gate requires an explicit, mandatory user namespace.
+        args = [bwrap, '--unshare-all', '--unshare-user', '--die-with-parent', '--new-session']
         for p in ['/usr', '/bin', '/lib', '/lib64']:
             if Path(p).exists():
                 args += ['--ro-bind', p, p]

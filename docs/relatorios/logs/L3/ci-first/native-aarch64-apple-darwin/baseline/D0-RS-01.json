@@ -1,0 +1,128 @@
+{
+  "schema_version": "xrai.eval.local.v2",
+  "task_id": "D0-RS-01",
+  "family": "Rust",
+  "run_kind": "scripted_retrieval",
+  "adapter": "selective-grep-v1",
+  "model": null,
+  "tokenizer": null,
+  "usage": null,
+  "financial_cost": null,
+  "outcome": "not_judged",
+  "setup_seconds": 0.008068917000002784,
+  "permission_policy": "workspace_only_no_network",
+  "environment": {
+    "system": "Darwin",
+    "release": "24.6.0",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "executor_sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "containment_sources_sha256": {
+      "adapters.py": "92eb8334bf8cf0f436e64cfa27a601438376210786ff3df03bf22f9118c17c9b",
+      "supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571"
+    }
+  },
+  "input_sha256": "8dde3e1a58293efb5cc938f7a2061d63478d9448e2cf4739af0f7a9c97a2a984",
+  "rounds": [
+    {
+      "phase": "inventory",
+      "command": [
+        "/usr/bin/find",
+        ".",
+        "-type",
+        "f"
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "containment": "macos_local_known_smoke",
+      "cleanup_status": "not_proven",
+      "domain_id": "05631fc3-efb2-4469-a111-312a5cfc16e2",
+      "termination_evidence": {
+        "wrapper_reaped": true,
+        "scope": "process_group_only_no_daemon_guarantee"
+      },
+      "eligible_for_agent_run": false,
+      "diagnostic": null,
+      "elapsed_seconds": 0.015134084000010262,
+      "stdout": {
+        "base64": "Li9DYXJnby50b21sCi4vTElDRU5TRQouL0NIQU5HRUxPRy5tZAouL3Rlc3RzL2xpYi5ycwouLy5lZGl0b3Jjb25maWcKLi9SRUFETUUubWQKLi8uZ2l0aWdub3JlCi4vLmdpdGh1Yi9GVU5ESU5HLnltbAouLy5naXRodWIvd29ya2Zsb3dzL2NpLnltbAouLy5naXRhdHRyaWJ1dGVzCi4vYmVuY2hlcy9iZW5jaGVzLnJzCi4vZGV2Ci4vU0VDVVJJVFkubWQKLi9zcmMvbGliLnJzCg==",
+        "sha256": "20ebfd28acfb6e3a47911d3d510fdca144403fdeb7149a629802e93e196b542e",
+        "captured_bytes": 214,
+        "observed_bytes": 214,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    },
+    {
+      "phase": "selective_reading",
+      "command": [
+        "/usr/bin/grep",
+        "-R",
+        "-n",
+        "-I",
+        "-i",
+        "-m",
+        "3",
+        "-C",
+        "3",
+        "-E",
+        "--include=*.rs",
+        "--include=*.ts",
+        "--include=*.tsx",
+        "--include=*.js",
+        "--include=*.jsx",
+        "--include=*.py",
+        "--include=*.go",
+        "--exclude-dir=.git",
+        "API|compara|Hamming|caracteres|delegada",
+        "."
+      ],
+      "status": "ok",
+      "execution_status": "ok",
+      "exit_code": 0,
+      "sandbox": "macOS Seatbelt",
+      "containment": "macos_local_known_smoke",
+      "cleanup_status": "not_proven",
+      "domain_id": "512685c2-ac4d-4333-bc42-0065ec1a0658",
+      "termination_evidence": {
+        "wrapper_reaped": true,
+        "scope": "process_group_only_no_daemon_guarantee"
+      },
+      "eligible_for_agent_run": false,
+      "diagnostic": null,
+      "elapsed_seconds": 0.015457416999993256,
+      "stdout": {
+        "base64": "Li90ZXN0cy9saWIucnMtMS1leHRlcm4gY3JhdGUgc3Ryc2ltOwouL3Rlc3RzL2xpYi5ycy0yLQouL3Rlc3RzL2xpYi5ycy0zLXVzZSBzdHJzaW06OnsKLi90ZXN0cy9saWIucnM6NDogICAgZGFtZXJhdV9sZXZlbnNodGVpbiwgaGFtbWluZywgamFybywgamFyb193aW5rbGVyLCBsZXZlbnNodGVpbiwgbm9ybWFsaXplZF9kYW1lcmF1X2xldmVuc2h0ZWluLAouL3Rlc3RzL2xpYi5ycy01LSAgICBub3JtYWxpemVkX2xldmVuc2h0ZWluLCBvc2FfZGlzdGFuY2UsCi4vdGVzdHMvbGliLnJzLTYtfTsKLi90ZXN0cy9saWIucnMtNy0KLS0KLi90ZXN0cy9saWIucnMtMjEtfQouL3Rlc3RzL2xpYi5ycy0yMi0KLi90ZXN0cy9saWIucnMtMjMtI1t0ZXN0XQouL3Rlc3RzL2xpYi5yczoyNDpmbiBoYW1taW5nX3dvcmtzKCkgewouL3Rlc3RzL2xpYi5yczoyNTogICAgbWF0Y2ggaGFtbWluZygiaGFtbWluZyIsICJoYW1tZXJzIikgewouL3Rlc3RzL2xpYi5ycy0yNi0gICAgICAgIE9rKGRpc3RhbmNlKSA9PiBhc3NlcnRfZXEhKDMsIGRpc3RhbmNlKSwKLi90ZXN0cy9saWIucnMtMjctICAgICAgICBFcnIod2h5KSA9PiBwYW5pYyEoIns6P30iLCB3aHkpLAouL3Rlc3RzL2xpYi5ycy0yOC0gICAgfQotLQouL2JlbmNoZXMvYmVuY2hlcy5ycy03LXVzZSBzZWxmOjp0ZXN0OjpCZW5jaGVyOwouL2JlbmNoZXMvYmVuY2hlcy5ycy04LQouL2JlbmNoZXMvYmVuY2hlcy5ycy05LSNbYmVuY2hdCi4vYmVuY2hlcy9iZW5jaGVzLnJzOjEwOmZuIGJlbmNoX2hhbW1pbmcoYmVuY2hlcjogJm11dCBCZW5jaGVyKSB7Ci4vYmVuY2hlcy9iZW5jaGVzLnJzLTExLSAgICBsZXQgYSA9ICJBQ0FBR0FUR0NDQVRUR1RDQ0NDQ0dHQ0NUQ0NUR0NUR0NUR0NUR0NUQ1RDQ0dHR0ciOwouL2JlbmNoZXMvYmVuY2hlcy5ycy0xMi0gICAgbGV0IGIgPSAiQ0NUR0dBR0dHVEdHQ0NDQ0FDQ0dHQ0NHQUdBQ0FHQ0dBR0NBVEFUR0NBR0dBQUdDIjsKLi9iZW5jaGVzL2JlbmNoZXMucnMtMTMtICAgIGJlbmNoZXIuaXRlcih8fCB7Ci4vYmVuY2hlcy9iZW5jaGVzLnJzOjE0OiAgICAgICAgc3Ryc2ltOjpoYW1taW5nKGEsIGIpLnVud3JhcCgpOwouL2JlbmNoZXMvYmVuY2hlcy5ycy0xNS0gICAgfSkKLi9iZW5jaGVzL2JlbmNoZXMucnMtMTYtfQouL2JlbmNoZXMvYmVuY2hlcy5ycy0xNy0KLS0KLi9zcmMvbGliLnJzLTE1LSAgICBjbGlwcHk6Om1pc3NpbmdfZXJyb3JzX2RvYywKLi9zcmMvbGliLnJzLTE2LSAgICBjbGlwcHk6Om1pc3NpbmdfcGFuaWNzX2RvYywKLi9zcmMvbGliLnJzLTE3LSAgICBjbGlwcHk6Om11c3RfdXNlX2NhbmRpZGF0ZSwKLi9zcmMvbGliLnJzOjE4OiAgICAvLyB0b2RvIGh0dHBzOi8vZ2l0aHViLmNvbS9yYXBpZGZ1enovc3Ryc2ltLXJzL2lzc3Vlcy81OQouL3NyYy9saWIucnMtMTktICAgIGNsaXBweTo6cmFuZ2VfcGx1c19vbmUKLi9zcmMvbGliLnJzLTIwLSldCi4vc3JjL2xpYi5ycy0yMS0KLS0KLi9zcmMvbGliLnJzLTQ2LQouL3NyYy9saWIucnMtNDctaW1wbCBFcnJvciBmb3IgU3RyU2ltRXJyb3Ige30KLi9zcmMvbGliLnJzLTQ4LQouL3NyYy9saWIucnM6NDk6cHViIHR5cGUgSGFtbWluZ1Jlc3VsdCA9IFJlc3VsdDx1c2l6ZSwgU3RyU2ltRXJyb3I+OwouL3NyYy9saWIucnMtNTAtCi4vc3JjL2xpYi5ycy01MS0vLy8gQ2FsY3VsYXRlcyB0aGUgbnVtYmVyIG9mIHBvc2l0aW9ucyBpbiB0aGUgdHdvIHNlcXVlbmNlcyB3aGVyZSB0aGUgZWxlbWVudHMKLi9zcmMvbGliLnJzLTUyLS8vLyBkaWZmZXIuIFJldHVybnMgYW4gZXJyb3IgaWYgdGhlIHNlcXVlbmNlcyBoYXZlIGRpZmZlcmVudCBsZW5ndGhzLgouL3NyYy9saWIucnM6NTM6cHViIGZuIGdlbmVyaWNfaGFtbWluZzxJdGVyMSwgSXRlcjIsIEVsZW0xLCBFbGVtMj4oYTogSXRlcjEsIGI6IEl0ZXIyKSAtPiBIYW1taW5nUmVzdWx0Ci4vc3JjL2xpYi5ycy01NC13aGVyZQouL3NyYy9saWIucnMtNTUtICAgIEl0ZXIxOiBJbnRvSXRlcmF0b3I8SXRlbSA9IEVsZW0xPiwKLi9zcmMvbGliLnJzLTU2LSAgICBJdGVyMjogSW50b0l0ZXJhdG9yPEl0ZW0gPSBFbGVtMj4sCg==",
+        "sha256": "7f7387134dae4be2e43d8e8ebd66eeebc5c2ed616f4130867a39f48a845b273b",
+        "captured_bytes": 2047,
+        "observed_bytes": 2047,
+        "truncated": false
+      },
+      "stderr": {
+        "base64": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captured_bytes": 0,
+        "observed_bytes": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "measurement": {
+    "captured_bytes": 2261,
+    "model_tokens": null
+  },
+  "limitations": [
+    "scripted retrieval; no agent success or competitive advantage measured",
+    "no model tokenizer configured; token counts and model costs unknown"
+  ],
+  "transcript_sha256": "84e5707f330cc21ddbc7c418685019d9a2d8acf08e6815c6a2e7ab9cd12c6923",
+  "workspace_sha256": "726c9e251464f75c090bb5b7331c8438d560c67895323a1b320c2879a14d13d7"
+}
