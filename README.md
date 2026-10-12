@@ -2,7 +2,7 @@
 
 CLI em Rust para entregar contexto de código relevante, verificável e atualizado a agentes de IA.
 
-Estado: L0 e retificações concluídos; [revisão L1](docs/relatorios/REVISAO-L1.md) resolveu as pendências arquiteturais e preparou o lote L2. Corpus inicial aceito para desenvolvimento, qualificação competitiva e CI nativa ainda pendentes conforme o [estado atual](docs/STATUS-IMPLEMENTACAO.md). `xrai --help` e `xrai --version` funcionam; parsing, consultas e MCP seguem nas tarefas posteriores. Não há resultados competitivos próprios.
+Estado: L0 e retificações concluídos; [revisão L1](docs/relatorios/REVISAO-L1.md) resolveu as pendências arquiteturais e preparou o lote L2. Corpus inicial aceito para desenvolvimento; qualificação competitiva permanece pendente. [CI aprovada nos dois alvos e contratos](docs/relatorios/CI-PUBLICO.md), concluindo M0-02.R2/M0-07 conforme o [estado atual](docs/STATUS-IMPLEMENTACAO.md). `xrai --help` e `xrai --version` funcionam; parsing, consultas e MCP seguem nas tarefas posteriores. Não há resultados competitivos próprios.
 
 Para executar o scaffold: `cargo build --workspace --locked`, depois `./target/debug/xrai --help`. Toolchain fixada em Rust 1.98.1. [Relatório e evidências L0](docs/relatorios/L0.md). A atividade M0-02.R2 cobre a adaptação da CI ao [escopo do v1](docs/decisoes/PLATAFORMAS-V1.md); o estado distingue configuração e execução comprovada.
 

@@ -2,6 +2,8 @@
 
 Data: 11/10/2026. **Decisões arquiteturais L1 resolvidas; lote L2 pronto para o usuário liberar.** Leia primeiro a [revisão L1 e atividades L2](docs/relatorios/REVISAO-L1.md) e o [estado atual](docs/STATUS-IMPLEMENTACAO.md). V1: Linux x86_64/macOS arm64. O roteiro L0 abaixo é histórico; não recrie entregas nem trate tarefas planejadas como concluídas.
 
+Atualização de 12/10/2026: repositório público e [CI confirmada nos três jobs](docs/relatorios/CI-PUBLICO.md). M0-02.R2/M0-07 concluídas; bloqueio anterior superado. L2 permanece o próximo lote.
+
 ## 1. Papel e objetivo
 
 O usuário definiu dois papéis:
@@ -70,7 +72,7 @@ L0 não precisa de API paga, corpus reservado pronto ou confirmação de métric
 
 | Etapa | Atividades | Condição |
 |---|---|---|
-| Plataforma do v1 | M0-02.R2: CI Linux x86_64/macOS arm64; atualizar pendências de M0-07 | M0-02.R1 já concluída; preservar checks documentais e históricos |
+| Plataforma do v1 | M0-02.R2 e M0-07 concluídas com CI nativa | Preservar checks documentais e históricos; próximos spikes seguem seus próprios critérios |
 | Corpus e medição | M0-03 inicial aceito; M0-03.R1 qualifica D1; M0-04 usa D0/seed no harness/replay | Começar localmente; piloto depende de R1; smoke pago exige teto autorizado |
 | Spikes técnicos | M0-05/06/07/08: gramáticas, workers, snapshots e filesystem | Seguir dependências dos cartões; registrar limitações nativas |
 | Prova semântica P2 | M0-11: recortes de imports/bindings/alvos/configuração nas quatro famílias | Extração mínima local; não esperar todos os runners ou índice de produção |
@@ -121,4 +123,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Ao receber a liberação do usuário, iniciar L2 pela [sequência da revisão L1](docs/relatorios/REVISAO-L1.md): M0-04 local/replay e M0-03.R1, usando M0-05/08 como frentes independentes.** C01/S01/S02 não aguardam nova decisão do Arquiteto. Manter M0-02.R2/M0-07 pendentes até evidência nativa; não repetir jobs bloqueados sem mudança de condição. Não promover seed a piloto nem antecipar M1-B. Registrar resultado por cartão, pendências externas e próxima atividade; commit/push após verificar a entrega, conforme AGENTS.md.
+**Ao receber a liberação do usuário, iniciar L2 pela [sequência da revisão L1](docs/relatorios/REVISAO-L1.md): M0-04 local/replay e M0-03.R1, usando M0-05/08 como frentes independentes.** C01/S01/S02 não aguardam nova decisão do Arquiteto. M0-02.R2/M0-07 estão concluídas pela CI registrada em 12/10; não refazer essas entregas. Não promover seed a piloto nem antecipar M1-B. Registrar resultado por cartão, pendências externas e próxima atividade; commit/push após verificar a entrega, conforme AGENTS.md.

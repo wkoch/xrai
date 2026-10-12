@@ -4,7 +4,7 @@ Data: 11/10/2026. **Decisão do Arquiteto para L1-S01 e L1-S02.** Complementa AD
 
 ## Base e decisão
 
-O [spike L1](../relatorios/sqlite-L1.md) demonstrou localmente publicação transacional, leitores em A durante publicação B, rollback após morte confirmada e deduplicação de blobs. Não demonstrou recuperação automática, GC ou retenção de contextos. A cópia de texto na FTS por geração continua crescendo apesar de blobs iguais. CI nativa pendente permanece pendente.
+O [spike L1](../relatorios/sqlite-L1.md) demonstrou localmente publicação transacional, leitores em A durante publicação B, rollback após morte confirmada e deduplicação de blobs. Não demonstrou recuperação automática, GC ou retenção de contextos. A cópia de texto na FTS por geração continua crescendo apesar de blobs iguais. A [CI de 12/10](../relatorios/CI-PUBLICO.md) encerrou a prova nativa pendente do spike, sem promover essas capacidades de produção.
 
 Manter SQLite incorporado, WAL, blobs imutáveis e publicação por geração. Escolher **lock de processo com posse verificável e fencing**, em vez de inferir morte por PID/heartbeat. Escolher **FTS sobre conteúdo externo no próprio banco, deduplicado por versão**, e **pins persistidos para contextos/cursors válidos**. Os tópicos abaixo são requisitos de implementação; não descrevem recursos já existentes.
 
@@ -83,4 +83,4 @@ GC e checkpoint são manutenção limitada. Páginas livres não significam redu
 
 Lease por tempo/PID é simples, mas pode roubar trabalho de processo vivo ou confundir PID reciclado. Lock longo mais token custa coordenação explícita, verificável em dois SOs. Reter todos os snapshots elimina expiração, mas cresce sem limite; apagar por “mais antigo” quebra contextos ativos. FTS por geração simplifica consultas, mas repete conteúdo. O layout escolhido acrescenta joins e GC; os testes de desempenho precisam confirmar que esse custo compensa.
 
-Essas decisões fecham a direção arquitetural. Parâmetros medidos, escolha de crate de lock e SQL concreto pertencem ao implementador. M0-07 continua um experimento descartável com aceite nativo ainda aberto; este documento não conclui nenhum cartão de produção nem autoriza antecipar M1-B.
+Essas decisões fecham a direção arquitetural. Parâmetros medidos, escolha de crate de lock e SQL concreto pertencem ao implementador. M0-07 continua um experimento descartável, com aceite nativo concluído em 12/10; este documento não conclui nenhum cartão de produção nem autoriza antecipar M1-B.

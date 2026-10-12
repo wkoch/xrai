@@ -1,5 +1,7 @@
 # Revisão arquitetural L1 e próximo lote L2
 
+**Adendo de 12/10/2026:** o usuário tornou o repo público e a [nova tentativa do CI passou](CI-PUBLICO.md), concluindo M0-02.R2/M0-07. Os impedimentos de CI descritos nesta revisão de 11/10 são históricos; a sequência L2 permanece válida. Consulte o estado atual para execução vigente.
+
 Data local: 11/10/2026, America/Sao_Paulo; verificações em 12/10 UTC. Arquiteto. Base revisada: `0ae00e58f557489dc31348c4accced725c012cca`. Escopo: resolver minhas pendências e deixar atividades executáveis para a outra IA. Código do produto, scripts do corpus e workflow não foram alterados nesta entrega.
 
 **C01, S01 e S02 estão resolvidas em arquitetura. O usuário pode liberar o implementador para L2.** Não resta uma confirmação rotineira do Arquiteto para esse início. A qualificação do corpus, os testes futuros e as provas nativas continuam atividades reais, não são concluídas por este parecer.

@@ -1,0 +1,306 @@
+{
+  "run_id": 38197775334,
+  "attempt": 2,
+  "head_sha": "9b5411cce300fead7c62335539b317645f2d9577",
+  "command": "gh run view 38197775334 --repo wkoch/xrai --log",
+  "log_sha256": "22c3d7b413a4462fe1575fa1111b82ec8949a7eaac794f37653f4c822e03c22f",
+  "workflow_and_test_source_sha256": {
+    ".github/workflows/ci.yml": "fcfb8432af9ed45ae4e283e418d59c13fbf307509a9317dd876af2dc16086276",
+    "crates/xrai-eval/src/sqlite_spike.rs": "2fa7234566ca5ea8cc9fd933bcd584af241e60c038ed4cc9c2b7f6c1e4d2acb3",
+    "crates/xrai-eval/tests/sqlite_snapshots.rs": "c42290f163189e499b849a6d6194fa13722cf8ee2bcb8b9a4926956ef7845d4b",
+    "Cargo.lock": "09d985dbb38969361ee8fc1ef1fa57c894914e81e80d4d552107c1116e05f65b"
+  },
+  "extraction": "Only allowlisted OS/host/version lines, executed test names/results, documentary totals and CLI version; timestamps and unrelated runner output omitted. Raw log remains in GitHub attempt 2.",
+  "checks": {
+    "native_hosts": 2,
+    "rust_tests_per_host": 9,
+    "sqlite_tests_per_host": 6,
+    "documentary_valid": 26,
+    "documentary_invalid": 30,
+    "documentary_checker_tests": 10
+  },
+  "jobs": {
+    "Documentary contracts": [
+      {
+        "step": "Set up job",
+        "text": "Version: 20261002.596"
+      },
+      {
+        "step": "Set up job",
+        "text": "Ubuntu"
+      },
+      {
+        "step": "Set up job",
+        "text": "24.04.5"
+      },
+      {
+        "step": "Set up job",
+        "text": "LTS"
+      },
+      {
+        "step": "Set up job",
+        "text": "Image: ubuntu-24.04"
+      },
+      {
+        "step": "Set up job",
+        "text": "Version: 20261004.327.1"
+      },
+      {
+        "step": "Validate schema and contract examples",
+        "text": "26 valid accepted; 30 invalid rejected; 0 failures; schema valid"
+      },
+      {
+        "step": "Verify rejection and failure propagation",
+        "text": "Ran 10 tests in 1.225s"
+      },
+      {
+        "step": "Verify rejection and failure propagation",
+        "text": "OK"
+      }
+    ],
+    "x86_64-unknown-linux-gnu": [
+      {
+        "step": "Set up job",
+        "text": "Version: 20261002.596"
+      },
+      {
+        "step": "Set up job",
+        "text": "Ubuntu"
+      },
+      {
+        "step": "Set up job",
+        "text": "24.04.5"
+      },
+      {
+        "step": "Set up job",
+        "text": "LTS"
+      },
+      {
+        "step": "Set up job",
+        "text": "Image: ubuntu-24.04"
+      },
+      {
+        "step": "Set up job",
+        "text": "Version: 20261004.327.1"
+      },
+      {
+        "step": "Record and verify native environment",
+        "text": "rustc 1.98.1 (48a229cea 2026-09-01)"
+      },
+      {
+        "step": "Record and verify native environment",
+        "text": "host: x86_64-unknown-linux-gnu"
+      },
+      {
+        "step": "Record and verify native environment",
+        "text": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test version_reports_package_version_and_native_platform ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test help_only_advertises_available_options ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test unsupported_operations_and_extra_arguments_fail_without_data ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test bundled_sqlite_fts5_and_trigram_are_available_without_load_extension ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test future_schema_and_foreign_application_are_refused_without_recreation ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test source_foreign_keys_hashes_and_invalid_spans_are_enforced ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test backup_rebuild_preserve_human_files_and_readers_and_refuse_overwrite ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test two_readers_keep_a_bytes_facts_and_fts_while_writer_publishes_b ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test killed_writer_rolls_back_b_keeps_a_and_records_abandoned_staging ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Smoke version",
+        "text": "xrai 0.1.0-dev (x86_64-linux)"
+      }
+    ],
+    "aarch64-apple-darwin": [
+      {
+        "step": "Set up job",
+        "text": "macOS"
+      },
+      {
+        "step": "Set up job",
+        "text": "15.7.9"
+      },
+      {
+        "step": "Set up job",
+        "text": "24G830"
+      },
+      {
+        "step": "Set up job",
+        "text": "Image: macos-15-arm64"
+      },
+      {
+        "step": "Record and verify native environment",
+        "text": "rustc 1.98.1 (48a229cea 2026-09-01)"
+      },
+      {
+        "step": "Record and verify native environment",
+        "text": "host: aarch64-apple-darwin"
+      },
+      {
+        "step": "Record and verify native environment",
+        "text": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test help_only_advertises_available_options ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test version_reports_package_version_and_native_platform ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test unsupported_operations_and_extra_arguments_fail_without_data ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test bundled_sqlite_fts5_and_trigram_are_available_without_load_extension ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test future_schema_and_foreign_application_are_refused_without_recreation ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test source_foreign_keys_hashes_and_invalid_spans_are_enforced ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test two_readers_keep_a_bytes_facts_and_fts_while_writer_publishes_b ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test backup_rebuild_preserve_human_files_and_readers_and_refuse_overwrite ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test killed_writer_rolls_back_b_keeps_a_and_records_abandoned_staging ... ok"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.52s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Test",
+        "text": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      },
+      {
+        "step": "Smoke version",
+        "text": "xrai 0.1.0-dev (aarch64-macos)"
+      }
+    ]
+  }
+}

@@ -499,6 +499,6 @@ L0-A01 continua decisão do mantenedor antes de distribuição M1-20. A CI do co
 | Licença do produto | L0-A01, mantenedor, antes de distribuição M1-20; preservar `publish=false`. Não impede trabalho local. |
 | Orçamento monetário | Mantenedor autoriza o teto antes do uso pago. Implementador entrega estimativa e manifest de campanha concretos; replay e preparação continuam. |
 | Manutenção e tamanho de binário | Implementador mede nos spikes; M0-10 registra custos/limites e escopo sustentáveis. Não fixar prazo/equipe fictícios. |
-| CI/runners | Impedimento externo registrado em L1; reexecutar quando houver mudança da condição ou runner equivalente disponível. Não converter não execução em sucesso. |
+| CI/runners | Bloqueio anterior superado após repo público: [CI do commit `9b5411c`](relatorios/CI-PUBLICO.md) concluiu R2/M0-07. Demais spikes e distribuição ainda exigem suas próprias provas. |
 
 Não resta decisão arquitetural de L1 exigida para iniciar o lote L2. As verificações e decisões externas acima conservam seus respectivos responsáveis e gates.

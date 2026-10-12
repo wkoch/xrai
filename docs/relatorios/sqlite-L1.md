@@ -1,5 +1,7 @@
 # M0-07 — spike SQLite de desenvolvimento
 
+**Atualização de 12/10/2026:** [prova nativa aprovada em Linux x86_64 e macOS arm64](CI-PUBLICO.md), seis testes SQLite por host no commit `9b5411c`, tentativa 2 do run `38197775334`. M0-07 concluída como spike; persistência de produção segue M1 após G1. O relato abaixo preserva a execução local e o bloqueio anterior.
+
 Implementador, 11/10/2026 America/Sao_Paulo; verificações em 12/10 UTC. **Implementação e aceite local executados; Linux x86_64 ainda aguarda execução nativa da CI deste código; macOS arm64 local passou. A matriz vigente v1 exclui Windows.** O sucesso do scaffold de L0 não substitui essa execução. Este relatório não conclui M0-05 nem aprova API de persistência de produção.
 
 O experimento reside somente em `crates/xrai-eval`: módulo `sqlite_spike`, executável de desenvolvimento `sqlite-spike` e seis testes de integração em `tests/sqlite_snapshots.rs`. `cargo tree -p xrai` confirma que o binário do usuário continua sem dependências externas e sem `xrai-eval`. O harness permanece em M0-04.

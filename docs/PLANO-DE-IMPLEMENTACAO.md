@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 11/10/2026. **Revisão L1: decisões arquiteturais C01/S01/S02 resolvidas; próximo lote L2 preparado.** Corpus inicial aceito no escopo de desenvolvimento; M0-03.R1 qualifica o D1 antes do piloto. M0-04/05/08 podem começar. [Parecer, evidências e sequência](relatorios/REVISAO-L1.md). V1 continua Linux x86_64/macOS arm64; CI nativa permanece pendente conforme o [estado](STATUS-IMPLEMENTACAO.md).
+Data: 12/10/2026. **Revisão L1: decisões arquiteturais C01/S01/S02 resolvidas; próximo lote L2 preparado.** Corpus inicial aceito no escopo de desenvolvimento; M0-03.R1 qualifica o D1 antes do piloto. M0-04/05/08 podem começar. [Parecer, evidências e sequência](relatorios/REVISAO-L1.md). V1 continua Linux x86_64/macOS arm64; [CI aprovada](relatorios/CI-PUBLICO.md) concluiu R2 e M0-07 conforme o [estado](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -683,7 +683,7 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Primeira sequência executável
 
-L0 e as retificações R1 já estão entregues. A [revisão L1](relatorios/REVISAO-L1.md) aceita M0-03 no escopo inicial, resolve C01/S01/S02 e prepara **L2: M0-03.R1 e trabalho local de M0-04/05/08**. Começar pelo harness/replay e triagem de candidatos; aproveitar fixtures para spikes nativos. CI R2 e prova Linux de M0-07 continuam pendentes externamente e não bloqueiam esse lote. Implementação de persistência de produção fica após G1. A sequência geral é:
+L0 e as retificações R1 já estão entregues. A [revisão L1](relatorios/REVISAO-L1.md) aceita M0-03 no escopo inicial, resolve C01/S01/S02 e prepara **L2: M0-03.R1 e trabalho local de M0-04/05/08**. Começar pelo harness/replay e triagem de candidatos; aproveitar fixtures para spikes nativos. CI R2 e prova nativa de M0-07 foram [concluídas em 12/10](relatorios/CI-PUBLICO.md). Implementação de persistência de produção fica após G1. A sequência geral é:
 
 1. Abrir M0-01 e M0-02: contrato mínimo e workspace/CI podem avançar juntos.
 2. Usar D0/seed de M0-03 no harness de M0-04; qualificar D1 em M0-03.R1 antes do piloto. Iniciar triagem dos oito concorrentes. Spikes nativos, armazenamento e filesystem seguem em frente independente.

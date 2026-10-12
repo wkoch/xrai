@@ -36,7 +36,7 @@ A decisão concentra trabalho nos dois alvos sem reduzir qualidade, linguagens o
 
 Detalhes, dependências e critérios estão no [plano](../PLANO-DE-IMPLEMENTACAO.md); execução e impedimentos no [estado](../STATUS-IMPLEMENTACAO.md). M0-02.R2 depende de M0-02.R1 e é requisito de M0-10. Pode ser executada sem aguardar corpus ou retomar entregas concluídas.
 
-O implementador continua responsável por alterações de workflow e código. Remover Windows do aceite não comprova execução nos outros alvos. Se billing, runner ou infraestrutura impedir a prova Linux/macOS, preservar a pendência e continuar trabalho independente; não mascarar falha, dispensar check ou usar smokes antigos como prova do spike novo. A elegibilidade do corpus foi resolvida separadamente no [ADR 021](CORPUS-QUALIFICADO.md); os impedimentos de infraestrutura registrados em L1 continuam externos.
+O implementador continua responsável por alterações de workflow e código. Remover Windows do aceite não comprova execução nos outros alvos. Se billing, runner ou infraestrutura impedir a prova Linux/macOS, preservar a pendência e continuar trabalho independente; não mascarar falha, dispensar check ou usar smokes antigos como prova do spike novo. A elegibilidade do corpus foi resolvida separadamente no [ADR 021](CORPUS-QUALIFICADO.md); o bloqueio anterior de CI foi [superado em 12/10](../relatorios/CI-PUBLICO.md), concluindo R2/M0-07 sem concluir os demais cartões.
 
 ## Contratos e histórico
 
