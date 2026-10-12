@@ -1,0 +1,81 @@
+{
+  "schema_version": "xrai.eval.l5.go.pre-behavioral-freeze.v1",
+  "recorded_at_utc": "2026-10-12T18:50:21.112603+00:00",
+  "parent_commit": "3cc26fc7b7ecc1d2cf04780e74765b74f545a653",
+  "artifacts": {
+    "eval/qualification/l5-real/go/LICENSE.gitea": {
+      "sha256": "ed2f10a9d78b8c6c9ef33f1420d0eb266981891caf2f15d630553f02dc60d3ae",
+      "bytes": 1097
+    },
+    "eval/qualification/l5-real/go/README.md": {
+      "sha256": "94ec91c827d2ddabe51cf133f38fa3652075a1ce0965c64f94202e2e601d64f1",
+      "bytes": 3294
+    },
+    "eval/qualification/l5-real/go/agent/input.md": {
+      "sha256": "cb46defe2ed2730ab6dbf7666470f649fae6fb36a7f90d471736ebb0f79aed82",
+      "bytes": 1306
+    },
+    "eval/qualification/l5-real/go/capture.json": {
+      "sha256": "53e99c53811a8a3be619a5506e79b221f31a70af1e722453849d0ca126aea6c3",
+      "bytes": 1125
+    },
+    "eval/qualification/l5-real/go/case.json": {
+      "sha256": "e2032299b185a0791087d221843f5f6a2809901032e6361ab30157d7da209776",
+      "bytes": 4590
+    },
+    "eval/qualification/l5-real/go/oracles/reference-url.go": {
+      "sha256": "7e6bc3a58078736d1843003b2d56ae8fb3b61a55d23ce833c1b7daa61208908c",
+      "bytes": 1427
+    },
+    "eval/qualification/l5-real/go/oracles/reference.patch": {
+      "sha256": "4e1a1d5403333dcb926e786ffad5bd184297572e516671c76ea93cd33b58ad44",
+      "bytes": 440
+    },
+    "eval/qualification/l5-real/go/oracles/source-relations.json": {
+      "sha256": "8283a02c17171ac71005c59f8dd8b76add80dd8b4a822dcf7aee6b3432f1b7de",
+      "bytes": 3141
+    },
+    "eval/qualification/l5-real/go/oracles/xrai_url_contract_test.go": {
+      "sha256": "79821b7011b6145def1266cf9bffb97c3034ffc49a8c41ec41556a29a06d4f59",
+      "bytes": 3352
+    },
+    "eval/qualification/l5-real/go/setup/go.mod": {
+      "sha256": "29f295d7e8f60ffad2245b64498ee0d3268a0a97b199da41872cd34009cf3127",
+      "bytes": 14772
+    },
+    "eval/qualification/l5-real/go/setup/go.sum": {
+      "sha256": "3b0849aae4c1c40fbebb12d3f0b40809f86fe866e2d561d4c38c09188b32e115",
+      "bytes": 96122
+    },
+    "eval/qualification/l5-real/go/sources/base-inventory.json.gz": {
+      "sha256": "d547e8660a6a04d9ffa9dc88c378e82e58ebcec960a9220268e799f3e2bbda5b",
+      "bytes": 318965
+    },
+    "eval/qualification/l5-real/go/sources/base.tar.gz": {
+      "sha256": "3cd918c96a563db6a64e8c9717d556097240de799f9f0948ba50060e6143c190",
+      "bytes": 9616184
+    },
+    "eval/scripts/prepare_l5_go.py": {
+      "sha256": "9a00a0db03f066dc19b2c845b967b95ffb28f7e5942735027ecc54fbafe8ea26",
+      "bytes": 9488
+    },
+    "eval/scripts/run_l5_go.py": {
+      "sha256": "2ad65bba0e27f572adc51f2a91ab48943a40c54c0e4ac5ee7bbb1ee48ee1f597",
+      "bytes": 10173
+    },
+    "eval/scripts/test_l5_go.py": {
+      "sha256": "add58951e5bc381d430aa674370d114af5f5be8b56a6258fb7a20f8cfe540b4a",
+      "bytes": 6462
+    }
+  },
+  "own_counterchecks": {
+    "tests": 21,
+    "passed": 21,
+    "receipt": "docs/relatorios/logs/L5-C02/go/own-tests-final-hardening.stderr"
+  },
+  "local_upstream_execution": false,
+  "behavioral_ci": "not_run",
+  "independent_review": "pending",
+  "global_admission_delta": 0,
+  "incremental_event": "separate family state slot pending"
+}

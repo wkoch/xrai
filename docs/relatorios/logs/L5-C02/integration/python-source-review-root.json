@@ -1,0 +1,57 @@
+{
+  "schema": "xrai.eval.independent-review.v1",
+  "recorded_utc": "2026-10-12T18:52:09.932406+00:00",
+  "author": "python_dossier",
+  "second_reader": "root",
+  "status": "accepted",
+  "scope": "bounded source/input/oracle/reference/setup review before CI; no upstream local execution",
+  "prompt_sha256": "768ab3bf6870dc77d52f44d57966b48846e88c60f2be86b51f6f25388f1189d6",
+  "oracle_sha256": "edbbdb303732bb799395caed5e094750fd0daffff00e39a9effbec5ef1544837",
+  "reviewed_artifact_hashes": {
+    "eval/qualification/l5-real/python/agent/input.md": "768ab3bf6870dc77d52f44d57966b48846e88c60f2be86b51f6f25388f1189d6",
+    "eval/qualification/l5-real/python/oracles/probe.py": "edbbdb303732bb799395caed5e094750fd0daffff00e39a9effbec5ef1544837",
+    "eval/qualification/l5-real/python/oracles/reference.patch": "72d1ea6fe60bf7b71393a2671392c06fef685b26cdd9e07c5821baf282774793",
+    "eval/qualification/l5-real/python/capture.json": "ec546414b369fdd54f302678aa88ac4becf0391885e6c9ca95a8afa2f6c36f3a",
+    "eval/qualification/l5-real/python/setup.lock.json": "d60b33931674ea0cc3d38d97b513ecdd0dfc53f8be0dff9c29a6743ab06d1f50",
+    "eval/qualification/l5-real/python/oracles/reference-sources/sklearn/utils/_set_output.py": "fc3cbdf8e4c698ddc029df2ec80a292530fbabc053b614b658a87d1c7193d7b3",
+    "eval/qualification/l5-real/python/oracles/reference-sources/sklearn/pipeline.py": "34feed2873e05bfd0519497fdda2627b3af3e323ac9ef22558b021ad1669d072",
+    "eval/qualification/l5-real/python/oracles/reference-sources/sklearn/compose/_column_transformer.py": "6dbae22a517ffae811a8bfc258d83758a8f5d0583147641338b114973042aa3c"
+  },
+  "source_anchors": [
+    {
+      "path": "sklearn/compose/_column_transformer.py",
+      "sha256": "af6fd61e71a2e31bc1cdd0d29c9263d18b7df21c465badc93b2b28a080bd0fa1",
+      "needle": "def _call_func_on_transformers("
+    },
+    {
+      "path": "sklearn/pipeline.py",
+      "sha256": "34feed2873e05bfd0519497fdda2627b3af3e323ac9ef22558b021ad1669d072",
+      "needle": "class FeatureUnion("
+    },
+    {
+      "path": "sklearn/utils/_set_output.py",
+      "sha256": "1bcc20854998e3795a6bd9f61b0aef61be348f9a88b1cf9ae4596340e757ab32",
+      "needle": "def _get_container_adapter("
+    }
+  ],
+  "findings": [],
+  "corrections": [
+    "Independent review required exact named results and source identity, conservative infrastructure handling, frozen inputs/oracles and C02 event separation."
+  ],
+  "assessment": {
+    "controlled_contract_not_historical_issue": true,
+    "natural_input_without_solution_paths": true,
+    "three_necessary_modules_two_subsystems_two_edge_chain": true,
+    "oracle_independent_from_xrai_parser": true,
+    "reference_hidden_from_agent": true,
+    "fixed_full_source_and_license": true,
+    "baseline_expected_behavior_concretely_classified": true,
+    "behavioral_ci_not_yet_measured": true,
+    "incremental_event_not_universal_requirement": true
+  },
+  "limits": [
+    "Source review is bounded to pinned development configuration; actual behavioral CI remains required.",
+    "Individual eligibility/global admission not inferred from this review.",
+    "Official dependency/runtime binary bytes remain fetched/observed by CI, not executed locally."
+  ]
+}

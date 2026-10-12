@@ -1,0 +1,94 @@
+{
+  "schema": "xrai.eval.independent-review.v1",
+  "author": "corpus_js",
+  "second_reader": "root",
+  "status": "accepted",
+  "scope": "final natural input, independent five-test oracle, two-module reference patch and seven source relationship anchors; source and retained runtime receipts only, no new upstream execution",
+  "prompt_sha256": "f6822108434963667d2f220d60d60e134a48e93130bb25c74b4bcce5359862ef",
+  "oracle_sha256": "9938be79198f975471b472f3bbfa33614fe63d46e1def912d8a827a925292d65",
+  "reference_patch_sha256": "3156ac7ac3e5a2df64db9cbff7e4939da5c3dac35aa4851a0008a98e6e546733",
+  "source_relations_sha256": "b2433c431e2d1c5ef963f6cf7796cc449c45fa63dffc91230a0e8d11325d3365",
+  "findings": [],
+  "corrections": [
+    "Earlier review bound the pre-warning oracle7e07. This receipt reviews final oracle9938 and its specific expected warning on Stateful only; historical receipt unchanged."
+  ],
+  "assessment": {
+    "natural_request_no_solution": true,
+    "main_transition_notification_outside_act": true,
+    "exactly_one_microtask_before_assertions": true,
+    "no_flush_or_scheduler_drain_at_checkpoint": true,
+    "ordinary_state_negative_control_pending_at_same_checkpoint": true,
+    "specific_warning_asserted_control_only": true,
+    "no_global_console_suppression": true,
+    "snapshot_equality_store_switch_unmount_and_effect_regressions_covered": true,
+    "no_independent_task_created_by_supplementary_event": true
+  },
+  "anchors_exact_digest_and_lines_verified": [
+    {
+      "side": "base",
+      "path": "packages/react/src/ReactHooks.js",
+      "symbol": "useSyncExternalStore",
+      "start_line": 172,
+      "end_line": 179,
+      "source_sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+    },
+    {
+      "side": "base",
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "symbol": "dispatchAction",
+      "start_line": 1916,
+      "end_line": 2066,
+      "source_sha256": "66a2e38d1d47afd70c3b487e0582716777b2174caef5e0b4ab949514eef5968f"
+    },
+    {
+      "side": "base",
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "symbol": "scheduleUpdateOnFiber",
+      "start_line": 437,
+      "end_line": 529,
+      "source_sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7"
+    },
+    {
+      "side": "head",
+      "path": "packages/react/src/ReactHooks.js",
+      "symbol": "useSyncExternalStore",
+      "start_line": 172,
+      "end_line": 179,
+      "source_sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+    },
+    {
+      "side": "head",
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "symbol": "useSyncExternalStore",
+      "start_line": 1263,
+      "end_line": 1362,
+      "source_sha256": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753"
+    },
+    {
+      "side": "head",
+      "path": "packages/react-reconciler/src/ReactFiberHooks.new.js",
+      "symbol": "dispatchAction",
+      "start_line": 2031,
+      "end_line": 2181,
+      "source_sha256": "079df421f49a0ca05e611d9b78c344996848a413a60119363c7c010018d92753"
+    },
+    {
+      "side": "head",
+      "path": "packages/react-reconciler/src/ReactFiberWorkLoop.new.js",
+      "symbol": "scheduleUpdateOnFiber",
+      "start_line": 437,
+      "end_line": 529,
+      "source_sha256": "1c047051e56453a15872b3bf9e7b053e0e333574a0b18ceabb7d359a236dabf7"
+    }
+  ],
+  "behavioral_evidence": {
+    "path": "docs/relatorios/logs/L5-continuacao/ci-fourth/corpus-verification.json",
+    "sha256": "be4415d366df9fd075ab650f0af4f9aa18acf39cceee2ec7107f2213ae150afd",
+    "run": 38283109016,
+    "code_commit": "c48b5993550fd258f1efe5677704a59d9eb73de0"
+  },
+  "limits": [
+    "Review is bounded to captured development configuration; server and later concurrency improvements excluded by input.",
+    "Review does not assert global admission or incremental execution."
+  ]
+}

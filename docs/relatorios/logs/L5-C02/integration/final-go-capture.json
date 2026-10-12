@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python3",
+    "eval/scripts/prepare_l5_go.py",
+    "verify"
+  ],
+  "expected_exit": 0,
+  "exit_code": 0,
+  "base_commit": "3cc26fc7b7ecc1d2cf04780e74765b74f545a653",
+  "utc": "2026-10-12T18:54:10.340631+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "stdout": "{\n  \"verified\": true,\n  \"source_commit\": \"8eefa1f6dedf2488db2c9e12c916e8e51f673160\",\n  \"complete_source_files\": 6127,\n  \"production_files\": 1740,\n  \"production_nonempty_lines\": 247058,\n  \"controlled_contract_change\": true,\n  \"behavioral_probe\": \"not inferred from data verification\",\n  \"admitted\": false\n}\n",
+  "stderr": "",
+  "stdout_sha256": "87b7bce797e7c1b9467a302ff4d8153574c5defea33524de8151c1c064385d40",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

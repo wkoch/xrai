@@ -1,7 +1,10 @@
 import importlib.util
 import json
+import copy
+import hashlib
 from pathlib import Path
 import unittest
+import tempfile
 
 SCRIPT=Path(__file__).resolve().parents[1]/'verify_slot_plan.py'
 SPEC=importlib.util.spec_from_file_location('slot_plan_verifier',SCRIPT)
@@ -17,7 +20,9 @@ class SlotPlanTests(unittest.TestCase):
         self.assertTrue(result['allocation_consistent'])
         self.assertEqual(result['admitted_tasks'],0)
         self.assertFalse(result['competitive_runs_allowed'])
-        self.assertEqual(result['conditional_deficits']['additional_complex'],15)
+        self.assertEqual(result['conditional_deficits']['additional_complex'],13)
+        self.assertEqual(result['factual_summary']['eligible_tasks'],6)
+        self.assertEqual(result['new_dossiers_delivered'],2)
         self.assertEqual(result['multi_module_targets'],20)
     def test_false_admission(self):
         self.plan['admitted_tasks']=32; self.rejects('false admission')
@@ -68,5 +73,33 @@ class SlotPlanTests(unittest.TestCase):
         self.plan['pilot_artifact']['sha256']='0'*64; self.rejects('pilot artifact hash')
     def test_boolean_targets_not_integer_estimates(self):
         self.plan['slots'][1]['target']['complex']=1; self.rejects('target types')
+    def test_factual_matrix_hash_tamper(self):
+        self.plan['factual_progress']['sha256']='0'*64; self.rejects('pilot artifact hash')
+    def test_factual_progress_cannot_be_inferred_from_target_count(self):
+        self.plan.pop('factual_progress'); self.rejects('deficits mismatch')
+    def test_rehashed_factual_claims_must_match_underlying_dossiers(self):
+        matrix=json.loads((V.ROOT/self.plan['factual_progress']['path']).read_bytes())
+        def eligibility(row):
+            row['individually_eligible']=False
+            row['states']['review']={'status':'pending','receipts':[]}
+            row['states']['individual_eligibility']={'eligible':False,'blockers':['review_not_verified']}
+        mutations=[lambda r:r.update(complex=True),lambda r:r.update(family='Go'),
+                   lambda r:r.update(source='l5_real_dossier'),lambda r:r.update(historical=False),
+                   lambda r:r.update(multi_module=False),eligibility]
+        # Rehash the manipulated report/plan together; the verifier must still
+        # reject them by recomputing actual retained dossier evidence.
+        spec=importlib.util.spec_from_file_location('test_c02_summary',V.ROOT/'eval/scripts/verify_c02.py')
+        c02=importlib.util.module_from_spec(spec);spec.loader.exec_module(c02)
+        for change in mutations:
+            altered=copy.deepcopy(matrix);change(altered['tasks'][0])
+            altered['summary']=c02.summarize(altered['tasks'])
+            with self.subTest(mutation=change),tempfile.TemporaryDirectory(dir=V.ROOT/'eval/qualification') as temp:
+                path=Path(temp)/'matrix.json';raw=json.dumps(altered).encode();path.write_bytes(raw)
+                plan=copy.deepcopy(self.plan)
+                plan['factual_progress']={'path':path.relative_to(V.ROOT).as_posix(),'sha256':hashlib.sha256(raw).hexdigest()}
+                plan['conditional_deficits']=altered['summary']['conditional_projection']
+                plan['new_dossiers']['completed']=altered['summary']['new_dossiers_individually_eligible']
+                with self.assertRaisesRegex(ValueError,'differs from recomputed dossier evidence'):
+                    V.validate(plan)
 
 if __name__=='__main__': unittest.main()

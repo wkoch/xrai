@@ -1,0 +1,72 @@
+{
+  "source_commit": "8eefa1f6dedf2488db2c9e12c916e8e51f673160",
+  "modules": [
+    {
+      "path": "services/convert/repository.go",
+      "sha256": "58eef72e622fa5240d3958d90cb72ab0c0d1cb0fc90b1ab771a07de18eb735db",
+      "anchors": [
+        {
+          "needle": "func innerToRepo(",
+          "line": 25,
+          "excerpt": "}\n\nfunc innerToRepo(ctx context.Context, repo *repo_model.Repository, permissionInRepo access_model.Permission, isParent bool) *api.Repository {\n\tvar parent *api.Repository\n\n\tif !permissionInRepo.HasUnits() && permissionInRepo.AccessMode > perm.AccessModeNone {"
+        },
+        {
+          "needle": "OriginalURL:                   repo.SanitizedOriginalURL(),",
+          "line": 198,
+          "excerpt": "\t\tSSHURL:                        cloneLink.SSH,\n\t\tCloneURL:                      cloneLink.HTTPS,\n\t\tOriginalURL:                   repo.SanitizedOriginalURL(),\n\t\tWebsite:                       repo.Website,\n\t\tLanguage:                      language,\n\t\tLanguagesURL:                  repoAPIURL + \"/languages\","
+        }
+      ]
+    },
+    {
+      "path": "models/repo/repo.go",
+      "sha256": "677c8b399f3af2f9f98138ec03a7a1d48537942f1711bf16b405bfdf4897bbe6",
+      "anchors": [
+        {
+          "needle": "func (repo *Repository) SanitizedOriginalURL()",
+          "line": 210,
+          "excerpt": "\n// SanitizedOriginalURL returns a sanitized OriginalURL\nfunc (repo *Repository) SanitizedOriginalURL() string {\n\tif repo.OriginalURL == \"\" {\n\t\treturn \"\"\n\t}"
+        },
+        {
+          "needle": "util.SanitizeURL(repo.OriginalURL)",
+          "line": 214,
+          "excerpt": "\t\treturn \"\"\n\t}\n\tu, _ := util.SanitizeURL(repo.OriginalURL)\n\treturn u\n}\n"
+        }
+      ]
+    },
+    {
+      "path": "modules/util/url.go",
+      "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e",
+      "anchors": [
+        {
+          "needle": "func SanitizeURL(s string)",
+          "line": 43,
+          "excerpt": "}\n\nfunc SanitizeURL(s string) (string, error) {\n\tu, err := url.Parse(s)\n\tif err != nil {\n\t\treturn \"\", err"
+        },
+        {
+          "needle": "u.User = nil",
+          "line": 48,
+          "excerpt": "\t\treturn \"\", err\n\t}\n\tu.User = nil\n\treturn u.String(), nil\n}"
+        }
+      ]
+    }
+  ],
+  "subsystems": [
+    "services/convert",
+    "models/repo",
+    "modules/util"
+  ],
+  "edges": [
+    {
+      "from": "services/convert/repository.go",
+      "to": "models/repo/repo.go",
+      "relation": "innerToRepo builds public API Repository.OriginalURL from Repository.SanitizedOriginalURL"
+    },
+    {
+      "from": "models/repo/repo.go",
+      "to": "modules/util/url.go",
+      "relation": "SanitizedOriginalURL delegates nonempty OriginalURL to util.SanitizeURL"
+    }
+  ],
+  "necessity": "The contract concerns public API original_url: converter chooses exposed field, repository model chooses sanitizer, utility handles decoded query names. Probe exercises all three modules; only utility requires patch.",
+  "review": "author source inspection; independent reader pending"
+}

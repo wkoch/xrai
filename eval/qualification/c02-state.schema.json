@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "xrai.eval.c02.state.v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "curation",
+    "review",
+    "behavior",
+    "event",
+    "individual_eligibility",
+    "global_admission"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "xrai.eval.c02.state.v1"
+    },
+    "curation": {
+      "type": "object",
+      "required": [
+        "status",
+        "receipts"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "not_started",
+            "pending",
+            "verified"
+          ]
+        },
+        "receipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "status",
+        "receipts"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "not_started",
+            "pending",
+            "verified"
+          ]
+        },
+        "receipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        }
+      }
+    },
+    "behavior": {
+      "type": "object",
+      "required": [
+        "status",
+        "receipts"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "not_started",
+            "pending",
+            "verified"
+          ]
+        },
+        "receipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": [
+        "role",
+        "preparation",
+        "execution",
+        "descriptor",
+        "execution_receipt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "required",
+            "supplemental",
+            "not_applicable"
+          ]
+        },
+        "preparation": {
+          "enum": [
+            "not_prepared",
+            "prepared",
+            "not_applicable"
+          ]
+        },
+        "execution": {
+          "enum": [
+            "not_executed",
+            "verified",
+            "not_applicable"
+          ]
+        },
+        "descriptor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "execution_receipt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "individual_eligibility": {
+      "type": "object",
+      "required": [
+        "eligible",
+        "blockers"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "global_admission": {
+      "const": {
+        "admitted": false,
+        "competitive_runs_allowed": false
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

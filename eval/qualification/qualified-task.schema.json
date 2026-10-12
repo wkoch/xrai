@@ -424,8 +424,15 @@
             "type": "string",
             "minLength": 1
           }
+        },
+        "role": {
+          "enum": [
+            "required",
+            "supplemental"
+          ]
         }
-      }
+      },
+      "description": "C02: required family event belongs to a state_config task; historical correction/contract exercises are supplemental. Per-family quota is enforced by the admission gate."
     }
   },
   "$defs": {
@@ -677,6 +684,38 @@
             "properties": {
               "complex": {
                 "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "correction",
+              "contract_change",
+              "review",
+              "control"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "incremental_event"
+        ]
+      },
+      "then": {
+        "properties": {
+          "incremental_event": {
+            "required": [
+              "role"
+            ],
+            "properties": {
+              "role": {
+                "const": "supplemental"
               }
             }
           }

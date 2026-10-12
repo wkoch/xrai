@@ -1,0 +1,107 @@
+name: L5 new corpus behavioral evidence
+
+on:
+  workflow_dispatch:
+    inputs:
+      family:
+        description: Frozen dossier to execute
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - go
+          - python
+
+permissions:
+  contents: read
+
+jobs:
+  go:
+    name: L5 real Go behavioral pair
+    if: inputs.family == 'all' || inputs.family == 'go'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    env:
+      GOTOOLCHAIN: local
+      GOFLAGS: -mod=readonly
+      CGO_ENABLED: '1'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.22.12'
+          cache: false
+      - name: Prepare Linux evaluator
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          if ! bwrap --unshare-all --ro-bind / / /usr/bin/true; then
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
+          python -m pip install -r docs/contracts/examples/requirements.txt
+          go version
+      - name: Verify frozen capture and prepare evaluator sources
+        run: |
+          python eval/scripts/prepare_l5_go.py verify
+          python eval/scripts/run_l5_go.py materialize --workspace "$RUNNER_TEMP/gitea-base" --side base
+          python eval/scripts/run_l5_go.py materialize --workspace "$RUNNER_TEMP/gitea-reference" --side reference
+      - name: Fetch pinned Go modules
+        working-directory: ${{ runner.temp }}/gitea-base
+        run: go mod download
+      - name: Prove baseline and regressions
+        run: python eval/scripts/run_l5_go.py probe --workspace "$RUNNER_TEMP/gitea-base" --side base --goroot "$(go env GOROOT)" --module-cache "$(go env GOMODCACHE)" --output "$RUNNER_TEMP/go-probes/base" --timeout 900
+      - name: Prove reference and regressions
+        if: ${{ !cancelled() }}
+        run: python eval/scripts/run_l5_go.py probe --workspace "$RUNNER_TEMP/gitea-reference" --side reference --goroot "$(go env GOROOT)" --module-cache "$(go env GOMODCACHE)" --output "$RUNNER_TEMP/go-probes/reference" --timeout 900
+      - name: Preserve Go evaluator receipts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: l5-real-go
+          path: ${{ runner.temp }}/go-probes
+          if-no-files-found: error
+          retention-days: 90
+  python:
+    name: L5 real Python behavioral pair
+    if: inputs.family == 'all' || inputs.family == 'python'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11.13'
+      - name: Prepare Linux evaluator
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          if ! bwrap --unshare-all --ro-bind / / /usr/bin/true; then
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
+          python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Verify frozen capture and prove behavioral pair
+        run: |
+          python eval/scripts/prepare_l5_python.py verify
+          python eval/scripts/run_l5_python.py run --cache "$RUNNER_TEMP/l5-python-wheels" --output "$RUNNER_TEMP/l5-python-proof" --timeout 300
+      - name: Preserve Python evaluator receipts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: l5-real-python
+          path: ${{ runner.temp }}/l5-python-proof
+          if-no-files-found: error
+          retention-days: 90

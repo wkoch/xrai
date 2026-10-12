@@ -3,12 +3,13 @@
   "status": "conditional_planning_only",
   "authority": [
     "docs/decisoes/CORPUS-QUALIFICADO.md",
-    "docs/relatorios/REVISAO-L4.md"
+    "docs/relatorios/REVISAO-L4.md",
+    "docs/relatorios/REVISAO-L5-CONTINUACAO.md"
   ],
   "competitive_runs_allowed": false,
   "gate_status": "closed",
   "admitted_tasks": 0,
-  "scope": "32 primary targets, not 32 tasks or completed dossiers; original seed/pilots unchanged",
+  "scope": "32 conditional primary targets; C02 factual progress separately bound to reviewed evidence, never global admission",
   "pilot_artifact": {
     "path": "eval/qualification/vertical/candidates.jsonl",
     "sha256": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8"
@@ -875,30 +876,34 @@
   ],
   "new_dossiers": {
     "required": 4,
-    "completed": 0,
+    "completed": 2,
     "next_slots": [
       "L5-SLOT-Rust-correction-2",
       "L5-SLOT-TSJS-contract_change-2",
       "L5-SLOT-Python-contract_change-2",
       "L5-SLOT-Go-contract_change-2"
     ],
-    "status": "none_delivered_in_this_preparation_increment",
-    "acceptance": "Four new reproducible dossiers still require actual origins/commits/inputs, conservative size/module evidence, fixed setup, hidden reference/probes/regressions and independent review; a slot does not meet L5-04 dossier acceptance"
+    "status": "factual_individual_eligibility_global_gate_closed",
+    "acceptance": "Current C02 matrix verifies independent dossier eligibility and behavioral evidence. Required real family-state cases are tracked separately; the global 32-task gate remains closed."
   },
   "conditional_deficits": {
-    "additional_tasks": 28,
-    "additional_complex": 15,
-    "additional_historical": 12,
-    "additional_multi_module": 16,
-    "new_dossiers_remaining": 4,
-    "admission_deficit": 32
+    "additional_complex": 13,
+    "additional_historical": 10,
+    "additional_multi_module": 14,
+    "additional_tasks": 26,
+    "admission_deficit": 32,
+    "new_dossiers_remaining": 2
   },
   "limits": [
     "Flags under target express required future evidence, never proof",
     "Tokio remains noncomplex as an existing pilot; two new complex Tokio slots depend on conservative size proof excluding inline tests",
     "Only Django existing pilot is complex; other three pilot flags preserved",
-    "facebook/react is provisional JS choice: no SHA/size/setup/module or lineage proof collected in this increment",
     "Targets overlap; 28+15+12+16 must not be summed into tasks",
-    "The global gate requires qualification/oracles/reviews/incremental events; this verifier validates allocation only"
-  ]
+    "The global gate requires qualification/oracles/reviews/incremental events; this verifier validates allocation only",
+    "Repository registry/targets preserve historical conditional allocation. Current React/Rust source and dossier proofs are factual C02 rows; they do not prove every future slot."
+  ],
+  "factual_progress": {
+    "path": "eval/qualification/c02-status-matrix.json",
+    "sha256": "d0e4b8042431b9720bbf41cfc27fcd9823a898898e81767eb83771aa9465ef0c"
+  }
 }

@@ -149,7 +149,10 @@ def validate(rows, *, root=ROOT, check_artifacts=True):
         complex_repos = Counter(r['repository'] for r in complex_rows)
         require(len(complex_rows) >= 4 and len(complex_repos) >= 2 and all(n >= 2 for n in complex_repos.values()), family + ' complex coverage')
         require(sum(r['origin']['class'] == 'public_change' for r in subset) >= 4, family + ' public provenance floor')
-        events = [r for r in subset if r.get('incremental_event')]
+        # C02: corrections/contracts may retain supplemental exercises. Only a
+        # state/config task can fill the one required real event per family.
+        events = [r for r in subset if r['kind'] == 'state_config' and r.get('incremental_event')
+                  and r['incremental_event'].get('role', 'required') == 'required']
         require(events, family + ' incremental event missing')
         for row in events:
             event = row['incremental_event']

@@ -1,0 +1,17 @@
+{
+  "verification": "Own source AST parses;14 own-only tests passed; full capture replay passed; no local upstream execution",
+  "files_sha256": {
+    "eval/scripts/prepare_l5_python.py": "4b6277c7d974e192ca123410accd27bedb9ed870ab09b102acb1c7074193da45",
+    "eval/scripts/run_l5_python.py": "dcae5c976c6281fc6174376db4abe765634110628c9b06ec4546d5e78a16076f",
+    "eval/scripts/test_l5_python.py": "65ddeb3897c8fd5976e0a791233cf1f6a9e451a6eea09ca37592c67427761e27",
+    "eval/qualification/l5-real/python/oracles/probe.py": "ed8690182998e58aec04c0b32fc0a2c21412321d36b348990a5d9034927e85b3"
+  },
+  "test_log_sha256": "8d794d48f41a53f460ddff5607eca709c2814f1697a5f860a93811b00ae6386c",
+  "coverage": "coverage-final.json best-effort no recorded issue",
+  "unresolved": [
+    "independent semantic review",
+    "Linux namespace actual baseline/reference/regressions",
+    "real same-index A-to-B plus full rebuild B equality"
+  ],
+  "admitted": false
+}

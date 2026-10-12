@@ -1,0 +1,109 @@
+{
+  "schema_version": "xrai.eval.l5.python.case.v1",
+  "id": "L5-SLOT-PY-contract_change-2",
+  "family": "Python",
+  "repository": "scikit-learn/scikit-learn",
+  "task_type": "controlled_contract_change",
+  "historical_issue": null,
+  "upstream_commit": "156ef141f3b270edb06c8ae9af37c55253c0aabe",
+  "upstream_tag": "1.5.2",
+  "license": "BSD-3-Clause (COPYING retained in complete archive)",
+  "capture": "capture.json",
+  "input": "agent/input.md",
+  "oracle": "oracles/probe.py",
+  "reference": "oracles/reference.patch",
+  "setup": "setup.lock.json",
+  "size": {
+    "production_files": 315,
+    "nonempty_production_lines": 159398,
+    "method": "allowlisted sklearn .py/.pyx/.pxd; nonempty byte lines; externals/tests/datasets excluded; comments included ADR021",
+    "measured_floor": true
+  },
+  "complexity": {
+    "required_production_modules": [
+      "sklearn/compose/_column_transformer.py",
+      "sklearn/pipeline.py",
+      "sklearn/utils/_set_output.py"
+    ],
+    "subsystems": [
+      "composite-estimator orchestration (ColumnTransformer/FeatureUnion)",
+      "configured transformer output wrapping/container concatenation"
+    ],
+    "necessary_edges": [
+      {
+        "caller": "ColumnTransformer._call_func_on_transformers",
+        "callee": "FeatureUnion.fit_transform/transform",
+        "reason": "nested branch emits a multi-feature masked result whose mask and branch order must survive the outer composition"
+      },
+      {
+        "caller": "FeatureUnion._hstack",
+        "callee": "_get_container_adapter / MaskedArrayAdapter.hstack",
+        "reason": "inner FeatureUnion must concatenate masks rather than numpy.hstack discarding them"
+      }
+    ],
+    "additional_edge": "ColumnTransformer._hstack -> _get_container_adapter/adapter.hstack (masked containers have no column metadata)",
+    "necessity_evidence": "oracle requirement test_column_transformer_pipeline_and_context nests FeatureUnion in ColumnTransformer; exact data/mask arrays and direct/global context checked; runtime proof pending",
+    "reference_changes": [
+      "sklearn/utils/_set_output.py",
+      "sklearn/compose/_column_transformer.py"
+    ],
+    "pipeline_patch_required": false,
+    "independent_second_reader_pending": false,
+    "complex_admitted": false
+  },
+  "setup_recipe": {
+    "python": "3.11.13",
+    "target": "Linux x86_64",
+    "dependencies": "five exact official wheel URLs/SHA256/size from setup.lock.json",
+    "compiled_bootstrap": "exact version sklearn1.5.2 .so and bundled scikit_learn.libs only; never wheel sklearn .py; full pinned source Python canonical",
+    "local_upstream_execution_allowed": false,
+    "execution": "run_l5_python.py run; GitHub disposable Linux namespace; timeout300s/phase;1MiB/stream;fresh execution domain each phase",
+    "source_origin_evidence": "oracle records /workspace/sklearn origin+SHA of all three modules; executor matches pinned base/reference expected bytes; full captured source/setup/oracle inventory unchanged after probes"
+  },
+  "oracle_contracts": [
+    "dense transformer/no-mask and existing-mask values preservation",
+    "FeatureUnion in Pipeline and temporary global config",
+    "ColumnTransformer nesting FeatureUnion, direct/global configs, fit_transform and transform mask/data/branch order"
+  ],
+  "regressions": [
+    "default ndarray composite behavior and context restoration",
+    "existing sparse-output rejection in pandas mode without importing pandas, invalid-output rejection"
+  ],
+  "incremental_event": {
+    "status": "supplementary_future_exercise_not_prepared",
+    "planned": "Possible future rename/restore of unchanged source is a supplementary indexing exercise only; no descriptor, collector or execution proof has been prepared. It does not represent one of the four required real incremental cases.",
+    "eligibility_separate": true,
+    "required_for_this_contract_case_eligibility": false
+  },
+  "qualification": {
+    "status": "curated_capture_reviewed_behavioral_pending",
+    "admitted": false,
+    "qualified": false,
+    "counts_as_one_of_four": false,
+    "competitive_runs_allowed": false,
+    "D1_global_delta": 0
+  },
+  "verification": {
+    "own_data_checks": "14 own-only tests passed; no upstream Python imports or builds locally",
+    "behavioral_pair": "not_run",
+    "baseline_requirement_expected": "three exact named ValueError output-config failures for masked; imports/other errors/duplicates/timeouts/truncation do not count",
+    "reference_requirement_expected": "three exact named tests pass",
+    "regressions_expected": "two exact named tests pass on both sides",
+    "incremental_scope": "A\u2192B evidence belongs to the external incremental quota; no individual contract-case blocker inferred"
+  },
+  "pending": [
+    "disposable Linux behavioral baseline/reference/regression pair",
+    "global admission requires all quotas and acceptance evidence for the complete 32-case corpus; this contract case does not require a universal A\u2192B proof"
+  ],
+  "independent_review": {
+    "status": "source_review_accepted",
+    "author": "python_dossier",
+    "second_reader": "root",
+    "receipt": {
+      "path": "docs/relatorios/logs/L5-C02/integration/python-source-review-root.json",
+      "sha256": "bf1f7f43c1d9f3bb6667ac1d9b2dfa45cc5616b82a6ec25d657abd991886a5d4"
+    },
+    "behavioral_ci_pending": true
+  },
+  "slot": "L5-SLOT-Python-contract_change-2"
+}

@@ -1,0 +1,5 @@
+Extend the dense transformer output contract with the value "masked" for set_output(transform=...) and the transform_output configuration context. In this mode, transform and fit_transform must return NumPy MaskedArray objects, including when the input result has no masked cells. Existing masks must remain attached to their values, rather than being replaced with filled values or discarded.
+
+The mode must compose through FeatureUnion and ColumnTransformer, both used as steps of a Pipeline. Horizontal concatenation must preserve row order, branch order, numeric values, and each branch's mask. The mode must work when configured directly on the composite estimator and through a temporary global configuration context. Leaving a context must restore the previous output mode. Existing default dense array output and the rejection of sparse output in non-default container modes must remain intact.
+
+This is a controlled new contract for the pinned checkout, not a reproduction of a historical upstream issue. Restrict the change to runtime behavior required by this contract; no new external dependencies are necessary.

@@ -1,0 +1,57 @@
+{
+  "schema": "xrai.eval.independent-review.v1",
+  "recorded_utc": "2026-10-12T18:52:09.802378+00:00",
+  "author": "go_dossier",
+  "second_reader": "root",
+  "status": "accepted",
+  "scope": "bounded source/input/oracle/reference/setup review before CI; no upstream local execution",
+  "prompt_sha256": "cb46defe2ed2730ab6dbf7666470f649fae6fb36a7f90d471736ebb0f79aed82",
+  "oracle_sha256": "79821b7011b6145def1266cf9bffb97c3034ffc49a8c41ec41556a29a06d4f59",
+  "reviewed_artifact_hashes": {
+    "eval/qualification/l5-real/go/agent/input.md": "cb46defe2ed2730ab6dbf7666470f649fae6fb36a7f90d471736ebb0f79aed82",
+    "eval/qualification/l5-real/go/oracles/xrai_url_contract_test.go": "79821b7011b6145def1266cf9bffb97c3034ffc49a8c41ec41556a29a06d4f59",
+    "eval/qualification/l5-real/go/oracles/reference.patch": "4e1a1d5403333dcb926e786ffad5bd184297572e516671c76ea93cd33b58ad44",
+    "eval/qualification/l5-real/go/capture.json": "53e99c53811a8a3be619a5506e79b221f31a70af1e722453849d0ca126aea6c3",
+    "eval/qualification/l5-real/go/oracles/reference-url.go": "7e6bc3a58078736d1843003b2d56ae8fb3b61a55d23ce833c1b7daa61208908c",
+    "eval/qualification/l5-real/go/oracles/source-relations.json": "8283a02c17171ac71005c59f8dd8b76add80dd8b4a822dcf7aee6b3432f1b7de",
+    "eval/qualification/l5-real/go/setup/go.mod": "29f295d7e8f60ffad2245b64498ee0d3268a0a97b199da41872cd34009cf3127",
+    "eval/qualification/l5-real/go/setup/go.sum": "3b0849aae4c1c40fbebb12d3f0b40809f86fe866e2d561d4c38c09188b32e115"
+  },
+  "source_anchors": [
+    {
+      "path": "services/convert/repository.go",
+      "sha256": "58eef72e622fa5240d3958d90cb72ab0c0d1cb0fc90b1ab771a07de18eb735db",
+      "needles_and_lines_verified": true
+    },
+    {
+      "path": "models/repo/repo.go",
+      "sha256": "677c8b399f3af2f9f98138ec03a7a1d48537942f1711bf16b405bfdf4897bbe6",
+      "needles_and_lines_verified": true
+    },
+    {
+      "path": "modules/util/url.go",
+      "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e",
+      "needles_and_lines_verified": true
+    }
+  ],
+  "findings": [],
+  "corrections": [
+    "Independent review required exact named results and source identity, conservative infrastructure handling, frozen inputs/oracles and C02 event separation."
+  ],
+  "assessment": {
+    "controlled_contract_not_historical_issue": true,
+    "natural_input_without_solution_paths": true,
+    "three_necessary_modules_two_subsystems_two_edge_chain": true,
+    "oracle_independent_from_xrai_parser": true,
+    "reference_hidden_from_agent": true,
+    "fixed_full_source_and_license": true,
+    "baseline_expected_behavior_concretely_classified": true,
+    "behavioral_ci_not_yet_measured": true,
+    "incremental_event_not_universal_requirement": true
+  },
+  "limits": [
+    "Source review is bounded to pinned development configuration; actual behavioral CI remains required.",
+    "Individual eligibility/global admission not inferred from this review.",
+    "Official dependency/runtime binary bytes remain fetched/observed by CI, not executed locally."
+  ]
+}

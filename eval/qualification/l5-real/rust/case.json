@@ -90,11 +90,11 @@
     "need_second_reader_semantic_review": false,
     "complex_admitted": false
   },
-  "status": "reviewed_behavioral_pair_verified_incremental_pending",
+  "status": "individually_eligible_global_admission_pending",
   "admitted": false,
   "competitive_runs_allowed": false,
   "pending": [
-    "incremental A-to-B same index/process execution and full B rebuild comparison"
+    "Supplemental Rust A-to-B exercise remains unexecuted; it does not block this correction dossier or count as the required family state case."
   ],
   "verification": {
     "behavioral_pair": {
@@ -115,6 +115,58 @@
       "status": "reviewed",
       "receipt": "docs/relatorios/logs/L5-continuacao/corpus-js/rust-second-reader-after-hardening.json",
       "scope": "source pins, production floor, necessary relationships and production/reference/oracle separation; no competitive admission"
+    }
+  },
+  "c02": {
+    "schema": "xrai.eval.c02.state.v1",
+    "curation": {
+      "status": "verified",
+      "receipts": [
+        {
+          "path": "eval/qualification/l5-real/rust/baseline-inventory.json",
+          "sha256": "f2cb1dfad39cffbe5630b52512546f1c9b8672471c0f363a435e6aff62250394"
+        },
+        {
+          "path": "eval/qualification/l5-real/rust/reference-inventory.json",
+          "sha256": "a178da8b5f79904e7d5b21a43e085feedbc07afdd641e84b7c4b267b2e70dd46"
+        }
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "receipts": [
+        {
+          "path": "docs/relatorios/logs/L5-continuacao/corpus-js/rust-second-reader-after-hardening.json",
+          "sha256": "353a9700b78426358942103cf2bcc15be801af24c714c457b5de673f4e345d55"
+        }
+      ]
+    },
+    "behavior": {
+      "status": "verified",
+      "receipts": [
+        {
+          "path": "docs/relatorios/logs/L5-continuacao/ci-fourth/corpus-verification.json",
+          "sha256": "be4415d366df9fd075ab650f0af4f9aa18acf39cceee2ec7107f2213ae150afd"
+        }
+      ]
+    },
+    "event": {
+      "role": "supplemental",
+      "preparation": "prepared",
+      "execution": "not_executed",
+      "descriptor": {
+        "path": "eval/qualification/l5-real/rust/oracles/event-plan.json",
+        "sha256": "758ffb7d136c409041e18d72b70f15cc03f73c27ae3ad2005e013a836883d48b"
+      },
+      "execution_receipt": null
+    },
+    "individual_eligibility": {
+      "eligible": true,
+      "blockers": []
+    },
+    "global_admission": {
+      "admitted": false,
+      "competitive_runs_allowed": false
     }
   }
 }

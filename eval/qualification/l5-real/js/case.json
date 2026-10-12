@@ -75,8 +75,8 @@
     "oracle_checkpoint": "verified: one Promise microtask after notification in startTransition outside act commits external snapshot; normal useState transition remains pending at same checkpoint with expected DEV warning explicitly asserted"
   },
   "incremental_event": {
-    "status": "not_started",
-    "note": "This historical contract dossier is not the required state/index A\u2192B event; no persistent index or rebuild proof claimed."
+    "status": "not_applicable_to_this_contract",
+    "note": "Required family state case is separate; this contract has no incremental execution obligation."
   },
   "independent_review": {
     "status": "reviewed",
@@ -89,8 +89,8 @@
   },
   "qualification": {
     "admitted": false,
-    "status": "reviewed_behavioral_pair_verified_incremental_pending",
-    "counts_as_one_of_four_completed_dossiers": false,
+    "status": "individually_eligible_global_admission_pending",
+    "counts_as_one_of_four_completed_dossiers": true,
     "competitive_runs_allowed": false,
     "D1_admitted_delta": 0
   },
@@ -187,7 +187,50 @@
     "teardown_confirmed": true,
     "prior_attempts": "CI38278746631 bootstrap; CI38280118706 checkpoint; CI38282162955 expected DEV warning; all retained as failures"
   },
-  "pending": [
-    "incremental A-to-B same index/process execution and full B rebuild comparison"
-  ]
+  "pending": [],
+  "c02": {
+    "schema": "xrai.eval.c02.state.v1",
+    "curation": {
+      "status": "verified",
+      "receipts": [
+        {
+          "path": "eval/qualification/l5-real/js/capture.json",
+          "sha256": "fbd63db92ed476024085c17fa12b74ebf884f9f2a92622b99b6495bd9753e559"
+        }
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "receipts": [
+        {
+          "path": "docs/relatorios/logs/L5-C02/integration/js-final-artifact-review.json",
+          "sha256": "c535a559ebcde0e94861301fcff9d76dbaf71afbd81c83891d371c3db25196ed"
+        }
+      ]
+    },
+    "behavior": {
+      "status": "verified",
+      "receipts": [
+        {
+          "path": "docs/relatorios/logs/L5-continuacao/ci-fourth/corpus-verification.json",
+          "sha256": "be4415d366df9fd075ab650f0af4f9aa18acf39cceee2ec7107f2213ae150afd"
+        }
+      ]
+    },
+    "event": {
+      "role": "not_applicable",
+      "preparation": "not_applicable",
+      "execution": "not_applicable",
+      "descriptor": null,
+      "execution_receipt": null
+    },
+    "individual_eligibility": {
+      "eligible": true,
+      "blockers": []
+    },
+    "global_admission": {
+      "admitted": false,
+      "competitive_runs_allowed": false
+    }
+  }
 }

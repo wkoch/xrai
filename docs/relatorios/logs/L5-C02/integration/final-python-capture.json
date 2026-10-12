@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python3",
+    "eval/scripts/prepare_l5_python.py",
+    "verify"
+  ],
+  "expected_exit": 0,
+  "exit_code": 0,
+  "base_commit": "3cc26fc7b7ecc1d2cf04780e74765b74f545a653",
+  "utc": "2026-10-12T18:54:10.495988+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "stdout": "{\n  \"schema_version\": \"xrai.eval.l5.python.capture.v1\",\n  \"repository\": \"scikit-learn/scikit-learn\",\n  \"commit\": \"156ef141f3b270edb06c8ae9af37c55253c0aabe\",\n  \"task_type\": \"controlled_contract_change\",\n  \"historical_bug_claim\": false,\n  \"archive_url\": \"https://codeload.github.com/scikit-learn/scikit-learn/tar.gz/156ef141f3b270edb06c8ae9af37c55253c0aabe\",\n  \"archive_sha256\": \"70f9d47a3aba04faf22b150075283b0a4311f8b665bf2ab3e447cd5c3685b70b\",\n  \"complete_regular_files\": 1424,\n  \"inventory_sha256\": \"aed1f58645b03f770083413a757da6bc6136f1dd964774e1c2efec132b58f273\",\n  \"inventory_content_sha256\": \"ba820d644ce6f7fa6140db3fae50262754b3added0fa9734834565fcaa9d19ce\",\n  \"production_files\": 315,\n  \"production_nonempty_lines\": 159398,\n  \"excluded_parts\": [\n    \"benchmarks\",\n    \"data\",\n    \"datasets\",\n    \"doc\",\n    \"docs\",\n    \"examples\",\n    \"externals\",\n    \"test\",\n    \"tests\"\n  ],\n  \"method\": \"allowlisted sklearn .py/.pyx/.pxd; nonempty byte lines; externals/tests/datasets excluded; comments included ADR021\",\n  \"required_modules\": {\n    \"sklearn/utils/_set_output.py\": \"1bcc20854998e3795a6bd9f61b0aef61be348f9a88b1cf9ae4596340e757ab32\",\n    \"sklearn/pipeline.py\": \"34feed2873e05bfd0519497fdda2627b3af3e323ac9ef22558b021ad1669d072\",\n    \"sklearn/compose/_column_transformer.py\": \"af6fd61e71a2e31bc1cdd0d29c9263d18b7df21c465badc93b2b28a080bd0fa1\"\n  },\n  \"setup_sha256\": {\n    \"pyproject.toml\": \"086d749deb607ea3f8d3566d0e177d567819bb662e2166678c014c4cc2a6b3d5\",\n    \"COPYING\": \"75684d16f4662ab842ed5af9482ac01939aee83c8243d89993616d959d3053f8\",\n    \"sklearn/__init__.py\": \"cfc20835d0434f1ced9e6c5fd32e836c150d2202bcaa7983be60539a627bbc5a\",\n    \"sklearn/__check_build/__init__.py\": \"dea8aab5f70e76805b3e8ae2c1c3a5f4c7e7766519cb189c033e08719c83ccb1\"\n  },\n  \"input_sha256\": \"768ab3bf6870dc77d52f44d57966b48846e88c60f2be86b51f6f25388f1189d6\",\n  \"oracle_sha256\": \"edbbdb303732bb799395caed5e094750fd0daffff00e39a9effbec5ef1544837\",\n  \"reference_patch_sha256\": \"72d1ea6fe60bf7b71393a2671392c06fef685b26cdd9e07c5821baf282774793\",\n  \"reference_sources_sha256\": {\n    \"sklearn/utils/_set_output.py\": \"fc3cbdf8e4c698ddc029df2ec80a292530fbabc053b614b658a87d1c7193d7b3\",\n    \"sklearn/pipeline.py\": \"34feed2873e05bfd0519497fdda2627b3af3e323ac9ef22558b021ad1669d072\",\n    \"sklearn/compose/_column_transformer.py\": \"6dbae22a517ffae811a8bfc258d83758a8f5d0583147641338b114973042aa3c\"\n  },\n  \"dependency_lock_sha256\": \"d60b33931674ea0cc3d38d97b513ecdd0dfc53f8be0dff9c29a6743ab06d1f50\",\n  \"admitted\": false,\n  \"qualified\": false,\n  \"comparative_execution_allowed\": false,\n  \"prepare_source_sha256\": \"4b6277c7d974e192ca123410accd27bedb9ed870ab09b102acb1c7074193da45\"\n}\n",
+  "stderr": "",
+  "stdout_sha256": "ec546414b369fdd54f302678aa88ac4becf0391885e6c9ca95a8afa2f6c36f3a",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

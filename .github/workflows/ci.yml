@@ -38,7 +38,9 @@ jobs:
         run: |
           python eval/scripts/verify_corpus.py
           python -m unittest discover -s eval/scripts/tests -v
+          python -m unittest discover -s eval/scripts -p 'test_l5_*.py' -v
           python eval/scripts/verify_vertical.py
+          python eval/scripts/verify_c02.py
           python eval/scripts/verify_slot_plan.py
   workspace:
     name: ${{ matrix.host }}

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/private/tmp/xrai-c02-tools/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-p",
+    "test_vertical.py",
+    "-v"
+  ],
+  "base_commit": "3cc26fc7b7ecc1d2cf04780e74765b74f545a653",
+  "recorded_at": "2026-10-12T18:47:08.080023+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 0.17365358299957734,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_compressed_inventory_is_bound_to_fingerprint (test_vertical.VerticalTests.test_compressed_inventory_is_bound_to_fingerprint) ... ok\ntest_internal_link_materialization_has_explicit_receipt (test_vertical.VerticalTests.test_internal_link_materialization_has_explicit_receipt) ... ok\ntest_links_cannot_escape_or_cycle_or_target_directories (test_vertical.VerticalTests.test_links_cannot_escape_or_cycle_or_target_directories) ... ok\ntest_partial_requires_one_per_family_and_full_evidence (test_vertical.VerticalTests.test_partial_requires_one_per_family_and_full_evidence) ... ok\ntest_partial_success_cannot_admit_campaign (test_vertical.VerticalTests.test_partial_success_cannot_admit_campaign) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.096s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "a8d8a186a5675eaaef630ed5c611054e6dce98e8002dc9e95ff5bbba02e2793d"
+}

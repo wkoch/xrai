@@ -1,0 +1,50 @@
+{
+  "schema_version": "xrai.eval.l5.python.capture.v1",
+  "repository": "scikit-learn/scikit-learn",
+  "commit": "156ef141f3b270edb06c8ae9af37c55253c0aabe",
+  "task_type": "controlled_contract_change",
+  "historical_bug_claim": false,
+  "archive_url": "https://codeload.github.com/scikit-learn/scikit-learn/tar.gz/156ef141f3b270edb06c8ae9af37c55253c0aabe",
+  "archive_sha256": "70f9d47a3aba04faf22b150075283b0a4311f8b665bf2ab3e447cd5c3685b70b",
+  "complete_regular_files": 1424,
+  "inventory_sha256": "aed1f58645b03f770083413a757da6bc6136f1dd964774e1c2efec132b58f273",
+  "inventory_content_sha256": "ba820d644ce6f7fa6140db3fae50262754b3added0fa9734834565fcaa9d19ce",
+  "production_files": 315,
+  "production_nonempty_lines": 159398,
+  "excluded_parts": [
+    "benchmarks",
+    "data",
+    "datasets",
+    "doc",
+    "docs",
+    "examples",
+    "externals",
+    "test",
+    "tests"
+  ],
+  "method": "allowlisted sklearn .py/.pyx/.pxd; nonempty byte lines; externals/tests/datasets excluded; comments included ADR021",
+  "required_modules": {
+    "sklearn/utils/_set_output.py": "1bcc20854998e3795a6bd9f61b0aef61be348f9a88b1cf9ae4596340e757ab32",
+    "sklearn/pipeline.py": "34feed2873e05bfd0519497fdda2627b3af3e323ac9ef22558b021ad1669d072",
+    "sklearn/compose/_column_transformer.py": "af6fd61e71a2e31bc1cdd0d29c9263d18b7df21c465badc93b2b28a080bd0fa1"
+  },
+  "setup_sha256": {
+    "pyproject.toml": "086d749deb607ea3f8d3566d0e177d567819bb662e2166678c014c4cc2a6b3d5",
+    "COPYING": "75684d16f4662ab842ed5af9482ac01939aee83c8243d89993616d959d3053f8",
+    "sklearn/__init__.py": "cfc20835d0434f1ced9e6c5fd32e836c150d2202bcaa7983be60539a627bbc5a",
+    "sklearn/__check_build/__init__.py": "dea8aab5f70e76805b3e8ae2c1c3a5f4c7e7766519cb189c033e08719c83ccb1"
+  },
+  "input_sha256": "768ab3bf6870dc77d52f44d57966b48846e88c60f2be86b51f6f25388f1189d6",
+  "oracle_sha256": "edbbdb303732bb799395caed5e094750fd0daffff00e39a9effbec5ef1544837",
+  "reference_patch_sha256": "72d1ea6fe60bf7b71393a2671392c06fef685b26cdd9e07c5821baf282774793",
+  "reference_sources_sha256": {
+    "sklearn/utils/_set_output.py": "fc3cbdf8e4c698ddc029df2ec80a292530fbabc053b614b658a87d1c7193d7b3",
+    "sklearn/pipeline.py": "34feed2873e05bfd0519497fdda2627b3af3e323ac9ef22558b021ad1669d072",
+    "sklearn/compose/_column_transformer.py": "6dbae22a517ffae811a8bfc258d83758a8f5d0583147641338b114973042aa3c"
+  },
+  "dependency_lock_sha256": "d60b33931674ea0cc3d38d97b513ecdd0dfc53f8be0dff9c29a6743ab06d1f50",
+  "admitted": false,
+  "qualified": false,
+  "comparative_execution_allowed": false,
+  "prepare_source_sha256": "4b6277c7d974e192ca123410accd27bedb9ed870ab09b102acb1c7074193da45"
+}

@@ -1,0 +1,23 @@
+--- a/modules/util/url.go
++++ b/modules/util/url.go
+@@ -46,5 +46,20 @@
+ 		return "", err
+ 	}
+ 	u.User = nil
++	query, err := url.ParseQuery(u.RawQuery)
++	if err != nil {
++		return "", err
++	}
++	changed := false
++	for key := range query {
++		switch strings.ToLower(key) {
++		case "token", "access_token", "password":
++			query.Del(key)
++			changed = true
++		}
++	}
++	if changed {
++		u.RawQuery = query.Encode()
++	}
+ 	return u.String(), nil
+ }

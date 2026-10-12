@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/private/tmp/xrai-c02-tools/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-p",
+    "test_slot_plan.py",
+    "-k",
+    "rehashed",
+    "-v"
+  ],
+  "base_commit": "3cc26fc7b7ecc1d2cf04780e74765b74f545a653",
+  "recorded_at": "2026-10-12T18:51:30.330042+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 19.4106028340002,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_rehashed_factual_claims_must_match_underlying_dossiers (test_slot_plan.SlotPlanTests.test_rehashed_factual_claims_must_match_underlying_dossiers) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 19.330s\n\nOK\n",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "9fa0cdd90d7d430ce64e200134b720e6743ccbffd56b4caaaad955ed83db2f0f"
+}

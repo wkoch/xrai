@@ -1,0 +1,18 @@
+{
+  "verification": "Own source AST parses;14 own-only tests passed; full capture replay passed; no local upstream execution",
+  "files_sha256": {
+    "eval/scripts/prepare_l5_python.py": "4b6277c7d974e192ca123410accd27bedb9ed870ab09b102acb1c7074193da45",
+    "eval/scripts/run_l5_python.py": "dcae5c976c6281fc6174376db4abe765634110628c9b06ec4546d5e78a16076f",
+    "eval/scripts/test_l5_python.py": "65ddeb3897c8fd5976e0a791233cf1f6a9e451a6eea09ca37592c67427761e27",
+    "eval/qualification/l5-real/python/oracles/probe.py": "edbbdb303732bb799395caed5e094750fd0daffff00e39a9effbec5ef1544837"
+  },
+  "test_log_sha256": "13451129fa25b5b70a8657afb548a049600e9ede7c2d234dcb07ca6f735e55b9",
+  "coverage": "coverage-final.json best-effort no recorded issue",
+  "unresolved": [
+    "independent semantic review",
+    "Linux namespace actual baseline/reference/regressions",
+    "real same-index A-to-B plus full rebuild B equality"
+  ],
+  "admitted": false,
+  "freeze": "freeze-before-ci-v2.json"
+}

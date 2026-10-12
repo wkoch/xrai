@@ -1,0 +1,21 @@
+test_complete_capture_and_floor (test_l5_python.Preparation.test_complete_capture_and_floor) ... ok
+test_conservative_exclusions (test_l5_python.Preparation.test_conservative_exclusions) ... ok
+test_local_upstream_bootstrap_denied (test_l5_python.Preparation.test_local_upstream_bootstrap_denied) ... ok
+test_materialization_only_reference_runtime_and_hidden_probe (test_l5_python.Preparation.test_materialization_only_reference_runtime_and_hidden_probe) ... ok
+test_pinned_official_wheel_metadata (test_l5_python.Preparation.test_pinned_official_wheel_metadata) ... ok
+test_reference_preserves_third_needed_module (test_l5_python.Preparation.test_reference_preserves_third_needed_module) ... ok
+test_safe_archive_rejects_escape_duplicate_and_symlink (test_l5_python.Preparation.test_safe_archive_rejects_escape_duplicate_and_symlink) ... ok
+test_tampered_oracle_rejected (test_l5_python.Preparation.test_tampered_oracle_rejected) ... ok
+test_tampered_reference_rejected (test_l5_python.Preparation.test_tampered_reference_rejected) ... ok
+test_wheel_rejects_escape_duplicate_symlink (test_l5_python.Preparation.test_wheel_rejects_escape_duplicate_symlink) ... /opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/zipfile/__init__.py:1755: UserWarning: Duplicate name: 'same'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
+test_duplicate_and_renamed_ids_rejected (test_l5_python.ReceiptChecks.test_duplicate_and_renamed_ids_rejected) ... ok
+test_infrastructure_error_and_wrong_origin_rejected (test_l5_python.ReceiptChecks.test_infrastructure_error_and_wrong_origin_rejected) ... ok
+test_precise_baseline_failures_accept (test_l5_python.ReceiptChecks.test_precise_baseline_failures_accept) ... ok
+test_truncation_timeout_stream_tamper_rejected (test_l5_python.ReceiptChecks.test_truncation_timeout_stream_tamper_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 1.643s
+
+OK

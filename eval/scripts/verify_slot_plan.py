@@ -3,6 +3,7 @@
 import argparse
 from collections import Counter
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -20,6 +21,23 @@ def bind(root,receipt):
     data=path.read_bytes()
     require(hashlib.sha256(data).hexdigest()==receipt['sha256'],'pilot artifact hash')
     return data
+
+def factual_matrix(plan, root):
+    """A bound current matrix may update progress, never targets or admission."""
+    spec=importlib.util.spec_from_file_location('slot_c02',Path(__file__).with_name('verify_c02.py'))
+    verifier=importlib.util.module_from_spec(spec); spec.loader.exec_module(verifier)
+    summarize=verifier.summarize; validate_state=verifier.validate_state
+    matrix=json.loads(bind(root,plan['factual_progress']))
+    require(matrix['schema']=='xrai.eval.c02.factual-matrix.v1' and matrix['data_only'] is True,'C02 factual matrix schema')
+    for source in matrix['sources']: bind(root,source)
+    for row in matrix['tasks']:
+        eligible=validate_state(row['states'],row['kind'],root=root)
+        require(row['individually_eligible'] is eligible,'C02 matrix eligibility mismatch')
+    summary=summarize(matrix['tasks'])
+    require(summary==matrix['summary'],'C02 factual matrix summary mismatch')
+    require(root==ROOT and matrix==verifier.reconcile(),
+            'C02 factual matrix differs from recomputed dossier evidence')
+    return matrix
 
 def validate(plan,*,root=ROOT):
     require(plan['schema']=='xrai.eval.qualification.slot-plan.v1' and plan['status']=='conditional_planning_only','planning schema/status')
@@ -81,14 +99,24 @@ def validate(plan,*,root=ROOT):
     known_complex=sum(p['complexity']['complex'] for p in pilots)
     known_historical=sum(p['origin']['class']=='public_change' for p in pilots)
     known_multi=sum(len(p['production_modules'])>=2 for p in pilots)
-    deficits={'additional_tasks':28,'additional_complex':max(0,16-known_complex),'additional_historical':max(0,16-known_historical),'additional_multi_module':max(0,20-known_multi),'new_dossiers_remaining':4,'admission_deficit':32}
+    matrix=factual_matrix(plan,root) if 'factual_progress' in plan else None
+    if matrix:
+        retained_matrix=[r for r in matrix['tasks'] if r['source']=='preserved_l3_pilot']
+        require({r['id'] for r in retained_matrix}==set(actual),'C02 pilot identities not preserved')
+        deficits=matrix['summary']['conditional_projection']
+        delivered=matrix['summary']['new_dossiers_individually_eligible']
+        dossier_status='factual_individual_eligibility_global_gate_closed'
+    else:
+        deficits={'additional_tasks':28,'additional_complex':max(0,16-known_complex),'additional_historical':max(0,16-known_historical),'additional_multi_module':max(0,20-known_multi),'new_dossiers_remaining':4,'admission_deficit':32}
+        delivered=0
+        dossier_status='none_delivered_in_this_preparation_increment'
     require(plan['conditional_deficits']==deficits,'conditional deficits mismatch')
     next_work=plan['new_dossiers']; selected=next_work['next_slots']; lookup={s['slot_id']:s for s in slots}
-    require(next_work['required']==4 and next_work['completed']==0 and next_work['status']=='none_delivered_in_this_preparation_increment','new dossiers falsely delivered')
+    require(next_work['required']==4 and next_work['completed']==delivered and next_work['status']==dossier_status,'new dossiers falsely delivered')
     require(len(selected)==len(set(selected))==4 and all(i in lookup and lookup[i]['status']=='conditional_slot' for i in selected),'four new dossier targets')
     require({lookup[i]['family'] for i in selected}==set(FAMILIES),'new dossiers family coverage')
     require(any(lookup[i]['language_target']=='JavaScript' for i in selected) and all(lookup[i]['target']['complex'] for i in selected),'new dossiers address JS/complexity gaps')
-    return {'schema':'xrai.eval.qualification.slot-plan.verification.v1','allocation_consistent':True,'planning_only':True,'admitted_tasks':0,'competitive_runs_allowed':False,'global_gate':'closed','families':families,'TSJS_language_targets':dict(languages),'multi_module_targets':multi,'conditional_deficits':deficits,'new_dossiers_delivered':0,'limits':['Counts describe conditional targets, not completed tasks or verified semantic necessity','Existing pilot module declarations remain conditional for the global relation quota','All four new dossiers and JS repository proof still pending']}
+    return {'schema':'xrai.eval.qualification.slot-plan.verification.v1','allocation_consistent':True,'planning_only':True,'admitted_tasks':0,'competitive_runs_allowed':False,'global_gate':'closed','families':families,'TSJS_language_targets':dict(languages),'multi_module_targets':multi,'conditional_deficits':deficits,'new_dossiers_delivered':delivered,'factual_summary':matrix['summary'] if matrix else None,'limits':['Allocation targets and current factual progress are different units; neither admits the global corpus','C02 factual matrix is hash-bound to current sources; verify_c02 recomputes the underlying evidence','Required real family state cases and complete 32-task quotas remain pending']}
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__); parser.add_argument('plan',type=Path,nargs='?',default=ROOT/'eval/qualification/l5-slot-plan.json')
