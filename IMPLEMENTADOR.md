@@ -1,6 +1,6 @@
 # Instruções para a IA implementadora do xrai
 
-Data: 11/10/2026. **L0 concluído e revisado pelo arquiteto. Próximo lote: L1.** Leia primeiro a [revisão L0 e próximas atividades](docs/relatorios/REVISAO-L0.md) e o [estado atual](docs/STATUS-IMPLEMENTACAO.md). O roteiro L0 abaixo é histórico; não recrie o scaffold nem trate retificações planejadas como concluídas.
+Data: 11/10/2026. **L1 em andamento; v1 restrito a Linux x86_64 e macOS arm64 por decisão do usuário.** Leia primeiro a [decisão de plataformas](docs/decisoes/PLATAFORMAS-V1.md) e o [estado atual](docs/STATUS-IMPLEMENTACAO.md). O roteiro L0 abaixo é histórico; não recrie entregas nem trate tarefas planejadas como concluídas.
 
 ## 1. Papel e objetivo
 
@@ -9,7 +9,7 @@ O usuário definiu dois papéis:
 - **Arquiteto:** o assistente da conversa de arquitetura mantém requisitos, decisões, plano, atividades e critérios de aceite. Não gera código do produto nem executa a implementação.
 - **Implementador:** a outra IA que recebe este arquivo escreve código, configura ambiente/build, implementa testes, executa experimentos e registra evidências. Pode tomar decisões locais de engenharia dentro dos contratos; não precisa pedir aprovação para cada arquivo, biblioteca ou tarefa rotineira.
 
-Construa um CLI em Rust para entregar a agentes de IA contexto de código correto, relevante e atualizado. Alvo: Rust, TypeScript/JavaScript, Python e Go; Linux/macOS/Windows; um executável por plataforma/arquitetura; nenhuma GUI. A experiência básica não requer runtimes auxiliares ou rede. O mesmo executável pode iniciar workers e criar banco/cache.
+Construa um CLI em Rust para entregar a agentes de IA contexto de código correto, relevante e atualizado. Linguagens: Rust, TypeScript/JavaScript, Python e Go. **V1: Linux x86_64 e macOS arm64**, com um executável por alvo e nenhuma GUI. Windows, Linux arm64 e macOS Intel ficam para depois do v1. A experiência básica não requer runtimes auxiliares ou rede. O mesmo executável pode iniciar workers e criar banco/cache.
 
 **Prioridade do usuário: maior sucesso em tarefas reais, aceitando custo adicional proporcional.** Redução de tokens é secundária. Não omita evidência necessária para produzir uma resposta menor. Use expansão, representações maiores ou diagnóstico de insuficiência dentro dos limites definidos.
 
@@ -22,7 +22,8 @@ Leia inicialmente este arquivo, o estado atual, a revisão vigente e os cartões
 | Documento | Autoridade no trabalho |
 |---|---|
 | [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
-| [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e duas atividades de revisão, dependências, entregáveis e aceite; IDs são estáveis |
+| [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e três atividades complementares, dependências, entregáveis e aceite; IDs são estáveis |
+| [Plataformas do v1 / ADR 020](docs/decisoes/PLATAFORMAS-V1.md) | Dois alvos obrigatórios desde M0; Windows pós-v1; adaptação de CI em M0-02.R2 |
 | [Revisão L0 / lote L1](docs/relatorios/REVISAO-L0.md) | Resposta às pendências A01/A02, nova A03, retificação do contrato, CI documental e trabalho imediato |
 | [Prova de diferenciação](docs/PROVA-DE-DIFERENCIACAO.md) | Objetivo, concorrentes, corpus, contabilidade, limites e gates G0/G1/G2 |
 | [RFC de arquitetura](docs/RFC-0001-ARQUITETURA.md) | Componentes, contratos fundamentais, trade-offs e ADRs |
@@ -56,7 +57,7 @@ Gates dependem de evidência; não são uma fila de aprovações para trabalho r
 1. Confira o checkout e o estado local antes de editar. Preserve arquivos e alterações existentes. Se já houver implementação de outra sessão, retome da evidência encontrada; não recrie o projeto cegamente. Registre presença/ausência de Git, sem depender de um remoto para começar.
 2. Em **M0-01**, produza `docs/contracts/m1.md` e exemplos de request/response. Defina IDs, paths nativos, spans em bytes, revisão, cobertura, capabilities, erros e distinção entre fato/candidato/unknown. Inclua resultado vazio completo, capacidade ausente, parse parcial, snapshot expirado e orçamento insuficiente. Contrato não pode anunciar capacidade ainda inexistente.
 3. Em **M0-02**, crie o workspace mínimo com `xrai-core`, `xrai-index`, `xrai-query`, `xrai` e `xrai-eval`; fixe toolchain, edição, dependências e lockfile após verificar compatibilidade e licenças nas fontes oficiais. Versões ainda não estão decididas. Evite implementar subsistemas para preencher diretórios vazios.
-4. Entregue `xrai --help` e `xrai --version` funcionando localmente; configure a matriz inicial Linux x86_64, macOS aarch64 e Windows x86_64. A comprovação nativa dos três SOs pertence a M0-05 e não bloqueia o início local dos protótipos.
+4. Entregue `xrai --help` e `xrai --version` funcionando localmente; a matriz obrigatória vigente é Linux x86_64 e macOS arm64. L0 incluiu Windows no escopo anterior; M0-02.R2 adapta essa CI. A comprovação nativa de autonomia dos dois alvos pertence a M0-05 e não bloqueia o início local dos protótipos.
 5. Rode as verificações previstas para o esqueleto: `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets --locked -- -D warnings` e `cargo test --workspace --locked`, além dos dois smokes da CLI. Registre ambiente, comandos, código de saída e resultado real. Runner ausente é não verificado; cross-build não prova execução nativa.
 6. Entregue `docs/relatorios/L0.md` e atualize o [estado](docs/STATUS-IMPLEMENTACAO.md). Registre escolhas técnicas, arquivos alterados, critérios demonstrados, pendências e próxima tarefa. Só marque concluído o que cumprir aceite. A elaboração deste handoff não conclui M0-01.
 
@@ -66,6 +67,7 @@ L0 não precisa de API paga, corpus reservado pronto ou confirmação de métric
 
 | Etapa | Atividades | Condição |
 |---|---|---|
+| Plataforma do v1 | M0-02.R2: CI Linux x86_64/macOS arm64; atualizar pendências de M0-07 | M0-02.R1 já concluída; preservar checks documentais e históricos |
 | Corpus e medição | M0-03: D0/D1 e fixtures; M0-04: harness, replay, baseline e agentes | Contratos disponíveis; começa antes do produto completo |
 | Spikes técnicos | M0-05/06/07/08: gramáticas, workers, snapshots e filesystem | Seguir dependências dos cartões; registrar limitações nativas |
 | Prova semântica P2 | M0-11: recortes de imports/bindings/alvos/configuração nas quatro famílias | Extração mínima local; não esperar todos os runners ou índice de produção |
@@ -115,4 +117,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Próxima ação da IA implementadora: executar o lote L1 da revisão L0. Iniciar M0-01.R1 e M0-03; M0-07 pode avançar como frente independente. Depois, M0-02.R1. Não repetir L0 ou antecipar M1-B; registrar evidências e atualizar o estado antes de commit/push.**
+**Próxima ação da IA implementadora: concluir os critérios pendentes de M0-02.R2 e continuar M0-03/M0-07 conforme o estado.** M0-01.R1 e M0-02.R1 já estão registradas como concluídas. A adaptação do workflow aos dois alvos está sendo registrada em L1; preservar o check documental e verificar o spike SQLite nativamente em Linux x86_64/macOS arm64 antes de encerrar M0-07. Se Actions/runners continuarem indisponíveis, manter a prova pendente e prosseguir no trabalho independente. Windows não bloqueia v1. Não repetir L0 ou antecipar M1-B; registrar evidências e atualizar o estado antes de commit/push.

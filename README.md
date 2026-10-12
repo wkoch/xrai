@@ -2,11 +2,11 @@
 
 CLI em Rust para entregar contexto de código relevante, verificável e atualizado a agentes de IA.
 
-Estado: lote L0 concluído (M0-01 e M0-02). Workspace Rust mínimo compilável; `xrai --help` e `xrai --version` funcionam localmente. Parsing, consultas e MCP seguem nas tarefas posteriores. Não há resultados competitivos próprios.
+Estado: L0 concluído e L1 em andamento; contrato retificado e CI documental registrados, corpus e spike SQLite em andamento conforme o [estado atual](docs/STATUS-IMPLEMENTACAO.md). `xrai --help` e `xrai --version` funcionam; parsing, consultas e MCP seguem nas tarefas posteriores. Não há resultados competitivos próprios.
 
-Para executar o scaffold: `cargo build --workspace --locked`, depois `./target/debug/xrai --help` (Windows: `target/debug/xrai.exe`). Toolchain fixada em Rust 1.98.1. [Relatório e evidências L0](docs/relatorios/L0.md). A [revisão arquitetural](docs/relatorios/REVISAO-L0.md) confirmou a CI nos três hosts do scaffold e definiu o lote L1: retificar contrato, preparar corpus e automatizar sua validação; spike de armazenamento pode avançar independentemente.
+Para executar o scaffold: `cargo build --workspace --locked`, depois `./target/debug/xrai --help`. Toolchain fixada em Rust 1.98.1. [Relatório e evidências L0](docs/relatorios/L0.md). A atividade M0-02.R2 cobre a adaptação da CI ao [escopo do v1](docs/decisoes/PLATAFORMAS-V1.md); o estado distingue configuração e execução comprovada.
 
-Escopo inicial: Rust, TypeScript/JavaScript, Python e Go. Linux, macOS e Windows; um executável por plataforma/arquitetura; nenhuma GUI.
+Escopo inicial: Rust, TypeScript/JavaScript, Python e Go. **V1 em Linux x86_64 e macOS arm64 (Apple Silicon)**; um executável por alvo; nenhuma GUI. Windows e outras arquiteturas serão reavaliados após v1.
 
 A prioridade é **resolver mais tarefas corretamente, com aumento de custo proporcional e limitado**. Economia de tokens é secundária; contabilizar exploração, indexação amortizada, chamadas de ferramentas e uso do modelo. O grafo é a infraestrutura para chegar lá.
 

@@ -8,6 +8,8 @@ Os IDs e dependências estão no [plano de implementação](PLANO-DE-IMPLEMENTAC
 
 A orientação de qualidade e a separação arquiteto/implementador foram definidas pelo usuário. Os números de ganho/custo são parâmetros iniciais propostos pela arquitetura, a congelar antes da confirmação. A orientação anterior que permitia aprovar a tese somente por economia está substituída. [Instruções para a IA implementadora](../IMPLEMENTADOR.md).
 
+**Plataformas do v1: Linux x86_64 e macOS arm64**, conforme [ADR 020](decisoes/PLATAFORMAS-V1.md). Fixar antes de cada campanha a plataforma primária, hardware e ambiente de todos os braços comparáveis. A confirmação estatística não precisa ser duplicada integralmente por SO: testes funcionais e de portabilidade são obrigatórios nos dois alvos; conclusões competitivas ficam limitadas ao ambiente medido. Comparador que exige outro ambiente recebe regime separado e limitação explícita, sem ser omitido por conveniência. Windows e outras arquiteturas não bloqueiam G0/G1/G2; limiares, amostras, comparadores e tetos de custo permanecem inalterados.
+
 ## 1. Investimento por etapas
 
 | Etapa | Pergunta | Investimento autorizado pelo resultado |

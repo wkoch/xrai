@@ -1,5 +1,7 @@
 # Revisão arquitetural de L0 e próximas atividades
 
+**Atualização de escopo posterior:** o [ADR 020](../decisoes/PLATAFORMAS-V1.md) define Linux x86_64 e macOS arm64 para v1, com Windows pós-v1. Referências abaixo a três SOs/cinco alvos registram o escopo da revisão original; os requisitos vigentes estão no plano atualizado. Evidências históricas permanecem válidas para o que foi executado.
+
 Data: 11/10/2026, America/Sao_Paulo. Arquiteto. Commit revisado: `10d9bf95490d405ea2d8014e95065295b32727c4`. Verificações desta revisão em 12/10/2026 UTC, ainda 11/10 no fuso do projeto. Nenhum código de produto, teste, schema ou verificador foi alterado pelo arquiteto.
 
 ## 1. Parecer de aceite

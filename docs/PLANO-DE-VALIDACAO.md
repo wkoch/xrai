@@ -4,6 +4,8 @@ Data: 11/10/2026. Este documento contém **experimentos e metas propostas**, nã
 
 O [plano de implementação](PLANO-DE-IMPLEMENTACAO.md) antecipa a prova competitiva: M0 testa sinal e mecanismo; M1-A confirma em dados reservados antes da engenharia ampla; M1-B verifica se a alpha preserva a vantagem. O [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) é a referência para amostras, comparadores, limiares e decisões G0/G1/G2. Os spikes e dados de desenvolvimento não comprovam superioridade estatística.
 
+**Matriz obrigatória do v1: Linux x86_64 e macOS arm64**, desde os spikes M0 até a distribuição. A [decisão do usuário / ADR 020](decisoes/PLATAFORMAS-V1.md) posterga Windows e outras arquiteturas. Ambos os alvos precisam de provas nativas de parsing/autonomia, SQLite, workers, filesystem e CLI/MCP nas tarefas correspondentes; cross-build não substitui execução. Falta de evidência em qualquer um dos dois mantém o critério pendente.
+
 ## 1. Hipótese principal
 
 O agente com xrai resolve **mais tarefas corretamente**, com aumento de custo proporcional e limitado. Qualidade é a única rota primária, definida pelo usuário. Economia e menor latência são métricas secundárias; não substituem resultado primário negativo. A vantagem precisa sobreviver a consultas adicionais, erros, repetições e manutenção do índice. Os tetos numéricos são propostas iniciais da arquitetura.
@@ -152,7 +154,7 @@ Comparar JSON compacto, texto estruturado e eventuais codecs especializados no m
 
 Testes metamórficos: comparar índice incremental versus completo após sequências de operações; repetir com renames, erros sintáticos, mudanças de configuração e concorrência. Comparar o significado dos fatos, sem exigir IDs internos ou timestamps idênticos.
 
-Fuzzing nos parsers/adapters, leitores de índice externo e limites de saída. Testes de integração em ambientes limpos dos três SOs. Não depender exclusivamente de mocks para provar filesystem, SQLite, protocolos e comportamento de processo.
+Fuzzing nos parsers/adapters, leitores de índice externo e limites de saída. Testes de integração em ambientes limpos de Linux x86_64 e macOS arm64. Não depender exclusivamente de mocks para provar filesystem, SQLite, protocolos e comportamento de processo. Unicode, CRLF, espaços, bytes nativos e case sensitivity continuam no aceite; documentar filesystem/configuração efetivamente testados. Paths UTF-16/reparse points e particularidades de processos Windows ficam pós-v1; fixtures documentais existentes não anunciam suporte runtime.
 
 A fixture de métodos homônimos é motivada pela [checagem exploratória com codebase-memory](evidencias/CBM-TOKENSAVE-FAST.md). Usá-la como caso de regressão; não ajustar o sistema somente a esse exemplo nem extrapolar um erro para a qualidade global do concorrente.
 

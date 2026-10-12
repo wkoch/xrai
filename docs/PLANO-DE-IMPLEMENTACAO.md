@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 11/10/2026. Estado de execução: **L0 aceito no escopo entregue; M0-01 e M0-02 concluídas**. A [revisão arquitetural](relatorios/REVISAO-L0.md) acrescenta M0-01.R1 e M0-02.R1, ainda não executadas, para retificação de contrato e validação documental em CI. Evidências e demais tarefas em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 11/10/2026. **Escopo de plataformas do v1 definido pelo usuário: Linux x86_64 e macOS arm64.** A retificação de contrato e a CI documental de L1 já constam como concluídas no [estado da implementação](STATUS-IMPLEMENTACAO.md). Esta atualização acrescenta M0-02.R2 para adequar a CI; não conclui sua execução. Decisão e impactos em [PLATAFORMAS-V1.md](decisoes/PLATAFORMAS-V1.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -23,21 +23,30 @@ Entrada operacional da outra IA: [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). O usu�
 | Atualização | Reconciliação explícita e na consulta; reextração dos arquivos afetados | Watcher como otimização posterior, sem mudar a correção |
 | Worktrees | Estado próprio por checkout e ausência de mistura entre eles | Hidratação e reuso entre bancos em M5 |
 | Integração | CLI e seis ferramentas MCP com capacidades limitadas ao que existe | Integrações adicionais conforme evidência de uso |
-| Distribuição | Autonomia testada em M0; cinco alvos da alpha após G1 | Enriquecimento opcional separado da entrega autônoma |
+| Distribuição | Linux x86_64 e macOS arm64: autonomia em M0 e os mesmos dois alvos na alpha/v1 após G1 | Windows e outras arquiteturas somente após v1 e nova decisão de escopo |
 | Avaliação | Triagem dos oito concorrentes, piloto D1 e confirmação H1 em M1-A | M3 amplia a validade para novos domínios; não recebe a primeira prova |
 
 Uma consulta de callers sem resolver disponível retorna `unsupported_capability` e orientação de busca; não retorna vazio com aparência de completude. Correção e revisão por diff entram cedo no **harness experimental**, com P2/P3 e snapshots capturados. Só recortes aprovados são promovidos à alpha. Seleção que autoriza omitir testes, ingestão de SCIP/LSP pelo produto, embeddings, propósito curado, memória e recibos continuam posteriores. Índices externos podem servir como oracle do avaliador e como regime declarado dos concorrentes.
 
 Não estabelecer prazo de calendário sem equipe e resultados dos spikes. As tarefas indicam dependências técnicas e evidência de conclusão. Quem executar poderá estimar as próximas entregas após M0, a partir do trabalho observado.
 
+### Matriz de plataformas do v1
+
+| Alvo obrigatório de M0 até a alpha/v1 | Target Rust inicial | Prova exigida |
+|---|---|---|
+| Linux x86_64 | `x86_64-unknown-linux-gnu` | Build e execução nativa; documentar baseline de SO/glibc e dependências em M0-05/M1-20 |
+| macOS arm64 (Apple Silicon) | `aarch64-apple-darwin` | Build e execução nativa; documentar versão mínima do macOS em M0-05/M1-20 |
+
+Windows, Linux arm64 e macOS Intel estão fora do aceite e da distribuição do v1. Musl não é um terceiro artefato obrigatório. Remover Windows da CI obrigatória é trabalho de M0-02.R2; resultados históricos são preservados. O aceite técnico passa a exigir ambos os alvos acima, com os mesmos critérios de correção, autonomia, recuperação e qualidade. CRLF, Unicode, paths nativos sem perda e case sensitivity continuam relevantes nos dois sistemas. Reparse points, processos/locking e instalação específicos do Windows ficam para depois do v1; formatos documentais já existentes podem ser preservados como extensão futura, sem anunciar suporte.
+
 ## 2. Regras de execução e conclusão
 
-- IDs existentes são preservados: **35 tarefas principais e duas atividades derivadas da revisão L0**, `M0-01.R1` e `M0-02.R1`, com execução individual em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md). A ordem de execução segue dependências, não numeração. M0-10 continua a saída de M0; M1-22 ocorre antes da engenharia ampla de M1.
+- IDs existentes são preservados: **35 tarefas principais e três atividades complementares**, `M0-01.R1`, `M0-02.R1` e `M0-02.R2`, com execução individual em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md). A ordem de execução segue dependências, não numeração. M0-10 continua a saída de M0; M1-22 ocorre antes da engenharia ampla de M1.
 - “Depende de” significa que o contrato/entregável anterior está disponível e passou nos critérios pertinentes. Preparar fixtures e especificações em paralelo é permitido; não declarar um marco concluído antecipadamente.
 - Cada tarefa deve produzir uma mudança revisável, seus testes relevantes e evidências dos critérios de aceite. Uma tarefa grande pode virar subtarefas com sufixo, preservando o ID e o aceite do conjunto.
 - Não criar testes que apenas reproduzem a implementação. Priorizar oracles independentes, fixtures rotuladas, comparação incremental/rebuild e falhas injetadas nas fronteiras reais.
 - Resultados medidos ficam em relatórios com commit, configuração, plataforma, hardware, comandos e saídas. Metas propostas não contam como resultados.
-- Decisões seguem os ADRs 001–019 da RFC. Mudança de contrato, persistência, isolamento, regime de comparação ou dependência runtime deve atualizar o ADR pertinente e os critérios afetados.
+- Decisões seguem os ADRs 001–020 da RFC. Mudança de contrato, persistência, isolamento, regime de comparação ou dependência runtime deve atualizar o ADR pertinente e os critérios afetados.
 - Spikes de M0 podem ser descartados. Sua promoção para M1 exige limites, tratamento de falhas e testes de produção; um experimento que funcionou uma vez não cumpre esses requisitos.
 - Qualidade já está fixada como rota primária. Antes da campanha, congelar limites de esforço/uso de modelos, critérios de custo proporcional, amostra, comparadores e análise. M0 permite duas versões por hipótese; M1-A, uma campanha reservada e uma adicional. Inconclusivo não libera M1-B automaticamente.
 
@@ -124,12 +133,12 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Aceite:**
 
-- `xrai --help` e `xrai --version` executam nativamente no ambiente de desenvolvimento, com versão e arquitetura registradas. A CI configura Linux x86_64, macOS aarch64 e Windows x86_64; a prova nativa completa dos três é aceite de M0-05, para não bloquear o piloto por disponibilidade de runners.
+- `xrai --help` e `xrai --version` executam nativamente no ambiente de desenvolvimento, com versão e arquitetura registradas. A CI obrigatória configura Linux x86_64 e macOS arm64; a prova nativa completa de ambos é aceite de M0-05, para não bloquear o piloto por disponibilidade de runners. M0-02.R2 adapta a matriz histórica entregue em L0.
 - Núcleo não depende de CLI/MCP; adapters dependem do domínio, evitando ciclo entre crates. Parsing, persistência e consultas permanecem módulos substituíveis.
 - `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets --locked -- -D warnings` e `cargo test --workspace --locked` passam no esqueleto.
 - CI usa o lockfile. Falta de runner fica registrada para M0-05, sem alegar plataforma validada por cross-compilation. O build local precisa funcionar para liberar harness/protótipos.
 
-**Verificação:** logs de build/testes e smoke local; configuração dos três jobs revisada. CI remoto pode ser substituído por runners equivalentes enquanto não existir repositório remoto configurado. A confirmação nativa de cada SO permanece obrigatória na saída técnica de M0.
+**Verificação:** logs de build/testes e smoke local; configuração dos dois jobs nativos revisada. CI remoto pode ser substituído por runners equivalentes enquanto não existir repositório remoto configurado. A confirmação nativa dos dois alvos permanece obrigatória na saída técnica de M0.
 
 ### M0-02.R1 — Automatizar a validação documental do contrato
 
@@ -137,11 +146,23 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Entrega:** job/check automatizado dos exemplos contratuais, com versões de tooling fixadas e evidência ligada ao commit.
 
-**Trabalho:** executar o verificador e seu schema/casos no ambiente de desenvolvimento da CI. Preservar os jobs Rust e o uso de lockfile. Python e bibliotecas documentais continuam fora das dependências do executável distribuído.
+**Trabalho:** executar o verificador e seu schema/casos no ambiente de desenvolvimento da CI. Preservar os checks Rust dos alvos vigentes e o uso de lockfile; M0-02.R2 adapta a matriz ao v1. Python e bibliotecas documentais continuam fora das dependências do executável distribuído.
 
 **Aceite:** suíte documental passa na CI; um exemplo adverso realmente é rejeitado e falha inesperada do verificador impede aprovação do check. Resultado aponta commit, comandos, versões e contagens; não se limita a validar sintaxe JSON. Nenhuma capacidade do produto é inferida desse check.
 
 **Verificação:** execução local e run CI do commit; sem alegar que isso testa parser, armazenamento ou clientes MCP. Runners Rust de L0 já passaram; este cartão cobre a lacuna documental, não reabre M0-02.
+
+### M0-02.R2 — Adequar CI e pendências aos dois alvos do v1
+
+**Depende de:** M0-02.R1. **Frente:** plataforma/CI. **ADR:** 020.
+
+**Entrega:** matriz obrigatória Linux x86_64/macOS arm64 em `.github/workflows/ci.yml` e evidências atualizadas no relatório L1.
+
+**Trabalho:** retirar o job Windows da execução obrigatória; preservar o job documental e fmt/clippy/test/build/help/version nos dois alvos. Conferir checks exigidos por branch protection, se houver: registrar eventual ajuste de configuração necessário sem desproteger os checks restantes. Não criar runner Windows opcional automático ou artefato extra. Preservar logs e fixtures existentes.
+
+**Aceite:** o workflow deixa de exigir Windows e não amplia a matriz para Linux arm64 ou macOS Intel. Os dois hosts Rust corretos e o check documental passam no commit publicado; falha de qualquer check obrigatório continua visível e bloqueante. Resultados de M0-07 referem-se ao código do spike nos dois alvos, não aos smokes de L0. Falta de runner permanece impedimento, não sucesso. Retirar uma exigência Windows por decisão de escopo não marca nenhum teste como executado.
+
+**Verificação:** inspecionar matriz/host e logs de cada check; registrar commit, plataforma e conclusão. Reclassificar pendências Windows como pós-v1 e manter abertas as de Linux/macOS sem evidência suficiente. Corpus e protótipos locais podem avançar enquanto o run estiver pendente; R2 precisa estar concluída para M0-10.
 
 ### M0-03 — Construir o corpus inicial e seus oracles
 
@@ -190,7 +211,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 **Aceite:**
 
 - O executável copia-se para ambiente limpo e faz parsing de todas as famílias sem Node, Python, Go, Git CLI, compilador, arquivo externo de gramática ou download.
-- Execução nativa nos três alvos iniciais de M0; falhas de sintaxe retornam árvores/diagnósticos com posições úteis, sem serem reportadas como sucesso completo.
+- Execução nativa em Linux x86_64 e macOS arm64; falhas de sintaxe retornam árvores/diagnósticos com posições úteis, sem serem reportadas como sucesso completo.
 - O relatório registra fingerprints de gramáticas/consultas, bibliotecas dinâmicas exigidas e licenças. Dependências do próprio SO são explicitadas.
 - Tamanho, tempo e RSS são observações do spike; eventual problema tem decisão de corrigir, trocar componente ou registrar bloqueio para revisão do plano. Não remover silenciosamente uma linguagem ou plataforma exigida nem ocultar dependência runtime.
 
@@ -211,7 +232,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 - Comprimento é validado antes de alocação; resposta de request/hash/fingerprint errado é recusada. Retry é finito e arquivo persistentemente falho fica diagnosticado.
 - O relatório contabiliza pai e workers e distingue limites de aplicação de limites impostos pelo SO. Não presume proteção contra OOM global da máquina.
 
-**Verificação:** subprocessos reais nos três SOs; injeção de falha restrita ao harness/build de teste, sem comando de falha ativado no release normal.
+**Verificação:** subprocessos reais em Linux x86_64 e macOS arm64; injeção de falha restrita ao harness/build de teste, sem comando de falha ativado no release normal.
 
 ### M0-07 — Provar snapshots, armazenamento e FTS5
 
@@ -225,7 +246,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 - Um leitor iniciado na geração A continua lendo fatos e bytes de A enquanto B é publicada; uma consulta nova identifica a geração que recebeu.
 - Interrupção antes do commit não publica parte de B. Reabertura mantém uma geração íntegra e registra staging abandonado.
-- FTS5 funciona incorporado nos três sistemas; atualização de documento não deixa resultados antigos apresentados como atuais.
+- FTS5 funciona incorporado em Linux x86_64 e macOS arm64; atualização de documento não deixa resultados antigos apresentados como atuais. O aceite nativo refere-se ao commit do spike em ambos os alvos, não ao scaffold anterior.
 - Backup/rebuild nunca apaga configuração ou dados humanos. Versão de schema desconhecida falha de forma explícita; não recria banco silenciosamente.
 
 **Verificação:** processo escritor interrompido, dois leitores e inspeção de integridade/referências. Medir custo de armazenar fonte junto ao catálogo.
@@ -236,7 +257,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Entrega:** matriz de comportamento do filesystem e decisão sobre o uso inicial de Git incorporado.
 
-**Trabalho:** testar descoberta sem Git, regras de exclusão, configuração, symlinks/reparse points, caminhos e worktrees. Avaliar o necessário de `gix`/`libgit2` para os requisitos presentes; leitura de histórico e diff não bloqueiam M1. Identidade por checkout deve funcionar mesmo sem integração Git completa.
+**Trabalho:** testar descoberta sem Git, regras de exclusão, configuração, symlinks, caminhos e worktrees em Linux x86_64/macOS arm64. Reparse points e particularidades de Windows ficam pós-v1. Avaliar o necessário de `gix`/`libgit2` para os requisitos presentes; leitura de histórico e diff não bloqueiam M1. Identidade por checkout deve funcionar mesmo sem integração Git completa.
 
 **Aceite:**
 
@@ -245,7 +266,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 - Links não permitem leitura silenciosa fora da raiz; loops terminam; exclusões têm precedência documentada e motivo consultável.
 - Alteração de conteúdo com mesmo tamanho/mtime é detectável por validação de hash. Falhas de permissão e arquivo removido durante leitura viram diagnósticos.
 
-**Verificação:** fixtures de filesystem reais nos três sistemas; registrar capacidades que o filesystem do runner não permite testar. Decisão no ADR explicita o que foi postergado de Git.
+**Verificação:** fixtures de filesystem reais nos dois alvos do v1; registrar tipo/configuração do filesystem e capacidades que o runner não permite testar. Preservar bytes nativos, Unicode, CRLF e distinções de case sem assumir que todos os volumes macOS se comportam igualmente. Decisão no ADR explicita o que foi postergado de Git.
 
 ### M0-09 — Prototipar P3: obrigações, base/head e seleção com orçamento
 
@@ -271,7 +292,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Entrega:** resolvers experimentais dos quatro recortes descritos no protocolo, matriz de capacidades e corpus de relações rotuladas.
 
-**Trabalho:** implementar imports/reexports, bindings, shadowing e alvos com receptor demonstrável conforme cada linguagem. Capturar configuração; testar reavaliação de dependências positivas e negativas. Reaproveitar a extração mínima local do spike de gramáticas quando disponível; a execução nativa completa dos três SOs não é dependência desta experiência.
+**Trabalho:** implementar imports/reexports, bindings, shadowing e alvos com receptor demonstrável conforme cada linguagem. Capturar configuração; testar reavaliação de dependências positivas e negativas. Reaproveitar a extração mínima local do spike de gramáticas quando disponível; a execução nativa completa dos dois alvos do v1 não é dependência desta experiência.
 
 **Aceite:** pelo menos 80% dos casos rotulados como resolvíveis no recorte são resolvidos corretamente; nenhuma promoção indevida a fato nas fixtures contratadas. Relações reais têm precisão/recall e cobertura reportados separadamente. Unknowns de macros, dispatch e dinamismo permanecem explícitos; nenhum runtime do projeto é executado. Oracle externo, quando usado, fica no avaliador.
 
@@ -291,13 +312,13 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 ### M0-10 — Decidir G0 e consolidar a saída técnica de M0
 
-**Depende de:** M0-01, M0-02, M0-03, M0-04, M0-05, M0-06, M0-07, M0-08, M0-09, M0-11, M0-12, M0-02.R1. **Frente:** integração/produto.
+**Depende de:** M0-01, M0-02, M0-03, M0-04, M0-05, M0-06, M0-07, M0-08, M0-09, M0-11, M0-12, M0-02.R1, M0-02.R2. **Frente:** integração/produto.
 
 **Entrega:** `eval/reports/m0-exit.md`, ADRs atualizados e limites iniciais registrados antes dos testes de M1.
 
 **Aceite do marco:**
 
-- Vinte tarefas e baseline textual reproduzíveis; contratos e matriz de capacidades definidos; execução nativa comprovada nos três SOs.
+- Vinte tarefas e baseline textual reproduzíveis; contratos e matriz de capacidades definidos; execução nativa comprovada em Linux x86_64 e macOS arm64. Windows não é condição deste gate.
 - Parsing incorporado, falha de worker contida, publicação transacional e caminhos por checkout demonstrados pelos spikes.
 - Fixar limites iniciais de arquivos, bytes em trânsito, workers, timeout, saída e retenção. Distinguir limites verificáveis de aplicação de metas de RSS/latência a observar.
 - Listar o que será reaproveitado, refeito ou descartado, com motivo; registrar riscos, responsáveis por frente e critérios de revisão das decisões.
@@ -319,7 +340,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Aceite:** spans inválidos são rejeitados; paths não perdem identidade por normalização; IDs públicos não são rowids; método/produtor/configuração acompanham fatos; candidatos não desserializam como relações resolvidas. Schema e exemplos passam por testes de contrato sem depender do MCP.
 
-**Verificação:** fixtures de identidade e serialização com entradas adversas, incluindo Unicode e estados incompatíveis.
+**Verificação:** fixtures de identidade e serialização com entradas adversas, incluindo Unicode e estados incompatíveis. Paths nativos Linux/macOS são obrigatórios no v1; exemplos documentais `windows_u16` existentes permanecem como extensão futura, sem exigir adapter Windows de produção neste cartão.
 
 ### M1-22 — Executar M1-A e decidir G1 antes da engenharia ampla
 
@@ -565,7 +586,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Aceite:** nenhuma mistura de fonte/revisão nos cenários testados; cache recupera ou pede rebuild com diagnóstico; nenhuma publicação parcial se apresenta como completa. Pools, filas e respostas respeitam limites configurados. Timeout e retry não geram ciclo infinito; consultas mantêm origem/estado explícitos durante falha.
 
-**Verificação:** executar em processos e filesystem reais dos três SOs; registrar seeds e falhas. Testar exceder limites sem provocar OOM global deliberado; não confundir RSS amostrado com garantia rígida de memória do SO.
+**Verificação:** executar em processos e filesystem reais de Linux x86_64 e macOS arm64; registrar seeds e falhas. Testar exceder limites sem provocar OOM global deliberado; não confundir RSS amostrado com garantia rígida de memória do SO.
 
 ### M1-20 — Produzir e verificar os artefatos da alpha
 
@@ -573,7 +594,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Entrega:** pipeline de pacotes, checksums, inventário de licenças, instruções e relatório de suporte.
 
-**Trabalho:** construir Linux x86_64/aarch64, macOS x86_64/aarch64 e Windows x86_64. Verificar dependências dinâmicas, flags e inclusão das gramáticas. Cada alvo distribui um executável; arquivos de documentação/licença não são assets necessários ao runtime.
+**Trabalho:** construir somente Linux x86_64 (`x86_64-unknown-linux-gnu`) e macOS arm64 (`aarch64-apple-darwin`) para a alpha/v1. Fixar e documentar baseline de SO/glibc e deployment target macOS; verificar dependências dinâmicas, flags e inclusão das gramáticas. Cada alvo distribui um executável; arquivos de documentação/licença não são assets necessários ao runtime. Musl, Windows e outras arquiteturas não são entregáveis obrigatórios do v1.
 
 **Aceite:** em cada alvo anunciado, executar `index → search → inspect → context` e MCP stdio em ambiente limpo, sem rede e runtimes auxiliares. Startup dos workers usa o mesmo binário. Checksums e fontes de dependências são rastreáveis.
 
@@ -605,10 +626,10 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 | Contrato e exemplos | Especificados e revisados | Implementados e verificados |
 | Corpus | D0: 20; D1: 32 desafios reais; fixtures e oracles separados | H1 reservado, proposta inicial 120; teto H1+H2 240; tamanho decidido antes da campanha |
 | Fonte e revisão | Prova em spike de snapshots | Invariante de todos os caminhos de leitura |
-| Parsing | Gramáticas incorporadas nos três SOs | Quatro frontends e dialetos contratados |
+| Parsing | Gramáticas incorporadas em Linux x86_64 e macOS arm64 | Quatro frontends e dialetos contratados nos mesmos dois alvos |
 | Falhas | Abort/timeout/IPC e transação demonstrados | Testados no ciclo CLI/MCP com concorrência |
 | Atualização | Política definida | Equivalência incremental/rebuild para capacidades de M1 |
-| Distribuição | Três alvos nativos iniciais | Cinco alvos da matriz inicial verificados |
+| Distribuição | Dois alvos nativos: Linux x86_64 e macOS arm64 | Os mesmos dois alvos verificados para alpha/v1 |
 | Uso por agente | Baseline, finalistas e variantes A/B/C/D em D1 | Campanha reservada antes da alpha; segundo modelo/agente; regressão após integração |
 | Concorrentes | Oito triados; finalistas por capacidade; versões/configs registradas | Mesmos finalistas congelados, baseline competente e desafio enriquecido |
 | Decisão | G0: sinal e mecanismo; libera só confirmação | G1: investir/focar/encerrar; G2: preservar ganho na alpha |
@@ -643,14 +664,16 @@ Relatórios de saída devem conter links para logs/resultados, critérios cumpri
 
 M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablations. Caso o seletor sozinho ganhe ou um índice externo resolva melhor a semântica, revisar a prioridade do motor próprio. Não financiar parser/type checker novo sem bloqueio demonstrado e comparação com integração de componentes existentes.
 
+**Plataformas após v1:** reavaliar Windows conforme demanda, orçamento e runners nativos. Antes de prometer suporte, criar pacote próprio para paths UTF-16/reparse points, processos/IPC/cancelamento, locking/SQLite, gramáticas e distribuição limpa. Linux arm64/macOS Intel também exigem decisão e evidências próprias. Nenhuma dessas expansões é dependência automática de M2/M3 ou condição de G0/G1/G2 no escopo atual.
+
 ## 9. Primeira sequência executável
 
-L0 já executou M0-01/M0-02; não reiniciar essa sequência. **Próximo lote L1:** M0-01.R1 e M0-03, com M0-07 como frente independente; depois M0-02.R1. M0-04 aguarda corpus e retificação; M0-05/M0-08 aguardam corpus. Entrega, aceite e decisões estão na [revisão L0](relatorios/REVISAO-L0.md). A sequência original abaixo permanece como referência do desenho.
+L0 já executou M0-01/M0-02; L1 já registrou M0-01.R1/M0-02.R1. **Próxima atividade de plataforma: concluir o aceite de M0-02.R2**, adequação da CI ao v1, e registrar evidência Linux x86_64/macOS arm64 para M0-07. O implementador já está registrando a adaptação em L1; falta de execução nativa permanece pendente. Continuar M0-03 e M0-07 conforme o [estado](STATUS-IMPLEMENTACAO.md), sem refazer entregas. M0-04 aguarda aceite do corpus; M0-05/M0-08 também. A [decisão de plataformas](decisoes/PLATAFORMAS-V1.md) atualiza o escopo da revisão L0. A sequência original abaixo permanece como referência do desenho.
 
 1. Abrir M0-01 e M0-02: contrato mínimo e workspace/CI podem avançar juntos.
 2. Preparar D0/D1 em M0-03 e harness/agentes em M0-04; iniciar triagem dos oito concorrentes. Spikes nativos, armazenamento e filesystem seguem em frente independente.
 3. Implementar P2 em M0-11 e P3 em M0-09 sobre captura/extração mínima; executar piloto e ablations em M0-12. Não esperar a infraestrutura completa para descobrir ausência de sinal.
 4. Consolidar M0-10/G0. Sinal positivo e viabilidade técnica liberam apenas M1-01 e M1-22: contratos mínimos e confirmação reservada.
-5. Após G1 positivo, construir M1-B; integrar somente recortes vencedores em M1-23/16. Verificar cinco alvos, CLI/MCP e retenção da vantagem em M1-21/G2.
+5. Após G1 positivo, construir M1-B; integrar somente recortes vencedores em M1-23/16. Verificar Linux x86_64 e macOS arm64, CLI/MCP e retenção da vantagem em M1-21/G2.
 
 O primeiro incremento revisável continua M0-01 + M0-02, acompanhado da definição de D0/D1 e limites da campanha. Este pedido revisou o plano; não executou implementação ou experimentos.

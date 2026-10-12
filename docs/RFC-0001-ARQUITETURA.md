@@ -4,6 +4,8 @@ Data: 11/10/2026. Estado arquitetural: **proposta**. O scaffold L0 tem implement
 
 Linguagens iniciais confirmadas: **Rust, TypeScript/JavaScript, Python e Go**.
 
+Plataformas do **v1 definidas pelo usuário: Linux x86_64 e macOS arm64**. A [decisão de plataformas](decisoes/PLATAFORMAS-V1.md), ADR 020, substitui a matriz inicial mais ampla desde M0 até a alpha/v1; Windows fica para depois.
+
 ## 1. Tese
 
 O xrai deve produzir **o contexto necessário para uma tarefa, com evidências, revisão e limites explícitos**. O agente começa com orientação curta e expande apenas as dúvidas que restam.
@@ -17,7 +19,7 @@ O [estudo comparativo de oito projetos](ESTUDO-COMPARATIVO.md) mostra que Rust, 
 | Requisito | Compromisso proposto |
 |---|---|
 | Rust | Núcleo e CLI em Rust; bibliotecas C incorporadas são compatíveis com esse objetivo |
-| Linux/macOS/Windows | Executável por combinação de SO e arquitetura; não existe um mesmo executável nativo para todos os SOs |
+| Linux x86_64 e macOS arm64 no v1 | Um executável nativo por alvo; Windows e demais arquiteturas serão reavaliados após v1 |
 | Binário único | Parsers, consultas e armazenamento incorporados; uso básico sem Node, Python, Go, Git CLI, compilador, LSP ou serviço externo |
 | Sem GUI | CLI para humanos e automação; MCP stdio para agentes |
 | Operação local | Indexação, busca e montagem de contexto sem rede ou modelo obrigatório |
@@ -378,11 +380,11 @@ Propósitos são anotações tipadas. Inventário e diagnósticos sustentam cobe
 
 IDs densos internos para joins; IDs públicos independentes do rowid. Chaves estrangeiras e publicação transacional protegem integridade. Índices por origem/destino/tipo, símbolo/nome, arquivo/intervalo e revisão. Não persistir cada nó de CST sem uma consulta que justifique o custo.
 
-Cache por workspace/worktree em diretório de cache do SO; configuração compartilhável em `xrai.toml` ou `.xrai.toml`. Permitir override de cache. Usar caminhos nativos internamente e apresentação estável; tratar case sensitivity, Unicode, symlinks, reparse points e caminhos longos. Não normalizar nomes distintos para a mesma identidade.
+Cache por workspace/worktree em diretório de cache do SO; configuração compartilhável em `xrai.toml` ou `.xrai.toml`. Permitir override de cache. Usar caminhos nativos internamente e apresentação estável; tratar case sensitivity, Unicode, symlinks e caminhos longos nos dois alvos do v1. Reparse points e adapters de paths Windows ficam pós-v1. Não normalizar nomes distintos para a mesma identidade.
 
 ### Distribuição
 
-Pipeline de release nos três SOs desde cedo. Proposta inicial: Linux x86_64/aarch64, macOS x86_64/aarch64 e Windows x86_64; Windows ARM64 após validar demanda e toolchain. Linux musl é candidato para reduzir dependências; macOS e Windows continuam usando bibliotecas do próprio sistema.
+Pipeline de build/testes nativos desde M0 e release da alpha/v1 em **Linux x86_64** (`x86_64-unknown-linux-gnu`) e **macOS arm64** (`aarch64-apple-darwin`). M0-05/M1-20 devem fixar baseline de SO/glibc, versão mínima do macOS e bibliotecas do sistema exigidas. Linux musl é uma alternativa futura a medir, sem artefato adicional obrigatório. Windows, Linux arm64 e macOS Intel ficam fora dos gates e da distribuição do v1; sua inclusão exige decisão e validação próprias após v1.
 
 Testar binários em ambientes limpos, sem runtimes auxiliares e sem rede. Medir tamanho, startup e memória. Reproduzir build e publicar checksums e inventário de licenças das gramáticas/dependências. Gramáticas compiladas podem aumentar o binário; medir antes de impor meta de tamanho.
 
@@ -425,15 +427,15 @@ P2 antecipa semântica delimitada nas quatro famílias; P3 antecipa obrigações
 
 Próximo trabalho concreto: D0 com 20 tarefas, D1 com 32 desafios reais, harness de agentes e triagem dos oito concorrentes. O [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) define comparadores fortes, separação de holdout, contabilidade e limites de esforço. A campanha reservada começa em M1-A, antes da alpha completa.
 
-O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tarefas principais, duas atividades derivadas da revisão L0 e seus gates. G1 tem qualidade como única rota primária: ganho pontual de sucesso ≥8 pp, com superioridade sustentada pelo intervalo; limites superiores das razões de custo por tentativa ≤1,25 e por sucesso ≤1,15, sob a análise e os guardrails do protocolo. Os números são propostas de arquitetura; a prioridade de qualidade foi definida pelo usuário. Isso testa um domínio delimitado; não promete semântica universal nem liderança nas quatro famílias sem evidência.
+O [plano de implementação de M0/M1](PLANO-DE-IMPLEMENTACAO.md) detalha 35 tarefas principais, três atividades complementares e seus gates. G1 tem qualidade como única rota primária: ganho pontual de sucesso ≥8 pp, com superioridade sustentada pelo intervalo; limites superiores das razões de custo por tentativa ≤1,25 e por sucesso ≤1,15, sob a análise e os guardrails do protocolo. Os números são propostas de arquitetura; a prioridade de qualidade foi definida pelo usuário. Isso testa um domínio delimitado; não promete semântica universal nem liderança nas quatro famílias sem evidência.
 
 ## 14. Registro das decisões propostas
 
-Os ADRs 001–018 permanecem **Propostos**. No ADR 019, prioridade de qualidade e separação de papéis são **definidas pelo usuário**; os limiares numéricos continuam propostas de arquitetura. Cada linha resume contexto, decisão, alternativa, consequência e revisão necessária. Proposto não exige nova permissão para cada tarefa: o usuário autorizou preparar o início da implementação dentro deste plano; alterações materiais devem ser registradas.
+Os ADRs 001–018 permanecem **Propostos**. No ADR 019, prioridade de qualidade e separação de papéis são **definidas pelo usuário**; os limiares numéricos continuam propostas de arquitetura. O recorte de plataformas do ADR 020 também foi **definido pelo usuário**. Cada linha resume contexto, decisão, alternativa, consequência e revisão necessária. Proposto não exige nova permissão para cada tarefa: o usuário autorizou preparar o início da implementação dentro deste plano; alterações materiais devem ser registradas.
 
 | ADR | Contexto e decisão | Alternativa e consequência | Validação/revisão |
 |---|---|---|---|
-| 001 | Distribuição autônoma: monólito modular Rust e CLI/MCP | Serviços externos aumentam operação; núcleo incorporado aumenta binário | Ambientes limpos nos três SOs |
+| 001 | Distribuição autônoma: monólito modular Rust e CLI/MCP | Serviços externos aumentam operação; núcleo incorporado aumenta binário | Ambientes limpos em Linux x86_64 e macOS arm64 no v1 (ADR 020) |
 | 002 | Parsing é infraestrutura: Tree-sitter incorporado | Parser próprio oferece controle, mas desloca esforço da semântica | Corpus de erros, tempo e memória |
 | 003 | Persistir fatos e evidências em SQLite; Markdown como projeção | Arquivos como autoridade dificultam transações; DB exige schema e migrações | Rebuild, crash e consultas em escala |
 | 004 | Revisões explícitas e dependências de derivação | Atualização eventual simples custa menos; pode misturar estados | Testes metamórficos e concorrentes |
@@ -445,13 +447,14 @@ Os ADRs 001–018 permanecem **Propostos**. No ADR 019, prioridade de qualidade 
 | 010 | Session delta exige recibo/epoch; full sempre possível | Dedup automática parece barata, mas pode retirar contexto já compactado | Testes de compactação e troca de agente |
 | 011 | Regras compiladas/declarativas inicialmente | WASM/plugins externos ampliam ecossistema e superfície de manutenção | Só abrir ABI com necessidade concreta |
 | 012 | Crescimento guiado por maior sucesso, com limites de custo por tentativa/sucesso | Otimizar só tokens ou uma razão custo/qualidade pode favorecer respostas incompletas | Gates de qualidade e custo do protocolo; prioridade explicitada no ADR 019 |
-| 013 | Workers de parsing do mesmo executável, bytes capturados pelo pai | Threads têm IPC menor, mas falhas nativas podem encerrar o servidor | Abort/timeout/OOM, startup e RSS agregado nos três SOs |
+| 013 | Workers de parsing do mesmo executável, bytes capturados pelo pai | Threads têm IPC menor, mas falhas nativas podem encerrar o servidor | Abort/timeout/OOM, startup e RSS agregado em Linux x86_64 e macOS arm64 no v1 |
 | 014 | Separar propósito, estrutura e experiência de investigação | Memória única é simples, mas mistura intenção e evidência | Rebuild, atribuição, invalidação e erros de interpretação |
 | 015 | Revisão compara base/head e preserva fatos removidos | Apenas head é mais barato e perde consumidores anteriores | Exclusões, renames e contratos removidos |
 | 016 | Testes recomendados com evidência; omissão exige política conservadora | Alcance no grafo sozinho pode omitir testes relevantes | Falhas conhecidas, cobertura incompatível e fallback de suíte |
 | 017 | Worktrees com estado próprio e cache imutável reutilizável | Banco gravável compartilhado simplifica armazenamento, mistura branches | Edições divergentes, recriação de checkout e equivalência a rebuild |
 | 018 | Antecipar P2/P3 e confirmação competitiva em M0/M1-A; engenharia ampla só após G1 | Completar infraestrutura antes da prova reduz incerteza técnica, mas pode financiar produto sem ganho; protótipos custam descarte/reintegração | Finalistas fortes, holdout, ablations, custo completo, tetos e decisões do protocolo de diferenciação |
 | 019 | Usuário prioriza sucesso com custo aceitável e separa arquiteto de implementador; qualidade é a única rota de avanço | Economia sozinha poderia aprovar produto menos útil; gasto irrestrito poderia comprar pouco ganho. Arquiteto planeja; outra IA implementa e mede | Proposta G1: ganho ≥8 pp, razões de custo por tentativa ≤1,25 e por sucesso ≤1,15 sob intervalos; handoff e estado locais |
+| 020 | Usuário restringe v1 a Linux x86_64 e macOS arm64; Windows após v1 | Matriz ampla desde M0 consome trabalho de plataforma; foco em dois alvos mantém as exigências de qualidade e posterga outros ports | M0-02.R2 ajusta CI; M0-05/06/07/08 e M1-19/20 provam os dois alvos; [decisão e critérios](decisoes/PLATAFORMAS-V1.md) |
 
 ### 14.1 Concretizações do lote L0 nos ADRs existentes
 
