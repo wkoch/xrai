@@ -1,0 +1,210 @@
+{
+  "id": "Q1-Python-22051",
+  "key": "django",
+  "competitive_runs_allowed": false,
+  "tool_receipts": [
+    {
+      "command": [
+        "/opt/homebrew/bin/python3.15",
+        "--version"
+      ],
+      "cwd": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django",
+      "environment": {
+        "GOTOOLCHAIN": "local",
+        "PYTHONPATH": "/private/tmp/xrai-l3-python"
+      },
+      "timeout_seconds": 600,
+      "stream_limit_bytes": 1048576,
+      "elapsed_seconds": 0.01739350000025297,
+      "exit_code": 0,
+      "error": null,
+      "cleanup_status": "child_reaped_pipes_closed",
+      "containment": "trusted evaluator build/probe; process group auxiliary only",
+      "streams": {
+        "stdout": {
+          "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/tool-python.stdout.log",
+          "captured_bytes": 14,
+          "observed_bytes": 14,
+          "captured_sha256": "8d4f04b10a8a6c0cf7aec26d237d8a830221b19fee177b0c39f0362e65d9fba6",
+          "observed_sha256": "8d4f04b10a8a6c0cf7aec26d237d8a830221b19fee177b0c39f0362e65d9fba6",
+          "truncated": false
+        },
+        "stderr": {
+          "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/tool-python.stderr.log",
+          "captured_bytes": 0,
+          "observed_bytes": 0,
+          "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "truncated": false
+        }
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "baseline",
+      "source": {
+        "archive": "/Users/wkoch/Projetos/xrai/eval/sources/archives/vertical-django-8abacfc36d755d8e762a4d2074601b8dc412bfee.tar.gz",
+        "sha256": "8450b5075ca9b85f795bb7243296e3faea1928eb1f82b3bb2e9c0b6d3df78826",
+        "files": 7084,
+        "commit": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+        "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+      },
+      "hidden_oracles": [
+        {
+          "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/django/test_jsonfield.py",
+          "checkout_path": "tests/model_fields/test_jsonfield.py",
+          "sha256": "8625ad975c03fb424f2f3b25bb323fa31c20d7a5a6338eb71dbe5979bcd99f35"
+        }
+      ],
+      "lock_sha256": {},
+      "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/baseline",
+      "preparation": [],
+      "probe": {
+        "command": [
+          "/opt/homebrew/bin/python3.15",
+          "tests/runtests.py",
+          "model_fields.test_jsonfield.TestQuerying.test_in_value_without_explicit_output_field",
+          "--settings=test_sqlite",
+          "--parallel=1",
+          "--verbosity=2"
+        ],
+        "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/baseline",
+        "environment": {
+          "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/target-baseline",
+          "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/gocache-baseline",
+          "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+          "GOTOOLCHAIN": "local",
+          "GOMAXPROCS": "2",
+          "GOFLAGS": "-mod=readonly",
+          "GOPROXY": "https://proxy.golang.org",
+          "GOSUMDB": "sum.golang.org",
+          "PYTHONPATH": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/baseline:/private/tmp/xrai-l3-python",
+          "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+        },
+        "timeout_seconds": 600,
+        "stream_limit_bytes": 1048576,
+        "elapsed_seconds": 0.7544337499994072,
+        "exit_code": 1,
+        "error": null,
+        "cleanup_status": "child_reaped_pipes_closed",
+        "containment": "trusted evaluator build/probe; process group auxiliary only",
+        "streams": {
+          "stdout": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/baseline/probe.stdout.log",
+            "captured_bytes": 4181,
+            "observed_bytes": 4181,
+            "captured_sha256": "fd4c35145477f7ef3cb5f2191ef7311b01c4e436bde7d5aa5124699c22537e21",
+            "observed_sha256": "fd4c35145477f7ef3cb5f2191ef7311b01c4e436bde7d5aa5124699c22537e21",
+            "truncated": false
+          },
+          "stderr": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/baseline/probe.stderr.log",
+            "captured_bytes": 7184,
+            "observed_bytes": 7184,
+            "captured_sha256": "922abd975282c2786d9ae24fad74453234a0a2eaf4628f1fe1e53e9509a2fc0b",
+            "observed_sha256": "922abd975282c2786d9ae24fad74453234a0a2eaf4628f1fe1e53e9509a2fc0b",
+            "truncated": false
+          }
+        }
+      },
+      "classification": "baseline_regression_reproduced"
+    },
+    {
+      "phase": "reference",
+      "source": {
+        "archive": "/private/tmp/xrai-l3-corpus/django-reference.tar.gz",
+        "sha256": "7e9f7055365e14fa79c8faaacfaca6f59965ae91d46e612278ce6f6cc4ea2ecd",
+        "files": 7084,
+        "commit": "fabce94374e166e80e2643db8b85d1e3442427bf",
+        "materialized_links": [
+          {
+            "path": "docs/_theme/djangodocs-epub/static/docicons-behindscenes.png",
+            "original_target": "docs/_theme/djangodocs/static/docicons-behindscenes.png",
+            "materialized_sha256": "5fb7797dc7c4a4c972167242301aa5a2ba0899d7f047f2706f180fe2534f8d14",
+            "policy": "internal file target bytes; no production file omitted"
+          },
+          {
+            "path": "docs/_theme/djangodocs-epub/static/docicons-note.png",
+            "original_target": "docs/_theme/djangodocs/static/docicons-note.png",
+            "materialized_sha256": "ef5ebeaccea981188c2121958b66354a82cc8ed012c65a994645009e82c23eaa",
+            "policy": "internal file target bytes; no production file omitted"
+          },
+          {
+            "path": "docs/_theme/djangodocs-epub/static/docicons-philosophy.png",
+            "original_target": "docs/_theme/djangodocs/static/docicons-philosophy.png",
+            "materialized_sha256": "f52124ef1a7f001b8cf060f80801442a66d98f4f9244a3894388f6b535f9c6d6",
+            "policy": "internal file target bytes; no production file omitted"
+          },
+          {
+            "path": "docs/_theme/djangodocs-epub/static/docicons-warning.png",
+            "original_target": "docs/_theme/djangodocs/static/docicons-warning.png",
+            "materialized_sha256": "842932af08b628e9418dda009d0278ff8a712cef4c9e1f14e0b390b18e911495",
+            "policy": "internal file target bytes; no production file omitted"
+          }
+        ],
+        "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+      },
+      "hidden_oracles": [
+        {
+          "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/django/test_jsonfield.py",
+          "checkout_path": "tests/model_fields/test_jsonfield.py",
+          "sha256": "8625ad975c03fb424f2f3b25bb323fa31c20d7a5a6338eb71dbe5979bcd99f35"
+        }
+      ],
+      "lock_sha256": {},
+      "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/reference",
+      "preparation": [],
+      "probe": {
+        "command": [
+          "/opt/homebrew/bin/python3.15",
+          "tests/runtests.py",
+          "model_fields.test_jsonfield",
+          "--settings=test_sqlite",
+          "--parallel=1",
+          "--verbosity=2"
+        ],
+        "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/reference",
+        "environment": {
+          "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/target-reference",
+          "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/gocache-reference",
+          "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+          "GOTOOLCHAIN": "local",
+          "GOMAXPROCS": "2",
+          "GOFLAGS": "-mod=readonly",
+          "GOPROXY": "https://proxy.golang.org",
+          "GOSUMDB": "sum.golang.org",
+          "PYTHONPATH": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/reference:/private/tmp/xrai-l3-python",
+          "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+        },
+        "timeout_seconds": 600,
+        "stream_limit_bytes": 1048576,
+        "elapsed_seconds": 0.9109490830005598,
+        "exit_code": 0,
+        "error": null,
+        "cleanup_status": "child_reaped_pipes_closed",
+        "containment": "trusted evaluator build/probe; process group auxiliary only",
+        "streams": {
+          "stdout": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/reference/probe.stdout.log",
+            "captured_bytes": 4184,
+            "observed_bytes": 4184,
+            "captured_sha256": "7b33ed20b3fe8d1ee68f5ad1857ec259aea0c4cc87e498d2bf3a387a03ca3d88",
+            "observed_sha256": "7b33ed20b3fe8d1ee68f5ad1857ec259aea0c4cc87e498d2bf3a387a03ca3d88",
+            "truncated": false
+          },
+          "stderr": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/reference/probe.stderr.log",
+            "captured_bytes": 13918,
+            "observed_bytes": 13918,
+            "captured_sha256": "e02527627dd32603f8b16856ae5b1edf00f48b8d7f4d1e3f9400108cda45c71c",
+            "observed_sha256": "e02527627dd32603f8b16856ae5b1edf00f48b8d7f4d1e3f9400108cda45c71c",
+            "truncated": false
+          }
+        }
+      },
+      "classification": "reference_pass"
+    }
+  ],
+  "status": "vertical_pair_verified"
+}

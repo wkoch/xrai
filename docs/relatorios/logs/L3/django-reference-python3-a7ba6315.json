@@ -1,0 +1,30 @@
+{
+  "schema_version": "xrai.eval.vertical.process.v1",
+  "key": "django",
+  "phase": "reference",
+  "command": [
+    "python3",
+    "tests/runtests.py",
+    "model_fields.test_jsonfield",
+    "--settings=test_sqlite",
+    "--parallel",
+    "1"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "tool_versions": {
+      "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+      "go": "go version go1.27.2 darwin/arm64",
+      "node": "v26.11.1",
+      "npm": "11.20.0"
+    },
+    "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+  },
+  "elapsed_seconds": 1.110717042000033,
+  "exit_code": 0,
+  "error": null,
+  "stdout": "Testing against Django installed in '/private/tmp/xrai-l3-corpus/django-reference/django'\nFound 129 test(s).\nSystem check identified no issues (0 silenced).\n",
+  "stderr": "Creating test database for alias 'default'...\n.......................s.s.sss.s............................s...........s.................................s......................\n----------------------------------------------------------------------\nRan 129 tests in 0.076s\n\nOK (skipped=9)\nDestroying test database for alias 'default'...\n"
+}

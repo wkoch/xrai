@@ -1,0 +1,36 @@
+{
+  "command": [
+    "/opt/homebrew/bin/python3.15",
+    "--version"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django",
+  "environment": {
+    "GOTOOLCHAIN": "local",
+    "PYTHONPATH": "/private/tmp/xrai-l3-python"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 0.01739350000025297,
+  "exit_code": 0,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/tool-python.stdout.log",
+      "captured_bytes": 14,
+      "observed_bytes": 14,
+      "captured_sha256": "8d4f04b10a8a6c0cf7aec26d237d8a830221b19fee177b0c39f0362e65d9fba6",
+      "observed_sha256": "8d4f04b10a8a6c0cf7aec26d237d8a830221b19fee177b0c39f0362e65d9fba6",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/tool-python.stderr.log",
+      "captured_bytes": 0,
+      "observed_bytes": 0,
+      "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncated": false
+    }
+  }
+}

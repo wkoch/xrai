@@ -1,0 +1,29 @@
+{
+  "task_id": "Q1-Rust-8371",
+  "label_method": "behavioral tests independent of xrai/graft/Tree-sitter; public upstream regressions or evaluator createProgram oracle",
+  "scope": "FIFO sob coop budget, cancelamento e nove regress\u00f5es sync_mutex; desempenho do xrai n\u00e3o medido; piso LOC sem testes inline ainda n\u00e3o comprovado, complexidade n\u00e3o admitida",
+  "hidden_inputs": {
+    "sync_mutex.rs": {
+      "path": "qualification/vertical/oracles/tokio/sync_mutex.rs",
+      "sha256": "ea502bfe47421df10ab0fd108725333f0647778d638116cd1a960b43d38bb4a9"
+    },
+    "Cargo.lock": {
+      "path": "qualification/vertical/oracles/tokio/Cargo.lock",
+      "sha256": "f4a4bc38313ed265f6d99e37642b75941861ba842ed12bbfecc25956c53d07de"
+    },
+    "reference.patch": {
+      "path": "qualification/vertical/oracles/tokio/reference.patch",
+      "sha256": "54934dcc847768ca5a2286dfa1daccedd005dc67a1eef223be6dc2d1cff326f7"
+    }
+  },
+  "assertions": [
+    "baseline exhibits the named behavioral defect",
+    "reference passes focused oracle and recorded regressions"
+  ],
+  "no_agent_access": "evaluator-only dossier/oracle/reference; materializer copies source snapshot and public request only",
+  "reference_commit": "d241e4b5112ade7fa47310f39f81f59521ce988b",
+  "probe": {
+    "path": "qualification/vertical/oracles/tokio/probe.json",
+    "sha256": "84bae694a5f51a4cc0cee76b4713a9d23256de801bc6138124cb6e4b679b7a80"
+  }
+}

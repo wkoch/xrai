@@ -1,0 +1,124 @@
+{
+  "review_scope": [
+    "crates/xrai-eval/src/filesystem_spike.rs",
+    "crates/xrai-eval/tests/filesystem_inventory.rs",
+    "crates/xrai-eval/tests/filesystem_anchored.rs",
+    "crates/xrai-eval/src/bin/filesystem-spike.rs"
+  ],
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "graph_generation": "2026-10-12T10:18:27Z",
+  "graph_coverage": "metadata_match; best_effort; graphcall includes unrelateddoc/fixture edges; directsource fallback used",
+  "system": "Darwin",
+  "release": "27.0.0",
+  "findings": [
+    {
+      "priority": "P2",
+      "file": "crates/xrai-eval/src/filesystem_spike.rs",
+      "line": 432,
+      "issue": "Directory membership mutation after enumeration is not diagnosed; only file bindings and root lineage identities are reconciled. New source omitted while diagnostics empty.",
+      "required_correction": "Revalidate stamps/membership of all enumerated directory handles including root and empty directories before publication; unstable tree explicit partial/diagnostic; deterministic creation/removal test.",
+      "resolved": true
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "rustc",
+        "--edition=2024",
+        "/private/tmp/xrai-review-capture-repro.rs",
+        "--extern",
+        "xrai_eval=target/debug/libxrai_eval.rlib",
+        "-L",
+        "dependency=target/debug/deps",
+        "-o",
+        "/private/tmp/xrai-review-capture-repro"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-review-capture-repro"
+      ],
+      "exit_code": 0,
+      "stdout": "new_exists=true sources=[\"old\"] diagnostics=[]\n",
+      "stderr": ""
+    }
+  ],
+  "artifact_hashes": {
+    "crates/xrai-eval/src/filesystem_spike.rs": "3fd2b98a57732cfd2cb5facc513d82cdbeac33aec75c4221934d40460131ae1d",
+    "crates/xrai-eval/tests/filesystem_inventory.rs": "d02756970ce6dc0053abe7de7a658ed0096d544a0ca21b955b4dd3028d19e223",
+    "crates/xrai-eval/tests/filesystem_anchored.rs": "2aec03eeb55274ec15233735a25d887d0432b8aeb83fb8f719e2b37297509178",
+    "crates/xrai-eval/src/bin/filesystem-spike.rs": "0ab542d079cc4d6933c2dd88522641b0ad4782c0ea396cd2bf3a75359c37f70d"
+  },
+  "verdict": "accepted_bounded_review",
+  "limits": [
+    "Review bounded to changed filesystemcapture and tests; nativeLinux not run in reviewer macOS",
+    "No proof of atomic snapshot; externalhostilewriters/same-device macmount limitations documented",
+    "One nested-sandbox trial denied UnixListener bind; external native recheck used correct authorized host capabilities"
+  ],
+  "initial_verdict": "changes_required",
+  "recheck": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--test",
+        "filesystem_anchored",
+        "--test",
+        "filesystem_inventory"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 20 tests\ntest ancestor_symlink_before_open_never_delivers_external_sentinel ... ok\ntest ancestor_symlink_after_source_open_never_publishes_as_current ... ok\ntest hard_link_captures_shared_object_and_does_not_claim_link_confinement ... ok\ntest in_place_same_size_and_restored_mtime_is_not_a_snapshot_guarantee ... ok\ntest anchored_enumeration_of_moved_directory_returns_partial_inventory ... ok\ntest inventory_final_reconciliation_rejects_changed_source_revision ... ok\ntest barrier_swap_after_ancestor_handle_open_invalidates_binding ... ok\ntest last_publication_reconciles_previously_captured_ancestor ... ok\ntest ceiling_is_enforced_for_initial_size_and_during_growth ... ok\ntest moving_open_directory_outside_without_link_is_diagnosed ... ok\ntest original_file_unlink_and_recreate_cannot_reuse_old_binding ... ok\ntest rejects_invalid_native_components_and_internal_capture_inventory_exclusions ... ok\ntest replaced_root_invalidates_all_inventory_sources ... ok\ntest replacing_checkout_parent_with_alias_of_moved_parent_invalidates_locator ... ok\ntest new_file_after_enumeration_marks_root_coverage_partial ... ok\ntest empty_directory_addition_and_removal_are_reconciled_before_publication ... ok\ntest special_files_are_refused_without_fifo_blocking ... ok\ntest stabilized_update_equals_independent_rebuild_and_old_bytes_remain_immutable ... ok\ntest seeded_concurrent_writer_stress_never_delivers_external_sentinel ... ok\ntest seeded_adversarial_schedule_supplements_deterministic_barriers ... ok\n\ntest result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s\n\n\nrunning 14 tests\ntest invalid_configuration_fails_before_inventory ... ok\ntest removal_between_discovery_and_capture_has_typed_diagnostic ... ok\ntest permission_failure_is_diagnostic_or_records_privileged_capability ... ok\ntest removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok\ntest replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok\ntest filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok\ntest unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok\ntest linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok\ntest same_size_and_mtime_change_is_detected_by_content_hash ... ok\ntest gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok\ntest symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok\ntest explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok\ntest no_git_and_identical_named_checkouts_have_independent_writable_state ... ok\ntest actual_git_linked_worktrees_have_independent_checkout_state ... ok\n\ntest result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s\n\n",
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.32s\n     Running tests/filesystem_anchored.rs (target/debug/deps/filesystem_anchored-d1e9af92b09f5f16)\n     Running tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-a70bf0dc2ecd8063)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--lib"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.06s\n"
+    },
+    {
+      "command": [
+        "rustc",
+        "--edition=2024",
+        "/private/tmp/xrai-review-capture-repro.rs",
+        "--extern",
+        "xrai_eval=target/debug/libxrai_eval.rlib",
+        "-L",
+        "dependency=target/debug/deps",
+        "-o",
+        "/private/tmp/xrai-review-capture-repro"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-review-capture-repro"
+      ],
+      "exit_code": 0,
+      "stdout": "new_exists=true sources=[\"old\"] diagnostics=[Diagnostic { path: [], reason: ChangedDuringRead }]\n",
+      "stderr": ""
+    }
+  ],
+  "corrected_artifact_hashes": {
+    "crates/xrai-eval/src/filesystem_spike.rs": "dedf69e37807a8cd0aede23e37a99558448e860ce18d10d19eda08dd5b266c18",
+    "crates/xrai-eval/tests/filesystem_inventory.rs": "d02756970ce6dc0053abe7de7a658ed0096d544a0ca21b955b4dd3028d19e223",
+    "crates/xrai-eval/tests/filesystem_anchored.rs": "e1c897683783b60a106cd5fce084a99ec355e8e8ee8be7ba4411cf24c379fc70",
+    "crates/xrai-eval/src/bin/filesystem-spike.rs": "0ab542d079cc4d6933c2dd88522641b0ad4782c0ea396cd2bf3a75359c37f70d"
+  },
+  "correction": "enumerated directory identity/stamp before/after and final publication, including root/empty; membership change returns diagnostic while valid sources remain"
+}

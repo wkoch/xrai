@@ -1,0 +1,934 @@
+{
+  "schema_version": "xrai.eval.vertical.runner.v1",
+  "recorded_at": "2026-10-12T10:35:07.650111+00:00",
+  "selection_sha256": "32e4fb1226f18b19533d126eb50ef7bae22bbf3694802a932d08a69efcd44674",
+  "runner_sha256": "4a57a0afb077a2bf7ddb6ba07fef11d1f9d0ca7f01b60869a984938cf4b8d923",
+  "competitive_runs_allowed": false,
+  "qualified_global_admission": false,
+  "gate_policy": "four evaluator pilots cannot open the 32-case gate",
+  "run_root": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj",
+  "fresh_checkouts": true,
+  "prepare_dependencies_explicit": true,
+  "timeout_per_command_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "results": [
+    {
+      "id": "Q1-Rust-8371",
+      "key": "tokio",
+      "competitive_runs_allowed": false,
+      "tool_receipts": [
+        {
+          "command": [
+            "/Users/wkoch/.cargo/bin/cargo",
+            "--version"
+          ],
+          "cwd": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio",
+          "environment": {
+            "GOTOOLCHAIN": "local",
+            "PYTHONPATH": "/private/tmp/xrai-l3-python"
+          },
+          "timeout_seconds": 600,
+          "stream_limit_bytes": 1048576,
+          "elapsed_seconds": 0.022032457999557664,
+          "exit_code": 0,
+          "error": null,
+          "cleanup_status": "child_reaped_pipes_closed",
+          "containment": "trusted evaluator build/probe; process group auxiliary only",
+          "streams": {
+            "stdout": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/tool-cargo.stdout.log",
+              "captured_bytes": 36,
+              "observed_bytes": 36,
+              "captured_sha256": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503",
+              "observed_sha256": "9950bbb2d5c3417b1a068f0e81f6d3cac991a363193bdf2a22d447f5acf8b503",
+              "truncated": false
+            },
+            "stderr": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/tool-cargo.stderr.log",
+              "captured_bytes": 0,
+              "observed_bytes": 0,
+              "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "truncated": false
+            }
+          }
+        }
+      ],
+      "phases": [
+        {
+          "phase": "baseline",
+          "source": {
+            "archive": "/Users/wkoch/Projetos/xrai/eval/sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz",
+            "sha256": "aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88",
+            "files": 884,
+            "commit": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+            "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+          },
+          "hidden_oracles": [
+            {
+              "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/tokio/sync_mutex.rs",
+              "checkout_path": "tokio/tests/sync_mutex.rs",
+              "sha256": "ea502bfe47421df10ab0fd108725333f0647778d638116cd1a960b43d38bb4a9"
+            },
+            {
+              "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/tokio/Cargo.lock",
+              "checkout_path": "Cargo.lock",
+              "sha256": "f4a4bc38313ed265f6d99e37642b75941861ba842ed12bbfecc25956c53d07de"
+            }
+          ],
+          "lock_sha256": {
+            "Cargo.lock": "f4a4bc38313ed265f6d99e37642b75941861ba842ed12bbfecc25956c53d07de"
+          },
+          "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/baseline",
+          "preparation": [
+            {
+              "command": [
+                "/Users/wkoch/.cargo/bin/cargo",
+                "fetch",
+                "--locked"
+              ],
+              "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/baseline",
+              "environment": {
+                "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/target-baseline",
+                "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/gocache-baseline",
+                "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+                "GOTOOLCHAIN": "local",
+                "GOMAXPROCS": "2",
+                "GOFLAGS": "-mod=readonly",
+                "GOPROXY": "https://proxy.golang.org",
+                "GOSUMDB": "sum.golang.org",
+                "PYTHONPATH": "/private/tmp/xrai-l3-python",
+                "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+              },
+              "timeout_seconds": 600,
+              "stream_limit_bytes": 1048576,
+              "elapsed_seconds": 0.7447203749998152,
+              "exit_code": 0,
+              "error": null,
+              "cleanup_status": "child_reaped_pipes_closed",
+              "containment": "trusted evaluator build/probe; process group auxiliary only",
+              "streams": {
+                "stdout": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/baseline/prepare-0.stdout.log",
+                  "captured_bytes": 0,
+                  "observed_bytes": 0,
+                  "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "truncated": false
+                },
+                "stderr": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/baseline/prepare-0.stderr.log",
+                  "captured_bytes": 2100,
+                  "observed_bytes": 2100,
+                  "captured_sha256": "072b3e582354cf617cee38ec8dc8234f4be54c55164ab44ec375ee0224396452",
+                  "observed_sha256": "072b3e582354cf617cee38ec8dc8234f4be54c55164ab44ec375ee0224396452",
+                  "truncated": false
+                }
+              }
+            }
+          ],
+          "probe": {
+            "command": [
+              "/Users/wkoch/.cargo/bin/cargo",
+              "test",
+              "--locked",
+              "--offline",
+              "-p",
+              "tokio",
+              "--features",
+              "full",
+              "--test",
+              "sync_mutex",
+              "mutex_fifo_with_coop_budget",
+              "--",
+              "--exact",
+              "--nocapture"
+            ],
+            "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/baseline",
+            "environment": {
+              "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/target-baseline",
+              "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/gocache-baseline",
+              "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+              "GOTOOLCHAIN": "local",
+              "GOMAXPROCS": "2",
+              "GOFLAGS": "-mod=readonly",
+              "GOPROXY": "https://proxy.golang.org",
+              "GOSUMDB": "sum.golang.org",
+              "PYTHONPATH": "/private/tmp/xrai-l3-python",
+              "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+            },
+            "timeout_seconds": 600,
+            "stream_limit_bytes": 1048576,
+            "elapsed_seconds": 7.621432625000125,
+            "exit_code": 101,
+            "error": null,
+            "cleanup_status": "child_reaped_pipes_closed",
+            "containment": "trusted evaluator build/probe; process group auxiliary only",
+            "streams": {
+              "stdout": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/baseline/probe.stdout.log",
+                "captured_bytes": 214,
+                "observed_bytes": 214,
+                "captured_sha256": "354d2d9dd1ab46ca9ba67ba5a1ccf2fd9bb88c2fed22a2521fb1ae44da449032",
+                "observed_sha256": "354d2d9dd1ab46ca9ba67ba5a1ccf2fd9bb88c2fed22a2521fb1ae44da449032",
+                "truncated": false
+              },
+              "stderr": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/baseline/probe.stderr.log",
+                "captured_bytes": 3701,
+                "observed_bytes": 3701,
+                "captured_sha256": "d254c9effae1fff6b5d44a885a17d6a7ce5a0204cc1ed657b95fbe91afa52a93",
+                "observed_sha256": "d254c9effae1fff6b5d44a885a17d6a7ce5a0204cc1ed657b95fbe91afa52a93",
+                "truncated": false
+              }
+            }
+          },
+          "classification": "baseline_regression_reproduced"
+        },
+        {
+          "phase": "reference",
+          "source": {
+            "archive": "/private/tmp/xrai-l3-corpus/tokio-reference.tar.gz",
+            "sha256": "6d4bc7b6685af527c5525ed9a82f8a3159168bd9e6d64f73b4632854b684f40c",
+            "files": 884,
+            "commit": "d241e4b5112ade7fa47310f39f81f59521ce988b",
+            "materialized_links": [],
+            "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+          },
+          "hidden_oracles": [
+            {
+              "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/tokio/sync_mutex.rs",
+              "checkout_path": "tokio/tests/sync_mutex.rs",
+              "sha256": "ea502bfe47421df10ab0fd108725333f0647778d638116cd1a960b43d38bb4a9"
+            },
+            {
+              "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/tokio/Cargo.lock",
+              "checkout_path": "Cargo.lock",
+              "sha256": "f4a4bc38313ed265f6d99e37642b75941861ba842ed12bbfecc25956c53d07de"
+            }
+          ],
+          "lock_sha256": {
+            "Cargo.lock": "f4a4bc38313ed265f6d99e37642b75941861ba842ed12bbfecc25956c53d07de"
+          },
+          "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/reference",
+          "preparation": [
+            {
+              "command": [
+                "/Users/wkoch/.cargo/bin/cargo",
+                "fetch",
+                "--locked"
+              ],
+              "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/reference",
+              "environment": {
+                "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/target-reference",
+                "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/gocache-reference",
+                "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+                "GOTOOLCHAIN": "local",
+                "GOMAXPROCS": "2",
+                "GOFLAGS": "-mod=readonly",
+                "GOPROXY": "https://proxy.golang.org",
+                "GOSUMDB": "sum.golang.org",
+                "PYTHONPATH": "/private/tmp/xrai-l3-python",
+                "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+              },
+              "timeout_seconds": 600,
+              "stream_limit_bytes": 1048576,
+              "elapsed_seconds": 0.10130237500015937,
+              "exit_code": 0,
+              "error": null,
+              "cleanup_status": "child_reaped_pipes_closed",
+              "containment": "trusted evaluator build/probe; process group auxiliary only",
+              "streams": {
+                "stdout": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/reference/prepare-0.stdout.log",
+                  "captured_bytes": 0,
+                  "observed_bytes": 0,
+                  "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "truncated": false
+                },
+                "stderr": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/reference/prepare-0.stderr.log",
+                  "captured_bytes": 0,
+                  "observed_bytes": 0,
+                  "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "truncated": false
+                }
+              }
+            }
+          ],
+          "probe": {
+            "command": [
+              "/Users/wkoch/.cargo/bin/cargo",
+              "test",
+              "--locked",
+              "--offline",
+              "-p",
+              "tokio",
+              "--features",
+              "full",
+              "--test",
+              "sync_mutex",
+              "--",
+              "--nocapture"
+            ],
+            "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/reference",
+            "environment": {
+              "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/target-reference",
+              "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/gocache-reference",
+              "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+              "GOTOOLCHAIN": "local",
+              "GOMAXPROCS": "2",
+              "GOFLAGS": "-mod=readonly",
+              "GOPROXY": "https://proxy.golang.org",
+              "GOSUMDB": "sum.golang.org",
+              "PYTHONPATH": "/private/tmp/xrai-l3-python",
+              "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+            },
+            "timeout_seconds": 600,
+            "stream_limit_bytes": 1048576,
+            "elapsed_seconds": 7.372429166999609,
+            "exit_code": 0,
+            "error": null,
+            "cleanup_status": "child_reaped_pipes_closed",
+            "containment": "trusted evaluator build/probe; process group auxiliary only",
+            "streams": {
+              "stdout": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/reference/probe.stdout.log",
+                "captured_bytes": 380,
+                "observed_bytes": 380,
+                "captured_sha256": "c3f873626238f46dff0030581da43c16964fbcb7e06a7a2b4e5f51466e430997",
+                "observed_sha256": "c3f873626238f46dff0030581da43c16964fbcb7e06a7a2b4e5f51466e430997",
+                "truncated": false
+              },
+              "stderr": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/reference/probe.stderr.log",
+                "captured_bytes": 3441,
+                "observed_bytes": 3441,
+                "captured_sha256": "75ec4b79f46204a290aeacb7460983e2a6ed4e64b0c1e2b2f7821c1270cc7377",
+                "observed_sha256": "75ec4b79f46204a290aeacb7460983e2a6ed4e64b0c1e2b2f7821c1270cc7377",
+                "truncated": false
+              }
+            }
+          },
+          "classification": "reference_pass"
+        }
+      ],
+      "status": "vertical_pair_verified"
+    },
+    {
+      "id": "Q1-TSJS-62656",
+      "key": "typescript",
+      "competitive_runs_allowed": false,
+      "tool_receipts": [
+        {
+          "command": [
+            "/opt/homebrew/bin/node",
+            "--version"
+          ],
+          "cwd": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript",
+          "environment": {
+            "GOTOOLCHAIN": "local",
+            "PYTHONPATH": "/private/tmp/xrai-l3-python"
+          },
+          "timeout_seconds": 600,
+          "stream_limit_bytes": 1048576,
+          "elapsed_seconds": 0.0821808750006312,
+          "exit_code": 0,
+          "error": null,
+          "cleanup_status": "child_reaped_pipes_closed",
+          "containment": "trusted evaluator build/probe; process group auxiliary only",
+          "streams": {
+            "stdout": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/tool-node.stdout.log",
+              "captured_bytes": 9,
+              "observed_bytes": 9,
+              "captured_sha256": "ff9f714664f5d87ac6548bb3700b0c18bd57add52ac986b01d4aec21543ccfda",
+              "observed_sha256": "ff9f714664f5d87ac6548bb3700b0c18bd57add52ac986b01d4aec21543ccfda",
+              "truncated": false
+            },
+            "stderr": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/tool-node.stderr.log",
+              "captured_bytes": 0,
+              "observed_bytes": 0,
+              "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "truncated": false
+            }
+          }
+        },
+        {
+          "command": [
+            "/opt/homebrew/bin/npm",
+            "--version"
+          ],
+          "cwd": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript",
+          "environment": {
+            "GOTOOLCHAIN": "local",
+            "PYTHONPATH": "/private/tmp/xrai-l3-python"
+          },
+          "timeout_seconds": 600,
+          "stream_limit_bytes": 1048576,
+          "elapsed_seconds": 0.15839362499991694,
+          "exit_code": 0,
+          "error": null,
+          "cleanup_status": "child_reaped_pipes_closed",
+          "containment": "trusted evaluator build/probe; process group auxiliary only",
+          "streams": {
+            "stdout": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/tool-npm.stdout.log",
+              "captured_bytes": 8,
+              "observed_bytes": 8,
+              "captured_sha256": "6784d6c924df1c8341f9f841f5b5b20c37255de3d34f923baebc0a557d5d5201",
+              "observed_sha256": "6784d6c924df1c8341f9f841f5b5b20c37255de3d34f923baebc0a557d5d5201",
+              "truncated": false
+            },
+            "stderr": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/tool-npm.stderr.log",
+              "captured_bytes": 0,
+              "observed_bytes": 0,
+              "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "truncated": false
+            }
+          }
+        }
+      ],
+      "phases": [
+        {
+          "phase": "baseline",
+          "source": {
+            "archive": "/Users/wkoch/Projetos/xrai/eval/sources/archives/vertical-typescript-cbc2059b53fe1976a803c6b533cc7432517131ac.tar.gz",
+            "sha256": "1d323a1bc525ef55ad4358785afb4783afed9402ebad120d07e9e23063d6cbd0",
+            "files": 74409,
+            "commit": "cbc2059b53fe1976a803c6b533cc7432517131ac",
+            "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+          },
+          "hidden_oracles": [
+            {
+              "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/typescript/probe.cjs",
+              "checkout_path": null,
+              "sha256": "28e2b9590b82379446a511a3f3b5d6f84cb7efdb7178a50e60ddfe69e4e0e7df"
+            }
+          ],
+          "lock_sha256": {
+            "package-lock.json": "dc1d3523ab90eac57708fd340027f913604d59966780f6a2232024d71d51d061"
+          },
+          "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/baseline",
+          "preparation": [
+            {
+              "command": [
+                "/opt/homebrew/bin/npm",
+                "ci",
+                "--ignore-scripts",
+                "--no-audit",
+                "--no-fund"
+              ],
+              "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/baseline",
+              "environment": {
+                "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/target-baseline",
+                "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/gocache-baseline",
+                "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+                "GOTOOLCHAIN": "local",
+                "GOMAXPROCS": "2",
+                "GOFLAGS": "-mod=readonly",
+                "GOPROXY": "https://proxy.golang.org",
+                "GOSUMDB": "sum.golang.org",
+                "PYTHONPATH": "/private/tmp/xrai-l3-python",
+                "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+              },
+              "timeout_seconds": 600,
+              "stream_limit_bytes": 1048576,
+              "elapsed_seconds": 1.3786680829998659,
+              "exit_code": 0,
+              "error": null,
+              "cleanup_status": "child_reaped_pipes_closed",
+              "containment": "trusted evaluator build/probe; process group auxiliary only",
+              "streams": {
+                "stdout": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/baseline/prepare-0.stdout.log",
+                  "captured_bytes": 26,
+                  "observed_bytes": 26,
+                  "captured_sha256": "f265f2bf7d78abd9ec122abd0abbbe425ae45760a7de50fbc1f1123080062a05",
+                  "observed_sha256": "f265f2bf7d78abd9ec122abd0abbbe425ae45760a7de50fbc1f1123080062a05",
+                  "truncated": false
+                },
+                "stderr": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/baseline/prepare-0.stderr.log",
+                  "captured_bytes": 325,
+                  "observed_bytes": 325,
+                  "captured_sha256": "708eb1d4ffcf591239029300168de453c31f84cfe065407254a3d34154247ee8",
+                  "observed_sha256": "708eb1d4ffcf591239029300168de453c31f84cfe065407254a3d34154247ee8",
+                  "truncated": false
+                }
+              }
+            },
+            {
+              "command": [
+                "/opt/homebrew/bin/npm",
+                "run",
+                "build:compiler"
+              ],
+              "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/baseline",
+              "environment": {
+                "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/target-baseline",
+                "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/gocache-baseline",
+                "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+                "GOTOOLCHAIN": "local",
+                "GOMAXPROCS": "2",
+                "GOFLAGS": "-mod=readonly",
+                "GOPROXY": "https://proxy.golang.org",
+                "GOSUMDB": "sum.golang.org",
+                "PYTHONPATH": "/private/tmp/xrai-l3-python",
+                "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+              },
+              "timeout_seconds": 600,
+              "stream_limit_bytes": 1048576,
+              "elapsed_seconds": 8.200997375000043,
+              "exit_code": 0,
+              "error": null,
+              "cleanup_status": "child_reaped_pipes_closed",
+              "containment": "trusted evaluator build/probe; process group auxiliary only",
+              "streams": {
+                "stdout": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/baseline/prepare-1.stdout.log",
+                  "captured_bytes": 2146,
+                  "observed_bytes": 2146,
+                  "captured_sha256": "482995b7b2eb8c6b7c6496ef73195a420adeb548ef048176bdc945d853e6cb1a",
+                  "observed_sha256": "482995b7b2eb8c6b7c6496ef73195a420adeb548ef048176bdc945d853e6cb1a",
+                  "truncated": false
+                },
+                "stderr": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/baseline/prepare-1.stderr.log",
+                  "captured_bytes": 0,
+                  "observed_bytes": 0,
+                  "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "truncated": false
+                }
+              }
+            }
+          ],
+          "probe": {
+            "command": [
+              "/opt/homebrew/bin/node",
+              "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/typescript/probe.cjs"
+            ],
+            "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/baseline",
+            "environment": {
+              "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/target-baseline",
+              "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/gocache-baseline",
+              "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+              "GOTOOLCHAIN": "local",
+              "GOMAXPROCS": "2",
+              "GOFLAGS": "-mod=readonly",
+              "GOPROXY": "https://proxy.golang.org",
+              "GOSUMDB": "sum.golang.org",
+              "PYTHONPATH": "/private/tmp/xrai-l3-python",
+              "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+            },
+            "timeout_seconds": 600,
+            "stream_limit_bytes": 1048576,
+            "elapsed_seconds": 0.5476760419996936,
+            "exit_code": 1,
+            "error": null,
+            "cleanup_status": "child_reaped_pipes_closed",
+            "containment": "trusted evaluator build/probe; process group auxiliary only",
+            "streams": {
+              "stdout": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/baseline/probe.stdout.log",
+                "captured_bytes": 54,
+                "observed_bytes": 54,
+                "captured_sha256": "6436db1b38829ad7a1dbbb06f2b61bd3bbff3e19cc8a18de8d4f9b0044c457ba",
+                "observed_sha256": "6436db1b38829ad7a1dbbb06f2b61bd3bbff3e19cc8a18de8d4f9b0044c457ba",
+                "truncated": false
+              },
+              "stderr": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/baseline/probe.stderr.log",
+                "captured_bytes": 914,
+                "observed_bytes": 914,
+                "captured_sha256": "d9bc60494ba2d31dcfc653b60f0d727366d04089533d4e80124bb0e4b9ae718b",
+                "observed_sha256": "d9bc60494ba2d31dcfc653b60f0d727366d04089533d4e80124bb0e4b9ae718b",
+                "truncated": false
+              }
+            }
+          },
+          "classification": "baseline_regression_reproduced"
+        },
+        {
+          "phase": "reference",
+          "source": {
+            "archive": "/private/tmp/xrai-l3-corpus/typescript-reference.tar.gz",
+            "sha256": "a4b4e0e5ceedcb181dd3314599e16b2d75206d579bffe69a3a774cd089c4677c",
+            "files": 74414,
+            "commit": "542b09547f598d5966431e5b4a229199122ec41d",
+            "materialized_links": [],
+            "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+          },
+          "hidden_oracles": [
+            {
+              "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/typescript/probe.cjs",
+              "checkout_path": null,
+              "sha256": "28e2b9590b82379446a511a3f3b5d6f84cb7efdb7178a50e60ddfe69e4e0e7df"
+            }
+          ],
+          "lock_sha256": {
+            "package-lock.json": "dc1d3523ab90eac57708fd340027f913604d59966780f6a2232024d71d51d061"
+          },
+          "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/reference",
+          "preparation": [
+            {
+              "command": [
+                "/opt/homebrew/bin/npm",
+                "ci",
+                "--ignore-scripts",
+                "--no-audit",
+                "--no-fund"
+              ],
+              "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/reference",
+              "environment": {
+                "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/target-reference",
+                "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/gocache-reference",
+                "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+                "GOTOOLCHAIN": "local",
+                "GOMAXPROCS": "2",
+                "GOFLAGS": "-mod=readonly",
+                "GOPROXY": "https://proxy.golang.org",
+                "GOSUMDB": "sum.golang.org",
+                "PYTHONPATH": "/private/tmp/xrai-l3-python",
+                "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+              },
+              "timeout_seconds": 600,
+              "stream_limit_bytes": 1048576,
+              "elapsed_seconds": 1.1932072079998761,
+              "exit_code": 0,
+              "error": null,
+              "cleanup_status": "child_reaped_pipes_closed",
+              "containment": "trusted evaluator build/probe; process group auxiliary only",
+              "streams": {
+                "stdout": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/reference/prepare-0.stdout.log",
+                  "captured_bytes": 26,
+                  "observed_bytes": 26,
+                  "captured_sha256": "f265f2bf7d78abd9ec122abd0abbbe425ae45760a7de50fbc1f1123080062a05",
+                  "observed_sha256": "f265f2bf7d78abd9ec122abd0abbbe425ae45760a7de50fbc1f1123080062a05",
+                  "truncated": false
+                },
+                "stderr": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/reference/prepare-0.stderr.log",
+                  "captured_bytes": 325,
+                  "observed_bytes": 325,
+                  "captured_sha256": "708eb1d4ffcf591239029300168de453c31f84cfe065407254a3d34154247ee8",
+                  "observed_sha256": "708eb1d4ffcf591239029300168de453c31f84cfe065407254a3d34154247ee8",
+                  "truncated": false
+                }
+              }
+            },
+            {
+              "command": [
+                "/opt/homebrew/bin/npm",
+                "run",
+                "build:compiler"
+              ],
+              "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/reference",
+              "environment": {
+                "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/target-reference",
+                "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/gocache-reference",
+                "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+                "GOTOOLCHAIN": "local",
+                "GOMAXPROCS": "2",
+                "GOFLAGS": "-mod=readonly",
+                "GOPROXY": "https://proxy.golang.org",
+                "GOSUMDB": "sum.golang.org",
+                "PYTHONPATH": "/private/tmp/xrai-l3-python",
+                "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+              },
+              "timeout_seconds": 600,
+              "stream_limit_bytes": 1048576,
+              "elapsed_seconds": 7.490272875000301,
+              "exit_code": 0,
+              "error": null,
+              "cleanup_status": "child_reaped_pipes_closed",
+              "containment": "trusted evaluator build/probe; process group auxiliary only",
+              "streams": {
+                "stdout": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/reference/prepare-1.stdout.log",
+                  "captured_bytes": 2144,
+                  "observed_bytes": 2144,
+                  "captured_sha256": "1d45b2b35a526c09978efdd1c2eacfc146454aac3d996f701e08a88e8c9828b5",
+                  "observed_sha256": "1d45b2b35a526c09978efdd1c2eacfc146454aac3d996f701e08a88e8c9828b5",
+                  "truncated": false
+                },
+                "stderr": {
+                  "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/reference/prepare-1.stderr.log",
+                  "captured_bytes": 0,
+                  "observed_bytes": 0,
+                  "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "truncated": false
+                }
+              }
+            }
+          ],
+          "probe": {
+            "command": [
+              "/opt/homebrew/bin/node",
+              "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/typescript/probe.cjs"
+            ],
+            "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/reference",
+            "environment": {
+              "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/target-reference",
+              "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/gocache-reference",
+              "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+              "GOTOOLCHAIN": "local",
+              "GOMAXPROCS": "2",
+              "GOFLAGS": "-mod=readonly",
+              "GOPROXY": "https://proxy.golang.org",
+              "GOSUMDB": "sum.golang.org",
+              "PYTHONPATH": "/private/tmp/xrai-l3-python",
+              "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+            },
+            "timeout_seconds": 600,
+            "stream_limit_bytes": 1048576,
+            "elapsed_seconds": 1.1406554169998344,
+            "exit_code": 0,
+            "error": null,
+            "cleanup_status": "child_reaped_pipes_closed",
+            "containment": "trusted evaluator build/probe; process group auxiliary only",
+            "streams": {
+              "stdout": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/reference/probe.stdout.log",
+                "captured_bytes": 77,
+                "observed_bytes": 77,
+                "captured_sha256": "47feaf541e819b29817460a1d0a8d97d4ee172d899c0b9accebd9fc8504e5045",
+                "observed_sha256": "47feaf541e819b29817460a1d0a8d97d4ee172d899c0b9accebd9fc8504e5045",
+                "truncated": false
+              },
+              "stderr": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/reference/probe.stderr.log",
+                "captured_bytes": 0,
+                "observed_bytes": 0,
+                "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "truncated": false
+              }
+            }
+          },
+          "classification": "reference_pass"
+        }
+      ],
+      "status": "vertical_pair_verified"
+    },
+    {
+      "id": "Q1-Python-22051",
+      "key": "django",
+      "competitive_runs_allowed": false,
+      "tool_receipts": [
+        {
+          "command": [
+            "/opt/homebrew/bin/python3.15",
+            "--version"
+          ],
+          "cwd": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django",
+          "environment": {
+            "GOTOOLCHAIN": "local",
+            "PYTHONPATH": "/private/tmp/xrai-l3-python"
+          },
+          "timeout_seconds": 600,
+          "stream_limit_bytes": 1048576,
+          "elapsed_seconds": 0.01739350000025297,
+          "exit_code": 0,
+          "error": null,
+          "cleanup_status": "child_reaped_pipes_closed",
+          "containment": "trusted evaluator build/probe; process group auxiliary only",
+          "streams": {
+            "stdout": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/tool-python.stdout.log",
+              "captured_bytes": 14,
+              "observed_bytes": 14,
+              "captured_sha256": "8d4f04b10a8a6c0cf7aec26d237d8a830221b19fee177b0c39f0362e65d9fba6",
+              "observed_sha256": "8d4f04b10a8a6c0cf7aec26d237d8a830221b19fee177b0c39f0362e65d9fba6",
+              "truncated": false
+            },
+            "stderr": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/tool-python.stderr.log",
+              "captured_bytes": 0,
+              "observed_bytes": 0,
+              "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "truncated": false
+            }
+          }
+        }
+      ],
+      "phases": [
+        {
+          "phase": "baseline",
+          "source": {
+            "archive": "/Users/wkoch/Projetos/xrai/eval/sources/archives/vertical-django-8abacfc36d755d8e762a4d2074601b8dc412bfee.tar.gz",
+            "sha256": "8450b5075ca9b85f795bb7243296e3faea1928eb1f82b3bb2e9c0b6d3df78826",
+            "files": 7084,
+            "commit": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+            "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+          },
+          "hidden_oracles": [
+            {
+              "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/django/test_jsonfield.py",
+              "checkout_path": "tests/model_fields/test_jsonfield.py",
+              "sha256": "8625ad975c03fb424f2f3b25bb323fa31c20d7a5a6338eb71dbe5979bcd99f35"
+            }
+          ],
+          "lock_sha256": {},
+          "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/baseline",
+          "preparation": [],
+          "probe": {
+            "command": [
+              "/opt/homebrew/bin/python3.15",
+              "tests/runtests.py",
+              "model_fields.test_jsonfield.TestQuerying.test_in_value_without_explicit_output_field",
+              "--settings=test_sqlite",
+              "--parallel=1",
+              "--verbosity=2"
+            ],
+            "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/baseline",
+            "environment": {
+              "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/target-baseline",
+              "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/gocache-baseline",
+              "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+              "GOTOOLCHAIN": "local",
+              "GOMAXPROCS": "2",
+              "GOFLAGS": "-mod=readonly",
+              "GOPROXY": "https://proxy.golang.org",
+              "GOSUMDB": "sum.golang.org",
+              "PYTHONPATH": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/baseline:/private/tmp/xrai-l3-python",
+              "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+            },
+            "timeout_seconds": 600,
+            "stream_limit_bytes": 1048576,
+            "elapsed_seconds": 0.7544337499994072,
+            "exit_code": 1,
+            "error": null,
+            "cleanup_status": "child_reaped_pipes_closed",
+            "containment": "trusted evaluator build/probe; process group auxiliary only",
+            "streams": {
+              "stdout": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/baseline/probe.stdout.log",
+                "captured_bytes": 4181,
+                "observed_bytes": 4181,
+                "captured_sha256": "fd4c35145477f7ef3cb5f2191ef7311b01c4e436bde7d5aa5124699c22537e21",
+                "observed_sha256": "fd4c35145477f7ef3cb5f2191ef7311b01c4e436bde7d5aa5124699c22537e21",
+                "truncated": false
+              },
+              "stderr": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/baseline/probe.stderr.log",
+                "captured_bytes": 7184,
+                "observed_bytes": 7184,
+                "captured_sha256": "922abd975282c2786d9ae24fad74453234a0a2eaf4628f1fe1e53e9509a2fc0b",
+                "observed_sha256": "922abd975282c2786d9ae24fad74453234a0a2eaf4628f1fe1e53e9509a2fc0b",
+                "truncated": false
+              }
+            }
+          },
+          "classification": "baseline_regression_reproduced"
+        },
+        {
+          "phase": "reference",
+          "source": {
+            "archive": "/private/tmp/xrai-l3-corpus/django-reference.tar.gz",
+            "sha256": "7e9f7055365e14fa79c8faaacfaca6f59965ae91d46e612278ce6f6cc4ea2ecd",
+            "files": 7084,
+            "commit": "fabce94374e166e80e2643db8b85d1e3442427bf",
+            "materialized_links": [
+              {
+                "path": "docs/_theme/djangodocs-epub/static/docicons-behindscenes.png",
+                "original_target": "docs/_theme/djangodocs/static/docicons-behindscenes.png",
+                "materialized_sha256": "5fb7797dc7c4a4c972167242301aa5a2ba0899d7f047f2706f180fe2534f8d14",
+                "policy": "internal file target bytes; no production file omitted"
+              },
+              {
+                "path": "docs/_theme/djangodocs-epub/static/docicons-note.png",
+                "original_target": "docs/_theme/djangodocs/static/docicons-note.png",
+                "materialized_sha256": "ef5ebeaccea981188c2121958b66354a82cc8ed012c65a994645009e82c23eaa",
+                "policy": "internal file target bytes; no production file omitted"
+              },
+              {
+                "path": "docs/_theme/djangodocs-epub/static/docicons-philosophy.png",
+                "original_target": "docs/_theme/djangodocs/static/docicons-philosophy.png",
+                "materialized_sha256": "f52124ef1a7f001b8cf060f80801442a66d98f4f9244a3894388f6b535f9c6d6",
+                "policy": "internal file target bytes; no production file omitted"
+              },
+              {
+                "path": "docs/_theme/djangodocs-epub/static/docicons-warning.png",
+                "original_target": "docs/_theme/djangodocs/static/docicons-warning.png",
+                "materialized_sha256": "842932af08b628e9418dda009d0278ff8a712cef4c9e1f14e0b390b18e911495",
+                "policy": "internal file target bytes; no production file omitted"
+              }
+            ],
+            "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+          },
+          "hidden_oracles": [
+            {
+              "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/django/test_jsonfield.py",
+              "checkout_path": "tests/model_fields/test_jsonfield.py",
+              "sha256": "8625ad975c03fb424f2f3b25bb323fa31c20d7a5a6338eb71dbe5979bcd99f35"
+            }
+          ],
+          "lock_sha256": {},
+          "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/reference",
+          "preparation": [],
+          "probe": {
+            "command": [
+              "/opt/homebrew/bin/python3.15",
+              "tests/runtests.py",
+              "model_fields.test_jsonfield",
+              "--settings=test_sqlite",
+              "--parallel=1",
+              "--verbosity=2"
+            ],
+            "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/reference",
+            "environment": {
+              "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/target-reference",
+              "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/gocache-reference",
+              "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+              "GOTOOLCHAIN": "local",
+              "GOMAXPROCS": "2",
+              "GOFLAGS": "-mod=readonly",
+              "GOPROXY": "https://proxy.golang.org",
+              "GOSUMDB": "sum.golang.org",
+              "PYTHONPATH": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/reference:/private/tmp/xrai-l3-python",
+              "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+            },
+            "timeout_seconds": 600,
+            "stream_limit_bytes": 1048576,
+            "elapsed_seconds": 0.9109490830005598,
+            "exit_code": 0,
+            "error": null,
+            "cleanup_status": "child_reaped_pipes_closed",
+            "containment": "trusted evaluator build/probe; process group auxiliary only",
+            "streams": {
+              "stdout": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/reference/probe.stdout.log",
+                "captured_bytes": 4184,
+                "observed_bytes": 4184,
+                "captured_sha256": "7b33ed20b3fe8d1ee68f5ad1857ec259aea0c4cc87e498d2bf3a387a03ca3d88",
+                "observed_sha256": "7b33ed20b3fe8d1ee68f5ad1857ec259aea0c4cc87e498d2bf3a387a03ca3d88",
+                "truncated": false
+              },
+              "stderr": {
+                "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/reference/probe.stderr.log",
+                "captured_bytes": 13918,
+                "observed_bytes": 13918,
+                "captured_sha256": "e02527627dd32603f8b16856ae5b1edf00f48b8d7f4d1e3f9400108cda45c71c",
+                "observed_sha256": "e02527627dd32603f8b16856ae5b1edf00f48b8d7f4d1e3f9400108cda45c71c",
+                "truncated": false
+              }
+            }
+          },
+          "classification": "reference_pass"
+        }
+      ],
+      "status": "vertical_pair_verified"
+    }
+  ]
+}

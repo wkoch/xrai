@@ -121,6 +121,79 @@
         "git clone https://github.com/dustin/go-humanize.git",
         "git archive --format=tar e308a8fc2981a19ebce7ae9d7c32094fe2b7baad"
       ]
+    },
+    "vertical:tokio": {
+      "family": "Rust",
+      "url": "https://github.com/tokio-rs/tokio.git",
+      "commit": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+      "version_ref": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+      "license_spdx": "MIT",
+      "license_files": [
+        "LICENSE",
+        "tokio-macros/LICENSE",
+        "tokio-stream/LICENSE",
+        "tokio-test/LICENSE",
+        "tokio-util/LICENSE",
+        "tokio/LICENSE"
+      ],
+      "provenance": "https://github.com/tokio-rs/tokio/pull/8371",
+      "rebuild": [
+        "download the hash-bound upstream_baseline in vertical/selection.json",
+        "python3 eval/scripts/prepare_vertical_sources.py --cache <cache>"
+      ]
+    },
+    "vertical:typescript": {
+      "family": "TSJS",
+      "url": "https://github.com/microsoft/TypeScript.git",
+      "commit": "cbc2059b53fe1976a803c6b533cc7432517131ac",
+      "version_ref": "cbc2059b53fe1976a803c6b533cc7432517131ac",
+      "license_spdx": "Apache-2.0",
+      "license_files": [
+        "LICENSE.txt"
+      ],
+      "provenance": "https://github.com/microsoft/TypeScript/pull/62656",
+      "rebuild": [
+        "download the hash-bound upstream_baseline in vertical/selection.json",
+        "python3 eval/scripts/prepare_vertical_sources.py --cache <cache>"
+      ]
+    },
+    "vertical:django": {
+      "family": "Python",
+      "url": "https://github.com/django/django.git",
+      "commit": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+      "version_ref": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+      "license_spdx": "BSD-3-Clause",
+      "license_files": [
+        "LICENSE",
+        "LICENSE.python",
+        "django/contrib/admin/static/admin/css/vendor/select2/LICENSE-SELECT2.md",
+        "django/contrib/admin/static/admin/js/vendor/jquery/LICENSE.txt",
+        "django/contrib/admin/static/admin/js/vendor/select2/LICENSE.md",
+        "django/contrib/admin/static/admin/js/vendor/xregexp/LICENSE.txt",
+        "django/contrib/gis/gdal/LICENSE",
+        "django/contrib/gis/geos/LICENSE",
+        "django/dispatch/license.txt"
+      ],
+      "provenance": "https://github.com/django/django/pull/22051",
+      "rebuild": [
+        "download the hash-bound upstream_baseline in vertical/selection.json",
+        "python3 eval/scripts/prepare_vertical_sources.py --cache <cache>"
+      ]
+    },
+    "vertical:prometheus": {
+      "family": "Go",
+      "url": "https://github.com/prometheus/prometheus.git",
+      "commit": "fd99142576bfae26107ac7263c3eb43bb212004e",
+      "version_ref": "fd99142576bfae26107ac7263c3eb43bb212004e",
+      "license_spdx": "Apache-2.0",
+      "license_files": [
+        "LICENSE"
+      ],
+      "provenance": "https://github.com/prometheus/prometheus/pull/19866",
+      "rebuild": [
+        "download the hash-bound upstream_baseline in vertical/selection.json",
+        "python3 eval/scripts/prepare_vertical_sources.py --cache <cache>"
+      ]
     }
   },
   "snapshots": {
@@ -2509,6 +2582,136 @@
           "sha256": "5e43b30cc3f1a2484326808acceb9094a0348a7470d1bdd364d219dda66239af"
         }
       ]
+    },
+    "tokio-rs/tokio@2fb5757a97a94b3173f8fdd7b6280423b63da6e6": {
+      "repository": "tokio-rs/tokio",
+      "commit": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+      "license_spdx": "MIT",
+      "license_files": [
+        "LICENSE",
+        "tokio-macros/LICENSE",
+        "tokio-stream/LICENSE",
+        "tokio-test/LICENSE",
+        "tokio-util/LICENSE",
+        "tokio/LICENSE"
+      ],
+      "archive": "sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz",
+      "sha256": "aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88",
+      "archive_bytes": 1265834,
+      "source_bytes": 6324873,
+      "file_count": 884,
+      "files_artifact": {
+        "path": "sources/manifests/vertical-tokio.json.gz",
+        "sha256": "54323de68707d5248c08ae269e84b1696fb5bb56e5aa669a9bf8172552b25af1"
+      },
+      "upstream_archive": {
+        "url": "https://codeload.github.com/tokio-rs/tokio/tar.gz/2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+        "sha256": "5afaa6ac2f091e8b2f5156453c03d3540fb2c2e1e66045aaba6a77f5ad2acfec"
+      },
+      "materialization_policy": "xrai.complete.regular-files.internal-link-copy.v1",
+      "materialized_links": []
+    },
+    "microsoft/TypeScript@cbc2059b53fe1976a803c6b533cc7432517131ac": {
+      "repository": "microsoft/TypeScript",
+      "commit": "cbc2059b53fe1976a803c6b533cc7432517131ac",
+      "license_spdx": "Apache-2.0",
+      "license_files": [
+        "LICENSE.txt"
+      ],
+      "archive": "sources/archives/vertical-typescript-cbc2059b53fe1976a803c6b533cc7432517131ac.tar.gz",
+      "sha256": "1d323a1bc525ef55ad4358785afb4783afed9402ebad120d07e9e23063d6cbd0",
+      "archive_bytes": 28367572,
+      "source_bytes": 364119311,
+      "file_count": 74409,
+      "files_artifact": {
+        "path": "sources/manifests/vertical-typescript.json.gz",
+        "sha256": "af37c71fe742d374f5d285c7a3c40be3141075ad6c5bae7cc96e41815f5aa17f"
+      },
+      "upstream_archive": {
+        "url": "https://codeload.github.com/microsoft/TypeScript/tar.gz/cbc2059b53fe1976a803c6b533cc7432517131ac",
+        "sha256": "c8715a25e8644bf7ccd37453db16f19f22d6820f32c18c6683a7a1574ee89e71"
+      },
+      "materialization_policy": "xrai.complete.regular-files.internal-link-copy.v1",
+      "materialized_links": []
+    },
+    "django/django@8abacfc36d755d8e762a4d2074601b8dc412bfee": {
+      "repository": "django/django",
+      "commit": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+      "license_spdx": "BSD-3-Clause",
+      "license_files": [
+        "LICENSE",
+        "LICENSE.python",
+        "django/contrib/admin/static/admin/css/vendor/select2/LICENSE-SELECT2.md",
+        "django/contrib/admin/static/admin/js/vendor/jquery/LICENSE.txt",
+        "django/contrib/admin/static/admin/js/vendor/select2/LICENSE.md",
+        "django/contrib/admin/static/admin/js/vendor/xregexp/LICENSE.txt",
+        "django/contrib/gis/gdal/LICENSE",
+        "django/contrib/gis/geos/LICENSE",
+        "django/dispatch/license.txt"
+      ],
+      "archive": "sources/archives/vertical-django-8abacfc36d755d8e762a4d2074601b8dc412bfee.tar.gz",
+      "sha256": "8450b5075ca9b85f795bb7243296e3faea1928eb1f82b3bb2e9c0b6d3df78826",
+      "archive_bytes": 10472437,
+      "source_bytes": 46113624,
+      "file_count": 7084,
+      "files_artifact": {
+        "path": "sources/manifests/vertical-django.json.gz",
+        "sha256": "95079d6ec19b81553824c7123d329cc57d39bf0372b4c36e1778844123b3bbc6"
+      },
+      "upstream_archive": {
+        "url": "https://codeload.github.com/django/django/tar.gz/8abacfc36d755d8e762a4d2074601b8dc412bfee",
+        "sha256": "a928c6328eaceb60bd7fd897814cf8cd3f0923aae3b227a5013231069b4f10c3"
+      },
+      "materialization_policy": "xrai.complete.regular-files.internal-link-copy.v1",
+      "materialized_links": [
+        {
+          "path": "docs/_theme/djangodocs-epub/static/docicons-behindscenes.png",
+          "original_target": "docs/_theme/djangodocs/static/docicons-behindscenes.png",
+          "materialized_sha256": "5fb7797dc7c4a4c972167242301aa5a2ba0899d7f047f2706f180fe2534f8d14",
+          "policy": "internal file target bytes; no production file omitted"
+        },
+        {
+          "path": "docs/_theme/djangodocs-epub/static/docicons-note.png",
+          "original_target": "docs/_theme/djangodocs/static/docicons-note.png",
+          "materialized_sha256": "ef5ebeaccea981188c2121958b66354a82cc8ed012c65a994645009e82c23eaa",
+          "policy": "internal file target bytes; no production file omitted"
+        },
+        {
+          "path": "docs/_theme/djangodocs-epub/static/docicons-philosophy.png",
+          "original_target": "docs/_theme/djangodocs/static/docicons-philosophy.png",
+          "materialized_sha256": "f52124ef1a7f001b8cf060f80801442a66d98f4f9244a3894388f6b535f9c6d6",
+          "policy": "internal file target bytes; no production file omitted"
+        },
+        {
+          "path": "docs/_theme/djangodocs-epub/static/docicons-warning.png",
+          "original_target": "docs/_theme/djangodocs/static/docicons-warning.png",
+          "materialized_sha256": "842932af08b628e9418dda009d0278ff8a712cef4c9e1f14e0b390b18e911495",
+          "policy": "internal file target bytes; no production file omitted"
+        }
+      ]
+    },
+    "prometheus/prometheus@fd99142576bfae26107ac7263c3eb43bb212004e": {
+      "repository": "prometheus/prometheus",
+      "commit": "fd99142576bfae26107ac7263c3eb43bb212004e",
+      "license_spdx": "Apache-2.0",
+      "license_files": [
+        "LICENSE"
+      ],
+      "archive": "sources/archives/vertical-prometheus-fd99142576bfae26107ac7263c3eb43bb212004e.tar.gz",
+      "sha256": "fe280bbc1b9541a4dd686e6cae8ebe58f8dd3f9ddbe8efe4c7df01aecc72403b",
+      "archive_bytes": 6194975,
+      "source_bytes": 29730938,
+      "file_count": 1691,
+      "files_artifact": {
+        "path": "sources/manifests/vertical-prometheus.json.gz",
+        "sha256": "ceee07637db844dabc83c0646d2aba083e058bcf238225f4a6a542a50c1d6c00"
+      },
+      "upstream_archive": {
+        "url": "https://codeload.github.com/prometheus/prometheus/tar.gz/fd99142576bfae26107ac7263c3eb43bb212004e",
+        "sha256": "71a281eea4451d41b792e2f2433d173717b88298d45f4230f9024bc4742a69b0"
+      },
+      "materialization_policy": "xrai.complete.regular-files.internal-link-copy.v1",
+      "materialized_links": []
     }
   }
 }

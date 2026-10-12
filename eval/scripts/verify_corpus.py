@@ -11,7 +11,7 @@ import tarfile
 import tempfile
 
 from generate_fixtures import generate
-from materialize_task import ROOT, materialize, safe_path, tasks
+from materialize_task import ROOT, materialize, safe_path, source_files, tasks
 
 
 def require(condition, message):
@@ -45,13 +45,13 @@ def validate(rows, sources):
                 files[member.name] = tar.extractfile(member).read()
         require(len(files)==snap['file_count'], 'source file count')
         require(sum(len(v) for v in files.values())==snap['source_bytes'], 'source size')
-        for entry in snap['files']:
+        for entry in source_files(snap):
             data=files[entry['path']]
             require(len(data)==entry['bytes'] and hashlib.sha256(data).hexdigest()==entry['sha256'], 'source fingerprint')
-        require(snap['license_files'] or snap['supplementary_license'], 'missing license notice')
+        require(snap['license_files'] or snap.get('supplementary_license'), 'missing license notice')
         for path in snap['license_files']:
             require(path in files, 'snapshot license path')
-        if snap['supplementary_license']:
+        if snap.get('supplementary_license'):
             notice=snap['supplementary_license'];require(hashlib.sha256((ROOT/notice['path']).read_bytes()).hexdigest()==notice['sha256'], 'supplementary license')
         cache[key]=files
     patches=[]

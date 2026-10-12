@@ -1,0 +1,31 @@
+{
+  "schema": "l3-worker-command-v1",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "recorded_at": "2026-10-12T10:16:02.936779+00:00",
+  "command": [
+    "cargo",
+    "clippy",
+    "-p",
+    "xrai-eval",
+    "--test",
+    "workers",
+    "--bin",
+    "worker-spike",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "architecture": "arm64",
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "elapsed_seconds": 0.5411905829996613,
+  "exit_code": 101,
+  "stdout": "",
+  "stderr": "    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\nerror: unnecessary use of `to_string`\n  --> crates/xrai-eval/src/bin/worker-spike.rs:79:577\n   |\n79 | ...urce.len(),json_string(&blake3::Hash::from(request.identity.source_hash).to_hex().to_string()),json_string(&blake3::Hash::from(re...\n   |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use: `blake3::Hash::from(request.identity.source_hash).to_hex().as_ref()`\n   |\n   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#unnecessary_to_owned\n   = note: `-D clippy::unnecessary-to-owned` implied by `-D warnings`\n   = help: to override `-D warnings` add `#[allow(clippy::unnecessary_to_owned)]`\n\nerror: unnecessary use of `to_string`\n  --> crates/xrai-eval/src/bin/worker-spike.rs:79:661\n   |\n79 | ...to_string()),json_string(&blake3::Hash::from(request.identity.producer).to_hex().to_string()),json_string(&blake3::Hash::from(req...\n   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use: `blake3::Hash::from(request.identity.producer).to_hex().as_ref()`\n   |\n   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#unnecessary_to_owned\n\nerror: unnecessary use of `to_string`\n  --> crates/xrai-eval/src/bin/worker-spike.rs:79:742\n   |\n79 | ..._string()),json_string(&blake3::Hash::from(request.identity.configuration).to_hex().to_string()),6.0/direct_seconds,6.0/pool_seco...\n   |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use: `blake3::Hash::from(request.identity.configuration).to_hex().as_ref()`\n   |\n   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#unnecessary_to_owned\n\nerror: could not compile `xrai-eval` (bin \"worker-spike\") due to 3 previous errors\nwarning: build failed, waiting for other jobs to finish...\n",
+  "artifact_hashes": {
+    "crates/xrai-eval/src/worker_spike.rs": "58060652b8c7ec394bec03db02495e848b812e610600b9dd2bfa31aef0eff0c0",
+    "crates/xrai-eval/src/bin/worker-spike.rs": "c9451da8f02524752c0d4d114b2773e39f39ce2ee30cd8128d6f4ed60990a187",
+    "crates/xrai-eval/tests/workers.rs": "0b745bbe2720d31634758f8047b327c2ca87b510e5b1e3515783bbf05d233f50"
+  }
+}

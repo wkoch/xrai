@@ -1,0 +1,11 @@
+--- a/storage/remote/queue_manager.go
++++ b/storage/remote/queue_manager.go
+@@ -1174,7 +1174,7 @@
+ 		dataPendingRate = dataInRate*dataKeptRatio - dataOutRate
+ 		highestSent     = t.metrics.highestSentTimestamp.Get()
+ 		highestRecv     = t.highestRecvTimestamp.Get()
+-		delay           = highestRecv - highestSent
++		delay           = max(highestRecv-highestSent, 0) // Delay must never be negative.
+ 		dataPending     = delay * dataInRate * dataKeptRatio
+ 	)
+ 

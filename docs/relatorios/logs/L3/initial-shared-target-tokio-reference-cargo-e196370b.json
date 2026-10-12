@@ -1,0 +1,33 @@
+{
+  "schema_version": "xrai.eval.vertical.process.v1",
+  "key": "tokio",
+  "phase": "reference",
+  "command": [
+    "cargo",
+    "test",
+    "--locked",
+    "-p",
+    "tokio",
+    "--features",
+    "full",
+    "--test",
+    "sync_mutex"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "tool_versions": {
+      "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+      "go": "go version go1.27.2 darwin/arm64",
+      "node": "v26.11.1",
+      "npm": "11.20.0"
+    },
+    "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+  },
+  "elapsed_seconds": 0.4620666250002614,
+  "exit_code": 0,
+  "error": null,
+  "stdout": "\nrunning 9 tests\ntest try_lock ... ok\ntest straight_execution ... ok\ntest readiness ... ok\ntest debug_format ... ok\ntest mutex_debug ... ok\ntest mutex_fifo_with_coop_budget ... ok\ntest mutex_coop_drop_after_take_permit ... ok\ntest aborted_future_1 ... ok\ntest aborted_future_2 ... ok\n\ntest result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+  "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s\n     Running tests/sync_mutex.rs (/private/tmp/xrai-l3-corpus/tokio-target/debug/deps/sync_mutex-9ca0b010cedbd41a)\n"
+}

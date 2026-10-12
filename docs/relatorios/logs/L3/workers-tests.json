@@ -1,0 +1,26 @@
+{
+  "schema": "l3-worker-command-v1",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "recorded_at": "2026-10-12T10:35:06.166739+00:00",
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "xrai-eval",
+    "--test",
+    "workers"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "architecture": "arm64",
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "elapsed_seconds": 1.1985253749999174,
+  "exit_code": 0,
+  "stdout": "\nrunning 13 tests\ntest decoder_refuses_huge_header_before_payload_read_and_corrupt_enums ... ok\ntest identities_spans_and_extra_bytes_refused ... ok\ntest admission_overload_and_duplicate_requests_do_not_grow_memory ... ok\ntest queue_wait_consumes_total_deadline_before_spawn ... ok\ntest shutdown_with_inflight_failure_reaps_child ... ok\ntest deadlines_cancel_late_and_shutdown_are_bounded ... ok\ntest worker_is_given_bytes_and_does_not_reopen_source ... ok\ntest executable_path_with_spaces_roundtrips_real_worker ... ok\ntest simultaneous_configurations_remain_distinct ... ok\ntest finite_retry_in_new_process_and_stderr_capture_bounded ... ok\ntest faulty_worker_cannot_publish_and_independent_work_progresses ... ok\ntest roundtrip_and_direct_pool_equivalence_all_dialects ... ok\ntest valid_frame_requires_successful_exit_and_roundtrips_repeat ... ok\n\ntest result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.03s\n\n",
+  "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s\n     Running tests/workers.rs (target/debug/deps/workers-2c16a12c3caa26aa)\n",
+  "artifact_hashes": {
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "crates/xrai-eval/src/bin/worker-spike.rs": "96f82da6f806506f888cfe3df73dd52c7e824119fbdf491638a535f77ffadb6a",
+    "crates/xrai-eval/tests/workers.rs": "e27591a7fdd58bfda27d3e085e90f4281efa1f3d32906d6611e5d195c2f2b6b1"
+  }
+}

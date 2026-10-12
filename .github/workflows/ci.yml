@@ -34,6 +34,7 @@ jobs:
         run: |
           python eval/scripts/verify_corpus.py
           python -m unittest discover -s eval/scripts/tests -v
+          python eval/scripts/verify_vertical.py
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}
@@ -56,6 +57,7 @@ jobs:
       EXPECTED_HOST: ${{ matrix.host }}
       XRAI_BINARY: ${{ matrix.binary }}
       MACOSX_DEPLOYMENT_TARGET: '15.0'
+      XRAI_CONTAINMENT_EVIDENCE: native-evidence/containment.jsonl
     steps:
       - uses: actions/checkout@v6
         with:
@@ -99,14 +101,16 @@ jobs:
       - name: Prove local harness isolation and replay
         run: |
           mkdir -p native-evidence
-          python -m unittest discover -s crates/xrai-eval/harness/tests -v
+          python -m unittest discover -s crates/xrai-eval/harness/tests -v 2>&1 | tee native-evidence/harness-tests.log
           python crates/xrai-eval/harness/runner.py baseline --output native-evidence/baseline > native-evidence/baseline-summary.json
           python crates/xrai-eval/harness/verify_records.py native-evidence/baseline
           python crates/xrai-eval/harness/incremental.py --binary target/debug/incremental-probe --output native-evidence/incremental.json
       - name: Record filesystem capabilities
         run: target/debug/filesystem-spike > native-evidence/filesystem.json
       - name: Build incorporated grammars
-        run: cargo build --locked --release -p xrai-eval --bin parsing-spike
+        run: cargo build --locked --release -p xrai-eval --bin parsing-spike --bin worker-spike
+      - name: Record worker IPC and exploratory benchmark
+        run: target/release/worker-spike demonstrate > native-evidence/workers.json
       - name: Prove standalone parsing with network blocked
         run: python crates/xrai-eval/scripts/verify_packaging.py --binary target/release/parsing-spike --output native-evidence/packaging.json
       - name: Preserve native receipts

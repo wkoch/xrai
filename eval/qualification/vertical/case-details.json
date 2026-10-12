@@ -1,0 +1,163 @@
+{
+  "tokio": {
+    "prompt": "A aquisição de um mutex deveria respeitar a ordem FIFO prometida pela API. Quando uma tarefa esgota seu orçamento cooperativo antes de aguardar o lock, outra tarefa que chega depois pode recebê-lo primeiro. Corrija essa violação, preservando a liberação de permissões quando a espera é cancelada.",
+    "modules": [
+      [
+        "tokio/src/sync/mutex.rs",
+        "sync",
+        "A API pública traduz espera do mutex para aquisição de uma permissão."
+      ],
+      [
+        "tokio/src/sync/batch_semaphore.rs",
+        "sync",
+        "A fila controla a ordem e a atribuição/liberação das permissões."
+      ],
+      [
+        "tokio/src/task/coop/mod.rs",
+        "task-scheduling",
+        "O orçamento cooperativo determina quando a tarefa deve ceder execução."
+      ]
+    ],
+    "edges": [
+      [
+        0,
+        1,
+        "lock_owned delega aquisição FIFO à semáfora"
+      ],
+      [
+        1,
+        2,
+        "Acquire::poll consulta poll_proceed e marca progresso cooperativo"
+      ]
+    ],
+    "complex": false,
+    "patch": [
+      "tokio/src/sync/batch_semaphore.rs"
+    ],
+    "hidden": [
+      "sync_mutex.rs",
+      "Cargo.lock"
+    ],
+    "scope": "FIFO sob coop budget, cancelamento e nove regressões sync_mutex; desempenho do xrai não medido; piso LOC sem testes inline ainda não comprovado, complexidade não admitida"
+  },
+  "typescript": {
+    "prompt": "O compilador acusa TS2783, dizendo que uma propriedade será sempre sobrescrita, ao espalhar uma união na qual essa propriedade pode estar ausente. Uma busca retorna {id: string, label: string} ou undefined; o objeto usa id explícito e espalha o resultado da busca ou {label: string}. Remova esse falso positivo e mantenha o erro quando a propriedade é obrigatória em todas as alternativas.",
+    "modules": [
+      [
+        "src/compiler/checker.ts",
+        "type-checking",
+        "Produz propriedades da união e diagnósticos de sobrescrita no spread."
+      ],
+      [
+        "src/compiler/utilities.ts",
+        "symbol-metadata",
+        "Recupera flags de propriedades sintéticas/transientes."
+      ],
+      [
+        "src/compiler/types.ts",
+        "symbol-metadata",
+        "Define os flags de propriedades parciais das uniões."
+      ]
+    ],
+    "edges": [
+      [
+        0,
+        1,
+        "A checagem consulta metadados de símbolos através de getCheckFlags"
+      ],
+      [
+        1,
+        2,
+        "getCheckFlags usa CheckFlags e TransientSymbolLinks definidos em types"
+      ]
+    ],
+    "complex": false,
+    "patch": [
+      "src/compiler/checker.ts"
+    ],
+    "hidden": [
+      "probe.cjs"
+    ],
+    "scope": "API createProgram no compilador construído da fonte: repro, erro obrigatório e propriedade opcional; complexidade não reivindicada por três arquivos do mesmo compilador"
+  },
+  "django": {
+    "prompt": "Em SQLite, filtrar um JSONField com __in contendo Value() sem output_field explícito causa malformed JSON para strings e não encontra booleanos armazenados. Corrija os resultados para primitivas, mantendo os casos com output_field explícito e os demais filtros JSON.",
+    "modules": [
+      [
+        "django/db/models/fields/json.py",
+        "orm-fields",
+        "JSONIn prepara SQL/params específico para JSON nas bases sem JSON nativo."
+      ],
+      [
+        "django/db/models/lookups.py",
+        "orm-lookups",
+        "In compila expressões RHS e chama resolve_expression_parameter por parâmetro."
+      ],
+      [
+        "django/db/models/expressions.py",
+        "orm-expressions",
+        "Value infere output_field e prepara o valor primitivo."
+      ],
+      [
+        "django/db/backends/base/operations.py",
+        "database-backends",
+        "adapt_json_value serializa o valor para a representação da conexão."
+      ]
+    ],
+    "edges": [
+      [
+        0,
+        1,
+        "JSONIn deriva de In para compilar parâmetros RHS"
+      ],
+      [
+        1,
+        2,
+        "batch_process_rhs/resolve_expression_parameter compila expressões Value"
+      ],
+      [
+        0,
+        3,
+        "O preparo JSON passa pela operação da conexão"
+      ]
+    ],
+    "complex": true,
+    "patch": [
+      "django/db/models/fields/json.py"
+    ],
+    "hidden": [
+      "test_jsonfield.py"
+    ],
+    "scope": "SQLite, cinco primitivas e 129 testes de regressão (9 skips); MariaDB/Oracle não executados"
+  },
+  "prometheus": {
+    "prompt": "Após exemplares com timestamp futuro, o remote-write reduz a quantidade de shards ao mínimo, embora a taxa atual de envio não justifique isso. Preserve o dimensionamento coerente sem usar um atraso negativo como backlog; mantenha os cenários normais de crescimento e redução.",
+    "modules": [
+      [
+        "storage/remote/queue_manager.go",
+        "remote-write-sharding",
+        "Calcula os shards desejados a partir do atraso e das taxas observadas."
+      ],
+      [
+        "storage/remote/write.go",
+        "remote-write-timestamps",
+        "Mantém contagem e highestRecvTimestamp da entrada; AppendExemplar omite atualização temporal, explicando a assimetria com highestSent da fila."
+      ]
+    ],
+    "edges": [
+      [
+        1,
+        0,
+        "timestampTracker alimenta métricas e highestRecvTimestamp usadas no cálculo de backlog"
+      ]
+    ],
+    "complex": false,
+    "patch": [
+      "storage/remote/queue_manager.go"
+    ],
+    "hidden": [
+      "queue_manager_test.go"
+    ],
+    "scope": "TestCalculateDesiredShardsDetail e TestCalculateDesiredShards; correção WAL do mesmo PR fora deste pedido"
+  }
+}

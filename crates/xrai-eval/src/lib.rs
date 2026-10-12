@@ -7,3 +7,4 @@
 pub mod filesystem_spike;
 pub mod parsing_spike;
 pub mod sqlite_spike;
+pub mod worker_spike;

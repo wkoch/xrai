@@ -1,0 +1,44 @@
+{
+  "command": [
+    "/opt/homebrew/bin/node",
+    "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/typescript/probe.cjs"
+  ],
+  "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/reference",
+  "environment": {
+    "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/target-reference",
+    "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/gocache-reference",
+    "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+    "GOTOOLCHAIN": "local",
+    "GOMAXPROCS": "2",
+    "GOFLAGS": "-mod=readonly",
+    "GOPROXY": "https://proxy.golang.org",
+    "GOSUMDB": "sum.golang.org",
+    "PYTHONPATH": "/private/tmp/xrai-l3-python",
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 1.1406554169998344,
+  "exit_code": 0,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/reference/probe.stdout.log",
+      "captured_bytes": 77,
+      "observed_bytes": 77,
+      "captured_sha256": "47feaf541e819b29817460a1d0a8d97d4ee172d899c0b9accebd9fc8504e5045",
+      "observed_sha256": "47feaf541e819b29817460a1d0a8d97d4ee172d899c0b9accebd9fc8504e5045",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/reference/probe.stderr.log",
+      "captured_bytes": 0,
+      "observed_bytes": 0,
+      "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncated": false
+    }
+  }
+}

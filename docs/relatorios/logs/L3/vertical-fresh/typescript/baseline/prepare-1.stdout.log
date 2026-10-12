@@ -1,0 +1,53 @@
+
+> typescript@6.0.0 build:compiler
+> hereby local
+
+Using /private/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/typescript/baseline/Herebyfile.mjs to run local
+Starting generate-diagnostics
+> /opt/homebrew/Cellar/node/26.11.1/bin/node scripts/processDiagnosticMessages.mjs src/compiler/diagnosticMessages.json
+Starting lib
+Starting shim-compile-cache-tsc
+Starting shim-compile-cache-tsserver
+Starting shim-compile-cache-typings-installer
+Starting bundle-watch-guard
+Starting build-watch-guard
+Starting generate-types-map
+Finished shim-compile-cache-tsserver in 4ms
+Finished shim-compile-cache-tsc in 4ms
+Finished shim-compile-cache-typings-installer in 4ms
+Finished generate-types-map in 4ms
+Finished lib in 42ms
+Reading diagnostics from src/compiler/diagnosticMessages.json
+Finished generate-diagnostics in 109ms
+Starting localize
+> /opt/homebrew/Cellar/node/26.11.1/bin/node scripts/generateLocalizedDiagnosticMessages.mjs src/loc/lcl built/local src/compiler/diagnosticMessages.generated.json
+Starting bundle-tsc
+Starting build-tsc
+Starting bundle-services
+Starting build-services
+Starting bundle-tsserver
+Starting build-tsserver
+Starting bundle-typings-installer
+Starting build-typings-installer
+Starting copy-built-local-diagnostic-messages
+Finished copy-built-local-diagnostic-messages in 1ms
+Finished bundle-watch-guard in 176ms
+Finished bundle-typings-installer in 141ms
+Finished bundle-tsserver in 146ms
+Finished build-watch-guard in 560ms
+Finished bundle-tsc in 585ms
+Finished localize in 618ms
+Finished bundle-services in 743ms
+Finished build-tsc in 6.7s
+Finished build-services in 6.7s
+Finished build-tsserver in 6.7s
+Finished build-typings-installer in 6.7s
+Starting dts-services
+> /opt/homebrew/Cellar/node/26.11.1/bin/node ./scripts/dtsBundler.mjs --entrypoint ./built/local/typescript/typescript.d.ts --output ./built/local/typescript.d.ts
+Starting lssl
+Finished lssl in 1ms
+Bundling ./built/local/typescript/typescript.d.ts to ./built/local/typescript.d.ts and ./built/local/typescript.internal.d.ts
+Finished dts-services in 923ms
+Starting dts-lssl
+Finished dts-lssl in 1ms
+Completed local in 7.7s

@@ -1,0 +1,617 @@
+{
+  "recorded_at": "2026-10-12T10:49:08.004551+00:00",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "scope": "source and reports before first L3 publication; immutable evidence receipts carry own hashes; CI pending",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "e256065b8bb8b47ef6ca3167d3735423196a2887d83c007bda46ce71f666fcd0",
+      "bytes": 4930
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "b9442dfde1d9e805fc5aaaf71cce7c18b8412a4fab8d0af781703e03ec45e0f9",
+      "bytes": 11702
+    },
+    {
+      "path": "crates/xrai-eval/Cargo.toml",
+      "sha256": "9669e9c10f841008f6ed1ee4bebff5d1518b4a81a74ff52db6436f2ab471e506",
+      "bytes": 686
+    },
+    {
+      "path": "crates/xrai-eval/harness/README.md",
+      "sha256": "3c266a960c48bdd21043f3f39139d9a317440b29a4fff48b2c527cc09285b790",
+      "bytes": 5472
+    },
+    {
+      "path": "crates/xrai-eval/harness/adapters.py",
+      "sha256": "92eb8334bf8cf0f436e64cfa27a601438376210786ff3df03bf22f9118c17c9b",
+      "bytes": 2867
+    },
+    {
+      "path": "crates/xrai-eval/harness/incremental.py",
+      "sha256": "d1d957a90a4624b368964b889ae4acd2af9b0c055819c1ccc3eb55958bd86199",
+      "bytes": 6811
+    },
+    {
+      "path": "crates/xrai-eval/harness/result-v2.schema.json",
+      "sha256": "7fb1dcbf61dfdfede865a9de5f51220ab1f9f022eebeb999b9bbc86d95df2368",
+      "bytes": 10605
+    },
+    {
+      "path": "crates/xrai-eval/harness/result.schema.json",
+      "sha256": "d0219b2097427c5788b4dda9b9019cbf681ecc01ca58313fd16a3d7cfe7f0966",
+      "bytes": 5638
+    },
+    {
+      "path": "crates/xrai-eval/harness/runner.py",
+      "sha256": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+      "bytes": 7979
+    },
+    {
+      "path": "crates/xrai-eval/harness/supervisor.py",
+      "sha256": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571",
+      "bytes": 16306
+    },
+    {
+      "path": "crates/xrai-eval/harness/tests/replay-v1.json",
+      "sha256": "ab7e8554eba5ffc626083904e44951354ed46d844121928091ca4d8a453b6482",
+      "bytes": 7641
+    },
+    {
+      "path": "crates/xrai-eval/harness/tests/test_containment.py",
+      "sha256": "bc0671f22a253c64aec5d6b0f6ceb6d63a911618b7659263155fcf7dd8e48a89",
+      "bytes": 16166
+    },
+    {
+      "path": "crates/xrai-eval/harness/tests/test_runner.py",
+      "sha256": "d8eb99118ed596aa5394d6833fc7d1439238006e17d429247bbae18fefb3f581",
+      "bytes": 6615
+    },
+    {
+      "path": "crates/xrai-eval/harness/verify_records.py",
+      "sha256": "e85d9be2cd9fbed770000990e7712cf2c1ca27db9acac83f689ca97226be900f",
+      "bytes": 1324
+    },
+    {
+      "path": "crates/xrai-eval/licenses/filesystem/COPYRIGHT",
+      "sha256": "377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9",
+      "bytes": 853
+    },
+    {
+      "path": "crates/xrai-eval/licenses/filesystem/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "bytes": 1023
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-0.27.1-LICENSE",
+      "sha256": "c5cfb43042b6b72045f4ba997834d0a7786d2793d91680868b5815b39f14fc78",
+      "bytes": 1080
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-0.27.1-src--unicode--LICENSE",
+      "sha256": "6a18c5fac70d7860b57f5b72b4e2c9a1ba6b3d2741eef7ff9767c5379364f10d",
+      "bytes": 21001
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-0.27.1-src--wasm-stdlib--libc--LICENSE",
+      "sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+      "bytes": 6204
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-go-0.25.0-LICENSE",
+      "sha256": "2e0110e07abef7c2548b26ec9d6969775617ca539a0dc8dbeeb14d6452c711d1",
+      "bytes": 1080
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-javascript-0.25.0-LICENSE",
+      "sha256": "2e0110e07abef7c2548b26ec9d6969775617ca539a0dc8dbeeb14d6452c711d1",
+      "bytes": 1080
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-language-0.1.9-LICENSE",
+      "sha256": "c5cfb43042b6b72045f4ba997834d0a7786d2793d91680868b5815b39f14fc78",
+      "bytes": 1080
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-python-0.25.0-LICENSE",
+      "sha256": "d724405ce238a22c0d35769c5a36b386ad5958192efe8bbb304fb2896254575f",
+      "bytes": 1080
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-rust-0.24.2-LICENSE",
+      "sha256": "31d5b6f4243d5c7c6e1c4ebbbb9f6407bd1457a08bcc4f706521710341acba36",
+      "bytes": 1080
+    },
+    {
+      "path": "crates/xrai-eval/licenses/parsing/tree-sitter-typescript-0.23.2-LICENSE",
+      "sha256": "49bf33cf78ef5897e4e161ce1517df7de1ae5042a65b6bcfd44401e0fc606559",
+      "bytes": 1080
+    },
+    {
+      "path": "crates/xrai-eval/parsing-provenance.json",
+      "sha256": "8d3dadf8c870f44f32516fe2585ba64438959caa1243ba2596457eb581c641ba",
+      "bytes": 54469
+    },
+    {
+      "path": "crates/xrai-eval/queries/go.scm",
+      "sha256": "07427b924c206d66bb2ff578a0116842efa7cbb32a5691055bd86945701eb92e",
+      "bytes": 116
+    },
+    {
+      "path": "crates/xrai-eval/queries/javascript.scm",
+      "sha256": "292985c5bbc4188e6a0b70cff1955551c9c021dcf69701a29a853034267f2d4b",
+      "bytes": 119
+    },
+    {
+      "path": "crates/xrai-eval/queries/python.scm",
+      "sha256": "5fdc049ddbde82b70f2e1cad12a35c973d4f60a1602dbe13b3c6a3d2eb462f49",
+      "bytes": 117
+    },
+    {
+      "path": "crates/xrai-eval/queries/rust.scm",
+      "sha256": "cb0c5adf1065df990975271b3e74389fd763c8fa5eb0a04cb99f4600f829f681",
+      "bytes": 111
+    },
+    {
+      "path": "crates/xrai-eval/queries/tsx.scm",
+      "sha256": "823c3d010f1ca730f0470b2250a789b75ae926a6b2cf4253df97dadd29490ab5",
+      "bytes": 128
+    },
+    {
+      "path": "crates/xrai-eval/queries/typescript.scm",
+      "sha256": "823c3d010f1ca730f0470b2250a789b75ae926a6b2cf4253df97dadd29490ab5",
+      "bytes": 128
+    },
+    {
+      "path": "crates/xrai-eval/scripts/record_parser_provenance.py",
+      "sha256": "d20898e63c182ee8abfe1118d152017453ef0c8a6d46785c8d85ac3489c4b2fb",
+      "bytes": 3243
+    },
+    {
+      "path": "crates/xrai-eval/scripts/verify_packaging.py",
+      "sha256": "819df9b1dbb2f743a96edb2560bcdedcdd0071d30bd80fc7aff284922e65d211",
+      "bytes": 7603
+    },
+    {
+      "path": "crates/xrai-eval/src/bin/filesystem-spike.rs",
+      "sha256": "0ab542d079cc4d6933c2dd88522641b0ad4782c0ea396cd2bf3a75359c37f70d",
+      "bytes": 8376
+    },
+    {
+      "path": "crates/xrai-eval/src/bin/incremental-probe.rs",
+      "sha256": "ab827d2cf4dca3fff08d369f0680094427a72b64d12b93b52345529b0d82e813",
+      "bytes": 1344
+    },
+    {
+      "path": "crates/xrai-eval/src/bin/parsing-spike.rs",
+      "sha256": "cac9c452d77b841e35f3e7bf3ff6ac6f87c71020f9c870ee2b348e59b53e64a0",
+      "bytes": 1772
+    },
+    {
+      "path": "crates/xrai-eval/src/bin/sqlite-spike.rs",
+      "sha256": "34b3c99566e7a62e0fc50a98f1f3f2271476cdb92436ba811f72eb738b414663",
+      "bytes": 4730
+    },
+    {
+      "path": "crates/xrai-eval/src/bin/worker-spike.rs",
+      "sha256": "96f82da6f806506f888cfe3df73dd52c7e824119fbdf491638a535f77ffadb6a",
+      "bytes": 5960
+    },
+    {
+      "path": "crates/xrai-eval/src/filesystem_spike.rs",
+      "sha256": "dedf69e37807a8cd0aede23e37a99558448e860ce18d10d19eda08dd5b266c18",
+      "bytes": 21502
+    },
+    {
+      "path": "crates/xrai-eval/src/lib.rs",
+      "sha256": "d8fbaa3deef3ce38c8474162f7dbb9cb617f2ac610823604e829f2a5094759f8",
+      "bytes": 330
+    },
+    {
+      "path": "crates/xrai-eval/src/parsing_spike.rs",
+      "sha256": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+      "bytes": 6696
+    },
+    {
+      "path": "crates/xrai-eval/src/sqlite_spike.rs",
+      "sha256": "2fa7234566ca5ea8cc9fd933bcd584af241e60c038ed4cc9c2b7f6c1e4d2acb3",
+      "bytes": 13403
+    },
+    {
+      "path": "crates/xrai-eval/src/worker_spike.rs",
+      "sha256": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+      "bytes": 25155
+    },
+    {
+      "path": "crates/xrai-eval/tests/filesystem_anchored.rs",
+      "sha256": "e1c897683783b60a106cd5fce084a99ec355e8e8ee8be7ba4411cf24c379fc70",
+      "bytes": 17379
+    },
+    {
+      "path": "crates/xrai-eval/tests/filesystem_inventory.rs",
+      "sha256": "d02756970ce6dc0053abe7de7a658ed0096d544a0ca21b955b4dd3028d19e223",
+      "bytes": 14930
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/.gitattributes",
+      "sha256": "322b233f10755639337a12ed7ed2fb2107c2d7dcbfda0e848aea8c0f9992835c",
+      "bytes": 154
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/go.incomplete",
+      "sha256": "f54c7eccb032b630568cb3cb2781608d4a7e199b355e95d81c7af12ddb172231",
+      "bytes": 26
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/go.valid",
+      "sha256": "5b20beb5f68376f8c873eceba28b7d960b444b27d0ada264c50ba181943922bf",
+      "bytes": 57
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/javascript.incomplete",
+      "sha256": "d87a2168fa77a8bd52f2e52cbeaab946d45bf6f0c6eaf1833be4474de554009c",
+      "bytes": 17
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/javascript.valid",
+      "sha256": "ff2824c870369186b78fab3d574a6a0e04432ed19641134aa05f431d2e46ebf7",
+      "bytes": 42
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/jsx.incomplete",
+      "sha256": "ea5a8e60dff677c8b424b115ed9dfcb9022ae39156b41dded06da53f0b3dd32d",
+      "bytes": 44
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/jsx.valid",
+      "sha256": "d7803699ed2742dfe28aa8c420b3cd3a8fe0361d779ea19fe92f8667b4453bb0",
+      "bytes": 60
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/python.incomplete",
+      "sha256": "553eda8c53fc903895e005a1bc644c6058ffd91ce4df67c9fbdbe8763f6d8862",
+      "bytes": 12
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/python.valid",
+      "sha256": "9338fd2744b62904ccf38377b5fead56b0c15f218a16941df604f62fc467288a",
+      "bytes": 37
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/rust.incomplete",
+      "sha256": "82e06253ad3baafda03f0e2c8e642c62eef6d7b597275146c15820b713272add",
+      "bytes": 15
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/rust.valid",
+      "sha256": "1f25cc68700b7dc8615e0bee9fa3d348477b0ba5e54b6f4057a812c09dc0e185",
+      "bytes": 30
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/tsx.incomplete",
+      "sha256": "6d778e67158a45af8cb85de338e7199b80cd1b7a2186b55e5e7cf3cfd7dbfd2a",
+      "bytes": 57
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/tsx.valid",
+      "sha256": "5d95a9ecf2eb7351a79bd4566087704b1a03f28cd55e9588c5ca36ecfbb4d061",
+      "bytes": 73
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/typescript.incomplete",
+      "sha256": "6b986a4637c4ad56dde1f0445e364d5ccb7359066cc0825eb45adc5de343a561",
+      "bytes": 26
+    },
+    {
+      "path": "crates/xrai-eval/tests/fixtures/parsing/typescript.valid",
+      "sha256": "d2f4b668e58dc3974de820b16c389ab7e9464ddafded519aba18ee50d2195ffc",
+      "bytes": 90
+    },
+    {
+      "path": "crates/xrai-eval/tests/parsing.rs",
+      "sha256": "73473dfedbfa7619ba9e73a2bd0082369d33b2b76e5eba4228f55e75fce47995",
+      "bytes": 3370
+    },
+    {
+      "path": "crates/xrai-eval/tests/sqlite_snapshots.rs",
+      "sha256": "c42290f163189e499b849a6d6194fa13722cf8ee2bcb8b9a4926956ef7845d4b",
+      "bytes": 12336
+    },
+    {
+      "path": "crates/xrai-eval/tests/workers.rs",
+      "sha256": "e27591a7fdd58bfda27d3e085e90f4281efa1f3d32906d6611e5d195c2f2b6b1",
+      "bytes": 12881
+    },
+    {
+      "path": "docs/STATUS-IMPLEMENTACAO.md",
+      "sha256": "7d57e12b96b4205668f9339cc80e8af0281471701919d739b7a172f1fe74fb2e",
+      "bytes": 13844
+    },
+    {
+      "path": "docs/relatorios/L3.md",
+      "sha256": "d545849a27c93bc1810820806f123bd341b89621e447215c4df083349c01ea68",
+      "bytes": 8007
+    },
+    {
+      "path": "eval/qualification/vertical/.gitattributes",
+      "sha256": "18c15d8a503759c26afaadd1b78bf216718e1bc8127e2bad298dbd7c3029345e",
+      "bytes": 162
+    },
+    {
+      "path": "eval/qualification/vertical/README.md",
+      "sha256": "ae8674726951c2e96512d4c4164c4c8a9b37a3a3b737c4a3c85c60fb7bca8126",
+      "bytes": 9497
+    },
+    {
+      "path": "eval/qualification/vertical/candidates.jsonl",
+      "sha256": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8",
+      "bytes": 21293
+    },
+    {
+      "path": "eval/qualification/vertical/case-details.json",
+      "sha256": "4ce4efc2e965f6681b7dcba44f95bdd3cecd470aea34dd52eed484cdea8fc6bb",
+      "bytes": 5642
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/django/oracle.json",
+      "sha256": "523d3aeab582f09023e943ffe13a036dd264c27feaac64b9d9a5e948a1fee8b8",
+      "bytes": 1184
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/django/probe.json",
+      "sha256": "f895d2229709ec2e9623a8228b6b5a886c630bf107a2ba0c9955a555e53eff4e",
+      "bytes": 4900
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/django/reference.patch",
+      "sha256": "c9ffd07201e30aea9155bf1b91ac4a8be71faf1a108c15df97eec651fc04162a",
+      "bytes": 1640
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/django/test_jsonfield.py",
+      "sha256": "8625ad975c03fb424f2f3b25bb323fa31c20d7a5a6338eb71dbe5979bcd99f35",
+      "bytes": 57436
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/prometheus/oracle.json",
+      "sha256": "f7e41834fbb65a214ee017192abca04364c9ff0d946382479bc26ad1be93827b",
+      "bytes": 1214
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/prometheus/probe.json",
+      "sha256": "b9c6ba9827819f845eef3e7ec79888fe43c93d0cf3a5b8ac62b1ae8cbdd74210",
+      "bytes": 4413
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/prometheus/queue_manager_test.go",
+      "sha256": "cf9f590c8102ae8bd5ff025201ebdf5aa9a77c4f3a2ebb833de1126f65388a44",
+      "bytes": 93082
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/prometheus/reference.patch",
+      "sha256": "38bf8147ea8e474a72d4bfe660da43bc20b9388b6e5f2f0dd1c31892cae19517",
+      "bytes": 461
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/tokio/Cargo.lock",
+      "sha256": "f4a4bc38313ed265f6d99e37642b75941861ba842ed12bbfecc25956c53d07de",
+      "bytes": 47753
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/tokio/oracle.json",
+      "sha256": "2e4053bc9a29177d463185f82ddfce7a146d8ef76b44e6e9b28ca6941b9478c4",
+      "bytes": 1434
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/tokio/probe.json",
+      "sha256": "84bae694a5f51a4cc0cee76b4713a9d23256de801bc6138124cb6e4b679b7a80",
+      "bytes": 4909
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/tokio/reference.patch",
+      "sha256": "54934dcc847768ca5a2286dfa1daccedd005dc67a1eef223be6dc2d1cff326f7",
+      "bytes": 1254
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/tokio/sync_mutex.rs",
+      "sha256": "ea502bfe47421df10ab0fd108725333f0647778d638116cd1a960b43d38bb4a9",
+      "bytes": 5714
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/typescript/oracle.json",
+      "sha256": "f1f8b2d24517c2093d27a67309442e6a08acdce8ee07ced6e037d4beb5b0fb3c",
+      "bytes": 1265
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/typescript/probe.cjs",
+      "sha256": "28e2b9590b82379446a511a3f3b5d6f84cb7efdb7178a50e60ddfe69e4e0e7df",
+      "bytes": 1480
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/typescript/probe.json",
+      "sha256": "bd82a83a71194e6f97fd58323e3d7793a30c432f1ddc0cb839000e2bc423b6f9",
+      "bytes": 7616
+    },
+    {
+      "path": "eval/qualification/vertical/oracles/typescript/reference.patch",
+      "sha256": "1bf7af9d815a47ac9f027142e98ad68fff63fb36cedf399784b64f7bc95bfe9b",
+      "bytes": 719
+    },
+    {
+      "path": "eval/qualification/vertical/provenance/django.json",
+      "sha256": "28344c5d39c9a94641dec8f0c5fcc552117f9aa9844b4f2ce81f245da4dc3c16",
+      "bytes": 10109
+    },
+    {
+      "path": "eval/qualification/vertical/provenance/prometheus.json",
+      "sha256": "724c87f7a41727dd94dcfad52177685ceb6984f4b05798325f82376b24c7f8d6",
+      "bytes": 11682
+    },
+    {
+      "path": "eval/qualification/vertical/provenance/tokio.json",
+      "sha256": "632f058d1bc519f977419f0837266237e4148f42bc9c16a3684da0a9c11891bc",
+      "bytes": 6105
+    },
+    {
+      "path": "eval/qualification/vertical/provenance/typescript.json",
+      "sha256": "c2d15240ed3ff03a33b497357a82fd2048a9d665d0b2e62382e709313d12158d",
+      "bytes": 36820
+    },
+    {
+      "path": "eval/qualification/vertical/review.json",
+      "sha256": "132070b7aff27467e03f93e77ee2c502d3438f38a98a7ec559d2b9726c9d3823",
+      "bytes": 21573
+    },
+    {
+      "path": "eval/qualification/vertical/selection.json",
+      "sha256": "32e4fb1226f18b19533d126eb50ef7bae22bbf3694802a932d08a69efcd44674",
+      "bytes": 4438
+    },
+    {
+      "path": "eval/qualification/vertical/source-receipts.json",
+      "sha256": "1dd1310d5737c1af5a7ec38989f3e02417e6f5e12db66522d5eb7510a202ae62",
+      "bytes": 5769
+    },
+    {
+      "path": "eval/reports/m0-corpus-qualification.md",
+      "sha256": "1b0be070b69281f7ac7723ca7154ba2bcbddb5f4a14a001cec289944b9bbf3bc",
+      "bytes": 10111
+    },
+    {
+      "path": "eval/reports/m0-corpus.md",
+      "sha256": "145b8a60deba5482c4a19ea553fbe178fd217af1f89b7aeabbfab82a0b6cc9d5",
+      "bytes": 7002
+    },
+    {
+      "path": "eval/reports/m0-filesystem.md",
+      "sha256": "402280ebc05e4451e572119e77c678022d3faab616f777596e8a4239db3ef0b7",
+      "bytes": 20678
+    },
+    {
+      "path": "eval/reports/m0-harness-containment.md",
+      "sha256": "5c189b09477ae9c4e5c3bd93177def0fa694e9f5b260d0467783549cf1a4ffba",
+      "bytes": 6424
+    },
+    {
+      "path": "eval/reports/m0-packaging.md",
+      "sha256": "cabe9ae07ac3bf99d2af4d38e5c14711f634c052a975cc0460e1085c8071f3fb",
+      "bytes": 6664
+    },
+    {
+      "path": "eval/reports/m0-workers.md",
+      "sha256": "28f11b16417d9c77c0eb63965af6bdcbab454830903e44ed73edaa0fa33782cd",
+      "bytes": 8458
+    },
+    {
+      "path": "eval/scripts/build_corpus.py",
+      "sha256": "854c7a726cde4fdaedb6ecb5ff2f23619ace805ac9d6b54c915bec3b5e5f5260",
+      "bytes": 32740
+    },
+    {
+      "path": "eval/scripts/build_oracle_probes.py",
+      "sha256": "5979408e571e5c8059fef7bababa9dce77cae60d8ce420f7059f3b67b52864e0",
+      "bytes": 5567
+    },
+    {
+      "path": "eval/scripts/generate_fixtures.py",
+      "sha256": "444e7b2920223a57ca69023ddd8bc0d1e5a37b0a39501956554a70f1336c8535",
+      "bytes": 3069
+    },
+    {
+      "path": "eval/scripts/materialize_task.py",
+      "sha256": "6dc3903e6408ebad7895da151c6823f9fa8e3d13c9c22bf025943971e376ef0f",
+      "bytes": 9348
+    },
+    {
+      "path": "eval/scripts/prepare_vertical_sources.py",
+      "sha256": "76ca3e0234bf972ef95cb46fb8328d9e6b31d4de23d86eb0e3378b3ccfa6b42f",
+      "bytes": 7068
+    },
+    {
+      "path": "eval/scripts/run_vertical_probes.py",
+      "sha256": "943f31fae58d99696c4bf4006af319afe54faead75ae30b4cea26f74c3f7a88d",
+      "bytes": 22570
+    },
+    {
+      "path": "eval/scripts/tests/test_qualification.py",
+      "sha256": "dbe2d027f3f358a7547a3a17431824d4612eca7a4858580a5ed745f8eb7260e4",
+      "bytes": 13235
+    },
+    {
+      "path": "eval/scripts/tests/test_vertical.py",
+      "sha256": "16a17e0d475cbde6231b3aa3a53e7bbf09f6f5e6a3dde870f8729fd6bdd3625e",
+      "bytes": 3473
+    },
+    {
+      "path": "eval/scripts/triage_candidates.py",
+      "sha256": "0f5ca42c04675d548d0d7a48723c73244662f75a76388c8c4f5d03f8dad92cd5",
+      "bytes": 7154
+    },
+    {
+      "path": "eval/scripts/verify_corpus.py",
+      "sha256": "45d93a678e1fdaffbb27b9b62d6d44eea53afafbd4afafba6ff1be18b93e20f0",
+      "bytes": 8566
+    },
+    {
+      "path": "eval/scripts/verify_oracles.py",
+      "sha256": "e067fbb584aededf5aab30ba228b0ca5ba35a9f1fad7f38bf6b3ec41013ffcdd",
+      "bytes": 4865
+    },
+    {
+      "path": "eval/scripts/verify_qualified.py",
+      "sha256": "4b6bd90fee7d23ad5bcf8b20b28c540fa379840ae0e41b44a68808d6d069ed18",
+      "bytes": 13044
+    },
+    {
+      "path": "eval/scripts/verify_vertical.py",
+      "sha256": "3eea10daaccafd110ff2fa89509e75c10b9ccc93c65a74a77ecd75adfa5dd60a",
+      "bytes": 1714
+    },
+    {
+      "path": "eval/sources/archives/vertical-django-8abacfc36d755d8e762a4d2074601b8dc412bfee.tar.gz",
+      "sha256": "8450b5075ca9b85f795bb7243296e3faea1928eb1f82b3bb2e9c0b6d3df78826",
+      "bytes": 10472437
+    },
+    {
+      "path": "eval/sources/archives/vertical-prometheus-fd99142576bfae26107ac7263c3eb43bb212004e.tar.gz",
+      "sha256": "fe280bbc1b9541a4dd686e6cae8ebe58f8dd3f9ddbe8efe4c7df01aecc72403b",
+      "bytes": 6194975
+    },
+    {
+      "path": "eval/sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz",
+      "sha256": "aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88",
+      "bytes": 1265834
+    },
+    {
+      "path": "eval/sources/archives/vertical-typescript-cbc2059b53fe1976a803c6b533cc7432517131ac.tar.gz",
+      "sha256": "1d323a1bc525ef55ad4358785afb4783afed9402ebad120d07e9e23063d6cbd0",
+      "bytes": 28367572
+    },
+    {
+      "path": "eval/sources/manifest.json",
+      "sha256": "d645a9468360a178f6b93ccc9d9d51c253140e55834a465f9e42c74b204f7eb4",
+      "bytes": 94979
+    },
+    {
+      "path": "eval/sources/manifests/vertical-django.json.gz",
+      "sha256": "95079d6ec19b81553824c7123d329cc57d39bf0372b4c36e1778844123b3bbc6",
+      "bytes": 328965
+    },
+    {
+      "path": "eval/sources/manifests/vertical-prometheus.json.gz",
+      "sha256": "ceee07637db844dabc83c0646d2aba083e058bcf238225f4a6a542a50c1d6c00",
+      "bytes": 88487
+    },
+    {
+      "path": "eval/sources/manifests/vertical-tokio.json.gz",
+      "sha256": "54323de68707d5248c08ae269e84b1696fb5bb56e5aa669a9bf8172552b25af1",
+      "bytes": 45866
+    },
+    {
+      "path": "eval/sources/manifests/vertical-typescript.json.gz",
+      "sha256": "af37c71fe742d374f5d285c7a3c40be3141075ad6c5bae7cc96e41815f5aa17f",
+      "bytes": 3619098
+    }
+  ]
+}

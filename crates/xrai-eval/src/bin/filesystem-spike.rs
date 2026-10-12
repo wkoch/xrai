@@ -88,6 +88,10 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     symlink("../external", root.join("link"))?;
     symlink(".", root.join("cycle"))?;
     let inventory = spike::inventory(&root, &Config::default())?;
+    #[cfg(target_os = "linux")]
+    let resolution = "rustix-1.1.5-openat2-beneath-no_symlinks-no_xdev-no_fallback";
+    #[cfg(target_os = "macos")]
+    let resolution = "rustix-1.1.5-openat-directory-nofollow-device_check";
     let sources = inventory
         .sources
         .iter()
@@ -159,9 +163,11 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         .collect::<Result<Vec<_>, _>>()?;
     observed_names.sort();
     println!(
-        "{{\"schema\":\"xrai-filesystem-spike-receipt-v1\",\"os\":{},\"arch\":{},\"root_native_hex\":{},\"checkout_id\":{},\"case_sensitive\":{},\"normalization_distinct\":{},\"invalid_utf8_name_supported\":{},\"invalid_utf8_name_error\":{},\"invalid_utf8_name_error_kind\":{},\"invalid_utf8_name_error_raw_os\":{},\"native_filename_valid_control_passed\":true,\"permission_denial_supported\":{},\"df_exit_success\":{},\"df\":{},\"filesystem_probe_exit_success\":{},\"filesystem_probe\":{},\"filesystem_probe_stderr\":{},\"observed_names_hex\":[{}],\"sources\":[{}],\"diagnostics\":[{}]}}",
+        "{{\"schema\":\"xrai-filesystem-spike-receipt-v1\",\"os\":{},\"arch\":{},\"capture_resolution\":{},\"consistency_model\":\"captured-bytes-live-bindings-revalidated-not-atomic-snapshot\",\"read_limit_bytes\":{},\"root_native_hex\":{},\"checkout_id\":{},\"case_sensitive\":{},\"normalization_distinct\":{},\"invalid_utf8_name_supported\":{},\"invalid_utf8_name_error\":{},\"invalid_utf8_name_error_kind\":{},\"invalid_utf8_name_error_raw_os\":{},\"native_filename_valid_control_passed\":true,\"permission_denial_supported\":{},\"df_exit_success\":{},\"df\":{},\"filesystem_probe_exit_success\":{},\"filesystem_probe\":{},\"filesystem_probe_stderr\":{},\"observed_names_hex\":[{}],\"sources\":[{}],\"diagnostics\":[{}]}}",
         quote(std::env::consts::OS),
         quote(std::env::consts::ARCH),
+        quote(resolution),
+        spike::DEFAULT_READ_LIMIT,
         quote(
             &root
                 .as_os_str()

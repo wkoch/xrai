@@ -1,0 +1,25 @@
+{
+  "task_id": "Q1-Python-22051",
+  "label_method": "behavioral tests independent of xrai/graft/Tree-sitter; public upstream regressions or evaluator createProgram oracle",
+  "scope": "SQLite, cinco primitivas e 129 testes de regress\u00e3o (9 skips); MariaDB/Oracle n\u00e3o executados",
+  "hidden_inputs": {
+    "test_jsonfield.py": {
+      "path": "qualification/vertical/oracles/django/test_jsonfield.py",
+      "sha256": "8625ad975c03fb424f2f3b25bb323fa31c20d7a5a6338eb71dbe5979bcd99f35"
+    },
+    "reference.patch": {
+      "path": "qualification/vertical/oracles/django/reference.patch",
+      "sha256": "c9ffd07201e30aea9155bf1b91ac4a8be71faf1a108c15df97eec651fc04162a"
+    }
+  },
+  "assertions": [
+    "baseline exhibits the named behavioral defect",
+    "reference passes focused oracle and recorded regressions"
+  ],
+  "no_agent_access": "evaluator-only dossier/oracle/reference; materializer copies source snapshot and public request only",
+  "reference_commit": "fabce94374e166e80e2643db8b85d1e3442427bf",
+  "probe": {
+    "path": "qualification/vertical/oracles/django/probe.json",
+    "sha256": "f895d2229709ec2e9623a8228b6b5a886c630bf107a2ba0c9955a555e53eff4e"
+  }
+}

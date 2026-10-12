@@ -8,13 +8,15 @@ from runner import replay
 
 
 def verify(directory):
-    schema=json.loads((Path(__file__).parent/'result.schema.json').read_text())
-    Draft202012Validator.check_schema(schema)
-    validator=Draft202012Validator(schema)
+    validators={}
+    for version, filename in [('xrai.eval.local.v1','result.schema.json'), ('xrai.eval.local.v2','result-v2.schema.json')]:
+        schema=json.loads((Path(__file__).parent/filename).read_text())
+        Draft202012Validator.check_schema(schema)
+        validators[version]=Draft202012Validator(schema)
     rows=[]
     for path in sorted(Path(directory).glob('D0-*.json')):
         record=json.loads(path.read_text())
-        validator.validate(record)
+        validators[record['schema_version']].validate(record)
         if record['run_kind']!='scripted_retrieval':
             raise ValueError('local baseline must identify scripted retrieval')
         rows.append({'task_id':record['task_id'],'replay':replay(record)})

@@ -27,6 +27,14 @@ path = "tasks/supplementary.jsonl"
 class = "supplementary"
 counts_as_primary = false
 
+[datasets.vertical_candidates]
+path = "qualification/vertical/candidates.jsonl"
+class = "vertical_evidence_only"
+expected_tasks = 4
+admission = "python3 eval/scripts/verify_vertical.py"
+counts_as_admitted_primary = false
+competitive_runs_allowed = false
+
 [provenance]
 manifest = "sources/manifest.json"
 immutable_git_commits = true

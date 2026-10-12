@@ -1,0 +1,410 @@
+{
+  "reviewer": "/root/l3_containment",
+  "author": "/root",
+  "status": "accepted_bounded_independent_review",
+  "schema_version": 1,
+  "graph_generation": "2026-10-12T10:18:27Z",
+  "graph_coverage": "prepare_vertical_sources/verify_qualified/materialize_task metadata_changed: all changed sources directly read. verify_vertical metadata_match. Bounded source review only.",
+  "system": "Darwin",
+  "release": "27.0.0",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "sources": [
+    {
+      "id": "Q1-Rust-8371",
+      "upstream_sha256": "5afaa6ac2f091e8b2f5156453c03d3540fb2c2e1e66045aaba6a77f5ad2acfec",
+      "materialized_sha256": "aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88",
+      "member_count": 884,
+      "regular_bytes_and_modes_match": true,
+      "upstream_common_prefix": "tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+      "materialized_links": [],
+      "licenses_preserved": true,
+      "provenance_bound": true
+    },
+    {
+      "id": "Q1-TSJS-62656",
+      "upstream_sha256": "c8715a25e8644bf7ccd37453db16f19f22d6820f32c18c6683a7a1574ee89e71",
+      "materialized_sha256": "1d323a1bc525ef55ad4358785afb4783afed9402ebad120d07e9e23063d6cbd0",
+      "member_count": 74409,
+      "regular_bytes_and_modes_match": true,
+      "upstream_common_prefix": "TypeScript-cbc2059b53fe1976a803c6b533cc7432517131ac",
+      "materialized_links": [],
+      "licenses_preserved": true,
+      "provenance_bound": true
+    },
+    {
+      "id": "Q1-Python-22051",
+      "upstream_sha256": "a928c6328eaceb60bd7fd897814cf8cd3f0923aae3b227a5013231069b4f10c3",
+      "materialized_sha256": "8450b5075ca9b85f795bb7243296e3faea1928eb1f82b3bb2e9c0b6d3df78826",
+      "member_count": 7084,
+      "regular_bytes_and_modes_match": true,
+      "upstream_common_prefix": "django-8abacfc36d755d8e762a4d2074601b8dc412bfee",
+      "materialized_links": [
+        {
+          "path": "docs/_theme/djangodocs-epub/static/docicons-behindscenes.png",
+          "literal_target": "../../djangodocs/static/docicons-behindscenes.png",
+          "resolved_target": "docs/_theme/djangodocs/static/docicons-behindscenes.png",
+          "production_member": false,
+          "sha256": "5fb7797dc7c4a4c972167242301aa5a2ba0899d7f047f2706f180fe2534f8d14"
+        },
+        {
+          "path": "docs/_theme/djangodocs-epub/static/docicons-note.png",
+          "literal_target": "../../djangodocs/static/docicons-note.png",
+          "resolved_target": "docs/_theme/djangodocs/static/docicons-note.png",
+          "production_member": false,
+          "sha256": "ef5ebeaccea981188c2121958b66354a82cc8ed012c65a994645009e82c23eaa"
+        },
+        {
+          "path": "docs/_theme/djangodocs-epub/static/docicons-philosophy.png",
+          "literal_target": "../../djangodocs/static/docicons-philosophy.png",
+          "resolved_target": "docs/_theme/djangodocs/static/docicons-philosophy.png",
+          "production_member": false,
+          "sha256": "f52124ef1a7f001b8cf060f80801442a66d98f4f9244a3894388f6b535f9c6d6"
+        },
+        {
+          "path": "docs/_theme/djangodocs-epub/static/docicons-warning.png",
+          "literal_target": "../../djangodocs/static/docicons-warning.png",
+          "resolved_target": "docs/_theme/djangodocs/static/docicons-warning.png",
+          "production_member": false,
+          "sha256": "842932af08b628e9418dda009d0278ff8a712cef4c9e1f14e0b390b18e911495"
+        }
+      ],
+      "licenses_preserved": true,
+      "provenance_bound": true
+    },
+    {
+      "id": "Q1-Go-19866",
+      "upstream_sha256": "71a281eea4451d41b792e2f2433d173717b88298d45f4230f9024bc4742a69b0",
+      "materialized_sha256": "fe280bbc1b9541a4dd686e6cae8ebe58f8dd3f9ddbe8efe4c7df01aecc72403b",
+      "member_count": 1691,
+      "regular_bytes_and_modes_match": true,
+      "upstream_common_prefix": "prometheus-fd99142576bfae26107ac7263c3eb43bb212004e",
+      "materialized_links": [],
+      "licenses_preserved": true,
+      "provenance_bound": true
+    }
+  ],
+  "findings": [],
+  "limits": [
+    "Django doc asset symlinks intentionally flattened to internal target bytes; production set unaffected; no Git-archive-equivalence claimed",
+    "Production path-marker counts are size triage, embeddedtests and requiredmodules semantic classification still assessed in dossier review",
+    "Global exactly32 gate remains closed; vertical success competitive_runs_allowed=false; not dataset admission",
+    "Independent reviewer checked semantic/source/hash bindings and existing raw process logs; clean materialize+patch reproduction tracked separately",
+    "Tokio raw path-marker LOC includes embedded tests; complex=false retained",
+    "Go scoped reference.patch touches queue_manager.go; full upstream reference also modifies write.go outside WAL request; clean scoped-patch proof tracked separately",
+    "Independent reviewer checked semantic/source/hash bindings and existing raw process logs; clean materialize+patch reproduction tracked separately",
+    "Tokio raw path-marker LOC includes embedded tests; complex=false retained",
+    "Go scoped reference.patch touches queue_manager.go; full upstream reference also modifies write.go outside WAL request; clean scoped-patch proof tracked separately"
+  ],
+  "hashes": {
+    "scripts/prepare_vertical_sources.py": "4a9eb45fd79fa4c0a23e9c88eb6c5d5241b56c5cea8cd8a91d6210bff1509d2e",
+    "scripts/verify_vertical.py": "3eea10daaccafd110ff2fa89509e75c10b9ccc93c65a74a77ecd75adfa5dd60a",
+    "scripts/verify_qualified.py": "4b6bd90fee7d23ad5bcf8b20b28c540fa379840ae0e41b44a68808d6d069ed18",
+    "scripts/materialize_task.py": "6dc3903e6408ebad7895da151c6823f9fa8e3d13c9c22bf025943971e376ef0f",
+    "scripts/tests/test_vertical.py": "16a17e0d475cbde6231b3aa3a53e7bbf09f6f5e6a3dde870f8729fd6bdd3625e",
+    "qualification/vertical/selection.json": "32e4fb1226f18b19533d126eb50ef7bae22bbf3694802a932d08a69efcd44674",
+    "qualification/vertical/source-receipts.json": "1dd1310d5737c1af5a7ec38989f3e02417e6f5e12db66522d5eb7510a202ae62",
+    "qualification/vertical/candidates.jsonl": "522d5335b1b8b7c4f690e978e29b85753aa5a29e11cc3e639404cd63db26a23e"
+  },
+  "dossiers": [
+    {
+      "id": "Q1-Rust-8371",
+      "author": "/root",
+      "second_reader": "/root/l3_containment",
+      "status": "accepted",
+      "prompt_sha256": "6caa22d0c4a72a1807e7d23c08ed78546e917bf4706d37a40ab30f2904cd553f",
+      "oracle_sha256": "2e4053bc9a29177d463185f82ddfce7a146d8ef76b44e6e9b28ca6941b9478c4",
+      "task_basis_sha256": "238f4d98c1d5c2917f91c8304f6e3232d1695b390de2abf21cbe39d65a0710e1",
+      "task_basis_encoding": "UTF-8 sorted compact JSON ensure_ascii=False; excludes review_receipt only",
+      "artifact_bindings": {
+        "qualification/vertical/oracles/tokio/oracle.json": "2e4053bc9a29177d463185f82ddfce7a146d8ef76b44e6e9b28ca6941b9478c4",
+        "qualification/vertical/oracles/tokio/probe.json": "84bae694a5f51a4cc0cee76b4713a9d23256de801bc6138124cb6e4b679b7a80",
+        "qualification/vertical/oracles/tokio/sync_mutex.rs": "ea502bfe47421df10ab0fd108725333f0647778d638116cd1a960b43d38bb4a9",
+        "qualification/vertical/oracles/tokio/Cargo.lock": "f4a4bc38313ed265f6d99e37642b75941861ba842ed12bbfecc25956c53d07de",
+        "qualification/vertical/oracles/tokio/reference.patch": "54934dcc847768ca5a2286dfa1daccedd005dc67a1eef223be6dc2d1cff326f7",
+        "docs/relatorios/logs/L3/tokio-base-cargo-ea5b1060.json": "0ab861fa3f3bc8b764dc531354fa529de013d133de2855e3f04c59c5c3bfc2e2",
+        "docs/relatorios/logs/L3/tokio-reference-cargo-e196370b.json": "a959c6c85b140544685cdf9b1a0ecdda6e63a6e3d3db387d2093dabacdb46cf8"
+      },
+      "source_fingerprint_checks": {
+        "base": {
+          "pinned_upstream_sha256": "5afaa6ac2f091e8b2f5156453c03d3540fb2c2e1e66045aaba6a77f5ad2acfec",
+          "production_modules": {
+            "tokio/src/sync/mutex.rs": "f5ca224054d774db86f735e5400fde606aa6acb6e84a711598678082f562af85",
+            "tokio/src/sync/batch_semaphore.rs": "88b0265c698d8da408ecb6c65d301926e9a54ba039637bdbedd4c915dff08efa",
+            "tokio/src/task/coop/mod.rs": "7d36981992a2ee30d304364ce7d7cb474d85448723428a910a768cc646557904"
+          }
+        },
+        "reference": {
+          "pinned_upstream_sha256": "6d4bc7b6685af527c5525ed9a82f8a3159168bd9e6d64f73b4632854b684f40c",
+          "production_modules": {
+            "tokio/src/sync/mutex.rs": "f5ca224054d774db86f735e5400fde606aa6acb6e84a711598678082f562af85",
+            "tokio/src/sync/batch_semaphore.rs": "212adbed6ac39ffb7f0078f5da1c9377dd07cc98c57da0b136e1ff2aa7e7e81b",
+            "tokio/src/task/coop/mod.rs": "7d36981992a2ee30d304364ce7d7cb474d85448723428a910a768cc646557904"
+          }
+        }
+      },
+      "module_line_evidence": {
+        "tokio/src/sync/mutex.rs": [
+          [
+            3,
+            3
+          ],
+          [
+            617,
+            660
+          ]
+        ],
+        "tokio/src/sync/batch_semaphore.rs": [
+          [
+            617,
+            645
+          ],
+          [
+            737,
+            754
+          ]
+        ],
+        "tokio/src/task/coop/mod.rs": [
+          [
+            273,
+            279
+          ],
+          [
+            343,
+            360
+          ]
+        ]
+      },
+      "semantic_review": [
+        "Natural FIFO/cancellation behavior without source paths or prescribed patch.",
+        "Final baseline FIFO wake assertion fails; reference nine sync_mutex tests pass including exhausted-budget cancellation. Distinct compiled target paths verified; preliminary shared-target attempts excluded.",
+        "Three genuinely relevant modules across sync and task scheduling. complex=false because embedded-test-free LOC floor remains unproved."
+      ],
+      "findings": [],
+      "corrections": [
+        "complex=false retained; raw path-marker LOC not used as embedded-test-free production LOC proof"
+      ],
+      "review_scope": "Independent semantic reading and source/hash/raw-process receipt verification; not independent execution of all four probes"
+    },
+    {
+      "id": "Q1-TSJS-62656",
+      "author": "/root",
+      "second_reader": "/root/l3_containment",
+      "status": "accepted",
+      "prompt_sha256": "e46c79321e9f74e7d83ddecf300bb852ad005267210247066697179d36b5855b",
+      "oracle_sha256": "f1f8b2d24517c2093d27a67309442e6a08acdce8ee07ced6e037d4beb5b0fb3c",
+      "task_basis_sha256": "93bfbe81b9ffee5d243b4f0cd800d254b025fa5cc746e4a286758448b32974b5",
+      "task_basis_encoding": "UTF-8 sorted compact JSON ensure_ascii=False; excludes review_receipt only",
+      "artifact_bindings": {
+        "qualification/vertical/oracles/typescript/oracle.json": "f1f8b2d24517c2093d27a67309442e6a08acdce8ee07ced6e037d4beb5b0fb3c",
+        "qualification/vertical/oracles/typescript/probe.json": "bd82a83a71194e6f97fd58323e3d7793a30c432f1ddc0cb839000e2bc423b6f9",
+        "qualification/vertical/oracles/typescript/probe.cjs": "28e2b9590b82379446a511a3f3b5d6f84cb7efdb7178a50e60ddfe69e4e0e7df",
+        "qualification/vertical/oracles/typescript/reference.patch": "1bf7af9d815a47ac9f027142e98ad68fff63fb36cedf399784b64f7bc95bfe9b",
+        "docs/relatorios/logs/L3/typescript-base-node-019ce314.json": "efa6135fcbd7732103c399f92e0a3c884ce30cb5631d3f4598978a1208db7147",
+        "docs/relatorios/logs/L3/typescript-reference-node-019ce314.json": "848ecf9c4fc3c7bf5bed6c9ed0a1359b75df1a5cb0df717a53f6150773ad5894",
+        "docs/relatorios/logs/L3/typescript-base-npm-46ee40c4.json": "030d4925250923023df252430c1f29771f2e1c667523fcaa22943a6028b700dc",
+        "docs/relatorios/logs/L3/typescript-base-npm-d83582fe.json": "14d7fc37befa04a92115b95664b851d18b8f12e378ab81192750245c799da371",
+        "docs/relatorios/logs/L3/typescript-reference-npm-d83582fe.json": "2258e85e9a565136002219ec789fddd24a043758f7013a5bdfc460b307c75294",
+        "docs/relatorios/logs/L3/typescript-reference-npm.json": "795ff3d8f7201f422f976df06506fd653de6e209ad1e0689bcf34c25a6ab8237"
+      },
+      "source_fingerprint_checks": {
+        "base": {
+          "pinned_upstream_sha256": "c8715a25e8644bf7ccd37453db16f19f22d6820f32c18c6683a7a1574ee89e71",
+          "production_modules": {
+            "src/compiler/checker.ts": "9f18ecaf768b5f60b96df04509533fa03ea7a62ef542bf386f397ec5bf96ba3f",
+            "src/compiler/utilities.ts": "d8d845cb5586e65812c0ff1d41b6d309a63e4ee15c2e3a15ccff1d02db67ee80",
+            "src/compiler/types.ts": "3d7ec19b0e5ccdde6015883bfa5cf67e26a04ba40dc40319c31b5ba6476dbef8"
+          }
+        },
+        "reference": {
+          "pinned_upstream_sha256": "a4b4e0e5ceedcb181dd3314599e16b2d75206d579bffe69a3a774cd089c4677c",
+          "production_modules": {
+            "src/compiler/checker.ts": "156e7f4259aa8ee54f70c3922b270a600c97eaa11c54cf6fd7af61c6cc05ec12",
+            "src/compiler/utilities.ts": "d8d845cb5586e65812c0ff1d41b6d309a63e4ee15c2e3a15ccff1d02db67ee80",
+            "src/compiler/types.ts": "3d7ec19b0e5ccdde6015883bfa5cf67e26a04ba40dc40319c31b5ba6476dbef8"
+          }
+        }
+      },
+      "module_line_evidence": {
+        "src/compiler/checker.ts": [
+          [
+            15564,
+            15572
+          ],
+          [
+            33859,
+            33873
+          ]
+        ],
+        "src/compiler/utilities.ts": [
+          [
+            7995,
+            7997
+          ]
+        ],
+        "src/compiler/types.ts": [
+          [
+            6104,
+            6134
+          ]
+        ]
+      },
+      "semantic_review": [
+        "Natural TS2783 user-level union-spread example, no internal file/symbol/patch prescribed.",
+        "createProgram requires built/local/typescript.js in each checkout. Baseline false-positive [2783] vs []; reference passes absence, required-property positive control [2783], and optional-union cases. Source build logs verified.",
+        "Three necessary production modules linked by synthetic-symbol flags; complex=false conservatively one compiler concern."
+      ],
+      "findings": [],
+      "corrections": [],
+      "review_scope": "Independent semantic reading and source/hash/raw-process receipt verification; not independent execution of all four probes"
+    },
+    {
+      "id": "Q1-Python-22051",
+      "author": "/root",
+      "second_reader": "/root/l3_containment",
+      "status": "accepted",
+      "prompt_sha256": "baeef0aea7bc588e7e35c46bdb2085918d8319b503b2793d70ab6399a1351a13",
+      "oracle_sha256": "523d3aeab582f09023e943ffe13a036dd264c27feaac64b9d9a5e948a1fee8b8",
+      "task_basis_sha256": "495283d86f947e20d29a48ef80385100ccbfdecf5024b32990ed088cfd3fc5af",
+      "task_basis_encoding": "UTF-8 sorted compact JSON ensure_ascii=False; excludes review_receipt only",
+      "artifact_bindings": {
+        "qualification/vertical/oracles/django/oracle.json": "523d3aeab582f09023e943ffe13a036dd264c27feaac64b9d9a5e948a1fee8b8",
+        "qualification/vertical/oracles/django/probe.json": "f895d2229709ec2e9623a8228b6b5a886c630bf107a2ba0c9955a555e53eff4e",
+        "qualification/vertical/oracles/django/test_jsonfield.py": "8625ad975c03fb424f2f3b25bb323fa31c20d7a5a6338eb71dbe5979bcd99f35",
+        "qualification/vertical/oracles/django/reference.patch": "c9ffd07201e30aea9155bf1b91ac4a8be71faf1a108c15df97eec651fc04162a",
+        "docs/relatorios/logs/L3/django-base-python3-68af99bf.json": "99e875dcf69cd4a14b0a8aa39888413349c087ff64919711536bf3fcfe07651e",
+        "docs/relatorios/logs/L3/django-reference-python3-a7ba6315.json": "6711bf4cd4b053a64346bdcaf49ab2d7f815c747f8809660e3de43fc109d9017"
+      },
+      "source_fingerprint_checks": {
+        "base": {
+          "pinned_upstream_sha256": "a928c6328eaceb60bd7fd897814cf8cd3f0923aae3b227a5013231069b4f10c3",
+          "production_modules": {
+            "django/db/models/fields/json.py": "dcb73f55edbaf119d26ffe1c301f8dc3b788e0c0e04f225ebfc50f3839304bb3",
+            "django/db/models/lookups.py": "821457dd4115467270b61c79291cad0723c191da1dd22dae1e477d634e5aabe6",
+            "django/db/models/expressions.py": "5e2cd9d23b08da0ff7cfedab7f20164bce1f0ab61de9947a7219d2a14d344971",
+            "django/db/backends/base/operations.py": "1fe091964e3633c6ed2dfdf45cd785083a01c69e7e32dabdb5c0c55f06e90b99"
+          }
+        },
+        "reference": {
+          "pinned_upstream_sha256": "7e9f7055365e14fa79c8faaacfaca6f59965ae91d46e612278ce6f6cc4ea2ecd",
+          "production_modules": {
+            "django/db/models/fields/json.py": "66abd309799fbe24e99abdd70ea4324823d255634af9b52545515a8dca4863dc",
+            "django/db/models/lookups.py": "821457dd4115467270b61c79291cad0723c191da1dd22dae1e477d634e5aabe6",
+            "django/db/models/expressions.py": "5e2cd9d23b08da0ff7cfedab7f20164bce1f0ab61de9947a7219d2a14d344971",
+            "django/db/backends/base/operations.py": "1fe091964e3633c6ed2dfdf45cd785083a01c69e7e32dabdb5c0c55f06e90b99"
+          }
+        }
+      },
+      "module_line_evidence": {
+        "django/db/models/fields/json.py": [
+          [
+            102,
+            105
+          ],
+          [
+            404,
+            430
+          ]
+        ],
+        "django/db/models/lookups.py": [
+          [
+            336,
+            357
+          ]
+        ],
+        "django/db/models/expressions.py": [
+          [
+            1148,
+            1239
+          ]
+        ],
+        "django/db/backends/base/operations.py": [
+          [
+            628,
+            629
+          ]
+        ]
+      },
+      "semantic_review": [
+        "Natural SQLite JSONField/Value primitive behavior and explicit-output-field preservation.",
+        "Baseline boolean subcases fail and string triggers malformed JSON; not setup failure. Reference ran 129 JSONField tests, nine skips. SQLite only; MariaDB/Oracle not claimed.",
+        "Four necessary production modules across ORM fields/lookup/expression and backend serialization. 929 production-path files support file-count floor; complex=true."
+      ],
+      "findings": [],
+      "corrections": [],
+      "review_scope": "Independent semantic reading and source/hash/raw-process receipt verification; not independent execution of all four probes"
+    },
+    {
+      "id": "Q1-Go-19866",
+      "author": "/root",
+      "second_reader": "/root/l3_containment",
+      "status": "accepted",
+      "prompt_sha256": "a0a01d1403689b41cd4771b50f46b51bb2857428c702dee815e444191f712eec",
+      "oracle_sha256": "f7e41834fbb65a214ee017192abca04364c9ff0d946382479bc26ad1be93827b",
+      "task_basis_sha256": "f7acb8705867ceb344b83fc8d44f9122ae3318022446a2f92b28687d585f4eda",
+      "task_basis_encoding": "UTF-8 sorted compact JSON ensure_ascii=False; excludes review_receipt only",
+      "artifact_bindings": {
+        "qualification/vertical/oracles/prometheus/oracle.json": "f7e41834fbb65a214ee017192abca04364c9ff0d946382479bc26ad1be93827b",
+        "qualification/vertical/oracles/prometheus/probe.json": "b9c6ba9827819f845eef3e7ec79888fe43c93d0cf3a5b8ac62b1ae8cbdd74210",
+        "qualification/vertical/oracles/prometheus/queue_manager_test.go": "cf9f590c8102ae8bd5ff025201ebdf5aa9a77c4f3a2ebb833de1126f65388a44",
+        "qualification/vertical/oracles/prometheus/reference.patch": "38bf8147ea8e474a72d4bfe660da43bc20b9388b6e5f2f0dd1c31892cae19517",
+        "docs/relatorios/logs/L3/prometheus-base-go-222a7971.json": "27a89dc03d3cf90d4924cc6971af03472433af4d64ff5c3ef0de1862572cebaf",
+        "docs/relatorios/logs/L3/prometheus-reference-go-81b7f8b3.json": "e3fcea4d787abeb7dea61d3d92ef1e5ed7c1cb9717b9f7048db643a6ac231e8f"
+      },
+      "source_fingerprint_checks": {
+        "base": {
+          "pinned_upstream_sha256": "71a281eea4451d41b792e2f2433d173717b88298d45f4230f9024bc4742a69b0",
+          "production_modules": {
+            "storage/remote/queue_manager.go": "c23fcc02601da5cd54d94ba4fe4a7f39972cce2ef1662fdfd9ad00c7eaf813cc",
+            "storage/remote/write.go": "070acab00716aea3f71426b70486b7b41c07f92aa0e875edf7a19abced8d9787"
+          }
+        },
+        "reference": {
+          "pinned_upstream_sha256": "07f5cfdcfdce6777ab7a68882debe20f5fe6006db9ba828567d232c175fdb965",
+          "production_modules": {
+            "storage/remote/queue_manager.go": "86f96f022ecda3575044c98407c4fe4992fa719c1d300dc972c9802fe2e6cc46",
+            "storage/remote/write.go": "8f19b5d8f16eac1e61c2fd539a487bf86fc13670325d0fdbe63865605407f6c3"
+          }
+        }
+      },
+      "module_line_evidence": {
+        "storage/remote/queue_manager.go": [
+          [
+            1160,
+            1201
+          ],
+          [
+            2141,
+            2147
+          ]
+        ],
+        "storage/remote/write.go": [
+          [
+            246,
+            249
+          ],
+          [
+            324,
+            335
+          ],
+          [
+            372,
+            379
+          ]
+        ]
+      },
+      "semantic_review": [
+        "Natural remote-write collapse after future exemplars. No source path or concrete patch disclosed.",
+        "Baseline future-timestamp shard subcase expects 40 and gets 1; reference desired-shards suite passes. Scoped patch clamps delay; upstream WAL change explicitly outside request.",
+        "Two relevant production modules; complex=false. Input timestamp tracker explains asymmetry; queue_manager.go computes backlog/shards."
+      ],
+      "findings": [],
+      "corrections": [],
+      "review_scope": "Independent semantic reading and source/hash/raw-process receipt verification; not independent execution of all four probes"
+    }
+  ],
+  "updated_at_utc": "2026-10-12T10:41:20.999845+00:00",
+  "graft_savings_this_agent": {
+    "calls": 3,
+    "tokens_estimated_saved": 27106
+  }
+}

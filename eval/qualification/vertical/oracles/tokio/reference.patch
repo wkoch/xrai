@@ -1,0 +1,35 @@
+--- a/tokio/src/sync/batch_semaphore.rs
++++ b/tokio/src/sync/batch_semaphore.rs
+@@ -629,21 +629,21 @@
+ 
+         let (node, semaphore, needed, queued) = self.project();
+ 
+-        // First, ensure the current task has enough budget to proceed.
+-        #[cfg(all(tokio_unstable, feature = "tracing"))]
+-        let coop = ready!(trace_poll_op!(
+-            "poll_acquire",
+-            crate::task::coop::poll_proceed(cx),
+-        ));
+-
+-        #[cfg(not(all(tokio_unstable, feature = "tracing")))]
+-        let coop = ready!(crate::task::coop::poll_proceed(cx));
+-
+         let result = match semaphore.poll_acquire(cx, needed, node, queued) {
+             Poll::Pending => Poll::Pending,
+             Poll::Ready(r) => {
++                r?;
++
++                #[cfg(all(tokio_unstable, feature = "tracing"))]
++                let coop = ready!(trace_poll_op!(
++                    "poll_acquire",
++                    crate::task::coop::poll_proceed(cx),
++                ));
++
++                #[cfg(not(all(tokio_unstable, feature = "tracing")))]
++                let coop = ready!(crate::task::coop::poll_proceed(cx));
++
+                 coop.made_progress();
+-                r?;
+                 Poll::Ready(Ok(()))
+             }
+         };

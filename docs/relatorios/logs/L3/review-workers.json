@@ -1,0 +1,90 @@
+{
+  "schema": "xrai-l3-independent-worker-review-v1",
+  "reviewer": "l3_capture, independent author filesystem",
+  "recorded_at": "2026-10-12T10:24:43.383662+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "scope": "L3-03 framing/supervision/current cold-spawn pool implementation; not full M0-06 acceptance",
+  "result": "PASS_WITH_EXPLICIT_REMAINING_MEASUREMENTS",
+  "source_sha256": {
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "crates/xrai-eval/src/bin/worker-spike.rs": "96f82da6f806506f888cfe3df73dd52c7e824119fbdf491638a535f77ffadb6a",
+    "crates/xrai-eval/tests/workers.rs": "b0751fe061ce78e70881eaec464179774a28dad828a0379aade88ddd2536d775"
+  },
+  "source_stable_during_tests": true,
+  "commands": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--test",
+        "workers",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.6869603749992166,
+      "stdout": "\nrunning 12 tests\ntest identities_spans_and_extra_bytes_refused ... ok\ntest decoder_refuses_huge_header_before_payload_read_and_corrupt_enums ... ok\ntest admission_overload_and_duplicate_requests_do_not_grow_memory ... ok\ntest queue_wait_consumes_total_deadline_before_spawn ... ok\ntest shutdown_with_inflight_failure_reaps_child ... ok\ntest deadlines_cancel_late_and_shutdown_are_bounded ... ok\ntest worker_is_given_bytes_and_does_not_reopen_source ... ok\ntest simultaneous_configurations_remain_distinct ... ok\ntest finite_retry_in_new_process_and_stderr_capture_bounded ... ok\ntest faulty_worker_cannot_publish_and_independent_work_progresses ... ok\ntest roundtrip_and_direct_pool_equivalence_all_dialects ... ok\ntest valid_frame_requires_successful_exit_and_roundtrips_repeat ... ok\n\ntest result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.17s\n\n",
+      "stderr": "   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s\n     Running tests/workers.rs (target/debug/deps/workers-2c16a12c3caa26aa)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "worker-spike",
+        "--",
+        "demonstrate"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.0577928330003488,
+      "stdout": "{\"schema\":\"l3-worker-proof-v1\",\"version\":\"0.1.0-dev\",\"build_debug_assertions\":true,\"os\":\"macos\",\"arch\":\"aarch64\",\"workers\":2,\"queue\":8,\"source_limit\":8388608,\"response_limit\":16777216,\"aggregate_limit\":67108864,\"attempt_deadline_ms\":5000,\"retry_limit\":1,\"startup_parse_roundtrip_ms\":16.107291,\"worker_lifecycle\":\"new process per attempt, reaped before acceptance\",\"cpu_seconds\":null,\"rss_aggregate_bytes\":null,\"resources_status\":\"not yet measured; payload reservation is not RSS cap\",\"cases\":[{\"kind\":\"small\",\"source_bytes\":13,\"source_blake3\":\"316c77b9d4108554ac5e3c0302693ca9a50d848f8cecf5c97c80140df94393a4\",\"producer\":\"743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd\",\"configuration\":\"d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a\",\"repetitions\":6,\"direct_p50_ms\":6.679291,\"direct_p95_ms\":6.908583,\"pool_p50_ms_including_spawn\":17.879833,\"pool_p95_ms_including_spawn\":19.310166,\"codec_p50_ms\":3.933917,\"codec_p95_ms\":4.057125,\"direct_files_per_second\":150.55281110326982,\"pool_files_per_second_including_spawn\":102.65959704773583,\"ipc_bytes\":3180,\"logical_equivalence\":true,\"direct_samples_ms\":[6.498666, 6.575166, 6.679291, 6.699292, 6.908583, 6.485124999999999],\"pool_samples_ms\":[19.310166, 17.643708, 17.879833, 17.284791000000002, 18.152083, 17.590875],\"codec_samples_ms\":[3.966542, 4.057125, 3.791459, 3.933917, 3.822125, 3.776084]},{\"kind\":\"large-comments\",\"source_bytes\":1144014,\"source_blake3\":\"138293cf86c198198ea6a5227e8ab324af54bf7682a4d67b25a437e3d09425c8\",\"producer\":\"743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd\",\"configuration\":\"d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a\",\"repetitions\":6,\"direct_p50_ms\":66.243083,\"direct_p95_ms\":66.926917,\"pool_p50_ms_including_spawn\":136.372458,\"pool_p95_ms_including_spawn\":136.656209,\"codec_p50_ms\":30.628584,\"codec_p95_ms\":31.88675,\"direct_files_per_second\":15.152278849327155,\"pool_files_per_second_including_spawn\":13.184678514918332,\"ipc_bytes\":7857234,\"logical_equivalence\":true,\"direct_samples_ms\":[65.92566699999999, 64.81862500000001, 66.243083, 65.607958, 66.926917, 66.404958],\"pool_samples_ms\":[134.880958, 136.38575, 136.372458, 136.355917, 136.656209, 135.846209],\"codec_samples_ms\":[30.48075, 30.448417, 30.513167, 31.88675, 31.569582999999998, 30.628584]},{\"kind\":\"incomplete\",\"source_bytes\":16,\"source_blake3\":\"b3e1d4884a38ec62dbf37c6e5b0a4e311f193b1753eed39f4ecb838329d18970\",\"producer\":\"743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd\",\"configuration\":\"d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a\",\"repetitions\":6,\"direct_p50_ms\":6.438417,\"direct_p95_ms\":6.713833,\"pool_p50_ms_including_spawn\":17.31175,\"pool_p95_ms_including_spawn\":17.355458000000002,\"codec_p50_ms\":3.649709,\"codec_p95_ms\":3.9596249999999995,\"direct_files_per_second\":156.19017184276993,\"pool_files_per_second_including_spawn\":106.04961626741725,\"ipc_bytes\":3672,\"logical_equivalence\":true,\"direct_samples_ms\":[6.713833, 6.477041, 6.438417, 6.3997079999999995, 6.16625, 6.212750000000001],\"pool_samples_ms\":[17.355458000000002, 17.032, 17.31175, 16.882542, 17.313542, 17.147208],\"codec_samples_ms\":[3.612667, 3.9596249999999995, 3.5517499999999997, 3.649709, 3.513875, 3.76525]}]}\n",
+      "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s\n     Running `target/debug/worker-spike demonstrate`\n"
+    }
+  ],
+  "structural_evidence": {
+    "tier": 2,
+    "project": "Users-wkoch-Projetos-xrai",
+    "generation": "2026-10-12T10:18:27Z",
+    "search": "bounded worker_spike read_frame/decode/attempt/supervise/submit/validate,19results no remainingpage",
+    "trace": "attempt bothdepth2 -> supervis[e]_active -> Pool.new,19callees3callers; best-effort includes unresolved std edges; direct source confirms actual pipe/process chain",
+    "snippet": "Pool.submit_before lines715-767",
+    "coverage": "worker module/bin initially metadata_match; tests initiallymetadata_changed readentire source; corrected attempt/test reread afterauthor notification; currentcoveragecallworker/parsing/provenance/report withsourcefallback wherechanged",
+    "graft_calls": 3,
+    "graft_tokens_saved": 15348
+  },
+  "checks": {
+    "preallocation": "read_frame validates14byteheader/magic/version/usizeconversion/max beforevec; decoder blob/span checkedlength/overflow beforealloc",
+    "identities": "request/attempt/dialect/sourcehash/producer/configuration echo equality and sourcebytes/spansbounds beforepublish; producer hashes query/grammar/ABI/provenance",
+    "admission": "fixed2workers,queue8,64MiBreservation input+16MiBresponse ceiling checked_add; overload/duplicates refused, reservation releasedafteroutcome",
+    "retry": "maxone retry fortransport/crash in freshnewpid; no retry protocol/hash/producer/length errors, queued deadline coversadmission",
+    "deadlines_cancel_shutdown": "main poll≤10ms deadline/cancel kills/waits worker, valid frame waits successfulnormalexit boundedbyremainingdeadline; joins known parserpipes; Ticketdelivery recheckcancel; Pooldrop closesqueue and joins finitejobs; independent12testsreaped",
+    "source_paths": "worker onlystdin framebytes, no sourcepath field/no fsread source; parsing_spike parse receivesbytes; no nativeAST/pointer transport",
+    "effective_ipc": "Counted Read/Write incrementactualcompletedn, allattemptssummed inclfailure; stderrseparate retained64KiB",
+    "equivalence": "14fixtures7dialects complete/partial direct==pool; newprocess perattempt/threadslots explicit not persistentparsercache"
+  },
+  "findings": [],
+  "limitations": [
+    "CPU/RSS aggregate fields null; resource comparison needed before closing M0-06",
+    "Native Linux/macOS15 matrices and literal macOS15.0 not witnessed by this review",
+    "Known-own-parser process supervision not arbitrary descendants containment (separate L3-02)",
+    "Reservation is logical payload budget, not RSS/serialization-temporary memory cap",
+    "Configuration identity opaque in spike; no mutable parser-option semantics or sharedcache implemented",
+    "Full source reviewed; graph best effort not proof of exhaustive std call graph"
+  ],
+  "corrections_required": [],
+  "resolved_findings": [
+    {
+      "origin": "root review",
+      "issue": "Unconditional kill after valid frame+EOF could race normal worker exit and convert success to worker_exit",
+      "correction": "attempt now awaits try_wait on valid frame under remaining deadline; kills only errors/cancel/timeout, then wait and status success required",
+      "verification": "Re-read corrected lines520-543 and new test valid_frame_requires_successful_exit_and_roundtrips_repeat: exit-failure rejected,2attempts/reaped,32healthyroundtrips oneattempt; independent12test rerun PASS"
+    }
+  ]
+}

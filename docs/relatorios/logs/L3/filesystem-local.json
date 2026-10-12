@@ -1,0 +1,94 @@
+{
+  "schema": "xrai-l3-filesystem-local-v1",
+  "recorded_at": "2026-10-12T10:23:06.415625+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "source_sha256": {
+    "crates/xrai-eval/src/filesystem_spike.rs": "dedf69e37807a8cd0aede23e37a99558448e860ce18d10d19eda08dd5b266c18",
+    "crates/xrai-eval/tests/filesystem_inventory.rs": "d02756970ce6dc0053abe7de7a658ed0096d544a0ca21b955b4dd3028d19e223",
+    "crates/xrai-eval/tests/filesystem_anchored.rs": "e1c897683783b60a106cd5fce084a99ec355e8e8ee8be7ba4411cf24c379fc70",
+    "crates/xrai-eval/src/bin/filesystem-spike.rs": "0ab542d079cc4d6933c2dd88522641b0ad4782c0ea396cd2bf3a75359c37f70d",
+    "crates/xrai-eval/Cargo.toml": "9669e9c10f841008f6ed1ee4bebff5d1518b4a81a74ff52db6436f2ab471e506",
+    "Cargo.lock": "b9442dfde1d9e805fc5aaaf71cce7c18b8412a4fab8d0af781703e03ec45e0f9"
+  },
+  "commands": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--test",
+        "filesystem_inventory",
+        "--test",
+        "filesystem_anchored",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.4690645410000798,
+      "stdout": "\nrunning 20 tests\ntest ancestor_symlink_after_source_open_never_publishes_as_current ... ok\ntest in_place_same_size_and_restored_mtime_is_not_a_snapshot_guarantee ... ok\ntest barrier_swap_after_ancestor_handle_open_invalidates_binding ... ok\ntest anchored_enumeration_of_moved_directory_returns_partial_inventory ... ok\ntest ancestor_symlink_before_open_never_delivers_external_sentinel ... ok\ntest hard_link_captures_shared_object_and_does_not_claim_link_confinement ... ok\ntest ceiling_is_enforced_for_initial_size_and_during_growth ... ok\ntest inventory_final_reconciliation_rejects_changed_source_revision ... ok\ntest moving_open_directory_outside_without_link_is_diagnosed ... ok\ntest original_file_unlink_and_recreate_cannot_reuse_old_binding ... ok\ntest last_publication_reconciles_previously_captured_ancestor ... ok\ntest replacing_checkout_parent_with_alias_of_moved_parent_invalidates_locator ... ok\ntest new_file_after_enumeration_marks_root_coverage_partial ... ok\ntest replaced_root_invalidates_all_inventory_sources ... ok\ntest rejects_invalid_native_components_and_internal_capture_inventory_exclusions ... ok\ntest empty_directory_addition_and_removal_are_reconciled_before_publication ... ok\ntest special_files_are_refused_without_fifo_blocking ... ok\ntest stabilized_update_equals_independent_rebuild_and_old_bytes_remain_immutable ... ok\nfilesystem_stress_seed=0x584e52414902 schedules=32 (finite hook scheduling, not exhaustive concurrent stress)\ntest seeded_adversarial_schedule_supplements_deterministic_barriers ... ok\nconcurrent_stress_seed=0x4c3346532026 writer_rounds=64 captures=128 accepted=87 rejected=41\ntest seeded_concurrent_writer_stress_never_delivers_external_sentinel ... ok\n\ntest result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s\n\n\nrunning 14 tests\ncase_sensitive=false\npermission_denial_supported=true\ntest invalid_configuration_fails_before_inventory ... ok\ntest removal_between_discovery_and_capture_has_typed_diagnostic ... ok\ntest filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok\ntest permission_failure_is_diagnostic_or_records_privileged_capability ... ok\ninvalid_utf8_filename_supported=false kind=Uncategorized raw_os_error=Some(92): Illegal byte sequence (os error 92)\ntest removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok\ntest explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok\ntest replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok\ntest gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok\ntest same_size_and_mtime_change_is_detected_by_content_hash ... ok\ntest linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok\ntest unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok\ntest symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok\ntest no_git_and_identical_named_checkouts_have_independent_writable_state ... ok\ntest actual_git_linked_worktrees_have_independent_checkout_state ... ok\n\ntest result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s\n\n",
+      "stderr": "   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.82s\n     Running tests/filesystem_anchored.rs (target/debug/deps/filesystem_anchored-d1e9af92b09f5f16)\n     Running tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-a70bf0dc2ecd8063)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--lib",
+        "--bin",
+        "filesystem-spike",
+        "--test",
+        "filesystem_inventory",
+        "--test",
+        "filesystem_anchored",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.35561383399999613,
+      "stdout": "",
+      "stderr": "    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.29s\n"
+    },
+    {
+      "command": [
+        "rustfmt",
+        "--edition",
+        "2024",
+        "--check",
+        "crates/xrai-eval/src/filesystem_spike.rs",
+        "crates/xrai-eval/src/bin/filesystem-spike.rs",
+        "crates/xrai-eval/tests/filesystem_anchored.rs"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.04763254200042866,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--bin",
+        "filesystem-spike"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.30923737500052084,
+      "stdout": "{\"schema\":\"xrai-filesystem-spike-receipt-v1\",\"os\":\"macos\",\"arch\":\"aarch64\",\"capture_resolution\":\"rustix-1.1.5-openat-directory-nofollow-device_check\",\"consistency_model\":\"captured-bytes-live-bindings-revalidated-not-atomic-snapshot\",\"read_limit_bytes\":8388608,\"root_native_hex\":\"2f7661722f666f6c646572732f6a322f5f72747162746a6e315f733237703237305f39396736726d30303030676e2f542f787261692d66732d726563656970742d383937352d313739313830303538363430383137333030302f636865636b6f7574\",\"checkout_id\":\"eb28a0dc978c9a188aed68d5012c75ec50c762d9f8b3b6d7fe4e1136a6189613\",\"case_sensitive\":false,\"normalization_distinct\":false,\"invalid_utf8_name_supported\":false,\"invalid_utf8_name_error\":\"Illegal byte sequence (os error 92)\",\"invalid_utf8_name_error_kind\":\"Uncategorized\",\"invalid_utf8_name_error_raw_os\":92,\"native_filename_valid_control_passed\":true,\"permission_denial_supported\":true,\"df_exit_success\":true,\"df\":\"Filesystem   512-blocks      Used Available Capacity  Mounted on\\n/dev/disk3s5  478724992 413938688  13516088    97%    /System/Volumes/Data\\n\",\"filesystem_probe_exit_success\":true,\"filesystem_probe\":\"/dev/disk3s5 on /System/Volumes/Data (apfs, local, journaled, nobrowse, protect, root data)\",\"filesystem_probe_stderr\":\"\",\"observed_names_hex\":[\"436173652e7273\",\"636166c3a92e7079\",\"6379636c65\",\"64656e696564\",\"6c696e6b\",\"6e61746976652d76616c69642d636f6e74726f6c2e676f\"],\"sources\":[{\"path_hex\":\"436173652e7273\",\"hash\":\"e988f649445375c06fba82e313175ffc7627abb07c4be999c0dfc5f54e820bfe\",\"bytes\":8},{\"path_hex\":\"636166c3a92e7079\",\"hash\":\"e78790bcdb802a495508c37af1407d7905cb60dbdb1f39aff607f0072d26ee9b\",\"bytes\":3},{\"path_hex\":\"64656e696564\",\"hash\":\"5fbf08af2b116ab8f7f3c14b8ec01a46ce23d290e2ebc7a752d0982d54c054f2\",\"bytes\":6},{\"path_hex\":\"6e61746976652d76616c69642d636f6e74726f6c2e676f\",\"hash\":\"8d63b6eeb899691377684d280e9f928ec1e8052a8f137c99483f77e2bda53019\",\"bytes\":9}],\"diagnostics\":[{\"path_hex\":\"6379636c65\",\"reason\":\"Symlink\"},{\"path_hex\":\"6c696e6b\",\"reason\":\"Symlink\"}]}\n",
+      "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running `target/debug/filesystem-spike`\n"
+    }
+  ],
+  "limitations": [
+    "macOS available host only; Linux/macOS15 native CI pending",
+    "No newly created mounts or same-device bind mount adversary",
+    "Metadata and identity revalidation are observations, not atomic snapshots"
+  ]
+}

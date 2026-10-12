@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "repository": "tokio-rs/tokio",
+  "number": 8371,
+  "title": "sync: preserve FIFO lock order when coop budget is exhausted",
+  "body": "Fixes #8365\r\n\r\n### Problem\r\n`Mutex` (and `Semaphore`) documentation states that lock acquisition operates on a guaranteed FIFO basis. However, in `Acquire::poll`, the cooperative-scheduling budget check `coop::poll_proceed(cx)` was performed *before* calling `semaphore.poll_acquire(...)`.\r\n\r\nIf a task's coop budget was exhausted before polling `lock().await`:\r\n1. `coop::poll_proceed(cx)` returned `Poll::Pending`.\r\n2. The future returned early without attempting `semaphore.poll_acquire(...)`.\r\n3. The task's waiter node was never inserted into the semaphore's FIFO wait queue (`waiters.queue`).\r\n4. If another task with remaining budget subsequently called `lock().await`, its waiter node was inserted into `waiters.queue` first.\r\n5. When the lock was released, the second task acquired the lock before the first task, violating FIFO ordering.\r\n\r\n### Solution\r\n- Move `coop::poll_proceed(cx)` in `Acquire::poll` to run after `semaphore.poll_acquire(...)`. This ensures the waiter node is inserted into `waiters.queue` on its initial `poll()`, establishing its exact FIFO queue position.\r\n- Update fast-path permit acquisition in `poll_acquire` to assign obtained permits to `node.state` via `node.assign_permits(...)`, ensuring state consistency if a coop budget yield occurs when returning ready.\r\n- Update `needed` calculation in `poll_acquire` to load remaining permits directly from `node.state`.\r\n- Add unit test `mutex_fifo_with_coop_budget` in `tests/sync_mutex.rs` verifying FIFO acquisition order when coop budget is depleted.\r\n",
+  "url": "https://github.com/tokio-rs/tokio/pull/8371",
+  "merged_at": "2026-10-11T09:17:28Z",
+  "baseline_commit": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+  "reference_commit": "d241e4b5112ade7fa47310f39f81f59521ce988b",
+  "baseline_selection": "first parent of merged commit",
+  "files": [
+    {
+      "sha": "82d85f51e17607de95cb17c036e1c8f7f6ed6619",
+      "filename": "tokio/src/sync/batch_semaphore.rs",
+      "status": "modified",
+      "additions": 11,
+      "deletions": 11,
+      "changes": 22,
+      "blob_url": "https://github.com/tokio-rs/tokio/blob/1d13cd91c7323e6923674cee7b189b7ee1ca46df/tokio%2Fsrc%2Fsync%2Fbatch_semaphore.rs",
+      "raw_url": "https://github.com/tokio-rs/tokio/raw/1d13cd91c7323e6923674cee7b189b7ee1ca46df/tokio%2Fsrc%2Fsync%2Fbatch_semaphore.rs",
+      "contents_url": "https://api.github.com/repos/tokio-rs/tokio/contents/tokio%2Fsrc%2Fsync%2Fbatch_semaphore.rs?ref=1d13cd91c7323e6923674cee7b189b7ee1ca46df",
+      "patch": "@@ -629,21 +629,21 @@ impl Future for Acquire<'_> {\n \n         let (node, semaphore, needed, queued) = self.project();\n \n-        // First, ensure the current task has enough budget to proceed.\n-        #[cfg(all(tokio_unstable, feature = \"tracing\"))]\n-        let coop = ready!(trace_poll_op!(\n-            \"poll_acquire\",\n-            crate::task::coop::poll_proceed(cx),\n-        ));\n-\n-        #[cfg(not(all(tokio_unstable, feature = \"tracing\")))]\n-        let coop = ready!(crate::task::coop::poll_proceed(cx));\n-\n         let result = match semaphore.poll_acquire(cx, needed, node, queued) {\n             Poll::Pending => Poll::Pending,\n             Poll::Ready(r) => {\n-                coop.made_progress();\n                 r?;\n+\n+                #[cfg(all(tokio_unstable, feature = \"tracing\"))]\n+                let coop = ready!(trace_poll_op!(\n+                    \"poll_acquire\",\n+                    crate::task::coop::poll_proceed(cx),\n+                ));\n+\n+                #[cfg(not(all(tokio_unstable, feature = \"tracing\")))]\n+                let coop = ready!(crate::task::coop::poll_proceed(cx));\n+\n+                coop.made_progress();\n                 Poll::Ready(Ok(()))\n             }\n         };"
+    },
+    {
+      "sha": "1641e29298bfbb9b1142e7a50e7403794c039546",
+      "filename": "tokio/tests/sync_mutex.rs",
+      "status": "modified",
+      "additions": 40,
+      "deletions": 0,
+      "changes": 40,
+      "blob_url": "https://github.com/tokio-rs/tokio/blob/1d13cd91c7323e6923674cee7b189b7ee1ca46df/tokio%2Ftests%2Fsync_mutex.rs",
+      "raw_url": "https://github.com/tokio-rs/tokio/raw/1d13cd91c7323e6923674cee7b189b7ee1ca46df/tokio%2Ftests%2Fsync_mutex.rs",
+      "contents_url": "https://api.github.com/repos/tokio-rs/tokio/contents/tokio%2Ftests%2Fsync_mutex.rs?ref=1d13cd91c7323e6923674cee7b189b7ee1ca46df",
+      "patch": "@@ -13,6 +13,8 @@ use tokio::sync::Mutex;\n use tokio_test::task::spawn;\n use tokio_test::{assert_pending, assert_ready};\n \n+#[cfg(not(target_family = \"wasm\"))]\n+use futures::FutureExt;\n use std::sync::Arc;\n \n #[test]\n@@ -176,3 +178,41 @@ async fn mutex_debug() {\n     let _guard = m.lock().await;\n     assert_eq!(format!(\"{m:?}\"), r#\"Mutex { data: <locked> }\"#)\n }\n+\n+#[cfg(not(target_family = \"wasm\"))]\n+#[maybe_tokio_test]\n+async fn mutex_fifo_with_coop_budget() {\n+    let m = Arc::new(Mutex::new(()));\n+\n+    let mut t0 = spawn(m.clone().lock_owned());\n+    let g0 = assert_ready!(t0.poll());\n+\n+    let m_a = Arc::clone(&m);\n+    let mut t_a = spawn(async move {\n+        while tokio::task::coop::consume_budget().now_or_never().is_some() {}\n+        m_a.lock_owned().await\n+    });\n+    assert_pending!(t_a.poll());\n+\n+    let mut t_b = spawn(m.clone().lock_owned());\n+    assert_pending!(t_b.poll());\n+\n+    drop(g0);\n+\n+    assert!(t_a.is_woken());\n+    assert!(!t_b.is_woken());\n+}\n+\n+#[cfg(not(target_family = \"wasm\"))]\n+#[maybe_tokio_test]\n+async fn mutex_coop_drop_after_take_permit() {\n+    let m = Arc::new(Mutex::new(()));\n+    let m_a = Arc::clone(&m);\n+    let mut t_a = spawn(async move {\n+        while tokio::task::coop::consume_budget().now_or_never().is_some() {}\n+        m_a.lock_owned().await\n+    });\n+    assert_pending!(t_a.poll());\n+    drop(t_a);\n+    assert!(m.try_lock().is_ok());\n+}"
+    }
+  ]
+}

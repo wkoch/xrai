@@ -1,0 +1,56 @@
+{
+  "command": [
+    "/Users/wkoch/.cargo/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "tokio",
+    "--features",
+    "full",
+    "--test",
+    "sync_mutex",
+    "mutex_fifo_with_coop_budget",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/baseline",
+  "environment": {
+    "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/target-baseline",
+    "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/gocache-baseline",
+    "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+    "GOTOOLCHAIN": "local",
+    "GOMAXPROCS": "2",
+    "GOFLAGS": "-mod=readonly",
+    "GOPROXY": "https://proxy.golang.org",
+    "GOSUMDB": "sum.golang.org",
+    "PYTHONPATH": "/private/tmp/xrai-l3-python",
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 7.621432625000125,
+  "exit_code": 101,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/baseline/probe.stdout.log",
+      "captured_bytes": 214,
+      "observed_bytes": 214,
+      "captured_sha256": "354d2d9dd1ab46ca9ba67ba5a1ccf2fd9bb88c2fed22a2521fb1ae44da449032",
+      "observed_sha256": "354d2d9dd1ab46ca9ba67ba5a1ccf2fd9bb88c2fed22a2521fb1ae44da449032",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/baseline/probe.stderr.log",
+      "captured_bytes": 3701,
+      "observed_bytes": 3701,
+      "captured_sha256": "d254c9effae1fff6b5d44a885a17d6a7ce5a0204cc1ed657b95fbe91afa52a93",
+      "observed_sha256": "d254c9effae1fff6b5d44a885a17d6a7ce5a0204cc1ed657b95fbe91afa52a93",
+      "truncated": false
+    }
+  }
+}

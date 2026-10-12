@@ -1,0 +1,192 @@
+{
+  "reviewer": "/root/l3_containment",
+  "schema_version": "xrai.eval.independent.scoped-patch.v1",
+  "competitive_runs_allowed": false,
+  "runner_sha256": "44d6651159fa6a86bbd641340ca7001ff3f7f2e7bae22f143bcfdda4020d6294",
+  "review_script_sha256": "b6078ca965fd591883324723b7d6e9d2064bb14e5757f539639c8d8bbc552d53",
+  "source": {
+    "archive": "/Users/wkoch/Projetos/xrai/eval/sources/archives/vertical-prometheus-fd99142576bfae26107ac7263c3eb43bb212004e.tar.gz",
+    "sha256": "fe280bbc1b9541a4dd686e6cae8ebe58f8dd3f9ddbe8efe4c7df01aecc72403b",
+    "files": 1691,
+    "commit": "fd99142576bfae26107ac7263c3eb43bb212004e",
+    "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+  },
+  "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu",
+  "hidden_inputs": [
+    {
+      "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/prometheus/queue_manager_test.go",
+      "checkout_path": "storage/remote/queue_manager_test.go",
+      "sha256": "cf9f590c8102ae8bd5ff025201ebdf5aa9a77c4f3a2ebb833de1126f65388a44"
+    }
+  ],
+  "initial_module_sha256": {
+    "storage/remote/queue_manager.go": "c23fcc02601da5cd54d94ba4fe4a7f39972cce2ef1662fdfd9ad00c7eaf813cc",
+    "storage/remote/write.go": "070acab00716aea3f71426b70486b7b41c07f92aa0e875edf7a19abced8d9787"
+  },
+  "phases": [
+    {
+      "phase": "baseline",
+      "probe": {
+        "command": [
+          "/opt/homebrew/bin/go",
+          "test",
+          "-mod=readonly",
+          "-p",
+          "2",
+          "./storage/remote",
+          "-run",
+          "^TestCalculateDesiredShardsDetail$",
+          "-count=1",
+          "-v"
+        ],
+        "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu",
+        "environment": {
+          "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu/gocache",
+          "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+          "GOTOOLCHAIN": "local",
+          "GOMAXPROCS": "2",
+          "GOFLAGS": "-mod=readonly",
+          "GOPROXY": "off",
+          "GOSUMDB": "off"
+        },
+        "timeout_seconds": 600,
+        "stream_limit_bytes": 1048576,
+        "elapsed_seconds": 28.361018999999942,
+        "exit_code": 1,
+        "error": null,
+        "cleanup_status": "child_reaped_pipes_closed",
+        "containment": "trusted evaluator build/probe; process group auxiliary only",
+        "streams": {
+          "stdout": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/baseline.stdout.log",
+            "captured_bytes": 2924,
+            "observed_bytes": 2924,
+            "captured_sha256": "998b39be1bf02ade76b751217e4c82f195f67e6a5f395c136866a5a380ae1e0f",
+            "observed_sha256": "998b39be1bf02ade76b751217e4c82f195f67e6a5f395c136866a5a380ae1e0f",
+            "truncated": false
+          },
+          "stderr": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/baseline.stderr.log",
+            "captured_bytes": 0,
+            "observed_bytes": 0,
+            "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "truncated": false
+          }
+        }
+      },
+      "classification": "baseline_regression_reproduced"
+    },
+    {
+      "phase": "scoped_reference",
+      "probe": {
+        "command": [
+          "/opt/homebrew/bin/go",
+          "test",
+          "-mod=readonly",
+          "-p",
+          "2",
+          "./storage/remote",
+          "-run",
+          "^TestCalculateDesiredShards",
+          "-count=1",
+          "-v"
+        ],
+        "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu",
+        "environment": {
+          "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu/gocache",
+          "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+          "GOTOOLCHAIN": "local",
+          "GOMAXPROCS": "2",
+          "GOFLAGS": "-mod=readonly",
+          "GOPROXY": "off",
+          "GOSUMDB": "off"
+        },
+        "timeout_seconds": 600,
+        "stream_limit_bytes": 1048576,
+        "elapsed_seconds": 3.0214879170007407,
+        "exit_code": 0,
+        "error": null,
+        "cleanup_status": "child_reaped_pipes_closed",
+        "containment": "trusted evaluator build/probe; process group auxiliary only",
+        "streams": {
+          "stdout": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/scoped-reference.stdout.log",
+            "captured_bytes": 7713,
+            "observed_bytes": 7713,
+            "captured_sha256": "4044fa20bf28d85729fb7896511a9e89afd5bd9f27e708db9049f12609b4c697",
+            "observed_sha256": "4044fa20bf28d85729fb7896511a9e89afd5bd9f27e708db9049f12609b4c697",
+            "truncated": false
+          },
+          "stderr": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/scoped-reference.stderr.log",
+            "captured_bytes": 0,
+            "observed_bytes": 0,
+            "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "truncated": false
+          }
+        }
+      },
+      "classification": "reference_pass"
+    }
+  ],
+  "scoped_patch": {
+    "path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/prometheus/reference.patch",
+    "sha256": "38bf8147ea8e474a72d4bfe660da43bc20b9388b6e5f2f0dd1c31892cae19517",
+    "receipt": {
+      "command": [
+        "/usr/bin/patch",
+        "-p1",
+        "-i",
+        "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/prometheus/reference.patch"
+      ],
+      "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu",
+      "environment": {
+        "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu/gocache",
+        "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+        "GOTOOLCHAIN": "local",
+        "GOMAXPROCS": "2",
+        "GOFLAGS": "-mod=readonly",
+        "GOPROXY": "off",
+        "GOSUMDB": "off"
+      },
+      "timeout_seconds": 600,
+      "stream_limit_bytes": 1048576,
+      "elapsed_seconds": 0.0061095830005797325,
+      "exit_code": 0,
+      "error": null,
+      "cleanup_status": "child_reaped_pipes_closed",
+      "containment": "trusted evaluator build/probe; process group auxiliary only",
+      "streams": {
+        "stdout": {
+          "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/apply-scoped-patch.stdout.log",
+          "captured_bytes": 48,
+          "observed_bytes": 48,
+          "captured_sha256": "57ffe453ecc243cbc25007ce5fbfa400a96ff837534394f35344facfb650ad4b",
+          "observed_sha256": "57ffe453ecc243cbc25007ce5fbfa400a96ff837534394f35344facfb650ad4b",
+          "truncated": false
+        },
+        "stderr": {
+          "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/apply-scoped-patch.stderr.log",
+          "captured_bytes": 0,
+          "observed_bytes": 0,
+          "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "truncated": false
+        }
+      }
+    },
+    "module_sha256_after": {
+      "storage/remote/queue_manager.go": "86f96f022ecda3575044c98407c4fe4992fa719c1d300dc972c9802fe2e6cc46",
+      "storage/remote/write.go": "070acab00716aea3f71426b70486b7b41c07f92aa0e875edf7a19abced8d9787"
+    },
+    "only_queue_manager_changed": true,
+    "upstream_write_go_wal_change_excluded": true
+  },
+  "status": "verified",
+  "lock_sha256": {
+    "go.mod": "fbb70f1379e6840f711cf7f2e505ad74a8d3f187fc3aff3c95e220c2c7dc8eb4",
+    "go.sum": "8b60a61e1c7d5ba5b1955b39c99b6d168e8e1b81717441c1d88739ae9e36843a"
+  }
+}

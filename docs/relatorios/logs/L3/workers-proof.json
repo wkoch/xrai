@@ -1,0 +1,176 @@
+{
+  "schema": "l3-worker-command-v1",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "recorded_at": "2026-10-12T10:35:07.053711+00:00",
+  "command": [
+    "cargo",
+    "run",
+    "--release",
+    "-p",
+    "xrai-eval",
+    "--bin",
+    "worker-spike",
+    "--",
+    "demonstrate"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "architecture": "arm64",
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "elapsed_seconds": 0.7071552079996763,
+  "exit_code": 0,
+  "stdout": "{\"schema\":\"l3-worker-proof-v1\",\"version\":\"0.1.0-dev\",\"build_debug_assertions\":false,\"os\":\"macos\",\"arch\":\"aarch64\",\"workers\":2,\"queue\":8,\"source_limit\":8388608,\"response_limit\":16777216,\"aggregate_limit\":67108864,\"attempt_deadline_ms\":5000,\"retry_limit\":1,\"startup_parse_roundtrip_ms\":3.2109159999999997,\"worker_lifecycle\":\"new process per attempt, reaped before acceptance\",\"cpu_seconds\":null,\"rss_aggregate_bytes\":null,\"resources_status\":\"not yet measured; payload reservation is not RSS cap\",\"cases\":[{\"kind\":\"small\",\"source_bytes\":13,\"source_blake3\":\"316c77b9d4108554ac5e3c0302693ca9a50d848f8cecf5c97c80140df94393a4\",\"producer\":\"743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd\",\"configuration\":\"d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a\",\"repetitions\":6,\"direct_p50_ms\":2.050041,\"direct_p95_ms\":2.688959,\"pool_p50_ms_including_spawn\":4.798375,\"pool_p95_ms_including_spawn\":5.799875,\"codec_p50_ms\":0.25325,\"codec_p95_ms\":0.258416,\"direct_files_per_second\":499.0798215789638,\"pool_files_per_second_including_spawn\":392.85334293641506,\"ipc_bytes\":3180,\"logical_equivalence\":true,\"direct_samples_ms\":[2.688959, 2.0860000000000003, 2.050041, 1.85375, 1.682834, 1.654083],\"pool_samples_ms\":[5.799875, 5.6955, 4.75275, 4.798375, 4.491625, 4.414416],\"codec_samples_ms\":[0.252584, 0.258416, 0.24812499999999998, 0.256875, 0.25133300000000003, 0.25325]},{\"kind\":\"large-comments\",\"source_bytes\":1144014,\"source_blake3\":\"138293cf86c198198ea6a5227e8ab324af54bf7682a4d67b25a437e3d09425c8\",\"producer\":\"743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd\",\"configuration\":\"d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a\",\"repetitions\":6,\"direct_p50_ms\":11.534541,\"direct_p95_ms\":12.850458,\"pool_p50_ms_including_spawn\":17.145291999999998,\"pool_p95_ms_including_spawn\":17.255042000000003,\"codec_p50_ms\":1.100167,\"codec_p95_ms\":1.213042,\"direct_files_per_second\":85.17454315178715,\"pool_files_per_second_including_spawn\":115.18590198278709,\"ipc_bytes\":7857234,\"logical_equivalence\":true,\"direct_samples_ms\":[12.850458, 11.963625, 11.534541, 11.241667, 11.350083, 11.47175],\"pool_samples_ms\":[17.255042000000003, 16.783875000000002, 17.145291999999998, 16.694375, 17.211042, 16.747292],\"codec_samples_ms\":[1.1525420000000002, 1.0745, 1.0575, 1.100167, 1.213042, 1.085]},{\"kind\":\"incomplete\",\"source_bytes\":16,\"source_blake3\":\"b3e1d4884a38ec62dbf37c6e5b0a4e311f193b1753eed39f4ecb838329d18970\",\"producer\":\"743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd\",\"configuration\":\"d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a\",\"repetitions\":6,\"direct_p50_ms\":0.864792,\"direct_p95_ms\":0.8901249999999999,\"pool_p50_ms_including_spawn\":3.6089160000000002,\"pool_p95_ms_including_spawn\":3.833917,\"codec_p50_ms\":0.152333,\"codec_p95_ms\":0.15770800000000001,\"direct_files_per_second\":1153.023959069187,\"pool_files_per_second_including_spawn\":549.8806850560209,\"ipc_bytes\":3672,\"logical_equivalence\":true,\"direct_samples_ms\":[0.879209, 0.864792, 0.859333, 0.85975, 0.8901249999999999, 0.849709],\"pool_samples_ms\":[3.833917, 3.763125, 3.6089160000000002, 3.5507500000000003, 3.4489590000000003, 3.371542],\"codec_samples_ms\":[0.15770800000000001, 0.14625, 0.152333, 0.153041, 0.142958, 0.14683400000000002]}]}\n",
+  "stderr": "    Finished `release` profile [optimized] target(s) in 0.10s\n     Running `target/release/worker-spike demonstrate`\n",
+  "artifact_hashes": {
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "crates/xrai-eval/src/bin/worker-spike.rs": "96f82da6f806506f888cfe3df73dd52c7e824119fbdf491638a535f77ffadb6a",
+    "crates/xrai-eval/tests/workers.rs": "e27591a7fdd58bfda27d3e085e90f4281efa1f3d32906d6611e5d195c2f2b6b1"
+  },
+  "proof": {
+    "schema": "l3-worker-proof-v1",
+    "version": "0.1.0-dev",
+    "build_debug_assertions": false,
+    "os": "macos",
+    "arch": "aarch64",
+    "workers": 2,
+    "queue": 8,
+    "source_limit": 8388608,
+    "response_limit": 16777216,
+    "aggregate_limit": 67108864,
+    "attempt_deadline_ms": 5000,
+    "retry_limit": 1,
+    "startup_parse_roundtrip_ms": 3.2109159999999997,
+    "worker_lifecycle": "new process per attempt, reaped before acceptance",
+    "cpu_seconds": null,
+    "rss_aggregate_bytes": null,
+    "resources_status": "not yet measured; payload reservation is not RSS cap",
+    "cases": [
+      {
+        "kind": "small",
+        "source_bytes": 13,
+        "source_blake3": "316c77b9d4108554ac5e3c0302693ca9a50d848f8cecf5c97c80140df94393a4",
+        "producer": "743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd",
+        "configuration": "d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a",
+        "repetitions": 6,
+        "direct_p50_ms": 2.050041,
+        "direct_p95_ms": 2.688959,
+        "pool_p50_ms_including_spawn": 4.798375,
+        "pool_p95_ms_including_spawn": 5.799875,
+        "codec_p50_ms": 0.25325,
+        "codec_p95_ms": 0.258416,
+        "direct_files_per_second": 499.0798215789638,
+        "pool_files_per_second_including_spawn": 392.85334293641506,
+        "ipc_bytes": 3180,
+        "logical_equivalence": true,
+        "direct_samples_ms": [
+          2.688959,
+          2.0860000000000003,
+          2.050041,
+          1.85375,
+          1.682834,
+          1.654083
+        ],
+        "pool_samples_ms": [
+          5.799875,
+          5.6955,
+          4.75275,
+          4.798375,
+          4.491625,
+          4.414416
+        ],
+        "codec_samples_ms": [
+          0.252584,
+          0.258416,
+          0.24812499999999998,
+          0.256875,
+          0.25133300000000003,
+          0.25325
+        ]
+      },
+      {
+        "kind": "large-comments",
+        "source_bytes": 1144014,
+        "source_blake3": "138293cf86c198198ea6a5227e8ab324af54bf7682a4d67b25a437e3d09425c8",
+        "producer": "743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd",
+        "configuration": "d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a",
+        "repetitions": 6,
+        "direct_p50_ms": 11.534541,
+        "direct_p95_ms": 12.850458,
+        "pool_p50_ms_including_spawn": 17.145291999999998,
+        "pool_p95_ms_including_spawn": 17.255042000000003,
+        "codec_p50_ms": 1.100167,
+        "codec_p95_ms": 1.213042,
+        "direct_files_per_second": 85.17454315178715,
+        "pool_files_per_second_including_spawn": 115.18590198278709,
+        "ipc_bytes": 7857234,
+        "logical_equivalence": true,
+        "direct_samples_ms": [
+          12.850458,
+          11.963625,
+          11.534541,
+          11.241667,
+          11.350083,
+          11.47175
+        ],
+        "pool_samples_ms": [
+          17.255042000000003,
+          16.783875000000002,
+          17.145291999999998,
+          16.694375,
+          17.211042,
+          16.747292
+        ],
+        "codec_samples_ms": [
+          1.1525420000000002,
+          1.0745,
+          1.0575,
+          1.100167,
+          1.213042,
+          1.085
+        ]
+      },
+      {
+        "kind": "incomplete",
+        "source_bytes": 16,
+        "source_blake3": "b3e1d4884a38ec62dbf37c6e5b0a4e311f193b1753eed39f4ecb838329d18970",
+        "producer": "743a4d3228760dc8c475bb3dd512e849258ca1f202c73144f90ce98dbd1368dd",
+        "configuration": "d1a459b1303c934274ca2085c1196472f6bab6e46501c6a44a4c00f40fb4dd6a",
+        "repetitions": 6,
+        "direct_p50_ms": 0.864792,
+        "direct_p95_ms": 0.8901249999999999,
+        "pool_p50_ms_including_spawn": 3.6089160000000002,
+        "pool_p95_ms_including_spawn": 3.833917,
+        "codec_p50_ms": 0.152333,
+        "codec_p95_ms": 0.15770800000000001,
+        "direct_files_per_second": 1153.023959069187,
+        "pool_files_per_second_including_spawn": 549.8806850560209,
+        "ipc_bytes": 3672,
+        "logical_equivalence": true,
+        "direct_samples_ms": [
+          0.879209,
+          0.864792,
+          0.859333,
+          0.85975,
+          0.8901249999999999,
+          0.849709
+        ],
+        "pool_samples_ms": [
+          3.833917,
+          3.763125,
+          3.6089160000000002,
+          3.5507500000000003,
+          3.4489590000000003,
+          3.371542
+        ],
+        "codec_samples_ms": [
+          0.15770800000000001,
+          0.14625,
+          0.152333,
+          0.153041,
+          0.142958,
+          0.14683400000000002
+        ]
+      }
+    ]
+  }
+}

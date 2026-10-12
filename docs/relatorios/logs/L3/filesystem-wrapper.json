@@ -1,0 +1,33 @@
+{
+  "schema": "xrai-filesystem-wrapper-provenance-v1",
+  "package": "rustix",
+  "version": "1.1.5",
+  "release": "2026-09-16",
+  "rust_version": "1.65",
+  "license_expression": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+  "selected_license": "MIT",
+  "dependency_scope": "xrai-eval experiment only",
+  "features": [
+    "std (default)",
+    "fs"
+  ],
+  "unsafe_policy": "workspace forbid retained; safe wrapper API used",
+  "primary_sources": [
+    "https://docs.rs/crate/rustix/1.1.5/source/Cargo.toml",
+    "https://docs.rs/rustix/1.1.5/rustix/fs/fn.openat2.html",
+    "https://docs.rs/rustix/1.1.5/rustix/fs/fn.openat.html",
+    "https://docs.rs/rustix/1.1.5/rustix/fs/struct.Dir.html"
+  ],
+  "sha256": {
+    "Cargo.toml": "f57824af546c008210d8d6d63bc0fe866a3887d06100469448de3432ffa108ec",
+    "LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "COPYRIGHT": "377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9"
+  },
+  "semantics": {
+    "linux": "component resolution openat2 BENEATH|NO_SYMLINKS|NO_XDEV; no insecure fallback on ENOSYS/EAGAIN/errors",
+    "macos": "single-component openat NOFOLLOW with DIRECTORY on ancestors; anchored enumeration Dir::read_from; cross-device refusal",
+    "mount_limit": "macOS device check does not detect same-device mount attachment; Linux NO_XDEV rejects mount traversal",
+    "root": "canonical explicit root admission followed by NOFOLLOW absolute handle walk; root/physical lineage retained and revalidated",
+    "inventory": "directory handles enumerate, initial/end/final identity+stamp observations cover root/empty directories; changes mark partial coverage"
+  }
+}

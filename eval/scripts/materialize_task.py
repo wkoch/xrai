@@ -2,6 +2,8 @@
 """Materialize only allowlisted baseline files and public input into an empty directory."""
 import argparse
 import hashlib
+import gzip
+import io
 import json
 import os
 import stat
@@ -11,10 +13,29 @@ import tarfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def source_files(snapshot, *, root=ROOT):
+    """Legacy inline inventories and fingerprinted complete-tree inventories."""
+    if 'files' in snapshot:
+        return snapshot['files']
+    receipt = snapshot['files_artifact']
+    path = root / str(safe_path(receipt['path']))
+    if not path.resolve().is_relative_to(root.resolve()):
+        raise ValueError('source inventory escapes evaluator')
+    data = path.read_bytes()
+    if hashlib.sha256(data).hexdigest() != receipt['sha256']:
+        raise ValueError('source inventory fingerprint mismatch')
+    with gzip.GzipFile(fileobj=io.BytesIO(data)) as stream:
+        decoded = stream.read(64 * 1024 * 1024 + 1)
+    if len(decoded) > 64 * 1024 * 1024:
+        raise ValueError('source inventory exceeds evaluator bound')
+    return json.loads(decoded)
+
+
 def tasks(dataset="development"):
     """Development is explicit; a competitive caller must request qualified."""
     names = {"development": ("dev.jsonl", "challenge-dev.jsonl"),
              "seed": ("challenge-dev.jsonl",), "qualified": ("challenge-qualified.jsonl",),
+             "vertical": ("../qualification/vertical/candidates.jsonl",),
              "supplementary": ("supplementary.jsonl",)}
     if dataset not in names:
         raise ValueError("unknown dataset class")
@@ -158,6 +179,6 @@ if __name__ == "__main__":
     parser.add_argument("task_id")
     parser.add_argument("destination", type=Path)
     parser.add_argument("--phase", choices=("cold", "A"), default="cold")
-    parser.add_argument("--dataset", choices=("development", "seed", "qualified", "supplementary"), default="development")
+    parser.add_argument("--dataset", choices=("development", "seed", "qualified", "vertical", "supplementary"), default="development")
     args = parser.parse_args()
     print(json.dumps(materialize(args.task_id, args.destination, phase=args.phase, dataset=args.dataset)))

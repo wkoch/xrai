@@ -1,10 +1,10 @@
 # Estado da implementação
 
-Atualizado em: 12/10/2026. Execução: Implementador, primeiro incremento L2. Planejamento: Arquiteto, revisão L2/ADRs 023–024 e lote L3. Nenhuma tarefa de código foi executada nesta revisão documental. A [CI pública anterior](relatorios/CI-PUBLICO.md), commit `9b5411c`, permanece aceita; [CI nativa L2](relatorios/L2.md) do commit `1e09318` passou nos três jobs; gate de admissão corrigido e revisado com nove testes e provas negativas adicionais.
+Atualizado em: 12/10/2026. Execução: Implementador, primeiro incremento L3 em [L3](relatorios/L3.md). Planejamento: Arquiteto, revisão L2/ADRs023–024. Provas locais registradas; CI L3 ainda pendente; quatro dossiês verticais aceitos pelo segundo leitor no primeiro recibo. A [CI pública anterior](relatorios/CI-PUBLICO.md), commit `9b5411c`, permanece aceita; [CI nativa L2](relatorios/L2.md) do commit `1e09318` passou nos três jobs; gate de admissão corrigido e revisado com nove testes e provas negativas adicionais.
 
 **Situação:** L0 e retificações M0-01.R1/M0-02.R1 concluídas. Revisão L1 resolveu C01/S01/S02. M0-03 foi aceita no escopo revisado de corpus inicial: 20 D0/32 D1-seed e 78 fixtures. A qualificação competitiva permanece obrigatória em M0-03.R1: gate/triagem iniciados, zero casos qualificados. Usuário liberou L2; harness local/replay e spikes de parsing/filesystem implementados com evidência local em [L2](relatorios/L2.md). Provas nativas de parsing/filesystem/harness passaram em Ubuntu24.04.5 e macOS15.7.9; smokes de modelos reais, execução literal15.0 e pendências de contenção permanecem separados. Com o repo público, a tentativa 2 do run `38197775334` passou nos três jobs: **M0-02.R2 e M0-07 concluídas**, com seis testes SQLite em cada alvo nativo. V1: Linux x86_64/macOS arm64. Parsing, consultas e MCP de produção continuam indisponíveis; nenhum gate competitivo avaliado.
 
-**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima execução:** [lote L3](relatorios/REVISAO-L2.md), continuação de L2. Começar quatro casos verticais R1 e incrementos locais de contenção/workers/captura; M0-12 exige qualificação R1. L0-A01 permanece escolha do mantenedor antes de distribuição, sem bloquear trabalho local. [ADR 021](decisoes/CORPUS-QUALIFICADO.md) e [ADR 022](decisoes/PERSISTENCIA-E-RETENCAO.md) fecham as decisões solicitadas ao Arquiteto.
+**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima execução:** [lote L3](relatorios/REVISAO-L2.md), continuação de L2. Concluir CI dos quatro pilotos verticais e incrementos de contenção/workers/captura, depois L3-05 local; M0-12 exige qualificação R1. L0-A01 permanece escolha do mantenedor antes de distribuição, sem bloquear trabalho local. [ADR 021](decisoes/CORPUS-QUALIFICADO.md) e [ADR 022](decisoes/PERSISTENCIA-E-RETENCAO.md) fecham as decisões solicitadas ao Arquiteto.
 
 ## Decisões vigentes
 
@@ -28,14 +28,14 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | M0-02.R1 | Validação documental em CI | concluída | [CI do commit `0669f71`](relatorios/logs/L1/contracts-ci.json); [saída e contagens](relatorios/logs/L1/contracts-ci-output.json) |
 | M0-02.R2 | Adequar CI aos dois alvos v1 | concluída | [CI do commit `9b5411c`, tentativa 2](relatorios/CI-PUBLICO.md); dois hosts Rust e contratos passaram; proteção/rulesets consultados, sem check Windows exigido |
 | M0-03 | Corpus inicial D0/D1-seed e fixtures | concluída | [Aceite no escopo revisado](relatorios/REVISAO-L1.md); [52 materializações revalidadas](relatorios/logs/revisao-L1/corpus-check.json); qualificação original transferida para R1, sem aceite competitivo |
-| M0-03.R1 | Qualificar D1 para piloto/G0 | em andamento | [Gate fechado e oito candidatos medidos](../eval/reports/m0-corpus-qualification.md); 0/32 qualificados, seed preservado |
+| M0-03.R1 | Qualificar D1 para piloto/G0 | em andamento | [Gate fechado, triagem e quatro pilotos verticais revisados](../eval/reports/m0-corpus-qualification.md); 0/32 qualificados, seed preservado |
 | M0-04 | Harness, baseline e agentes | em andamento | [20 D0, replay, isolamento e quatro eventos A→B](relatorios/L2.md); 13 testes locais; modelos/tokenizer/custo reais pendentes; H01 decidida, implementação em M0-04.R1 |
-| M0-04.R1 | Contenção do domínio de execução do harness | não iniciada | Decisão H01 no [ADR 023](decisoes/EXECUCAO-E-CAPTURA.md); L3-02 define execução e provas |
+| M0-04.R1 | Contenção do domínio de execução do harness | em andamento | [Supervisor/domínio/replayv2 e25testes](../eval/reports/m0-harness-containment.md); Linux CI pendente, adapter mac descartável indisponível |
 | M0-05 | Gramáticas e autonomia | em andamento | [Sete dialetos e autonomia local](../eval/reports/m0-packaging.md); [Matriz nativa aprovada](relatorios/logs/L2/ci-native-fsfix.json); host literal15.0 ainda pendente |
-| M0-06 | Workers e IPC | não iniciada | — |
+| M0-06 | Workers e IPC | em andamento | [Framing/supervisão/pool inicial e13testes](../eval/reports/m0-workers.md); CI nativa e CPU/RSS agregado pendentes |
 | M0-07 | Snapshots e armazenamento | concluída | [Seis testes SQLite passaram em Linux x86_64 e macOS arm64](relatorios/logs/ci-publico/output.json); [aceite e limites](relatorios/CI-PUBLICO.md); spike experimental, produção permanece M1 |
-| M0-08 | Filesystem e checkout | em andamento | [14 testes e capacidades reais locais](../eval/reports/m0-filesystem.md); [Matriz nativa aprovada](relatorios/logs/L2/ci-native-fsfix.json); F01/Git decididas no ADR 023; fechamento original e nova prova R1 pendentes |
-| M0-08.R1 | Captura e enumeração ancoradas | não iniciada | Decisão F01 no [ADR 023](decisoes/EXECUCAO-E-CAPTURA.md); L3-04 precede promoção de produção |
+| M0-08 | Filesystem e checkout | concluída | [Recibo final do recorte original e Git adiado ADR023](../eval/reports/m0-filesystem.md); 14testes nativos L2. Captura adversarial ampliada pertence a R1 |
+| M0-08.R1 | Captura e enumeração ancoradas | em andamento | [Handles/limites/reconciliação e34testes locais](../eval/reports/m0-filesystem.md); nova matriz CI pendente |
 | M0-11 | Protótipo semântico P2 | não iniciada | — |
 | M0-09 | Protótipo de contexto P3 | não iniciada | — |
 | M0-12 | Piloto competitivo | não iniciada | — |
@@ -112,7 +112,7 @@ Escopo vigente de plataformas v1: Linux x86_64 e macOS arm64. M0-02.R2 e M0-07 a
 
 [Revisão vigente](relatorios/REVISAO-L2.md), [ADR 023](decisoes/EXECUCAO-E-CAPTURA.md) e [ADR 024](decisoes/BIBLIOTECAS-PROPRIAS.md). H01 exige domínio descartável para comandos arbitrários; F01 exige captura ancorada com modelo explícito de concorrência; Git incorporado fica adiado até consumidor. Decisão concluída não significa teste/implementação concluídos. Bibliotecas próprias de qualquer porte são admitidas por necessidade, começando por experimentos delimitados.
 
-Oito incrementos planejados, ainda não executados como L3: L3-01 qualificação vertical/D1; L3-02 contenção; L3-03 workers/IPC; L3-04 captura; L3-05 medição/adapters; L3-06 P2; L3-07 P3; L3-08 preparação/piloto. Estados M0 existentes permanecem; M0-04.R1/M0-08.R1 acrescentados como não iniciados. M0-08 pode fechar seu recorte original mediante recibo, mantendo R1 explícita.
+L3-01/02/03/04 iniciados e registrados em [L3](relatorios/L3.md); incrementos restantes: L3-01 qualificação vertical/D1; L3-02 contenção; L3-03 workers/IPC; L3-04 captura; L3-05 medição/adapters; L3-06 P2; L3-07 P3; L3-08 preparação/piloto. Estados por evidência no quadro acima; M0-08 original fechado por recibo, R1 continua separada.
 
 Continuam externos: host literal macOS 15.0, recursos/teto para runs reais e licença antes de distribuição. Não bloqueiam todas as frentes locais. Os gates seguem não avaliados; nenhuma biblioteca de produção foi implementada pelo Arquiteto.
 

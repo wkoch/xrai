@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/usr/bin/patch",
+    "-p1",
+    "-i",
+    "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/prometheus/reference.patch"
+  ],
+  "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu",
+  "environment": {
+    "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu/gocache",
+    "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+    "GOTOOLCHAIN": "local",
+    "GOMAXPROCS": "2",
+    "GOFLAGS": "-mod=readonly",
+    "GOPROXY": "off",
+    "GOSUMDB": "off"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 0.0061095830005797325,
+  "exit_code": 0,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/apply-scoped-patch.stdout.log",
+      "captured_bytes": 48,
+      "observed_bytes": 48,
+      "captured_sha256": "57ffe453ecc243cbc25007ce5fbfa400a96ff837534394f35344facfb650ad4b",
+      "observed_sha256": "57ffe453ecc243cbc25007ce5fbfa400a96ff837534394f35344facfb650ad4b",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/apply-scoped-patch.stderr.log",
+      "captured_bytes": 0,
+      "observed_bytes": 0,
+      "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncated": false
+    }
+  }
+}

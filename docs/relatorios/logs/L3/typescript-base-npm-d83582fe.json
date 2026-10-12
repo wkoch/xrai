@@ -1,0 +1,27 @@
+{
+  "schema_version": "xrai.eval.vertical.process.v1",
+  "key": "typescript",
+  "phase": "base",
+  "command": [
+    "npm",
+    "run",
+    "build:compiler"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "tool_versions": {
+      "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+      "go": "go version go1.27.2 darwin/arm64",
+      "node": "v26.11.1",
+      "npm": "11.20.0"
+    },
+    "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+  },
+  "elapsed_seconds": 8.322835334000047,
+  "exit_code": 0,
+  "error": null,
+  "stdout": "\n> typescript@6.0.0 build:compiler\n> hereby local\n\nUsing /private/tmp/xrai-l3-corpus/typescript-base/Herebyfile.mjs to run local\nStarting generate-diagnostics\n> /opt/homebrew/Cellar/node/26.11.1/bin/node scripts/processDiagnosticMessages.mjs src/compiler/diagnosticMessages.json\nStarting lib\nStarting shim-compile-cache-tsc\nStarting shim-compile-cache-tsserver\nStarting shim-compile-cache-typings-installer\nStarting bundle-watch-guard\nStarting build-watch-guard\nStarting generate-types-map\nFinished shim-compile-cache-tsserver in 8ms\nFinished shim-compile-cache-tsc in 8ms\nFinished shim-compile-cache-typings-installer in 8ms\nFinished generate-types-map in 8ms\nFinished lib in 70ms\nReading diagnostics from src/compiler/diagnosticMessages.json\nFinished generate-diagnostics in 109ms\nStarting localize\n> /opt/homebrew/Cellar/node/26.11.1/bin/node scripts/generateLocalizedDiagnosticMessages.mjs src/loc/lcl built/local src/compiler/diagnosticMessages.generated.json\nStarting bundle-tsc\nStarting build-tsc\nStarting bundle-services\nStarting build-services\nStarting bundle-tsserver\nStarting build-tsserver\nStarting bundle-typings-installer\nStarting build-typings-installer\nStarting copy-built-local-diagnostic-messages\nFinished copy-built-local-diagnostic-messages in 1ms\nFinished bundle-watch-guard in 233ms\nFinished bundle-tsserver in 149ms\nFinished bundle-typings-installer in 170ms\nFinished build-watch-guard in 562ms\nFinished localize in 587ms\nFinished bundle-tsc in 599ms\nFinished bundle-services in 707ms\nFinished build-tsc in 6.7s\nFinished build-services in 6.7s\nFinished build-tsserver in 6.7s\nFinished build-typings-installer in 6.7s\nStarting dts-services\n> /opt/homebrew/Cellar/node/26.11.1/bin/node ./scripts/dtsBundler.mjs --entrypoint ./built/local/typescript/typescript.d.ts --output ./built/local/typescript.d.ts\nStarting lssl\nFinished lssl in 1ms\nBundling ./built/local/typescript/typescript.d.ts to ./built/local/typescript.d.ts and ./built/local/typescript.internal.d.ts\nFinished dts-services in 904ms\nStarting dts-lssl\nFinished dts-lssl in 1ms\nCompleted local in 7.7s\n",
+  "stderr": ""
+}

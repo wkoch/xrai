@@ -1,0 +1,22 @@
+{
+  "runner_sha256": "943f31fae58d99696c4bf4006af319afe54faead75ae30b4cea26f74c3f7a88d",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "bounded_output",
+      "status": "PASS",
+      "receipt": "bounded-output.json"
+    },
+    {
+      "name": "finite_timeout",
+      "status": "PASS",
+      "receipt": "finite-timeout.json"
+    },
+    {
+      "name": "spawn_failure",
+      "status": "PASS",
+      "receipt": "spawn-failure.json"
+    }
+  ],
+  "competitive_runs_allowed": false
+}

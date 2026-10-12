@@ -1,0 +1,36 @@
+{
+  "command": [
+    "/opt/homebrew/bin/npm",
+    "--version"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript",
+  "environment": {
+    "GOTOOLCHAIN": "local",
+    "PYTHONPATH": "/private/tmp/xrai-l3-python"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 0.15839362499991694,
+  "exit_code": 0,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/tool-npm.stdout.log",
+      "captured_bytes": 8,
+      "observed_bytes": 8,
+      "captured_sha256": "6784d6c924df1c8341f9f841f5b5b20c37255de3d34f923baebc0a557d5d5201",
+      "observed_sha256": "6784d6c924df1c8341f9f841f5b5b20c37255de3d34f923baebc0a557d5d5201",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/typescript/tool-npm.stderr.log",
+      "captured_bytes": 0,
+      "observed_bytes": 0,
+      "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncated": false
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "xrai.eval.vertical.process.v1",
+  "key": "typescript",
+  "phase": "reference",
+  "command": [
+    "node",
+    "/private/tmp/xrai-l3-corpus/typescript-probe.cjs"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "tool_versions": {
+      "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+      "go": "go version go1.27.2 darwin/arm64",
+      "node": "v26.11.1",
+      "npm": "11.20.0"
+    },
+    "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+  },
+  "elapsed_seconds": 1.29899608300002,
+  "exit_code": 1,
+  "error": null,
+  "stdout": "{\"compiler_version\":\"6.0.0-dev\",\"diagnostics\":[2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2792,2403,2792]}\n",
+  "stderr": "node:internal/assert/utils:146\n  throw error;\n  ^\n\nAssertionError [ERR_ASSERTION]: nullable union spread must not claim id always overwritten\n+ actual - expected\n\n+ [\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2792,\n+   2403,\n+   2792\n+ ]\n- []\n\n    at Object.<anonymous> (/private/tmp/xrai-l3-corpus/typescript-probe.cjs:9:114)\n    at Module._compile (node:internal/modules/cjs/loader:1968:14)\n    at Object..js (node:internal/modules/cjs/loader:2108:10)\n    at Module.load (node:internal/modules/cjs/loader:1690:32)\n    at Module._load (node:internal/modules/cjs/loader:1480:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:33:47 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: [\n    2792, 2792, 2792, 2792,\n    2792, 2792, 2792, 2792,\n    2792, 2792, 2792, 2792,\n    2792, 2792, 2792, 2792,\n    2792, 2792, 2792, 2792,\n    2792, 2403, 2792\n  ],\n  expected: [],\n  operator: 'deepStrictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.11.1\n"
+}

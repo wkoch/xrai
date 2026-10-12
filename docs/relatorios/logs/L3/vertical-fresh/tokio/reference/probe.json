@@ -1,0 +1,54 @@
+{
+  "command": [
+    "/Users/wkoch/.cargo/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "tokio",
+    "--features",
+    "full",
+    "--test",
+    "sync_mutex",
+    "--",
+    "--nocapture"
+  ],
+  "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/reference",
+  "environment": {
+    "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/target-reference",
+    "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/tokio/gocache-reference",
+    "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+    "GOTOOLCHAIN": "local",
+    "GOMAXPROCS": "2",
+    "GOFLAGS": "-mod=readonly",
+    "GOPROXY": "https://proxy.golang.org",
+    "GOSUMDB": "sum.golang.org",
+    "PYTHONPATH": "/private/tmp/xrai-l3-python",
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 7.372429166999609,
+  "exit_code": 0,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/reference/probe.stdout.log",
+      "captured_bytes": 380,
+      "observed_bytes": 380,
+      "captured_sha256": "c3f873626238f46dff0030581da43c16964fbcb7e06a7a2b4e5f51466e430997",
+      "observed_sha256": "c3f873626238f46dff0030581da43c16964fbcb7e06a7a2b4e5f51466e430997",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/tokio/reference/probe.stderr.log",
+      "captured_bytes": 3441,
+      "observed_bytes": 3441,
+      "captured_sha256": "75ec4b79f46204a290aeacb7460983e2a6ed4e64b0c1e2b2f7821c1270cc7377",
+      "observed_sha256": "75ec4b79f46204a290aeacb7460983e2a6ed4e64b0c1e2b2f7821c1270cc7377",
+      "truncated": false
+    }
+  }
+}

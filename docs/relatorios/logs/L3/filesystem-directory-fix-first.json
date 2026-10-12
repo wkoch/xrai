@@ -1,0 +1,64 @@
+{
+  "schema": "xrai-l3-filesystem-local-v1",
+  "recorded_at": "2026-10-12T10:22:21.726410+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "source_sha256": {
+    "crates/xrai-eval/src/filesystem_spike.rs": "a975826ee0a2b9fd51305e2a0f06855d38e10f11bac34e0b20bb0cd2a216e819",
+    "crates/xrai-eval/tests/filesystem_inventory.rs": "d02756970ce6dc0053abe7de7a658ed0096d544a0ca21b955b4dd3028d19e223",
+    "crates/xrai-eval/tests/filesystem_anchored.rs": "e1c897683783b60a106cd5fce084a99ec355e8e8ee8be7ba4411cf24c379fc70",
+    "crates/xrai-eval/src/bin/filesystem-spike.rs": "0ab542d079cc4d6933c2dd88522641b0ad4782c0ea396cd2bf3a75359c37f70d",
+    "crates/xrai-eval/Cargo.toml": "9669e9c10f841008f6ed1ee4bebff5d1518b4a81a74ff52db6436f2ab471e506",
+    "Cargo.lock": "b9442dfde1d9e805fc5aaaf71cce7c18b8412a4fab8d0af781703e03ec45e0f9"
+  },
+  "commands": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--test",
+        "filesystem_inventory",
+        "--test",
+        "filesystem_anchored",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.4360361250001006,
+      "stdout": "\nrunning 20 tests\ntest ancestor_symlink_before_open_never_delivers_external_sentinel ... ok\ntest in_place_same_size_and_restored_mtime_is_not_a_snapshot_guarantee ... ok\ntest ancestor_symlink_after_source_open_never_publishes_as_current ... ok\ntest barrier_swap_after_ancestor_handle_open_invalidates_binding ... ok\ntest anchored_enumeration_of_moved_directory_returns_partial_inventory ... ok\ntest hard_link_captures_shared_object_and_does_not_claim_link_confinement ... ok\ntest inventory_final_reconciliation_rejects_changed_source_revision ... ok\ntest ceiling_is_enforced_for_initial_size_and_during_growth ... ok\ntest moving_open_directory_outside_without_link_is_diagnosed ... ok\ntest last_publication_reconciles_previously_captured_ancestor ... ok\ntest original_file_unlink_and_recreate_cannot_reuse_old_binding ... ok\ntest replacing_checkout_parent_with_alias_of_moved_parent_invalidates_locator ... ok\ntest new_file_after_enumeration_marks_root_coverage_partial ... ok\ntest rejects_invalid_native_components_and_internal_capture_inventory_exclusions ... ok\ntest replaced_root_invalidates_all_inventory_sources ... ok\ntest empty_directory_addition_and_removal_are_reconciled_before_publication ... ok\ntest special_files_are_refused_without_fifo_blocking ... ok\ntest stabilized_update_equals_independent_rebuild_and_old_bytes_remain_immutable ... ok\nfilesystem_stress_seed=0x584e52414902 schedules=32 (finite hook scheduling, not exhaustive concurrent stress)\ntest seeded_adversarial_schedule_supplements_deterministic_barriers ... ok\nconcurrent_stress_seed=0x4c3346532026 writer_rounds=64 captures=128 accepted=82 rejected=46\ntest seeded_concurrent_writer_stress_never_delivers_external_sentinel ... ok\n\ntest result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s\n\n\nrunning 14 tests\ntest invalid_configuration_fails_before_inventory ... ok\npermission_denial_supported=true\ntest removal_between_discovery_and_capture_has_typed_diagnostic ... ok\ntest permission_failure_is_diagnostic_or_records_privileged_capability ... ok\ntest removal_after_open_is_reported_even_when_unix_descriptor_remains_readable ... ok\ntest replacement_after_open_is_a_diagnostic_instead_of_misattributed_source ... ok\ncase_sensitive=false\ninvalid_utf8_filename_supported=false kind=Uncategorized raw_os_error=Some(92): Illegal byte sequence (os error 92)\ntest filesystem_case_capability_is_observed_and_names_are_not_lowercased ... ok\ntest explicit_exclusions_have_reason_and_internal_state_takes_precedence ... ok\ntest same_size_and_mtime_change_is_detected_by_content_hash ... ok\ntest unicode_spaces_invalid_utf8_and_crlf_preserve_native_and_source_bytes ... ok\ntest symlink_escape_inside_link_and_cycle_are_explained_and_never_read ... ok\ntest linked_worktrees_preserve_separate_identity_and_exclude_gitfile ... ok\ntest gitfile_symlinks_and_invalid_pointers_cannot_load_external_metadata ... ok\ntest no_git_and_identical_named_checkouts_have_independent_writable_state ... ok\ntest actual_git_linked_worktrees_have_independent_checkout_state ... ok\n\ntest result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s\n\n",
+      "stderr": "   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.50s\n     Running tests/filesystem_anchored.rs (target/debug/deps/filesystem_anchored-d1e9af92b09f5f16)\n     Running tests/filesystem_inventory.rs (target/debug/deps/filesystem_inventory-a70bf0dc2ecd8063)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "-p",
+        "xrai-eval",
+        "--lib",
+        "--bin",
+        "filesystem-spike",
+        "--test",
+        "filesystem_inventory",
+        "--test",
+        "filesystem_anchored",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 101,
+      "elapsed_seconds": 0.38714675000028365,
+      "stdout": "",
+      "stderr": "    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\nerror: unneeded unit expression\n   --> crates/xrai-eval/src/filesystem_spike.rs:447:17\n    |\n447 |                 ()\n    |                 ^^ help: remove the final `()`\n    |\n    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#unused_unit\n    = note: `-D clippy::unused-unit` implied by `-D warnings`\n    = help: to override `-D warnings` add `#[allow(clippy::unused_unit)]`\n\nerror: could not compile `xrai-eval` (lib) due to 1 previous error\n"
+    }
+  ],
+  "limitations": [
+    "macOS available host only; Linux/macOS15 native CI pending",
+    "No newly created mounts or same-device bind mount adversary",
+    "Metadata and identity revalidation are observations, not atomic snapshots"
+  ]
+}

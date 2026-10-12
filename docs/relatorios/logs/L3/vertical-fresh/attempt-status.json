@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-10-12T10:42:54.941930+00:00",
+  "status": "infrastructure_failure",
+  "error": "ENOSPC during prometheus baseline preparation go mod download; writing process receipt and failure.json also failed",
+  "process_exit_code": 1,
+  "accepted_pairs": [
+    "tokio",
+    "typescript",
+    "django"
+  ],
+  "excluded_from_behavioral_acceptance": [
+    "prometheus"
+  ],
+  "recovery": "remove only regenerable completed temporary build targets; retry fresh focused Go dependency preparation",
+  "competitive_runs_allowed": false
+}

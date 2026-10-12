@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "repository": "prometheus/prometheus",
+  "number": 19866,
+  "title": "remote: guard against future timestamps",
+  "body": "As described in #19864 - future-dated exemplars advance sent timestamps without advancing received timestamps. \r\n\r\nCurrently this will produce negative numbers in desired shards calculation and resulting in remote-write shards scaling down to 1. Future sent timestamps can also advance the Agent WAL truncation cutoff beyond recent samples - truncating data that was not yet sent.\r\n\r\nIn this PR:\r\n\r\n- Clamp negative backlog estimates to zero when sizing shards.\r\n- Cap the Agent WAL cutoff at `now - MinWALTime`, preserving the maximum-retention bound.\r\n- Add focused tests for the changes.\r\n- Add a comment explaining why exemplar timestamps are not used to advance received timestamps\r\n\r\n#### Which issue(s) does the PR fix:\r\n\r\nFixes #19864\r\n\r\n#### Release notes for end users\r\n\r\n```release-notes\r\n[BUGFIX] Remote write: Prevent future-dated exemplars from scaling shards down to the minimum.\r\n[BUGFIX] Agent: Prevent future sent timestamps from advancing WAL truncation beyond the minimum retention window.\r\n```\r\n",
+  "url": "https://github.com/prometheus/prometheus/pull/19866",
+  "merged_at": "2026-10-09T09:36:33Z",
+  "baseline_commit": "fd99142576bfae26107ac7263c3eb43bb212004e",
+  "reference_commit": "2213c3c192574b8a339acd336ea6385974a7567b",
+  "baseline_selection": "first parent of merged commit",
+  "files": [
+    {
+      "sha": "8aef305518628421e632c713429335d37af37fc9",
+      "filename": "storage/remote/queue_manager.go",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "changes": 2,
+      "blob_url": "https://github.com/prometheus/prometheus/blob/66f5a8cd8a56982280a45ac820c4906e003721ea/storage%2Fremote%2Fqueue_manager.go",
+      "raw_url": "https://github.com/prometheus/prometheus/raw/66f5a8cd8a56982280a45ac820c4906e003721ea/storage%2Fremote%2Fqueue_manager.go",
+      "contents_url": "https://api.github.com/repos/prometheus/prometheus/contents/storage%2Fremote%2Fqueue_manager.go?ref=66f5a8cd8a56982280a45ac820c4906e003721ea",
+      "patch": "@@ -1174,7 +1174,7 @@ func (t *QueueManager) calculateDesiredShards() int {\n \t\tdataPendingRate = dataInRate*dataKeptRatio - dataOutRate\n \t\thighestSent     = t.metrics.highestSentTimestamp.Get()\n \t\thighestRecv     = t.highestRecvTimestamp.Get()\n-\t\tdelay           = highestRecv - highestSent\n+\t\tdelay           = max(highestRecv-highestSent, 0) // Delay must never be negative.\n \t\tdataPending     = delay * dataInRate * dataKeptRatio\n \t)\n "
+    },
+    {
+      "sha": "58e4972d60df882e8b6bb698d9932aa62f18dfad",
+      "filename": "storage/remote/queue_manager_test.go",
+      "status": "modified",
+      "additions": 9,
+      "deletions": 0,
+      "changes": 9,
+      "blob_url": "https://github.com/prometheus/prometheus/blob/66f5a8cd8a56982280a45ac820c4906e003721ea/storage%2Fremote%2Fqueue_manager_test.go",
+      "raw_url": "https://github.com/prometheus/prometheus/raw/66f5a8cd8a56982280a45ac820c4906e003721ea/storage%2Fremote%2Fqueue_manager_test.go",
+      "contents_url": "https://api.github.com/repos/prometheus/prometheus/contents/storage%2Fremote%2Fqueue_manager_test.go?ref=66f5a8cd8a56982280a45ac820c4906e003721ea",
+      "patch": "@@ -1642,6 +1642,15 @@ func TestCalculateDesiredShardsDetail(t *testing.T) {\n \t\t\tdataOutDuration: 1,\n \t\t\texpectedShards:  1,\n \t\t},\n+\t\t{\n+\t\t\tname:            \"sent timestamp in the future\",\n+\t\t\tprevShards:      40,\n+\t\t\tdataIn:          1000,\n+\t\t\tdataOut:         1000,\n+\t\t\tdataOutDuration: 40,\n+\t\t\tbacklog:         -(5 * time.Hour).Seconds(),\n+\t\t\texpectedShards:  40,\n+\t\t},\n \t\t{\n \t\t\tname:            \"scale down\",\n \t\t\tprevShards:      10,"
+    },
+    {
+      "sha": "6e4a07cd892f7dd68906e422403204c26413570e",
+      "filename": "storage/remote/write.go",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 0,
+      "changes": 2,
+      "blob_url": "https://github.com/prometheus/prometheus/blob/66f5a8cd8a56982280a45ac820c4906e003721ea/storage%2Fremote%2Fwrite.go",
+      "raw_url": "https://github.com/prometheus/prometheus/raw/66f5a8cd8a56982280a45ac820c4906e003721ea/storage%2Fremote%2Fwrite.go",
+      "contents_url": "https://api.github.com/repos/prometheus/prometheus/contents/storage%2Fremote%2Fwrite.go?ref=66f5a8cd8a56982280a45ac820c4906e003721ea",
+      "patch": "@@ -330,6 +330,7 @@ func (t *timestampTracker) Append(_ storage.SeriesRef, _ labels.Labels, ts int64\n }\n \n func (t *timestampTracker) AppendExemplar(storage.SeriesRef, labels.Labels, exemplar.Exemplar) (storage.SeriesRef, error) {\n+\t// highestTimestamp excludes exemplars, as not all queues send them.\n \tt.exemplars++\n \treturn 0, nil\n }\n@@ -406,6 +407,7 @@ func (t *timestampTrackerV2) Append(ref storage.SeriesRef, _ labels.Labels, _, t\n \n // AppendExemplars implements storage.ExemplarAppenderV2.\n func (t *timestampTrackerV2) AppendExemplars(ref storage.SeriesRef, _ labels.Labels, exemplars []exemplar.Exemplar) (storage.SeriesRef, error) {\n+\t// highestTimestamp excludes exemplars, as not all queues send them.\n \tt.exemplars += int64(len(exemplars))\n \treturn ref, nil\n }"
+    },
+    {
+      "sha": "7fbf44427912b2f0e17f081e1731bc2ee7d661a0",
+      "filename": "storage/remote/write_test.go",
+      "status": "modified",
+      "additions": 9,
+      "deletions": 4,
+      "changes": 13,
+      "blob_url": "https://github.com/prometheus/prometheus/blob/66f5a8cd8a56982280a45ac820c4906e003721ea/storage%2Fremote%2Fwrite_test.go",
+      "raw_url": "https://github.com/prometheus/prometheus/raw/66f5a8cd8a56982280a45ac820c4906e003721ea/storage%2Fremote%2Fwrite_test.go",
+      "contents_url": "https://api.github.com/repos/prometheus/prometheus/contents/storage%2Fremote%2Fwrite_test.go?ref=66f5a8cd8a56982280a45ac820c4906e003721ea",
+      "patch": "@@ -389,16 +389,21 @@ func TestWriteStorage_AppenderV2_AppendExemplars(t *testing.T) {\n \n \tbefore := prom_testutil.ToFloat64(exemplarsIn)\n \n+\tnow := time.Now().UnixMilli()\n+\tfuture := now + time.Hour.Milliseconds()\n \tlbls := labels.FromStrings(\"__name__\", \"test_metric\")\n-\tref, err := app.Append(0, lbls, 0, 100, 1, nil, nil, storage.AOptions{})\n+\tref, err := app.Append(0, lbls, 0, now, 1, nil, nil, storage.AOptions{\n+\t\tExemplars: []exemplar.Exemplar{{Labels: labels.FromStrings(\"trace_id\", \"1\"), Value: 1, Ts: future, HasTs: true}},\n+\t})\n \trequire.NoError(t, err)\n \n \t_, err = app.AppendExemplars(ref, lbls, []exemplar.Exemplar{\n-\t\t{Labels: labels.FromStrings(\"trace_id\", \"1\"), Value: 1, Ts: 100},\n-\t\t{Labels: labels.FromStrings(\"trace_id\", \"2\"), Value: 2, Ts: 100},\n+\t\t{Labels: labels.FromStrings(\"trace_id\", \"2\"), Value: 2, Ts: future, HasTs: true},\n+\t\t{Labels: labels.FromStrings(\"trace_id\", \"3\"), Value: 3, Ts: future, HasTs: true},\n \t})\n \trequire.NoError(t, err)\n \trequire.NoError(t, app.Commit())\n \n-\trequire.Equal(t, before+2, prom_testutil.ToFloat64(exemplarsIn))\n+\trequire.Equal(t, before+3, prom_testutil.ToFloat64(exemplarsIn))\n+\trequire.Equal(t, float64(now/1000), s.highestTimestamp.Get())\n }"
+    },
+    {
+      "sha": "4aa81d1f461307726f41314ec8bea919ccb559da",
+      "filename": "tsdb/agent/db.go",
+      "status": "modified",
+      "additions": 16,
+      "deletions": 12,
+      "changes": 28,
+      "blob_url": "https://github.com/prometheus/prometheus/blob/66f5a8cd8a56982280a45ac820c4906e003721ea/tsdb%2Fagent%2Fdb.go",
+      "raw_url": "https://github.com/prometheus/prometheus/raw/66f5a8cd8a56982280a45ac820c4906e003721ea/tsdb%2Fagent%2Fdb.go",
+      "contents_url": "https://api.github.com/repos/prometheus/prometheus/contents/tsdb%2Fagent%2Fdb.go?ref=66f5a8cd8a56982280a45ac820c4906e003721ea",
+      "patch": "@@ -699,18 +699,7 @@ Loop:\n \t\t\t// samples and may be deleted from the WAL. Their most recent append\n \t\t\t// timestamp is compared to ts, and if that timestamp is older then ts,\n \t\t\t// they are considered inactive and may be deleted.\n-\t\t\t//\n-\t\t\t// Subtracting a duration from ts will add a buffer for when series are\n-\t\t\t// considered inactive and safe for deletion.\n-\t\t\tts := max(db.rs.LowestSentTimestamp()-db.opts.MinWALTime, 0)\n-\n-\t\t\t// Network issues can prevent the result of getRemoteWriteTimestamp from\n-\t\t\t// changing. We don't want data in the WAL to grow forever, so we set a cap\n-\t\t\t// on the maximum age data can be. If our ts is older than this cutoff point,\n-\t\t\t// we'll shift it forward to start deleting very stale data.\n-\t\t\tif maxTS := timestamp.FromTime(time.Now()) - db.opts.MaxWALTime; ts < maxTS {\n-\t\t\t\tts = maxTS\n-\t\t\t}\n+\t\t\tts := walTruncationTime(db.opts, db.rs.LowestSentTimestamp(), timestamp.FromTime(time.Now()))\n \n \t\t\tdb.logger.Debug(\"truncating the WAL\", \"ts\", ts)\n \t\t\tif err := db.truncate(ts); err != nil {\n@@ -720,6 +709,21 @@ Loop:\n \t}\n }\n \n+// walTruncationTime returns the timestamp before which inactive series may be\n+// truncated from the WAL, keeping between MinWALTime and MaxWALTime of data.\n+func walTruncationTime(opts *Options, lowestSentTs, nowTS int64) int64 {\n+\t// Keep MinWALTime of data behind what remote write has sent. Floor at 0\n+\t// since lowestSentTs is 0 until remote write sends something.\n+\tts := max(lowestSentTs-opts.MinWALTime, 0)\n+\n+\t// Keep at most MaxWALTime of data, even if remote write is stalled.\n+\tts = max(ts, nowTS-opts.MaxWALTime)\n+\n+\t// Keep at least MinWALTime of data, even if lowestSentTs is in the future.\n+\t// Floor at 0 so the cutoff is never negative.\n+\treturn min(ts, max(nowTS-opts.MinWALTime, 0))\n+}\n+\n // keepSeriesInWALCheckpointFn returns a function that is used to determine whether a series record should be kept in the checkpoint.\n // last is the last WAL segment that was considered for checkpointing.\n // NOTE: the agent implementation here is different from the Prometheus implementation, in that it uses WAL segment numbers instead of timestamps."
+    },
+    {
+      "sha": "6681211075f4e3eae59139ba4333395f439f7adf",
+      "filename": "tsdb/agent/db_test.go",
+      "status": "modified",
+      "additions": 19,
+      "deletions": 0,
+      "changes": 19,
+      "blob_url": "https://github.com/prometheus/prometheus/blob/66f5a8cd8a56982280a45ac820c4906e003721ea/tsdb%2Fagent%2Fdb_test.go",
+      "raw_url": "https://github.com/prometheus/prometheus/raw/66f5a8cd8a56982280a45ac820c4906e003721ea/tsdb%2Fagent%2Fdb_test.go",
+      "contents_url": "https://api.github.com/repos/prometheus/prometheus/contents/tsdb%2Fagent%2Fdb_test.go?ref=66f5a8cd8a56982280a45ac820c4906e003721ea",
+      "patch": "@@ -514,6 +514,25 @@ func TestRollback(t *testing.T) {\n \trequire.Equal(t, 0, walFloatHistogramCount, \"float histograms should not have been written to WAL\")\n }\n \n+func TestWALTruncationTime(t *testing.T) {\n+\topts := DefaultOptions()\n+\tnowTS := time.Now().UnixMilli()\n+\tfor _, tc := range []struct {\n+\t\tname string\n+\t\tsent int64\n+\t\twant int64\n+\t}{\n+\t\t{\"current\", nowTS, nowTS - opts.MinWALTime},\n+\t\t{\"lagging\", nowTS - time.Hour.Milliseconds(), nowTS - time.Hour.Milliseconds() - opts.MinWALTime},\n+\t\t{\"stalled\", 0, nowTS - opts.MaxWALTime},\n+\t\t{\"future\", nowTS + (5 * time.Hour).Milliseconds(), nowTS - opts.MinWALTime},\n+\t} {\n+\t\tt.Run(tc.name, func(t *testing.T) {\n+\t\t\trequire.Equal(t, tc.want, walTruncationTime(opts, tc.sent, nowTS))\n+\t\t})\n+\t}\n+}\n+\n func TestFullTruncateWAL(t *testing.T) {\n \tconst (\n \t\tnumDatapoints = 1000"
+    }
+  ]
+}

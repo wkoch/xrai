@@ -19,7 +19,10 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / 'eval/scripts'))
 from materialize_task import materialize  # noqa: E402
 
-VERSION = 'xrai.eval.local.v1'
+VERSION = 'xrai.eval.local.v2'
+LEGACY_VERSION = 'xrai.eval.local.v1'
+from adapters import sandbox  # public L2 helper used by packaging/incremental smokes
+
 
 
 def sha(data):
@@ -36,120 +39,32 @@ def payload(data, observed):
             'truncated': observed > len(data)}
 
 
-def sandbox(command, workspace, profile_dir):
-    """A fail-closed sandbox: only workspace writable, evaluator/other arms absent."""
-    workspace = Path(workspace).resolve(strict=True)
-    if not command or not Path(command[0]).is_absolute():
-        raise ValueError('adapter executable must be absolute')
-    if platform.system() == 'Darwin':
-        executable = str(Path(command[0]).resolve(strict=True))
-        # No global file-read permission: even same-user evaluator files are denied.
-        paths = ['/System', '/usr', '/bin', '/dev', '/etc', '/private/etc', '/Library/Apple',
-                 '/private/var/db/dyld', str(workspace)]
-        rules = ' '.join('(subpath ' + json.dumps(p) + ')' for p in paths)
-        profile = '(version 1)(deny default)(allow process-fork)(allow process-exec)(allow sysctl-read)(allow mach-lookup)(allow file-read-metadata)'
-        profile += '(allow file-read* ' + rules + ' (literal ' + json.dumps(executable) + '))'
-        profile += '(allow file-map-executable ' + rules + ' (literal ' + json.dumps(executable) + '))'
-        profile += '(allow file-read* (literal "/"))'
-        profile += '(allow file-write* (subpath ' + json.dumps(str(workspace)) + ') (literal "/dev/null"))'
-        p = Path(profile_dir) / 'sandbox.sb'
-        p.write_text(profile, encoding='utf-8')
-        return ['/usr/bin/sandbox-exec', '-f', str(p), *command], 'macOS Seatbelt'
-    if platform.system() == 'Linux':
-        bwrap = shutil.which('bwrap')
-        if not bwrap:
-            raise RuntimeError('bubblewrap required: refusing an unsandboxed run')
-        args = [bwrap, '--unshare-all', '--die-with-parent', '--new-session']
-        for p in ['/usr', '/bin', '/lib', '/lib64']:
-            if Path(p).exists():
-                args += ['--ro-bind', p, p]
-        args += ['--proc', '/proc', '--dev', '/dev', '--tmpfs', '/tmp',
-                 '--bind', str(workspace), '/workspace', '--chdir', '/workspace',
-                 '--clearenv', '--setenv', 'PATH', '/usr/bin:/bin', '--setenv', 'LANG', 'C.UTF-8']
-        exe = Path(command[0]).resolve(strict=True)
-        if not any(exe.is_relative_to(Path(p)) for p in ['/usr', '/bin', '/lib', '/lib64']):
-            args += ['--ro-bind', str(exe), '/adapter']
-            command = ['/adapter', *command[1:]]
-        return [*args, '--', *command], 'Linux bubblewrap'
-    raise RuntimeError('no sandbox for this platform')
 
-
-def execute(command, workspace, *, timeout=5.0, output_limit=65536, phase='reading'):
-    if timeout <= 0 or output_limit < 1:
-        raise ValueError('positive timeout/output_limit required')
-    start = time.monotonic()
-    with tempfile.TemporaryDirectory(prefix='xrai-profile-') as profiles:
-        wrapped, mechanism = sandbox(command, workspace, profiles)
-        env = {'PATH': '/usr/bin:/bin', 'LANG': 'C.UTF-8', 'HOME': str(Path(workspace).resolve()),
-               'TMPDIR': str(Path(workspace).resolve())}
-        try:
-            process = subprocess.Popen(wrapped, cwd=workspace, env=env, stdin=subprocess.DEVNULL,
-                                       stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
-        except OSError as e:
-            return {'phase': phase, 'command': command, 'status': 'spawn_error', 'exit_code': None,
-                    'sandbox': mechanism, 'diagnostic': str(e), 'elapsed_seconds': time.monotonic()-start,
-                    'stdout': payload(b'', 0), 'stderr': payload(b'', 0)}
-        saved = {'stdout': bytearray(), 'stderr': bytearray()}
-        observed = {'stdout': 0, 'stderr': 0}
-        status = None
-        drain_deadline = None
-        cleanup_errors = []
-        with selectors.DefaultSelector() as sel:
-            for key in saved:
-                pipe = getattr(process, key)
-                os.set_blocking(pipe.fileno(), False)
-                sel.register(pipe, selectors.EVENT_READ, key)
-            while sel.get_map() or process.poll() is None:
-                if status is None and time.monotonic()-start >= timeout:
-                    status = 'timeout'
-                    drain_deadline = time.monotonic()+.25
-                    try:
-                        os.killpg(process.pid, signal.SIGKILL)
-                    except OSError as error:
-                        cleanup_errors.append(str(error))
-                if drain_deadline is not None and time.monotonic() >= drain_deadline:
-                    # A detached descendant may retain the pipe. Closing it is
-                    # essential to bound the evaluator; never wait for its EOF.
-                    for key in list(sel.get_map().values()):
-                        sel.unregister(key.fileobj)
-                        key.fileobj.close()
-                    break
-                for event, _ in sel.select(0.02):
-                    chunk = os.read(event.fd, 16384)
-                    if not chunk:
-                        sel.unregister(event.fileobj)
-                        event.fileobj.close()
-                        continue
-                    key = event.data
-                    observed[key] += len(chunk)
-                    room = max(0, output_limit-sum(len(v) for v in saved.values()))
-                    saved[key].extend(chunk[:room])
-                    if status is None and sum(observed.values()) > output_limit:
-                        status = 'output_limit'
-                        drain_deadline = time.monotonic()+.25
-                        try:
-                            os.killpg(process.pid, signal.SIGKILL)
-                        except OSError as error:
-                            cleanup_errors.append(str(error))
-        try:
-            code = process.wait(timeout=.25)
-        except subprocess.TimeoutExpired:
-            try:
-                process.kill()
-                code = process.wait(timeout=.25)
-            except (OSError, subprocess.TimeoutExpired) as error:
-                cleanup_errors.append(str(error))
-                code = None
-        return {'phase': phase, 'command': command, 'status': status or ('ok' if code == 0 else 'error'),
-                'exit_code': code, 'sandbox': mechanism, 'diagnostic': '; '.join(cleanup_errors) or None,
-                'elapsed_seconds': time.monotonic()-start,
-                **{key: payload(bytes(saved[key]), observed[key]) for key in saved}}
+def execute(command, workspace, *, timeout=5.0, output_limit=65536, phase='reading',
+            cancel=None, arbitrary_agent=False):
+    """A fresh execution domain per operation; never reuse an inconclusive domain."""
+    from supervisor import supervise
+    result = supervise(command, workspace, timeout=timeout, output_limit=output_limit,
+                       cancel=cancel, arbitrary_agent=arbitrary_agent)
+    streams = result.pop('streams')
+    observed = result.pop('observed')
+    return {'phase': phase, 'command': command, **result,
+            **{key: payload(streams[key], observed[key]) for key in streams}}
 
 
 def replay(record):
     """Verify the original wire bytes, not a decoded/reformatted transcript."""
+    if record['schema_version'] not in (VERSION, LEGACY_VERSION):
+        raise ValueError('unsupported local record version')
     count = 0
+    domains = set()
     for turn in record['rounds']:
+        if record['schema_version'] == VERSION:
+            from supervisor import verify_receipt
+            verify_receipt(turn)
+            if turn['domain_id'] in domains:
+                raise ValueError('execution domain reused across operations')
+            domains.add(turn['domain_id'])
         for channel in ['stdout', 'stderr']:
             item = turn[channel]
             data = base64.b64decode(item['base64'], validate=True)
@@ -180,7 +95,9 @@ def record(task, arm, rounds, setup_seconds, workspace):
               'permission_policy': 'workspace_only_no_network',
               'environment': {'system': platform.system(), 'release': platform.release(),
                               'machine': platform.machine(), 'python': platform.python_version(),
-                              'executor_sha256': sha(Path(__file__).read_bytes())},
+                              'executor_sha256': sha(Path(__file__).read_bytes()),
+                              'containment_sources_sha256': {name:sha(Path(__file__).with_name(name).read_bytes())
+                                    for name in ['adapters.py','supervisor.py']}},
               'input_sha256': sha(canonical(task)), 'rounds': rounds,
               'measurement': {'captured_bytes': sum(t[c]['captured_bytes'] for t in rounds for c in ['stdout', 'stderr']),
                               'model_tokens': None},

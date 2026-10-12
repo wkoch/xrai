@@ -1,0 +1,16 @@
+{
+  "schema": "l3-worker-fixed-experiment-v1",
+  "defined_by": "ADR023 section2",
+  "workers": 2,
+  "queue": 8,
+  "source_limit": 8388608,
+  "response_limit": 16777216,
+  "aggregate_payload_reserved_limit": 67108864,
+  "deadline_total_ms": 5000,
+  "attempt_deadline_ms": 5000,
+  "maximum_retries": 1,
+  "stderr_capture_limit": 65536,
+  "limits_fixed_before_this_measurement": true,
+  "lifecycle": "new process per attempt; no persistent grammar cache",
+  "cpu_and_aggregate_rss_not_measured": true
+}

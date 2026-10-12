@@ -1,0 +1,25 @@
+{
+  "task_id": "Q1-Go-19866",
+  "label_method": "behavioral tests independent of xrai/graft/Tree-sitter; public upstream regressions or evaluator createProgram oracle",
+  "scope": "TestCalculateDesiredShardsDetail e TestCalculateDesiredShards; corre\u00e7\u00e3o WAL do mesmo PR fora deste pedido",
+  "hidden_inputs": {
+    "queue_manager_test.go": {
+      "path": "qualification/vertical/oracles/prometheus/queue_manager_test.go",
+      "sha256": "cf9f590c8102ae8bd5ff025201ebdf5aa9a77c4f3a2ebb833de1126f65388a44"
+    },
+    "reference.patch": {
+      "path": "qualification/vertical/oracles/prometheus/reference.patch",
+      "sha256": "38bf8147ea8e474a72d4bfe660da43bc20b9388b6e5f2f0dd1c31892cae19517"
+    }
+  },
+  "assertions": [
+    "baseline exhibits the named behavioral defect",
+    "reference passes focused oracle and recorded regressions"
+  ],
+  "no_agent_access": "evaluator-only dossier/oracle/reference; materializer copies source snapshot and public request only",
+  "reference_commit": "2213c3c192574b8a339acd336ea6385974a7567b",
+  "probe": {
+    "path": "qualification/vertical/oracles/prometheus/probe.json",
+    "sha256": "b9c6ba9827819f845eef3e7ec79888fe43c93d0cf3a5b8ac62b1ae8cbdd74210"
+  }
+}

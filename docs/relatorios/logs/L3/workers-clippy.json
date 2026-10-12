@@ -1,0 +1,31 @@
+{
+  "schema": "l3-worker-command-v1",
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "recorded_at": "2026-10-12T10:35:06.346010+00:00",
+  "command": [
+    "cargo",
+    "clippy",
+    "-p",
+    "xrai-eval",
+    "--test",
+    "workers",
+    "--bin",
+    "worker-spike",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "architecture": "arm64",
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "elapsed_seconds": 0.17209379200085095,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s\n",
+  "artifact_hashes": {
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "crates/xrai-eval/src/bin/worker-spike.rs": "96f82da6f806506f888cfe3df73dd52c7e824119fbdf491638a535f77ffadb6a",
+    "crates/xrai-eval/tests/workers.rs": "e27591a7fdd58bfda27d3e085e90f4281efa1f3d32906d6611e5d195c2f2b6b1"
+  }
+}

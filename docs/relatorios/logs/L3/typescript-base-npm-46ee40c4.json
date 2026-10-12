@@ -1,0 +1,29 @@
+{
+  "schema_version": "xrai.eval.vertical.process.v1",
+  "key": "typescript",
+  "phase": "base",
+  "command": [
+    "npm",
+    "ci",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "tool_versions": {
+      "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+      "go": "go version go1.27.2 darwin/arm64",
+      "node": "v26.11.1",
+      "npm": "11.20.0"
+    },
+    "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+  },
+  "elapsed_seconds": 1.9921540830000595,
+  "exit_code": 0,
+  "error": null,
+  "stdout": "\nadded 364 packages in 1s\n",
+  "stderr": "npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported\n"
+}

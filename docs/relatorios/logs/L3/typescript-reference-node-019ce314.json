@@ -1,0 +1,26 @@
+{
+  "schema_version": "xrai.eval.vertical.process.v1",
+  "key": "typescript",
+  "phase": "reference",
+  "command": [
+    "node",
+    "/private/tmp/xrai-l3-corpus/typescript-probe.cjs"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "tool_versions": {
+      "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+      "go": "go version go1.27.2 darwin/arm64",
+      "node": "v26.11.1",
+      "npm": "11.20.0"
+    },
+    "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+  },
+  "elapsed_seconds": 2.3532344999994166,
+  "exit_code": 0,
+  "error": null,
+  "stdout": "{\"compiler_version\":\"6.0.0-dev\",\"diagnostics\":[]}\n3 behavioral checks passed\n",
+  "stderr": ""
+}

@@ -1,0 +1,52 @@
+{
+  "command": [
+    "/opt/homebrew/bin/go",
+    "test",
+    "-mod=readonly",
+    "-p",
+    "2",
+    "./storage/remote",
+    "-run",
+    "^TestCalculateDesiredShards",
+    "-count=1",
+    "-v"
+  ],
+  "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/reference",
+  "environment": {
+    "RUSTUP_TOOLCHAIN": "1.98.1",
+    "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/target-reference",
+    "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/gocache-reference",
+    "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+    "GOTOOLCHAIN": "local",
+    "GOMAXPROCS": "2",
+    "GOFLAGS": "-mod=readonly",
+    "GOPROXY": "https://proxy.golang.org",
+    "GOSUMDB": "sum.golang.org",
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 1.4193465829994238,
+  "exit_code": 0,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/reference/probe.stdout.log",
+      "captured_bytes": 7713,
+      "observed_bytes": 7713,
+      "captured_sha256": "16f26ba78af755bf2d169c03742bf28474b3aa94fb4191d0d160095e00ea4ae6",
+      "observed_sha256": "16f26ba78af755bf2d169c03742bf28474b3aa94fb4191d0d160095e00ea4ae6",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/reference/probe.stderr.log",
+      "captured_bytes": 0,
+      "observed_bytes": 0,
+      "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncated": false
+    }
+  }
+}

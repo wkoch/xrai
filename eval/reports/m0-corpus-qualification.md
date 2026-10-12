@@ -52,3 +52,13 @@ PYTHONPATH=/private/tmp/xrai-contract-blake3 python3 -m unittest discover -s eva
 ```
 
 O dataset qualificado permanece vazio; o gate continua fechado. As 32 tarefas, builds/probes, revisão semântica e de contagem, e eventos qualificados ainda precisam de execução em R1.
+
+## Adendo L3-01 — quatro pilotos verticais
+
+12/10/2026. Quatro dossiês, um por família, receberam revisão independente aceita e quatro pares baseline/referência passaram em materializações fresh. Três pares estão nos recibos `docs/relatorios/logs/L3/vertical-fresh/`; Go passou no retry `vertical-fresh-retry-go/summary.json`, com baseline=1, referência=0 e `go.mod`/`go.sum` preservados em modo readonly. A tentativa inicial Go por ENOSPC permanece como falha de infraestrutura registrada. A revisão Go delimitada em `review-go-scoped/case.json` também passou, preservando a escrita WAL que provoca a falha do baseline.
+
+As quatro árvores completas normalizadas somam 84.068 arquivos, com quatro archives e inventários comprimidos vinculados por hashes. Quatro links de documentação Django foram materializados como arquivos, com flattening explícito nos recibos. Somente Django é marcado complexo neste lote: Tokio permanece `complex=false`, pois o piso aplicável após excluir testes inline não está comprovado. Fontes grandes ou revisão aceita não substituem esse critério.
+
+Materialização pública dos quatro casos e correspondência de hashes passaram. O verificador tem 14 testes; os controles negativos dos quatro pilotos preservam a recusa da admissão global. O gate de 32 permanece intacto, com **0/32 tarefas admitidas globalmente**. Os quatro pilotos não autorizam campanha competitiva, nem antecipam G0/G1; nenhuma execução paga ou competitiva ocorreu neste incremento.
+
+No primeiro recibo desta entrega, a CI do novo commit permanece pendente. Evidências locais, revisões, falha inicial e retry ficam preservados em `docs/relatorios/logs/L3/`; a integração deve acrescentar commit/run exatos ao conciliar a prova nativa. Próximo recorte: expandir os casos válidos até a matriz integral de 32, mantendo os pisos históricos, complexos, relações entre módulos e oracles/revisões exigidos pelo ADR 021.

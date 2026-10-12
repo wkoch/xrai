@@ -1,0 +1,121 @@
+{
+  "schema_version": "xrai.eval.vertical.probe.v1",
+  "case_id": "Q1-Go-19866",
+  "baseline": {
+    "exit_code": 1,
+    "command": [
+      "go",
+      "test",
+      "-p",
+      "2",
+      "./storage/remote",
+      "-run",
+      "TestCalculateDesiredShardsDetail",
+      "-count=1"
+    ],
+    "environment": {
+      "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "python": "3.15.0",
+      "tool_versions": {
+        "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+        "go": "go version go1.27.2 darwin/arm64",
+        "node": "v26.11.1",
+        "npm": "11.20.0"
+      },
+      "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+    },
+    "receipt": {
+      "path": "docs/relatorios/logs/L3/prometheus-base-go-222a7971.json",
+      "sha256": "27a89dc03d3cf90d4924cc6971af03472433af4d64ff5c3ef0de1862572cebaf"
+    }
+  },
+  "reference": {
+    "exit_code": 0,
+    "command": [
+      "go",
+      "test",
+      "-p",
+      "2",
+      "./storage/remote",
+      "-run",
+      "TestCalculateDesiredShards",
+      "-count=1"
+    ],
+    "environment": {
+      "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "python": "3.15.0",
+      "tool_versions": {
+        "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+        "go": "go version go1.27.2 darwin/arm64",
+        "node": "v26.11.1",
+        "npm": "11.20.0"
+      },
+      "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+    },
+    "receipt": {
+      "path": "docs/relatorios/logs/L3/prometheus-reference-go-81b7f8b3.json",
+      "sha256": "e3fcea4d787abeb7dea61d3d92ef1e5ed7c1cb9717b9f7048db643a6ac231e8f"
+    }
+  },
+  "regression": {
+    "exit_code": 0,
+    "command": [
+      "go",
+      "test",
+      "-p",
+      "2",
+      "./storage/remote",
+      "-run",
+      "TestCalculateDesiredShards",
+      "-count=1"
+    ],
+    "environment": {
+      "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "python": "3.15.0",
+      "tool_versions": {
+        "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+        "go": "go version go1.27.2 darwin/arm64",
+        "node": "v26.11.1",
+        "npm": "11.20.0"
+      },
+      "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+    },
+    "receipt": {
+      "path": "docs/relatorios/logs/L3/prometheus-reference-go-81b7f8b3.json",
+      "sha256": "e3fcea4d787abeb7dea61d3d92ef1e5ed7c1cb9717b9f7048db643a6ac231e8f"
+    }
+  },
+  "regression_policy": "reference suite includes focused oracle and relevant unaffected behavior; same recorded execution intentionally shared",
+  "hidden_inputs": {
+    "queue_manager_test.go": {
+      "path": "qualification/vertical/oracles/prometheus/queue_manager_test.go",
+      "sha256": "cf9f590c8102ae8bd5ff025201ebdf5aa9a77c4f3a2ebb833de1126f65388a44"
+    },
+    "reference.patch": {
+      "path": "qualification/vertical/oracles/prometheus/reference.patch",
+      "sha256": "38bf8147ea8e474a72d4bfe660da43bc20b9388b6e5f2f0dd1c31892cae19517"
+    }
+  },
+  "scope": "TestCalculateDesiredShardsDetail e TestCalculateDesiredShards; corre\u00e7\u00e3o WAL do mesmo PR fora deste pedido",
+  "setup_logs": [],
+  "label_method": "behavioral tests independent of xrai/graft/Tree-sitter; public upstream regressions or evaluator createProgram oracle",
+  "source_fingerprints": {
+    "base": {
+      "storage/remote/queue_manager.go": "c23fcc02601da5cd54d94ba4fe4a7f39972cce2ef1662fdfd9ad00c7eaf813cc",
+      "storage/remote/write.go": "070acab00716aea3f71426b70486b7b41c07f92aa0e875edf7a19abced8d9787"
+    },
+    "reference": {
+      "storage/remote/queue_manager.go": "86f96f022ecda3575044c98407c4fe4992fa719c1d300dc972c9802fe2e6cc46",
+      "storage/remote/write.go": "8f19b5d8f16eac1e61c2fd539a487bf86fc13670325d0fdbe63865605407f6c3"
+    }
+  },
+  "dependency_policy": {
+    "tokio": "captured Cargo.lock shared baseline/reference; final cargo --locked; distinct CARGO_TARGET_DIR per checkout (preliminary shared-target attempts excluded)",
+    "typescript": "upstream package-lock.json, npm ci --ignore-scripts; compiler built from pinned source; Node26.11.1",
+    "django": "Python3.15.0/asgiref3.12.1/sqlparse0.5.4; SQLite backend",
+    "prometheus": "Go1.27.2 upstream go.mod/go.sum; GOTOOLCHAINlocal -p2 GOMAXPROCS2"
+  }
+}

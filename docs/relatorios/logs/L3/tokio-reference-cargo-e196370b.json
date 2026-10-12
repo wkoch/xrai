@@ -1,0 +1,33 @@
+{
+  "schema_version": "xrai.eval.vertical.process.v1",
+  "key": "tokio",
+  "phase": "reference",
+  "command": [
+    "cargo",
+    "test",
+    "--locked",
+    "-p",
+    "tokio",
+    "--features",
+    "full",
+    "--test",
+    "sync_mutex"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "tool_versions": {
+      "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+      "go": "go version go1.27.2 darwin/arm64",
+      "node": "v26.11.1",
+      "npm": "11.20.0"
+    },
+    "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+  },
+  "elapsed_seconds": 15.764733166999576,
+  "exit_code": 0,
+  "error": null,
+  "stdout": "\nrunning 9 tests\ntest readiness ... ok\ntest straight_execution ... ok\ntest try_lock ... ok\ntest mutex_coop_drop_after_take_permit ... ok\ntest mutex_debug ... ok\ntest debug_format ... ok\ntest mutex_fifo_with_coop_budget ... ok\ntest aborted_future_1 ... ok\ntest aborted_future_2 ... ok\n\ntest result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+  "stderr": "   Compiling libc v0.2.190\n   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling cfg-if v1.0.5\n   Compiling futures-core v0.3.34\n   Compiling pin-project-lite v0.2.17\n   Compiling autocfg v1.5.1\n   Compiling futures-io v0.3.34\n   Compiling smallvec v1.16.3\n   Compiling parking_lot_core v0.9.12\n   Compiling rand_core v0.10.1\n   Compiling futures-sink v0.3.34\n   Compiling getrandom v0.4.3\n   Compiling scopeguard v1.2.0\n   Compiling futures-channel v0.3.34\n   Compiling lock_api v0.4.14\n   Compiling memchr v2.8.3\n   Compiling fastrand v2.5.0\n   Compiling futures-task v0.3.34\n   Compiling zerocopy v0.8.62\n   Compiling rustix v1.1.5\n   Compiling bitflags v2.13.2\n   Compiling getrandom v0.3.4\n   Compiling slab v0.4.12\n   Compiling bytes v1.12.1\n   Compiling memoffset v0.9.1\n   Compiling num-traits v0.2.19\n   Compiling once_cell v1.21.4\n   Compiling predicates-core v1.0.10\n   Compiling mockall_derive v0.13.1\n   Compiling cfg_aliases v0.2.2\n   Compiling nix v0.31.3\n   Compiling quick-error v1.2.3\n   Compiling termtree v0.5.1\n   Compiling bit-vec v0.10.1\n   Compiling parking v2.2.1\n   Compiling anstyle v1.0.14\n   Compiling fnv v1.0.7\n   Compiling futures-lite v2.6.1\n   Compiling predicates-tree v1.0.13\n   Compiling predicates v3.1.4\n   Compiling bit-set v0.11.1\n   Compiling chacha20 v0.10.2\n   Compiling rand_xorshift v0.5.0\n   Compiling syn v3.0.8\n   Compiling syn v2.0.119\n   Compiling fragile v2.1.0\n   Compiling fixedbitset v0.5.7\n   Compiling regex-syntax v0.8.11\n   Compiling unarray v0.1.4\n   Compiling core_detect v1.0.0\n   Compiling downcast v0.11.0\n   Compiling pin-utils v0.1.1\n   Compiling errno v0.3.14\n   Compiling mio v1.2.4\n   Compiling socket2 v0.6.5\n   Compiling signal-hook-registry v1.4.8\n   Compiling parking_lot v0.12.5\n   Compiling rand_core v0.9.5\n   Compiling wait-timeout v0.2.1\n   Compiling rand v0.10.3\n   Compiling tempfile v3.27.0\n   Compiling rusty-fork v0.3.1\n   Compiling proptest v1.12.0\n   Compiling futures-macro v0.3.34\n   Compiling tokio-macros v2.7.2 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio-macros)\n   Compiling futures-util v0.3.34\n   Compiling tokio v1.53.2 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio)\n   Compiling ppv-lite86 v0.2.21\n   Compiling rand_chacha v0.9.0\n   Compiling rand v0.9.5\n   Compiling pin-project-internal v1.1.13\n   Compiling async-stream-impl v0.3.6\n   Compiling async-stream v0.3.6\n   Compiling pin-project v1.1.13\n   Compiling futures-concurrency v7.7.1\n   Compiling mockall v0.13.1\n   Compiling futures-executor v0.3.34\n   Compiling futures v0.3.34\n   Compiling futures-test v0.3.34\n   Compiling tokio-stream v0.1.19 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio-stream)\n   Compiling tokio-util v0.7.20 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio-util)\n   Compiling tokio-test v0.4.6 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio-test)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 15.19s\n     Running tests/sync_mutex.rs (/private/tmp/xrai-l3-corpus/tokio-target-reference/debug/deps/sync_mutex-9ca0b010cedbd41a)\n"
+}

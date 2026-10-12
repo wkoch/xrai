@@ -1,0 +1,313 @@
+{
+  "id": "Q1-Go-19866",
+  "key": "prometheus",
+  "competitive_runs_allowed": false,
+  "tool_receipts": [
+    {
+      "command": [
+        "/opt/homebrew/bin/go",
+        "version"
+      ],
+      "cwd": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus",
+      "environment": {
+        "RUSTUP_TOOLCHAIN": "1.98.1",
+        "GOTOOLCHAIN": "local"
+      },
+      "timeout_seconds": 600,
+      "stream_limit_bytes": 1048576,
+      "elapsed_seconds": 0.014805083999817725,
+      "exit_code": 0,
+      "error": null,
+      "cleanup_status": "child_reaped_pipes_closed",
+      "containment": "trusted evaluator build/probe; process group auxiliary only",
+      "streams": {
+        "stdout": {
+          "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/tool-go.stdout.log",
+          "captured_bytes": 33,
+          "observed_bytes": 33,
+          "captured_sha256": "94e911f9fbf3c118f6a0573ab3a13fa546ad13e89ba40cf53df77e468509c92d",
+          "observed_sha256": "94e911f9fbf3c118f6a0573ab3a13fa546ad13e89ba40cf53df77e468509c92d",
+          "truncated": false
+        },
+        "stderr": {
+          "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/tool-go.stderr.log",
+          "captured_bytes": 0,
+          "observed_bytes": 0,
+          "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "truncated": false
+        }
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "baseline",
+      "source": {
+        "archive": "/Users/wkoch/Projetos/xrai/eval/sources/archives/vertical-prometheus-fd99142576bfae26107ac7263c3eb43bb212004e.tar.gz",
+        "sha256": "fe280bbc1b9541a4dd686e6cae8ebe58f8dd3f9ddbe8efe4c7df01aecc72403b",
+        "files": 1691,
+        "commit": "fd99142576bfae26107ac7263c3eb43bb212004e",
+        "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+      },
+      "hidden_oracles": [
+        {
+          "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/prometheus/queue_manager_test.go",
+          "checkout_path": "storage/remote/queue_manager_test.go",
+          "sha256": "cf9f590c8102ae8bd5ff025201ebdf5aa9a77c4f3a2ebb833de1126f65388a44"
+        }
+      ],
+      "lock_sha256_before": {
+        "go.mod": "fbb70f1379e6840f711cf7f2e505ad74a8d3f187fc3aff3c95e220c2c7dc8eb4",
+        "go.sum": "8b60a61e1c7d5ba5b1955b39c99b6d168e8e1b81717441c1d88739ae9e36843a"
+      },
+      "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/baseline",
+      "disk_free_before_materialization_bytes": 5324800000,
+      "preparation": [
+        {
+          "command": [
+            "/opt/homebrew/bin/go",
+            "test",
+            "-mod=readonly",
+            "-p",
+            "2",
+            "./storage/remote",
+            "-run",
+            "^$",
+            "-count=1"
+          ],
+          "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/baseline",
+          "environment": {
+            "RUSTUP_TOOLCHAIN": "1.98.1",
+            "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/target-baseline",
+            "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/gocache-baseline",
+            "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+            "GOTOOLCHAIN": "local",
+            "GOMAXPROCS": "2",
+            "GOFLAGS": "-mod=readonly",
+            "GOPROXY": "https://proxy.golang.org",
+            "GOSUMDB": "sum.golang.org",
+            "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+          },
+          "timeout_seconds": 600,
+          "stream_limit_bytes": 1048576,
+          "elapsed_seconds": 26.93377629099996,
+          "exit_code": 0,
+          "error": null,
+          "cleanup_status": "child_reaped_pipes_closed",
+          "containment": "trusted evaluator build/probe; process group auxiliary only",
+          "streams": {
+            "stdout": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/baseline/prepare-0.stdout.log",
+              "captured_bytes": 78,
+              "observed_bytes": 78,
+              "captured_sha256": "c5d5fed0a8647373354205ca669f9248633f5f2a97805b20f1535a3b185a970a",
+              "observed_sha256": "c5d5fed0a8647373354205ca669f9248633f5f2a97805b20f1535a3b185a970a",
+              "truncated": false
+            },
+            "stderr": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/baseline/prepare-0.stderr.log",
+              "captured_bytes": 0,
+              "observed_bytes": 0,
+              "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "truncated": false
+            }
+          }
+        }
+      ],
+      "classification": "baseline_regression_reproduced",
+      "lock_sha256": {
+        "go.mod": "fbb70f1379e6840f711cf7f2e505ad74a8d3f187fc3aff3c95e220c2c7dc8eb4",
+        "go.sum": "8b60a61e1c7d5ba5b1955b39c99b6d168e8e1b81717441c1d88739ae9e36843a"
+      },
+      "probe": {
+        "command": [
+          "/opt/homebrew/bin/go",
+          "test",
+          "-mod=readonly",
+          "-p",
+          "2",
+          "./storage/remote",
+          "-run",
+          "^TestCalculateDesiredShardsDetail$",
+          "-count=1",
+          "-v"
+        ],
+        "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/baseline",
+        "environment": {
+          "RUSTUP_TOOLCHAIN": "1.98.1",
+          "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/target-baseline",
+          "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/gocache-baseline",
+          "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+          "GOTOOLCHAIN": "local",
+          "GOMAXPROCS": "2",
+          "GOFLAGS": "-mod=readonly",
+          "GOPROXY": "https://proxy.golang.org",
+          "GOSUMDB": "sum.golang.org",
+          "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+        },
+        "timeout_seconds": 600,
+        "stream_limit_bytes": 1048576,
+        "elapsed_seconds": 1.4965839999995296,
+        "exit_code": 1,
+        "error": null,
+        "cleanup_status": "child_reaped_pipes_closed",
+        "containment": "trusted evaluator build/probe; process group auxiliary only",
+        "streams": {
+          "stdout": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/baseline/probe.stdout.log",
+            "captured_bytes": 2942,
+            "observed_bytes": 2942,
+            "captured_sha256": "b6da955a925814a212a3edc1a5a0ae691fca426734a03a028b0d3086a7591583",
+            "observed_sha256": "b6da955a925814a212a3edc1a5a0ae691fca426734a03a028b0d3086a7591583",
+            "truncated": false
+          },
+          "stderr": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/baseline/probe.stderr.log",
+            "captured_bytes": 0,
+            "observed_bytes": 0,
+            "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "phase": "reference",
+      "source": {
+        "archive": "/private/tmp/xrai-l3-corpus/prometheus-reference.tar.gz",
+        "sha256": "07f5cfdcfdce6777ab7a68882debe20f5fe6006db9ba828567d232c175fdb965",
+        "files": 1691,
+        "commit": "2213c3c192574b8a339acd336ea6385974a7567b",
+        "materialized_links": [],
+        "normalization": "xrai.complete.regular-files.internal-link-copy.v1"
+      },
+      "hidden_oracles": [
+        {
+          "evaluator_path": "/Users/wkoch/Projetos/xrai/eval/qualification/vertical/oracles/prometheus/queue_manager_test.go",
+          "checkout_path": "storage/remote/queue_manager_test.go",
+          "sha256": "cf9f590c8102ae8bd5ff025201ebdf5aa9a77c4f3a2ebb833de1126f65388a44"
+        }
+      ],
+      "lock_sha256_before": {
+        "go.mod": "fbb70f1379e6840f711cf7f2e505ad74a8d3f187fc3aff3c95e220c2c7dc8eb4",
+        "go.sum": "8b60a61e1c7d5ba5b1955b39c99b6d168e8e1b81717441c1d88739ae9e36843a"
+      },
+      "checkout": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/reference",
+      "disk_free_before_materialization_bytes": 5120000000,
+      "preparation": [
+        {
+          "command": [
+            "/opt/homebrew/bin/go",
+            "test",
+            "-mod=readonly",
+            "-p",
+            "2",
+            "./storage/remote",
+            "-run",
+            "^$",
+            "-count=1"
+          ],
+          "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/reference",
+          "environment": {
+            "RUSTUP_TOOLCHAIN": "1.98.1",
+            "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/target-reference",
+            "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/gocache-reference",
+            "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+            "GOTOOLCHAIN": "local",
+            "GOMAXPROCS": "2",
+            "GOFLAGS": "-mod=readonly",
+            "GOPROXY": "https://proxy.golang.org",
+            "GOSUMDB": "sum.golang.org",
+            "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+          },
+          "timeout_seconds": 600,
+          "stream_limit_bytes": 1048576,
+          "elapsed_seconds": 25.099690083000496,
+          "exit_code": 0,
+          "error": null,
+          "cleanup_status": "child_reaped_pipes_closed",
+          "containment": "trusted evaluator build/probe; process group auxiliary only",
+          "streams": {
+            "stdout": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/reference/prepare-0.stdout.log",
+              "captured_bytes": 78,
+              "observed_bytes": 78,
+              "captured_sha256": "ffbeb4c3ea2ab340681287cf78337ddc9a6e2ddd63f27da55d55482b692b07a2",
+              "observed_sha256": "ffbeb4c3ea2ab340681287cf78337ddc9a6e2ddd63f27da55d55482b692b07a2",
+              "truncated": false
+            },
+            "stderr": {
+              "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/reference/prepare-0.stderr.log",
+              "captured_bytes": 0,
+              "observed_bytes": 0,
+              "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "truncated": false
+            }
+          }
+        }
+      ],
+      "classification": "reference_pass",
+      "lock_sha256": {
+        "go.mod": "fbb70f1379e6840f711cf7f2e505ad74a8d3f187fc3aff3c95e220c2c7dc8eb4",
+        "go.sum": "8b60a61e1c7d5ba5b1955b39c99b6d168e8e1b81717441c1d88739ae9e36843a"
+      },
+      "probe": {
+        "command": [
+          "/opt/homebrew/bin/go",
+          "test",
+          "-mod=readonly",
+          "-p",
+          "2",
+          "./storage/remote",
+          "-run",
+          "^TestCalculateDesiredShards",
+          "-count=1",
+          "-v"
+        ],
+        "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/reference",
+        "environment": {
+          "RUSTUP_TOOLCHAIN": "1.98.1",
+          "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/target-reference",
+          "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-tf4rsw7q/prometheus/gocache-reference",
+          "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+          "GOTOOLCHAIN": "local",
+          "GOMAXPROCS": "2",
+          "GOFLAGS": "-mod=readonly",
+          "GOPROXY": "https://proxy.golang.org",
+          "GOSUMDB": "sum.golang.org",
+          "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+        },
+        "timeout_seconds": 600,
+        "stream_limit_bytes": 1048576,
+        "elapsed_seconds": 1.4193465829994238,
+        "exit_code": 0,
+        "error": null,
+        "cleanup_status": "child_reaped_pipes_closed",
+        "containment": "trusted evaluator build/probe; process group auxiliary only",
+        "streams": {
+          "stdout": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/reference/probe.stdout.log",
+            "captured_bytes": 7713,
+            "observed_bytes": 7713,
+            "captured_sha256": "16f26ba78af755bf2d169c03742bf28474b3aa94fb4191d0d160095e00ea4ae6",
+            "observed_sha256": "16f26ba78af755bf2d169c03742bf28474b3aa94fb4191d0d160095e00ea4ae6",
+            "truncated": false
+          },
+          "stderr": {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh-retry-go/prometheus/reference/probe.stderr.log",
+            "captured_bytes": 0,
+            "observed_bytes": 0,
+            "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "truncated": false
+          }
+        }
+      }
+    }
+  ],
+  "status": "vertical_pair_verified"
+}

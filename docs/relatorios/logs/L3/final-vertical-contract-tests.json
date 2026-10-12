@@ -1,0 +1,19 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "eval/scripts/tests",
+    "-v"
+  ],
+  "base_commit": "0c505684c52ece357a4951c9432c8655d48ad325",
+  "recorded_at": "2026-10-12T10:42:28.816588+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "elapsed_seconds": 1.3545299580000574,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_complete_synthetic_shape (test_qualification.AdmissionTests.test_complete_synthetic_shape) ... ok\ntest_empty_and_seed_fail_closed (test_qualification.AdmissionTests.test_empty_and_seed_fail_closed) ... ok\ntest_event_refuses_agent_symlink_escape (test_qualification.AdmissionTests.test_event_refuses_agent_symlink_escape) ... ok\ntest_event_refuses_hardlink_and_parent_symlink_escape (test_qualification.AdmissionTests.test_event_refuses_hardlink_and_parent_symlink_escape) ... ok\ntest_mutations_reject_false_admission (test_qualification.AdmissionTests.test_mutations_reject_false_admission) ... ok\ntest_phase_A_event_B_matches_cold_checkout_each_family (test_qualification.AdmissionTests.test_phase_A_event_B_matches_cold_checkout_each_family) ... ok\ntest_qualified_and_supplementary_are_explicit_empty (test_qualification.AdmissionTests.test_qualified_and_supplementary_are_explicit_empty) ... ok\ntest_real_mode_binds_snapshots_sources_measurements_and_event_oracle (test_qualification.AdmissionTests.test_real_mode_binds_snapshots_sources_measurements_and_event_oracle) ... ok\ntest_schema_types_language_and_incremental_oracle_both_modes (test_qualification.AdmissionTests.test_schema_types_language_and_incremental_oracle_both_modes) ... ok\ntest_compressed_inventory_is_bound_to_fingerprint (test_vertical.VerticalTests.test_compressed_inventory_is_bound_to_fingerprint) ... ok\ntest_internal_link_materialization_has_explicit_receipt (test_vertical.VerticalTests.test_internal_link_materialization_has_explicit_receipt) ... ok\ntest_links_cannot_escape_or_cycle_or_target_directories (test_vertical.VerticalTests.test_links_cannot_escape_or_cycle_or_target_directories) ... ok\ntest_partial_requires_one_per_family_and_full_evidence (test_vertical.VerticalTests.test_partial_requires_one_per_family_and_full_evidence) ... ok\ntest_partial_success_cannot_admit_campaign (test_vertical.VerticalTests.test_partial_success_cannot_admit_campaign) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 1.252s\n\nOK\n"
+}

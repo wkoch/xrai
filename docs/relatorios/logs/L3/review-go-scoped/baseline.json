@@ -1,0 +1,49 @@
+{
+  "command": [
+    "/opt/homebrew/bin/go",
+    "test",
+    "-mod=readonly",
+    "-p",
+    "2",
+    "./storage/remote",
+    "-run",
+    "^TestCalculateDesiredShardsDetail$",
+    "-count=1",
+    "-v"
+  ],
+  "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu",
+  "environment": {
+    "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-review-go-scoped-75n8cdfu/gocache",
+    "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+    "GOTOOLCHAIN": "local",
+    "GOMAXPROCS": "2",
+    "GOFLAGS": "-mod=readonly",
+    "GOPROXY": "off",
+    "GOSUMDB": "off"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 28.361018999999942,
+  "exit_code": 1,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/baseline.stdout.log",
+      "captured_bytes": 2924,
+      "observed_bytes": 2924,
+      "captured_sha256": "998b39be1bf02ade76b751217e4c82f195f67e6a5f395c136866a5a380ae1e0f",
+      "observed_sha256": "998b39be1bf02ade76b751217e4c82f195f67e6a5f395c136866a5a380ae1e0f",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/review-go-scoped/baseline.stderr.log",
+      "captured_bytes": 0,
+      "observed_bytes": 0,
+      "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncated": false
+    }
+  }
+}

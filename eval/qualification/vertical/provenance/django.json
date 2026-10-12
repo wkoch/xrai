@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "repository": "django/django",
+  "number": 22051,
+  "title": "Fixed #37377 -- Fixed JSONField __in crash/incorrect results for bare Value() primitives.",
+  "body": "#### Trac ticket number\r\n<!-- Replace XXXXX with the corresponding Trac ticket number. -->\r\n<!-- Or delete the line and write \"N/A - typo\" for typo fixes. -->\r\n\r\nticket-37377\r\n\r\n#### Branch description\r\n<!-- Provide a concise overview of the issue or rationale behind the proposed changes. Minimum five words. -->\r\n\r\nRefs ticket-36689. 9b8e4c6d7d wrapped every `Value()` rhs `param` of a `JSONIn` lookup in `JSON_EXTRACT()`/`JSON_VALUE()` on assuming it was already JSON-serialized. That only holds for `Value(..., JSONField())`; a bare `Value(\"primitive\")` gets an inferred non-JSON `output_field` (e.g. `CharField`), so its compiled param was a raw primitive, not JSON text. Wrapping that raw text produced malformed JSON on SQLite and wrong results on MariaDB.\r\n\r\n`JSONIn.resolve_expression_parameter()` now JSON-encodes the `Value`'s raw `.value` itself whenever its `output_field` isn't `JSONField`, instead of trusting whatever its inferred `output_field` produced.\r\n\r\nAs a side effect, this also fixes `Value(True)/Value(False)` in `__in`, which were previously compared as raw Python bools against the JSON-extracted `lhs` and never matched.\r\n\r\nThanks Jacob Walls for the report.\r\n\r\n#### AI Assistance Disclosure (REQUIRED)\r\n<!-- Select exactly ONE of the following: -->\r\n- [ ] **No AI tools were used** in preparing this PR.\r\n- [x] **If AI tools were used**, I have disclosed which ones, and fully reviewed and verified their output.\r\n<!-- If AI tools were used, provide which tools were used here. -->\r\n\r\nAfter the initial regression test, I found that Booleans were failing even before the regression commit. So, I used Claude Opus 5.5 to analyze [the history](https://code.djangoproject.com/ticket/37377#comment:2) of what was supported prior the reported regression and what wasn't.\r\n\r\n#### Checklist\r\n- [x] This PR follows the [contribution guidelines](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/submitting-patches/).\r\n- [x] This PR **does not** disclose a security vulnerability (see [vulnerability reporting](https://docs.djangoproject.com/en/stable/internals/security/)).\r\n- [x] This PR targets the `main` branch. <!-- Backports will be evaluated and done by mergers, when necessary. -->\r\n- [x] The commit message is written in past tense, mentions the ticket number (if applicable), and ends with a period (see [guidelines](https://docs.djangoproject.com/en/dev/internals/contributing/committing-code/#committing-guidelines)).\r\n- [x] I have not requested, and will not request, an automated AI review for this PR. <!-- You are welcome to do so in your own fork. -->\r\n\r\n<!-- Leave the following items unchecked if not applicable. -->\r\n- [x] I have checked the \"Has patch\" ticket flag in the Trac system.\r\n- [x] I have added or updated relevant tests.\r\n- [x] I have added or updated relevant docs, including release notes if applicable.\r\n- [ ] I have attached screenshots in both light and dark modes for any UI changes.\r\n",
+  "url": "https://github.com/django/django/pull/22051",
+  "merged_at": "2026-10-05T22:50:34Z",
+  "baseline_commit": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+  "reference_commit": "fabce94374e166e80e2643db8b85d1e3442427bf",
+  "baseline_selection": "first parent of merged commit",
+  "files": [
+    {
+      "sha": "4b4b46fb7ffc4910869153e87598f26a804baeb3",
+      "filename": "django/db/models/fields/json.py",
+      "status": "modified",
+      "additions": 15,
+      "deletions": 0,
+      "changes": 15,
+      "blob_url": "https://github.com/django/django/blob/c447102a2c58c1cf3b99fa941e4f1574ae179364/django%2Fdb%2Fmodels%2Ffields%2Fjson.py",
+      "raw_url": "https://github.com/django/django/raw/c447102a2c58c1cf3b99fa941e4f1574ae179364/django%2Fdb%2Fmodels%2Ffields%2Fjson.py",
+      "contents_url": "https://api.github.com/repos/django/django/contents/django%2Fdb%2Fmodels%2Ffields%2Fjson.py?ref=c447102a2c58c1cf3b99fa941e4f1574ae179364",
+      "patch": "@@ -412,6 +412,14 @@ def resolve_expression_parameter(self, compiler, connection, sql, param):\n         if not connection.features.has_native_json_field and (\n             not hasattr(param, \"as_sql\") or isinstance(param, expressions.Value)\n         ):\n+            if isinstance(param, expressions.Value) and not isinstance(\n+                param._output_field_or_none, JSONField\n+            ):\n+                output_field = param._output_field_or_none\n+                value = param.value\n+                if output_field is not None:\n+                    value = output_field.get_prep_value(value)\n+                params = [connection.ops.adapt_json_value(value, None)]\n             if connection.vendor == \"oracle\":\n                 value = param.value if hasattr(param, \"value\") else json.loads(param)\n                 sql = \"%s(JSON_OBJECT('value' VALUE %%s FORMAT JSON), '$.value')\"\n@@ -433,6 +441,13 @@ def process_lhs(self, compiler, connection):\n         if isinstance(self.lhs, KeyTransform):\n             return sql, params\n         if connection.vendor == \"mysql\":\n+            if connection.mysql_is_mariadb:\n+                # lookup_cast() has applied JSON_UNQUOTE() to the lhs, so\n+                # build the extract-then-unquote order from the raw column.\n+                sql, params = compiler.compile(self.lhs)\n+                sql, params = self._process_as_mysql(sql, params, connection)\n+                sql = \"JSON_UNQUOTE(%s)\" % sql\n+                return sql, params\n             return self._process_as_mysql(sql, params, connection)\n         elif connection.vendor == \"oracle\":\n             return self._process_as_oracle(sql, params, connection)"
+    },
+    {
+      "sha": "df84b101d64b36bf09a117e112cecdaa31950f22",
+      "filename": "docs/releases/6.1.2.txt",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 0,
+      "changes": 6,
+      "blob_url": "https://github.com/django/django/blob/c447102a2c58c1cf3b99fa941e4f1574ae179364/docs%2Freleases%2F6.1.2.txt",
+      "raw_url": "https://github.com/django/django/raw/c447102a2c58c1cf3b99fa941e4f1574ae179364/docs%2Freleases%2F6.1.2.txt",
+      "contents_url": "https://api.github.com/repos/django/django/contents/docs%2Freleases%2F6.1.2.txt?ref=c447102a2c58c1cf3b99fa941e4f1574ae179364",
+      "patch": "@@ -38,3 +38,9 @@ Bugfixes\n \n * Fixed a visual regression in Django 6.1 where an extra empty breadcrumb was\n   rendered on the admindocs model index page (:ticket:`37378`).\n+\n+* Fixed a regression in Django 6.1 where a :class:`~django.db.models.Value`\n+  expression without an explicit ``JSONField`` output field crashed or returned\n+  an incorrect result when used in a top-level\n+  :class:`~django.db.models.JSONField` :lookup:`in` lookup on databases without\n+  native JSON support (:ticket:`37377`)."
+    },
+    {
+      "sha": "264b88a23d8edfc11f7fd3d7b5adbd97c20a6ebe",
+      "filename": "tests/model_fields/test_jsonfield.py",
+      "status": "modified",
+      "additions": 47,
+      "deletions": 0,
+      "changes": 47,
+      "blob_url": "https://github.com/django/django/blob/c447102a2c58c1cf3b99fa941e4f1574ae179364/tests%2Fmodel_fields%2Ftest_jsonfield.py",
+      "raw_url": "https://github.com/django/django/raw/c447102a2c58c1cf3b99fa941e4f1574ae179364/tests%2Fmodel_fields%2Ftest_jsonfield.py",
+      "contents_url": "https://api.github.com/repos/django/django/contents/tests%2Fmodel_fields%2Ftest_jsonfield.py?ref=c447102a2c58c1cf3b99fa941e4f1574ae179364",
+      "patch": "@@ -1029,6 +1029,53 @@ def test_in(self):\n                     NullableJSONModel.objects.filter(value__in=lookup_value), expected\n                 )\n \n+    @skipUnlessDBFeature(\"supports_primitives_in_json_field\")\n+    @skipIfDBFeature(\"has_native_json_field\")\n+    def test_in_value_without_explicit_output_field(self):\n+        tests = [\n+            ([Value(True)], [self.objs[8]]),\n+            ([Value(False)], [self.objs[9]]),\n+            ([Value(\"yes\")], [self.objs[10]]),\n+            ([Value(7)], [self.objs[11]]),\n+            ([Value(9.6)], [self.objs[12]]),\n+        ]\n+        for lookup_value, expected in tests:\n+            with self.subTest(value__in=lookup_value), transaction.atomic():\n+                self.assertSequenceEqual(\n+                    NullableJSONModel.objects.filter(value__in=lookup_value), expected\n+                )\n+\n+    @skipUnlessDBFeature(\"supports_primitives_in_json_field\")\n+    @skipIfDBFeature(\"has_native_json_field\")\n+    def test_in_value_explicit_output_field(self):\n+        tests = [\n+            ([Value(\"7\", output_field=IntegerField())], [self.objs[11]]),\n+            ([Value(\"yes\", output_field=models.CharField())], [self.objs[10]]),\n+        ]\n+        for lookup_value, expected in tests:\n+            with self.subTest(value__in=lookup_value), transaction.atomic():\n+                self.assertSequenceEqual(\n+                    NullableJSONModel.objects.filter(value__in=lookup_value), expected\n+                )\n+\n+    def test_in_json_whitespace(self):\n+        tests = [\n+            ('{\"a\":1}', {\"a\": 1}),\n+            ('{ \"a\" : 1 }', {\"a\": 1}),\n+            (\"[1,2]\", [1, 2]),\n+            (\"[ 1, 2 ]\", [1, 2]),\n+        ]\n+        for raw, value in tests:\n+            with self.subTest(raw=raw):\n+                # Use RawSQL to avoid whitespace from Django's serialization.\n+                obj = NullableJSONModel.objects.create(\n+                    value=RawSQL(self.raw_sql, [raw]),\n+                )\n+                self.assertSequenceEqual(\n+                    NullableJSONModel.objects.filter(pk=obj.pk, value__in=[value]),\n+                    [obj],\n+                )\n+\n     def test_key_in(self):\n         tests = [\n             (\"value__c__in\", [14], self.objs[3:5]),"
+    }
+  ]
+}

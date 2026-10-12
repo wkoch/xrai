@@ -1,0 +1,48 @@
+{
+  "command": [
+    "/opt/homebrew/bin/python3.15",
+    "tests/runtests.py",
+    "model_fields.test_jsonfield.TestQuerying.test_in_value_without_explicit_output_field",
+    "--settings=test_sqlite",
+    "--parallel=1",
+    "--verbosity=2"
+  ],
+  "cwd": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/baseline",
+  "environment": {
+    "CARGO_TARGET_DIR": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/target-baseline",
+    "GOCACHE": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/gocache-baseline",
+    "GOMODCACHE": "/private/tmp/xrai-l3-corpus/gomodcache",
+    "GOTOOLCHAIN": "local",
+    "GOMAXPROCS": "2",
+    "GOFLAGS": "-mod=readonly",
+    "GOPROXY": "https://proxy.golang.org",
+    "GOSUMDB": "sum.golang.org",
+    "PYTHONPATH": "/var/folders/j2/_rtqbtjn1_s27p270_99g6rm0000gn/T/xrai-vertical-fresh-3kkpj8yj/django/baseline:/private/tmp/xrai-l3-python",
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+  },
+  "timeout_seconds": 600,
+  "stream_limit_bytes": 1048576,
+  "elapsed_seconds": 0.7544337499994072,
+  "exit_code": 1,
+  "error": null,
+  "cleanup_status": "child_reaped_pipes_closed",
+  "containment": "trusted evaluator build/probe; process group auxiliary only",
+  "streams": {
+    "stdout": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/baseline/probe.stdout.log",
+      "captured_bytes": 4181,
+      "observed_bytes": 4181,
+      "captured_sha256": "fd4c35145477f7ef3cb5f2191ef7311b01c4e436bde7d5aa5124699c22537e21",
+      "observed_sha256": "fd4c35145477f7ef3cb5f2191ef7311b01c4e436bde7d5aa5124699c22537e21",
+      "truncated": false
+    },
+    "stderr": {
+      "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L3/vertical-fresh/django/baseline/probe.stderr.log",
+      "captured_bytes": 7184,
+      "observed_bytes": 7184,
+      "captured_sha256": "922abd975282c2786d9ae24fad74453234a0a2eaf4628f1fe1e53e9509a2fc0b",
+      "observed_sha256": "922abd975282c2786d9ae24fad74453234a0a2eaf4628f1fe1e53e9509a2fc0b",
+      "truncated": false
+    }
+  }
+}

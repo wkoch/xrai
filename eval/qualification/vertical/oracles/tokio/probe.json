@@ -1,0 +1,133 @@
+{
+  "schema_version": "xrai.eval.vertical.probe.v1",
+  "case_id": "Q1-Rust-8371",
+  "baseline": {
+    "exit_code": 101,
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "-p",
+      "tokio",
+      "--features",
+      "full",
+      "--test",
+      "sync_mutex",
+      "mutex_fifo_with_coop_budget",
+      "--",
+      "--exact"
+    ],
+    "environment": {
+      "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "python": "3.15.0",
+      "tool_versions": {
+        "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+        "go": "go version go1.27.2 darwin/arm64",
+        "node": "v26.11.1",
+        "npm": "11.20.0"
+      },
+      "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+    },
+    "receipt": {
+      "path": "docs/relatorios/logs/L3/tokio-base-cargo-ea5b1060.json",
+      "sha256": "0ab861fa3f3bc8b764dc531354fa529de013d133de2855e3f04c59c5c3bfc2e2"
+    }
+  },
+  "reference": {
+    "exit_code": 0,
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "-p",
+      "tokio",
+      "--features",
+      "full",
+      "--test",
+      "sync_mutex"
+    ],
+    "environment": {
+      "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "python": "3.15.0",
+      "tool_versions": {
+        "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+        "go": "go version go1.27.2 darwin/arm64",
+        "node": "v26.11.1",
+        "npm": "11.20.0"
+      },
+      "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+    },
+    "receipt": {
+      "path": "docs/relatorios/logs/L3/tokio-reference-cargo-e196370b.json",
+      "sha256": "a959c6c85b140544685cdf9b1a0ecdda6e63a6e3d3db387d2093dabacdb46cf8"
+    }
+  },
+  "regression": {
+    "exit_code": 0,
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "-p",
+      "tokio",
+      "--features",
+      "full",
+      "--test",
+      "sync_mutex"
+    ],
+    "environment": {
+      "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "python": "3.15.0",
+      "tool_versions": {
+        "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+        "go": "go version go1.27.2 darwin/arm64",
+        "node": "v26.11.1",
+        "npm": "11.20.0"
+      },
+      "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+    },
+    "receipt": {
+      "path": "docs/relatorios/logs/L3/tokio-reference-cargo-e196370b.json",
+      "sha256": "a959c6c85b140544685cdf9b1a0ecdda6e63a6e3d3db387d2093dabacdb46cf8"
+    }
+  },
+  "regression_policy": "reference suite includes focused oracle and relevant unaffected behavior; same recorded execution intentionally shared",
+  "hidden_inputs": {
+    "sync_mutex.rs": {
+      "path": "qualification/vertical/oracles/tokio/sync_mutex.rs",
+      "sha256": "ea502bfe47421df10ab0fd108725333f0647778d638116cd1a960b43d38bb4a9"
+    },
+    "Cargo.lock": {
+      "path": "qualification/vertical/oracles/tokio/Cargo.lock",
+      "sha256": "f4a4bc38313ed265f6d99e37642b75941861ba842ed12bbfecc25956c53d07de"
+    },
+    "reference.patch": {
+      "path": "qualification/vertical/oracles/tokio/reference.patch",
+      "sha256": "54934dcc847768ca5a2286dfa1daccedd005dc67a1eef223be6dc2d1cff326f7"
+    }
+  },
+  "scope": "FIFO sob coop budget, cancelamento e nove regress\u00f5es sync_mutex; desempenho do xrai n\u00e3o medido; piso LOC sem testes inline ainda n\u00e3o comprovado, complexidade n\u00e3o admitida",
+  "setup_logs": [],
+  "label_method": "behavioral tests independent of xrai/graft/Tree-sitter; public upstream regressions or evaluator createProgram oracle",
+  "source_fingerprints": {
+    "base": {
+      "tokio/src/sync/mutex.rs": "f5ca224054d774db86f735e5400fde606aa6acb6e84a711598678082f562af85",
+      "tokio/src/sync/batch_semaphore.rs": "88b0265c698d8da408ecb6c65d301926e9a54ba039637bdbedd4c915dff08efa",
+      "tokio/src/task/coop/mod.rs": "7d36981992a2ee30d304364ce7d7cb474d85448723428a910a768cc646557904"
+    },
+    "reference": {
+      "tokio/src/sync/mutex.rs": "f5ca224054d774db86f735e5400fde606aa6acb6e84a711598678082f562af85",
+      "tokio/src/sync/batch_semaphore.rs": "212adbed6ac39ffb7f0078f5da1c9377dd07cc98c57da0b136e1ff2aa7e7e81b",
+      "tokio/src/task/coop/mod.rs": "7d36981992a2ee30d304364ce7d7cb474d85448723428a910a768cc646557904"
+    }
+  },
+  "dependency_policy": {
+    "tokio": "captured Cargo.lock shared baseline/reference; final cargo --locked; distinct CARGO_TARGET_DIR per checkout (preliminary shared-target attempts excluded)",
+    "typescript": "upstream package-lock.json, npm ci --ignore-scripts; compiler built from pinned source; Node26.11.1",
+    "django": "Python3.15.0/asgiref3.12.1/sqlparse0.5.4; SQLite backend",
+    "prometheus": "Go1.27.2 upstream go.mod/go.sum; GOTOOLCHAINlocal -p2 GOMAXPROCS2"
+  }
+}

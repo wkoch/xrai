@@ -1,0 +1,59 @@
+{
+  "schema": "l3-independent-containment-review-v1",
+  "recorded_at": "2026-10-12T10:25:40.933539+00:00",
+  "reviewer": "l3_workers",
+  "review_scope": [
+    "crates/xrai-eval/harness/supervisor.py",
+    "crates/xrai-eval/harness/adapters.py",
+    "crates/xrai-eval/harness/tests/test_containment.py",
+    "crates/xrai-eval/harness/runner.py",
+    "crates/xrai-eval/harness/verify_records.py",
+    "crates/xrai-eval/harness/result-v2.schema.json"
+  ],
+  "source_sha256": {
+    "crates/xrai-eval/harness/supervisor.py": "8fb13b93a1c3ebdd7a1cf7ab2d1c5f75e8beccf335ad53c064165d95a85d1571",
+    "crates/xrai-eval/harness/adapters.py": "92eb8334bf8cf0f436e64cfa27a601438376210786ff3df03bf22f9118c17c9b",
+    "crates/xrai-eval/harness/tests/test_containment.py": "bc0671f22a253c64aec5d6b0f6ceb6d63a911618b7659263155fcf7dd8e48a89",
+    "crates/xrai-eval/harness/runner.py": "effbbd938667d7431629a73b2d4caeb9becebca7af2ec94d5a437250feafd143",
+    "crates/xrai-eval/harness/verify_records.py": "e85d9be2cd9fbed770000990e7712cf2c1ca27db9acac83f689ca97226be900f",
+    "crates/xrai-eval/harness/result-v2.schema.json": "7fb1dcbf61dfdfede865a9de5f51220ab1f9f022eebeb999b9bbc86d95df2368"
+  },
+  "graph_generation": "2026-10-12T10:18:27Z",
+  "graph_limits": "supervisor/test_containment metadata_changed; complete current source read; erroneous cross-language read edge disregarded",
+  "host": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "linux_native_executed": false,
+  "source_reference": "https://raw.githubusercontent.com/containers/bubblewrap/v0.9.0/bubblewrap.c",
+  "positive_review": [
+    "gate before init pin and UID/GID maps; release after pin/maps",
+    "init pidfd exit and wrapper wait evidence; incomplete teardown invalidates",
+    "macOS arbitrary commands blocked before spawn",
+    "parent-death test waits descendant positive execution and external pidfd death; setup windows explicitly not certified",
+    "bounded capture/drain, v1/v2 replay preserved"
+  ],
+  "resolved_findings": [
+    {
+      "id": "L3-REVIEW-H01",
+      "priority": "P2",
+      "problem": "Receipt verifier originally checked only three booleans; PID/namespace identity missing allowed incomplete evidence to look eligible",
+      "resolution": "Root strengthened receipt and schema during review: namespace/init/domain ID/mapping required and typed",
+      "negative_reproduction": {
+        "fixture": "docs/relatorios/logs/L3/containment-local-replays/D0-TJ-03.json",
+        "mutation": "Linux/confirmed/eligible receipt with only three true booleans; transcript hash recomputed",
+        "receipt": {
+          "rejected": true,
+          "error": "confirmed teardown lacks concrete namespace/init evidence"
+        },
+        "schema": {
+          "rejected": true,
+          "error": "'init_pid' is a required property\n\nFailed validating 'required' in schema['properties']['rounds']['items']['allOf'][0]['then']['properties']['termination_evidence']:\n    {'type': 'object',\n     'required': ['init_pid',\n                  'pid_namespac"
+        },
+        "replay": {
+          "rejected": true,
+          "error": "confirmed teardown lacks concrete namespace/init evidence"
+        }
+      }
+    }
+  ],
+  "open_findings": [],
+  "acceptance_limit": "No actual sandbox escape identified from bounded current-source review. Linux native matrix mandatory; does not certify every setup window or hostile same-user writer."
+}

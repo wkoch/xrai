@@ -1,0 +1,32 @@
+{
+  "schema_version": "xrai.eval.vertical.process.v1",
+  "key": "tokio",
+  "phase": "reference",
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "tokio",
+    "--features",
+    "full",
+    "--test",
+    "sync_mutex"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.15.0",
+    "tool_versions": {
+      "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+      "go": "go version go1.27.2 darwin/arm64",
+      "node": "v26.11.1",
+      "npm": "11.20.0"
+    },
+    "dependency_policy": "lockfiles retained; install logs separately; evaluator-only; GOMAXPROCS=2, go -p2"
+  },
+  "elapsed_seconds": 9.138199416000134,
+  "exit_code": 0,
+  "error": null,
+  "stdout": "\nrunning 9 tests\ntest try_lock ... ok\ntest straight_execution ... ok\ntest readiness ... ok\ntest debug_format ... ok\ntest mutex_debug ... ok\ntest mutex_fifo_with_coop_budget ... ok\ntest mutex_coop_drop_after_take_permit ... ok\ntest aborted_future_1 ... ok\ntest aborted_future_2 ... ok\n\ntest result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+  "stderr": "    Updating crates.io index\n     Locking 194 packages to latest compatible versions\n      Adding criterion v0.5.1 (available: v0.8.2)\n      Adding hashbrown v0.15.5 (available: v0.17.1)\n      Adding minicov v0.3.8 (available: v0.3.9)\n      Adding mockall v0.13.1 (available: v0.15.0)\n      Adding rand v0.9.5 (available: v0.10.3)\n      Adding rand_chacha v0.9.0 (available: v0.10.0)\n      Adding tracing-mock v0.1.0-beta.1 (available: v0.1.0-beta.3)\n   Compiling tokio-macros v2.7.2 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio-macros)\n   Compiling tokio v1.53.2 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio)\n   Compiling tokio-stream v0.1.19 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio-stream)\n   Compiling tokio-util v0.7.20 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio-util)\n   Compiling tokio-test v0.4.6 (/private/tmp/xrai-l3-corpus/tokio-reference/tokio-test)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 8.63s\n     Running tests/sync_mutex.rs (/private/tmp/xrai-l3-corpus/tokio-target/debug/deps/sync_mutex-9ca0b010cedbd41a)\n"
+}

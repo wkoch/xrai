@@ -1,0 +1,136 @@
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+test_annotation_q_filter (model_fields.test_jsonfield.JSONExactNoneDeprecationTests.test_annotation_q_filter) ... ok
+test_case_when (model_fields.test_jsonfield.JSONExactNoneDeprecationTests.test_case_when) ... ok
+test_filter (model_fields.test_jsonfield.JSONExactNoneDeprecationTests.test_filter) ... ok
+test_custom_encoder_decoder (model_fields.test_jsonfield.JSONFieldTests.test_custom_encoder_decoder) ... ok
+test_db_check_constraints (model_fields.test_jsonfield.JSONFieldTests.test_db_check_constraints) ... ok
+test_invalid_value (model_fields.test_jsonfield.JSONFieldTests.test_invalid_value) ... ok
+test_bulk_update (model_fields.test_jsonfield.JSONNullTests.test_bulk_update) ... ok
+test_case_expr_with_jsonnull_condition (model_fields.test_jsonfield.JSONNullTests.test_case_expr_with_jsonnull_condition) ... ok
+test_case_expression_with_jsonnull_then (model_fields.test_jsonfield.JSONNullTests.test_case_expression_with_jsonnull_then) ... ok
+test_constraint_validation (model_fields.test_jsonfield.JSONNullTests.test_constraint_validation) ... ok
+test_constraint_validation_key_transform (model_fields.test_jsonfield.JSONNullTests.test_constraint_validation_key_transform) ... ok
+test_create (model_fields.test_jsonfield.JSONNullTests.test_create) ... ok
+test_custom_jsonnull_encoder (model_fields.test_jsonfield.JSONNullTests.test_custom_jsonnull_encoder) ... ok
+test_deconstruct (model_fields.test_jsonfield.JSONNullTests.test_deconstruct) ... ok
+test_default (model_fields.test_jsonfield.JSONNullTests.test_default) ... ok
+test_filter (model_fields.test_jsonfield.JSONNullTests.test_filter) ... ok
+test_filter_in (model_fields.test_jsonfield.JSONNullTests.test_filter_in) ... ok
+test_index_lookup (model_fields.test_jsonfield.JSONNullTests.test_index_lookup) ... ok
+test_key_in (model_fields.test_jsonfield.JSONNullTests.test_key_in) ... ok
+test_key_transform_exact_filter (model_fields.test_jsonfield.JSONNullTests.test_key_transform_exact_filter) ... ok
+test_repr (model_fields.test_jsonfield.JSONNullTests.test_repr) ... ok
+test_save_load (model_fields.test_jsonfield.JSONNullTests.test_save_load) ... ok
+test_update (model_fields.test_jsonfield.JSONNullTests.test_update) ... ok
+test_array_key_contains (model_fields.test_jsonfield.TestQuerying.test_array_key_contains) ... skipped "Database doesn't support feature(s): supports_json_field_contains"
+test_cast_with_key_text_transform (model_fields.test_jsonfield.TestQuerying.test_cast_with_key_text_transform) ... ok
+test_contained_by (model_fields.test_jsonfield.TestQuerying.test_contained_by) ... skipped "Database doesn't support feature(s): supports_json_field_contains"
+test_contained_by_unsupported (model_fields.test_jsonfield.TestQuerying.test_contained_by_unsupported) ... ok
+test_contains (model_fields.test_jsonfield.TestQuerying.test_contains) ... skipped "Database doesn't support feature(s): supports_json_field_contains"
+test_contains_contained_by_with_key_transform (model_fields.test_jsonfield.TestQuerying.test_contains_contained_by_with_key_transform) ... skipped "Database doesn't support feature(s): supports_json_field_contains"
+test_contains_primitives (model_fields.test_jsonfield.TestQuerying.test_contains_primitives) ... skipped "Database doesn't support feature(s): supports_primitives_in_json_field, supports_json_field_contains"
+test_contains_unsupported (model_fields.test_jsonfield.TestQuerying.test_contains_unsupported) ... ok
+test_deep_distinct (model_fields.test_jsonfield.TestQuerying.test_deep_distinct) ... skipped "Database doesn't support feature(s): can_distinct_on_fields"
+test_deep_lookup_array (model_fields.test_jsonfield.TestQuerying.test_deep_lookup_array) ... ok
+test_deep_lookup_mixed (model_fields.test_jsonfield.TestQuerying.test_deep_lookup_mixed) ... ok
+test_deep_lookup_objs (model_fields.test_jsonfield.TestQuerying.test_deep_lookup_objs) ... ok
+test_deep_lookup_transform (model_fields.test_jsonfield.TestQuerying.test_deep_lookup_transform) ... ok
+test_deep_negative_lookup_array (model_fields.test_jsonfield.TestQuerying.test_deep_negative_lookup_array) ... ok
+test_deep_negative_lookup_mixed (model_fields.test_jsonfield.TestQuerying.test_deep_negative_lookup_mixed) ... ok
+test_deep_values (model_fields.test_jsonfield.TestQuerying.test_deep_values) ... ok
+test_exact (model_fields.test_jsonfield.TestQuerying.test_exact) ... ok
+test_exact_complex (model_fields.test_jsonfield.TestQuerying.test_exact_complex) ... ok
+test_expression_wrapper_key_transform (model_fields.test_jsonfield.TestQuerying.test_expression_wrapper_key_transform) ... ok
+test_has_any_keys (model_fields.test_jsonfield.TestQuerying.test_has_any_keys) ... ok
+test_has_key (model_fields.test_jsonfield.TestQuerying.test_has_key) ... ok
+test_has_key_deep (model_fields.test_jsonfield.TestQuerying.test_has_key_deep) ... ok
+test_has_key_list (model_fields.test_jsonfield.TestQuerying.test_has_key_list) ... ok
+test_has_key_literal_lookup (model_fields.test_jsonfield.TestQuerying.test_has_key_literal_lookup) ... ok
+test_has_key_null_value (model_fields.test_jsonfield.TestQuerying.test_has_key_null_value) ... ok
+test_has_key_number (model_fields.test_jsonfield.TestQuerying.test_has_key_number) ... ok
+test_has_keys (model_fields.test_jsonfield.TestQuerying.test_has_keys) ... ok
+test_icontains (model_fields.test_jsonfield.TestQuerying.test_icontains) ... ok
+test_in (model_fields.test_jsonfield.TestQuerying.test_in) ... ok
+test_in_json_whitespace (model_fields.test_jsonfield.TestQuerying.test_in_json_whitespace) ... ok
+test_in_value_explicit_output_field (model_fields.test_jsonfield.TestQuerying.test_in_value_explicit_output_field) ... ok
+test_in_value_without_explicit_output_field (model_fields.test_jsonfield.TestQuerying.test_in_value_without_explicit_output_field) ... ok
+test_isnull (model_fields.test_jsonfield.TestQuerying.test_isnull) ... ok
+test_isnull_key (model_fields.test_jsonfield.TestQuerying.test_isnull_key) ... ok
+test_isnull_key_or_none (model_fields.test_jsonfield.TestQuerying.test_isnull_key_or_none) ... ok
+test_join_key_transform_annotation_expression (model_fields.test_jsonfield.TestQuerying.test_join_key_transform_annotation_expression) ... ok
+test_json_type_casting_with_coalesce (model_fields.test_jsonfield.TestQuerying.test_json_type_casting_with_coalesce) ... ok
+test_key_contains (model_fields.test_jsonfield.TestQuerying.test_key_contains) ... skipped "Database doesn't support feature(s): supports_json_field_contains"
+test_key_endswith (model_fields.test_jsonfield.TestQuerying.test_key_endswith) ... ok
+test_key_escape (model_fields.test_jsonfield.TestQuerying.test_key_escape) ... ok
+test_key_icontains (model_fields.test_jsonfield.TestQuerying.test_key_icontains) ... ok
+test_key_iendswith (model_fields.test_jsonfield.TestQuerying.test_key_iendswith) ... ok
+test_key_iexact (model_fields.test_jsonfield.TestQuerying.test_key_iexact) ... ok
+test_key_iexact_none (model_fields.test_jsonfield.TestQuerying.test_key_iexact_none) ... ok
+test_key_in (model_fields.test_jsonfield.TestQuerying.test_key_in) ... ok
+test_key_iregex (model_fields.test_jsonfield.TestQuerying.test_key_iregex) ... ok
+test_key_istartswith (model_fields.test_jsonfield.TestQuerying.test_key_istartswith) ... ok
+test_key_quoted_string (model_fields.test_jsonfield.TestQuerying.test_key_quoted_string) ... ok
+test_key_regex (model_fields.test_jsonfield.TestQuerying.test_key_regex) ... ok
+test_key_sql_injection (model_fields.test_jsonfield.TestQuerying.test_key_sql_injection) ... skipped "Database doesn't support feature(s): has_json_operators"
+test_key_sql_injection_escape (model_fields.test_jsonfield.TestQuerying.test_key_sql_injection_escape) ... ok
+test_key_startswith (model_fields.test_jsonfield.TestQuerying.test_key_startswith) ... ok
+test_key_text_transform_char_lookup (model_fields.test_jsonfield.TestQuerying.test_key_text_transform_char_lookup) ... ok
+test_key_text_transform_from_lookup (model_fields.test_jsonfield.TestQuerying.test_key_text_transform_from_lookup) ... ok
+test_key_text_transform_from_lookup_invalid (model_fields.test_jsonfield.TestQuerying.test_key_text_transform_from_lookup_invalid) ... ok
+test_key_transform_annotation_expression (model_fields.test_jsonfield.TestQuerying.test_key_transform_annotation_expression) ... ok
+test_key_transform_expression (model_fields.test_jsonfield.TestQuerying.test_key_transform_expression) ... ok
+test_key_transform_raw_expression (model_fields.test_jsonfield.TestQuerying.test_key_transform_raw_expression) ... ok
+test_key_values (model_fields.test_jsonfield.TestQuerying.test_key_values) ... ok
+test_key_values_boolean (model_fields.test_jsonfield.TestQuerying.test_key_values_boolean) ... ok
+test_literal_annotation_filtering (model_fields.test_jsonfield.TestQuerying.test_literal_annotation_filtering) ... ok
+test_lookup_exclude (model_fields.test_jsonfield.TestQuerying.test_lookup_exclude) ... ok
+test_lookup_exclude_nonexistent_key (model_fields.test_jsonfield.TestQuerying.test_lookup_exclude_nonexistent_key) ... ok
+test_lookups_special_chars (model_fields.test_jsonfield.TestQuerying.test_lookups_special_chars) ... ok
+test_lookups_special_chars_double_quotes (model_fields.test_jsonfield.TestQuerying.test_lookups_special_chars_double_quotes) ... ok
+test_lookups_with_key_transform (model_fields.test_jsonfield.TestQuerying.test_lookups_with_key_transform) ... ok
+test_nested_key_transform_annotation_expression (model_fields.test_jsonfield.TestQuerying.test_nested_key_transform_annotation_expression) ... ok
+test_nested_key_transform_expression (model_fields.test_jsonfield.TestQuerying.test_nested_key_transform_expression) ... ok
+test_nested_key_transform_on_subquery (model_fields.test_jsonfield.TestQuerying.test_nested_key_transform_on_subquery) ... ok
+test_nested_key_transform_raw_expression (model_fields.test_jsonfield.TestQuerying.test_nested_key_transform_raw_expression) ... ok
+test_none_key (model_fields.test_jsonfield.TestQuerying.test_none_key) ... ok
+test_none_key_and_exact_lookup (model_fields.test_jsonfield.TestQuerying.test_none_key_and_exact_lookup) ... ok
+test_none_key_exclude (model_fields.test_jsonfield.TestQuerying.test_none_key_exclude) ... ok
+test_numeric_lookups_with_expression (model_fields.test_jsonfield.TestQuerying.test_numeric_lookups_with_expression) ... ok
+test_obj_subquery_lookup (model_fields.test_jsonfield.TestQuerying.test_obj_subquery_lookup) ... ok
+test_order_grouping_custom_decoder (model_fields.test_jsonfield.TestQuerying.test_order_grouping_custom_decoder) ... ok
+test_ordering_by_transform (model_fields.test_jsonfield.TestQuerying.test_ordering_by_transform) ... ok
+test_ordering_grouping_by_count (model_fields.test_jsonfield.TestQuerying.test_ordering_grouping_by_count) ... ok
+test_ordering_grouping_by_key_transform (model_fields.test_jsonfield.TestQuerying.test_ordering_grouping_by_key_transform) ... ok
+test_shallow_list_lookup (model_fields.test_jsonfield.TestQuerying.test_shallow_list_lookup) ... ok
+test_shallow_list_negative_lookup (model_fields.test_jsonfield.TestQuerying.test_shallow_list_negative_lookup) ... ok
+test_shallow_lookup_obj_target (model_fields.test_jsonfield.TestQuerying.test_shallow_lookup_obj_target) ... ok
+test_shallow_obj_lookup (model_fields.test_jsonfield.TestQuerying.test_shallow_obj_lookup) ... ok
+test_unsupported_negative_lookup (model_fields.test_jsonfield.TestQuerying.test_unsupported_negative_lookup) ... skipped 'Database has feature(s) supports_json_negative_indexing'
+test_usage_in_subquery (model_fields.test_jsonfield.TestQuerying.test_usage_in_subquery) ... ok
+test_bulk_update_custom_get_prep_value (model_fields.test_jsonfield.TestSaveLoad.test_bulk_update_custom_get_prep_value) ... ok
+test_dict (model_fields.test_jsonfield.TestSaveLoad.test_dict) ... ok
+test_json_null_different_from_sql_null (model_fields.test_jsonfield.TestSaveLoad.test_json_null_different_from_sql_null) ... ok
+test_list (model_fields.test_jsonfield.TestSaveLoad.test_list) ... ok
+test_null (model_fields.test_jsonfield.TestSaveLoad.test_null) ... ok
+test_primitives (model_fields.test_jsonfield.TestSaveLoad.test_primitives) ... ok
+test_realistic_object (model_fields.test_jsonfield.TestSaveLoad.test_realistic_object) ... ok
+test_formfield (model_fields.test_jsonfield.TestFormField.test_formfield) ... ok
+test_formfield_custom_encoder_decoder (model_fields.test_jsonfield.TestFormField.test_formfield_custom_encoder_decoder) ... ok
+test_deconstruct (model_fields.test_jsonfield.TestMethods.test_deconstruct) ... ok
+test_deconstruct_custom_encoder_decoder (model_fields.test_jsonfield.TestMethods.test_deconstruct_custom_encoder_decoder) ... ok
+test_get_prep_value (model_fields.test_jsonfield.TestMethods.test_get_prep_value) ... ok
+test_get_transforms (model_fields.test_jsonfield.TestMethods.test_get_transforms) ... ok
+test_key_transform_text_lookup_mixin_non_key_transform (model_fields.test_jsonfield.TestMethods.test_key_transform_text_lookup_mixin_non_key_transform) ... ok
+test_dumping (model_fields.test_jsonfield.TestSerialization.test_dumping) ... ok
+test_loading (model_fields.test_jsonfield.TestSerialization.test_loading) ... ok
+test_xml_serialization (model_fields.test_jsonfield.TestSerialization.test_xml_serialization) ... ok
+test_custom_encoder (model_fields.test_jsonfield.TestValidation.test_custom_encoder) ... ok
+test_invalid_decoder (model_fields.test_jsonfield.TestValidation.test_invalid_decoder) ... ok
+test_invalid_encoder (model_fields.test_jsonfield.TestValidation.test_invalid_encoder) ... ok
+test_validation_error (model_fields.test_jsonfield.TestValidation.test_validation_error) ... ok
+
+----------------------------------------------------------------------
+Ran 129 tests in 0.078s
+
+OK (skipped=9)
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...

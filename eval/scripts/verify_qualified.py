@@ -38,7 +38,8 @@ def bind_snapshot(row, sources, root, cache):
     require(snapshot['commit'] == proof['commit'], 'snapshot commit mismatch')
     require(snapshot['archive'] == proof['archive']['path'] and snapshot['sha256'] == proof['archive']['sha256'], 'snapshot archive fingerprint mismatch')
     require(set(proof['license_files']) == set(snapshot['license_files']), 'snapshot license evidence mismatch')
-    files = {entry['path']: entry for entry in snapshot['files']}
+    from materialize_task import source_files
+    files = {entry['path']: entry for entry in source_files(snapshot, root=root)}
     require(snapshot['file_count'] == len(files), 'source manifest file count mismatch')
     require(proof['production_files'] <= len(files), 'production files exceed complete snapshot inventory')
     require(all(module['path'] in files for module in row['production_modules']), 'production module absent from materialized snapshot')
@@ -69,8 +70,9 @@ def bind_snapshot(row, sources, root, cache):
     require(all(module['path'] in production for module in row['production_modules']), 'required module is not eligible production source')
 
 
-def validate(rows, *, root=ROOT, check_artifacts=True):
-    require(len(rows) == 32, 'qualified admission requires exactly 32 primary tasks')
+def validate_task_rows(rows, *, root=ROOT, check_artifacts=True):
+    """Per-case evidence only; this function never admits a competitive dataset."""
+    require(bool(rows), 'candidate evidence requires at least one task')
     # Always validate types and nested receipts, even when fixture tests skip IO.
     # Exact jsonschema 4.25.1 pin already belongs to evaluator/document tooling.
     from jsonschema import Draft202012Validator
@@ -83,8 +85,8 @@ def validate(rows, *, root=ROOT, check_artifacts=True):
             raise ValueError(f'qualified task schema: {error.json_path}: {error.message}')
     sources = json.loads((root / 'sources/manifest.json').read_text(encoding='utf-8')) if check_artifacts else None
     source_cache = {}
-    require(len({r['id'] for r in rows}) == 32, 'duplicate qualified ID')
-    require(len({r['change_lineage'] for r in rows}) == 32, 'duplicate change lineage')
+    require(len({r['id'] for r in rows}) == len(rows), 'duplicate qualified ID')
+    require(len({r['change_lineage'] for r in rows}) == len(rows), 'duplicate change lineage')
     require(max(Counter(r['repository'] for r in rows).values()) <= 4, 'repository exceeds four primary tasks')
     required = {'id', 'version', 'dataset', 'family', 'kind', 'language', 'repository',
                 'change_lineage', 'derived_from', 'origin', 'input', 'production_modules',
@@ -133,6 +135,11 @@ def validate(rows, *, root=ROOT, check_artifacts=True):
             edges = row['relations']
             require(any(a['to'] == b['from'] and a['from'] != b['to'] for a in edges for b in edges), 'complex task needs a two-relation path')
             require(proof['production_nonempty_lines'] >= 50000 or proof['production_files'] >= 500, 'complex project below production size floor')
+
+
+def validate(rows, *, root=ROOT, check_artifacts=True):
+    require(len(rows) == 32, 'qualified admission requires exactly 32 primary tasks')
+    validate_task_rows(rows, root=root, check_artifacts=check_artifacts)
     for family in FAMILIES:
         subset = [r for r in rows if r['family'] == family]
         require(Counter(r['kind'] for r in subset) == STRATA, family + ' strata')

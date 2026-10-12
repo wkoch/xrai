@@ -1,0 +1,99 @@
+{
+  "schema_version": "xrai.eval.vertical.selection.v1",
+  "competitive_runs_allowed": false,
+  "selection_basis": "public behavioral regressions; complete large checkouts; no xrai arm results",
+  "cases": [
+    {
+      "id": "Q1-Rust-8371",
+      "key": "tokio",
+      "family": "Rust",
+      "language": "Rust",
+      "repository": "tokio-rs/tokio",
+      "license_spdx": "MIT",
+      "baseline_commit": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+      "reference_commit": "d241e4b5112ade7fa47310f39f81f59521ce988b",
+      "origin_url": "https://github.com/tokio-rs/tokio/pull/8371",
+      "provenance": {
+        "path": "qualification/vertical/provenance/tokio.json",
+        "sha256": "632f058d1bc519f977419f0837266237e4148f42bc9c16a3684da0a9c11891bc"
+      },
+      "upstream_baseline": {
+        "url": "https://codeload.github.com/tokio-rs/tokio/tar.gz/2fb5757a97a94b3173f8fdd7b6280423b63da6e6",
+        "sha256": "5afaa6ac2f091e8b2f5156453c03d3540fb2c2e1e66045aaba6a77f5ad2acfec"
+      },
+      "upstream_reference": {
+        "url": "https://codeload.github.com/tokio-rs/tokio/tar.gz/d241e4b5112ade7fa47310f39f81f59521ce988b",
+        "sha256": "6d4bc7b6685af527c5525ed9a82f8a3159168bd9e6d64f73b4632854b684f40c"
+      }
+    },
+    {
+      "id": "Q1-TSJS-62656",
+      "key": "typescript",
+      "family": "TSJS",
+      "language": "TypeScript",
+      "repository": "microsoft/TypeScript",
+      "license_spdx": "Apache-2.0",
+      "baseline_commit": "cbc2059b53fe1976a803c6b533cc7432517131ac",
+      "reference_commit": "542b09547f598d5966431e5b4a229199122ec41d",
+      "origin_url": "https://github.com/microsoft/TypeScript/pull/62656",
+      "provenance": {
+        "path": "qualification/vertical/provenance/typescript.json",
+        "sha256": "c2d15240ed3ff03a33b497357a82fd2048a9d665d0b2e62382e709313d12158d"
+      },
+      "upstream_baseline": {
+        "url": "https://codeload.github.com/microsoft/TypeScript/tar.gz/cbc2059b53fe1976a803c6b533cc7432517131ac",
+        "sha256": "c8715a25e8644bf7ccd37453db16f19f22d6820f32c18c6683a7a1574ee89e71"
+      },
+      "upstream_reference": {
+        "url": "https://codeload.github.com/microsoft/TypeScript/tar.gz/542b09547f598d5966431e5b4a229199122ec41d",
+        "sha256": "a4b4e0e5ceedcb181dd3314599e16b2d75206d579bffe69a3a774cd089c4677c"
+      }
+    },
+    {
+      "id": "Q1-Python-22051",
+      "key": "django",
+      "family": "Python",
+      "language": "Python",
+      "repository": "django/django",
+      "license_spdx": "BSD-3-Clause",
+      "baseline_commit": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+      "reference_commit": "fabce94374e166e80e2643db8b85d1e3442427bf",
+      "origin_url": "https://github.com/django/django/pull/22051",
+      "provenance": {
+        "path": "qualification/vertical/provenance/django.json",
+        "sha256": "28344c5d39c9a94641dec8f0c5fcc552117f9aa9844b4f2ce81f245da4dc3c16"
+      },
+      "upstream_baseline": {
+        "url": "https://codeload.github.com/django/django/tar.gz/8abacfc36d755d8e762a4d2074601b8dc412bfee",
+        "sha256": "a928c6328eaceb60bd7fd897814cf8cd3f0923aae3b227a5013231069b4f10c3"
+      },
+      "upstream_reference": {
+        "url": "https://codeload.github.com/django/django/tar.gz/fabce94374e166e80e2643db8b85d1e3442427bf",
+        "sha256": "7e9f7055365e14fa79c8faaacfaca6f59965ae91d46e612278ce6f6cc4ea2ecd"
+      }
+    },
+    {
+      "id": "Q1-Go-19866",
+      "key": "prometheus",
+      "family": "Go",
+      "language": "Go",
+      "repository": "prometheus/prometheus",
+      "license_spdx": "Apache-2.0",
+      "baseline_commit": "fd99142576bfae26107ac7263c3eb43bb212004e",
+      "reference_commit": "2213c3c192574b8a339acd336ea6385974a7567b",
+      "origin_url": "https://github.com/prometheus/prometheus/pull/19866",
+      "provenance": {
+        "path": "qualification/vertical/provenance/prometheus.json",
+        "sha256": "724c87f7a41727dd94dcfad52177685ceb6984f4b05798325f82376b24c7f8d6"
+      },
+      "upstream_baseline": {
+        "url": "https://codeload.github.com/prometheus/prometheus/tar.gz/fd99142576bfae26107ac7263c3eb43bb212004e",
+        "sha256": "71a281eea4451d41b792e2f2433d173717b88298d45f4230f9024bc4742a69b0"
+      },
+      "upstream_reference": {
+        "url": "https://codeload.github.com/prometheus/prometheus/tar.gz/2213c3c192574b8a339acd336ea6385974a7567b",
+        "sha256": "07f5cfdcfdce6777ab7a68882debe20f5fe6006db9ba828567d232c175fdb965"
+      }
+    }
+  ]
+}

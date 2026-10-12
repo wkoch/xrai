@@ -1,0 +1,25 @@
+{
+  "task_id": "Q1-TSJS-62656",
+  "label_method": "behavioral tests independent of xrai/graft/Tree-sitter; public upstream regressions or evaluator createProgram oracle",
+  "scope": "API createProgram no compilador constru\u00eddo da fonte: repro, erro obrigat\u00f3rio e propriedade opcional; complexidade n\u00e3o reivindicada por tr\u00eas arquivos do mesmo compilador",
+  "hidden_inputs": {
+    "probe.cjs": {
+      "path": "qualification/vertical/oracles/typescript/probe.cjs",
+      "sha256": "28e2b9590b82379446a511a3f3b5d6f84cb7efdb7178a50e60ddfe69e4e0e7df"
+    },
+    "reference.patch": {
+      "path": "qualification/vertical/oracles/typescript/reference.patch",
+      "sha256": "1bf7af9d815a47ac9f027142e98ad68fff63fb36cedf399784b64f7bc95bfe9b"
+    }
+  },
+  "assertions": [
+    "baseline exhibits the named behavioral defect",
+    "reference passes focused oracle and recorded regressions"
+  ],
+  "no_agent_access": "evaluator-only dossier/oracle/reference; materializer copies source snapshot and public request only",
+  "reference_commit": "542b09547f598d5966431e5b4a229199122ec41d",
+  "probe": {
+    "path": "qualification/vertical/oracles/typescript/probe.json",
+    "sha256": "bd82a83a71194e6f97fd58323e3d7793a30c432f1ddc0cb839000e2bc423b6f9"
+  }
+}
