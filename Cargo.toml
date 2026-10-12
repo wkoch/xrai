@@ -1,0 +1,24 @@
+[workspace]
+members = [
+    "crates/xrai-core",
+    "crates/xrai-index",
+    "crates/xrai-query",
+    "crates/xrai",
+    "crates/xrai-eval",
+]
+default-members = ["crates/xrai"]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0-dev"
+edition = "2024"
+rust-version = "1.98.1"
+publish = false
+
+[workspace.dependencies]
+xrai-core = { path = "crates/xrai-core", version = "=0.1.0-dev" }
+xrai-index = { path = "crates/xrai-index", version = "=0.1.0-dev" }
+xrai-query = { path = "crates/xrai-query", version = "=0.1.0-dev" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"

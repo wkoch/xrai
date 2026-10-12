@@ -1,0 +1,58 @@
+name: Rust workspace
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  workspace:
+    name: ${{ matrix.host }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            host: x86_64-unknown-linux-gnu
+            binary: target/debug/xrai
+          - runner: macos-15
+            host: aarch64-apple-darwin
+            binary: target/debug/xrai
+          - runner: windows-2025
+            host: x86_64-pc-windows-msvc
+            binary: target/debug/xrai.exe
+    defaults:
+      run:
+        shell: bash
+    env:
+      CARGO_TERM_COLOR: always
+      EXPECTED_HOST: ${{ matrix.host }}
+      XRAI_BINARY: ${{ matrix.binary }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Install pinned toolchain
+        run: rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+      - name: Record and verify native environment
+        run: |
+          rustc --version --verbose
+          cargo --version
+          test "$(rustc --version --verbose | awk '/^host:/ {print $2}')" = "$EXPECTED_HOST"
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+      - name: Lint
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Test
+        run: cargo test --workspace --locked
+      - name: Build
+        run: cargo build --workspace --locked
+      - name: Smoke help
+        run: '"./$XRAI_BINARY" --help'
+      - name: Smoke version
+        run: '"./$XRAI_BINARY" --version'

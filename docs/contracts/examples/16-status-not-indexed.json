@@ -1,0 +1,124 @@
+{
+  "case_id": "16-status-not-indexed",
+  "valid": true,
+  "expected_violation": null,
+  "fixture_files": [],
+  "request": {
+    "schema_version": 1,
+    "request_id": "request_demo",
+    "workspace_id": "ws_demo",
+    "worktree_id": "wt_demo",
+    "operation": "status",
+    "consistency": {
+      "mode": "snapshot",
+      "snapshot_id": null,
+      "scope": {
+        "kind": "workspace"
+      }
+    },
+    "limits": {
+      "max_bytes": 16384,
+      "max_tokens": null,
+      "tokenizer": null,
+      "deadline_ms": 1000,
+      "max_candidates": 100,
+      "max_files": 100,
+      "max_source_bytes": 65536,
+      "max_expansions": 1
+    },
+    "params": {}
+  },
+  "response": {
+    "schema_version": 1,
+    "request_id": "request_demo",
+    "workspace_id": "ws_demo",
+    "worktree_id": "wt_demo",
+    "status": "ok",
+    "snapshot": null,
+    "index": {
+      "availability": "not_indexed"
+    },
+    "support": {
+      "status": "supported",
+      "capability": "status.inventory",
+      "languages": [],
+      "scope": {
+        "kind": "workspace"
+      },
+      "limits": [
+        "fixture_only_not_implemented"
+      ],
+      "producers": []
+    },
+    "freshness": {
+      "mode": "snapshot",
+      "validated_scope": {
+        "kind": "workspace"
+      },
+      "validated_at": null,
+      "validation_complete": false,
+      "atomicity": "none",
+      "gaps": []
+    },
+    "coverage": {
+      "inventory": {
+        "scope": {
+          "kind": "workspace"
+        },
+        "denominator": "eligible_files",
+        "processed": 0,
+        "partial": 0,
+        "excluded": 0,
+        "failed": 0,
+        "stale": 0,
+        "capability_absent": 0,
+        "eligible": 0,
+        "discovered": 0
+      },
+      "files": [],
+      "relations": {
+        "denominator": "not_available",
+        "recognized": null,
+        "resolved": null,
+        "candidates": null,
+        "unknown": null,
+        "external": null
+      },
+      "query": {
+        "completeness": "unavailable",
+        "scope": {
+          "kind": "workspace"
+        },
+        "gaps": []
+      }
+    },
+    "sufficiency": {
+      "state": "not_assessed",
+      "identified": 0,
+      "included": 0
+    },
+    "budget": {
+      "requested_bytes": 16384,
+      "used_bytes": 1302,
+      "requested_tokens": null,
+      "used_tokens": null,
+      "counting": "not_requested",
+      "tokenizer": null,
+      "counting_scope": "domain_envelope"
+    },
+    "items": [],
+    "assertions": [],
+    "candidates": [],
+    "unknowns": [],
+    "omissions": [],
+    "diagnostics": [],
+    "next": [
+      {
+        "operation": "status",
+        "reason": "index_workspace_first"
+      }
+    ],
+    "error": null
+  },
+  "admission_error": null
+}

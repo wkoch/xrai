@@ -1,0 +1,13 @@
+[package]
+name = "xrai-index"
+description = "Indexing boundary for xrai; no indexing capabilities in L0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+xrai-core.workspace = true
+
+[lints]
+workspace = true

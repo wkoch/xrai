@@ -1,0 +1,15 @@
+{
+  "command": [
+    "cargo",
+    "tree",
+    "--workspace",
+    "--locked",
+    "--offline"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "started_at_utc": "2026-10-12T00:42:15.312913+00:00",
+  "finished_at_utc": "2026-10-12T00:42:15.335639+00:00",
+  "exit_code": 0,
+  "stdout": "xrai v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai)\n├── xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n├── xrai-index v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-index)\n│   └── xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n└── xrai-query v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-query)\n    └── xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n\nxrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n\nxrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n├── xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n├── xrai-index v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-index) (*)\n└── xrai-query v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-query) (*)\n\nxrai-index v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-index) (*)\n\nxrai-query v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-query) (*)\n",
+  "stderr": ""
+}

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "cargo",
+    "test",
+    "--workspace",
+    "--locked"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "started_at_utc": "2026-10-12T00:42:13.100132+00:00",
+  "finished_at_utc": "2026-10-12T00:42:15.225520+00:00",
+  "exit_code": 0,
+  "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 3 tests\ntest version_reports_package_version_and_native_platform ... ok\ntest help_only_advertises_available_options ... ok\ntest unsupported_operations_and_extra_arguments_fail_without_data ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+  "stderr": "   Compiling xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n   Compiling xrai-index v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-index)\n   Compiling xrai-query v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-query)\n   Compiling xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n   Compiling xrai v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.45s\n     Running unittests src/main.rs (target/debug/deps/xrai-ba4f32348ba588f5)\n     Running tests/cli.rs (target/debug/deps/cli-1427b58f7f811a40)\n     Running unittests src/lib.rs (target/debug/deps/xrai_core-2e8b6dc476131edd)\n     Running unittests src/lib.rs (target/debug/deps/xrai_eval-bb9d4480835275c6)\n     Running unittests src/lib.rs (target/debug/deps/xrai_index-f4aae305fdd75544)\n     Running unittests src/lib.rs (target/debug/deps/xrai_query-bc231698edb02897)\n   Doc-tests xrai_core\n   Doc-tests xrai_eval\n   Doc-tests xrai_index\n   Doc-tests xrai_query\n"
+}

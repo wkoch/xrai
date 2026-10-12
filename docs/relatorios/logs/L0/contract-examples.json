@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3",
+    "docs/contracts/verify.py"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "environment_override": {
+    "PYTHONPATH": "/private/tmp/xrai-contract-blake3"
+  },
+  "started_at_utc": "2026-10-12T00:56:47.679871+00:00",
+  "finished_at_utc": "2026-10-12T00:56:47.806953+00:00",
+  "exit_code": 0,
+  "stdout": "PASS 01-empty-file.json: valid\nPASS 02-partial-parse.json: valid\nPASS 03-excluded-file.json: valid\nPASS 04-parser-absent.json: valid\nPASS 05-complete-empty-search.json: valid\nPASS 06-unsupported-calls.json: valid\nPASS 07-source-unicode-crlf.json: valid\nPASS 08-insufficient-budget.json: valid\nPASS 09-snapshot-expired.json: valid\nPASS 10-strict-incomplete.json: valid\nPASS 11-candidate.json: valid\nPASS 12-windows-path.json: valid\nPASS 13-unix-path-bytes.json: valid\nPASS 14-budget-below-envelope.json: valid\nPASS 15-structural-fact.json: valid\nPASS 16-status-not-indexed.json: valid\nPASS invalid-budget-exceeded.json: budget_limit\nPASS invalid-candidate-as-fact.json: schema\nPASS invalid-path-units.json: schema\nPASS invalid-request-operation.json: schema\nPASS invalid-revision-mix.json: snapshot_identity\nPASS invalid-source-hash.json: source_hash\nPASS invalid-span.json: source_span\nPASS invalid-status-budget.json: budget_status\nPASS invalid-utf8-boundary.json: source_boundary\n16 valid accepted; 9 invalid rejected; 0 failures; schema valid\n",
+  "stderr": ""
+}

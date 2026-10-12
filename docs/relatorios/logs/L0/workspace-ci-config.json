@@ -1,0 +1,11 @@
+{
+  "command": [
+    "ruby",
+    "-e",
+    "require 'yaml'\nrequire 'json'\nworkflow = YAML.load_file('.github/workflows/ci.yml')\njob = workflow.fetch('jobs').fetch('workspace')\nactual = job.fetch('strategy').fetch('matrix').fetch('include')\nexpected = [\n  {'runner'=>'ubuntu-24.04','host'=>'x86_64-unknown-linux-gnu','binary'=>'target/debug/xrai'},\n  {'runner'=>'macos-15','host'=>'aarch64-apple-darwin','binary'=>'target/debug/xrai'},\n  {'runner'=>'windows-2025','host'=>'x86_64-pc-windows-msvc','binary'=>'target/debug/xrai.exe'}\n]\nraise 'wrong native matrix' unless actual == expected\nraise 'wrong shell' unless job.fetch('defaults').fetch('run').fetch('shell') == 'bash'\nsteps = job.fetch('steps').select { |step| step.key?('run') }.map { |step| step.fetch('run') }\n['cargo fmt --all -- --check', 'cargo clippy --workspace --all-targets --locked -- -D warnings', 'cargo test --workspace --locked', 'cargo build --workspace --locked', '\"./$XRAI_BINARY\" --help', '\"./$XRAI_BINARY\" --version'].each do |command|\n  raise \"missing #{command}\" unless steps.include?(command)\nend\nraise 'missing host guard' unless steps.any? { |step| step.include?('EXPECTED_HOST') && step.include?('test ') }\nputs JSON.pretty_generate({'result'=>'passed', 'matrix'=>actual, 'locked_build_lint_test'=>true, 'native_host_guard'=>true, 'scope'=>'configuration validation only; remote jobs not executed'})\n"
+  ],
+  "started_at_utc": "2026-10-12T00:43:05.078306+00:00",
+  "exit_code": 0,
+  "stdout": "{\n  \"result\": \"passed\",\n  \"matrix\": [\n    {\n      \"runner\": \"ubuntu-24.04\",\n      \"host\": \"x86_64-unknown-linux-gnu\",\n      \"binary\": \"target/debug/xrai\"\n    },\n    {\n      \"runner\": \"macos-15\",\n      \"host\": \"aarch64-apple-darwin\",\n      \"binary\": \"target/debug/xrai\"\n    },\n    {\n      \"runner\": \"windows-2025\",\n      \"host\": \"x86_64-pc-windows-msvc\",\n      \"binary\": \"target/debug/xrai.exe\"\n    }\n  ],\n  \"locked_build_lint_test\": true,\n  \"native_host_guard\": true,\n  \"scope\": \"configuration validation only; remote jobs not executed\"\n}\n",
+  "stderr": ""
+}

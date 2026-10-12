@@ -1,0 +1,390 @@
+{
+  "observed_at": "2026-10-12T01:02:03.266625+00:00",
+  "origin": "https://github.com/wkoch/xrai.git",
+  "branch": "main",
+  "purpose": "initial publication of completed L0 plus project planning and delivery instructions",
+  "algorithm": "sha256",
+  "scope": "Git deliverables; manifest excludes itself; original L0 manifests retained as historical measurements",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 1666,
+      "sha256": "7f96a3b0097590aca756272669235255964199b75648e74be9b3ba7210e98eba"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 213,
+      "sha256": "592b685371c8bda7f71b6f15d73652f4d376b5b5967fd4ef4b76abeaa4f1d63f"
+    },
+    {
+      "path": ".ignore",
+      "bytes": 180,
+      "sha256": "5b345696ac9daf0b07ce5b9c56d5ec914815e395286f4c9f9ac3ec8ec83bf507"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 791,
+      "sha256": "ffc9998ec55edc21594a8c07231eeef9c8f405390776c2a98868f8b80d493375"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 562,
+      "sha256": "d0c16039b6647505b80490370879ac4dd304a9a5bc73828a77463a58cfa89159"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 567,
+      "sha256": "6a757303d08e72b7c54472db4fafc72df75d69ae811efcc9ecd559a988974d25"
+    },
+    {
+      "path": "IMPLEMENTADOR.md",
+      "bytes": 14227,
+      "sha256": "ad3e3bc730c786dc712f5da4dccbed5c7f7e87c7c51a5abea2f5ecd51260fd87"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2766,
+      "sha256": "cdc2b7df08dcfd79791fc936034f4947901586f95fda1c205cd66c9a55faae99"
+    },
+    {
+      "path": "crates/xrai-core/Cargo.toml",
+      "bytes": 250,
+      "sha256": "558b22708739430b69316d4d2a6a19ac20fe93ff11a6d773cbccac6d89281e3a"
+    },
+    {
+      "path": "crates/xrai-core/src/lib.rs",
+      "bytes": 259,
+      "sha256": "38adcf1b1f8cba55a1226412af0f639df4ffa12eab741f33e1adad427f884e8e"
+    },
+    {
+      "path": "crates/xrai-eval/Cargo.toml",
+      "bytes": 341,
+      "sha256": "e2bb9c317440997524915a029867f7c94b27b58198bbceda14c34f09c58b9f8e"
+    },
+    {
+      "path": "crates/xrai-eval/src/lib.rs",
+      "bytes": 243,
+      "sha256": "aade62bd2ed191722c6f97568e77c2798febd21509e3411e1ae0095f7d5d3705"
+    },
+    {
+      "path": "crates/xrai-index/Cargo.toml",
+      "bytes": 279,
+      "sha256": "adf4588f973f70dcb99af37a0b992c6afaf03114bceb2acb230f207bc13d59b4"
+    },
+    {
+      "path": "crates/xrai-index/src/lib.rs",
+      "bytes": 268,
+      "sha256": "64b2f4b191593fe13cee6593580171ba3e85d7a786266ee9be8d9552d40a0b4c"
+    },
+    {
+      "path": "crates/xrai-query/Cargo.toml",
+      "bytes": 273,
+      "sha256": "d3cd743464eeec8c04fa647a27c2959172ae291a13015aebafe9f0d104ec603c"
+    },
+    {
+      "path": "crates/xrai-query/src/lib.rs",
+      "bytes": 265,
+      "sha256": "b52734a4a3008aa666ce558428fc11a683fbb991425a62c06751038d3405ce5e"
+    },
+    {
+      "path": "crates/xrai/Cargo.toml",
+      "bytes": 300,
+      "sha256": "061f29f57d2ebac84daefa9c3466b7b0ebf3317023fe9cf3aec69a12974b4c3b"
+    },
+    {
+      "path": "crates/xrai/src/main.rs",
+      "bytes": 1563,
+      "sha256": "85ef7de81148436b48d3c516cb5c8e6e25249e7a7425e8736cb8d3ce3f71c1b0"
+    },
+    {
+      "path": "crates/xrai/tests/cli.rs",
+      "bytes": 1821,
+      "sha256": "f0817bccaa2dda30c000c39ad24f971e591cad1899d92abcda911637c20aab09"
+    },
+    {
+      "path": "docs/ESTUDO-COMPARATIVO.md",
+      "bytes": 25746,
+      "sha256": "fffba11721088e9fa35ebdfd1cac254e3dd10a92336e2415b3f5b028f8e52433"
+    },
+    {
+      "path": "docs/PLANO-DE-IMPLEMENTACAO.md",
+      "bytes": 59332,
+      "sha256": "b226707dcffdd00e729f6bc52f4ab69d1aaa3da96a91b69960c3a1fc5c415825"
+    },
+    {
+      "path": "docs/PLANO-DE-VALIDACAO.md",
+      "bytes": 22981,
+      "sha256": "0ba68c74a5327f379f62bbe64fb7f77d0026a67af1c5c963f3474b9941a4e349"
+    },
+    {
+      "path": "docs/PROVA-DE-DIFERENCIACAO.md",
+      "bytes": 24507,
+      "sha256": "1edb3acd84f2588b7c0cbfb30df108bc056eb846289704b0519c0149703010b7"
+    },
+    {
+      "path": "docs/RFC-0001-ARQUITETURA.md",
+      "bytes": 48973,
+      "sha256": "2c6ed43485ab71d8f1a1c3e13aa35aafb6629fddbbde0c944215550f31e5f540"
+    },
+    {
+      "path": "docs/STATUS-IMPLEMENTACAO.md",
+      "bytes": 5807,
+      "sha256": "0e0544a1e204a902e189d02c722920b109625b8af67e6356a54aa6fc509aaa70"
+    },
+    {
+      "path": "docs/contracts/examples/01-empty-file.json",
+      "bytes": 4901,
+      "sha256": "2156214776d21fb528bc29e041f6314fe8c90e1179a399759c69cd6dea32a901"
+    },
+    {
+      "path": "docs/contracts/examples/02-partial-parse.json",
+      "bytes": 5366,
+      "sha256": "b554d156f05122e1290b6960198c221be0099d243e36cc9d21a5bb96faf63392"
+    },
+    {
+      "path": "docs/contracts/examples/03-excluded-file.json",
+      "bytes": 4994,
+      "sha256": "61918d6826b65d06e1f19b1d0bc722d7a052d892159e662f1b4e73eec3787d29"
+    },
+    {
+      "path": "docs/contracts/examples/04-parser-absent.json",
+      "bytes": 4991,
+      "sha256": "dd0888b8c5f2615f58de8dd1cf424fbf61d5a9b9688b8fe8b56c1e618d480af4"
+    },
+    {
+      "path": "docs/contracts/examples/05-complete-empty-search.json",
+      "bytes": 4413,
+      "sha256": "a2a26a6f738e8b4c948a43ac08875d2ef5084c39f911db3c0c373f4a2f539e39"
+    },
+    {
+      "path": "docs/contracts/examples/06-unsupported-calls.json",
+      "bytes": 4901,
+      "sha256": "a4ff50c289dad0279a2aef61b4e57a4b84dfa9765887a9b8a54e37f63ee64e2f"
+    },
+    {
+      "path": "docs/contracts/examples/07-source-unicode-crlf.json",
+      "bytes": 5047,
+      "sha256": "6bb551a600bb2b97ac804016a84f6e420daa323c39af1953b2359f91296649cf"
+    },
+    {
+      "path": "docs/contracts/examples/08-insufficient-budget.json",
+      "bytes": 6240,
+      "sha256": "d8ec7a7dffd6d566d1f9232fc2502fbf124eb595bcf6fa4ddc4495eceee2b56e"
+    },
+    {
+      "path": "docs/contracts/examples/09-snapshot-expired.json",
+      "bytes": 3518,
+      "sha256": "2356b4d3893b53def01c310d96d820a185b7e27db9d92aaf8c1c82a1257f0d99"
+    },
+    {
+      "path": "docs/contracts/examples/10-strict-incomplete.json",
+      "bytes": 5025,
+      "sha256": "3320c6d9f8ee0e473024ea76302375dbbf97701d7c678aa22c879f374209033d"
+    },
+    {
+      "path": "docs/contracts/examples/11-candidate.json",
+      "bytes": 5749,
+      "sha256": "f8d5d6887352f1d4569749b09dd121c73ef2422cc93790af418e7e87debef4e8"
+    },
+    {
+      "path": "docs/contracts/examples/12-windows-path.json",
+      "bytes": 4959,
+      "sha256": "ad40fef69efe3a4b77afb2e26d707eeed31d038bff3c9c7fea8af4465a86a52d"
+    },
+    {
+      "path": "docs/contracts/examples/13-unix-path-bytes.json",
+      "bytes": 4938,
+      "sha256": "b6516ad5f1302ebe4b81498469bfa92f5aebf34abc48aa08215f0fbb86db7369"
+    },
+    {
+      "path": "docs/contracts/examples/14-budget-below-envelope.json",
+      "bytes": 1146,
+      "sha256": "04109c68fbf7c3b996759e72e60fff936160590655ef37765a601e9b89d2f523"
+    },
+    {
+      "path": "docs/contracts/examples/15-structural-fact.json",
+      "bytes": 5187,
+      "sha256": "188ce8e57dbb36ac10404cc8e5cd42a5bdefce4ac45992329e8a11b0d794c5e0"
+    },
+    {
+      "path": "docs/contracts/examples/16-status-not-indexed.json",
+      "bytes": 2724,
+      "sha256": "1ed843a1fc3013fbcb3cd89c5d2411d09c844d32bab6c25d2a8e4c9230030b21"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-budget-exceeded.json",
+      "bytes": 5057,
+      "sha256": "8e8e680adefacad73a2671c3c027b3785044839d7af4ad2a539fc1712c0e8a5f"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-candidate-as-fact.json",
+      "bytes": 5767,
+      "sha256": "963539fb2aa35d01d1506ad1657677208993564bed53f8fed0fcd1ba750b6377"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-path-units.json",
+      "bytes": 4948,
+      "sha256": "cac99a45d361e7021ec4fc6a3fcb5f0e8a73a7c19a2e554f197bf4f85efa5b40"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-request-operation.json",
+      "bytes": 5063,
+      "sha256": "5c5aa2e1772c9ad3fd4feabd3816bec3b8e129ecc7384ac23c1b8705eb88cede"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-revision-mix.json",
+      "bytes": 5061,
+      "sha256": "f1bdd1ece6db33ce52275dfa5f8d8bced105e94750d9b573dbf6bf35fe3a4a88"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-source-hash.json",
+      "bytes": 5054,
+      "sha256": "26baf6df81e19270915b76616134fe2d2544d21fd637f6304056b5e45073d30e"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-span.json",
+      "bytes": 5048,
+      "sha256": "529a0b24eb54ed70715a098bf63deebc75c3c03280e096406ca77213503ff7f2"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-status-budget.json",
+      "bytes": 6239,
+      "sha256": "589a3f9f7b3b6a18eba744607aa829847f0cd25a88d25fdf3350ce027da7baee"
+    },
+    {
+      "path": "docs/contracts/examples/invalid-utf8-boundary.json",
+      "bytes": 5012,
+      "sha256": "6f159dcc12730ef84fa2e45c54b58512ce967736547dc7c072422ec6dd4297ee"
+    },
+    {
+      "path": "docs/contracts/examples/requirements.txt",
+      "bytes": 185,
+      "sha256": "f2c39ba704b36e6c884a0552e34f1eeabd02907fc8251420f9fb8bfd5d8ce9ac"
+    },
+    {
+      "path": "docs/contracts/examples/schema.json",
+      "bytes": 47607,
+      "sha256": "f12588f7f19e522aa6964bee6211e9ee9354ec6b79823a6b74c2f5178208fa62"
+    },
+    {
+      "path": "docs/contracts/m1.md",
+      "bytes": 30336,
+      "sha256": "47b73144c2f37318735191441485a0661d72a85e2a1372a77c4001edf4882e4b"
+    },
+    {
+      "path": "docs/contracts/verify.py",
+      "bytes": 9855,
+      "sha256": "6fe060a8a3552d97569959da3b446d09cf495803d23f2f9a8b28a98cf5821b4c"
+    },
+    {
+      "path": "docs/evidencias/CBM-TOKENSAVE-FAST.md",
+      "bytes": 3718,
+      "sha256": "b32dfa746655ccf34f6ad6bdffacb1341b9d7271c19023726e260394a69e12ea"
+    },
+    {
+      "path": "docs/relatorios/L0.md",
+      "bytes": 12188,
+      "sha256": "d4b5f2bee3dbfd9d994903aafc297c70ab88d08e590d293e3b86dc2759c3c9ec"
+    },
+    {
+      "path": "docs/relatorios/dependencias-L0.md",
+      "bytes": 7090,
+      "sha256": "717346d8e805a352acb7e554c13b08c0c91ec6e00b5e74c91e2c79888fa69432"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/ambiente.json",
+      "bytes": 2312,
+      "sha256": "5118ba4f61400adf92f852d8b8f132a68a24f14f7aebffd530425c05adab7398"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/artifacts.json",
+      "bytes": 12429,
+      "sha256": "a3f9321a7e6cb95ba09f628f0b04df0e50dbfff2f35b6ac64da5537cb3e6c70a"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/contract-examples.json",
+      "bytes": 1430,
+      "sha256": "a45e73881c7bb327870ed7a49e9b21acd1ba67ed4dd86cc84a3c8a0655d8d656"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/contract-tooling.json",
+      "bytes": 821,
+      "sha256": "8e7b4627de0b1db9ccbe64ff2bdb57effa2c18aadb545044c275b8a2dd9aafb4"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-boundaries.json",
+      "bytes": 729,
+      "sha256": "79d0d86b44254d4f86fcc9202827d08101b29d81d556121b2cbf5750a173e5cf"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-build.json",
+      "bytes": 358,
+      "sha256": "cde0685be4e30f42fbd0b22fa4b5317b9a37442819bd506d5497d3cfcb2a8102"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-cargo.json",
+      "bytes": 291,
+      "sha256": "d8cb24ec09f80b3d18c92e3253c84d875226e25087a415b119976c7d652ce440"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-checks.json",
+      "bytes": 1487,
+      "sha256": "b84ed4088d5dc4d9da2db3e9ecffddabdbedac2895d89f37722ce3cd91c01f3e"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-ci-config.json",
+      "bytes": 2132,
+      "sha256": "8a51a0267c3cc4eec69aa66f87392099fd83f9b2aaaabf0890fc82ddddd91a24"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-clippy.json",
+      "bytes": 815,
+      "sha256": "46ef5c18846b1716860841bed5673f25b379417b54113a985c99735296a7d552"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-files.json",
+      "bytes": 2707,
+      "sha256": "b663b6fd75ebe189c446193e2301974a1891b80c1c204ff02b00342a4e9c9e24"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-fmt.json",
+      "bytes": 286,
+      "sha256": "cc8dea43b6e43700bd33e0ab60d54c213e853615fbbb067070eec39506a28ad3"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-metadata.json",
+      "bytes": 9835,
+      "sha256": "0579e3ed33b2f622099584f8df69331924e8a2180e73221d6e1f02326e92a6e7"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-smoke-help.json",
+      "bytes": 406,
+      "sha256": "95ebd2bec8c15c4349af6d2acf3882a2d9602111d9fea0059ece11a72b2275cd"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-smoke-version.json",
+      "bytes": 300,
+      "sha256": "ab7ab4d0b1185569a8d36dad307619bd4ef7f4978d92e1bdf110f373f395a198"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-test.json",
+      "bytes": 2702,
+      "sha256": "8042728b17b7d23236a678a7852eb2adbbe567ab74c168f781b520986d151081"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-toolchain.json",
+      "bytes": 470,
+      "sha256": "0c3a8155dfa15244c138108ddf10b24a87e52b58519448bab3050fca54a0f95f"
+    },
+    {
+      "path": "docs/relatorios/logs/L0/workspace-tree.json",
+      "bytes": 1301,
+      "sha256": "baa66cef4fa61a8aa8858edd21b0a0cd4d23b241e73133ed2fa4b0cb97e9a6b8"
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# graft’s local graph cache — regenerable, not committed (run graft build).
+/graft/
+
+/target/
+.DS_Store
+
+# Local agent state and regenerable analysis caches.
+/.trace-mcp/
+/.codebase-memory/
+__pycache__/
+*.pyc

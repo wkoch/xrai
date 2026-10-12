@@ -1,0 +1,117 @@
+# Instruções para a IA implementadora do xrai
+
+Data: 11/10/2026. **L0 concluído pelo implementador.** Este arquivo preserva o handoff e seu roteiro; execução e próxima tarefa ficam em [STATUS-IMPLEMENTACAO.md](docs/STATUS-IMPLEMENTACAO.md), com evidências em [L0.md](docs/relatorios/L0.md).
+
+## 1. Papel e objetivo
+
+O usuário definiu dois papéis:
+
+- **Arquiteto:** o assistente da conversa de arquitetura mantém requisitos, decisões, plano, atividades e critérios de aceite. Não gera código do produto nem executa a implementação.
+- **Implementador:** a outra IA que recebe este arquivo escreve código, configura ambiente/build, implementa testes, executa experimentos e registra evidências. Pode tomar decisões locais de engenharia dentro dos contratos; não precisa pedir aprovação para cada arquivo, biblioteca ou tarefa rotineira.
+
+Construa um CLI em Rust para entregar a agentes de IA contexto de código correto, relevante e atualizado. Alvo: Rust, TypeScript/JavaScript, Python e Go; Linux/macOS/Windows; um executável por plataforma/arquitetura; nenhuma GUI. A experiência básica não requer runtimes auxiliares ou rede. O mesmo executável pode iniciar workers e criar banco/cache.
+
+**Prioridade do usuário: maior sucesso em tarefas reais, aceitando custo adicional proporcional.** Redução de tokens é secundária. Não omita evidência necessária para produzir uma resposta menor. Use expansão, representações maiores ou diagnóstico de insuficiência dentro dos limites definidos.
+
+As instruções diretas do usuário e as instruções de ambiente/AGENTS aplicáveis continuam válidas. Este handoff não substitui permissões da ferramenta nem autoriza ações externas, publicações ou envio de mensagens.
+
+## 2. Leitura e fontes de decisão
+
+Leia inicialmente este arquivo, o estado atual e os cartões do primeiro lote. Consulte o restante conforme a tarefa exigir; não é necessário reler toda a pesquisa a cada sessão.
+
+| Documento | Autoridade no trabalho |
+|---|---|
+| [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
+| [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas, dependências, entregáveis e aceite; IDs são estáveis |
+| [Prova de diferenciação](docs/PROVA-DE-DIFERENCIACAO.md) | Objetivo, concorrentes, corpus, contabilidade, limites e gates G0/G1/G2 |
+| [RFC de arquitetura](docs/RFC-0001-ARQUITETURA.md) | Componentes, contratos fundamentais, trade-offs e ADRs |
+| [Plano de validação](docs/PLANO-DE-VALIDACAO.md) | Invariantes, falhas, oracles e verificação por capacidade |
+| [Estudo comparativo](docs/ESTUDO-COMPARATIVO.md) | Evidência histórica e inspirações; não é ranking medido pelo xrai |
+
+Qualidade como única rota primária substitui a proposta anterior de aprovar o projeto somente por economia. Essa alteração já está refletida nos documentos. Se encontrar divergência residual, preserve a decisão explícita mais recente do usuário, registre o conflito e corrija documentação sem mudar critérios de experimento após observar resultados.
+
+As decisões técnicas propostas são a base de trabalho autorizada para iniciar; a palavra “Proposto” não exige uma nova aprovação a cada cartão. Mudanças materiais de escopo, arquitetura ou critérios merecem um registro com problema, alternativas, evidência e recomendação ao arquiteto. Continue tarefas independentes enquanto a decisão estiver pendente.
+
+## 3. Como julgar qualidade e custo
+
+O protocolo é a fonte completa. Os limites abaixo são **parâmetros iniciais propostos pela arquitetura**, não números explicitamente aprovados pelo usuário nem autorização de despesa.
+
+| Momento | Qualidade exigida | Limites de custo simultâneos |
+|---|---|---|
+| G0, piloto de M0 | Ganho exploratório de sucesso ≥10 pontos percentuais, repetido em famílias/repos | Razões pontuais: por tentativa ≤1,25; por sucesso ≤1,15 |
+| G1, confirmação em M1-A | Ganho pontual ≥8 pontos percentuais; limite inferior do intervalo de 95% da diferença acima de zero | Limites superiores dos intervalos das razões: por tentativa ≤1,25; por sucesso ≤1,15 |
+| G2, produto integrado | Preservar o ganho e os critérios funcionais | Preservar tetos e demais guardrails após integração |
+
+Comparar com cada finalista relevante e baseline textual competente, no regime previamente definido. Contar falhas, retries, expansões, instruções, indexação amortizada e todos os usos do modelo. Sem sucesso, custo por sucesso não é zero. Não usar apenas tokens da primeira resposta nem uma razão agregada para justificar perda de qualidade.
+
+Configuração de maior qualidade do concorrente precisa ser representada, mesmo que seja cara. Economia sem ganho suficiente de sucesso é resultado secundário; maior sucesso com custo acima dos tetos também não libera automaticamente a próxima etapa. Documente ambos para eventual revisão de produto.
+
+Gates dependem de evidência; não são uma fila de aprovações para trabalho rotineiro. O implementador registra resultado e decisão conforme o protocolo. Resultado inconclusivo ou negativo não libera engenharia ampla por conta própria. Não troque métricas, adversário, orçamento ou conjunto depois dos resultados para fabricar uma aprovação.
+
+## 4. Primeiro lote executável — L0
+
+**Roteiro de M0-01 e M0-02, já executado em L0.** Não comece pelo banco completo, resolvers de produção ou todos os comandos finais. Este lote estabelece contrato e base compilável para os experimentos.
+
+1. Confira o checkout e o estado local antes de editar. Preserve arquivos e alterações existentes. Se já houver implementação de outra sessão, retome da evidência encontrada; não recrie o projeto cegamente. Registre presença/ausência de Git, sem depender de um remoto para começar.
+2. Em **M0-01**, produza `docs/contracts/m1.md` e exemplos de request/response. Defina IDs, paths nativos, spans em bytes, revisão, cobertura, capabilities, erros e distinção entre fato/candidato/unknown. Inclua resultado vazio completo, capacidade ausente, parse parcial, snapshot expirado e orçamento insuficiente. Contrato não pode anunciar capacidade ainda inexistente.
+3. Em **M0-02**, crie o workspace mínimo com `xrai-core`, `xrai-index`, `xrai-query`, `xrai` e `xrai-eval`; fixe toolchain, edição, dependências e lockfile após verificar compatibilidade e licenças nas fontes oficiais. Versões ainda não estão decididas. Evite implementar subsistemas para preencher diretórios vazios.
+4. Entregue `xrai --help` e `xrai --version` funcionando localmente; configure a matriz inicial Linux x86_64, macOS aarch64 e Windows x86_64. A comprovação nativa dos três SOs pertence a M0-05 e não bloqueia o início local dos protótipos.
+5. Rode as verificações previstas para o esqueleto: `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets --locked -- -D warnings` e `cargo test --workspace --locked`, além dos dois smokes da CLI. Registre ambiente, comandos, código de saída e resultado real. Runner ausente é não verificado; cross-build não prova execução nativa.
+6. Entregue `docs/relatorios/L0.md` e atualize o [estado](docs/STATUS-IMPLEMENTACAO.md). Registre escolhas técnicas, arquivos alterados, critérios demonstrados, pendências e próxima tarefa. Só marque concluído o que cumprir aceite. A elaboração deste handoff não conclui M0-01.
+
+L0 não precisa de API paga, corpus reservado pronto ou confirmação de métricas competitivas. Esses itens não bloqueiam começar. Ao concluir o lote, comunique seu resultado na conversa de implementação e mantenha o relatório local disponível ao arquiteto; não envie mensagens a outra conversa sem autorização do usuário.
+
+## 5. Ordem após L0
+
+| Etapa | Atividades | Condição |
+|---|---|---|
+| Corpus e medição | M0-03: D0/D1 e fixtures; M0-04: harness, replay, baseline e agentes | Contratos disponíveis; começa antes do produto completo |
+| Spikes técnicos | M0-05/06/07/08: gramáticas, workers, snapshots e filesystem | Seguir dependências dos cartões; registrar limitações nativas |
+| Prova semântica P2 | M0-11: recortes de imports/bindings/alvos/configuração nas quatro famílias | Extração mínima local; não esperar todos os runners ou índice de produção |
+| Prova de contexto P3 | M0-09: obrigações, base/head, representações e expansão | Usar snapshots capturados e evidências de P2; medir qualidade de 2 mil a 32 mil tokens |
+| Piloto competitivo | M0-12: oito triados, finalistas fortes, variantes A/B/C/D e sessões reais | Configurações e despesas limitadas; não escolher só modos fracos dos rivais |
+| G0 | M0-10: sinal de qualidade, tetos e viabilidade técnica | Favorável libera apenas M1-A; duas versões experimentais por hipótese no máximo |
+| Confirmação | M1-01 e M1-22: contratos mínimos e H1 reservado | G0 favorável; proposta inicial 120 tarefas, teto H1+H2 240, uma campanha adicional |
+| Alpha | M1-02 a M1-20, com M1-23 antes de M1-16 | G1 favorável; promover somente componentes e recortes justificados |
+| G2 | M1-21: preservar ganho, confiabilidade e distribuição | Autoriza alpha no domínio comprovado e próximo pacote delimitado |
+
+Esta tabela orienta a sequência; os cartões contêm todas as dependências. ID numérico não é ordem de execução: M0-11 precede M0-09 e M1-22 precede a engenharia ampla de M1. Não avance M2/M3 completos só porque há tarefas listadas.
+
+## 6. Limites de arquitetura a preservar
+
+- Monólito Rust modular; CLI e MCP compartilham domínio. `xrai-eval` é ferramenta de desenvolvimento, não requisito da máquina de uso.
+- Tree-sitter e gramáticas incorporados inicialmente; parsers/type checkers novos só após bloqueio e ganho demonstrados. Não confundir tolerância do usuário a grande investimento com obrigação de reescrever bibliotecas.
+- Pai captura bytes/hash e workers do mesmo executável analisam esses bytes; protocolos, filas, respostas e retries limitados. Isolamento de processo não é promessa de sandbox ou proteção contra OOM global.
+- Fonte, fatos e configuração pertencem à revisão declarada. SQLite publica gerações completas; nunca juntar grafo antigo com arquivo novo para aparentar frescor.
+- Cobertura sintática não comprova precisão semântica. Unknown/candidato não vira fato por nome parecido ou score alto; ausência de resultado com cobertura parcial não prova ausência no programa.
+- Mudanças de configuração e dependências positivas/negativas invalidam resoluções; incremental precisa equivaler a rebuild das mesmas entradas.
+- Indexar não executa imports, macros, scripts ou builds do projeto. O harness pode executar testes/builds como parte da avaliação, em ambiente separado e com entradas declaradas.
+- Base/head permanece identificável; worktrees não compartilham estado gravável por acidente. Cache regenerável não contém a única cópia de notas humanas.
+- Contexto inclui fonte exata e omissões explícitas; orçamento cobre a resposta serializada. Expansão permanece possível; recibos de sessão, memória, embeddings e seleção que dispensa testes seguem seus marcos.
+
+## 7. Medição e orçamento sem bloquear o início
+
+Ainda não há resultados próprios do xrai, versões finais de bibliotecas, teto monetário da campanha nem hardware/runner completo definido. O implementador deve converter essas lacunas em registros concretos, sem inventar medições ou preços.
+
+- Trabalho local de L0, fixtures, replay e preparação do harness pode começar imediatamente.
+- Antes de uma campanha com modelos pagos, preencher limites de uso/runs e orçamento do protocolo a partir dos recursos autorizados. A preferência por qualidade não é autorização de gasto ilimitado. Se o valor necessário não estiver definido, apresentar uma estimativa concreta e continuar as frentes locais independentes.
+- Estimar a carga da prova, não só uma chamada: a matriz ilustrativa do protocolo chega a 448 runs no piloto e 960 na confirmação principal, antes dos complementos. Não iniciar esses lotes automaticamente com orçamento ausente.
+- Manter D0/D1 para ajuste; congelar candidata, prompts, adversários e critérios antes de H1. Não colocar patches/oracles ocultos no contexto do agente ou nas entradas do seletor. Se dados de H1 forem expostos durante ajuste, registrar contaminação e não tratá-los como confirmação independente.
+- Os percentuais de custo de G1 comparam operação entre ferramentas. Registrar separadamente esforço de implementar e manter cada frontend e o custo total da campanha de pesquisa.
+
+## 8. Relato ao arquiteto e continuidade
+
+Ao terminar um lote ou encontrar decisão material, atualize o estado e deixe relatório local com:
+
+1. IDs trabalhados e situação real; o que o usuário/agente já consegue fazer.
+2. Arquivos alterados e escolhas relevantes, com motivo e alternativa descartada quando necessário.
+3. Critérios de aceite verificados, comandos/resultados e localização das evidências; separado do que não foi executado.
+4. Custos observados, defeitos conhecidos e limites de cobertura/plataforma.
+5. Decisão necessária, se houver, com recomendação concreta e tarefas que podem continuar.
+6. Próxima tarefa pronta pelas dependências.
+
+Instrução posterior do usuário: ao finalizar uma entrega e suas verificações, faça commit e push para `origin` (`https://github.com/wkoch/xrai.git`), conforme [AGENTS.md](AGENTS.md). Registre falhas de publicação explicitamente; não substitua histórico remoto por force push.
+
+Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
+
+**Próxima ação da IA implementadora: conferir o estado local, consultar o relatório L0 e iniciar M0-03 (corpus D0/D1 e oracles). M0-01/M0-02 só precisam ser retomadas se surgir regressão ou revisão de contrato.**

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "cargo",
+    "clippy",
+    "--workspace",
+    "--all-targets",
+    "--locked",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "/Users/wkoch/Projetos/xrai",
+  "started_at_utc": "2026-10-12T00:42:12.615612+00:00",
+  "finished_at_utc": "2026-10-12T00:42:13.099696+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "    Checking xrai-core v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-core)\n    Checking xrai-index v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-index)\n    Checking xrai-query v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-query)\n    Checking xrai v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai)\n    Checking xrai-eval v0.1.0-dev (/Users/wkoch/Projetos/xrai/crates/xrai-eval)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.41s\n"
+}
