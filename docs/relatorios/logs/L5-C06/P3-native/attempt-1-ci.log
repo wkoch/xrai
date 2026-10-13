@@ -1,0 +1,135 @@
+C06 validated diff native context	Build owned native diff context	﻿2026-10-13T17:37:51.6555344Z ##[group]Run export RUSTUP_HOME="$RUNNER_TEMP/xrai-rustup"
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6556081Z ^[[36;1mexport RUSTUP_HOME="$RUNNER_TEMP/xrai-rustup"^[[0m
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6556772Z ^[[36;1mprintf '%s\n' "RUSTUP_HOME=$RUSTUP_HOME" >> "$GITHUB_ENV"^[[0m
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6557661Z ^[[36;1mrustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy^[[0m
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6558483Z ^[[36;1mcargo fmt --all -- --check^[[0m
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6559155Z ^[[36;1mcargo clippy --locked -p xrai-eval --bin context-diff-spike -- -D warnings^[[0m
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6560041Z ^[[36;1mcargo build --release --locked -p xrai-eval --bin context-diff-spike^[[0m
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6560849Z ^[[36;1mrustc --version --verbose > p3-diff-evidence/rustc.txt^[[0m
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6561505Z ^[[36;1mcargo --version > p3-diff-evidence/cargo.txt^[[0m
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6648548Z shell: /usr/bin/bash -e {0}
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6648969Z env:
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6649398Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.13/x64
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6650179Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.13/x64/lib/pkgconfig
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6650894Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.13/x64
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6651540Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.13/x64
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6652177Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.13/x64
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6652814Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.13/x64/lib
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.6653345Z ##[endgroup]
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.7157902Z info: syncing channel updates for 1.98.1-x86_64-unknown-linux-gnu
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.8113149Z info: latest update on 2026-09-03 for version 1.98.1 (48a229cea 2026-09-01)
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:51.8114189Z info: downloading 5 components
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:59.5074263Z 
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:59.5144703Z   1.98.1-x86_64-unknown-linux-gnu installed - rustc 1.98.1 (48a229cea 2026-09-01)
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:59.5145502Z 
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:59.5147837Z info: default toolchain set to 1.98.1-x86_64-unknown-linux-gnu
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:59.8178608Z     Updating crates.io index
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:37:59.9371896Z  Downloading crates ...
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0381422Z   Downloaded arrayref v0.3.9
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0458713Z   Downloaded arrayvec v0.7.8
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0530021Z   Downloaded find-msvc-tools v0.1.14
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0549793Z   Downloaded smallvec v1.16.3
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0564090Z   Downloaded errno v0.3.14
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0580055Z   Downloaded pkg-config v0.3.34
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0595156Z   Downloaded streaming-iterator v0.1.9
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0607790Z   Downloaded cfg-if v1.0.5
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0620488Z   Downloaded aho-corasick v1.1.5
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0683015Z   Downloaded blake3 v1.8.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0804138Z   Downloaded indexmap v2.14.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0865368Z   Downloaded tree-sitter-go v0.25.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0897109Z   Downloaded equivalent v1.0.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0907722Z   Downloaded constant_time_eq v0.3.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0921426Z   Downloaded fallible-streaming-iterator v0.1.9
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0932423Z   Downloaded unicode-ident v1.0.26
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0959633Z   Downloaded tree-sitter-language v0.1.9
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0979471Z   Downloaded foldhash v0.2.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.0993471Z   Downloaded quote v1.0.47
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1020753Z   Downloaded serde_derive v1.0.229
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1053691Z   Downloaded zmij v1.0.23
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1070983Z   Downloaded fallible-iterator v0.3.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1083830Z   Downloaded serde v1.0.229
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1118714Z   Downloaded serde_core v1.0.229
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1146071Z   Downloaded bitflags v2.13.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1191877Z   Downloaded itoa v1.0.18
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1208341Z   Downloaded memchr v2.8.3
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1263815Z   Downloaded shlex v2.0.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1277147Z   Downloaded proc-macro2 v1.0.107
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1307262Z   Downloaded cc v1.8.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1346058Z   Downloaded tree-sitter-rust v0.24.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1450018Z   Downloaded tree-sitter-javascript v0.25.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1507069Z   Downloaded hashbrown v0.17.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1560683Z   Downloaded regex v1.13.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1614460Z   Downloaded serde_json v1.0.154
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1689442Z   Downloaded rusqlite v0.40.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.1757991Z   Downloaded vcpkg v0.2.15
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.2306833Z   Downloaded tree-sitter v0.27.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.2390228Z   Downloaded tree-sitter-python v0.25.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.2450768Z   Downloaded syn v3.0.8
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.2554275Z   Downloaded regex-syntax v0.8.11
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.2619281Z   Downloaded rustix v1.1.5
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.2951190Z   Downloaded regex-automata v0.4.18
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.3093073Z   Downloaded tree-sitter-typescript v0.23.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.3333445Z   Downloaded libc v0.2.190
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.3805497Z   Downloaded linux-raw-sys v0.12.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.4414717Z   Downloaded libsqlite3-sys v0.38.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.5265673Z    Compiling find-msvc-tools v0.1.14
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.5266843Z    Compiling shlex v2.0.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.5267408Z    Compiling tree-sitter-language v0.1.9
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.5275920Z    Compiling zmij v1.0.23
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.6271505Z    Compiling cc v1.8.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.6650099Z    Compiling proc-macro2 v1.0.107
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.7125828Z    Compiling serde_core v1.0.229
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.7206016Z     Checking memchr v2.8.3
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.8805862Z    Compiling quote v1.0.47
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:00.9096029Z    Compiling serde_json v1.0.154
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:01.0086644Z    Compiling hashbrown v0.17.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:01.0385840Z    Compiling unicode-ident v1.0.26
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:01.0926049Z    Compiling equivalent v1.0.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:01.5506019Z    Compiling indexmap v2.14.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:01.9326026Z    Compiling pkg-config v0.3.34
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:02.2026280Z    Compiling foldhash v0.2.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:02.3835231Z    Compiling vcpkg v0.2.15
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:02.5276253Z    Compiling itoa v1.0.18
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:02.8306301Z     Checking aho-corasick v1.1.5
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:02.8915814Z     Checking regex-syntax v0.8.11
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:03.0077137Z    Compiling libsqlite3-sys v0.38.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:03.4908585Z    Compiling syn v3.0.8
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:04.2145858Z     Checking regex-automata v0.4.18
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:04.6005875Z    Compiling tree-sitter v0.27.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:05.7481682Z    Compiling tree-sitter-python v0.25.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:05.8756747Z    Compiling tree-sitter-javascript v0.25.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:05.9465935Z    Compiling tree-sitter-rust v0.24.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:06.0010937Z    Compiling blake3 v1.8.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:06.0735941Z    Compiling tree-sitter-go v0.25.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:06.1956805Z    Compiling tree-sitter-typescript v0.23.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:06.2876056Z     Checking bitflags v2.13.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:06.3176708Z    Compiling rustix v1.1.5
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:06.3856578Z    Compiling serde v1.0.229
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:06.5226512Z     Checking xrai-core v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-core)
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:13.8266012Z    Compiling serde_derive v1.0.229
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:14.4335877Z     Checking regex v1.13.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:14.8865778Z     Checking smallvec v1.16.3
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:14.9075988Z     Checking constant_time_eq v0.3.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:14.9343974Z     Checking cfg-if v1.0.5
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:14.9536042Z     Checking streaming-iterator v0.1.9
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:15.0145998Z     Checking linux-raw-sys v0.12.1
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:15.2525962Z     Checking fallible-streaming-iterator v0.1.9
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:15.2905992Z     Checking fallible-iterator v0.3.0
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:15.3205854Z     Checking arrayref v0.3.9
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:15.3415802Z     Checking arrayvec v0.7.8
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:15.5236020Z     Checking rusqlite v0.40.2
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:16.5646290Z     Checking xrai-query v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-query)
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:16.5916180Z     Checking xrai-index v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-index)
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:17.0105908Z     Checking xrai-eval v0.1.0-dev (/home/runner/work/xrai/xrai/crates/xrai-eval)
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2107681Z error: using `chunks_exact` with a constant chunk size
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2108507Z   --> crates/xrai-eval/src/bin/context-diff-spike.rs:38:10
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2109098Z    |
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2109436Z 38 |         .chunks_exact(2)
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2110318Z    |          ^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<2>().0.iter()`
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2111032Z    |
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2111917Z    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2113146Z    = note: `-D clippy::chunks-exact-to-as-chunks` implied by `-D warnings`
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2114090Z    = help: to override `-D warnings` add `#[allow(clippy::chunks_exact_to_as_chunks)]`
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2114662Z 
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2294769Z error: could not compile `xrai-eval` (bin "context-diff-spike") due to 1 previous error
+C06 validated diff native context	Build owned native diff context	2026-10-13T17:38:18.2482044Z ##[error]Process completed with exit code 101.

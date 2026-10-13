@@ -1,0 +1,275 @@
+{
+  "schema": "xrai.eval.django-router.declarative-oracle.v1",
+  "status": "preregistered_specification_not_upstream_behavior",
+  "author": "implementador /root/e02_compensation",
+  "independent_review": "accepted_static_before_algorithm_by_root",
+  "profile": "two SQLite aliases; managed concrete unswapped models; no required vendor/features; bool-or-None policy results; pure literal policy rules",
+  "main_cases": [
+    {
+      "id": "a-ledger-default",
+      "state": "a",
+      "app_label": "ledger",
+      "model_name": "entry",
+      "database_alias": "default",
+      "expected": {
+        "model_gate": true,
+        "creates_table": true,
+        "decisive_router_index": 0,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "a-ledger-reporting",
+      "state": "a",
+      "app_label": "ledger",
+      "model_name": "entry",
+      "database_alias": "reporting",
+      "expected": {
+        "model_gate": true,
+        "creates_table": false,
+        "decisive_router_index": 0,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "a-catalog-default",
+      "state": "a",
+      "app_label": "catalog",
+      "model_name": "item",
+      "database_alias": "default",
+      "expected": {
+        "model_gate": true,
+        "creates_table": true,
+        "decisive_router_index": 0,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "a-catalog-reporting",
+      "state": "a",
+      "app_label": "catalog",
+      "model_name": "item",
+      "database_alias": "reporting",
+      "expected": {
+        "model_gate": true,
+        "creates_table": false,
+        "decisive_router_index": 0,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "b-ledger-default",
+      "state": "b",
+      "app_label": "ledger",
+      "model_name": "entry",
+      "database_alias": "default",
+      "expected": {
+        "model_gate": true,
+        "creates_table": false,
+        "decisive_router_index": 0,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "b-ledger-reporting",
+      "state": "b",
+      "app_label": "ledger",
+      "model_name": "entry",
+      "database_alias": "reporting",
+      "expected": {
+        "model_gate": true,
+        "creates_table": true,
+        "decisive_router_index": 0,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "b-catalog-default",
+      "state": "b",
+      "app_label": "catalog",
+      "model_name": "item",
+      "database_alias": "default",
+      "expected": {
+        "model_gate": true,
+        "creates_table": true,
+        "decisive_router_index": 1,
+        "consulted_router_count": 2
+      }
+    },
+    {
+      "id": "b-catalog-reporting",
+      "state": "b",
+      "app_label": "catalog",
+      "model_name": "item",
+      "database_alias": "reporting",
+      "expected": {
+        "model_gate": true,
+        "creates_table": false,
+        "decisive_router_index": 1,
+        "consulted_router_count": 2
+      }
+    }
+  ],
+  "controls": [
+    {
+      "id": "all-none-default",
+      "alias": "default",
+      "model_can_migrate": true,
+      "router_returns": [
+        null,
+        null
+      ],
+      "expected": {
+        "creates_table": true,
+        "decisive_router_index": null,
+        "consulted_router_count": 2
+      }
+    },
+    {
+      "id": "all-none-reporting",
+      "alias": "reporting",
+      "model_can_migrate": true,
+      "router_returns": [
+        null,
+        null
+      ],
+      "expected": {
+        "creates_table": true,
+        "decisive_router_index": null,
+        "consulted_router_count": 2
+      }
+    },
+    {
+      "id": "false-before-true",
+      "alias": "default",
+      "model_can_migrate": true,
+      "router_returns": [
+        false,
+        true
+      ],
+      "expected": {
+        "creates_table": false,
+        "decisive_router_index": 0,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "true-before-false",
+      "alias": "default",
+      "model_can_migrate": true,
+      "router_returns": [
+        true,
+        false
+      ],
+      "expected": {
+        "creates_table": true,
+        "decisive_router_index": 0,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "none-before-false",
+      "alias": "reporting",
+      "model_can_migrate": true,
+      "router_returns": [
+        null,
+        false
+      ],
+      "expected": {
+        "creates_table": false,
+        "decisive_router_index": 1,
+        "consulted_router_count": 2
+      }
+    },
+    {
+      "id": "none-before-true",
+      "alias": "reporting",
+      "model_can_migrate": true,
+      "router_returns": [
+        null,
+        true
+      ],
+      "expected": {
+        "creates_table": true,
+        "decisive_router_index": 1,
+        "consulted_router_count": 2
+      }
+    },
+    {
+      "id": "missing-method-before-false",
+      "alias": "default",
+      "model_can_migrate": true,
+      "router_returns": [
+        "method_absent",
+        false
+      ],
+      "expected": {
+        "creates_table": false,
+        "decisive_router_index": 1,
+        "consulted_router_count": 1
+      }
+    },
+    {
+      "id": "no-router-default",
+      "alias": "default",
+      "model_can_migrate": true,
+      "router_returns": [],
+      "expected": {
+        "creates_table": true,
+        "decisive_router_index": null,
+        "consulted_router_count": 0
+      }
+    },
+    {
+      "id": "model-gate-veto-default",
+      "alias": "default",
+      "model_can_migrate": false,
+      "router_returns": [
+        true
+      ],
+      "expected": {
+        "creates_table": false,
+        "decisive_router_index": null,
+        "consulted_router_count": 0
+      }
+    },
+    {
+      "id": "model-gate-veto-reporting",
+      "alias": "reporting",
+      "model_can_migrate": false,
+      "router_returns": [
+        true
+      ],
+      "expected": {
+        "creates_table": false,
+        "decisive_router_index": null,
+        "consulted_router_count": 0
+      }
+    }
+  ],
+  "malformed_controls": [
+    "unknown_database_alias",
+    "duplicate_database_alias",
+    "duplicate_router_component",
+    "non_boolean_non_none_return",
+    "missing_model_app",
+    "missing_policy",
+    "wrong_revision",
+    "silently_normalized_order"
+  ],
+  "hypothetical_config_sequence": [
+    "a",
+    "b",
+    "a"
+  ],
+  "sequence_claim": "prospective ABA fixture, never proof of live framework session/cache invalidation",
+  "no_behavioral_receipt": true,
+  "gate_effect": "zero eligible/admitted/quota credit",
+  "count_semantics": {
+    "consulted_router_count": "number of allow_migrate method invocations, not router entries visited",
+    "decisive_router_index": "zero-based index in ordered router list, including entries whose method is absent",
+    "missing-method-before-false": "two entries visited, one method invoked"
+  },
+  "nonboolean_return_policy": "Outside this owned bool/None oracle profile; Django generically accepts any non-None router result and CreateModel tests its truthiness. Refusal is not claimed as a universal Django error.",
+  "other_apps_policy": "Guaranteed by the literal app_label != ledger predicate in immutable LedgerPolicy; catalog is representative, not an independent empirical sample of all apps."
+}

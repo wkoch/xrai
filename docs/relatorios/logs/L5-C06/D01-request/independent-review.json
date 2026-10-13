@@ -1,0 +1,101 @@
+{
+  "checks": [
+    "Nested caller messages/limits/tool definitions/lists after capture cannot mutate the private authoritative decode.",
+    "Immutable input bytes accepted; mutated-before-capture payload rejected before transport.",
+    "Binding of task/arm/run/authorization/maximum/retry/call/attempt/payload preserved.",
+    "No runtime profiler is installed; independent transport spying occurs only in tests.",
+    "Original v2 divergence remains a counterproof; no legacy source or receipt was edited by this reviewer.",
+    "Consumer uses prospective factory, actual captured source bytes and read-only replay; no provider/campaign claim."
+  ],
+  "coverage": {
+    "four_paths": "metadata_match_best_effort_not_completeness_proof",
+    "generation": "2026-10-13T17:36:31Z",
+    "project": "Users-wkoch-Projetos-xrai",
+    "tier": 2
+  },
+  "findings": [
+    {
+      "fix": "Guard end result/accepted/reason correlated; direct exceptions are typed unknown markers and require paired failure lifecycle on the same attempt.",
+      "id": "forged-public-failure",
+      "independent_counterproofs": {
+        "forged_public_failure_dispatch_v2": {
+          "reason": "direct exception requires this attempt paired D01 failure lifecycle; original exception unknown",
+          "rejected": true
+        },
+        "forged_public_failure_guard": {
+          "reason": "public guard accepted result equals immutable caller return",
+          "rejected": true
+        }
+      },
+      "original": "Successful dispatch could be rewritten as arbitrary public exception while immutable replay returned verified.",
+      "status": "resolved"
+    },
+    {
+      "fix": "Every row payload binds to manifest immediately after restore, before reserved/unreserved branches.",
+      "id": "unreserved-manifest-request-binding",
+      "independent_counterproof": {
+        "independent_guard_replay_before_wrapper": "passed",
+        "reason": "every request including unreserved refusal matches captured manifest",
+        "rejected": true
+      },
+      "original": "Unreserved refused requests did not independently bind their payload hash to the captured manifest.",
+      "status": "resolved"
+    },
+    {
+      "fix": "The same attempt must have an adjacent precommit reject/invalidate or postcommit outcome/invalidate; a different attempt failure cannot excuse a forged exception.",
+      "id": "paired-lifecycle-scope",
+      "status": "checked",
+      "test": "test_other_attempt_error_cannot_forge_budget_refusal_exception"
+    }
+  ],
+  "immutable_method_stable_before_after_tests": true,
+  "legacy_receipts_modified": false,
+  "limits": [
+    "Dict capture requires caller quiescence during validation and one canonical serialization; bytes preferred.",
+    "Private canonical projection is not an independently observed runtime transport receipt; future real adapter needs a public payload receipt seam.",
+    "A transport itself can mutate its discarded decoded dict; tests demonstrate caller isolation, not protection against arbitrary code inside the trusted transport.",
+    "Direct exception class/text is unknown, not promoted from a typed failure lifecycle.",
+    "External ABA, large blob protocol, real provider/paid budget/agent evidence remain unavailable."
+  ],
+  "mode": "readonly_source_review_owned_python_fake_tests_no_native_upstream_provider",
+  "native_execution": false,
+  "provider_calls": 0,
+  "remaining_findings": [],
+  "reviewed_at": "2026-10-13T17:38:47.643875+00:00",
+  "runtime": "Python3.13.13",
+  "schema": "xrai.eval.c06-d01-independent-review.v1",
+  "scope": [
+    "crates/xrai-eval/harness/immutable_request_dispatch.py",
+    "crates/xrai-eval/harness/guarded_smoke.py",
+    "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py",
+    "crates/xrai-eval/harness/tests/test_guarded_smoke.py"
+  ],
+  "source_sha256": {
+    "crates/xrai-eval/harness/guarded_smoke.py": "65d1bacb23c86f153fbcab158b6b6e02bff51c54bc6633fd45b53e0b000c6d80",
+    "crates/xrai-eval/harness/immutable_request_dispatch.py": "0ff3fc2abc5a420ab2ae76945f244dcd046c3ac766b8ceb138a55dc66423eb7f",
+    "crates/xrai-eval/harness/tests/test_guarded_smoke.py": "37294cac19fcae14399f48ccb0d3a3a26165eaa7869338755c55d347840dc7a6",
+    "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "5a9f201cf5e8cdfb10c7ec7ba73a27db57a11cf23e785daa795213ba1c5ad3c9"
+  },
+  "suites": [
+    {
+      "discovered": 25,
+      "name": "immutable request",
+      "passed": 25,
+      "skipped": 0,
+      "stderr": "test_bounds_and_nonjson_request_types_refused (test_immutable_request_dispatch.ImmutableTests.test_bounds_and_nonjson_request_types_refused) ... ok\ntest_budget_refusal_has_no_transport_projection (test_immutable_request_dispatch.ImmutableTests.test_budget_refusal_has_no_transport_projection) ... ok\ntest_caller_after_commit_message_limits_nested (test_immutable_request_dispatch.ImmutableTests.test_caller_after_commit_message_limits_nested) ... ok\ntest_caller_before_commit_message_limits_nested (test_immutable_request_dispatch.ImmutableTests.test_caller_before_commit_message_limits_nested) ... ok\ntest_caller_mutated_before_capture_refused_zero (test_immutable_request_dispatch.ImmutableTests.test_caller_mutated_before_capture_refused_zero) ... ok\ntest_cancel_after_commit_keeps_unknown_reservation (test_immutable_request_dispatch.ImmutableTests.test_cancel_after_commit_keeps_unknown_reservation) ... ok\ntest_cancel_before_commit_zero_invocation (test_immutable_request_dispatch.ImmutableTests.test_cancel_before_commit_zero_invocation) ... ok\ntest_direct_failure_lifecycle_has_typed_unknown_exception (test_immutable_request_dispatch.ImmutableTests.test_direct_failure_lifecycle_has_typed_unknown_exception) ... ok\ntest_direct_success_cannot_become_fabricated_failure (test_immutable_request_dispatch.ImmutableTests.test_direct_success_cannot_become_fabricated_failure) ... ok\ntest_failed_before_transport_releases_reservation (test_immutable_request_dispatch.ImmutableTests.test_failed_before_transport_releases_reservation) ... ok\ntest_guard_success_cannot_become_fabricated_failure (test_immutable_request_dispatch.ImmutableTests.test_guard_success_cannot_become_fabricated_failure) ... ok\ntest_guarded_factory_second_admission_refused_without_attempt (test_immutable_request_dispatch.ImmutableTests.test_guarded_factory_second_admission_refused_without_attempt) ... ok\ntest_immutable_bytes_accepted (test_immutable_request_dispatch.ImmutableTests.test_immutable_bytes_accepted) ... ok\ntest_no_runtime_profiler_installed (test_immutable_request_dispatch.ImmutableTests.test_no_runtime_profiler_installed) ... ok\ntest_noncanonical_duplicate_nonfinite_bytes_refused (test_immutable_request_dispatch.ImmutableTests.test_noncanonical_duplicate_nonfinite_bytes_refused) ... ok\ntest_original_v2_counterproof_still_diverges_historical (test_immutable_request_dispatch.ImmutableTests.test_original_v2_counterproof_still_diverges_historical) ... ok\ntest_other_attempt_error_cannot_forge_budget_refusal_exception (test_immutable_request_dispatch.ImmutableTests.test_other_attempt_error_cannot_forge_budget_refusal_exception) ... ok\ntest_public_record_copy_does_not_expose_authority (test_immutable_request_dispatch.ImmutableTests.test_public_record_copy_does_not_expose_authority) ... ok\ntest_replay_attempt_call_limit_retry_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_attempt_call_limit_retry_adulterated) ... ok\ntest_replay_payload_hash_or_bytes_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_payload_hash_or_bytes_adulterated) ... ok\ntest_replay_projection_omitted_or_changed_refused (test_immutable_request_dispatch.ImmutableTests.test_replay_projection_omitted_or_changed_refused) ... ok\ntest_replay_task_arm_run_authorization_binding_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_task_arm_run_authorization_binding_adulterated) ... ok\ntest_retry_late_idempotence_preserved (test_immutable_request_dispatch.ImmutableTests.test_retry_late_idempotence_preserved) ... ok\ntest_transport_mutates_only_disposable_decode (test_immutable_request_dispatch.ImmutableTests.test_transport_mutates_only_disposable_decode) ... ok\ntest_uncertain_after_commit_retains_reservation (test_immutable_request_dispatch.ImmutableTests.test_uncertain_after_commit_retains_reservation) ... ok\n\n----------------------------------------------------------------------\nRan 25 tests in 0.431s\n\nOK\n",
+      "stderr_sha256": "94e57996810cb3a93bfb1e7d2cc92ce9dbd3b790697d557593c42956e41425c7",
+      "stdout": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "discovered": 31,
+      "name": "guarded consumer",
+      "passed": 31,
+      "skipped": 0,
+      "stderr": "test_all_frozen_real_source_consumers_replay (test_guarded_smoke.ConsumerTests.test_all_frozen_real_source_consumers_replay) ... ok\ntest_bm25_and_tfidf_both_search_expand (test_guarded_smoke.ConsumerTests.test_bm25_and_tfidf_both_search_expand) ... ok\ntest_budget_boolean_and_changed_ceiling_refused (test_guarded_smoke.ConsumerTests.test_budget_boolean_and_changed_ceiling_refused) ... ok\ntest_campaign_intent_refused_before_consumer (test_guarded_smoke.ConsumerTests.test_campaign_intent_refused_before_consumer) ... ok\ntest_consumer_adopts_prospective_immutable_request_v3 (test_guarded_smoke.ConsumerTests.test_consumer_adopts_prospective_immutable_request_v3) ... ok\ntest_consumer_request_binding_substitution_refused (test_guarded_smoke.ConsumerTests.test_consumer_request_binding_substitution_refused) ... ok\ntest_duplicate_and_nonfinite_json_refused (test_guarded_smoke.ConsumerTests.test_duplicate_and_nonfinite_json_refused) ... ok\ntest_final_changed_cannot_complete (test_guarded_smoke.ConsumerTests.test_final_changed_cannot_complete) ... ok\ntest_fresh_output_and_readonly_complete_receipt (test_guarded_smoke.ConsumerTests.test_fresh_output_and_readonly_complete_receipt) ... ok\ntest_gate_identity_substitution_refused (test_guarded_smoke.ConsumerTests.test_gate_identity_substitution_refused) ... ok\ntest_json_size_and_nesting_bounded (test_guarded_smoke.ConsumerTests.test_json_size_and_nesting_bounded) ... ok\ntest_late_duplicate_reconciliation_claim_refused (test_guarded_smoke.ConsumerTests.test_late_duplicate_reconciliation_claim_refused) ... ok\ntest_manifest_unknown_ready_flag_refused (test_guarded_smoke.ConsumerTests.test_manifest_unknown_ready_flag_refused) ... ok\ntest_method_or_query_changed_after_freeze_refused (test_guarded_smoke.ConsumerTests.test_method_or_query_changed_after_freeze_refused) ... ok\ntest_modified_manifest_leaves_no_output (test_guarded_smoke.ConsumerTests.test_modified_manifest_leaves_no_output) ... ok\ntest_ordinary_file_size_and_symlink_refused (test_guarded_smoke.ConsumerTests.test_ordinary_file_size_and_symlink_refused) ... ok\ntest_paid_provider_field_refused (test_guarded_smoke.ConsumerTests.test_paid_provider_field_refused) ... ok\ntest_postchecks_retained_tool_not_returned (test_guarded_smoke.ConsumerTests.test_postchecks_retained_tool_not_returned) ... ok\ntest_prechecks_zero_handler_actual_fake_preserved (test_guarded_smoke.ConsumerTests.test_prechecks_zero_handler_actual_fake_preserved) ... ok\ntest_provider_tokens_and_agent_claims_refused (test_guarded_smoke.ConsumerTests.test_provider_tokens_and_agent_claims_refused) ... ok\ntest_record_unknown_fields_refused (test_guarded_smoke.ConsumerTests.test_record_unknown_fields_refused) ... ok\ntest_retry_late_fake_reservation_and_idempotence (test_guarded_smoke.ConsumerTests.test_retry_late_fake_reservation_and_idempotence) ... ok\ntest_return_promoted_after_refusal_refused (test_guarded_smoke.ConsumerTests.test_return_promoted_after_refusal_refused) ... ok\ntest_snapshot_copies_input_bytes (test_guarded_smoke.ConsumerTests.test_snapshot_copies_input_bytes) ... ok\ntest_source_bounds_before_reads (test_guarded_smoke.ConsumerTests.test_source_bounds_before_reads) ... ok\ntest_source_path_traversal_refused (test_guarded_smoke.ConsumerTests.test_source_path_traversal_refused) ... ok\ntest_summary_counts_cannot_replace_actual_journal (test_guarded_smoke.ConsumerTests.test_summary_counts_cannot_replace_actual_journal) ... ok\ntest_task_arm_run_substitution_refused (test_guarded_smoke.ConsumerTests.test_task_arm_run_substitution_refused) ... ok\ntest_virtual_invocation_count_substitution_refused (test_guarded_smoke.ConsumerTests.test_virtual_invocation_count_substitution_refused) ... ok\ntest_whole_go_source_capture_bytes (test_guarded_smoke.ConsumerTests.test_whole_go_source_capture_bytes) ... ok\ntest_zip_unknown_traversal_duplicate_and_symlink_refused (test_guarded_smoke.ConsumerTests.test_zip_unknown_traversal_duplicate_and_symlink_refused) ... /private/tmp/xrai-c05-python/cpython-3.13.13-macos-aarch64-none/lib/python3.13/zipfile/__init__.py:1655: UserWarning: Duplicate name: 'receipt.json'\n  return self._open_to_write(zinfo, force_zip64=force_zip64)\nok\n\n----------------------------------------------------------------------\nRan 31 tests in 12.679s\n\nOK\n",
+      "stderr_sha256": "0eec2049b494c36dc4a24fe29522070cde2632258a632f3446f0342dce3c1ff8",
+      "stdout": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "diagnostic": "clippy::chunks_exact_to_as_chunks under -D warnings",
+  "factual_skip": 1,
+  "failed_head": "bc874f4f6972ac5562cfb8564da31528e5277ccf",
+  "failed_run_id": 38440152422,
+  "labels_inputs_protocol_unchanged": true,
+  "native_execution_local": false,
+  "new_bin_source_sha256": "9d092b55a28be335f8bdcfbdd39dae304f52201f31be1c2fde3061b9c5250a54",
+  "new_producer_blake3": "0900251deb19015fd69881a20217759c36d832e2213fc74ef5bd191f9e85c3ae",
+  "old_bin_source_sha256": "ddcb9c5015e9b7559ba6c164cd65fea384e268b522765a38517c27b224c05547",
+  "old_producer_blake3": "adb89501096d08fef5f8bc1f4265198c4877f19d8c29489a4b79d3342eda1a57",
+  "operation": "chunks_exact(2) becomes as_chunks::<2>().0.iter() after prior even-length validation",
+  "public_process_close": "stores raw response with no response-key indexing; compatible with top-level P3 schema; verifier compares complete close envelope",
+  "python_tests_discovered": 47,
+  "python_tests_passed": 46,
+  "rustfmt": "pass",
+  "same_frozen_design": "7547a49814fa2530d10d96c51de21ef4b05ce92d6e8d65b8025a28ecbdcf487e",
+  "schema": "xrai.eval.c06-p3-clippy-fix.v1"
+}

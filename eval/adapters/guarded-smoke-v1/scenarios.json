@@ -1,0 +1,1282 @@
+[
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "none",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-bm25-complete",
+    "scenario_id": "bm25-complete",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "none",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "tfidf_cosine",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-tfidf-complete",
+    "scenario_id": "tfidf-complete",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "retry_late",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-retry-late",
+    "scenario_id": "retry-late",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "manifest_before",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-manifest-before",
+    "scenario_id": "manifest-before",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "evidence_before",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-evidence-before",
+    "scenario_id": "evidence-before",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "manifest_after",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-manifest-after",
+    "scenario_id": "manifest-after",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "evidence_after",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-evidence-after",
+    "scenario_id": "evidence-after",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "source_before",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-source-before",
+    "scenario_id": "source-before",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "producer_before",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-producer-before",
+    "scenario_id": "producer-before",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  },
+  {
+    "arm": "indexed",
+    "budget_micro_usd": 1500,
+    "expires_monotonic": 100,
+    "intent": "smoke_seed",
+    "intervention": "final_change",
+    "max_wire_bytes": 65536,
+    "maximum_micro_usd": 500,
+    "method": "bm25",
+    "query": "Where does ShellEscape quote unsafe shell characters?",
+    "run_id": "L5-C06-final-change",
+    "scenario_id": "final-change",
+    "schema_version": "xrai.eval.guarded-smoke-scenario.v1",
+    "sources": {
+      "modules/util/color.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/color.go",
+        "bytes": 1973,
+        "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+      },
+      "modules/util/error.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/error.go",
+        "bytes": 2353,
+        "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+      },
+      "modules/util/file_unix.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_unix.go",
+        "bytes": 628,
+        "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+      },
+      "modules/util/file_windows.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/file_windows.go",
+        "bytes": 274,
+        "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+      },
+      "modules/util/filebuffer/file_backed_buffer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+        "bytes": 3281,
+        "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+      },
+      "modules/util/io.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/io.go",
+        "bytes": 1849,
+        "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+      },
+      "modules/util/keypair.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/keypair.go",
+        "bytes": 1408,
+        "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+      },
+      "modules/util/legacy.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/legacy.go",
+        "bytes": 1827,
+        "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+      },
+      "modules/util/pack.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/pack.go",
+        "bytes": 695,
+        "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+      },
+      "modules/util/paginate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/paginate.go",
+        "bytes": 727,
+        "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+      },
+      "modules/util/path.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/path.go",
+        "bytes": 9185,
+        "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+      },
+      "modules/util/remove.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/remove.go",
+        "bytes": 2464,
+        "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+      },
+      "modules/util/rotatingfilewriter/writer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go",
+        "bytes": 5587,
+        "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+      },
+      "modules/util/sanitize.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sanitize.go",
+        "bytes": 2542,
+        "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+      },
+      "modules/util/sec_to_time.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/sec_to_time.go",
+        "bytes": 2749,
+        "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+      },
+      "modules/util/shellquote.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/shellquote.go",
+        "bytes": 3574,
+        "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+      },
+      "modules/util/slice.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/slice.go",
+        "bytes": 1910,
+        "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+      },
+      "modules/util/string.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/string.go",
+        "bytes": 2337,
+        "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+      },
+      "modules/util/timer.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/timer.go",
+        "bytes": 549,
+        "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+      },
+      "modules/util/truncate.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/truncate.go",
+        "bytes": 1250,
+        "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+      },
+      "modules/util/url.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/url.go",
+        "bytes": 1138,
+        "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+      },
+      "modules/util/util.go": {
+        "asset": "eval/context/lexical/sources/Go/modules/util/util.go",
+        "bytes": 5732,
+        "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+      }
+    },
+    "task_id": "D0-RS-01",
+    "top_k": 5
+  }
+]

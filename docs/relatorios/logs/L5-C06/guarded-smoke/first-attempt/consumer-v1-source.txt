@@ -1,0 +1,302 @@
+"""Actual offline caller of the public guard factory, with frozen source data only."""
+from __future__ import annotations
+import argparse
+import base64
+import copy
+import json
+import math
+from pathlib import Path
+import re
+import sys
+sys.dont_write_bytecode = True
+
+from agent_ledger import canonical, sha, fake_request, fake_receipt
+from agent_adapter_protocol import ToolSnapshot, require, exact
+from execution_gate import EvidenceSnapshot, OfflineAuthorization, make_smoke_fixture
+from execution_dispatch_v2 import FakeResultV2, FakeTransportV2, make_bindings
+from lexical_retrieval import LexicalIndex
+from session_tool_guard import make_guarded_fake_session, GuardRefused, load_guard, replay_guard, snapshot_record, MAX_RECORD_BYTES
+
+ROOT = Path(__file__).resolve().parents[3]
+DESIGN = ROOT / 'eval/adapters/guarded-smoke-v1'
+VERSION = 'xrai.eval.guarded-smoke-consumer.v1'
+MAX_MANIFEST = 256 * 1024
+MAX_SOURCE = 128 * 1024
+MAX_SOURCE_TOTAL = 128 * 1024
+MAX_OUTPUT = 128 * 1024 * 1024
+METHODS = {'bm25', 'tfidf_cosine'}
+INTERVENTIONS = {'none', 'retry_late', 'manifest_before', 'evidence_before', 'manifest_after', 'evidence_after', 'source_before', 'producer_before', 'final_change'}
+KEYS = {'schema_version', 'scenario_id', 'intent', 'task_id', 'arm', 'run_id', 'query', 'method', 'intervention', 'budget_micro_usd', 'maximum_micro_usd', 'expires_monotonic', 'top_k', 'max_wire_bytes', 'sources'}
+OWN_SOURCES = ('crates/xrai-eval/harness/guarded_smoke.py', 'eval/adapters/guarded-smoke-v1/verify.py')
+
+
+def owned(path, maximum):
+    path = Path(path)
+    require(path.is_file() and not path.is_symlink() and 0 < path.stat().st_size <= maximum, 'ordinary bounded input')
+    with path.open('rb') as stream:
+        raw = stream.read(maximum + 1)
+    require(0 < len(raw) <= maximum, 'actual input byte bound')
+    return raw
+
+
+def decode(raw, maximum=MAX_MANIFEST):
+    require(type(raw) is bytes and 0 < len(raw) <= maximum, 'bounded JSON bytes')
+    depth = 0
+    quoted = escaped = False
+    for byte in raw:
+        if quoted:
+            if escaped: escaped = False
+            elif byte == 92: escaped = True
+            elif byte == 34: quoted = False
+        elif byte == 34: quoted = True
+        elif byte in (123, 91):
+            depth += 1
+            require(depth <= 64, 'JSON nesting bound')
+        elif byte in (125, 93):
+            depth -= 1
+            require(depth >= 0, 'invalid JSON nesting')
+    def pairs(rows):
+        result = {}
+        for key, value in rows:
+            require(key not in result, 'duplicate JSON key')
+            result[key] = value
+        return result
+    def bad(_):
+        raise ValueError('nonfinite JSON number')
+    def real(value):
+        number = float(value)
+        require(math.isfinite(number), 'nonfinite JSON number')
+        return number
+    try:
+        return json.loads(raw, object_pairs_hook=pairs, parse_constant=bad, parse_float=real)
+    except (RecursionError, UnicodeError) as error:
+        raise ValueError('invalid bounded JSON nesting/encoding') from error
+
+
+def relative(path):
+    require(type(path) is str and 0 < len(path.encode()) <= 4096 and not any(ord(c) < 32 for c in path), 'bounded path')
+    require(not Path(path).is_absolute() and '\\' not in path and all(p not in ('', '.', '..') for p in path.split('/')), 'normalized relative path')
+    target = ROOT / path
+    require(target.resolve().is_relative_to(ROOT.resolve()), 'source path inside owned repository')
+    require(all(not (ROOT.joinpath(*path.split('/')[:n])).is_symlink() for n in range(1, len(path.split('/')) + 1)), 'no symlink source ancestors')
+    return target
+
+
+def frozen():
+    freeze = decode(owned(DESIGN / 'freeze.json', MAX_MANIFEST))
+    require(type(freeze) is dict and set(freeze) == {'schema_version', 'frozen_at', 'consumer_absent', 'sources', 'scope'} and freeze['schema_version'] == 'xrai.eval.guarded-smoke-freeze.v1' and freeze['consumer_absent'] is True, 'pre-consumer input freeze')
+    require(type(freeze['sources']) is dict and len(freeze['sources']) == 27, 'exact frozen source closure')
+    for path, digest in freeze['sources'].items():
+        require(type(digest) is str and re.fullmatch('[0-9a-f]{64}', digest) and sha(owned(relative(path), MAX_MANIFEST)) == digest, 'frozen input hash')
+    scenarios = decode(owned(DESIGN / 'scenarios.json', MAX_MANIFEST))
+    require(type(scenarios) is list and len(scenarios) == 10 and len({row['scenario_id'] for row in scenarios}) == 10, 'ten frozen scenarios')
+    return scenarios, freeze
+
+
+def validate(scenario):
+    require(type(scenario) is dict and set(scenario) == KEYS, 'strict scenario fields; ready flags refused')
+    require(scenario['schema_version'] == 'xrai.eval.guarded-smoke-scenario.v1' and scenario['intent'] == 'smoke_seed', 'only development seed intent')
+    require(scenario['task_id'] == 'D0-RS-01' and scenario['arm'] == 'indexed', 'fixed task/arm binding')
+    require(type(scenario['scenario_id']) is str and re.fullmatch('[a-z][a-z0-9-]{0,63}', scenario['scenario_id']) and scenario['run_id'] == 'L5-C06-' + scenario['scenario_id'], 'exact run binding')
+    require(type(scenario['query']) is str and 0 < len(scenario['query'].encode()) <= 4096 and scenario['method'] in METHODS and scenario['intervention'] in INTERVENTIONS, 'bounded supported retrieval/injection')
+    for name, value in [('budget_micro_usd', 1500), ('maximum_micro_usd', 500), ('expires_monotonic', 100), ('top_k', 5), ('max_wire_bytes', 65536)]:
+        require(type(scenario[name]) is int and scenario[name] == value, 'fixed virtual resource ceiling: ' + name)
+    require(type(scenario['sources']) is dict and len(scenario['sources']) == 22, 'whole captured Go utility source universe')
+    total = 0
+    for path, source in scenario['sources'].items():
+        relative(path)
+        require(type(source) is dict and set(source) == {'asset', 'bytes', 'sha256'}, 'exact source descriptor')
+        require(source['asset'] == 'eval/context/lexical/sources/Go/' + path, 'captured source path binding')
+        require(type(source['bytes']) is int and 0 < source['bytes'] <= MAX_SOURCE and type(source['sha256']) is str and re.fullmatch('[0-9a-f]{64}', source['sha256']), 'bounded source bytes/hash')
+        total += source['bytes']
+    require(total <= MAX_SOURCE_TOTAL, 'declared total byte ceiling before reads')
+    rows, _ = frozen()
+    require(any(exact(scenario, row) for row in rows), 'scenario changed after pre-consumer freeze')
+    return copy.deepcopy(scenario)
+
+
+def capture(scenario):
+    files = {}
+    for path, item in scenario['sources'].items():
+        raw = owned(relative(item['asset']), MAX_SOURCE)
+        require(len(raw) == item['bytes'] and sha(raw) == item['sha256'], 'actual complete source byte binding')
+        files[path] = bytes(raw)
+    require(sum(map(len, files.values())) <= MAX_SOURCE_TOTAL, 'actual total source byte ceiling')
+    producer = owned(ROOT / 'crates/xrai-eval/harness/lexical_retrieval.py', MAX_SOURCE)
+    return files, producer
+
+
+def gate(scenario):
+    manifest, evidence = make_smoke_fixture()
+    prefix = 'task/' + scenario['task_id'] + '/'
+    evidence[prefix + 'input'] = canonical(scenario)
+    evidence[prefix + 'oracle'] = canonical({'scope': 'development_seed_guard_control_only', 'query_origin': 'C04-GO-03', 'not_competitive_judgment': True})
+    evidence[prefix + 'review'] = canonical({'task_id': scenario['task_id'], 'origin': manifest['dataset']['origin'], 'input_sha256': sha(evidence[prefix + 'input']), 'oracle_sha256': sha(evidence[prefix + 'oracle']), 'scope': 'offline_fixture_review'})
+    manifest['evidence_sha256'] = {name: sha(raw) for name, raw in evidence.items()}
+    return manifest, evidence
+
+
+class Handler:
+    """Public handler over actual lexical bytes; injection is frozen owned data control."""
+    def __init__(self, index, intervention, manifest, evidence):
+        self.index, self.intervention, self.manifest, self.evidence = index, intervention, manifest, evidence
+        self.calls = []
+        for name in ('snapshot_id', 'configuration_id', 'producer_sha256', 'configuration'):
+            setattr(self, name, getattr(index, name))
+    def search(self, *args, **kwargs):
+        self.calls.append('recover')
+        result = self.index.search(*args, **kwargs)
+        if self.intervention == 'manifest_after':
+            self.manifest['configuration']['input_tokens'] = 99
+        elif self.intervention == 'evidence_after':
+            self.evidence['controls'] += b'changed'
+        return result
+    def expand(self, *args, **kwargs):
+        self.calls.append('expand')
+        return self.index.expand(*args, **kwargs)
+
+
+def run(scenario):
+    scenario = validate(scenario)
+    files, producer = capture(scenario)
+    manifest, evidence = gate(scenario)
+    snapshot = EvidenceSnapshot.capture(manifest, evidence)
+    handler = Handler(LexicalIndex(files), scenario['intervention'], manifest, evidence)
+    tool = ToolSnapshot.capture(handler, files, producer)
+    authorization = OfflineAuthorization(snapshot.fingerprint, scenario['budget_micro_usd'], scenario['expires_monotonic'])
+    retry = scenario['intervention'] == 'retry_late'
+    transport = FakeTransportV2([FakeResultV2(response=None), FakeResultV2(response=None)] if retry else None)
+    guard = make_guarded_fake_session(snapshot, authorization, handler, tool,
+        bindings=make_bindings(snapshot, task_id=scenario['task_id'], arm=scenario['arm'], run_id=scenario['run_id']),
+        current_manifest=lambda: manifest, current_evidence=lambda: evidence,
+        current_authorization=lambda: authorization, current_sources=lambda: files,
+        current_producer=lambda: producer, clock=lambda: 1, fake_transport=transport)
+    returns = []
+    def invoke(identity, callback):
+        try:
+            result = callback()
+            returns.append({'operation_id': identity, 'returned': True, 'result_sha256': sha(canonical(result)), 'error': None})
+            return result
+        except GuardRefused as error:
+            returns.append({'operation_id': identity, 'returned': False, 'result_sha256': None, 'error': str(error)})
+            return None
+    invoke('dispatch:attempt-1', lambda: guard.dispatch_fake('attempt-1', 'call-1', fake_request(), scenario['maximum_micro_usd']))
+    late = []
+    if retry:
+        invoke('dispatch:attempt-2', lambda: guard.dispatch_fake('attempt-2', 'call-1', fake_request(), scenario['maximum_micro_usd'], retry_of='attempt-1'))
+        arguments = {'state': 'completed', 'response': b'late fake', 'receipt': fake_receipt('guarded-smoke-late')}
+        late = [guard.reconcile_fake('attempt-2', **arguments), guard.reconcile_fake('attempt-2', **arguments)]
+    intervention = scenario['intervention']
+    if intervention == 'manifest_before': manifest['configuration']['input_tokens'] = 99
+    elif intervention == 'evidence_before': evidence['controls'] += b'changed'
+    elif intervention == 'source_before': files['modules/util/shellquote.go'] += b'changed'
+    elif intervention == 'producer_before': producer += b'changed'
+    result = invoke('tool:recover-1', lambda: guard.recover('recover-1', scenario['query'], method=scenario['method'], top_k=scenario['top_k'], max_wire_bytes=scenario['max_wire_bytes']))
+    if result is not None and result['snippets']:
+        handles = [item['id'] for item in result['snippets']]
+        invoke('tool:expand-1', lambda: guard.expand('expand-1', handles, max_wire_bytes=scenario['max_wire_bytes']))
+    final_error = None
+    if intervention == 'final_change': evidence['protocol'] += b'changed'
+    state = 'completed' if all(row['returned'] for row in returns) else 'partial'
+    try:
+        record = guard.finish(state, b'owned scripted output; not judged')
+    except GuardRefused as error:
+        final_error = str(error)
+        record = guard.finish('partial', b'owned scripted output; not judged')
+    replay = replay_guard(record)
+    return {'schema_version': VERSION, 'scenario': scenario, 'guard': record, 'returned_operations': returns,
+        'handler_calls': handler.calls, 'fake_invocations': transport.calls, 'late_reconcile': late,
+        'final_refusal': final_error, 'replay': replay, 'execution_kind': 'guarded_scripted_retrieval',
+        'network_calls': 0, 'provider_calls': 0, 'agent_runs': 0, 'campaign_scoring_enabled': False,
+        'provider_usage': None, 'provider_charge': None, 'model_tokens': None}
+
+
+def verify_record(record):
+    require(type(record) is dict and set(record) == {'schema_version','scenario','guard','returned_operations','handler_calls','fake_invocations','late_reconcile','final_refusal','replay','execution_kind','network_calls','provider_calls','agent_runs','campaign_scoring_enabled','provider_usage','provider_charge','model_tokens'} and record['schema_version'] == VERSION, 'exact consumer result fields')
+    scenario = validate(record['scenario'])
+    files, producer = capture(scenario)
+    manifest, evidence = gate(scenario)
+    require(exact(record['guard']['header']['snapshot'], snapshot_record(EvidenceSnapshot.capture(manifest, evidence))), 'actual manifest/evidence/task/run/arm snapshot')
+    index = LexicalIndex(files)
+    require(exact(record['guard']['header']['tool_snapshot'], ToolSnapshot.capture(index, files, producer).as_dict()), 'actual complete copied source/producer/configuration')
+    replay = replay_guard(record['guard'])
+    require(exact(replay, record['replay']), 'derived consumer replay')
+    binding = record['guard']['header']['bindings']
+    require(all(binding[name] == scenario[name] for name in ('task_id','arm','run_id')), 'consumer identity binding')
+    require(record['guard']['header']['allowance']['budget_micro_usd'] == scenario['budget_micro_usd'] and record['guard']['header']['allowance']['expires_monotonic'] == scenario['expires_monotonic'], 'virtual authorization ceiling')
+    ends = [event['details'] for event in record['guard']['events'] if event['kind'] == 'end']
+    require(type(record['returned_operations']) is list and len(record['returned_operations']) == len(ends), 'one consumer observation per actual operation')
+    handles = None
+    calls = []
+    for end, returned in zip(ends, record['returned_operations']):
+        require(type(returned) is dict and set(returned) == {'operation_id','returned','result_sha256','error'}, 'typed actual return observation')
+        expected = {'operation_id':end['operation_id'],'returned':end['accepted'],'result_sha256':end['result']['sha256'] if end['accepted'] else None,'error':None if end['accepted'] else end['reason']}
+        require(exact(returned, expected), 'postcheck refusal cannot promote retained result')
+        if end['operation_id'].startswith('tool:') and end['delegated']:
+            name = 'recover' if end['operation_id'] == 'tool:recover-1' else 'expand'
+            calls.append(name)
+            if end['result'] is not None:
+                value = decode(base64.b64decode(end['result']['base64'], validate=True), MAX_RECORD_BYTES)
+                expected_value = index.search(scenario['query'], method=scenario['method'], top_k=5, max_wire_bytes=65536) if name == 'recover' else index.expand(handles, max_wire_bytes=65536)
+                require(exact(value, expected_value), 'complete actual lexical envelope recomputation')
+                if name == 'recover': handles = [item['id'] for item in value['snippets']]
+    require(exact(calls, record['handler_calls']) and len(calls) == replay['delegate_tool_calls'], 'actual handler calls derived from delegated tool journal')
+    expected_reason = 'gate_snapshot_changed' if scenario['intervention'] in {'manifest_before','evidence_before','manifest_after','evidence_after','final_change'} else 'callback_capture_failed'
+    invalid = scenario['intervention'] not in {'none', 'retry_late'}
+    require(replay['accepted_tool_results'] == (0 if invalid and scenario['intervention'] != 'final_change' else 2), 'frozen accepted result count')
+    require(replay['retained_but_not_returned_tool_results'] == (1 if scenario['intervention'] in {'manifest_after','evidence_after'} else 0), 'frozen retained postcheck result count')
+    require(record['guard']['events'][-1]['details']['state'] == ('partial' if invalid else 'completed'), 'terminal state reflects frozen control')
+    require(record['final_refusal'] == (expected_reason if scenario['intervention'] == 'final_change' else None), 'final checkpoint refusal retained')
+    require(all(end['reason'] == expected_reason for end in ends if not end['accepted']), 'frozen intervention refusal classification')
+    actual_invocations = sum(row['committed'] and not row['transport_proven_absent'] for row in record['guard']['session']['attempts'].values())
+    require(type(record['fake_invocations']) is int and record['fake_invocations'] == actual_invocations == (2 if scenario['intervention'] == 'retry_late' else 1), 'actual virtual invocations')
+    require(exact(record['late_reconcile'], [True, False] if scenario['intervention'] == 'retry_late' else []), 'late reconciliation idempotence')
+    require(record['execution_kind'] == 'guarded_scripted_retrieval' and record['campaign_scoring_enabled'] is False and all(record[name] is None for name in ('provider_usage','provider_charge','model_tokens')) and all(type(record[name]) is int and record[name] == 0 for name in ('network_calls','provider_calls','agent_runs')), 'offline data-only boundary')
+    return {'scenario_id':scenario['scenario_id'], 'verified':True, 'accepted_tool_results':replay['accepted_tool_results'], 'retained_but_not_returned_tool_results':replay['retained_but_not_returned_tool_results'], 'handler_calls':len(calls), 'fake_invocations':actual_invocations, 'state':record['guard']['events'][-1]['details']['state'], 'virtual_accounting':replay['virtual_accounting']}
+
+
+def source_hashes():
+    return {path:sha(owned(ROOT/path, MAX_MANIFEST)) for path in OWN_SOURCES}
+
+
+def collect(manifest_path, output):
+    scenarios = decode(owned(manifest_path, MAX_MANIFEST))
+    require(type(scenarios) is list and len(scenarios) == 10, 'complete preregistered scenarios')
+    expected, freeze = frozen()
+    require(exact(scenarios, expected), 'exact frozen scenario order/closure')
+    for row in scenarios: validate(row)
+    fingerprints = source_hashes()
+    output = Path(output)
+    require(not output.exists(), 'fresh output directory required')
+    output.mkdir(parents=True)
+    entries = []
+    total = 0
+    try:
+        for n, scenario in enumerate(scenarios):
+            record = run(scenario)
+            verify_record(record)
+            raw = canonical(record)
+            require(len(raw) <= MAX_RECORD_BYTES, 'complete consumer record byte bound')
+            total += len(raw)
+            require(total <= MAX_OUTPUT, 'aggregate output byte bound')
+            name = f'case-{n:02}.json'
+            with (output/name).open('xb') as stream: stream.write(raw)
+            entries.append({'path':name,'sha256':sha(raw),'bytes':len(raw),'scenario_id':scenario['scenario_id']})
+        require(source_hashes() == fingerprints, 'consumer/verifier changed during actual execution')
+        receipt = {'schema_version':VERSION, 'freeze_sha256':sha(owned(DESIGN/'freeze.json',MAX_MANIFEST)), 'source_hashes':fingerprints,'records':entries,'provider_calls':0,'agent_runs':0,'campaign_scoring_enabled':False,'provider_charge':None,'provider_usage':None,'model_tokens':None}
+        with (output/'receipt.json').open('xb') as stream: stream.write(canonical(receipt))
+    except Exception as error:
+        with (output/'incident.json').open('xb') as stream: stream.write(canonical({'closed':False,'error':type(error).__name__+': '+str(error),'retained_records':entries}))
+        raise
+    return receipt
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--manifest', type=Path, default=DESIGN/'scenarios.json')
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    try: print(canonical(collect(args.manifest,args.output)).decode())
+    except (ValueError,KeyError,TypeError,OSError) as error:
+        print(str(error),file=sys.stderr)
+        raise SystemExit(1)

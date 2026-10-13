@@ -1,0 +1,62 @@
+{
+  "agent_runs": 0,
+  "campaign_scoring_enabled": false,
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_immutable_request_dispatch.py"
+      ],
+      "exit_code": 0,
+      "skips": 0,
+      "tests": 21
+    },
+    {
+      "command": [
+        "python3",
+        "eval/adapters/immutable-request-v1/prove.py"
+      ],
+      "diagnostic_spy": "test-only sys.setprofile",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "eval/adapters/immutable-request-v1/verify.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "eval/adapters/immutable-request-v1/verify.py"
+      ],
+      "exit_code": 0,
+      "version": "3.13.13"
+    }
+  ],
+  "interpreter": {
+    "executable": "/opt/homebrew/opt/python@3.15/bin/python3.15",
+    "version": "3.15.0"
+  },
+  "model_tokens": null,
+  "proof_sha256": "97189ff17d27627ca5adcd49363baf4c56fdb015d7b43a1b98b7c23b5fbde8f5",
+  "provider_calls": 0,
+  "provider_charge": null,
+  "runtime_transport_independent_observation": false,
+  "runtime_uses_profiler": false,
+  "schema_version": "xrai.eval.immutable-request-development-evidence.v1",
+  "source_hashes": {
+    "crates/xrai-eval/harness/immutable_request_dispatch.py": "c2fa0b3434fdca5dbafeeacadc1064fb33acd9b364f5356a18744e51bac26704",
+    "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "5e3ea72aa5299672316223accc57e47daf81e3e25819d553cdff0f0d78c46b1f",
+    "eval/adapters/immutable-request-v1/freeze.json": "1c9c1e5309291208da79dbf77178cbd64f696b6a6e971ee7cdea2557e4b9fdf8",
+    "eval/adapters/immutable-request-v1/prove.py": "a5dc0fe69c0c05e9f1a2c2fd6ae465122958f979c59cd2b0d1d57388e0891b0d",
+    "eval/adapters/immutable-request-v1/verify.py": "23b304db7d9f5d79e05be13a59e36fe1d4c4e6eb8a8ca89a2dd6418fd17c2b58"
+  }
+}

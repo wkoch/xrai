@@ -1,0 +1,89 @@
+{
+  "schema": "xrai.eval.django-router.necessary-relations.v1",
+  "modules": [
+    {
+      "path": "django/db/migrations/operations/models.py",
+      "subsystem": "migration schema operation",
+      "span": [
+        97,
+        101
+      ],
+      "needle": "if self.allow_migrate_model(schema_editor.connection.alias, model):",
+      "obligation": "The migration obtains the actual schema-editor connection alias and conditionally creates the model table.",
+      "sha256": "abfa523998a4bf50a88f93c72579ac24266208726f98b6e93bbc0e4a94fd8494"
+    },
+    {
+      "path": "django/db/migrations/operations/base.py",
+      "subsystem": "operation eligibility and routing bridge",
+      "span": [
+        148,
+        158
+      ],
+      "needle": "return router.allow_migrate_model(connection_alias, model)",
+      "obligation": "The operation rejects a model that cannot migrate before consulting the database routing policy.",
+      "sha256": "802f323647bb1314e4c50cfb2e2ae4b392423031ee86edfbad389303cad0910a"
+    },
+    {
+      "path": "django/db/utils.py",
+      "subsystem": "database routing policy",
+      "span": [
+        257,
+        277
+      ],
+      "needle": "if allow is not None:\n                return allow",
+      "obligation": "Router order determines the first explicit response; None falls through, False is decisive, and all abstentions default to True.",
+      "sha256": "fd635f28832f6d0f1fb91614c51d3778717935dd6d627dd7401227f60406386e"
+    },
+    {
+      "path": "django/db/models/options.py",
+      "subsystem": "model/database compatibility",
+      "span": [
+        387,
+        404
+      ],
+      "needle": "if self.proxy or self.swapped or not self.managed:",
+      "obligation": "Model flags can veto migration independent of a permitting router; flags remain unchanged during policy correction.",
+      "sha256": "3cb6de013d977255d5004b1d777712cffd7c9d2269e95d6b98f5d9b9f015fa49"
+    }
+  ],
+  "required_chain": [
+    {
+      "from": "django/db/migrations/operations/models.py",
+      "to": "django/db/migrations/operations/base.py",
+      "relation": "CreateModel inherits the operation gate and passes schema_editor.connection.alias with its historical model",
+      "if_missing": "Router order alone does not demonstrate that the schema operation honors the selected connection and suppresses create_model on denial."
+    },
+    {
+      "from": "django/db/migrations/operations/base.py",
+      "to": "django/db/utils.py",
+      "relation": "Operation delegates an eligible model and connection alias to routing policy via allow_migrate_model",
+      "if_missing": "Creation and router decisions are disconnected; preemptive model veto and model/app hints have no evidence."
+    }
+  ],
+  "one_module_counterfactuals": [
+    {
+      "only": "django/db/migrations/operations/models.py",
+      "unproved": [
+        "first-explicit router precedence",
+        "preemptive model compatibility veto"
+      ]
+    },
+    {
+      "only": "django/db/migrations/operations/base.py",
+      "unproved": [
+        "actual schema_editor alias reaches gate",
+        "None/False/True and router list precedence"
+      ]
+    },
+    {
+      "only": "django/db/utils.py",
+      "unproved": [
+        "CreateModel honors routing denial",
+        "preemptive model veto is respected"
+      ]
+    }
+  ],
+  "complexity_claim": false,
+  "multi_module_claim": "hypothesis_requires_independent_review_and_behavioral_qualification",
+  "not_satisfied_by": "module count or a single isolated allow_migrate truth table"
+}

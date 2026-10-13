@@ -64,3 +64,11 @@ A comparação com rebuild independente e a identidade SHA-256 do intake foram a
 A revisão root acrescentou sete contraprovas de igualdade tipada: sequence boolean/float, exit/unread boolean, command_count float e span de request boolean/float. O verifier compara JSON canônico das requisições/resposta de fechamento e exige inteiros exatos nos contadores, evitando equivalências Python `False == 0`/`True == 1`. Os primeiros 32 checks estão preservados em `initial-32-tests.stderr`.
 
 M1, gates G0/G1/G2, elegibilidade/admissão e quotas não foram alterados.
+
+## Primeira tentativa CI e correção de lint
+
+A primeira execução dedicada, run `38440152422`, não chegou à coleta nativa: Clippy recusou `chunks_exact(2)` com tamanho constante sob `-D warnings`. O log original está em `logs/L5-C06/P3-native/attempt-1-ci.log`; API/ZIP da tentativa ficam sob aquisição root. Isso não é recibo de aceitação, e não houve resultado nativo para alterar labels.
+
+A correção troca somente esse iterador por `as_chunks::<2>().0.iter()`. O teste anterior de comprimento par garante que o remainder é vazio; sem relaxar lint, ordem dos bytes ou perfil do decoder. Callers `files → prepare → main` foram consultados no graft; nenhuma assinatura mudou. `clippy-fix.json` preserva SHA/BLAKE3 do produtor anterior e novo, com o mesmo freeze. Rustfmt e os mesmos 47 checks Python passaram novamente (46 pass + um skip factual sem CI). Build/prova continuam pendentes da próxima execução dedicada.
+
+O helper público `Process.close` conserva a resposta bruta e monitora exit/stdout/stderr, sem acessar chave `response`. Portanto o envelope P3 com `result` no topo é compatível; o verifier exige o fechamento completo derivado. O collector não chama `successful()` do perfil TSJS, que presume `response`.

@@ -1,0 +1,147 @@
+"""Consumer-level offline control and receipt substitution counterproofs."""
+import copy
+import importlib.util
+import json
+from pathlib import Path
+import sys
+import tempfile
+import unittest
+import zipfile
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+import guarded_smoke as m
+spec=importlib.util.spec_from_file_location('guarded_smoke_verifier',m.DESIGN/'verify.py')
+v=importlib.util.module_from_spec(spec);spec.loader.exec_module(v)
+
+
+class ConsumerTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.scenarios=m.frozen()[0]
+        cls.records={s['scenario_id']:m.run(s) for s in cls.scenarios}
+    def changed(self,name='bm25-complete'):
+        return copy.deepcopy(self.records[name])
+    def test_all_frozen_real_source_consumers_replay(self):
+        for name,record in self.records.items():
+            with self.subTest(name=name):self.assertTrue(m.verify_record(record)['verified'])
+    def test_whole_go_source_capture_bytes(self):
+        files,_=m.capture(self.scenarios[0]);self.assertEqual(len(files),22);self.assertEqual(sum(map(len,files.values())),54032)
+    def test_bm25_and_tfidf_both_search_expand(self):
+        for name in ('bm25-complete','tfidf-complete'):
+            self.assertEqual(self.records[name]['handler_calls'],['recover','expand'])
+            self.assertEqual(self.records[name]['replay']['accepted_tool_results'],2)
+    def test_prechecks_zero_handler_actual_fake_preserved(self):
+        for name in ('manifest-before','evidence-before','source-before','producer-before'):
+            r=self.records[name];self.assertEqual(r['handler_calls'],[]);self.assertEqual(r['fake_invocations'],1)
+            self.assertEqual(r['replay']['accepted_tool_results'],0)
+    def test_postchecks_retained_tool_not_returned(self):
+        for name in ('manifest-after','evidence-after'):
+            r=self.records[name];self.assertEqual(r['handler_calls'],['recover'])
+            self.assertFalse(r['returned_operations'][-1]['returned'])
+            self.assertEqual(r['replay']['retained_but_not_returned_tool_results'],1)
+            self.assertIsNotNone(next(e['details'] for e in r['guard']['events'] if e['kind']=='end' and e['details']['operation_id']=='tool:recover-1')['result'])
+    def test_retry_late_fake_reservation_and_idempotence(self):
+        r=self.records['retry-late'];self.assertEqual(r['late_reconcile'],[True,False]);self.assertEqual(r['fake_invocations'],2)
+        self.assertEqual(r['replay']['virtual_accounting']['retained_reservation_micro_usd'],500)
+    def test_final_changed_cannot_complete(self):
+        r=self.records['final-change'];self.assertEqual(r['final_refusal'],'gate_snapshot_changed')
+        self.assertEqual(r['guard']['events'][-1]['details']['state'],'partial')
+    def test_snapshot_copies_input_bytes(self):
+        s=self.scenarios[0];files,producer=m.capture(s);manifest,evidence=m.gate(s)
+        snapshot=m.EvidenceSnapshot.capture(manifest,evidence);old=snapshot.fingerprint
+        evidence['controls']+=b'change';manifest['intent']='campaign_d1'
+        self.assertEqual(snapshot.fingerprint,old);self.assertEqual(snapshot.manifest['intent'],'smoke_seed')
+        self.assertNotEqual(dict(snapshot.evidence)['controls'],evidence['controls'])
+    def test_manifest_unknown_ready_flag_refused(self):
+        s=copy.deepcopy(self.scenarios[0]);s['ready']=True
+        with self.assertRaises(ValueError):m.run(s)
+    def test_campaign_intent_refused_before_consumer(self):
+        s=copy.deepcopy(self.scenarios[0]);s['intent']='campaign_d1'
+        with self.assertRaises(ValueError):m.run(s)
+    def test_paid_provider_field_refused(self):
+        s=copy.deepcopy(self.scenarios[0]);s['provider']='openai'
+        with self.assertRaises(ValueError):m.run(s)
+    def test_task_arm_run_substitution_refused(self):
+        for key,value in [('task_id','D1-01'),('arm','direct'),('run_id','wrong')]:
+            s=copy.deepcopy(self.scenarios[0]);s[key]=value
+            with self.assertRaises(ValueError):m.run(s)
+    def test_budget_boolean_and_changed_ceiling_refused(self):
+        for key,value in [('budget_micro_usd',True),('budget_micro_usd',0),('maximum_micro_usd',2000),('expires_monotonic',100.0)]:
+            s=copy.deepcopy(self.scenarios[0]);s[key]=value
+            with self.assertRaises(ValueError):m.run(s)
+    def test_method_or_query_changed_after_freeze_refused(self):
+        for key,value in [('method','semantic'),('query','ShellEscape'),('max_wire_bytes',32768)]:
+            s=copy.deepcopy(self.scenarios[0]);s[key]=value
+            with self.assertRaises(ValueError):m.run(s)
+    def test_source_bounds_before_reads(self):
+        s=copy.deepcopy(self.scenarios[0]);s['sources']['modules/util/shellquote.go']['bytes']=10**9
+        with self.assertRaises(ValueError):m.validate(s)
+    def test_source_path_traversal_refused(self):
+        s=copy.deepcopy(self.scenarios[0]);s['sources']['modules/util/shellquote.go']['asset']='../secret'
+        with self.assertRaises(ValueError):m.run(s)
+    def test_duplicate_and_nonfinite_json_refused(self):
+        for raw in (b'{"intent":1,"intent":2}',b'[NaN]',b'[Infinity]',b'[-Infinity]',b'[1e999]'):
+            with self.assertRaises(ValueError):m.decode(raw)
+    def test_json_size_and_nesting_bounded(self):
+        for raw in (b' '* (m.MAX_MANIFEST+1),b'['*2000+b']'*2000):
+            with self.assertRaises(ValueError):m.decode(raw)
+    def test_ordinary_file_size_and_symlink_refused(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'blob';p.write_bytes(b'xx');link=Path(d)/'link';link.symlink_to(p)
+            with self.assertRaises(ValueError):m.owned(p,1)
+            with self.assertRaises(ValueError):m.owned(link,10)
+    def test_return_promoted_after_refusal_refused(self):
+        r=self.changed('manifest-after');r['returned_operations'][-1]['returned']=True
+        with self.assertRaises(ValueError):m.verify_record(r)
+    def test_summary_counts_cannot_replace_actual_journal(self):
+        r=self.changed();r['handler_calls']=[]
+        with self.assertRaises(ValueError):m.verify_record(r)
+    def test_virtual_invocation_count_substitution_refused(self):
+        r=self.changed();r['fake_invocations']=True
+        with self.assertRaises(ValueError):m.verify_record(r)
+    def test_gate_identity_substitution_refused(self):
+        r=self.changed();r['guard']['header']['bindings']['run_id']='wrong'
+        with self.assertRaises(ValueError):m.verify_record(r)
+    def test_provider_tokens_and_agent_claims_refused(self):
+        for key,value in [('model_tokens',0),('provider_charge',0),('agent_runs',True),('campaign_scoring_enabled',True)]:
+            r=self.changed();r[key]=value
+            with self.assertRaises(ValueError):m.verify_record(r)
+    def test_record_unknown_fields_refused(self):
+        r=self.changed();r['ready']=True
+        with self.assertRaises(ValueError):m.verify_record(r)
+    def test_late_duplicate_reconciliation_claim_refused(self):
+        r=self.changed('retry-late');r['late_reconcile']=[True,True]
+        with self.assertRaises(ValueError):m.verify_record(r)
+    def test_fresh_output_and_readonly_complete_receipt(self):
+        with tempfile.TemporaryDirectory() as d:
+            dest=Path(d)/'event';m.collect(m.DESIGN/'scenarios.json',dest)
+            before={p.name:m.sha(p.read_bytes()) for p in dest.iterdir()}
+            result=v.verify(dest);self.assertEqual(len(result['records']),10)
+            self.assertEqual(before,{p.name:m.sha(p.read_bytes()) for p in dest.iterdir()})
+            archive=Path(d)/'output.zip'
+            with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED) as tree:
+                for p in dest.iterdir():tree.write(p,p.name)
+            self.assertEqual(result,v.verify_archive(archive))
+            with self.assertRaises(ValueError):m.collect(m.DESIGN/'scenarios.json',dest)
+            (dest/'extra').write_bytes(b'not evidence')
+            with self.assertRaises(ValueError):v.verify(dest)
+    def test_zip_unknown_traversal_duplicate_and_symlink_refused(self):
+        with tempfile.TemporaryDirectory() as d:
+            for mode in ('unknown','traversal','duplicate','symlink'):
+                path=Path(d)/(mode+'.zip')
+                with zipfile.ZipFile(path,'w') as tree:
+                    for n in range(10):tree.writestr(f'case-{n:02}.json',b'{}')
+                    name='../receipt.json' if mode=='traversal' else 'extra.json' if mode=='unknown' else 'receipt.json'
+                    entry=zipfile.ZipInfo(name)
+                    if mode=='symlink':entry.external_attr=0o120777<<16
+                    tree.writestr(entry,b'{}')
+                    if mode=='duplicate':tree.writestr('receipt.json',b'{}')
+                with self.assertRaises(ValueError):v.verify_archive(path)
+    def test_modified_manifest_leaves_no_output(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'input';s=copy.deepcopy(self.scenarios);s[0]['ready']=True;p.write_bytes(m.canonical(s))
+            dest=Path(d)/'event'
+            with self.assertRaises(ValueError):m.collect(p,dest)
+            self.assertFalse(dest.exists())
+
+
+if __name__=='__main__':unittest.main()

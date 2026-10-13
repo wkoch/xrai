@@ -1,0 +1,50 @@
+{
+  "schema": "xrai.eval.django-router.second-reader.v1",
+  "reviewer": "/root",
+  "author": "/root/e02_compensation",
+  "reviewed_at": "2026-10-13T17:34:01.152477+00:00",
+  "phase": "static source/intake/oracle review before any new algorithm or model output",
+  "status": "accepted_with_documentation_corrections_before_freeze",
+  "new_algorithm_outputs_seen": 0,
+  "upstream_executed": false,
+  "basis": "parent agent independently inspected captured source/operator oracle and supplied corrections; no result-driven label revision",
+  "checked": [
+    "8 main cases and 10 controls",
+    "first non-None includes decisive False",
+    "model veto precedes router",
+    "schema editor alias passed to gate",
+    "A/B ledger/reporting versus other/default predicates",
+    "necessary source chain and inheritance",
+    "pending actual-domain setup and behavioral qualification"
+  ],
+  "corrections": [
+    "source spans explicitly line-based; derive byte anchors in later data verifier and retain Python semantic gap",
+    "count refers to method calls, absent method visits2/calls1",
+    "nonboolean results outside owned profile, not universal framework error",
+    "catalog representative; literal predicate covers other app labels",
+    "drafts retained; review status clarified without claiming model/native outputs"
+  ],
+  "environment": {
+    "python": "3.15.0",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "reviewed_assets": [
+    {
+      "path": "docs/relatorios/logs/L5-C06/Django-routers/draft-before-second-reader/case.json",
+      "sha256": "8928d923971986c8f991bdf93494c3b53e575afaa207a8c29f4dd9309aed7a9d"
+    },
+    {
+      "path": "docs/relatorios/logs/L5-C06/Django-routers/draft-before-second-reader/evaluator/oracle.json",
+      "sha256": "895787eb176eb3c75ad6d27e0b912c6c23602818e6c5d9de238d78a30093364e"
+    },
+    {
+      "path": "docs/relatorios/logs/L5-C06/Django-routers/draft-before-second-reader/evaluator/rubric.json",
+      "sha256": "5c534d5b5118503adb5c4373e8e8b6359c3d0b3037cabd88eeef4ae7f3171359"
+    },
+    {
+      "path": "docs/relatorios/logs/L5-C06/Django-routers/draft-before-second-reader/evaluator/source-obligations.json",
+      "sha256": "14db82290c66547f5cd48fe73bdc35febb7e1bfa86359276d93e2fb8085461c6"
+    }
+  ],
+  "author_intake_correction_after_review_before_algorithm": "The actual captured import is absolute: from django.db.migrations.operations.base import Operation, OperationCategory. Incorrect relative-import draft and first freeze retained; no algorithm/model had executed and labels unchanged."
+}

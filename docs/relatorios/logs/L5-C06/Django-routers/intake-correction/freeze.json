@@ -1,0 +1,153 @@
+{
+  "schema": "xrai.eval.django-router.freeze.v1",
+  "frozen_at": "2026-10-13T17:34:19.168657+00:00",
+  "static_review_path": "eval/qualification/django-router-v1/evaluator/second-reader.json",
+  "algorithm_absent_at_freeze": [
+    "eval/scripts/django_router_verify.py",
+    "eval/scripts/test_django_router.py"
+  ],
+  "algorithm_outputs_at_freeze": 0,
+  "native_outputs_at_freeze": 0,
+  "inputs": [
+    {
+      "path": "eval/qualification/django-router-v1/README.md",
+      "sha256": "27957d5760ef856aeca3e76b3e35ea9812e25cdd2d8f5ce0a2f39c4dbb2acb58",
+      "bytes": 1553
+    },
+    {
+      "path": "eval/qualification/django-router-v1/agent/deployment.json",
+      "sha256": "68f76907c29cd1ea8915836e4bda6fbe435fbf4ec8651b5cab75c92076d32d2e",
+      "bytes": 558
+    },
+    {
+      "path": "eval/qualification/django-router-v1/agent/input.md",
+      "sha256": "fe55551bee481f94b1b57509ec8fe13792af364bf02ef01de1bf671a0253cea8",
+      "bytes": 682
+    },
+    {
+      "path": "eval/qualification/django-router-v1/agent/policy.py",
+      "sha256": "95ca159e0f181feb6235aca44e9cd37937b95a68b753013d678645b4541e7c57",
+      "bytes": 353
+    },
+    {
+      "path": "eval/qualification/django-router-v1/case.json",
+      "sha256": "cfb5d099075937d323e2f8889b7a9142abc9ee85e7646fcb28d6088db39b4895",
+      "bytes": 2190
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/captured/LICENSE",
+      "sha256": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669",
+      "bytes": 1552
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/captured/LICENSE.python",
+      "sha256": "765e2b1e339fef8d3e9f12892e7e072a8be309996a0be43ffc5796398ec4e7d4",
+      "bytes": 14256
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/captured/pyproject.toml",
+      "sha256": "b468d899a777504f7122d17dd47f0b62b89cce38c9e970925fcc32ee68049e17",
+      "bytes": 2232
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/captured/tests/migrations/routers.py",
+      "sha256": "2f28e5c039b81a22e6e18c89ac94de61c296a238fd269c986d9eb1f75e8aee8f",
+      "bytes": 454
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/captured/tests/migrations/test_multidb.py",
+      "sha256": "ddef357fc38d29e9c55a7b815fe18107d68abc37dbfa18e39cc7342d25d91e66",
+      "bytes": 7035
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/captured/tests/requirements/py3.txt",
+      "sha256": "4e2916e89fd36220f72e90aebd84259abf65ac7ecc4b7fa49cc84f4c3ebe28d3",
+      "bytes": 447
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/oracle.json",
+      "sha256": "87e9bea9ccc7f44ada379e5a39230de07c64546bc98cdbcb97ef121398210220",
+      "bytes": 7246
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/rubric.json",
+      "sha256": "1c66628ce378ac62fb7a989394df2e100f062b3199268fcc440eb40937fae6e1",
+      "bytes": 2105
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/second-reader.json",
+      "sha256": "591ba27645baa9e671f7a032b26f31b425f5f6d9083b2892a56d7eb925ac20ad",
+      "bytes": 2278
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/setup-readiness.json",
+      "sha256": "ab9352b43c4d036e0785d1cb995018cad175a086495a05e8b51f15c16da1e486",
+      "bytes": 967
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/source-obligations.json",
+      "sha256": "df8cc72d4b490b59c84f3957e2e3f76bc2e83f22885f7b5a3d1bb1e54e383d2e",
+      "bytes": 4505
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/state-a.json",
+      "sha256": "b665a45a8b865562a79c18028ae84ef2e4e0282a13acb5e7bebbd1121f755541",
+      "bytes": 678
+    },
+    {
+      "path": "eval/qualification/django-router-v1/evaluator/state-b.json",
+      "sha256": "6e091bcae77122ce09090927034b295f73a23e79de60509bd15451643394d7a7",
+      "bytes": 678
+    },
+    {
+      "path": "eval/qualification/django-router-v1/search-universe.json",
+      "sha256": "ab9531a470597150bc60dcf4a82318490232dc45d3edc1f3ca85619c559a4ccf",
+      "bytes": 185697
+    },
+    {
+      "path": "eval/qualification/django-router-v1/sources/django/db/migrations/operations/base.py",
+      "sha256": "802f323647bb1314e4c50cfb2e2ae4b392423031ee86edfbad389303cad0910a",
+      "bytes": 5927
+    },
+    {
+      "path": "eval/qualification/django-router-v1/sources/django/db/migrations/operations/models.py",
+      "sha256": "abfa523998a4bf50a88f93c72579ac24266208726f98b6e93bbc0e4a94fd8494",
+      "bytes": 45901
+    },
+    {
+      "path": "eval/qualification/django-router-v1/sources/django/db/models/options.py",
+      "sha256": "3cb6de013d977255d5004b1d777712cffd7c9d2269e95d6b98f5d9b9f015fa49",
+      "bytes": 39675
+    },
+    {
+      "path": "eval/qualification/django-router-v1/sources/django/db/utils.py",
+      "sha256": "fd635f28832f6d0f1fb91614c51d3778717935dd6d627dd7401227f60406386e",
+      "bytes": 9350
+    },
+    {
+      "path": "eval/sources/archives/vertical-django-8abacfc36d755d8e762a4d2074601b8dc412bfee.tar.gz",
+      "sha256": "8450b5075ca9b85f795bb7243296e3faea1928eb1f82b3bb2e9c0b6d3df78826",
+      "bytes": 10472437
+    },
+    {
+      "path": "eval/sources/manifests/vertical-django.json.gz",
+      "sha256": "95079d6ec19b81553824c7123d329cc57d39bf0372b4c36e1778844123b3bbc6",
+      "bytes": 328965
+    },
+    {
+      "path": "eval/qualification/vertical/candidates.jsonl",
+      "sha256": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8",
+      "bytes": 21293
+    },
+    {
+      "path": "eval/qualification/l5-slot-plan-v2.json",
+      "sha256": "3a6bfd9ffcd03c44ccb98fd11cce4f361dd69e650f8bc997480283493391dd67",
+      "bytes": 34893
+    },
+    {
+      "path": "eval/qualification/l5-state-assignment-v2.json",
+      "sha256": "0c81f132255a12493ba17b82d6a4ba85cae4f71d21b8ff4534d1c0c2c04347da",
+      "bytes": 2588
+    }
+  ]
+}

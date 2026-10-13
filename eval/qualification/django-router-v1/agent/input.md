@@ -1,0 +1,3 @@
+A implantação possui as bases `default` e `reporting`. Ao aplicar uma migração, os modelos do aplicativo `ledger` devem criar tabelas somente em `reporting`; os demais aplicativos devem continuar criando suas tabelas somente em `default`. O estado corrente cria as tabelas de `ledger` na base errada.
+
+Corrija a configuração dessa política, preservando os dois componentes existentes e sem modificar Django, as regras da política ou os modelos. Explique por que a alteração atende às duas bases e preserva os demais aplicativos, incluindo modelos que não podem ser migrados. Considere as fontes do snapshot disponibilizado. Não inclua código do avaliador na resposta.

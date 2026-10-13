@@ -1,0 +1,25 @@
+{
+  "frozen_at": "2026-10-13T17:20:55.544323+00:00",
+  "scenarios": [
+    "caller-before-commit-message-limits-nested",
+    "caller-after-commit-message-limits-nested",
+    "caller-before-capture-refused",
+    "immutable-bytes-accepted",
+    "noncanonical-bytes-refused",
+    "transport-mutates-disposable",
+    "cancel-before-commit-zero",
+    "cancel-after-commit-retained",
+    "retry-late-idempotent",
+    "binding-hash-adulterated",
+    "payload-bytes-adulterated",
+    "task-arm-call-attempt-adulterated"
+  ],
+  "schema_version": "xrai.eval.immutable-request-freeze.v1",
+  "scope": "offline-fake public composition only; caller dict requires no concurrent write during capture",
+  "source_hashes": {
+    "crates/xrai-eval/harness/agent_adapter_protocol.py": "d49ee5ea1d748ca6b7f7da097a6bb579d1329cfcc815c1ba9262b3c824ea3f1c",
+    "crates/xrai-eval/harness/execution_dispatch_v2.py": "18df67b2383fdd22f62b216970346548e7f1eba0e3226dff8d9c5a1c3b85f77e",
+    "crates/xrai-eval/harness/session_tool_guard.py": "466f6915cbc80582ae710f403751221188a4242f459b3697ef31a98a7f1c5739"
+  },
+  "wrapper_absent": true
+}

@@ -82,6 +82,12 @@ jobs:
           python eval/scripts/p3_diff_native_verify.py --design-only
           python -m unittest discover -s eval/scripts -p 'test_c06_p3.py' -v
           python -m unittest discover -s eval/scripts -p 'test_c06_p3_ci.py' -v
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_immutable_request_dispatch.py' -v
+          python eval/adapters/immutable-request-v1/verify.py
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_guarded_smoke.py' -v
+          python eval/adapters/guarded-smoke-v1/verify.py --archive docs/relatorios/logs/L5-C06/guarded-smoke/owned-output.zip
+          python -m unittest discover -s eval/scripts -p 'test_django_router.py' -v
+          python eval/scripts/django_router_verify.py --receipt docs/relatorios/logs/L5-C06/Django-routers/verification.json
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}

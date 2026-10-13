@@ -1,0 +1,42 @@
+{
+  "schema": "xrai.eval.django-router.prepared-case.v1",
+  "task_id": "L5-DJANGO-ROUTER-POLICY",
+  "slot_id": "L5-SLOT-Python-state_config-1",
+  "family": "Python",
+  "language": "Python",
+  "repository": "django/django",
+  "kind": "state_config",
+  "origin": "controlled_configuration_policy_task_on_captured_upstream",
+  "public_historical_claim": false,
+  "snapshot_commit": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+  "change_lineage": "controlled:django/django:8abacfc36d755d8e762a4d2074601b8dc412bfee:L5-DJANGO-ROUTER-POLICY",
+  "derived_from": [],
+  "shares_snapshot_but_not_change_with": "Q1-Python-22051 (JSONField RHS primitives, unrelated correction and oracle)",
+  "purpose": "Avoid placing ledger tables in the wrong database by a configuration policy correction while retaining other apps routing and model compatibility gates.",
+  "classification": "natural multi-database configuration problem, not an upstream bug claim or a second copy of the prior JSONField task",
+  "baseline": "evaluator/state-a.json",
+  "reference_configuration": "evaluator/state-b.json",
+  "agent_material": [
+    "agent/input.md",
+    "agent/deployment.json",
+    "agent/policy.py",
+    "captured archive production source universe"
+  ],
+  "oracle_visibility": "evaluator-only, never part of agent material",
+  "complex": false,
+  "multi_module": "hypothesis_pending_review_and_qualification",
+  "required_incremental_event": false,
+  "incremental_event": "prospective configuration A/B/ABA fixtures only; scikit-learn required event and map remain separate",
+  "individual_eligible": false,
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "multimodule_projection_credit": 0,
+  "status": "prepared_prospective_dossier_static_review_accepted_native_behavior_pending",
+  "pending": [
+    "authenticated behavioral test through captured Django CreateModel/schema editor on two disposable DBs",
+    "prospective pinned runtime/dependency/containment setup before such execution",
+    "reviewed necessary relation and full context/search evidence",
+    "prospective allocation revision by Architect if qualification succeeds"
+  ],
+  "independent_review": "evaluator/second-reader.json"
+}

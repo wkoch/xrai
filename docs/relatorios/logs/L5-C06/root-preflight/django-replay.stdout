@@ -1,0 +1,287 @@
+{
+  "schema": "xrai.eval.django-router.prepared-verification.v1",
+  "freeze_sha256": "f403b7a74e43e5175a01adfc997e501f4639b452047d4ae60cc99ab0b201b109",
+  "capture": {
+    "regular_files": 7084,
+    "production_files": 929,
+    "production_nonempty_lines": 143033,
+    "archive_sha256": "8450b5075ca9b85f795bb7243296e3faea1928eb1f82b3bb2e9c0b6d3df78826",
+    "archive_executed": false,
+    "classification": "xrai.production.path-marker.v1"
+  },
+  "static_second_reader": "/root",
+  "source_anchors": [
+    {
+      "path": "django/db/migrations/operations/models.py",
+      "sha256": "abfa523998a4bf50a88f93c72579ac24266208726f98b6e93bbc0e4a94fd8494",
+      "span_unit": "one_based_inclusive_source_lines",
+      "line_span": [
+        97,
+        101
+      ],
+      "byte_start": 3290,
+      "byte_end": 3357,
+      "needle": "if self.allow_migrate_model(schema_editor.connection.alias, model):"
+    },
+    {
+      "path": "django/db/migrations/operations/base.py",
+      "sha256": "802f323647bb1314e4c50cfb2e2ae4b392423031ee86edfbad389303cad0910a",
+      "span_unit": "one_based_inclusive_source_lines",
+      "line_span": [
+        148,
+        158
+      ],
+      "byte_start": 5223,
+      "byte_end": 5281,
+      "needle": "return router.allow_migrate_model(connection_alias, model)"
+    },
+    {
+      "path": "django/db/utils.py",
+      "sha256": "fd635f28832f6d0f1fb91614c51d3778717935dd6d627dd7401227f60406386e",
+      "span_unit": "one_based_inclusive_source_lines",
+      "line_span": [
+        257,
+        277
+      ],
+      "byte_start": 8747,
+      "byte_end": 8797,
+      "needle": "if allow is not None:\n                return allow"
+    },
+    {
+      "path": "django/db/models/options.py",
+      "sha256": "3cb6de013d977255d5004b1d777712cffd7c9d2269e95d6b98f5d9b9f015fa49",
+      "span_unit": "one_based_inclusive_source_lines",
+      "line_span": [
+        387,
+        404
+      ],
+      "byte_start": 14523,
+      "byte_end": 14573,
+      "needle": "if self.proxy or self.swapped or not self.managed:"
+    },
+    {
+      "path": "django/db/migrations/operations/models.py",
+      "sha256": "abfa523998a4bf50a88f93c72579ac24266208726f98b6e93bbc0e4a94fd8494",
+      "byte_start": 52,
+      "byte_end": 129,
+      "line": 4,
+      "needle": "from django.db.migrations.operations.base import Operation, OperationCategory",
+      "meaning": "static import of the operation base"
+    },
+    {
+      "path": "django/db/migrations/operations/models.py",
+      "sha256": "abfa523998a4bf50a88f93c72579ac24266208726f98b6e93bbc0e4a94fd8494",
+      "byte_start": 763,
+      "byte_end": 795,
+      "line": 24,
+      "needle": "class ModelOperation(Operation):",
+      "meaning": "ModelOperation inherits the imported Operation name"
+    },
+    {
+      "path": "django/db/migrations/operations/models.py",
+      "sha256": "abfa523998a4bf50a88f93c72579ac24266208726f98b6e93bbc0e4a94fd8494",
+      "byte_start": 1324,
+      "byte_end": 1358,
+      "line": 44,
+      "needle": "class CreateModel(ModelOperation):",
+      "meaning": "CreateModel inherits ModelOperation and its Operation gate"
+    }
+  ],
+  "python_semantic_resolution": "unknown; exact literals/manual source review only",
+  "declarative_replay": {
+    "main": [
+      {
+        "id": "a-ledger-default",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": 0,
+          "consulted_router_count": 1,
+          "model_gate": true
+        }
+      },
+      {
+        "id": "a-ledger-reporting",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": 0,
+          "consulted_router_count": 1,
+          "model_gate": true
+        }
+      },
+      {
+        "id": "a-catalog-default",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": 0,
+          "consulted_router_count": 1,
+          "model_gate": true
+        }
+      },
+      {
+        "id": "a-catalog-reporting",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": 0,
+          "consulted_router_count": 1,
+          "model_gate": true
+        }
+      },
+      {
+        "id": "b-ledger-default",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": 0,
+          "consulted_router_count": 1,
+          "model_gate": true
+        }
+      },
+      {
+        "id": "b-ledger-reporting",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": 0,
+          "consulted_router_count": 1,
+          "model_gate": true
+        }
+      },
+      {
+        "id": "b-catalog-default",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": 1,
+          "consulted_router_count": 2,
+          "model_gate": true
+        }
+      },
+      {
+        "id": "b-catalog-reporting",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": 1,
+          "consulted_router_count": 2,
+          "model_gate": true
+        }
+      }
+    ],
+    "controls": [
+      {
+        "id": "all-none-default",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": null,
+          "consulted_router_count": 2
+        }
+      },
+      {
+        "id": "all-none-reporting",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": null,
+          "consulted_router_count": 2
+        }
+      },
+      {
+        "id": "false-before-true",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": 0,
+          "consulted_router_count": 1
+        }
+      },
+      {
+        "id": "true-before-false",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": 0,
+          "consulted_router_count": 1
+        }
+      },
+      {
+        "id": "none-before-false",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": 1,
+          "consulted_router_count": 2
+        }
+      },
+      {
+        "id": "none-before-true",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": 1,
+          "consulted_router_count": 2
+        }
+      },
+      {
+        "id": "missing-method-before-false",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": 1,
+          "consulted_router_count": 1
+        }
+      },
+      {
+        "id": "no-router-default",
+        "owned_declarative_result": {
+          "creates_table": true,
+          "decisive_router_index": null,
+          "consulted_router_count": 0
+        }
+      },
+      {
+        "id": "model-gate-veto-default",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": null,
+          "consulted_router_count": 0
+        }
+      },
+      {
+        "id": "model-gate-veto-reporting",
+        "owned_declarative_result": {
+          "creates_table": false,
+          "decisive_router_index": null,
+          "consulted_router_count": 0
+        }
+      }
+    ],
+    "aba": {
+      "configuration_sha256": [
+        "b665a45a8b865562a79c18028ae84ef2e4e0282a13acb5e7bebbd1121f755541",
+        "6e091bcae77122ce09090927034b295f73a23e79de60509bd15451643394d7a7",
+        "b665a45a8b865562a79c18028ae84ef2e4e0282a13acb5e7bebbd1121f755541"
+      ],
+      "live_session_executed": false
+    },
+    "other_apps_basis": "literal predicate app_label != ledger; catalog representative, no empirical generalization",
+    "framework_executed": false,
+    "actual_database_operations": 0
+  },
+  "candidate_prepared": true,
+  "native_behavior_verified": false,
+  "individual_eligible": false,
+  "admitted": false,
+  "multimodule_projection": 19,
+  "multimodule_projection_credit": 0,
+  "competitive_runs_allowed": false,
+  "setup_readiness": {
+    "schema": "xrai.eval.django-router.setup-readiness.v1",
+    "status": "prospective_domain_setup_not_authorized_or_executed",
+    "available": [
+      "complete regular-file archive 8abacfc… authenticated and retained",
+      "full 7084-file manifest and licenses",
+      "929 production source universe classified",
+      "captured upstream test_multidb order/None/False/True tests as domain motivation",
+      "captured pyproject.toml and tests/requirements/py3.txt as metadata only"
+    ],
+    "missing": [
+      "new-task runtime/version/dependency lock and package-wheel/source provenance",
+      "phase-specific scratch/filesystem/process policy for imports/schema editor/sqlite write",
+      "own domain oracle implementation that invokes captured CreateModel plus real schema editor on both DBs",
+      "accepted independent behavioral oracle and actual raw receipts/authority"
+    ],
+    "local_execution_allowed": false,
+    "framework_executed": false,
+    "provider_allowed": false
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "xrai.eval.c06.authenticated-original-acquisition.v1",
+  "client": "authenticated gh API; credentials never exported",
+  "run_id": 38440152422,
+  "head_sha": "bc874f4f6972ac5562cfb8564da31528e5277ccf",
+  "artifact_id": 11834462314,
+  "outcome": "failure",
+  "exact_acquired_files": 2,
+  "acquisition_script_sha256": "b4aca3282d3175fd102fd51f3b6e9cd092748df0c828f3cccbfbd6fc15458769",
+  "commands": [
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/wkoch/xrai/actions/runs/38440152422"
+      ],
+      "filename": "run.json",
+      "bytes": 11150,
+      "sha256": "d4db86e8de3043bedf52411a30fa69b86cf0ce42acd7b54998659d8575c51069",
+      "received_at_utc": "2026-10-13T17:40:29.228885+00:00"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/wkoch/xrai/actions/runs/38440152422/jobs?per_page=100"
+      ],
+      "filename": "jobs.json",
+      "bytes": 3183,
+      "sha256": "f9d9d4a1e7a5217f11daffb39212650d9e2566bb6fca45342b30b3ab740be887",
+      "received_at_utc": "2026-10-13T17:40:29.696903+00:00"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/wkoch/xrai/actions/runs/38440152422/artifacts?per_page=100"
+      ],
+      "filename": "artifacts.json",
+      "bytes": 710,
+      "sha256": "13c425914716c10b9bd7d600c54ebca38c4230ca792d2fa01c1f4e551dc4ff41",
+      "received_at_utc": "2026-10-13T17:40:30.102499+00:00"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/wkoch/xrai/actions/artifacts/11834462314/zip"
+      ],
+      "filename": "original.zip",
+      "bytes": 439,
+      "sha256": "c16004c6693cfa2ed098026c6800bf3e635ce164d6f70a9f449b1692805a7235",
+      "received_at_utc": "2026-10-13T17:40:31.300903+00:00"
+    }
+  ],
+  "local_native_executed": false,
+  "provider_calls": 0,
+  "failure_not_successful_acceptance": true
+}

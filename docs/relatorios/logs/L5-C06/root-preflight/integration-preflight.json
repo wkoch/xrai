@@ -1,0 +1,81 @@
+{
+  "python": "3.13.13 (main, Apr 14 2026, 14:32:41) [Clang 22.1.3 ]",
+  "checks": [
+    {
+      "name": "immutable-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_immutable_request_dispatch.py",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "guarded-consumer-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_guarded_smoke.py",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "immutable-proof",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "eval/adapters/immutable-request-v1/verify.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "guarded-consumer-proof",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "eval/adapters/guarded-smoke-v1/verify.py",
+        "--archive",
+        "docs/relatorios/logs/L5-C06/guarded-smoke/owned-output.zip"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "django-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_django_router.py",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "django-replay",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "eval/scripts/django_router_verify.py",
+        "--receipt",
+        "docs/relatorios/logs/L5-C06/Django-routers/verification.json"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "execution": "own Python data/fake; no native/upstream/provider",
+  "new_eligible": 0,
+  "admitted": 0
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "xrai.eval.django-router.rubric.v1",
+  "frozen_before_method_results": true,
+  "required": [
+    {
+      "id": "POLICY",
+      "description": "ledger only reporting; all other apps only default, checked independently for both aliases"
+    },
+    {
+      "id": "CONTROL",
+      "description": "Existing policy/model/framework source bytes unchanged; configure both components exactly once"
+    },
+    {
+      "id": "ORDER",
+      "description": "Explain first explicit non-None answer; False must not behave like abstention; preserve unrelated app behavior"
+    },
+    {
+      "id": "GATE",
+      "description": "A model veto prevents schema operation even if a router permits; no router call required after gate veto"
+    },
+    {
+      "id": "ALIAS",
+      "description": "Bind the physical schema operation to the actual connection alias; no default alias shortcut"
+    },
+    {
+      "id": "CHAIN",
+      "description": "Provide source evidence for all three necessary units/links; one-module-only evidence is incomplete"
+    },
+    {
+      "id": "LIMITS",
+      "description": "Distinguish declarative model results from running Django/database effects and from required same-process indexing events"
+    }
+  ],
+  "accepted_alternatives": [
+    "Any configuration satisfying the complete policy table while preserving both existing immutable policy components and supported input form; explanatory wording and equivalent full source evidence may differ."
+  ],
+  "rejected": [
+    "oracle/hidden evaluation material exposed to agent",
+    "patching Django/policy/model instead of configuration",
+    "new fabricated independent task lineage",
+    "single-connection result presented as two aliases",
+    "equating all-None fallback with explicit False",
+    "source count as proof of necessary relations"
+  ],
+  "automatic_admission": false,
+  "holdout": "not blind; curator and independent reviewer see this declarative oracle; no competitive result claimed"
+}
