@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 12/10/2026. **L5-C02 aceita: quatro novos dossiês elegíveis, oito com pilotos; faltam eventos reais, quotas, outras famílias semânticas e agente.** [Parecer e próxima execução](relatorios/REVISAO-L5-C02.md). [Roteiro v1 / ADR028](ROTEIRO-V1.md) mantém seis atividades condicionais após G2, fora dos 41 cartões M0/M1. ADRs [025](decisoes/SEMANTICA-P2.md)/[026](decisoes/WORKERS-E-MEDICAO.md)/[027](decisoes/CONTEXTO-P3.md) permanecem. Estado real em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 12/10/2026. **L5-C03 revisada: fake, quatro descritores e primeiro evento operacional Rust aceitos; oito dossiês elegíveis, D1 fechado.** [Parecer e próximas atividades](relatorios/REVISAO-L5-C03.md). E02/D01/S02 resolvem alocação, envio e inspeção; [fatias](L5-PROXIMA-EXECUCAO.md) e [roteiro v1](ROTEIRO-V1.md) permanecem. Estado em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -709,14 +709,12 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[Interfaces e entregas pequenas da próxima execução](L5-PROXIMA-EXECUCAO.md): C03 distingue replay/smoke/campanha no dispatch real; TS/JS começa por perfil ESM local exato. Este detalhamento não altera IDs/dependências nem representa código entregue.
+[Revisão L5-C03](relatorios/REVISAO-L5-C03.md): mesmos IDs/dependências. Quatro descritores, primeiro evento Rust, fake e guard S01 já entregues; não repetir trabalho aceito.
 
-[Revisão L5-C02](relatorios/REVISAO-L5-C02.md): mesmos seis incrementos e 41 cartões. C02/quatro dossiês aceitos, oito elegíveis com pilotos; não refazer as provas aprovadas. Sem lote L6.
-
-1. L5-04/05: selecionar quatro casos de estado, congelar descritores e entregar um evento integral com contraprovas; completar quatro e impor C03 no preflight de campanha. Elegibilidade preparada não é execução comprovada.
-2. L5-02: primeira fatia TS/JS alinhada a fontes reais e eventos, R4 orientado por perdas e depois Python/Go; preservar R3/cfg.
-3. L5-01/05: recuperação lexical/seleção real e controles comparáveis; adapter, ledger e estimativa de quatro smokes condicionados.
-4. L5-04: ampliar 24 tarefas restantes/quotas e integrar ao schema/materializador de admissão, preservando IDs/linhagens e aceites por tipo.
-5. L5-03/06: direto com cache equivalente, recursos reais/concorrência e comparadores/preflight; M0-12/G0 exige todas as dependências.
-6. S01 antes de nova execução afetada: avaliar aplicabilidade e controles dos alertas do setup Gitea, sem atualizar o corpus congelado silenciosamente. Trabalho independente continua.
-7. Após G2: seis cartões V1 de estabilização. Nenhum gate ou estado muda por planejamento; publicação 1.0 requer decisão própria.
+1. L5-04: E02 mapa externo de alocação, quotas e progresso derivado; compensar meta multimódulo 19/20 sem falsificar fatos.
+2. L5-05: D01 compromisso de envio, cancelamento e reservas; conectar diagnósticos factuais ao preflight sem liberar campanha.
+3. L5-02: TSJS-A do perfil ESM exato, labels e relação em fonte real; R3 preservado, R4 conforme perdas.
+4. L5-04: três eventos de presença restantes, mesma sessão e rebuild integral; não declarar semântica das outras famílias nem elegibilidade automática.
+5. L5-01/05: recuperação lexical/alternativas reais, task/arm e protocolo de adapter/smoke, com orçamento concreto antes de gasto.
+6. S01/L5-04: S02 disponibilidade e inspeção de dados; execução afetada permanece bloqueada até controles/provas próprios.
+7. L5-03/06: controle direto com cache, recursos reais/concorrência, comparadores e preflight. Corpus/gates antes de produção; seis V1 somente após G2.

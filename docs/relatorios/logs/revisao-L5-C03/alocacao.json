@@ -1,0 +1,74 @@
+{
+  "scope": "architectural_allocation_analysis_not_applied",
+  "mapping": [
+    {
+      "task": "L5-STATE-Rust-STDX-EDITION",
+      "descriptor": "eval/qualification/state-events/rust/descriptor.json",
+      "descriptor_sha256": "78cb26abf5d189d866a9fadfcc462a0c8c18d4d35acce05ced85f2be25a85d0a",
+      "frozen_slot": "L5-SLOT-Rust-state_config-1",
+      "prospective_slot": "L5-SLOT-Rust-state_config-2",
+      "repository": "rust-lang/rust-analyzer",
+      "frozen_slot_repository_target": "tokio-rs/tokio"
+    },
+    {
+      "task": "L5-STATE-TSJS-SOURCE-AVAILABILITY",
+      "descriptor": "eval/qualification/state-events/js/descriptor.json",
+      "descriptor_sha256": "d2ed15309db714d776429680c591336e9693c9d55f3f5b94cfa861c6fcced08a",
+      "frozen_slot": "L5-SLOT-TSJS-state_config-1",
+      "prospective_slot": "L5-SLOT-TSJS-state_config-2",
+      "repository": "facebook/react",
+      "frozen_slot_repository_target": "microsoft/TypeScript"
+    },
+    {
+      "task": "L5-STATE-Python-SOURCE-AVAILABILITY",
+      "descriptor": "eval/qualification/state-events/python/descriptor.json",
+      "descriptor_sha256": "bb7d2d2a765d86b28b9c91724221d1219df931f1c7b44fa55a758a230e25fc42",
+      "frozen_slot": "L5-SLOT-Python-state_config-1",
+      "prospective_slot": "L5-SLOT-Python-state_config-2",
+      "repository": "scikit-learn/scikit-learn",
+      "frozen_slot_repository_target": "django/django"
+    },
+    {
+      "task": "L5-STATE-Go-SOURCE-AVAILABILITY",
+      "descriptor": "eval/qualification/state-events/go/descriptor.json",
+      "descriptor_sha256": "0a85e6222ae5a9a8db3fd08d2dda85b42b58b90667d50aaa766d4db6fff4c8c2",
+      "frozen_slot": "L5-SLOT-Go-state_config-1",
+      "prospective_slot": "L5-SLOT-Go-state_config-2",
+      "repository": "go-gitea/gitea",
+      "frozen_slot_repository_target": "prometheus/prometheus"
+    }
+  ],
+  "before": {
+    "complex": 16,
+    "historical": 16,
+    "multi_module": 20,
+    "by_repository": {
+      "tokio-rs/tokio": 4,
+      "rust-lang/rust-analyzer": 4,
+      "microsoft/TypeScript": 4,
+      "facebook/react": 4,
+      "django/django": 4,
+      "scikit-learn/scikit-learn": 4,
+      "prometheus/prometheus": 4,
+      "go-gitea/gitea": 4
+    }
+  },
+  "after_if_mapped_without_compensation": {
+    "complex": 16,
+    "historical": 16,
+    "multi_module": 19,
+    "by_repository": {
+      "tokio-rs/tokio": 4,
+      "rust-lang/rust-analyzer": 4,
+      "microsoft/TypeScript": 4,
+      "facebook/react": 4,
+      "django/django": 4,
+      "scikit-learn/scikit-learn": 4,
+      "prometheus/prometheus": 4,
+      "go-gitea/gitea": 4
+    }
+  },
+  "requires_additional_demonstrated_multi_module_task": 1,
+  "individual_eligibility_unchanged": 8,
+  "global_admission_unchanged": 0
+}

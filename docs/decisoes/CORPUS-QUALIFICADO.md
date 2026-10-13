@@ -73,3 +73,7 @@ G1 continua exigindo os intervalos e guardrails do protocolo. Reportar o recorte
 ## Alternativas consideradas
 
 Aceitar todas as propostas como prova suficiente economizaria preparação, mas premiaria tarefas pequenas e pistas da resposta. Exigir exclusivamente incidentes públicos eliminaria experimentos controlados úteis sem resolver esses vieses. Expandir a amostra agora multiplicaria runs pagos antes da primeira evidência. A decisão mantém 32 tarefas primárias, reaproveita os controles e concentra esforço na qualidade dos casos e julgamentos.
+
+## Concretização E02 — alocação dos eventos L5
+
+A [revisão L5-C03](../relatorios/REVISAO-L5-C03.md) fixa mapa externo versionado entre os quatro slots congelados e os slots prospectivos state_config-2. Preservar descritores/recibos originais e validar unicidade, repositórios, linguagens e quotas no consumidor de admissão. O evento Rust unitário não satisfaz a meta multimódulo do slot: compensar a projeção 19/20 com outra tarefa comprovada, sem relaxar o piso. Preparo/prova operacional/eligibilidade/admissão continuam estados distintos.

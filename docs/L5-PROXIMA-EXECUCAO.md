@@ -1,12 +1,12 @@
 # L5 — próxima execução concretizada
 
-12/10/2026. Base local e HEAD remoto consultado: `a8f3764fecc8efdc84370ef31da88260e61c73ee`. **Não houve nova entrega de implementação desde a revisão L5-C02.** Este roteiro detalha interfaces, fronteiras e entregas pequenas do trabalho já autorizado; não cria lote L6, novo ADR, aprovação de campanha ou novos cartões M0/M1.
+12/10/2026. Base local e HEAD remoto consultado: `a8f3764fecc8efdc84370ef31da88260e61c73ee`. **Checkpoint histórico do planejamento.** A [revisão L5-C03](relatorios/REVISAO-L5-C03.md) aceita a entrega posterior de fake, quatro descritores, primeiro evento Rust e guard S01; E02/D01/S02 concretizam os próximos passos. Este roteiro detalha interfaces, fronteiras e entregas pequenas do trabalho já autorizado; não cria lote L6, novo ADR, aprovação de campanha ou novos cartões M0/M1.
 
 Fontes: [revisão vigente e aceites](relatorios/REVISAO-L5-C02.md), [estado](STATUS-IMPLEMENTACAO.md), [semântica P2](decisoes/SEMANTICA-P2.md) e [caminho até v1.0](ROTEIRO-V1.md). Código/testes/experimentos são responsabilidade do Implementador. O Arquiteto escreve este roteiro; agentes auxiliares fizeram revisão somente leitura.
 
 ## 1. Entrega que deve vir primeiro
 
-A próxima entrega deve conter implementação e evidência de pelo menos uma fatia abaixo, não apenas novo relatório de planejamento. Caminho recomendado: C03-A com contraprovas offline e quatro descritores de estado; em seguida primeiro evento completo/C03-B e TSJS-A. S01 acompanha qualquer execução afetada no setup Gitea. Trabalho independente de semântica e recuperação pode continuar.
+As primeiras fatias C03-A/C offline, quatro descritores e primeiro evento Rust já foram entregues no recorte da revisão corrente. Não recomeçar esses itens. Próxima implementação: E02, D01, TSJS-A e três eventos de presença, conforme essa revisão; os aceites abaixo continuam onde ainda não cumpridos. S01 acompanha qualquer execução afetada no setup Gitea. Trabalho independente de semântica e recuperação pode continuar.
 
 | Frente | Responsabilidade | Primeira entrega revisável |
 |---|---|---|
@@ -104,4 +104,4 @@ O Implementador pode escolher layout interno, nomes de tipos e organização de 
 
 Relatório do próximo incremento deve informar: fatia implementada, operação que passou a funcionar, arquivos/interfaces, contraprovas e comando/resultados, limites ainda desconhecidos, estado dos eventos por família e gate realmente consumido. Manter oito tarefas elegíveis/0 admitidas até nova prova; não editar contadores para refletir este planejamento. Revalidar apenas o que a mudança afetar, além dos checks obrigatórios; não repetir todos os probes aceitos sem motivo.
 
-Avanço até 1.0 continua: M0/G0 → M1-A/G1 → M1-B/G2 → V1-01…06. Os 41 cartões mantêm 9 concluídos, 7 em andamento e 25 não iniciados. Esta rodada reduz ambiguidades de implementação, sem progresso de código ou eficácia competitivo adicional. [Verificação documental e recorte dos agentes](relatorios/logs/proxima-execucao/checks.json).
+Avanço até 1.0 continua: M0/G0 → M1-A/G1 → M1-B/G2 → V1-01…06. Os 41 cartões mantêm 9 concluídos, 7 em andamento e 25 não iniciados. Este checkpoint de planejamento não representou progresso de código; entregas posteriores e seus limites estão na revisão L5-C03. [Verificação documental e recorte dos agentes](relatorios/logs/proxima-execucao/checks.json).

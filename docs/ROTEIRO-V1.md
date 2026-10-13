@@ -1,6 +1,6 @@
 # Caminho até o v1.0 — ADR 028
 
-12/10/2026. Avaliação arquitetural atualizada sobre `0c7064e`; provas Rust/JS no código `c48b599` e Python/Go em `e02370a`. **Decisão do Arquiteto para delimitar estabilização e lançamento; não é aprovação de release nem autorização para antecipar M1-B.** Estado executado em [STATUS-IMPLEMENTACAO](STATUS-IMPLEMENTACAO.md); parecer da entrega recente em [REVISAO-L5-C02](relatorios/REVISAO-L5-C02.md).
+12/10/2026. Avaliação arquitetural atualizada sobre `d9c3c87`; evento Rust no código `4972f02`, provas Rust/JS no código `c48b599` e Python/Go em `e02370a`. **Decisão do Arquiteto para delimitar estabilização e lançamento; não é aprovação de release nem autorização para antecipar M1-B.** Estado executado em [STATUS-IMPLEMENTACAO](STATUS-IMPLEMENTACAO.md); parecer da entrega recente em [REVISAO-L5-C03](relatorios/REVISAO-L5-C03.md).
 
 ## 1. Onde estamos
 
@@ -11,8 +11,8 @@ O projeto está em **M0, pesquisa aplicada e protótipos verificáveis**. A infr
 | Captura, armazenamento e parsing | Spikes de fontes/revisões/SQLite/FTS, sete dialetos e workers com provas nativas | Implementar integração de produção, atualização, recuperação e distribuição |
 | Semântica | Rust R1/R2 e R3 opt-in; R3 34/34, 16/16 resolvíveis; contraprovas cfg corrigidas | Rust R4 e lacunas R2; recortes TS/JS, Python e Go; ampliar cobertura real sem falsas certezas |
 | Contexto | Perfil v3, base/head, orçamento serializado, retenção e expansão; consumidor R3 | Recuperação lexical sem âncora, seleção relevante, alternativas e qualidade em tarefas reais |
-| Corpus | Quatro pilotos anteriores e quatro novos dossiês elegíveis Rust/JS/Python/Go | Oito tarefas elegíveis; faltam 24 para o conjunto, quotas completas e quatro eventos reais; admissão global atual 0/32 |
-| Avaliação por agente | Harness/replay/ledger offline, contenção Linux e oracles reais | Adapter real, quatro smokes pareados, comparadores fortes, campanhas D1/H1 e recursos autorizados |
+| Corpus | Quatro pilotos anteriores e quatro novos dossiês elegíveis Rust/JS/Python/Go | Oito tarefas elegíveis; faltam 24 e quotas completas. Quatro eventos preparados, um Rust comprovado; E02 concilia slots e déficit multimódulo. Global 0/32 |
+| Avaliação por agente | Harness/replay/ledger e dispatch fake, contenção Linux e oracles reais | Adapter real, quatro smokes pareados, comparadores fortes, campanhas D1/H1 e recursos autorizados |
 | Produto público | `xrai --help` e `--version`; crates de domínio ainda sem capacidades da alpha | Indexar, consultar e atualizar pelo executável/CLI/MCP de produção |
 | Distribuição | CI Linux x86_64/macOS arm64; bytes de executáveis experimentais conferidos em recibos | Instalação limpa do produto, piso literal macOS 15.0, compatibilidade, licença e release reproduzível/auditável |
 
@@ -119,6 +119,6 @@ Medir cinco eixos separadamente: capacidades reais por linguagem; tarefas do cor
 
 Antes de estimar uma data, registrar esforço ativo e espera externa de pelo menos dois incrementos representativos (um dossiê completo e uma fatia de frontend/contexto), custos dos probes/campanhas e largura real de trabalho do Implementador. Só então apresentar faixa condicionada a G0/G1 e recursos, revisada quando surgir dependência nova. Hoje não há base para prometer semanas, meses ou percentual de 1.0; a maior incerteza é a eficácia ainda não medida.
 
-Próximas entregas observáveis: quatro casos reais de estado e primeiro evento executado/reconciliado, gate de execução C03, primeira semântica TS/JS, contexto real com controle lexical e adapter/orçamento. S01 classifica os 55 alertas observados no setup congelado Gitea; aplicabilidade e controles devem ser avaliados antes de novas execuções afetadas. Caminho detalhado e responsáveis estão na [revisão corrente](relatorios/REVISAO-L5-C02.md). Nenhuma dessas frentes locais precisa esperar implementação integral de M2–M5.
+Próximas entregas observáveis: E02 alocação/quotas, D01 envio/cancelamento, três eventos restantes, TSJS-A e contexto/adapter real. S01 entregou inventário e bloqueio dos 55 alertas; S02 define inspeção offline antes de liberação afetada. Caminho detalhado e responsáveis estão na [revisão corrente](relatorios/REVISAO-L5-C03.md). Nenhuma dessas frentes locais precisa esperar implementação integral de M2–M5.
 
-Detalhamento operacional corrente: [próxima execução L5](L5-PROXIMA-EXECUCAO.md), baseado no mesmo `a8f3764`, sem entrega adicional de código. Concretiza o dispatch C03 e a primeira fatia TS/JS, preservando esta avaliação de estágio e os seis cartões V1.
+Detalhamento operacional corrente: [próxima execução L5](L5-PROXIMA-EXECUCAO.md), com checkpoint original `a8f3764` e aceites posteriores na revisão L5-C03. Concretiza o dispatch C03 e a primeira fatia TS/JS, preservando esta avaliação de estágio e os seis cartões V1.

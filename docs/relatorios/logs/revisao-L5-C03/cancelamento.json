@@ -1,0 +1,129 @@
+{
+  "accounting": {
+    "budget_limit_respected": true,
+    "budget_micro_usd": 1000,
+    "known_observed_charge_micro_usd": 35,
+    "observed_cost_complete": true,
+    "observed_cost_micro_usd": 35,
+    "reservation_is_provider_charge_guarantee": false,
+    "retained_reservation_micro_usd": 0,
+    "supported_cost_interval_micro_usd": [
+      35,
+      35
+    ],
+    "unknown_charge_attempts": []
+  },
+  "adapter_calls": 1,
+  "checks": 3,
+  "events": [
+    {
+      "attempt_id": "attempt",
+      "details": {
+        "call_id": "call",
+        "max_charge_micro_usd": 500,
+        "request": {
+          "edits": [],
+          "expansions": [],
+          "limits": {
+            "input_tokens": 100,
+            "output_tokens": 100
+          },
+          "maximum_charge_policy": "fake-enforced",
+          "messages": [
+            {
+              "content": "localize função",
+              "role": "user"
+            }
+          ],
+          "orientation": "Offline fake session; no source oracle.",
+          "tests": [],
+          "tool_calls": [],
+          "tool_definitions": [
+            {
+              "input": "path",
+              "name": "read"
+            }
+          ]
+        },
+        "retry_of": null
+      },
+      "kind": "reserve",
+      "monotonic_seconds": 15036.985234625,
+      "previous_event_sha256": null,
+      "sequence": 0
+    },
+    {
+      "attempt_id": "attempt",
+      "details": {},
+      "kind": "send",
+      "monotonic_seconds": 15036.985268833,
+      "previous_event_sha256": "6a72d1a787602f84edf15130ab0171e346bcd6bd683ea5aad8c199e404fd85ad",
+      "sequence": 1
+    },
+    {
+      "attempt_id": "attempt",
+      "details": {
+        "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+        "captured_bytes": 16,
+        "observed_bytes": 16,
+        "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20",
+        "truncated": false
+      },
+      "kind": "chunk",
+      "monotonic_seconds": 15036.985297916,
+      "previous_event_sha256": "6adbe8408bc2923091f1fe6ffef0ab27f89b86ccbda75c8315b474b06efd5620",
+      "sequence": 2
+    },
+    {
+      "attempt_id": "attempt",
+      "details": {
+        "state": "cancelled"
+      },
+      "kind": "finish",
+      "monotonic_seconds": 15036.98530725,
+      "previous_event_sha256": "feae7001f2206f1e68bcf1c9535e923dfe9e9d905e45fb041fe38756844cad6b",
+      "sequence": 3
+    },
+    {
+      "attempt_id": "attempt",
+      "details": {
+        "category_semantics": {
+          "cached_input_tokens": "subset_of_input_tokens",
+          "reasoning_output_tokens": "subset_of_output_tokens"
+        },
+        "estimated_charge_micro_usd": 35,
+        "observed_charge_micro_usd": 35,
+        "observed_charge_source": "synthetic-receipt",
+        "price_version": "fake-usd-v1",
+        "provider": "fake",
+        "provider_receipt_id": "fake-dispatch-1",
+        "usage": {
+          "cached_input_tokens": 4,
+          "input_tokens": 10,
+          "output_tokens": 5,
+          "reasoning_output_tokens": 2
+        }
+      },
+      "kind": "receipt",
+      "monotonic_seconds": 15036.985313833,
+      "previous_event_sha256": "c75f4290631c487355b595a8c05fe9b508eaf1ba7043c6c5e5ddc9b0dec06730",
+      "sequence": 4
+    }
+  ],
+  "external_calls": 0,
+  "interpretation": "Cancellation is set after the current Ledger.send commitment but before actual adapter invocation. Current implementation does not recheck cancellation there. This is not evidence that cancellation can revoke a transport already committed; the send linearization contract must be made explicit.",
+  "result": {
+    "adapter_called": true,
+    "status": "cancelled"
+  },
+  "scope": "architectural_fake_only_counterexample",
+  "trace": [
+    {
+      "action": "set_cancel",
+      "adapter_calls": 0,
+      "ledger_send_already_recorded": true,
+      "stage": "effective_check_before_adapter_invocation"
+    }
+  ],
+  "reproducer_source": "\"\"\"Architectural counterexample: local fake adapter only; no product edits.\"\"\"\nimport json\nfrom pathlib import Path\nimport sys\nimport threading\nimport time\n\nsys.dont_write_bytecode = True\nsys.path.insert(0, '/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness')\nfrom execution_gate import EvidenceSnapshot, preflight, DispatchSession, OfflineAuthorization, FakeAdapter, make_smoke_fixture\nfrom agent_ledger import fake_request\n\nmanifest, evidence = make_smoke_fixture()\nsnapshot = EvidenceSnapshot.capture(manifest, evidence)\ncancel = threading.Event()\nchecks = [0]\ntrace = []\nadapter = FakeAdapter()\ndef current_manifest():\n    checks[0] += 1\n    if checks[0] == 3:\n        trace.append({'stage': 'effective_check_before_adapter_invocation',\n                      'adapter_calls': adapter.calls,\n                      'ledger_send_already_recorded': True,\n                      'action': 'set_cancel'})\n        cancel.set()\n    return manifest\nsession = DispatchSession(snapshot, preflight(snapshot), OfflineAuthorization(snapshot.fingerprint, 1000, time.monotonic() + 60), adapter, current_manifest=current_manifest)\nresult = session.dispatch('attempt', 'call', fake_request(), 500, cancel=cancel)\nrecord = session.record()\noutput = {\n    'scope': 'architectural_fake_only_counterexample',\n    'external_calls': 0,\n    'checks': checks[0],\n    'trace': trace,\n    'result': result,\n    'adapter_calls': adapter.calls,\n    'events': record['events'],\n    'accounting': record['accounting'],\n    'interpretation': 'Cancellation is set after the current Ledger.send commitment but before actual adapter invocation. Current implementation does not recheck cancellation there. This is not evidence that cancellation can revoke a transport already committed; the send linearization contract must be made explicit.'\n}\nassert checks[0] == 3 and cancel.is_set()\nassert adapter.calls == 1 and result == {'status': 'cancelled', 'adapter_called': True}\nPath('/tmp/xrai-c03-cancel-review.json').write_text(json.dumps(output, indent=2, sort_keys=True) + '\\n')\nprint(json.dumps({'checks': checks[0], 'result': result, 'adapter_calls': adapter.calls, 'external_calls': 0}))\n"
+}
