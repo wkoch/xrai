@@ -67,6 +67,9 @@ jobs:
           python eval/scripts/verify_real_resources.py --design-only
           python -m unittest discover -s eval/scripts -p 'test_real_resources.py' -v
           python -m unittest discover -s eval/scripts -p 'test_real_resources_ci.py' -v
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_unified_diff.py' -v
+          python eval/context/diff-v1/replay.py > "$RUNNER_TEMP/p3-diff-proof.json"
+          python -c 'import json,os; from pathlib import Path; assert json.loads(Path(os.environ["RUNNER_TEMP"],"p3-diff-proof.json").read_bytes()) == json.loads(Path("docs/relatorios/logs/L5-C05/P3-diff/proof.json").read_bytes())'
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}

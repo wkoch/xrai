@@ -239,3 +239,7 @@ Segunda leitura lexical16/16 registrada em[L5-LEXICAL-REVISAO](relatorios/L5-LEX
 ## Aceite experimental de recursos reais
 
 [L5-RESOURCES](relatorios/L5-RESOURCES.md): CI38332601334/e308c0f passou Linux/macOS; ZIP/API originais autenticados e1123 arquivos exatos por host recompostos.24 sessões/57.600 consultas por host,FullResponse quatro modalidades e160 Responses canônicas iguais entre hosts. Root96+30+30checks sem skips. Métricas e perdas amostrais XRW1 preservadas; classes TSX/fases internas/calibradores e decisão de produção pendentes, M0-06 incompleto. [Evidência](relatorios/logs/L5-C04/resources/native-proof/reconciliation.json).41 estados/gates e8 elegíveis/0 admitidos inalterados.
+
+## Continuação L5: intake de diff data-only
+
+[L5-C05](relatorios/L5-C05.md) inicia novas fatias dos mesmos IDs. [L5-P3-DIFF](relatorios/L5-P3-DIFF.md) entrega decoder limitado e consumidor typed:63checks,21 aceites/34 recusas pré-congelados eHEAD integral reconstituído, inclusive criação/remoção de fonte real, vazio eEOF semnewline. Recibo recomposto pelo raiz; nenhum legado/hash anterior modificado. Integração nativa Rust/P3, gates e demais critérios M0-09 pendentes. GuardsD01/tokenwire/sessãoTSJS-C em andamento, sem resultados atribuídos;8 elegíveis/0 admitidos e41 estados preservados.
