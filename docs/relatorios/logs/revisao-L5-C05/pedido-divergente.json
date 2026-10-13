@@ -1,0 +1,64 @@
+{
+  "scope": "fake_only_no_network_no_upstream_no_native",
+  "original_request_sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+  "recorded_request_sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+  "transport_request": [
+    {
+      "sha256": "2d6e6ebba183a1a5eff490c05d626fc3ce1b35ab097826b983cf9d55da618eb3",
+      "request": {
+        "edits": [],
+        "expansions": [],
+        "limits": {
+          "input_tokens": 100,
+          "output_tokens": 99999
+        },
+        "maximum_charge_policy": "fake-enforced",
+        "messages": [
+          {
+            "content": "caller changed after reservation",
+            "role": "user"
+          }
+        ],
+        "orientation": "Offline fake session; no source oracle.",
+        "tests": [],
+        "tool_calls": [],
+        "tool_definitions": [
+          {
+            "input": "path",
+            "name": "read"
+          }
+        ]
+      }
+    }
+  ],
+  "adapter_calls": 1,
+  "dispatch_results": [
+    {
+      "status": "completed",
+      "committed": true,
+      "adapter_called": true
+    }
+  ],
+  "errors": [],
+  "replay": {
+    "status": "verified_offline_dispatch_v2",
+    "attempts": 1,
+    "accounting": {
+      "budget_micro_usd": 1000,
+      "known_observed_charge_micro_usd": 35,
+      "retained_reservation_micro_usd": 0,
+      "unknown_charge_attempts": [],
+      "observed_cost_complete": true,
+      "observed_cost_micro_usd": 35,
+      "supported_cost_interval_micro_usd": [
+        35,
+        35
+      ],
+      "budget_limit_respected": true,
+      "reservation_is_provider_charge_guarantee": false
+    },
+    "external_calls": 0,
+    "paid_provider_called": false
+  },
+  "reproducer_source": "import json, sys, threading\nfrom pathlib import Path\nsys.dont_write_bytecode=True\nsys.path.insert(0,'/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness')\nfrom execution_gate import EvidenceSnapshot, OfflineAuthorization, preflight, make_smoke_fixture\nfrom execution_dispatch_v2 import DispatchSessionV2, FakeTransportV2, DispatchBarriers, make_bindings, replay_dispatch_v2\nfrom agent_ledger import fake_request, canonical, sha\nmanifest,evidence=make_smoke_fixture(); snapshot=EvidenceSnapshot.capture(manifest,evidence)\nreached,release=threading.Event(),threading.Event()\ntransport=FakeTransportV2()\nsession=DispatchSessionV2(snapshot,preflight(snapshot),OfflineAuthorization(snapshot.fingerprint,1000,100),transport,bindings=make_bindings(snapshot,task_id='D0-RS-01',arm='direct',run_id='review-c05-request-ownership'),clock=lambda:1,barriers=DispatchBarriers(before_commit_reached=reached,before_commit_release=release))\nrequest=fake_request(); original=sha(canonical(request)); observed=[]; errors=[]; results=[]\ndef profile(frame,event,arg):\n    if event=='call' and frame.f_code.co_filename.endswith('/execution_dispatch_v2.py') and frame.f_code.co_name=='invoke':\n        raw=canonical(frame.f_locals['request'])\n        observed.append({'sha256':sha(raw),'request':json.loads(raw)})\ndef worker():\n    sys.setprofile(profile)\n    try:results.append(session.dispatch('a','c',request,500))\n    except Exception as e:errors.append(repr(e))\n    finally:sys.setprofile(None)\nt=threading.Thread(target=worker);t.start()\nassert reached.wait(5)\nrequest['limits']['output_tokens']=99999\nrequest['messages'][0]['content']='caller changed after reservation'\nrelease.set();t.join(5);assert not t.is_alive()\nrecord=session.record()\nresult={'scope':'fake_only_no_network_no_upstream_no_native','original_request_sha256':original,'recorded_request_sha256':record['attempts']['a']['request_sha256'],'transport_request':observed,'adapter_calls':transport.calls,'dispatch_results':results,'errors':errors,'replay':replay_dispatch_v2(record)}\nassert not errors and transport.calls==1 and observed[0]['sha256']!=original\nPath('/tmp/xrai-review-c05-dispatch-request.json').write_text(json.dumps(result,indent=2)+'\\n')\nprint(json.dumps({'adapter_calls':transport.calls,'record_transport_hash_equal':original==observed[0]['sha256'],'transport_output_limit':observed[0]['request']['limits']['output_tokens'],'ledger_output_limit':100,'replay_status':result['replay']['status']}))\n"
+}

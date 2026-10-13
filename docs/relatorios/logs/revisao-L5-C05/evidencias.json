@@ -1,0 +1,131 @@
+{
+  "base_commit": "8b66cf63d15239e92bb6db89b56955097c96b4fc",
+  "scope": "Retained API/ZIP/data recomputation; no new acquisition, upstream, retained native binary or provider execution.",
+  "checks": [
+    {
+      "name": "presence",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/reconcile_presence_ci.py",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-C04/presence-native-proof",
+        "--artifact-id",
+        "11781928843",
+        "--run-id",
+        "38329111797",
+        "--head",
+        "3463bdc7bd6ad085d784f0b45fc7ef496f9ee80b"
+      ],
+      "exit_code": 0,
+      "seconds": 0.175,
+      "stderr": "",
+      "reconciliation_path": "docs/relatorios/logs/L5-C04/presence-native-proof/reconciliation.json",
+      "reconciliation_sha256": "18c9a5f0a6c981a3f3adb0acc650a8875b7b4e30be408fd19c99db3c662be92c",
+      "full_reconciliation_equal": true,
+      "run_id": 38329111797,
+      "code_commit": "3463bdc7bd6ad085d784f0b45fc7ef496f9ee80b",
+      "exact_export_files": 53
+    },
+    {
+      "name": "tsjs_labels",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/reconcile_tsjs_ci.py",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-C04/TSJS/native-proof",
+        "--artifact-id",
+        "11782770003",
+        "--run-id",
+        "38329944063",
+        "--head",
+        "96b377c9c12be862d9ce90c92816ac499cb1bfc7"
+      ],
+      "exit_code": 0,
+      "seconds": 0.103,
+      "stderr": "",
+      "reconciliation_path": "docs/relatorios/logs/L5-C04/TSJS/native-proof/reconciliation.json",
+      "reconciliation_sha256": "2a2ad90cbf1faa516c30d17c88afe5ee2bbef95061dcd22e2649bd9ea59d73eb",
+      "full_reconciliation_equal": true,
+      "run_id": 38329944063,
+      "code_commit": "96b377c9c12be862d9ce90c92816ac499cb1bfc7",
+      "exact_export_files": 53
+    },
+    {
+      "name": "resources",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/reconcile_real_resources_ci.py",
+        "--directory",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-C04/resources/native-proof",
+        "--linux-artifact-id",
+        "11783946551",
+        "--macos-artifact-id",
+        "11784255629",
+        "--run-id",
+        "38332601334",
+        "--head",
+        "e308c0f35813d597b4c76c9c060461a136b601f0"
+      ],
+      "exit_code": 0,
+      "seconds": 5.18,
+      "stderr": "",
+      "reconciliation_path": "docs/relatorios/logs/L5-C04/resources/native-proof/reconciliation.json",
+      "reconciliation_sha256": "27ba870097f60aaf62d1d7e414d2898e21ecaa3435353b65bc62ac18d5664a48",
+      "full_reconciliation_equal": true,
+      "run_id": 38332601334,
+      "code_commit": "e308c0f35813d597b4c76c9c060461a136b601f0",
+      "exact_export_files": 2246
+    },
+    {
+      "name": "tokens",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/reconcile_c05_ci.py",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-C05/lexical-tokens/ci-proof",
+        "--artifact-id",
+        "11828242801",
+        "--profile",
+        "tokens",
+        "--run-id",
+        "38425062525",
+        "--head",
+        "f7f940069f5a77e268c2fb9645835fc4b2cc8675"
+      ],
+      "exit_code": 0,
+      "seconds": 4.668,
+      "stderr": "",
+      "reconciliation_path": "docs/relatorios/logs/L5-C05/lexical-tokens/ci-proof/reconciliation.json",
+      "reconciliation_sha256": "62365c691ec1be935143c670cddbc55c39edfa29c74041bbfb8cffd910ae2fa2",
+      "full_reconciliation_equal": true,
+      "run_id": 38425062525,
+      "code_commit": "f7f940069f5a77e268c2fb9645835fc4b2cc8675",
+      "exact_export_files": 361
+    },
+    {
+      "name": "tsjs_session",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "/Users/wkoch/Projetos/xrai/eval/scripts/reconcile_c05_ci.py",
+        "/Users/wkoch/Projetos/xrai/docs/relatorios/logs/L5-C05/TSJS-session/native-proof",
+        "--artifact-id",
+        "11827954072",
+        "--profile",
+        "tsjs",
+        "--run-id",
+        "38425676814",
+        "--head",
+        "15547eddb4e23bce6d3668b2ef0329a77b1421ec"
+      ],
+      "exit_code": 0,
+      "seconds": 0.18,
+      "stderr": "",
+      "reconciliation_path": "docs/relatorios/logs/L5-C05/TSJS-session/native-proof/reconciliation.json",
+      "reconciliation_sha256": "fe8c137be2b2058ba7b4b0fe4a714af667ea045802d6d2d5718f7efaefa37f68",
+      "full_reconciliation_equal": true,
+      "run_id": 38425676814,
+      "code_commit": "15547eddb4e23bce6d3668b2ef0329a77b1421ec",
+      "exact_export_files": 24
+    }
+  ],
+  "passed": true,
+  "exact_export_files_total": 2737,
+  "reproducer_source": "import hashlib,json,subprocess,time\nfrom pathlib import Path\nROOT=Path('/Users/wkoch/Projetos/xrai'); PY='/private/tmp/xrai-c05-measure/bin/python'\nOUT=ROOT/'docs/relatorios/logs/revisao-L5-C05'; OUT.mkdir(parents=True,exist_ok=True)\ncases=[('presence','L5-C04/presence-native-proof','reconcile_presence_ci.py',None),('tsjs_labels','L5-C04/TSJS/native-proof','reconcile_tsjs_ci.py',None),('resources','L5-C04/resources/native-proof','reconcile_real_resources_ci.py',None),('tokens','L5-C05/lexical-tokens/ci-proof','reconcile_c05_ci.py','tokens'),('tsjs_session','L5-C05/TSJS-session/native-proof','reconcile_c05_ci.py','tsjs')]\nresult={'base_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'scope':'Retained API/ZIP/data recomputation; no new acquisition, upstream, retained native binary or provider execution.','checks':[]}\nfor name,rel,script,profile in cases:\n d=ROOT/'docs/relatorios/logs'/rel; prior=json.loads((d/'reconciliation.json').read_bytes());cmd=[PY,str(ROOT/'eval/scripts'/script)]\n if name=='resources':\n  cmd+=['--directory',str(d),'--linux-artifact-id',str(prior['hosts']['x86_64-unknown-linux-gnu']['artifact_id']),'--macos-artifact-id',str(prior['hosts']['aarch64-apple-darwin']['artifact_id'])]\n else:\n  cmd +=[str(d),'--artifact-id',str(prior['artifact_id'])]\n if profile:cmd+=['--profile',profile]\n cmd+=['--run-id',str(prior['run_id']),'--head',prior['code_commit']]\n t=time.monotonic();p=subprocess.run(cmd,cwd=ROOT,capture_output=True,timeout=420);parsed=json.loads(p.stdout) if p.returncode==0 else None\n check={'name':name,'command':cmd,'exit_code':p.returncode,'seconds':round(time.monotonic()-t,3),'stderr':p.stderr.decode(),'reconciliation_path':str((d/'reconciliation.json').relative_to(ROOT)),'reconciliation_sha256':hashlib.sha256((d/'reconciliation.json').read_bytes()).hexdigest(),'full_reconciliation_equal':parsed==prior,'run_id':prior['run_id'],'code_commit':prior['code_commit'],'exact_export_files':sum(h['exact_zip_export_files'] for h in prior['hosts'].values()) if name=='resources' else prior['exact_zip_export_files']}\n result['checks'].append(check)\n (OUT/'evidencias.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\\n')\n print(json.dumps({k:check[k] for k in ('name','exit_code','full_reconciliation_equal','exact_export_files','seconds')}),flush=True)\n assert p.returncode==0 and parsed==prior,check\nresult['passed']=True;result['exact_export_files_total']=sum(c['exact_export_files'] for c in result['checks']);result['reproducer_source']=Path(__file__).read_text()\n(OUT/'evidencias.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\\n')\n"
+}

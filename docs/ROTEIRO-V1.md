@@ -1,6 +1,6 @@
 # Caminho até o v1.0 — ADR 028
 
-12/10/2026. Avaliação arquitetural atualizada sobre `d9c3c87`; evento Rust no código `4972f02`, provas Rust/JS no código `c48b599` e Python/Go em `e02370a`. **Decisão do Arquiteto para delimitar estabilização e lançamento; não é aprovação de release nem autorização para antecipar M1-B.** Estado executado em [STATUS-IMPLEMENTACAO](STATUS-IMPLEMENTACAO.md); parecer da entrega recente em [REVISAO-L5-C03](relatorios/REVISAO-L5-C03.md).
+13/10/2026. Avaliação arquitetural sobre `8b66cf6`; provas dedicadas em `3463bdc`, `96b377c`, `e308c0f`, `f7f9400` e `15547ed`. **Decisão do Arquiteto para estabilização e lançamento; não aprova release nem antecipa M1-B.** Estado em [STATUS-IMPLEMENTACAO](STATUS-IMPLEMENTACAO.md); aceites e próximos critérios na [revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md).
 
 ## 1. Onde estamos
 
@@ -9,12 +9,12 @@ O projeto está em **M0, pesquisa aplicada e protótipos verificáveis**. A infr
 | Dimensão | Evidência atual | Distância até produto utilizável |
 |---|---|---|
 | Captura, armazenamento e parsing | Spikes de fontes/revisões/SQLite/FTS, sete dialetos e workers com provas nativas | Implementar integração de produção, atualização, recuperação e distribuição |
-| Semântica | Rust R1/R2 e R3 opt-in; R3 34/34, 16/16 resolvíveis; contraprovas cfg corrigidas | Rust R4 e lacunas R2; recortes TS/JS, Python e Go; ampliar cobertura real sem falsas certezas |
-| Contexto | Perfil v3, base/head, orçamento serializado, retenção e expansão; consumidor R3 | Recuperação lexical sem âncora, seleção relevante, alternativas e qualidade em tarefas reais |
-| Corpus | Quatro pilotos anteriores e quatro novos dossiês elegíveis Rust/JS/Python/Go | Oito tarefas elegíveis; faltam 24 e quotas completas. Quatro eventos preparados, um Rust comprovado; E02 concilia slots e déficit multimódulo. Global 0/32 |
-| Avaliação por agente | Harness/replay/ledger e dispatch fake, contenção Linux e oracles reais | Adapter real, quatro smokes pareados, comparadores fortes, campanhas D1/H1 e recursos autorizados |
+| Semântica | Rust R1/R2/R3; TSJS-A/B com 45 labels e 13/13 referências resolvíveis; sessão TSJS-C | Rust R4/lacunas, semântica Python/Go e relações úteis em tarefas; callable TSJS continua unknown |
+| Contexto | P3/v3; BM25/TF-IDF em fontes reais, 640 entregas com tokens controlados; decoder diff integral | Consumo Rust do intake, comparação P3 sob orçamento de sessão, labels independentes e tarefas completas |
+| Corpus | Oito dossiês individuais e quatro eventos operacionais comprovados; mapa E02 v2 | Faltam 24 tarefas/quotas; global 0/32. Candidato Django ainda não compensa 19/20; eventos não criam dossiês |
+| Avaliação por agente | Harness/replay, dispatch v2, factory de tools, contenção Linux e oracles reais | Corrigir pedido mutável/adotar factory, adapter real, quatro smokes, comparadores fortes, D1/H1 e recursos |
 | Produto público | `xrai --help` e `--version`; crates de domínio ainda sem capacidades da alpha | Indexar, consultar e atualizar pelo executável/CLI/MCP de produção |
-| Distribuição | CI Linux x86_64/macOS arm64; bytes de executáveis experimentais conferidos em recibos | Instalação limpa do produto, piso literal macOS 15.0, compatibilidade, licença e release reproduzível/auditável |
+| Distribuição | CI Linux x86_64/macOS arm64; recursos experimentais de workers nos dois hosts | Escolha de runtime/calibração, instalação do produto, piso macOS 15.0, licença e release auditável |
 
 Avanço recente: C02 recomputa quatro novos dossiês elegíveis. Python/Go têm três requisitos falhos na base, três aprovados na referência e duas regressões por lado. São contratos controlados, não bugs históricos. Os probes deixaram de ser somente sintéticos. Rust reproduz os dois problemas esperados no baseline, passa referência 2/2 e 16 regressões; JS reproduz três requisitos falhos e passa referência 3/3, com duas regressões por lado. Isso valida tarefas/oracles; **não mede sucesso de um agente usando xrai**. Na amostra Tokio-test, 201 chamadas continuam unknown; o acerto 1/1 do subconjunto resolvível não é cobertura de 201 chamadas.
 
@@ -119,6 +119,6 @@ Medir cinco eixos separadamente: capacidades reais por linguagem; tarefas do cor
 
 Antes de estimar uma data, registrar esforço ativo e espera externa de pelo menos dois incrementos representativos (um dossiê completo e uma fatia de frontend/contexto), custos dos probes/campanhas e largura real de trabalho do Implementador. Só então apresentar faixa condicionada a G0/G1 e recursos, revisada quando surgir dependência nova. Hoje não há base para prometer semanas, meses ou percentual de 1.0; a maior incerteza é a eficácia ainda não medida.
 
-Próximas entregas observáveis: E02 alocação/quotas, D01 envio/cancelamento, três eventos restantes, TSJS-A e contexto/adapter real. S01 entregou inventário e bloqueio dos 55 alertas; S02 define inspeção offline antes de liberação afetada. Caminho detalhado e responsáveis estão na [revisão corrente](relatorios/REVISAO-L5-C03.md). Nenhuma dessas frentes locais precisa esperar implementação integral de M2–M5.
+Próximas entregas observáveis: pedido D01 corrigido, dossiê Django, intake P3 Rust e tarefa comparável ao lexical. Em paralelo: consultas independentes, contratos ABA/blobs, comparadores/smoke, recursos v2 e coletor S02. Quatro eventos, TSJS e provas lexicais/recursos já são aceites limitados; não reiniciar essas frentes. [Revisão corrente](relatorios/REVISAO-L5-C05.md), §8, define sequência e responsáveis.
 
-Detalhamento operacional corrente: [próxima execução L5](L5-PROXIMA-EXECUCAO.md), com checkpoint original `a8f3764` e aceites posteriores na revisão L5-C03. Concretiza o dispatch C03 e a primeira fatia TS/JS, preservando esta avaliação de estágio e os seis cartões V1.
+O avanço técnico reduz incertezas do protótipo, mas ainda não há sessão real de agente demonstrando ganho, corpus32 admitido ou gate avaliado. O próximo marco de produto continua G0; não há base para percentual/data de v1.0. As [fatias históricas](L5-PROXIMA-EXECUCAO.md) preservam contratos que a revisão não substituiu.

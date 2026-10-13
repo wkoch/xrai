@@ -77,3 +77,7 @@ Aceitar todas as propostas como prova suficiente economizaria preparação, mas 
 ## Concretização E02 — alocação dos eventos L5
 
 A [revisão L5-C03](../relatorios/REVISAO-L5-C03.md) fixa mapa externo versionado entre os quatro slots congelados e os slots prospectivos state_config-2. Preservar descritores/recibos originais e validar unicidade, repositórios, linguagens e quotas no consumidor de admissão. O evento Rust unitário não satisfaz a meta multimódulo do slot: compensar a projeção 19/20 com outra tarefa comprovada, sem relaxar o piso. Preparo/prova operacional/eligibilidade/admissão continuam estados distintos.
+
+## Continuidade E02 após quatro eventos
+
+A [revisão L5-C04/C05](../relatorios/REVISAO-L5-C05.md), §5, seleciona para triagem uma tarefa controlada Django de roteamento/migração no slot Python-state_config-1. Continua candidato: projeção 19/20, oito elegíveis/0 admitidos preservados até necessidade multimódulo, oracle, independência e segunda leitura comprovados. Plano/consumidor v3 prospectivos devem derivar a compensação dessas evidências, preservando o checkpoint v2. Quatro eventos operacionais aceitos permanecem aceitos mesmo quando um dossiê natural for recusado; reaproveitamento de recibo exige vínculo exato com o cenário efetivo.

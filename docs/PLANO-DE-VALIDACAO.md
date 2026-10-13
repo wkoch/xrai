@@ -304,3 +304,9 @@ S01 exige avaliação dos alertas observados no setup congelado antes de nova ex
 ## 16. Continuidade após primeira prova C03
 
 [Revisão L5-C03](relatorios/REVISAO-L5-C03.md): E02 exige mapa de atribuição por hash, unicidade tarefa/slot e quotas recompostas, sem promover recorte operacional a dossiê. D01 testa barreiras antes/depois do compromisso de envio, reserva e I/O fora da seção crítica; cancelamento pós-compromisso não implica cobrança zero. S02 verifica inspeção data-only separada de execução bloqueada. Prova Rust1/4 preservada; eventos de presença restantes não anunciam semântica que não implementam. Nenhum limiar de gate alterado.
+
+## 17. Integração após C04/C05
+
+[Revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md): contraprova obrigatória de mutação concorrente do request entre reserva e transporte, com identidade dos bytes consumidos no replay. Adoção do factory é verificada pelo fluxo com ferramentas; snapshot fixo não promete detectar ABA externo. Gerações/autoridade monotônicas e blobs exigem perfil/closure/limites próprios.
+
+P3 Rust deve preservar presença distinta de vazio, reconstrução integral BASE/HEAD e expansão de revisão retida. Lexical compara consultas novas sem oracle no seletor, orçamento agregado e pedidos de expansão fixos; GO-02/RS-03 corrigidos continuam regressões de desenvolvimento. Recursos v2 congela cold/warm, alternância por lane e calibradores antes de medir. Compensação Django precisa necessidade entre módulos e oracle/segunda leitura; não basta promover flag. S02 prova o coletor em transporte fake antes de qualquer aquisição limitada. Quatro eventos aceitos não substituem dossiês nem liberam gates.

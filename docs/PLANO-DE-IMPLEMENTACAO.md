@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 12/10/2026. **L5-C03 revisada: fake, quatro descritores e primeiro evento operacional Rust aceitos; oito dossiês elegíveis, D1 fechado.** [Parecer e próximas atividades](relatorios/REVISAO-L5-C03.md). E02/D01/S02 resolvem alocação, envio e inspeção; [fatias](L5-PROXIMA-EXECUCAO.md) e [roteiro v1](ROTEIRO-V1.md) permanecem. Estado em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 13/10/2026. **L5-C04/C05 revisada:** quatro eventos, TSJS, lexical/tokens e recursos aceitos nos recortes; oito elegíveis e D1 fechado. [Parecer e próxima execução](relatorios/REVISAO-L5-C05.md): pedido D01, dossiê Django, P3 Rust e avaliação integrada. Mesmos IDs/dependências e [roteiro v1](ROTEIRO-V1.md). Estado em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -709,12 +709,14 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[Revisão L5-C03](relatorios/REVISAO-L5-C03.md): mesmos IDs/dependências. Quatro descritores, primeiro evento Rust, fake e guard S01 já entregues; não repetir trabalho aceito.
+[Revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md), §8: mesmos IDs e dependências. Quatro eventos, TSJS-A/B/C, lexical/tokens, S02 offline e recursos reais já comprovados nos recortes; não repetir como novas entregas.
 
-1. L5-04: E02 mapa externo de alocação, quotas e progresso derivado; compensar meta multimódulo 19/20 sem falsificar fatos.
-2. L5-05: D01 compromisso de envio, cancelamento e reservas; conectar diagnósticos factuais ao preflight sem liberar campanha.
-3. L5-02: TSJS-A do perfil ESM exato, labels e relação em fonte real; R3 preservado, R4 conforme perdas.
-4. L5-04: três eventos de presença restantes, mesma sessão e rebuild integral; não declarar semântica das outras famílias nem elegibilidade automática.
-5. L5-01/05: recuperação lexical/alternativas reais, task/arm e protocolo de adapter/smoke, com orçamento concreto antes de gasto.
-6. S01/L5-04: S02 disponibilidade e inspeção de dados; execução afetada permanece bloqueada até controles/provas próprios.
-7. L5-03/06: controle direto com cache, recursos reais/concorrência, comparadores e preflight. Corpus/gates antes de produção; seis V1 somente após G2.
+1. L5-05: corrigir identidade do pedido reservado/transportado; adotar factory no fluxo offline com ferramentas.
+2. L5-04: dossiê Django de roteamento/migração no slot Python-state_config-1 e qualificação natural dos quatro casos de estado; manter 19/20 até evidência.
+3. L5-01: integrar diff/presença ao consumidor P3 Rust, HEAD integral e contexto de tarefa com comparação lexical.
+4. L5-01/02: corrigir formulações em regressões novas, congelar 24 consultas independentes de desenvolvimento e medir expansão sob orçamento agregado; semântica evolui por perda útil.
+5. L5-05/06: contratos de captura/geração e blobs, manifesto concreto de smoke e triagem dos oito comparadores; sem gasto inferido.
+6. L5-03: calibradores, instrumentação e protocolo de recursos v2 com warmup/alternância por lane; decisão de modo preserva isolamento.
+7. S02/L5-04: coletor de dados separado e testes fake; primeira tranche de metadados históricos, sem liberar setup Go.
+
+Trabalho independente pode avançar em paralelo. Critérios detalhados, rejeições e ownership na revisão; seis atividades V1 permanecem condicionais após G2.

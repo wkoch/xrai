@@ -1,20 +1,14 @@
 # L5 — próxima execução concretizada
 
-12/10/2026. Base local e HEAD remoto consultado: `a8f3764fecc8efdc84370ef31da88260e61c73ee`. **Checkpoint histórico do planejamento.** A [revisão L5-C03](relatorios/REVISAO-L5-C03.md) aceita a entrega posterior de fake, quatro descritores, primeiro evento Rust e guard S01; E02/D01/S02 concretizam os próximos passos. Este roteiro detalha interfaces, fronteiras e entregas pequenas do trabalho já autorizado; não cria lote L6, novo ADR, aprovação de campanha ou novos cartões M0/M1.
+13/10/2026. **Ordem corrente na [revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md), §8.** Este arquivo preserva o detalhamento original baseado em `a8f3764`; fake, quatro eventos e TSJS-A/B/C foram entregues posteriormente. Não recomeçar esses itens. Não cria lote L6, novo ADR, autorização de campanha ou cartões M0/M1.
 
-Fontes: [revisão vigente e aceites](relatorios/REVISAO-L5-C02.md), [estado](STATUS-IMPLEMENTACAO.md), [semântica P2](decisoes/SEMANTICA-P2.md) e [caminho até v1.0](ROTEIRO-V1.md). Código/testes/experimentos são responsabilidade do Implementador. O Arquiteto escreve este roteiro; agentes auxiliares fizeram revisão somente leitura.
+Fontes: [revisão vigente e aceites](relatorios/REVISAO-L5-C05.md), [estado](STATUS-IMPLEMENTACAO.md), [semântica P2](decisoes/SEMANTICA-P2.md) e [caminho até v1.0](ROTEIRO-V1.md). Código/testes/experimentos são responsabilidade do Implementador. O Arquiteto escreve este roteiro; agentes auxiliares fizeram revisão somente leitura.
 
 ## 1. Entrega que deve vir primeiro
 
-As primeiras fatias C03-A/C offline, quatro descritores e primeiro evento Rust já foram entregues no recorte da revisão corrente. Não recomeçar esses itens. Próxima implementação: E02, D01, TSJS-A e três eventos de presença, conforme essa revisão; os aceites abaixo continuam onde ainda não cumpridos. S01 acompanha qualquer execução afetada no setup Gitea. Trabalho independente de semântica e recuperação pode continuar.
+Corrigir a identidade do pedido no dispatch D01; em paralelo qualificar o candidato Django e integrar intake de diff/presença ao P3 Rust. A revisão corrente define evidências e ownership para essas frentes, avaliação lexical, recursos, comparadores/smoke e inspeção. As seções seguintes são contratos históricos; seus itens aceitos não voltam a ficar pendentes pela redação original. Fonte e expansão permanecem ligadas ao snapshot; corpus/eventos/provider têm condições distintas.
 
-| Frente | Responsabilidade | Primeira entrega revisável |
-|---|---|---|
-| L5-04/05 | Corpus, sessão de evento, preflight e dispatch real | Contrato de intenção/admissão executável, quatro descritores, primeiro evento e contraprovas |
-| L5-02 | Frontend TS/JS experimental e adaptação P2 | Snapshot lexical limitado, bindings/imports/exports com evidência, sem resolução por regras Rust |
-| S01 em L5-04 | Setup e executores do corpus | Avaliação dos alertas por exposição e decisão de execução; inventários imutáveis separados de scratch |
-
-Se dividir a implementação entre agentes, atribuir arquivos/responsabilidade exclusivos. O dono da integração altera schemas compartilhados e as entradas CLI; combinar essa interface antes de editar. Preservar alterações dos demais. Não executar campanhas, publicar release ou atualizar dependências congeladas por inferência desta divisão.
+Se dividir entre agentes, atribuir módulos exclusivos e um integrador para schemas/entradas compartilhadas. Preservar alterações existentes e não executar campanhas por inferência dessa divisão.
 
 ## 2. C03: gate onde a chamada real acontece
 

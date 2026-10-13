@@ -1,6 +1,6 @@
 # Instruções para a IA implementadora do xrai
 
-Data: 12/10/2026. **Entrada vigente: [revisão L5-C03](docs/relatorios/REVISAO-L5-C03.md), complementada pelas [fatias detalhadas](docs/L5-PROXIMA-EXECUCAO.md).** C02 e os quatro pares Rust/JS/Python/Go foram aceitos no recorte. São oito tarefas elegíveis com os pilotos; D1 permanece 0/32. Quatro eventos preparados e um Rust comprovado; gate fake e bloqueio S01 aceitos nos recortes. Priorizar mapa E02/quotas, compromisso de envio D01, TSJS-A e três eventos de presença. S02 permite avançar inspeção offline mantendo execução Go bloqueada. O [roteiro v1 / ADR028](docs/ROTEIRO-V1.md) define o caminho M0 → confirmação → alpha → estabilização. Leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md). V1: Linux x86_64/macOS arm64. Não recrie entregas nem trate planejamento como código concluído.
+Data: 13/10/2026. **Entrada vigente: [revisão L5-C04/C05](docs/relatorios/REVISAO-L5-C05.md).** Quatro eventos operacionais, TSJS lexical/sessão, recuperação com tokens e recursos nos dois hosts aceitos nos recortes. Oito tarefas elegíveis, D1 global 0/32 e projeção multimódulo 19/20. Priorizar correção do pedido mutável D01, dossiê Django e integração P3 Rust; critérios e frentes independentes na revisão. S02 offline aceito; setup afetado permanece bloqueado. O [roteiro v1](docs/ROTEIRO-V1.md) mantém M0 → confirmação → alpha → estabilização. Leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md); não refaça provas aceitas nem anuncie planejamento como código concluído.
 
 Atualização de 12/10/2026: repositório público e [CI confirmada nos três jobs](docs/relatorios/CI-PUBLICO.md). M0-02.R2/M0-07 concluídas; bloqueio anterior superado. [L3](docs/relatorios/L3.md) avançou contenção, workers, captura e quatro pilotos verticais. [L4](docs/relatorios/L4.md) entregou os recortes descritos acima; L5 organiza o restante dos mesmos cartões. Nenhum gate competitivo foi avaliado.
 
@@ -25,8 +25,9 @@ Leia inicialmente este arquivo, o estado atual, a revisão vigente e os cartões
 |---|---|
 | [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
 | [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e seis atividades complementares, dependências, entregáveis e aceite; IDs são estáveis |
-| [Revisão L5-C03](docs/relatorios/REVISAO-L5-C03.md) | Aceite 1/4 eventos e fake; E02 slots/quotas, D01 envio/cancelamento, S02 inspeção sem liberar setup |
-| [Próxima execução L5](docs/L5-PROXIMA-EXECUCAO.md) | Fatias C03/dispatch e perfil TS/JS; considerar os aceites e ajustes posteriores da revisão L5-C03 |
+| [Revisão L5-C04/C05](docs/relatorios/REVISAO-L5-C05.md) | Aceites recentes, pedido mutável D01, candidato Django, P3 Rust, avaliação e próximos critérios |
+| [Revisão L5-C03](docs/relatorios/REVISAO-L5-C03.md) | Histórico da primeira prova Rust e origem de E02/D01/S02 |
+| [Próxima execução L5](docs/L5-PROXIMA-EXECUCAO.md) | Fatias C03/dispatch e perfil TS/JS; considerar os aceites e ajustes posteriores da revisão L5-C05 |
 | [Revisão L5-C02](docs/relatorios/REVISAO-L5-C02.md) | Aceite anterior dos quatro pares e origem dos requisitos de eventos/C03 e dependências/S01 |
 | [Revisão da continuação L5](docs/relatorios/REVISAO-L5-CONTINUACAO.md) | Aceite anterior R3/pares Rust-JS e decisão C02 já concretizada |
 | [Roteiro v1 / ADR028](docs/ROTEIRO-V1.md) | Avaliação do estágio, caminho crítico e seis atividades de estabilização após G2; não antecipar produção |
@@ -137,4 +138,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Próxima execução: [revisão L5-C03](docs/relatorios/REVISAO-L5-C03.md).** Concretizar E02 preservando hashes congelados e compensando a projeção multimódulo 19/20; D01 define envio/cancelamento antes de transporte real. Avançar TSJS-A, três eventos de presença, recuperação/adapter e S02 offline. Não recomeçar fake, descritores ou prova Rust aceita. Oito tarefas elegíveis/D1 global0/32, 41 estados e seis V1 condicionais preservados. Registrar provas/limites e commit/push após verificar, conforme AGENTS.md.
+**Próxima execução: [revisão L5-C04/C05](docs/relatorios/REVISAO-L5-C05.md), §8.** Corrigir request reservado versus transportado; qualificar Django no slot existente; integrar intake ao P3 Rust e avaliar tarefa completa. Conjunto lexical independente, adoção do factory, ABA/blobs, comparadores/smoke, recursos e inspeção seguem em paralelo conforme contratos. Preservar quatro eventos, 45 labels TSJS e provas nativas aceitas. Oito elegíveis/0 admitidos, 41 estados e seis V1 condicionais permanecem. Registrar evidências/limites e commit/push após verificar, conforme AGENTS.md.
