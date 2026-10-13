@@ -283,3 +283,9 @@ CI regular: closure histórica C04 contém plano documental antigo; novo entry c
 Decisões: bijeção journal/request/ledger; oracle físico Django com requisito público de veto e visibilidade isolada; ponte Store/Tokio controlada e publicação sem evicção em falha; interface pública de recibo de transporte. Condições para evolução do plano v3 definidas sem nova aprovação rotineira. Oito elegíveis/0 admitidos, quatro eventos,19/20 e41estados/gates preservados.
 
 [Evidências](relatorios/logs/revisao-L5-C06/evidencias.json), [pareceres/hashes](relatorios/logs/revisao-L5-C06/agentes.json), [omissão reproduzida](relatorios/logs/revisao-L5-C06/omissao-replay.json) e [checks documentais](relatorios/logs/revisao-L5-C06/documentacao.json). Sem upstream/nativo/provider/rede pela arquitetura. Trabalho concorrente preservado; publicação comunicada após commit/push confirmado.
+
+## C06: P3 nativo aceito e adapter histórico explícito
+
+[L5-C06](relatorios/L5-C06.md): CI P3 38441971210/fbf1e53 aprovada, ZIP/API originais autenticados, 225 respostas e 42 pares completos recompostos; 44 checks de autoridade +47 contraprovas factuais passaram, zero skips. [Revisão independente](relatorios/logs/L5-C06/P3-native/native-proof/independent-review.json). Aceite limita-se ao novo intake/contexto tipado por bytes; Store/IR/P2/tokens/tarefa inteira pendentes.
+
+[Entrada histórica C04](relatorios/L5-HISTORICAL-ADAPTER.md) concluída: cápsula de 30 inputs/7 replays/8 comparadores, 16 testes aprovados, preservando plano vigente e fontes/recibos originais. Integração CI regular corrigida; aprovação do novo run ainda não atribuída. Bijeção D01 v4 em revisão independente, Django v2 físico e ponte Store/Tokio próximos; 8 elegíveis/0 admitidos, 19/20 e41 estados/gates preservados.

@@ -1,0 +1,90 @@
+{
+  "acquisition_commands_files_hashes_and_bytes_checked": true,
+  "acquisition_script_hash_checked": true,
+  "actual_verification": {
+    "accepted_cases": 21,
+    "admitted": false,
+    "binary_sha256": "4cf8b6a0347ecbfa8b674537fb2599fc883536335b467200a18c3a2159002d23",
+    "commands": 182,
+    "complete_rebuild_equal": true,
+    "complete_wire_checked": true,
+    "controlled_tokens": null,
+    "independent_rebuild_commands": 43,
+    "integral_head_recomputed": true,
+    "legacy_planner_used": false,
+    "model_tokens": null,
+    "native_raw_diff_parser": false,
+    "native_typed_consumer_verified": true,
+    "omitted_evidence": 36,
+    "provider_used": false,
+    "python_decoder_negatives": 34,
+    "refusals": 90,
+    "schema": "xrai.eval.p3-diff-native-verification.v1",
+    "source_sha256": {
+      ".github/workflows/l5-p3-diff-native.yml": "396f85066c9707b5c8117f34e394de4768a9a60950cddd7d8bd6b383d615fef1",
+      "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+      "crates/xrai-eval/Cargo.toml": "9f5cf28f5af73102531d849b82e5a0f607e66838a79336bbccc09f43579c5056",
+      "crates/xrai-eval/harness/unified_diff.py": "660c96b4ae442de42791499c42d38c43551ab31190323be98c4a741f2c5dc928",
+      "crates/xrai-eval/src/bin/context-diff-spike.rs": "9d092b55a28be335f8bdcfbdd39dae304f52201f31be1c2fde3061b9c5250a54",
+      "eval/scripts/p3_diff_native_collect.py": "98239843c6c6e1e54e27e888554897d9d29b938ea392a795189746cde0b24b26",
+      "eval/scripts/p3_diff_native_verify.py": "268b4ede2f834ae1cc78c4f26534fb64e1392abf290055d6390f1296ff02694d",
+      "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+      "eval/scripts/test_c06_p3.py": "c863f2b12218f726c6be2ef6dfc979c1ff9fb2273bc20428c03ca422f3bc92ba",
+      "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+    },
+    "typed_mutations": 7
+  },
+  "admitted": false,
+  "all_full_answers_recomputed": true,
+  "artifact_id": 11835013388,
+  "code_commit": "fbf1e535994ee50e6b4cf1ef42ed04eaf565b7ac",
+  "complete_native_result_pairs_equal": 42,
+  "exact_zip_export_files": 22,
+  "factual_test_stderr_sha256": "23287a5d1e6bc7782b62e68fbd3f0556738615744dbf84f5e51ea11e9d376319",
+  "factual_test_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "factual_tests_discovered": 47,
+  "factual_tests_passed": 47,
+  "factual_tests_skipped": 0,
+  "factual_tests_stderr": "test_actual_retained_receipt (test_c06_p3.Tests.test_actual_retained_receipt) ... ok\ntest_all_presence_cases (test_c06_p3.Tests.test_all_presence_cases) ... ok\ntest_binary_pin (test_c06_p3.Tests.test_binary_pin) ... ok\ntest_closure (test_c06_p3.Tests.test_closure) ... ok\ntest_duplicate_json (test_c06_p3.Tests.test_duplicate_json) ... ok\ntest_empty_present_distinct_from_absent (test_c06_p3.Tests.test_empty_present_distinct_from_absent) ... ok\ntest_frozen_bounds (test_c06_p3.Tests.test_frozen_bounds) ... ok\ntest_independent_rebuild_complete (test_c06_p3.Tests.test_independent_rebuild_complete) ... ok\ntest_independent_rebuild_missing (test_c06_p3.Tests.test_independent_rebuild_missing) ... ok\ntest_local_collection_refused (test_c06_p3.Tests.test_local_collection_refused) ... ok\ntest_missing_stdout (test_c06_p3.Tests.test_missing_stdout) ... ok\ntest_original_negatives_preserved (test_c06_p3.Tests.test_original_negatives_preserved) ... ok\ntest_process_pid (test_c06_p3.Tests.test_process_pid) ... ok\ntest_reject_base_revision (test_c06_p3.Tests.test_reject_base_revision) ... ok\ntest_reject_binary_size_float (test_c06_p3.Tests.test_reject_binary_size_float) ... ok\ntest_reject_closed_response_count_float (test_c06_p3.Tests.test_reject_closed_response_count_float) ... ok\ntest_reject_command_count_float (test_c06_p3.Tests.test_reject_command_count_float) ... ok\ntest_reject_context_revision (test_c06_p3.Tests.test_reject_context_revision) ... ok\ntest_reject_controlled_tokens (test_c06_p3.Tests.test_reject_controlled_tokens) ... ok\ntest_reject_decoder_origin (test_c06_p3.Tests.test_reject_decoder_origin) ... ok\ntest_reject_exit_boolean (test_c06_p3.Tests.test_reject_exit_boolean) ... ok\ntest_reject_handle (test_c06_p3.Tests.test_reject_handle) ... ok\ntest_reject_head_revision (test_c06_p3.Tests.test_reject_head_revision) ... ok\ntest_reject_intake_native_sha_promotion (test_c06_p3.Tests.test_reject_intake_native_sha_promotion) ... ok\ntest_reject_intake_sha256 (test_c06_p3.Tests.test_reject_intake_sha256) ... ok\ntest_reject_integral_head (test_c06_p3.Tests.test_reject_integral_head) ... ok\ntest_reject_model_tokens (test_c06_p3.Tests.test_reject_model_tokens) ... ok\ntest_reject_omissions (test_c06_p3.Tests.test_reject_omissions) ... ok\ntest_reject_pid (test_c06_p3.Tests.test_reject_pid) ... ok\ntest_reject_presence (test_c06_p3.Tests.test_reject_presence) ... ok\ntest_reject_producer (test_c06_p3.Tests.test_reject_producer) ... ok\ntest_reject_raw_diff (test_c06_p3.Tests.test_reject_raw_diff) ... ok\ntest_reject_rebuild_source_span (test_c06_p3.Tests.test_reject_rebuild_source_span) ... ok\ntest_reject_request_span_boolean (test_c06_p3.Tests.test_reject_request_span_boolean) ... ok\ntest_reject_request_span_float (test_c06_p3.Tests.test_reject_request_span_float) ... ok\ntest_reject_semantic_promotion (test_c06_p3.Tests.test_reject_semantic_promotion) ... ok\ntest_reject_sequence_boolean (test_c06_p3.Tests.test_reject_sequence_boolean) ... ok\ntest_reject_sequence_float (test_c06_p3.Tests.test_reject_sequence_float) ... ok\ntest_reject_source_bytes (test_c06_p3.Tests.test_reject_source_bytes) ... ok\ntest_reject_source_hash (test_c06_p3.Tests.test_reject_source_hash) ... ok\ntest_reject_source_span (test_c06_p3.Tests.test_reject_source_span) ... ok\ntest_reject_stored_verification_count_float (test_c06_p3.Tests.test_reject_stored_verification_count_float) ... ok\ntest_reject_unread_boolean (test_c06_p3.Tests.test_reject_unread_boolean) ... ok\ntest_reject_wire_bytes (test_c06_p3.Tests.test_reject_wire_bytes) ... ok\ntest_source_pin (test_c06_p3.Tests.test_source_pin) ... ok\ntest_stderr (test_c06_p3.Tests.test_stderr) ... ok\ntest_synthetic_data_receipt_is_not_native_authority (test_c06_p3.Tests.test_synthetic_data_receipt_is_not_native_authority) ... ok\n\n----------------------------------------------------------------------\nRan 47 tests in 1.681s\n\nOK\n",
+  "fresh_reconciliation_equals_stored_complete": true,
+  "job_id": 115450561327,
+  "limits": [
+    "Prospective typed presence/byte context consumer only; legacy Store/IR/P2 not integrated.",
+    "Raw unified-diff parser remains Python; typed spans and integral HEAD independently rechecked by Rust.",
+    "SHA256 intake is carried and checked by Python against same typed serialization bytes used by Rust BLAKE3; no native SHA256 validation claim.",
+    "No controlled/model/provider token measurement; no performance/agent/task success claim.",
+    "Context captures are controlled presence interventions, not natural eligible/admitted dossiers."
+  ],
+  "local_native_analyzer_executed": false,
+  "local_retained_ELF_executed": false,
+  "metadata_sha256": {
+    "artifacts.json": "bec25ac6228e4f438a0dd02164c79cc3e61b41387247cef420bf857508a6cc6d",
+    "jobs.json": "f0bdd7023166161120c80e95713826f5012a5170e8f5ad383434f60913461f25",
+    "run.json": "fa467cf141affe6409f3c71665b0e6173fb2e28af9c8fe7048d4747029816ab3"
+  },
+  "mode": "read_only_original_API_ZIP_exact_export_and_fresh_isolated_owned_Python_verifier",
+  "normalization": [],
+  "original_zip_bytes": 542722,
+  "original_zip_sha256": "ad6552b2ec14e81be81aae5a82d483a132fe69c3663128b5f066e55dbb878b33",
+  "processes": {
+    "rebuild": {
+      "commands": 43,
+      "exit_code": 0,
+      "pid": 4563
+    },
+    "session": {
+      "commands": 182,
+      "exit_code": 0,
+      "pid": 4562
+    }
+  },
+  "provider_calls": 0,
+  "quota_event_credit": false,
+  "reconciler_sha256": "075e3ac71b58fccfbf1580e4e5ef6a5c447ecdaadd3253540c86fa82e172ebc9",
+  "remaining_findings": [],
+  "reviewed_at": "2026-10-13T18:00:13.556377+00:00",
+  "run_id": 38441971210,
+  "schema": "xrai.eval.c06-p3-native-independent-review.v1",
+  "total_commands": 225,
+  "verified": true
+}

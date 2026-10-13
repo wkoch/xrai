@@ -1,0 +1,74 @@
+{
+  "agent_runs": 0,
+  "campaign_scoring_enabled": false,
+  "capsule_bytes": 2223633,
+  "capsule_members": 30,
+  "code_current_hashes_preserved": true,
+  "commands": [
+    {
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/adapters/historical-v1",
+        "-p",
+        "test_historical_adapter.py"
+      ],
+      "exit_code": 0,
+      "python_version": "3.13.13",
+      "skips": 0,
+      "tests": 16
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "eval/adapters/historical-v1/verify.py"
+      ],
+      "exit_code": 0,
+      "python_version": "3.13.13"
+    },
+    {
+      "command": [
+        "python3",
+        "eval/adapters/historical-v1/verify.py"
+      ],
+      "exit_code": 0,
+      "python_version": "3.15.0"
+    },
+    {
+      "command": [
+        "python3",
+        "-I",
+        "-B",
+        "eval/adapters/experimental-v1/verify.py"
+      ],
+      "exit_code": 1,
+      "refusal": "current own source bytes changed since receipt"
+    }
+  ],
+  "current_plan_binding_claimed": false,
+  "historical_plan_only": true,
+  "native_execution": false,
+  "new_qualification": false,
+  "original_result_equal_retained": true,
+  "provider_calls": 0,
+  "schema_version": "xrai.eval.historical-adapter-development-evidence.v1",
+  "snapshot_capture": {
+    "command": [
+      "git",
+      "show",
+      "f8881d4:docs/PLANO-DE-IMPLEMENTACAO.md"
+    ],
+    "matches_original_receipt": true,
+    "sha256": "5bffa29b5223ac305663a6e4cbf28a0325a277d96c44e863ebb50ac639d74bbc"
+  },
+  "source_hashes": {
+    "eval/adapters/historical-v1/original-PLANO-DE-IMPLEMENTACAO.md": "5bffa29b5223ac305663a6e4cbf28a0325a277d96c44e863ebb50ac639d74bbc",
+    "eval/adapters/historical-v1/provenance.json": "30001ef3fe6674d7746677d70e00e49087cdeeac15709b93f9b25417b1a25757",
+    "eval/adapters/historical-v1/test_historical_adapter.py": "58c0bbe783c96cfa2b052c7f3fe70d68d7a7cfa00b8561c2459f0fdf6c92118f",
+    "eval/adapters/historical-v1/verify.py": "56f0d8ef9c1d73595c6c7480888fb8751bc5f8c8fa317b69267f04c32c4763f4"
+  },
+  "upstream_execution": false
+}

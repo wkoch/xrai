@@ -1,0 +1,33 @@
+{
+  "accepted_cases": 21,
+  "admitted": false,
+  "binary_sha256": "4cf8b6a0347ecbfa8b674537fb2599fc883536335b467200a18c3a2159002d23",
+  "commands": 182,
+  "complete_rebuild_equal": true,
+  "complete_wire_checked": true,
+  "controlled_tokens": null,
+  "independent_rebuild_commands": 43,
+  "integral_head_recomputed": true,
+  "legacy_planner_used": false,
+  "model_tokens": null,
+  "native_raw_diff_parser": false,
+  "native_typed_consumer_verified": true,
+  "omitted_evidence": 36,
+  "provider_used": false,
+  "python_decoder_negatives": 34,
+  "refusals": 90,
+  "schema": "xrai.eval.p3-diff-native-verification.v1",
+  "source_sha256": {
+    ".github/workflows/l5-p3-diff-native.yml": "396f85066c9707b5c8117f34e394de4768a9a60950cddd7d8bd6b383d615fef1",
+    "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+    "crates/xrai-eval/Cargo.toml": "9f5cf28f5af73102531d849b82e5a0f607e66838a79336bbccc09f43579c5056",
+    "crates/xrai-eval/harness/unified_diff.py": "660c96b4ae442de42791499c42d38c43551ab31190323be98c4a741f2c5dc928",
+    "crates/xrai-eval/src/bin/context-diff-spike.rs": "9d092b55a28be335f8bdcfbdd39dae304f52201f31be1c2fde3061b9c5250a54",
+    "eval/scripts/p3_diff_native_collect.py": "98239843c6c6e1e54e27e888554897d9d29b938ea392a795189746cde0b24b26",
+    "eval/scripts/p3_diff_native_verify.py": "268b4ede2f834ae1cc78c4f26534fb64e1392abf290055d6390f1296ff02694d",
+    "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+    "eval/scripts/test_c06_p3.py": "c863f2b12218f726c6be2ef6dfc979c1ff9fb2273bc20428c03ca422f3bc92ba",
+    "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+  },
+  "typed_mutations": 7
+}
