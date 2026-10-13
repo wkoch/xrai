@@ -221,3 +221,7 @@ TSJS38329944063/código96b377c aprovado e [ZIP/API recompostos](relatorios/logs/
 ## Baseline lexical e alternativa reais
 
 [L5-LEXICAL](relatorios/L5-LEXICAL.md) entrega API BM25/TF-IDF e expansão de fontes integrais sob limite do JSON em bytes; 27 checks e 64 células recompostas pelo raiz. Quatro famílias em subárvores capturadas; fontes@3 12/12 para ambos, anchors@5 10/12 e11/12 com perdas preservadas. Consulta/labels congelados antes do algoritmo; tokens/provider/agentes reais e revisão independente dos labels pendentes. [Evidências](relatorios/logs/L5-C04/lexical/root-recheck.json). Estados de cartões/gates e 8 elegíveis/0 admitidos inalterados.
+
+## Protocolo experimental do adapter
+
+[L5-ADAPTER](relatorios/L5-ADAPTER.md): 37 checks/sete transcritos fake de recovery/expansão, finais completed/partial/error/timeout/cancelled e receipt virtual tardio. Replays mantêm IDs/bytes/unknowns e nenhuma campanha/provider/agent_run é liberada. Oito comparadores fortes permanecem planejados e recusados pelos requisitos ausentes. Evidências em[adapter](relatorios/logs/L5-C04/adapter/receipt.json), pendências arquiteturais no relatório. CI73df passou Linux/macOS/contratos; lexical1130fbd passou Linux/contratos mas macOS conflito cargo-clippy na instalação, log retido e ambiente temporário novo preparado. 41 estados/gates e 8 elegíveis/0 admitidos preservados.

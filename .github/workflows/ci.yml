@@ -62,6 +62,8 @@ jobs:
           python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_lexical_retrieval.py' -v
           python eval/context/lexical/benchmark.py > "$RUNNER_TEMP/lexical-results.json"
           python -c 'import json,os; from pathlib import Path; assert json.loads(Path(os.environ["RUNNER_TEMP"],"lexical-results.json").read_bytes()) == json.loads(Path("docs/relatorios/logs/L5-C04/lexical/benchmark.json").read_bytes())'
+          python eval/adapters/experimental-v1/verify.py
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_agent_adapter_protocol.py' -v
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}
@@ -81,6 +83,7 @@ jobs:
         shell: bash
     env:
       CARGO_TERM_COLOR: always
+      RUSTUP_HOME: ${{ runner.temp }}/xrai-rustup
       EXPECTED_HOST: ${{ matrix.host }}
       XRAI_BINARY: ${{ matrix.binary }}
       MACOSX_DEPLOYMENT_TARGET: '15.0'
