@@ -83,7 +83,6 @@ jobs:
         shell: bash
     env:
       CARGO_TERM_COLOR: always
-      RUSTUP_HOME: ${{ runner.temp }}/xrai-rustup
       EXPECTED_HOST: ${{ matrix.host }}
       XRAI_BINARY: ${{ matrix.binary }}
       MACOSX_DEPLOYMENT_TARGET: '15.0'
@@ -110,7 +109,10 @@ jobs:
             sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
           fi
       - name: Install pinned toolchain
-        run: rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+        run: |
+          export RUSTUP_HOME="$RUNNER_TEMP/xrai-rustup"
+          printf '%s\n' "RUSTUP_HOME=$RUSTUP_HOME" >> "$GITHUB_ENV"
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
       - name: Record and verify native environment
         run: |
           mkdir -p native-evidence

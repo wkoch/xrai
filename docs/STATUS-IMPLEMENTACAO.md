@@ -225,3 +225,5 @@ TSJS38329944063/código96b377c aprovado e [ZIP/API recompostos](relatorios/logs/
 ## Protocolo experimental do adapter
 
 [L5-ADAPTER](relatorios/L5-ADAPTER.md): 37 checks/sete transcritos fake de recovery/expansão, finais completed/partial/error/timeout/cancelled e receipt virtual tardio. Replays mantêm IDs/bytes/unknowns e nenhuma campanha/provider/agent_run é liberada. Oito comparadores fortes permanecem planejados e recusados pelos requisitos ausentes. Evidências em[adapter](relatorios/logs/L5-C04/adapter/receipt.json), pendências arquiteturais no relatório. CI73df passou Linux/macOS/contratos; lexical1130fbd passou Linux/contratos mas macOS conflito cargo-clippy na instalação, log retido e ambiente temporário novo preparado. 41 estados/gates e 8 elegíveis/0 admitidos preservados.
+
+Correção de ambiente CI:303043b foi publicado, mas run38331893281 recusou YAML antes de criar jobs (runner context em job.env). Export movido para passo de instalação com RUNNER_TEMP/GITHUB_ENV, sem alterar toolchain pinned ou provas; nova revalidação pendente. Histórico e API da falha preservados em relatório lexical.
