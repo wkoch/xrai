@@ -1,0 +1,11 @@
+{
+  "run_id": 38425062525,
+  "code_commit": "f7f940069f5a77e268c2fb9645835fc4b2cc8675",
+  "reconciler_sha256": "7ef61f0c8150a3947b14781d682a512c5fdef5c1332bc8ba3d2e8144d401f565",
+  "acquisition_completed": true,
+  "original_api_zip_export_preserved": true,
+  "reconciled": false,
+  "exception": "ValueError: all actual-profile adversarial checks ran with no skips",
+  "cause": "Substring skipped in successful test name test_rank_preserved_after_oversized_first_chunk_skipped; actual CI 28 tests OK without skips",
+  "correction": "Parse actual unittest status rows and anchored final summary; preserve inputs/driver/oracles/ZIP and reject genuine skip/expected failure/missing rows"
+}

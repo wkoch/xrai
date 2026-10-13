@@ -1,0 +1,62 @@
+{
+  "commands": [
+    {
+      "checks": 45,
+      "command": "/private/tmp/xrai-c05-tools/bin/python -m unittest discover -s eval/scripts -p test_tsjs_semantic_session.py -v",
+      "exit_code": 0,
+      "stderr_sha256": "436a43efcc9e5f3d07f2a0c2a149424a458f11f01d3246521c4126d974bf9563",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "/private/tmp/xrai-c05-tools/bin/python eval/scripts/verify_tsjs_semantic_session.py --design-only",
+      "exit_code": 0,
+      "stdout_sha256": "74488472e880cd13801d4506431ddc3a957e4208736a0208e0570bdcdc1e03e1"
+    },
+    {
+      "command": "rustfmt --edition 2024 --check crates/xrai-eval/src/bin/tsjs-semantic-session.rs",
+      "exit_code": 0,
+      "native_compiled": false
+    },
+    {
+      "command": "python3 -m py_compile eval/scripts/run_tsjs_semantic_session.py eval/scripts/verify_tsjs_semantic_session.py eval/scripts/test_tsjs_semantic_session.py",
+      "exit_code": 0,
+      "owned_python_bytecode_only": true
+    }
+  ],
+  "data_only": true,
+  "limits": [
+    "Native compile/analyzer/live update proof pending disposable CI and root authenticated API/ZIP reconciliation.",
+    "Tests synthesize transport fixture; no synthetic artifact is claimed authentic or eligible.",
+    "Known B Snapshot pinned to previously accepted actual native output; A semantic states pending actual new collector."
+  ],
+  "native_executed": false,
+  "native_session_producer_blake3": "b654d68e15b51a6982488cf51f0522be93b974d5fce23687133cd3a07ec547a3",
+  "new_acquisitions": 0,
+  "protocol_sha256": "97199bfff21899597767b9cda6c2e99fb51bca77fc223f8ea07fbb878262534c",
+  "provider_calls": 0,
+  "python": "3.15.0",
+  "schema": "xrai.eval.tsjs-session-development-evidence.v1",
+  "source_sha256": {
+    ".github/workflows/l5-tsjs-session.yml": "d38985f8d3a535eeb968a94236c37fc31385b4ddf8b0f7c1e4049f86758f3209",
+    "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+    "crates/xrai-eval/parsing-provenance.json": "8d3dadf8c870f44f32516fe2585ba64438959caa1243ba2596457eb581c641ba",
+    "crates/xrai-eval/queries/javascript.scm": "292985c5bbc4188e6a0b70cff1955551c9c021dcf69701a29a853034267f2d4b",
+    "crates/xrai-eval/queries/typescript.scm": "823c3d010f1ca730f0470b2250a789b75ae926a6b2cf4253df97dadd29490ab5",
+    "crates/xrai-eval/src/bin/tsjs-semantic-session.rs": "ebdb4c70e8e90be685340438e786963fff99344ad971435deeb91d6a207307e2",
+    "crates/xrai-eval/src/parsing_spike.rs": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+    "crates/xrai-eval/src/tsjs_semantics.rs": "557f8dcfb373c6430cda21c3e4733327540dd066cf99366b57316246685e5528",
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "docs/relatorios/logs/L5-C04/TSJS/native-proof/export/event/outputs/real-uuid-v4-unsafeStringify.json": "e6f9ff38e7e54b00d98271a3bdb9ee6a82b85faeec7eec3b015e91be860b2717",
+    "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+    "eval/scripts/run_tsjs_semantic_session.py": "a9bbb1e05508b1eb1fadb8f0f77e658ff54d6773077421768f4d751108c5a235",
+    "eval/scripts/test_tsjs_semantic_session.py": "ff42b2cc032800c849ef2bde7752aae2f443a0fe4cd44a36dcdc9e7d0a063de3",
+    "eval/scripts/verify_state_event.py": "46235cd97d9d61ad3eefbf05d10aefc3422282793490f683194497f47c083d12",
+    "eval/scripts/verify_tsjs_semantic_session.py": "536de946930ef0051cead0c024592acf3778624b412b0debd24af0c7623008db",
+    "eval/scripts/verify_tsjs_semantics.py": "9c01083628325a3ca6418b21c6baf7ebc422badc895f55f439021b74d69c6308",
+    "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+  },
+  "test_cases": 45,
+  "test_scope": "synthetic_transport_fixture_and_source_data_only; actual native collector not run locally",
+  "upstream_executed": false,
+  "verified": true
+}

@@ -2,23 +2,13 @@
   "commands": [
     {
       "checks": 45,
-      "command": "/private/tmp/xrai-c05-tools/bin/python -m unittest discover -s eval/scripts -p test_tsjs_semantic_session.py -v",
+      "command": "/private/tmp/xrai-c05-measure/bin/python -m unittest discover -s eval/scripts -p test_tsjs_semantic_session.py -v",
       "exit_code": 0,
-      "stderr_sha256": "436a43efcc9e5f3d07f2a0c2a149424a458f11f01d3246521c4126d974bf9563",
+      "stderr_sha256": "d3e62d41e051daf9edb3249b432c9018b662bdae306abdc889e2240a54a39b4b",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "command": "/private/tmp/xrai-c05-tools/bin/python eval/scripts/verify_tsjs_semantic_session.py --design-only",
-      "exit_code": 0,
-      "stdout_sha256": "74488472e880cd13801d4506431ddc3a957e4208736a0208e0570bdcdc1e03e1"
-    },
-    {
-      "command": "rustfmt --edition 2024 --check crates/xrai-eval/src/bin/tsjs-semantic-session.rs",
-      "exit_code": 0,
-      "native_compiled": false
-    },
-    {
-      "command": "python3 -m py_compile eval/scripts/run_tsjs_semantic_session.py eval/scripts/verify_tsjs_semantic_session.py eval/scripts/test_tsjs_semantic_session.py",
+      "command": "python3 -m py_compile eval/scripts/test_tsjs_semantic_session.py",
       "exit_code": 0,
       "owned_python_bytecode_only": true
     }
@@ -32,9 +22,11 @@
   "native_executed": false,
   "native_session_producer_blake3": "b654d68e15b51a6982488cf51f0522be93b974d5fce23687133cd3a07ec547a3",
   "new_acquisitions": 0,
+  "prospective_adjustment": "Only copied private test fixtures become owner-writable after byte-for-byte verification; original read-only source/bin remain unchanged",
   "protocol_sha256": "97199bfff21899597767b9cda6c2e99fb51bca77fc223f8ea07fbb878262534c",
   "provider_calls": 0,
-  "python": "3.15.0",
+  "python": "3.13.13",
+  "readonly_private_copy_proof_sha256": "07be4679852a37a592547de11c09d5fa18f018ccd81346dd76f836ba72608786",
   "schema": "xrai.eval.tsjs-session-development-evidence.v1",
   "source_sha256": {
     ".github/workflows/l5-tsjs-session.yml": "d38985f8d3a535eeb968a94236c37fc31385b4ddf8b0f7c1e4049f86758f3209",
@@ -49,14 +41,14 @@
     "docs/relatorios/logs/L5-C04/TSJS/native-proof/export/event/outputs/real-uuid-v4-unsafeStringify.json": "e6f9ff38e7e54b00d98271a3bdb9ee6a82b85faeec7eec3b015e91be860b2717",
     "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
     "eval/scripts/run_tsjs_semantic_session.py": "a9bbb1e05508b1eb1fadb8f0f77e658ff54d6773077421768f4d751108c5a235",
-    "eval/scripts/test_tsjs_semantic_session.py": "ff42b2cc032800c849ef2bde7752aae2f443a0fe4cd44a36dcdc9e7d0a063de3",
+    "eval/scripts/test_tsjs_semantic_session.py": "96e243338ddcaea55ead767d41390196b6ab261dd4d35506bb9e3089c22c5e61",
     "eval/scripts/verify_state_event.py": "46235cd97d9d61ad3eefbf05d10aefc3422282793490f683194497f47c083d12",
     "eval/scripts/verify_tsjs_semantic_session.py": "536de946930ef0051cead0c024592acf3778624b412b0debd24af0c7623008db",
     "eval/scripts/verify_tsjs_semantics.py": "9c01083628325a3ca6418b21c6baf7ebc422badc895f55f439021b74d69c6308",
     "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
   },
   "test_cases": 45,
-  "test_scope": "synthetic_transport_fixture_and_source_data_only; actual native collector not run locally",
+  "test_scope": "synthetic_transport_fixture_with_actual_readonly_modes_and_source_data_only; actual native collector not run locally",
   "upstream_executed": false,
   "verified": true
 }

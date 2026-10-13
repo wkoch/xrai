@@ -138,9 +138,24 @@ class SessionTests(unittest.TestCase):
         self.directory = Path(self.temporary.name) / 'event'
         supplied = os.environ.get('XRAI_TSJS_SESSION_OUTPUT')
         if supplied:
-            shutil.copytree(supplied,self.directory)
+            source = Path(supplied)
         else:
-            self.directory.mkdir(); fake_bundle(self.directory)
+            source = Path(self.temporary.name) / 'readonly-fake-source'
+            source.mkdir(); fake_bundle(source)
+            # Exercise the actual collector's modes with the offline transport fixture.
+            for path in (source / 'inputs').iterdir():
+                path.chmod(0o400)
+            (source / 'native-bin/tsjs-semantic-session').chmod(0o500)
+        shutil.copytree(source,self.directory)
+        copies = []
+        for path in source.rglob('*'):
+            if path.is_file():
+                copied = self.directory / path.relative_to(source)
+                self.assertEqual(copied.read_bytes(),path.read_bytes(), 'private copy changed source bytes')
+                copies.append(copied)
+        # Only this private adversarial-test copy becomes writable; never the source.
+        for copied in copies:
+            copied.chmod(copied.stat().st_mode | 0o200)
 
     def tearDown(self):
         self.temporary.cleanup()

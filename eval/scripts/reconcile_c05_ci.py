@@ -79,6 +79,14 @@ def same(a,b):
     return json.dumps(a,sort_keys=True,separators=(',',':'),allow_nan=False) == json.dumps(b,sort_keys=True,separators=(',',':'),allow_nan=False)
 
 
+def successful_tests(raw, count):
+    """Read unittest statuses and its final summary, not words in test names."""
+    text = raw.decode('utf-8')
+    rows = re.findall(r'^test_.* \.\.\. (.*)$',text,re.MULTILINE)
+    return (len(rows) == count and all(status == 'ok' for status in rows) and
+            re.search(rf'\nRan {count} tests in [0-9.]+s\n\nOK\n\Z',text) is not None)
+
+
 def metadata(profile,run,jobs,artifacts,run_id,head,artifact_id,attempt=1):
     p = config(profile)
     need(all(type(n) is int and n > 0 for n in [run_id,artifact_id,attempt]) and type(head) is str and
@@ -213,9 +221,8 @@ def reconcile(directory,profile,run_id,head,artifact_id,attempt=1):
     members = zip_members(original,profile)
     need(export_members(directory / 'export',profile) == members, 'supplied export equals original ZIP exactly')
     need(members['python.txt'] == b'Python 3.13.13\n', 'actual pinned Python CI toolchain')
-    tests = members['receipt-tests.stderr'].decode('utf-8')
-    need(members['receipt-tests.stdout'] == b'' and re.search(rf'Ran {p["tests"]} tests in [0-9.]+s\n\nOK\n',tests) and
-         'skipped' not in tests and 'expected failure' not in tests, 'all actual-profile adversarial checks ran with no skips')
+    need(members['receipt-tests.stdout'] == b'' and successful_tests(members['receipt-tests.stderr'],p['tests']),
+         'all actual-profile adversarial checks ran with no skips')
     if profile == 'tokens':
         preregistered = decode(members['event/preregistered.json'])
         need(same(preregistered['environment'],{'repository':REPOSITORY,'head_sha':head,'run_id':str(run_id),'run_attempt':str(attempt)}),

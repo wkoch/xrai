@@ -78,3 +78,25 @@ após resultado. Até lá, não declarar evento novo comprovado. Também pendent
 Arquiteto: dossiês naturais/eligibilidade e limites além do perfil; nenhuma decisão
 extra foi tomada. Resolver/fingerprints/gramáticas e provas históricas permaneceram
 inalterados; M0-11/M0-09 continuam abertos, oito elegíveis/zero admitidos.
+
+## Ajuste prospectivo de permissões antes do primeiro CI
+
+A revisão de integração somente leitura identificou que `copytree` conserva os
+modos 0400 dos inputs e 0500 do ELF retido. Os testes adversos que escrevem na
+cópia privada falhariam com `PermissionError` em runner sem privilégio; a fixture
+local anterior tinha modo 0644 e não exercitava essa condição.
+
+`SessionTests.setUp` agora copia a fonte para diretório temporário privado, confere
+**todos os arquivos byte a byte com a origem antes de qualquer mutação**, e só então
+acrescenta escrita do proprietário às cópias. Origem/artefato/ELF retido permanecem
+intactos. A fixture fake passou a usar os mesmos modos somente leitura do collector
+antes de passar pela mesma cópia. Nenhum oracle, label, produtor, workflow ou
+contagem foi alterado: **45 testes continuam passando** sob Python 3.13.13.
+
+`readonly-private-copy-proof.json` reproduz os dois testes existentes de substituição
+de input/ELF: modos fonte 0400/0500, cópia 0600/0700; bytes e modos da origem iguais
+antes/depois e mutação somente da cópia. Não são dois novos casos no denominador.
+Logs de desenvolvimento anteriores ficaram preservados em
+`pre-readonly-fix.stderr` e `pre-readonly-fix-development-evidence.json`; evidência
+corrente foi atualizada com hashes do teste ajustado. Execução nativa permanece
+pendente do workflow ainda não disparado no momento deste ajuste.

@@ -1,0 +1,32 @@
+{
+  "data_only": true,
+  "existing_profile_test_count": 45,
+  "new_test_cases_added": 0,
+  "rows": [
+    {
+      "existing_test": "test_input_rebound",
+      "file": "inputs/input-a.json",
+      "native_executed": false,
+      "private_copy_mode": "0o600",
+      "private_copy_mutation_exercised": true,
+      "private_copy_sha256_after_mutation": "a362e1205848480b399af9e2fd90e99ade685d606e7b362734104a0d3007977a",
+      "source_mode": "0o400",
+      "source_mode_unmodified": true,
+      "source_sha256_before_and_after": "093cc2a7fb98c19b7b556dc2f919afbbb74dad96ddfd70e83836a731740f31c0",
+      "source_unmodified": true
+    },
+    {
+      "existing_test": "test_executable_rebound",
+      "file": "native-bin/tsjs-semantic-session",
+      "native_executed": false,
+      "private_copy_mode": "0o700",
+      "private_copy_mutation_exercised": true,
+      "private_copy_sha256_after_mutation": "9130b594594f8b87c0c5358a6f06136ad2c9ba09366ea1ede30aa62cf63118ed",
+      "source_mode": "0o500",
+      "source_mode_unmodified": true,
+      "source_sha256_before_and_after": "a271fd62fff261c293a19e15e7f0c516799241f8ea89c77632e687a4caed49eb",
+      "source_unmodified": true
+    }
+  ],
+  "schema": "xrai.eval.tsjs-readonly-adversarial-copy.v1"
+}

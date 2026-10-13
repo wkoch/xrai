@@ -46,6 +46,17 @@ def structural_members(profile):
 
 
 class MetadataAndZipTests(unittest.TestCase):
+    def test_actual_statuses_not_words_in_test_names(self):
+        good = b'test_chunk_skipped (Suite.test_chunk_skipped) ... ok\ntest_expected_failure_words (Suite.test_expected_failure_words) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nOK\n'
+        self.assertTrue(c.successful_tests(good,2))
+        for bad in [good.replace(b'... ok',b"... skipped 'not supplied'",1),
+                    good.replace(b'... ok',b'... expected failure',1),
+                    good.replace(b'... ok',b'... ERROR',1),
+                    good.replace(b'OK\n',b'OK (skipped=1)\n'),good+b'OK\n',
+                    good.replace(b'test_chunk_skipped (Suite.test_chunk_skipped) ... ok\n',b'')]:
+            with self.subTest(raw=bad):self.assertFalse(c.successful_tests(bad,2))
+        self.assertFalse(c.successful_tests(good,1))
+
     def test_both_exact_metadata_profiles(self):
         for profile in c.PROFILES:
             with self.subTest(profile=profile):
