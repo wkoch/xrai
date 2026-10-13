@@ -263,3 +263,7 @@ CI regular corrigida15547ed/run38425640680 também aprovada emLinux/macOS/contra
 P3 Rust recebe contrato tipado de presença/HEAD; lexical ganha regressões corrigidas e conjunto24 independente de desenvolvimento; recursos v2 fecha instrumentação/calibradores; S02 avança coletor/metadados restritos; comparadores e manifesto smoke podem ser preparados. Não reexecutar entregas aceitas por rotina. Oito elegíveis/0 admitidos, quatro eventos, 9 concluídos/7 em andamento/25 não iniciados; G0/G1/G2 não avaliados. Seis V1 condicionais preservados.
 
 [Achado D01](relatorios/logs/revisao-L5-C05/pedido-divergente.json), [pareceres dos agentes](relatorios/logs/revisao-L5-C05/agentes.json) e [checks documentais](relatorios/logs/revisao-L5-C05/documentacao.json). Publicação comunicada após confirmação de commit/push.
+
+## Continuação após revisão C05: inventário E02
+
+[L5-C06](relatorios/L5-C06.md): inventário E02 novo deriva384pares/12compatíveis/0compensações no recorte fechado dos12casos jácapturados;37testes eCLIrecompostos. Reutilizar oito dossiês jámultimódulo não resolve19/20; presença não prova relação necessária. Novo candidatoDjango escolhido pela revisão está emcuradoria; correção requestD01 antesadoção eP3Rust emimplementação, sem resultado nativo atribuído. Estados/elegibilidade/gates preservados. [Evidências/pendências](relatorios/L5-E02-COMPENSATION.md).

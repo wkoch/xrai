@@ -1,0 +1,225 @@
+{
+  "schema": "xrai.eval.e02.compensation-freeze.v1",
+  "frozen_at": "2026-10-13T17:12:19.799062+00:00",
+  "algorithm_absent_at_freeze": [
+    "eval/scripts/e02_compensation.py",
+    "eval/scripts/test_e02_compensation.py"
+  ],
+  "inputs": [
+    {
+      "path": "eval/qualification/e02-compensation-v1/protocol.json",
+      "sha256": "39062f41ed4954bb89a5a34171069c51c507f7b45eb63052a3073f9082295882",
+      "bytes": 1631
+    },
+    {
+      "path": "eval/qualification/l5-slot-plan-v2.json",
+      "sha256": "3a6bfd9ffcd03c44ccb98fd11cce4f361dd69e650f8bc997480283493391dd67",
+      "bytes": 34893
+    },
+    {
+      "path": "eval/qualification/l5-state-assignment-v2.json",
+      "sha256": "0c81f132255a12493ba17b82d6a4ba85cae4f71d21b8ff4534d1c0c2c04347da",
+      "bytes": 2588
+    },
+    {
+      "path": "eval/qualification/c02-status-matrix.json",
+      "sha256": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+      "bytes": 19098
+    },
+    {
+      "path": "eval/qualification/vertical/candidates.jsonl",
+      "sha256": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8",
+      "bytes": 21293
+    },
+    {
+      "path": "eval/scripts/verify_state_assignment.py",
+      "sha256": "0f21df99ab6acb80b1a2cb09cbd0f99b06d6284d206db1af0c3fb67cb3e1c256",
+      "bytes": 20619
+    },
+    {
+      "path": "docs/relatorios/REVISAO-L5-C03.md",
+      "sha256": "306876e570376ebc81ed0bcf244c841d898994d6fe0cc05466bc9f1b29bd8f95",
+      "bytes": 13834
+    },
+    {
+      "path": "eval/qualification/l5-real/rust/case.json",
+      "sha256": "fd8dfa9824a9b4d2f0c9da359b25bd125278aed056bd76e936adb6c569ade832",
+      "bytes": 6603
+    },
+    {
+      "path": "eval/qualification/state-events/rust/descriptor.json",
+      "sha256": "78cb26abf5d189d866a9fadfcc462a0c8c18d4d35acce05ced85f2be25a85d0a",
+      "bytes": 2992
+    },
+    {
+      "path": "eval/qualification/state-events/rust/a.json",
+      "sha256": "9f13674fa6d7a324df50a91cec8a61024e4d601f5279c16f488c16167834e1a2",
+      "bytes": 917
+    },
+    {
+      "path": "eval/qualification/state-events/rust/b.json",
+      "sha256": "690f2c8cd4182f2cb566602573ef60851e41939f564f8b0ab5de0c7492c38a1f",
+      "bytes": 917
+    },
+    {
+      "path": "eval/qualification/state-events/rust/oracle.json",
+      "sha256": "d73e2f39dfe2ab0cced44791e40fe6bdf5b4cb93f366c30f662b656e0eafe97d",
+      "bytes": 1270
+    },
+    {
+      "path": "eval/qualification/state-events/rust/queries.json",
+      "sha256": "fe7529b27c963c392322fe3cacbcb594e9c1936bf5d83bf8cf1ed18227e8bd6d",
+      "bytes": 313
+    },
+    {
+      "path": "eval/qualification/state-events/rust/context.json",
+      "sha256": "d62287bc61951e26c3c1f51f4698c207fad37f3ffef0d63f143d487c3d78a5c8",
+      "bytes": 21017
+    },
+    {
+      "path": "eval/qualification/state-events/rust/agent/input.md",
+      "sha256": "49fa272e597bdce352f6831242ee06225f8671f039a04acb967dd3974582019a",
+      "bytes": 331
+    },
+    {
+      "path": "eval/qualification/l5-real/js/case.json",
+      "sha256": "4d2af9a5ab50c9a9df950a01385410a8076ca7def1885288047afee2258164da",
+      "bytes": 9894
+    },
+    {
+      "path": "eval/qualification/state-events/js/descriptor.json",
+      "sha256": "d2ed15309db714d776429680c591336e9693c9d55f3f5b94cfa861c6fcced08a",
+      "bytes": 3160
+    },
+    {
+      "path": "eval/qualification/state-events/js/a.json",
+      "sha256": "56e59562dead00bb493aeb8458370eaf2411014eae7c081770d0554e287783e0",
+      "bytes": 6101
+    },
+    {
+      "path": "eval/qualification/state-events/js/b.json",
+      "sha256": "a723856691d7c9b53e726c38a279470baa8dfab1a8ca5e6952671a095c3eddc3",
+      "bytes": 6675
+    },
+    {
+      "path": "eval/qualification/state-events/js/oracle.json",
+      "sha256": "2ac94a4abb6a4d9e4a8b37871c11f15b08d609a0c65178ba0074f899e2369ca8",
+      "bytes": 1414
+    },
+    {
+      "path": "eval/qualification/state-events/js/queries.json",
+      "sha256": "fa1882368b0b5925fa4cadaca03e55a775c2c72568a9a406da7434edf1c533d9",
+      "bytes": 380
+    },
+    {
+      "path": "eval/qualification/state-events/js/context.json",
+      "sha256": "a98385588c93b19c21cc771489962ae92b59f5bc8d90936501650cd641b6274a",
+      "bytes": 8856
+    },
+    {
+      "path": "eval/qualification/state-events/js/agent/input.md",
+      "sha256": "e751dab4b4615f7a42047adfbcd71e0fcf5590617338848fb89f00e358c5f2ed",
+      "bytes": 347
+    },
+    {
+      "path": "eval/qualification/l5-real/python/case.json",
+      "sha256": "8976e5ff5ee366103de7bf67e65ccc23a10b40d869098dfc806eddf8962f154f",
+      "bytes": 5412
+    },
+    {
+      "path": "eval/qualification/state-events/python/descriptor.json",
+      "sha256": "bb7d2d2a765d86b28b9c91724221d1219df931f1c7b44fa55a758a230e25fc42",
+      "bytes": 3164
+    },
+    {
+      "path": "eval/qualification/state-events/python/a.json",
+      "sha256": "9acfbefb2d2d1ee15212aefe247a7f08e4a9fca3d0bf96dcfe7e8e25a3986061",
+      "bytes": 5033
+    },
+    {
+      "path": "eval/qualification/state-events/python/b.json",
+      "sha256": "82c5f98096a6c6ebdcb65d7b3d1288ffe927cde2f5fc7daf05688084a8af23f9",
+      "bytes": 85286
+    },
+    {
+      "path": "eval/qualification/state-events/python/oracle.json",
+      "sha256": "19471d293b4e5d9b3713125248ef4ae491a62a8f722500f5f39f28d03a88beaa",
+      "bytes": 1416
+    },
+    {
+      "path": "eval/qualification/state-events/python/queries.json",
+      "sha256": "4a74cce68496dde8b889ea0bfc661f17cde47ebb8adf043a40dcd5755f66c070",
+      "bytes": 355
+    },
+    {
+      "path": "eval/qualification/state-events/python/context.json",
+      "sha256": "1fc126e324398b1b493b9aa8f1cc790110ed85a34b980b939e5a913a8d404e27",
+      "bytes": 8498
+    },
+    {
+      "path": "eval/qualification/state-events/python/agent/input.md",
+      "sha256": "c17d33d56fe6d7d2de4d4a717528fc74d5ddfc34c13f311f511d397f9bcaca40",
+      "bytes": 350
+    },
+    {
+      "path": "eval/qualification/l5-real/go/case.json",
+      "sha256": "d83f69c80b85af39aa80adfeff5e927e5375757efc6d4e53428abff36e7329d9",
+      "bytes": 4881
+    },
+    {
+      "path": "eval/qualification/state-events/go/descriptor.json",
+      "sha256": "0a85e6222ae5a9a8db3fd08d2dda85b42b58b90667d50aaa766d4db6fff4c8c2",
+      "bytes": 3081
+    },
+    {
+      "path": "eval/qualification/state-events/go/a.json",
+      "sha256": "045500223166da810ee34ad00da4b5e4cbc17c78ec2f8831df56bea8a4d2061a",
+      "bytes": 1370
+    },
+    {
+      "path": "eval/qualification/state-events/go/b.json",
+      "sha256": "93cc2475f71015e7a115ce0e6366b62dbdba2e329d4140d6cdf75f613aabce42",
+      "bytes": 11373
+    },
+    {
+      "path": "eval/qualification/state-events/go/oracle.json",
+      "sha256": "242a4f624b5fd83e1e670719e109da56f03ed7d4a39f0083bc17826c1a7ce7a6",
+      "bytes": 1412
+    },
+    {
+      "path": "eval/qualification/state-events/go/queries.json",
+      "sha256": "536a053e28e900984d76f120534c6dcdb9c7bec2656b0358fe61f4f8f7fa2b70",
+      "bytes": 337
+    },
+    {
+      "path": "eval/qualification/state-events/go/context.json",
+      "sha256": "a83c4559a25b795573ee7cc38f3132b7ffbe747c37ee7e59435bbabec7b38a7e",
+      "bytes": 16835
+    },
+    {
+      "path": "eval/qualification/state-events/go/agent/input.md",
+      "sha256": "268a174285f7f2894678bea7209f8f10d6923b5080bf400e2ff7115601a198fb",
+      "bytes": 393
+    },
+    {
+      "path": "eval/qualification/l5-real/js/oracles/source-relations.json",
+      "sha256": "b2433c431e2d1c5ef963f6cf7796cc449c45fa63dffc91230a0e8d11325d3365",
+      "bytes": 26923
+    },
+    {
+      "path": "eval/qualification/l5-real/go/oracles/source-relations.json",
+      "sha256": "8283a02c17171ac71005c59f8dd8b76add80dd8b4a822dcf7aee6b3432f1b7de",
+      "bytes": 3141
+    },
+    {
+      "path": "eval/qualification/l5-real/rust/oracles/oracle.json",
+      "sha256": "1329a98ace6de8ecc56db3acd4a2816f5af2d73ca1d6fbc4d35b46e1dd53fbfc",
+      "bytes": 1283
+    },
+    {
+      "path": "eval/qualification/l5-real/python/oracles/probe.py",
+      "sha256": "edbbdb303732bb799395caed5e094750fd0daffff00e39a9effbec5ef1544837",
+      "bytes": 6564
+    }
+  ]
+}

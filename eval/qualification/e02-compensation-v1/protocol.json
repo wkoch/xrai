@@ -1,0 +1,47 @@
+{
+  "schema": "xrai.eval.e02.compensation-scope.v1",
+  "scope": "eight previously qualified dossiers and four frozen state tasks only",
+  "candidate_ids": [
+    "Q1-Rust-8371",
+    "Q1-TSJS-62656",
+    "Q1-Python-22051",
+    "Q1-Go-19866",
+    "L5-Rust-RA-23422",
+    "L5-JS-REACT-22239",
+    "L5-SLOT-PY-contract_change-2",
+    "L5-GO-GITEA-URL-QUERY-CREDENTIALS"
+  ],
+  "state_folders": [
+    "rust",
+    "js",
+    "python",
+    "go"
+  ],
+  "constraints": {
+    "required_multi_module": 20,
+    "maximum_primary_tasks_per_repository": 4,
+    "new_acquisition": false,
+    "execute_upstream": false,
+    "alter_legacy": false,
+    "admission_allowed": false
+  },
+  "literal_witnesses": [
+    {
+      "folder": "js",
+      "from_path": "packages/react/src/ReactHooks.js",
+      "from_needle": "import ReactCurrentDispatcher from './ReactCurrentDispatcher';",
+      "to_path": "packages/react/src/ReactCurrentDispatcher.js",
+      "to_needle": "export default ReactCurrentDispatcher;",
+      "meaning": "captured default-import/export text; presence oracle does not require resolving this relation"
+    },
+    {
+      "folder": "python",
+      "from_path": "sklearn/metrics/__init__.py",
+      "from_needle": "from ._ranking import (",
+      "to_path": "sklearn/metrics/_ranking.py",
+      "to_needle": "def roc_auc_score(",
+      "meaning": "captured relative-import and exported implementation text; presence oracle does not require resolving this relation"
+    }
+  ],
+  "negative_scope": "No assertion that the eight entire repositories contain no other natural task. New task/oracle/independent review selection is required."
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "xrai.eval.e02.compensation-local-evidence.v1",
+  "data_only": true,
+  "freeze_sha256": "f39ac4d5ba3089089aa79cdb94e0dac297aa15afeee069f5ec18dea394bd3996",
+  "candidate_count": 12,
+  "candidate_slot_checks": 384,
+  "compatible_candidate_slot_pairs": 12,
+  "accepted_compensations": 0,
+  "projection": {
+    "multi_module": 19,
+    "complex": 16,
+    "public_historical": 16,
+    "by_repository": {
+      "django/django": 4,
+      "facebook/react": 4,
+      "go-gitea/gitea": 4,
+      "microsoft/TypeScript": 4,
+      "prometheus/prometheus": 4,
+      "rust-lang/rust-analyzer": 4,
+      "scikit-learn/scikit-learn": 4,
+      "tokio-rs/tokio": 4
+    }
+  },
+  "missing_multi_module": 1,
+  "historical_inputs_unchanged": true,
+  "new_eligible_tasks": 0,
+  "admitted_tasks": 0,
+  "tests": 37,
+  "skips": 0,
+  "source_bindings": [
+    {
+      "path": "eval/scripts/e02_compensation.py",
+      "sha256": "71be870ab78406a8a65ae8921e75968890ad03ce19d2dd1dc394532fbd75a659"
+    },
+    {
+      "path": "eval/scripts/test_e02_compensation.py",
+      "sha256": "c23d07ae41432db8ce38212a2eabc73d39d68c7549b24986cc4e97b36137373b"
+    },
+    {
+      "path": "eval/qualification/e02-compensation-v1/inventory.json",
+      "sha256": "1278e85e4bef50f01c32c329469d5ddf6d4a7d6b3fa7b9fe9a4b119a8fc54d36"
+    },
+    {
+      "path": "eval/qualification/e02-compensation-v1/protocol.json",
+      "sha256": "39062f41ed4954bb89a5a34171069c51c507f7b45eb63052a3073f9082295882"
+    },
+    {
+      "path": "eval/qualification/e02-compensation-v1/freeze.json",
+      "sha256": "f39ac4d5ba3089089aa79cdb94e0dac297aa15afeee069f5ec18dea394bd3996"
+    }
+  ],
+  "initial_tests": 36,
+  "final_review": "Explicit JavaScript/TypeScript language-target compatibility added; original inputs/labels unchanged and initial logs retained."
+}
