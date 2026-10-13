@@ -1,0 +1,53 @@
+name: L5 validated diff native context
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  p3-diff-context:
+    name: C06 validated diff native context
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Install pinned verification tooling
+        run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Verify frozen native diff context design
+        run: |
+          mkdir -p p3-diff-evidence
+          python --version > p3-diff-evidence/python.txt
+          python eval/scripts/p3_diff_native_verify.py --design-only > p3-diff-evidence/design.json
+      - name: Build owned native diff context
+        run: |
+          export RUSTUP_HOME="$RUNNER_TEMP/xrai-rustup"
+          printf '%s\n' "RUSTUP_HOME=$RUSTUP_HOME" >> "$GITHUB_ENV"
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+          cargo fmt --all -- --check
+          cargo clippy --locked -p xrai-eval --bin context-diff-spike -- -D warnings
+          cargo build --release --locked -p xrai-eval --bin context-diff-spike
+          rustc --version --verbose > p3-diff-evidence/rustc.txt
+          cargo --version > p3-diff-evidence/cargo.txt
+      - name: Prove frozen native diff context and expansion
+        run: python eval/scripts/p3_diff_native_collect.py --binary target/release/context-diff-spike --output p3-diff-evidence/event > p3-diff-evidence/collector.json
+      - name: Recompute complete native diff context evidence
+        run: python eval/scripts/p3_diff_native_verify.py --output p3-diff-evidence/event > p3-diff-evidence/verification.json
+      - name: Reject adversarial native diff context substitutions
+        env:
+          XRAI_C06_P3_OUTPUT: p3-diff-evidence/event
+        run: python -m unittest discover -s eval/scripts -p test_c06_p3.py -v > p3-diff-evidence/receipt-tests.stdout 2> p3-diff-evidence/receipt-tests.stderr
+      - name: Preserve exact native diff context evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c06-validated-diff-native-context
+          path: p3-diff-evidence
+          if-no-files-found: error
+          retention-days: 90

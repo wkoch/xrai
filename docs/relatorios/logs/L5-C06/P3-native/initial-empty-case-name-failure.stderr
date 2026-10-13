@@ -1,0 +1,45 @@
+test_actual_retained_receipt (test_c06_p3.Tests.test_actual_retained_receipt) ... skipped 'actual native receipt not provided; synthetic receipt never establishes provenance'
+test_all_presence_cases (test_c06_p3.Tests.test_all_presence_cases) ... ok
+test_binary_pin (test_c06_p3.Tests.test_binary_pin) ... ok
+test_closure (test_c06_p3.Tests.test_closure) ... ok
+test_duplicate_json (test_c06_p3.Tests.test_duplicate_json) ... ok
+test_empty_present_distinct_from_absent (test_c06_p3.Tests.test_empty_present_distinct_from_absent) ... ERROR
+test_frozen_bounds (test_c06_p3.Tests.test_frozen_bounds) ... ok
+test_local_collection_refused (test_c06_p3.Tests.test_local_collection_refused) ... ok
+test_missing_stdout (test_c06_p3.Tests.test_missing_stdout) ... ok
+test_original_negatives_preserved (test_c06_p3.Tests.test_original_negatives_preserved) ... ok
+test_process_pid (test_c06_p3.Tests.test_process_pid) ... ok
+test_reject_base_revision (test_c06_p3.Tests.test_reject_base_revision) ... ok
+test_reject_context_revision (test_c06_p3.Tests.test_reject_context_revision) ... ok
+test_reject_controlled_tokens (test_c06_p3.Tests.test_reject_controlled_tokens) ... ok
+test_reject_decoder_origin (test_c06_p3.Tests.test_reject_decoder_origin) ... ok
+test_reject_handle (test_c06_p3.Tests.test_reject_handle) ... ok
+test_reject_head_revision (test_c06_p3.Tests.test_reject_head_revision) ... ok
+test_reject_integral_head (test_c06_p3.Tests.test_reject_integral_head) ... ok
+test_reject_model_tokens (test_c06_p3.Tests.test_reject_model_tokens) ... ok
+test_reject_omissions (test_c06_p3.Tests.test_reject_omissions) ... ok
+test_reject_pid (test_c06_p3.Tests.test_reject_pid) ... ok
+test_reject_presence (test_c06_p3.Tests.test_reject_presence) ... ok
+test_reject_producer (test_c06_p3.Tests.test_reject_producer) ... ok
+test_reject_raw_diff (test_c06_p3.Tests.test_reject_raw_diff) ... ok
+test_reject_semantic_promotion (test_c06_p3.Tests.test_reject_semantic_promotion) ... ok
+test_reject_source_bytes (test_c06_p3.Tests.test_reject_source_bytes) ... ok
+test_reject_source_hash (test_c06_p3.Tests.test_reject_source_hash) ... ok
+test_reject_source_span (test_c06_p3.Tests.test_reject_source_span) ... ok
+test_reject_wire_bytes (test_c06_p3.Tests.test_reject_wire_bytes) ... ok
+test_source_pin (test_c06_p3.Tests.test_source_pin) ... ok
+test_stderr (test_c06_p3.Tests.test_stderr) ... ok
+test_synthetic_data_receipt_is_not_native_authority (test_c06_p3.Tests.test_synthetic_data_receipt_is_not_native_authority) ... ok
+
+======================================================================
+ERROR: test_empty_present_distinct_from_absent (test_c06_p3.Tests.test_empty_present_distinct_from_absent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/test_c06_p3.py", line 63, in test_empty_present_distinct_from_absent
+    c=next(v.prepare(i,1) for name,i in cases if name=='create-empty-file')
+StopIteration
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.907s
+
+FAILED (errors=1, skipped=1)

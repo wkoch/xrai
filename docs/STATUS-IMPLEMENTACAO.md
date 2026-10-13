@@ -267,3 +267,5 @@ P3 Rust recebe contrato tipado de presença/HEAD; lexical ganha regressões corr
 ## Continuação após revisão C05: inventário E02
 
 [L5-C06](relatorios/L5-C06.md): inventário E02 novo deriva384pares/12compatíveis/0compensações no recorte fechado dos12casos jácapturados;37testes eCLIrecompostos. Reutilizar oito dossiês jámultimódulo não resolve19/20; presença não prova relação necessária. Novo candidatoDjango escolhido pela revisão está emcuradoria; correção requestD01 antesadoção eP3Rust emimplementação, sem resultado nativo atribuído. Estados/elegibilidade/gates preservados. [Evidências/pendências](relatorios/L5-E02-COMPENSATION.md).
+
+P3 prospectivoC06 preparado:typed presença/HEAD/byte-context/expansão e225comandos(182live+43rebuild) congelados;47contraprovas locais (46PASS/1factualskip) e44metadataZIP (43PASS/1authskip). [Relatório](relatorios/L5-P3-NATIVE.md). Verificação nativa dedicada ainda pendente; Store/IR/P2/tarefa inteira/tokens não fechados. CI documental integra E02/P3design+contraprovas; nenhum gate/crédito adicional.

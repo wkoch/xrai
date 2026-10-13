@@ -77,6 +77,11 @@ jobs:
           python eval/scripts/verify_tsjs_semantic_session.py --design-only
           python -m unittest discover -s eval/scripts -p 'test_tsjs_semantic_session.py' -v
           python -m unittest discover -s eval/scripts -p 'test_c05_ci.py' -v
+          python eval/scripts/e02_compensation.py --inventory eval/qualification/e02-compensation-v1/inventory.json
+          python -m unittest discover -s eval/scripts -p 'test_e02_compensation.py' -v
+          python eval/scripts/p3_diff_native_verify.py --design-only
+          python -m unittest discover -s eval/scripts -p 'test_c06_p3.py' -v
+          python -m unittest discover -s eval/scripts -p 'test_c06_p3_ci.py' -v
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}
