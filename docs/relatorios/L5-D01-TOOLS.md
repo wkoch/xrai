@@ -38,3 +38,5 @@ Verificação local: **33 testes próprios PASS**, **11 fixtures/replays PASS** 
 Estado: consumer público composto e contraprovas estruturais concluídos; submissão/aceite CI e publicação registrados pelo agente raiz. Gates e elegibilidade global inalterados.
 
 Recheck da raiz em Python3.13.13:33 testes e11 fixtures read-only passaram; integrado ao job Documentary contracts. [Checks completos](logs/L5-C05/root-preflight/checks.json). Publicação e conclusão CI regular registradas no relatório C05 corrente.
+
+CI regular f7f940069f5a77e268c2fb9645835fc4b2cc8675/run38424961729 aprovada nos três checks Linux/macOS/contratos; job documental executou33 checks e11 replays read-only, preservando sete fixtures históricas. [API original](logs/L5-C05/root-preflight/published-code-ci-run.json). Nenhum receipt fake foi convertido em provider/campanha.

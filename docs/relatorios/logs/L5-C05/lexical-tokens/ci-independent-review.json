@@ -1,0 +1,70 @@
+{
+  "CI_actual_measurement_tests_passed": 28,
+  "CI_actual_measurement_tests_skipped": 0,
+  "CI_environment": {
+    "head_sha": "f7f940069f5a77e268c2fb9645835fc4b2cc8675",
+    "repository": "wkoch/xrai",
+    "run_attempt": "1",
+    "run_id": "38425062525"
+  },
+  "CI_vs_local_byte_identical_event_files": 353,
+  "CI_vs_local_curves_equal": true,
+  "CI_vs_local_event_byte_delta": 54,
+  "CI_vs_local_only_differing_file": "preregistered.json",
+  "CI_vs_local_only_differing_metadata_key": "environment",
+  "agent_success": null,
+  "artifact_id": 11828242801,
+  "artifact_zip_bytes": 6316734,
+  "artifact_zip_sha256": "9173511b2884415b93c5cd80ffc8a342861cbb531ebdaffef4a546c4517b42fc",
+  "baseline_controlled_token_range": [
+    267,
+    3325
+  ],
+  "baselines": 32,
+  "code_commit": "f7f940069f5a77e268c2fb9645835fc4b2cc8675",
+  "controlled_profile": "l4:d9430ef6fbbc087da841dc7433b4d31857e33f48ea1ebd8c5556db6af3fe76c7",
+  "data_only": true,
+  "event_bytes": 20492816,
+  "event_files": 354,
+  "global_admission": false,
+  "graph_coverage": "best_effort metadata_match/no_recorded_issue for relied driver/verifier/report paths",
+  "graph_coverage_generation": "2026-10-13T15:49:09Z",
+  "limits": [
+    "Controlled whole-response wire only; actual provider schema/orientation/prompts/usage/billing unknown.",
+    "Original top5 and65536-byte ceiling retained;32k does not expand candidates or bypass Python expansion byte refusals.",
+    "GO-02/RS-03 label caveats retained; named-symbol positives and repeated artificial negatives are not holdout/semantic claims.",
+    "GO-03 BM25 expansion remains nonmonotone because delivered handles/files differ with budget and expansion is all-or-none."
+  ],
+  "local_environment": {
+    "head_sha": null,
+    "repository": null,
+    "run_attempt": null,
+    "run_id": null
+  },
+  "matrix_cells": 320,
+  "original_zip_export_exact_files": 361,
+  "own_pinned_verifier_recomputation_equals_reconciled_collector_and_verification": true,
+  "project_native_or_upstream_executed_by_reviewer": false,
+  "provider_charge": null,
+  "provider_tokens": null,
+  "ranking_redesigned": false,
+  "reviewed_at_utc": "2026-10-13T15:57:18.780335+00:00",
+  "reviewed_file_sha256": {
+    "docs/relatorios/logs/L5-C05/lexical-tokens/ci-proof/artifacts.json": "288d42b6602fffbd04eec1fc1772ffbfc57e08d4e068197f4b750f7f9e4e7490",
+    "docs/relatorios/logs/L5-C05/lexical-tokens/ci-proof/jobs.json": "bb871084247e62f30e95b7286e6293c87b91a49b3a61ab879b450a55f1428f37",
+    "docs/relatorios/logs/L5-C05/lexical-tokens/ci-proof/original.zip": "9173511b2884415b93c5cd80ffc8a342861cbb531ebdaffef4a546c4517b42fc",
+    "docs/relatorios/logs/L5-C05/lexical-tokens/ci-proof/reconciliation.json": "62365c691ec1be935143c670cddbc55c39edfa29c74041bbfb8cffd910ae2fa2",
+    "docs/relatorios/logs/L5-C05/lexical-tokens/ci-proof/run.json": "d8cc2da26fe45e844a25eaa1c69ddc3d760267c0b3bf74ae8d5e4f55b0438379",
+    "docs/relatorios/logs/L5-C05/lexical-tokens/local-controlled-verification.json": "73159f42a0a60d6a78174861467d96859201815e6780ec69993aacbd5ee954ec",
+    "eval/context/lexical-token-v1/driver.py": "6c352a2e4cd6de655b69c54eed7ac84799ce2122c7039d010c32962ed23438cb",
+    "eval/context/lexical-token-v1/verifier.py": "dd6e75ce24db16f041b130b4b6bf247118ffd17eb3f4c8cf87fcc2b5e61ec77c"
+  },
+  "reviewer": "e02_allocation",
+  "run_attempt": 1,
+  "run_id": 38425062525,
+  "schema": "xrai.eval.c05.lexical-token.independent-ci-review.v1",
+  "scope": "Independent read-only review of authenticated caller acquisition, raw ZIP/export bytes and actual own L4 verifier replay; not a cryptographic signature of arbitrary local API JSON or an independent tokenizer implementation.",
+  "search_and_expansion_deliveries": 640,
+  "semantic_precision": null,
+  "verified": true
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "xrai.eval.tsjs-semantic-session-receipt.v1",
+  "source_sha256": {
+    "crates/xrai-eval/src/bin/tsjs-semantic-session.rs": "ebdb4c70e8e90be685340438e786963fff99344ad971435deeb91d6a207307e2",
+    "crates/xrai-eval/src/tsjs_semantics.rs": "557f8dcfb373c6430cda21c3e4733327540dd066cf99366b57316246685e5528",
+    "crates/xrai-eval/src/parsing_spike.rs": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "crates/xrai-eval/queries/javascript.scm": "292985c5bbc4188e6a0b70cff1955551c9c021dcf69701a29a853034267f2d4b",
+    "crates/xrai-eval/queries/typescript.scm": "823c3d010f1ca730f0470b2250a789b75ae926a6b2cf4253df97dadd29490ab5",
+    "crates/xrai-eval/parsing-provenance.json": "8d3dadf8c870f44f32516fe2585ba64438959caa1243ba2596457eb581c641ba",
+    "eval/scripts/run_tsjs_semantic_session.py": "a9bbb1e05508b1eb1fadb8f0f77e658ff54d6773077421768f4d751108c5a235",
+    "eval/scripts/verify_tsjs_semantic_session.py": "536de946930ef0051cead0c024592acf3778624b412b0debd24af0c7623008db",
+    "eval/scripts/test_tsjs_semantic_session.py": "96e243338ddcaea55ead767d41390196b6ab261dd4d35506bb9e3089c22c5e61",
+    "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+    "eval/scripts/verify_state_event.py": "46235cd97d9d61ad3eefbf05d10aefc3422282793490f683194497f47c083d12",
+    "eval/scripts/verify_tsjs_semantics.py": "9c01083628325a3ca6418b21c6baf7ebc422badc895f55f439021b74d69c6308",
+    "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+    "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0",
+    "docs/relatorios/logs/L5-C04/TSJS/native-proof/export/event/outputs/real-uuid-v4-unsafeStringify.json": "e6f9ff38e7e54b00d98271a3bdb9ee6a82b85faeec7eec3b015e91be860b2717",
+    ".github/workflows/l5-tsjs-session.yml": "d38985f8d3a535eeb968a94236c37fc31385b4ddf8b0f7c1e4049f86758f3209"
+  },
+  "input_sha256": {
+    "protocol.json": "97199bfff21899597767b9cda6c2e99fb51bca77fc223f8ea07fbb878262534c",
+    "freeze-before-session.json": "811bbcaf910cf03aa4ec906e3c10515c16ee3ebb38be5b4b57f66926b870a381",
+    "input-a.json": "093cc2a7fb98c19b7b556dc2f919afbbb74dad96ddfd70e83836a731740f31c0",
+    "input-b.json": "a362e1205848480b399af9e2fd90e99ade685d606e7b362734104a0d3007977a",
+    "input-invalid.json": "4ccdc8bae7b1e0b857e22788a93281b7414c75ec8d77e25728d53131b637ab55"
+  },
+  "binary": {
+    "path": "native-bin/tsjs-semantic-session",
+    "sha256": "363910e42ee128f66e266dbdef303fd8ee2391758d800aeeaae95cef7a4f1660",
+    "bytes": 7032192
+  },
+  "environment": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "github_sha": "15547eddb4e23bce6d3668b2ef0329a77b1421ec",
+    "github_run_id": "38425676814"
+  },
+  "scope": "captured-relative-exact-v1",
+  "strategy": "conservative_full_semantic_rebuild",
+  "normalization": [],
+  "admitted": false,
+  "competitive_runs_allowed": false,
+  "quota_event_credit": false,
+  "new_eligible_dossier": false,
+  "native_process_helper_frame_bytes": 4194304
+}

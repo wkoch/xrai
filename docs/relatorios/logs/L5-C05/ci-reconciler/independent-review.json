@@ -1,0 +1,174 @@
+{
+  "lexical_tokens": {
+    "acquisition_helper_review": "Read source only; gh API/download and data-only safe export/reconcile, no retained binary execution or upstream command",
+    "acquisition_source_and_command_hashes_equal": true,
+    "acquisition_stderr_empty": true,
+    "artifact_id": 11828242801,
+    "code_commit": "f7f940069f5a77e268c2fb9645835fc4b2cc8675",
+    "exact_original_members": 361,
+    "findings": [],
+    "fresh_isolated_actual_L4_recomputed": true,
+    "job_id": 115392171869,
+    "limits": [
+      "Root authenticated acquisition and GitHub API/ZIP are contextual evidence; local JSON is not a signature.",
+      "Whole controlled response-wire tokens and own request projection are measurements; paid provider usage/cost and agent success remain unknown.",
+      "No gate, task eligibility or quota admission is created by this recheck."
+    ],
+    "measurement": {
+      "actual_python": "3.13.13",
+      "agent_success": null,
+      "baseline_tokens_max": 3325,
+      "baseline_tokens_min": 267,
+      "baselines": 32,
+      "curves": 20,
+      "deliveries": 640,
+      "event_files": 354,
+      "matrix_cells": 320,
+      "profile": "l4:d9430ef6fbbc087da841dc7433b4d31857e33f48ea1ebd8c5556db6af3fe76c7",
+      "provider_charge": null,
+      "provider_tokens": null,
+      "semantic_precision": null
+    },
+    "metadata_sha256": {
+      "artifacts.json": "288d42b6602fffbd04eec1fc1772ffbfc57e08d4e068197f4b750f7f9e4e7490",
+      "jobs.json": "bb871084247e62f30e95b7286e6293c87b91a49b3a61ab879b450a55f1428f37",
+      "run.json": "d8cc2da26fe45e844a25eaa1c69ddc3d760267c0b3bf74ae8d5e4f55b0438379"
+    },
+    "original_inputs_changed": false,
+    "original_zip_bytes": 6316734,
+    "original_zip_sha256": "9173511b2884415b93c5cd80ffc8a342861cbb531ebdaffef4a546c4517b42fc",
+    "reconciliation_sha256": "62365c691ec1be935143c670cddbc55c39edfa29c74041bbfb8cffd910ae2fa2",
+    "retained_ELF_executed": false,
+    "reviewed_checker_sha256": "0ae9ce1add0053f49a0ec03c369dad4db38a0ee7d59d3b5c68249319fc7f2109",
+    "reviewer_network_calls": 0,
+    "run_attempt": 1,
+    "run_id": 38425062525,
+    "source_edits": 0,
+    "stored_reconciliation_complete_equal": true,
+    "supplied_export_byte_exact": true,
+    "test_summary": {
+      "checks": 28,
+      "genuine_skip_status_still_rejected": true,
+      "name_contains_skipped_but_status_ok": true,
+      "skips": 0,
+      "statuses_all_ok": true
+    },
+    "upstream_executed": false,
+    "verified": true
+  },
+  "reviewer": "p3_diff; data-only second pass over authenticated root acquisition; not an independent blind task-label adjudicator",
+  "schema": "xrai.eval.c05-independent-review.v1",
+  "tsjs_session": {
+    "acquisition_source_and_command_hashes_equal": true,
+    "acquisition_stderr_empty": true,
+    "actual_native_binary_sha256": "363910e42ee128f66e266dbdef303fd8ee2391758d800aeeaae95cef7a4f1660",
+    "after_snapshot": "7b529c7285869dcd6b614c61b68667e2b4f2e3eb0a9ea3c30fa7d96f5db2b5d8",
+    "analysis_producer_fingerprint": "d350251b50bb6f51da220af292851c3c82fb9a8d4557a632964250da4a58b3fb",
+    "artifact_id": 11827954072,
+    "before_snapshot": "f83b60dd0abee6867fcf183e7a9a83213dad05f7182bb1786fb4eedfc17afd56",
+    "checks": 45,
+    "checks_skipped": 0,
+    "code_commit": "15547eddb4e23bce6d3668b2ef0329a77b1421ec",
+    "exact_original_members": 24,
+    "findings": [],
+    "fresh_final_counters": {
+      "build_attempts": 1,
+      "failed_updates": 0,
+      "queries": 3,
+      "requests": 6,
+      "successful_builds": 1
+    },
+    "fresh_isolated_data_only_recomputed": true,
+    "fresh_operations": 6,
+    "full_A_after_each_failure_equal": true,
+    "full_B_live_and_fresh_and_prior_native_equal": true,
+    "independent_PID_and_index_fresh": true,
+    "job_id": 115394328476,
+    "limits": [
+      "Owned native analyzer ran only in disposable authenticated CI; reviewer only Python data checks.",
+      "Controlled source availability intervention over prior real uuid capture, not an upstream historical bug or natural new task.",
+      "Lexical references may resolve; runtime callable targets remain unknown.",
+      "No D1 quota/dossier/admission, campaign or gate closure credit."
+    ],
+    "live_PID": 4673,
+    "live_final_counters": {
+      "build_attempts": 3,
+      "failed_updates": 2,
+      "queries": 6,
+      "requests": 15,
+      "successful_builds": 2
+    },
+    "live_operations": 15,
+    "metadata_sha256": {
+      "artifacts.json": "9d451fcccfc941113bd0ea3188f5334a3d617fa8a4d18e785b63c8fc15780cee",
+      "jobs.json": "f9419de45ceb563cf3edd964cef06b682d30e6f162ab41b53fc422360f30ef62",
+      "run.json": "37cd3acc7ff6936f656cb51ffc448b557e94118db13d9777a7ed9e52c12e622c"
+    },
+    "native_grammar_components": {
+      "javascript": "0bd2121fc166c36341145fe3cfa3069d2754a0ed94d37de256ea5d3765c76528"
+    },
+    "normalization": [],
+    "original_inputs_changed": false,
+    "original_zip_bytes": 1218796,
+    "original_zip_sha256": "ef2495dcdb27916c6e662eeea7e9d6d784be76d1447ce8abf2a4efcc741a1328",
+    "queries": [
+      {
+        "callable_before_and_after": "unknown",
+        "complete_reference_live_and_fresh_equal": true,
+        "name": "unsafeStringify",
+        "offset": 645,
+        "resolution_evidence_roles_after": [
+          "reference",
+          "import",
+          "export",
+          "declaration"
+        ],
+        "state_after": "resolved",
+        "state_before": "unknown",
+        "target_after": "src/stringify.js:unsafeStringify",
+        "target_before": null
+      },
+      {
+        "callable_before_and_after": "unknown",
+        "complete_reference_live_and_fresh_equal": true,
+        "name": "rnds",
+        "offset": 661,
+        "resolution_evidence_roles_after": [
+          "reference",
+          "declaration"
+        ],
+        "state_after": "resolved",
+        "state_before": "resolved",
+        "target_after": "src/v4.js:rnds",
+        "target_before": "src/v4.js:rnds"
+      },
+      {
+        "callable_before_and_after": "unknown",
+        "complete_reference_live_and_fresh_equal": true,
+        "name": "native",
+        "offset": 155,
+        "resolution_evidence_roles_after": [
+          "reference"
+        ],
+        "state_after": "unknown",
+        "state_before": "unknown",
+        "target_after": null,
+        "target_before": null
+      }
+    ],
+    "rebuild_PID": 4674,
+    "reconciliation_sha256": "fe8c137be2b2058ba7b4b0fe4a714af667ea045802d6d2d5718f7efaefa37f68",
+    "retained_ELF_executed_by_reviewer": false,
+    "reviewed_checker_sha256": "0ae9ce1add0053f49a0ec03c369dad4db38a0ee7d59d3b5c68249319fc7f2109",
+    "reviewer_network_calls": 0,
+    "run_attempt": 1,
+    "run_id": 38425676814,
+    "same_PID_and_index_live": true,
+    "session_producer_fingerprint": "b654d68e15b51a6982488cf51f0522be93b974d5fce23687133cd3a07ec547a3",
+    "source_edits": 0,
+    "stored_reconciliation_complete_equal": true,
+    "supplied_export_byte_exact": true,
+    "upstream_executed": false,
+    "verified": true
+  }
+}

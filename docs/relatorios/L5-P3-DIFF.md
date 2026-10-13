@@ -53,3 +53,5 @@ com suas restrições atuais, preservados. Relevância/seleção/curvas/tokens e
 aceites de M0-09 permanecem abertos. Oito elegíveis/zero admitidos, gates e cartões
 não se alteram por esta entrega. CI nativa/geral ainda não foi atribuída a esta fatia;
 a integração/publicação será registrada pelo agente raiz.
+
+Aceite CI da fatia data-only: código cba8214418a7edf523211086cfaf617f41ecaf8e/run38421464241 aprovou Documentary contracts e os dois jobs de workspace. Job documental executou os63 checks e recompôs proof.json por igualdade integral. [API original](logs/L5-C05/root-preflight/p3-published-ci-run.json). Esta integração não executa o novo diff no planner Rust/P3; a pendência nativa permanece.

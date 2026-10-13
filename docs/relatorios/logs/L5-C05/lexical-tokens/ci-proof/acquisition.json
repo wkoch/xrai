@@ -1,0 +1,58 @@
+{
+  "schema": "xrai.eval.authenticated-original-acquisition.v1",
+  "authenticated_client": "gh API using configured credentials; credentials never exported",
+  "gh_version": "gh version 2.102.0 (2026-09-30)\nhttps://github.com/cli/cli/releases/tag/v2.102.0\n",
+  "profile": "tokens",
+  "run_id": 38425062525,
+  "head_sha": "f7f940069f5a77e268c2fb9645835fc4b2cc8675",
+  "artifact_id": 11828242801,
+  "acquisition_script_sha256": "99395606acb186ad7805a7e8e2fcd2f7532b51eaba1b983ea1d122d8b7cf84d5",
+  "commands": [
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/wkoch/xrai/actions/runs/38425062525"
+      ],
+      "filename": "run.json",
+      "bytes": 11145,
+      "sha256": "d8cc2da26fe45e844a25eaa1c69ddc3d760267c0b3bf74ae8d5e4f55b0438379",
+      "received_at_utc": "2026-10-13T15:48:37.398676+00:00"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/wkoch/xrai/actions/runs/38425062525/jobs?per_page=100"
+      ],
+      "filename": "jobs.json",
+      "bytes": 2974,
+      "sha256": "bb871084247e62f30e95b7286e6293c87b91a49b3a61ab879b450a55f1428f37",
+      "received_at_utc": "2026-10-13T15:48:37.900415+00:00"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/wkoch/xrai/actions/runs/38425062525/artifacts?per_page=100"
+      ],
+      "filename": "artifacts.json",
+      "bytes": 710,
+      "sha256": "288d42b6602fffbd04eec1fc1772ffbfc57e08d4e068197f4b750f7f9e4e7490",
+      "received_at_utc": "2026-10-13T15:48:38.262487+00:00"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/wkoch/xrai/actions/artifacts/11828242801/zip"
+      ],
+      "filename": "original.zip",
+      "bytes": 6316734,
+      "sha256": "9173511b2884415b93c5cd80ffc8a342861cbb531ebdaffef4a546c4517b42fc",
+      "received_at_utc": "2026-10-13T15:48:41.608430+00:00"
+    }
+  ],
+  "local_native_executed": false,
+  "provider_calls": 0
+}

@@ -72,7 +72,7 @@ e dados do Snapshot B anterior; isso prova contraprovas do checker, não execuç
 nova de A/B. Com essa variável no CI, os mesmos checks consomem o bundle efetivamente
 coletado. Esse contraste permanece explícito na evidência de desenvolvimento.
 
-**Pendente de CI:** compilação/clippy nativos, prova live dos 15+6 frames e conciliação
+**No checkpoint de preparação, pendentes de CI:** compilação/clippy nativos, prova live dos 15+6 frames e conciliação
 API/ZIP autêntica. A raiz possui workflow/collector separado e atualizará este estado
 após resultado. Até lá, não declarar evento novo comprovado. Também pendentes ao
 Arquiteto: dossiês naturais/eligibilidade e limites além do perfil; nenhuma decisão
@@ -100,3 +100,57 @@ Logs de desenvolvimento anteriores ficaram preservados em
 `pre-readonly-fix.stderr` e `pre-readonly-fix-development-evidence.json`; evidência
 corrente foi atualizada com hashes do teste ajustado. Execução nativa permanece
 pendente do workflow ainda não disparado no momento deste ajuste.
+
+## Prova nativa autenticada e revisão data-only concluídas
+
+O [run CI 38425676814](https://github.com/wkoch/xrai/actions/runs/38425676814),
+head `15547eddb4e23bce6d3668b2ef0329a77b1421ec`, passou no job
+`C05 captured TSJS semantic session` (ID `115394328476`), com Rust/Cargo 1.98.1,
+Python 3.13.13 e host Linux x86_64. Compilação/clippy, coleta live, recomposição e
+**45 contraprovas sobre o artefato real passaram, sem skips**. A cópia privada
+writable dos testes preservou os bytes da origem antes das mutações.
+
+A aquisição autenticada da raiz preserva API run/jobs/artifacts, helper/recibo,
+original ZIP e export exato em `logs/L5-C05/TSJS-session/native-proof/`. Artefato
+`11827954072`, 24 arquivos, **1.218.796 bytes**; SHA256 do ZIP original
+`ef2495dcdb27916c6e662eeea7e9d6d784be76d1447ce8abf2a4efcc741a1328`.
+ELF próprio realmente consumido no CI: SHA256
+`363910e42ee128f66e266dbdef303fd8ee2391758d800aeeaae95cef7a4f1660`.
+Ele foi somente lido/hasheado na revisão local, nunca reexecutado.
+
+Uma segunda passagem data-only recompôs todo o recibo em processo Python isolado e
+conferiu igualdade completa com `reconciliation.json`, API/head/attempt/steps/upload,
+hashes dos quatro comandos de aquisição, ZIP original e export. A revisão também
+conferiu diretamente os 15 frames vivos e seis frames do rebuild, sem retirar
+campos de Snapshot/Reference, dependencies, gaps, cobertura, diagnóstico ou callable.
+Nenhum achado. Recibo em `logs/L5-C05/ci-reconciler/independent-review.json`; revisão
+operacional de artefato, sem alegar leitor cego independente de labels de tarefa.
+
+| Consulta congelada | A aquecido | B após update | Rebuild B |
+|---|---|---|---|
+| `unsafeStringify`, offset 645 | unknown, módulo exato ausente da captura | resolved → `src/stringify.js:unsafeStringify`, cadeia reference/import/export/declaration | Reference inteiro igual |
+| `rnds`, offset 661 | resolved → `src/v4.js:rnds` | resolved, referência local preservada | Reference inteiro igual |
+| `native`, offset 155 | unknown | unknown, default fora do perfil | Reference inteiro igual |
+
+**Callable permanece unknown em todas as três consultas, nos dois lados.**
+O índice vivo conservou PID `4673` e uma sessão; rebuild independente usou PID `4674`
+e outra sessão. Revisão esperada errada e configuração inválida recusadas com
+Snapshot A integral e geração 1 preservados. B integral é igual ao rebuild e ao
+Snapshot nativo anterior aceito, inclusive input, producer, scopes/bindings,
+exports/gaps/references/coverage e toda evidência.
+
+Contadores finais live: 15 pedidos, três tentativas de build, dois builds publicados,
+seis consultas e dois updates recusados. Rebuild: seis pedidos, um build publicado,
+três consultas e zero update recusado. Snapshots:
+A `f83b60dd0abee6867fcf183e7a9a83213dad05f7182bb1786fb4eedfc17afd56`;
+B `7b529c7285869dcd6b614c61b68667e2b4f2e3eb0a9ea3c30fa7d96f5db2b5d8`.
+Produtor analítico e componente JavaScript conferem com o Snapshot nativo anterior;
+produtor da sessão liga o binário fonte novo, resolver, lock e toolchain.
+
+A pendência de compilação/prova live desta fatia está resolvida. Permanecem os
+limites do recorte: transformação controlada de disponibilidade nas fontes reais
+uuid, sem mudança histórica upstream ou novo dossiê natural; resolução lexical
+ESM exata, callable runtime desconhecido e rebuild conservador sem ganho de cache
+medido. **Nenhum crédito de quota/evento D1, elegibilidade nova, campanha ou gate**.
+M0-11/M0-09 permanecem abertos, oito elegíveis/zero admitidos. O módulo/labels/
+fingerprints históricos ficaram intactos.
