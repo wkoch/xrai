@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 13/10/2026. **L5-C04/C05 revisada:** quatro eventos, TSJS, lexical/tokens e recursos aceitos nos recortes; oito elegíveis e D1 fechado. [Parecer e próxima execução](relatorios/REVISAO-L5-C05.md): pedido D01, dossiê Django, P3 Rust e avaliação integrada. Mesmos IDs/dependências e [roteiro v1](ROTEIRO-V1.md). Estado em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 13/10/2026. **Continuação C06 revisada:** inventário E02 aceito no recorte; request privado/consumer e Django preparados, P3 nativo ainda sem aceite no corte. [Parecer e próxima execução](relatorios/REVISAO-L5-C06.md). Mesmos IDs/dependências, oito elegíveis/0 admitidos e [roteiro v1](ROTEIRO-V1.md). Estado em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -709,14 +709,14 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[Revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md), §8: mesmos IDs e dependências. Quatro eventos, TSJS-A/B/C, lexical/tokens, S02 offline e recursos reais já comprovados nos recortes; não repetir como novas entregas.
+[Revisão L5-C06](relatorios/REVISAO-L5-C06.md), §5; contratos independentes da [C05](relatorios/REVISAO-L5-C05.md) permanecem. Mesmos IDs/dependências; não repetir provas aceitas.
 
-1. L5-05: corrigir identidade do pedido reservado/transportado; adotar factory no fluxo offline com ferramentas.
-2. L5-04: dossiê Django de roteamento/migração no slot Python-state_config-1 e qualificação natural dos quatro casos de estado; manter 19/20 até evidência.
-3. L5-01: integrar diff/presença ao consumidor P3 Rust, HEAD integral e contexto de tarefa com comparação lexical.
-4. L5-01/02: corrigir formulações em regressões novas, congelar 24 consultas independentes de desenvolvimento e medir expansão sob orçamento agregado; semântica evolui por perda útil.
-5. L5-05/06: contratos de captura/geração e blobs, manifesto concreto de smoke e triagem dos oito comparadores; sem gasto inferido.
-6. L5-03: calibradores, instrumentação e protocolo de recursos v2 com warmup/alternância por lane; decisão de modo preserva isolamento.
-7. S02/L5-04: coletor de dados separado e testes fake; primeira tranche de metadados históricos, sem liberar setup Go.
+Correção imediata de CI: reproduzir C04 em cápsula com o plano original f8881d4, hash/receipt intactos e substituição documental limitada; comprovar o novo run regular.
 
-Trabalho independente pode avançar em paralelo. Critérios detalhados, rejeições e ownership na revisão; seis atividades V1 permanecem condicionais após G2.
+1. L5-05: exigir bijeção de todos os dispatches no replay, incluindo recusas sem reserva; identidade do pedido já avançou no wrapper novo.
+2. L5-04: variante pública Django com requisito de modelo não migrável, oracle CreateModel/schema editor/duas SQLite e isolamento agente/avaliador; 19/20 permanece até necessidade factual comprovada.
+3. L5-01: concluir prova nativa P3; intake tipado consumido pelo Store, regressão Tokio cstr BASE/HEAD e contraprova de evicção/timeout. Depois tarefa natural compatível, sem dar crédito D1 à regressão.
+4. L5-05: interface pública de transporte com bytes imutáveis e recibo próprio; projeção não é observação nem cobrança.
+5. Demais L5: avaliação lexical24/expansão, semântica por perda útil, recursos v2, comparadores/smoke e inspeção S02 continuam conforme C05, sem esperar banco/produção M1.
+
+Dono da integração coordena Store/consumer/schemas; agentes têm ownership exclusivo. Quatro eventos operacionais e seis V1 condicionais preservados; nenhum gate foi avaliado.

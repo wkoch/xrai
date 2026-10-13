@@ -1,0 +1,118 @@
+{
+  "scope": "data-only E02 inventory and own adversarial tests; no upstream/native/provider/network",
+  "review_start_head": "bc874f4",
+  "head_observed": "bc874f4f6972ac5562cfb8564da31528e5277ccf",
+  "source_sha256": {
+    "eval/scripts/e02_compensation.py": "71be870ab78406a8a65ae8921e75968890ad03ce19d2dd1dc394532fbd75a659",
+    "eval/scripts/test_e02_compensation.py": "c23d07ae41432db8ce38212a2eabc73d39d68c7549b24986cc4e97b36137373b",
+    "eval/qualification/e02-compensation-v1/inventory.json": "1278e85e4bef50f01c32c329469d5ddf6d4a7d6b3fa7b9fe9a4b119a8fc54d36",
+    "eval/qualification/e02-compensation-v1/freeze.json": "f39ac4d5ba3089089aa79cdb94e0dac297aa15afeee069f5ec18dea394bd3996",
+    "eval/qualification/e02-compensation-v1/protocol.json": "39062f41ed4954bb89a5a34171069c51c507f7b45eb63052a3073f9082295882"
+  },
+  "unchanged_during_verification": true,
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "eval/scripts/e02_compensation.py",
+        "--inventory",
+        "eval/qualification/e02-compensation-v1/inventory.json"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.043,
+      "stderr": "",
+      "full_inventory_equal": true,
+      "candidate_slot_checks": 384,
+      "compensations_available": 0
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_e02_compensation.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.196,
+      "stderr": "test_admission_flag_in_result (test_e02_compensation.E02CompensationTests.test_admission_flag_in_result) ... ok\ntest_alias_field_rejected (test_e02_compensation.E02CompensationTests.test_alias_field_rejected) ... ok\ntest_bool_integer_confusion (test_e02_compensation.E02CompensationTests.test_bool_integer_confusion) ... ok\ntest_claimed_new_lineage_is_not_identity (test_e02_compensation.E02CompensationTests.test_claimed_new_lineage_is_not_identity) ... ok\ntest_copy_is_unknown_task (test_e02_compensation.E02CompensationTests.test_copy_is_unknown_task) ... ok\ntest_duplicate_canonical_slot_rejected (test_e02_compensation.E02CompensationTests.test_duplicate_canonical_slot_rejected) ... ok\ntest_duplicate_json_key_rejected (test_e02_compensation.E02CompensationTests.test_duplicate_json_key_rejected) ... ok\ntest_duplicate_slot_placement (test_e02_compensation.E02CompensationTests.test_duplicate_slot_placement) ... ok\ntest_duplicate_task_placement (test_e02_compensation.E02CompensationTests.test_duplicate_task_placement) ... ok\ntest_eight_existing_tasks_already_credited (test_e02_compensation.E02CompensationTests.test_eight_existing_tasks_already_credited) ... ok\ntest_eligibility_flag_in_result (test_e02_compensation.E02CompensationTests.test_eligibility_flag_in_result) ... ok\ntest_empty_proposal (test_e02_compensation.E02CompensationTests.test_empty_proposal) ... ok\ntest_exact_replay (test_e02_compensation.E02CompensationTests.test_exact_replay) ... ok\ntest_extra_slot_rejected (test_e02_compensation.E02CompensationTests.test_extra_slot_rejected) ... ok\ntest_false_twentieth_projection (test_e02_compensation.E02CompensationTests.test_false_twentieth_projection) ... ok\ntest_family_conflict (test_e02_compensation.E02CompensationTests.test_family_conflict) ... ok\ntest_fifth_repository_slot_rejected (test_e02_compensation.E02CompensationTests.test_fifth_repository_slot_rejected) ... ok\ntest_historical_source_byte_changed (test_e02_compensation.E02CompensationTests.test_historical_source_byte_changed) ... ok\ntest_invented_relation_credit (test_e02_compensation.E02CompensationTests.test_invented_relation_credit) ... ok\ntest_inventory_false_compensation (test_e02_compensation.E02CompensationTests.test_inventory_false_compensation) ... ok\ntest_javascript_not_typescript_by_family_alias (test_e02_compensation.E02CompensationTests.test_javascript_not_typescript_by_family_alias) ... ok\ntest_literal_import_export_not_necessary_to_presence_task (test_e02_compensation.E02CompensationTests.test_literal_import_export_not_necessary_to_presence_task) ... ok\ntest_multimodule_boolean_is_not_evidence (test_e02_compensation.E02CompensationTests.test_multimodule_boolean_is_not_evidence) ... ok\ntest_nonfinite_json_rejected (test_e02_compensation.E02CompensationTests.test_nonfinite_json_rejected) ... ok\ntest_old_lineage_changed_in_result (test_e02_compensation.E02CompensationTests.test_old_lineage_changed_in_result) ... ok\ntest_path_alias_rejected (test_e02_compensation.E02CompensationTests.test_path_alias_rejected) ... ok\ntest_projection_report_not_authority (test_e02_compensation.E02CompensationTests.test_projection_report_not_authority) ... ok\ntest_proposal_bound (test_e02_compensation.E02CompensationTests.test_proposal_bound) ... ok\ntest_reanchored_input_digest (test_e02_compensation.E02CompensationTests.test_reanchored_input_digest) ... ok\ntest_receipt_scope_not_truncated (test_e02_compensation.E02CompensationTests.test_receipt_scope_not_truncated) ... ok\ntest_relabel_correction_as_review_is_conflict (test_e02_compensation.E02CompensationTests.test_relabel_correction_as_review_is_conflict) ... ok\ntest_repository_conflict (test_e02_compensation.E02CompensationTests.test_repository_conflict) ... ok\ntest_scope_and_quota_derived (test_e02_compensation.E02CompensationTests.test_scope_and_quota_derived) ... ok\ntest_single_file_state_not_multimodule (test_e02_compensation.E02CompensationTests.test_single_file_state_not_multimodule) ... ok\ntest_symlink_input_rejected (test_e02_compensation.E02CompensationTests.test_symlink_input_rejected) ... ok\ntest_two_files_presence_not_relation_credit (test_e02_compensation.E02CompensationTests.test_two_files_presence_not_relation_credit) ... ok\ntest_unknown_slot (test_e02_compensation.E02CompensationTests.test_unknown_slot) ... ok\n\n----------------------------------------------------------------------\nRan 37 tests in 0.135s\n\nOK\n",
+      "stdout": ""
+    }
+  ],
+  "passed": true,
+  "reproducer_source": "from pathlib import Path\nimport subprocess,json,hashlib,time\nR=Path('/Users/wkoch/Projetos/xrai');paths=['eval/scripts/e02_compensation.py','eval/scripts/test_e02_compensation.py','eval/qualification/e02-compensation-v1/inventory.json','eval/qualification/e02-compensation-v1/freeze.json','eval/qualification/e02-compensation-v1/protocol.json']\ndef hashes():return {p:hashlib.sha256((R/p).read_bytes()).hexdigest() for p in paths}\nbefore=hashes(); checks=[]\ncommands=[['python3','eval/scripts/e02_compensation.py','--inventory','eval/qualification/e02-compensation-v1/inventory.json'],['python3','-m','unittest','discover','-s','eval/scripts','-p','test_e02_compensation.py','-v']]\nfor command in commands:\n start=time.monotonic();p=subprocess.run(command,cwd=R,capture_output=True,text=True,timeout=90)\n row={'command':command,'returncode':p.returncode,'elapsed_seconds':round(time.monotonic()-start,3),'stderr':p.stderr}\n if command[1].endswith('e02_compensation.py'):\n  data=json.loads(p.stdout);retained=json.loads((R/'eval/qualification/e02-compensation-v1/inventory.json').read_text());row['full_inventory_equal']=data==retained;row['candidate_slot_checks']=len(data['candidate_slot_checks']);row['compensations_available']=data['compensations_available_in_frozen_scope'];assert row['full_inventory_equal']\n else:row['stdout']=p.stdout;assert 'Ran 37 tests' in p.stderr and p.stderr.rstrip().endswith('OK')\n assert p.returncode==0\n checks.append(row)\nafter=hashes();assert before==after\nout={'scope':'data-only E02 inventory and own adversarial tests; no upstream/native/provider/network','review_start_head':'bc874f4','head_observed':subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip(),'source_sha256':before,'unchanged_during_verification':before==after,'checks':checks,'passed':True,'reproducer_source':Path(__file__).read_text()}\n(R/'docs/relatorios/logs/revisao-L5-C06/evidencias.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps({'passed':True,'pairs':checks[0]['candidate_slot_checks'],'compensations':checks[0]['compensations_available'],'tests':37}))\n",
+  "published_during_review": {
+    "commit": "fbf1e535994ee50e6b4cf1ef42ed04eaf565b7ac",
+    "agent_hash_bindings": [
+      {
+        "scope": "dispatch",
+        "matched_paths": 9,
+        "all_match_committed_bytes": true,
+        "paths": {
+          "docs/relatorios/L5-D01-REQUEST.md": true,
+          "docs/relatorios/L5-GUARDED-SMOKE.md": true,
+          "crates/xrai-eval/harness/immutable_request_dispatch.py": true,
+          "crates/xrai-eval/harness/guarded_smoke.py": true,
+          "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": true,
+          "crates/xrai-eval/harness/tests/test_guarded_smoke.py": true,
+          "crates/xrai-eval/harness/session_tool_guard.py": true,
+          "crates/xrai-eval/harness/execution_dispatch_v2.py": true,
+          "crates/xrai-eval/harness/agent_adapter_protocol.py": true
+        }
+      },
+      {
+        "scope": "p3",
+        "matched_paths": 7,
+        "all_match_committed_bytes": true,
+        "paths": {
+          "crates/xrai-eval/src/bin/context-diff-spike.rs": true,
+          "eval/scripts/p3_diff_native_verify.py": true,
+          "eval/scripts/p3_diff_native_collect.py": true,
+          "eval/scripts/reconcile_c06_p3_ci.py": true,
+          "docs/relatorios/L5-P3-NATIVE.md": true,
+          "crates/xrai-eval/src/context_spike.rs": true,
+          "eval/scripts/verify_context.py": true
+        }
+      },
+      {
+        "scope": "django",
+        "matched_paths": 27,
+        "all_match_committed_bytes": true,
+        "paths": {
+          "eval/qualification/django-router-v1/search-universe.json": true,
+          "eval/qualification/django-router-v1/README.md": true,
+          "eval/qualification/django-router-v1/case.json": true,
+          "eval/qualification/django-router-v1/freeze.json": true,
+          "eval/qualification/django-router-v1/evaluator/state-b.json": true,
+          "eval/qualification/django-router-v1/evaluator/source-obligations.json": true,
+          "eval/qualification/django-router-v1/evaluator/rubric.json": true,
+          "eval/qualification/django-router-v1/evaluator/oracle.json": true,
+          "eval/qualification/django-router-v1/evaluator/setup-readiness.json": true,
+          "eval/qualification/django-router-v1/evaluator/state-a.json": true,
+          "eval/qualification/django-router-v1/evaluator/second-reader.json": true,
+          "eval/qualification/django-router-v1/agent/input.md": true,
+          "eval/qualification/django-router-v1/agent/deployment.json": true,
+          "eval/qualification/django-router-v1/agent/policy.py": true,
+          "eval/qualification/django-router-v1/sources/django/db/utils.py": true,
+          "eval/qualification/django-router-v1/sources/django/db/models/options.py": true,
+          "eval/qualification/django-router-v1/sources/django/db/migrations/operations/models.py": true,
+          "eval/qualification/django-router-v1/sources/django/db/migrations/operations/base.py": true,
+          "eval/qualification/django-router-v1/evaluator/captured/LICENSE": true,
+          "eval/qualification/django-router-v1/evaluator/captured/pyproject.toml": true,
+          "eval/qualification/django-router-v1/evaluator/captured/LICENSE.python": true,
+          "eval/qualification/django-router-v1/evaluator/captured/tests/migrations/test_multidb.py": true,
+          "eval/qualification/django-router-v1/evaluator/captured/tests/migrations/routers.py": true,
+          "eval/qualification/django-router-v1/evaluator/captured/tests/requirements/py3.txt": true,
+          "eval/scripts/django_router_verify.py": true,
+          "eval/scripts/test_django_router.py": true,
+          "eval/qualification/l5-slot-plan-v2.json": true
+        }
+      }
+    ],
+    "note": "Source/report hashes reviewed locally match this later published implementation commit; CI success is not inferred."
+  }
+}

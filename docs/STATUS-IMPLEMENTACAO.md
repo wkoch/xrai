@@ -1,10 +1,10 @@
 # Estado da implementação
 
-Atualizado em: 13/10/2026. Base revisada `8b66cf6`. Implementação recente em [L5-C04](relatorios/L5-C04.md) e [L5-C05](relatorios/L5-C05.md); planejamento vigente na [revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md). Quatro eventos operacionais, TSJS-A/B/C, lexical/tokens, guarda D01 e recursos nos dois hosts têm aceites limitados abaixo. Correção do pedido mutável D01, dossiê Django e P3 Rust são as próximas prioridades. Histórico de execuções/falhas preservado nas seções seguintes; revisão arquitetural altera somente documentos/evidências.
+Atualizado em: 13/10/2026. Revisão arquitetural [L5-C06](relatorios/REVISAO-L5-C06.md), corte inicial `bc874f4` e hashes locais enquanto o Implementador trabalha. Inventário E02 recomposto; captura privada/consumer avançaram, com lacuna de completude no replay; Django preparado, sem crédito; P3 typed aguarda prova nativa e Store no corte. Implementação posterior e tentativas permanecem registradas nas seções próprias. Esta entrega da arquitetura altera somente documentos/evidências.
 
 **Situação:** L0 e retificações M0-01.R1/M0-02.R1 concluídas. Revisão L1 resolveu C01/S01/S02. M0-03 foi aceita no escopo revisado de corpus inicial: 20 D0/32 D1-seed e 78 fixtures. A qualificação competitiva permanece obrigatória em M0-03.R1: gate/triagem e quatro pilotos verticais revisados; zero tarefas admitidas na matriz global32. Usuário liberou L2; harness local/replay e spikes de parsing/filesystem implementados com evidência local em [L2](relatorios/L2.md). Provas nativas de parsing/filesystem/harness passaram em Ubuntu24.04.5 e macOS15.7.9; smokes de modelos reais, execução literal15.0 e pendências de contenção permanecem separados. Com o repo público, a tentativa 2 do run `38197775334` passou nos três jobs: **M0-02.R2 e M0-07 concluídas**, com seis testes SQLite em cada alvo nativo. V1: Linux x86_64/macOS arm64. Parsing, consultas e MCP de produção continuam indisponíveis; nenhum gate competitivo avaliado.
 
-**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima execução:** [revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md), §8. Oito tarefas elegíveis/0 admitidas, quatro eventos operacionais, 19/20 de projeção multimódulo. [Caminho até 1.0](ROTEIRO-V1.md). Licença antes da distribuição e recursos antes do gasto permanecem condições próprias; trabalho offline independente continua.
+**Entrada:** [IMPLEMENTADOR.md](../IMPLEMENTADOR.md). **Próxima execução:** [revisão L5-C06](relatorios/REVISAO-L5-C06.md), §5. Replay completo, oracle físico Django e Store/Tokio; demais contratos C05 continuam. Oito elegíveis/0 admitidos, quatro eventos e projeção 19/20. [Caminho até 1.0](ROTEIRO-V1.md).
 
 ## Decisões vigentes
 
@@ -29,7 +29,7 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | M0-02.R2 | Adequar CI aos dois alvos v1 | concluída | [CI do commit `9b5411c`, tentativa 2](relatorios/CI-PUBLICO.md); dois hosts Rust e contratos passaram; proteção/rulesets consultados, sem check Windows exigido |
 | M0-03 | Corpus inicial D0/D1-seed e fixtures | concluída | [Aceite no escopo revisado](relatorios/REVISAO-L1.md); [52 materializações revalidadas](relatorios/logs/revisao-L1/corpus-check.json); qualificação original transferida para R1, sem aceite competitivo |
 | M0-03.R1 | Qualificar D1 para piloto/G0 | em andamento | [C02](relatorios/L5-C02.md): oito elegíveis individuais; [E02/C04](relatorios/L5-C04.md): mapa v2 e quatro eventos operacionais, zero novos dossiês de estado elegíveis. Global 0/32, projeção multimódulo 19/20; candidato Django a qualificar |
-| M0-04 | Harness, baseline e agentes | em andamento | [L4 offline](../eval/reports/m0-agent-readiness.md), dispatch v2/factory em [C04/C05](relatorios/REVISAO-L5-C05.md). Corrigir identidade do pedido; adoção do fluxo com ferramentas, adapter e smokes reais pendentes |
+| M0-04 | Harness, baseline e agentes | em andamento | [L4 offline](../eval/reports/m0-agent-readiness.md), dispatch v2/factory em [C04/C05](relatorios/REVISAO-L5-C05.md). Captura privada/consumer C06 verificados por hash; completar replay e recibo público de transporte. Adapter/smokes reais pendentes |
 | M0-04.R1 | Contenção do domínio de execução do harness | em andamento | [Supervisor/domínio/replayv2 e31testes](../eval/reports/m0-harness-containment.md); [CI L3 Linux aprovada](relatorios/logs/L3/ci-native-run.json), adapter mac descartável indisponível |
 | M0-05 | Gramáticas e autonomia | em andamento | [Sete dialetos e autonomia local](../eval/reports/m0-packaging.md); [Matriz nativa aprovada](relatorios/logs/L2/ci-native-fsfix.json); host literal15.0 ainda pendente |
 | M0-06 | Workers e IPC | em andamento | [XRW2 funcional](../eval/reports/m0-workers-persistent.md); [recursos reais](relatorios/L5-RESOURCES.md) em Linux/macOS com quatro modos/24 sessões por host. Calibradores, instrumentação, classes ausentes e decisão de produção pendentes |
@@ -85,7 +85,7 @@ Estados: `não iniciada`, `em andamento`, `bloqueada`, `concluída` ou `cancelad
 | Baselines de SO/ABI | Decisão definida no ADR 020: Ubuntu 24.04/glibc 2.39 e macOS 15.0 arm64; verificar em M0-05/M1-20 |
 | Modelos, limites de runs, esforço e teto monetário de campanha | Antes do uso pago correspondente em M0-04/12; preparar replay/local enquanto isso |
 | C03/E02: eventos e corpus | Quatro operacionais e mapa v2 aceitos; dossiês naturais pendentes. Candidato Django para compensar 19/20, ainda sem crédito. Oito elegíveis, nenhum admitido |
-| D01: identidade e adoção | Compromisso v2 entregue; corrigir request reservado≠transportado, adotar factory e concretizar ABA/blobs antes de transporte real |
+| D01: completude e transporte | Request privado e consumer avançaram no perfil local; corrigir omissão de recusa no replay e criar recibo público do transporte; ABA/blobs pendentes |
 | S01/S02: setup Gitea | Disponibilidade/contrato offline aceitos; coletor limitado e primeira tranche de metadados pendentes. 55 alertas/execução continuam bloqueados |
 | Tamanho final de H1 e método estatístico | M0-10/M1-22, após dados D1 e antes de abrir H1 |
 
@@ -273,3 +273,13 @@ P3 prospectivoC06 preparado:typed presença/HEAD/byte-context/expansão e225coma
 ## C06: pedido imutável, consumer guardado e dossiê Django
 
 [L5-C06](relatorios/L5-C06.md):requestv3 corrige releitura mutável no novo consumer,25tests/sixspyproofs;CLIguardadodezcases31tests/ZIP completo; Django candidato preparado com42tests/18casosde modelo declarativo apóssegundoleitorpré-freeze. ZeroimportDjango/SQLite/provider/nativolocal; qualificação/próximoslimitesexplicitados. PrimeiraCI P3bc874f4/38440152422 falhoulint,1linha idiomáticacorrigida,protocolo/labelsinalterados; nativesecondrunpendente. Falharegularpor plano históricoC04mutado pelaatualizaçãoArchitect estápreservada; corretordeprovenânciadocumentalhistóricoempreparo.19/20,elegíveis8/admit0 e41estados/gatespreservados.
+
+## Revisão arquitetural da continuação C06
+
+[Revisão vigente](relatorios/REVISAO-L5-C06.md): E02 recomposto com37testes/384pares/zero compensações no universo fechado. Três agentes avaliaram hashes locais estáveis: D01 captura privada e adoção offline aceitas no recorte, replay limitado por omissão de recusa pré-reserva; Django preparado mas oito casos centrais não comprovam necessidade entre três módulos; P3 typed ainda separado do Store. Prova nativa da correção P3 não inferida de testes de dados.
+
+CI regular: closure histórica C04 contém plano documental antigo; novo entry com bytes de f8881d4 em preparação, sem afrouxar hashes. Não declarar verde antes do run corrigido.
+
+Decisões: bijeção journal/request/ledger; oracle físico Django com requisito público de veto e visibilidade isolada; ponte Store/Tokio controlada e publicação sem evicção em falha; interface pública de recibo de transporte. Condições para evolução do plano v3 definidas sem nova aprovação rotineira. Oito elegíveis/0 admitidos, quatro eventos,19/20 e41estados/gates preservados.
+
+[Evidências](relatorios/logs/revisao-L5-C06/evidencias.json), [pareceres/hashes](relatorios/logs/revisao-L5-C06/agentes.json), [omissão reproduzida](relatorios/logs/revisao-L5-C06/omissao-replay.json) e [checks documentais](relatorios/logs/revisao-L5-C06/documentacao.json). Sem upstream/nativo/provider/rede pela arquitetura. Trabalho concorrente preservado; publicação comunicada após commit/push confirmado.

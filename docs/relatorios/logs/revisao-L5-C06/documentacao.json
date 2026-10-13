@@ -1,0 +1,58 @@
+{
+  "result": "passed",
+  "comparison_commit": "fbf1e535994ee50e6b4cf1ef42ed04eaf565b7ac",
+  "head_at_checks": "fbf1e535994ee50e6b4cf1ef42ed04eaf565b7ac",
+  "cards": 41,
+  "states": {
+    "concluída": 9,
+    "em andamento": 7,
+    "não iniciada": 25
+  },
+  "V1_cards": 6,
+  "gates_unchanged": true,
+  "local_links_checked": 245,
+  "owned_paths": [
+    "IMPLEMENTADOR.md",
+    "README.md",
+    "docs/L5-PROXIMA-EXECUCAO.md",
+    "docs/PLANO-DE-IMPLEMENTACAO.md",
+    "docs/PLANO-DE-VALIDACAO.md",
+    "docs/ROTEIRO-V1.md",
+    "docs/STATUS-IMPLEMENTACAO.md",
+    "docs/relatorios/REVISAO-L5-C06.md",
+    "docs/relatorios/logs/revisao-L5-C06/evidencias.json",
+    "docs/relatorios/logs/revisao-L5-C06/agentes.json",
+    "docs/relatorios/logs/revisao-L5-C06/omissao-replay.json",
+    "docs/relatorios/logs/revisao-L5-C06/documentacao.json"
+  ],
+  "concurrent_work_excluded": [
+    "docs/relatorios/logs/L5-C06/historical-adapter/development-evidence.json",
+    "docs/relatorios/logs/L5-C06/historical-adapter/host-verification.json",
+    "docs/relatorios/logs/L5-C06/historical-adapter/host-verification.stderr",
+    "docs/relatorios/logs/L5-C06/historical-adapter/original-direct.stderr",
+    "docs/relatorios/logs/L5-C06/historical-adapter/original-direct.stdout",
+    "docs/relatorios/logs/L5-C06/historical-adapter/tests.stderr",
+    "docs/relatorios/logs/L5-C06/historical-adapter/tests.stdout",
+    "docs/relatorios/logs/L5-C06/historical-adapter/verification.json",
+    "docs/relatorios/logs/L5-C06/historical-adapter/verification.stderr",
+    "eval/adapters/historical-v1/original-PLANO-DE-IMPLEMENTACAO.md",
+    "eval/adapters/historical-v1/provenance.json",
+    "eval/adapters/historical-v1/test_historical_adapter.py",
+    "eval/adapters/historical-v1/verify.py"
+  ],
+  "artifact_sha256": {
+    "IMPLEMENTADOR.md": "bf844a8d1e1ce537870f06479ba10b8ee3de8abed85767db6dc14c4953e2e85e",
+    "README.md": "2d9b295daee6b49a9623485ea03fc9cb108ce951725ad2d7cd973884ee41ed9d",
+    "docs/L5-PROXIMA-EXECUCAO.md": "a52f07e1461a138bf65fd1fbb2b7ffbb25ab9906513472594b9c9f8cc8e6b102",
+    "docs/PLANO-DE-IMPLEMENTACAO.md": "f53acab3e75521a1a6705df71f2e81fac55950e182d84512bf486cd41c31f6e1",
+    "docs/PLANO-DE-VALIDACAO.md": "02d53ec1d0d94fb46fba9cb160820274285e50ab120a14db800e87b008de4959",
+    "docs/ROTEIRO-V1.md": "3e1e04db0c2b874f9a9fbfcbbca992df9c8adc46ddd097e68a358a3ae3347450",
+    "docs/STATUS-IMPLEMENTACAO.md": "8f400da13dbbfa5274c382bbdf7bd9f506a8120d4b264826e7532602d270eb63",
+    "docs/relatorios/REVISAO-L5-C06.md": "bd81ef4ff16cb03ddf2ec159ae20f33517e5c4c87ab2ea3db5df6474b6a0f48a",
+    "docs/relatorios/logs/revisao-L5-C06/evidencias.json": "344846933f29a2a1152c9f13f4ceb773b141f53ba3b4b290ab552a604cdf4c53",
+    "docs/relatorios/logs/revisao-L5-C06/agentes.json": "f0d419ce5414cb74a40abde162f4689ab9cf9a3a4489fbc42ad5013051f262bc",
+    "docs/relatorios/logs/revisao-L5-C06/omissao-replay.json": "9b9a53274aa2ca3981a9b5277d245dd9f036b9086a6faffed94afdc1cd901a17"
+  },
+  "verification_scope": "documentary checks and read-only data/fake review; no native/upstream/provider/network; regular CI historical-input failure remains separate",
+  "reproducer_source": "from pathlib import Path\nimport subprocess,re,json,hashlib,collections\nR=Path('/Users/wkoch/Projetos/xrai');BASE='fbf1e53';LOG='docs/relatorios/logs/revisao-L5-C06/'\nDOCS=['IMPLEMENTADOR.md','README.md','docs/L5-PROXIMA-EXECUCAO.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/PLANO-DE-VALIDACAO.md','docs/ROTEIRO-V1.md','docs/STATUS-IMPLEMENTACAO.md','docs/relatorios/REVISAO-L5-C06.md']\nOWN=DOCS+[LOG+n for n in ['evidencias.json','agentes.json','omissao-replay.json','documentacao.json']]\ndef git(*args):return subprocess.check_output(['git',*args],cwd=R,text=True)\ndef old(p):return git('show',BASE+':'+p)\ndef now(p):return (R/p).read_text()\ndef sha(b):return hashlib.sha256(b).hexdigest()\nassert subprocess.run(['git','merge-base','--is-ancestor',BASE,'HEAD'],cwd=R).returncode==0\npat=r'^### (M[01]-[^\\n]+)\\n\\n(\\*\\*Depende de:\\*\\*[^\\n]+)'\na=re.findall(pat,old('docs/PLANO-DE-IMPLEMENTACAO.md'),re.M);b=re.findall(pat,now('docs/PLANO-DE-IMPLEMENTACAO.md'),re.M);assert a==b and len(a)==41\npat=r'^\\| (M[01]-[^|]+) \\| ([^|]+) \\| ([^|]+) \\|'\ns=re.findall(pat,now('docs/STATUS-IMPLEMENTACAO.md'),re.M);assert s==re.findall(pat,old('docs/STATUS-IMPLEMENTACAO.md'),re.M) and len(s)==41\ncounts=dict(collections.Counter(x[2].strip() for x in s));assert counts=={'concluída':9,'em andamento':7,'não iniciada':25}\nfor g in ['G0','G1','G2']:assert re.search(r'^\\| '+g+r' \\| não avaliado \\|',now('docs/STATUS-IMPLEMENTACAO.md'),re.M)\npat=r'### V1-.*?(?=\\n### V1-|\\n## 5\\.)'\na=re.findall(pat,old('docs/ROTEIRO-V1.md'),re.S);b=re.findall(pat,now('docs/ROTEIRO-V1.md'),re.S);assert a==b and len(a)==6\nlinks=[]\nfor f in DOCS:\n for t in re.findall(r'\\]\\(([^)]+)\\)',now(f)):\n  if re.match(r'^(https?://|mailto:|#)',t):continue\n  path=(R/f).parent/t.split('#',1)[0];assert path.exists() or path.resolve()==(R/LOG/'documentacao.json').resolve(),(f,t)\n  links.append([f,t])\ne=json.loads(now(LOG+'evidencias.json'));assert e['passed'] and e['unchanged_during_verification'];assert e['checks'][0]['candidate_slot_checks']==384 and e['checks'][0]['compensations_available']==0\nassert e['checks'][0]['full_inventory_equal'] and all(c['returncode']==0 for c in e['checks'])\nassert sum(x['matched_paths'] for x in e['published_during_review']['agent_hash_bindings'])==43 and all(x['all_match_committed_bytes'] for x in e['published_during_review']['agent_hash_bindings'])\np=json.loads(now(LOG+'omissao-replay.json'));assert p['forged_accepted'] and p['original_replay']['attempts']==2 and p['forged_replay']['attempts']==1 and len(p['guard_dispatch_ids'])==2\nassert p['forged_replay']['provider_calls']==0\nagents=json.loads(now(LOG+'agentes.json'));records=agents['checks_and_hashes'];assert not records['dispatch_hashes']['changed_paths'] and not records['p3_hashes']['changed'] and records['django_checks']['unchanged']\nsubprocess.run(['git','diff','--check','--',*DOCS],cwd=R,check=True);assert not git('diff','--cached','--name-only').strip()\nforeign=[l[3:] for l in git('status','--porcelain','--untracked-files=all').splitlines() if l[3:] not in OWN]\nout={'result':'passed','comparison_commit':git('rev-parse',BASE).strip(),'head_at_checks':git('rev-parse','HEAD').strip(),'cards':41,'states':counts,'V1_cards':6,'gates_unchanged':True,'local_links_checked':len(links),'owned_paths':OWN,'concurrent_work_excluded':foreign,'artifact_sha256':{p:sha((R/p).read_bytes()) for p in OWN if p!=LOG+'documentacao.json'},'verification_scope':'documentary checks and read-only data/fake review; no native/upstream/provider/network; regular CI historical-input failure remains separate','reproducer_source':Path(__file__).read_text()}\n(R/LOG/'documentacao.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps({k:out[k] for k in ['result','cards','states','V1_cards','local_links_checked']}))\n"
+}

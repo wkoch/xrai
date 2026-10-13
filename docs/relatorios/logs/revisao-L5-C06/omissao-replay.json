@@ -1,0 +1,48 @@
+{
+  "scope": "fake only no provider/native/upstream",
+  "original_replay": {
+    "schema_version": "xrai.eval.immutable-request-dispatch.v3",
+    "verified": true,
+    "attempts": 2,
+    "committed_private_projections": 1,
+    "transport_observed_independently": false,
+    "immutable_payloads_equal_reserved": true,
+    "provider_calls": 0,
+    "provider_charge": null,
+    "model_tokens": null,
+    "limits": [
+      "Dict capture requires caller quiescence during one canonical serialization.",
+      "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+      "External ABA and large blobs remain unavailable."
+    ]
+  },
+  "forged_replay": {
+    "schema_version": "xrai.eval.immutable-request-dispatch.v3",
+    "verified": true,
+    "attempts": 1,
+    "committed_private_projections": 1,
+    "transport_observed_independently": false,
+    "immutable_payloads_equal_reserved": true,
+    "provider_calls": 0,
+    "provider_charge": null,
+    "model_tokens": null,
+    "limits": [
+      "Dict capture requires caller quiescence during one canonical serialization.",
+      "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+      "External ABA and large blobs remain unavailable."
+    ]
+  },
+  "forged_accepted": true,
+  "original_row_ids": [
+    "one",
+    "two"
+  ],
+  "forged_row_ids": [
+    "one"
+  ],
+  "guard_dispatch_ids": [
+    "dispatch:one",
+    "dispatch:two"
+  ],
+  "reproducer_source": "import copy,json,sys\nfrom pathlib import Path\nsys.dont_write_bytecode=True\nsys.path.insert(0,'/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness')\nimport lexical_retrieval\nfrom lexical_retrieval import LexicalIndex\nfrom agent_adapter_protocol import ToolSnapshot\nfrom agent_ledger import fake_request,canonical\nfrom execution_gate import EvidenceSnapshot,OfflineAuthorization,make_smoke_fixture\nfrom execution_dispatch_v2 import make_bindings\nfrom immutable_request_dispatch import make_immutable_guarded_fake_session,replay_immutable\nm,e=make_smoke_fixture();s=EvidenceSnapshot.capture(m,e);a=OfflineAuthorization(s.fingerprint,1500,100)\nfiles={'own.py':b'def owned(): pass\\n'};p=Path(lexical_retrieval.__file__).read_bytes();i=LexicalIndex(files)\ng=make_immutable_guarded_fake_session(s,a,i,ToolSnapshot.capture(i,files,p),bindings=make_bindings(s,task_id='D0-RS-01',arm='direct',run_id='review-c06-omission'),current_manifest=lambda:m,current_evidence=lambda:e,current_authorization=lambda:a,current_sources=lambda:files,current_producer=lambda:p,clock=lambda:1)\ng.dispatch_fake('one','call',canonical(fake_request()),500);g.revoke()\ntry:g.dispatch_fake('two','call',canonical(fake_request()),500,retry_of='one')\nexcept ValueError:pass\nelse:raise AssertionError('expected revoked second request')\ntarget=g.finish('partial');original=g.request_record();good=replay_immutable(original,target)\nforged=copy.deepcopy(original);forged['requests']=[r for r in forged['requests'] if r['attempt_id']!='two']\ntry:\n    bad=replay_immutable(forged,target);accepted=True\nexcept Exception as exc:\n    bad={'rejected':type(exc).__name__,'reason':str(exc)};accepted=False\noutput={'scope':'fake only no provider/native/upstream','original_replay':good,'forged_replay':bad,'forged_accepted':accepted,'original_row_ids':[r['attempt_id'] for r in original['requests']],'forged_row_ids':[r['attempt_id'] for r in forged['requests']],'guard_dispatch_ids':[x['details']['operation_id'] for x in target['events'] if x['kind']=='begin' and x['details']['method']=='dispatch_fake']}\nPath('/tmp/xrai-review-c06-dispatch-omission.json').write_text(json.dumps(output,indent=2)+'\\n')\nprint(json.dumps(output))\n"
+}

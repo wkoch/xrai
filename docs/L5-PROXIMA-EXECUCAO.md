@@ -1,12 +1,12 @@
 # L5 — próxima execução concretizada
 
-13/10/2026. **Ordem corrente na [revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md), §8.** Este arquivo preserva o detalhamento original baseado em `a8f3764`; fake, quatro eventos e TSJS-A/B/C foram entregues posteriormente. Não recomeçar esses itens. Não cria lote L6, novo ADR, autorização de campanha ou cartões M0/M1.
+13/10/2026. **Ordem corrente na [revisão L5-C06](relatorios/REVISAO-L5-C06.md), §5, com contratos da [C05](relatorios/REVISAO-L5-C05.md).** Este arquivo preserva fatias históricas baseadas em `a8f3764`; fake, quatro eventos e TSJS-A/B/C já entregues não voltam a ficar pendentes. Nenhum novo cartão/gate ou autorização de campanha.
 
-Fontes: [revisão vigente e aceites](relatorios/REVISAO-L5-C05.md), [estado](STATUS-IMPLEMENTACAO.md), [semântica P2](decisoes/SEMANTICA-P2.md) e [caminho até v1.0](ROTEIRO-V1.md). Código/testes/experimentos são responsabilidade do Implementador. O Arquiteto escreve este roteiro; agentes auxiliares fizeram revisão somente leitura.
+Fontes: [revisão vigente e aceites](relatorios/REVISAO-L5-C06.md), [estado](STATUS-IMPLEMENTACAO.md), [semântica P2](decisoes/SEMANTICA-P2.md) e [caminho até v1.0](ROTEIRO-V1.md). Código/testes/experimentos são responsabilidade do Implementador. O Arquiteto escreve este roteiro; agentes auxiliares fizeram revisão somente leitura.
 
 ## 1. Entrega que deve vir primeiro
 
-Corrigir a identidade do pedido no dispatch D01; em paralelo qualificar o candidato Django e integrar intake de diff/presença ao P3 Rust. A revisão corrente define evidências e ownership para essas frentes, avaliação lexical, recursos, comparadores/smoke e inspeção. As seções seguintes são contratos históricos; seus itens aceitos não voltam a ficar pendentes pela redação original. Fonte e expansão permanecem ligadas ao snapshot; corpus/eventos/provider têm condições distintas.
+Corrigir a completude do replay D01 após o avanço da captura privada; em paralelo preparar oracle físico Django e integrar intake ao Store por regressão Tokio. A revisão corrente define evidências e ownership para essas frentes, avaliação lexical, recursos, comparadores/smoke e inspeção. As seções seguintes são contratos históricos; seus itens aceitos não voltam a ficar pendentes pela redação original. Fonte e expansão permanecem ligadas ao snapshot; corpus/eventos/provider têm condições distintas.
 
 Se dividir entre agentes, atribuir módulos exclusivos e um integrador para schemas/entradas compartilhadas. Preservar alterações existentes e não executar campanhas por inferência dessa divisão.
 

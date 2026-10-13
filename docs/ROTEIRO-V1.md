@@ -1,6 +1,6 @@
 # Caminho até o v1.0 — ADR 028
 
-13/10/2026. Avaliação arquitetural sobre `8b66cf6`; provas dedicadas em `3463bdc`, `96b377c`, `e308c0f`, `f7f9400` e `15547ed`. **Decisão do Arquiteto para estabilização e lançamento; não aprova release nem antecipa M1-B.** Estado em [STATUS-IMPLEMENTACAO](STATUS-IMPLEMENTACAO.md); aceites e próximos critérios na [revisão L5-C04/C05](relatorios/REVISAO-L5-C05.md).
+13/10/2026. Avaliação arquitetural C06 com corte publicado `bc874f4` e preparação local identificada por hashes; provas dedicadas em `3463bdc`, `96b377c`, `e308c0f`, `f7f9400` e `15547ed`. **Decisão do Arquiteto para estabilização e lançamento; não aprova release nem antecipa M1-B.** Estado em [STATUS-IMPLEMENTACAO](STATUS-IMPLEMENTACAO.md); aceites e próximos critérios na [revisão L5-C06](relatorios/REVISAO-L5-C06.md).
 
 ## 1. Onde estamos
 
@@ -12,7 +12,7 @@ O projeto está em **M0, pesquisa aplicada e protótipos verificáveis**. A infr
 | Semântica | Rust R1/R2/R3; TSJS-A/B com 45 labels e 13/13 referências resolvíveis; sessão TSJS-C | Rust R4/lacunas, semântica Python/Go e relações úteis em tarefas; callable TSJS continua unknown |
 | Contexto | P3/v3; BM25/TF-IDF em fontes reais, 640 entregas com tokens controlados; decoder diff integral | Consumo Rust do intake, comparação P3 sob orçamento de sessão, labels independentes e tarefas completas |
 | Corpus | Oito dossiês individuais e quatro eventos operacionais comprovados; mapa E02 v2 | Faltam 24 tarefas/quotas; global 0/32. Candidato Django ainda não compensa 19/20; eventos não criam dossiês |
-| Avaliação por agente | Harness/replay, dispatch v2, factory de tools, contenção Linux e oracles reais | Corrigir pedido mutável/adotar factory, adapter real, quatro smokes, comparadores fortes, D1/H1 e recursos |
+| Avaliação por agente | Harness/replay, dispatch v2, factory de tools, contenção Linux e oracles reais | Completar replay/recibo de transporte, adapter real, quatro smokes, comparadores fortes, D1/H1 e recursos |
 | Produto público | `xrai --help` e `--version`; crates de domínio ainda sem capacidades da alpha | Indexar, consultar e atualizar pelo executável/CLI/MCP de produção |
 | Distribuição | CI Linux x86_64/macOS arm64; recursos experimentais de workers nos dois hosts | Escolha de runtime/calibração, instalação do produto, piso macOS 15.0, licença e release auditável |
 
@@ -119,6 +119,6 @@ Medir cinco eixos separadamente: capacidades reais por linguagem; tarefas do cor
 
 Antes de estimar uma data, registrar esforço ativo e espera externa de pelo menos dois incrementos representativos (um dossiê completo e uma fatia de frontend/contexto), custos dos probes/campanhas e largura real de trabalho do Implementador. Só então apresentar faixa condicionada a G0/G1 e recursos, revisada quando surgir dependência nova. Hoje não há base para prometer semanas, meses ou percentual de 1.0; a maior incerteza é a eficácia ainda não medida.
 
-Próximas entregas observáveis: pedido D01 corrigido, dossiê Django, intake P3 Rust e tarefa comparável ao lexical. Em paralelo: consultas independentes, contratos ABA/blobs, comparadores/smoke, recursos v2 e coletor S02. Quatro eventos, TSJS e provas lexicais/recursos já são aceites limitados; não reiniciar essas frentes. [Revisão corrente](relatorios/REVISAO-L5-C05.md), §8, define sequência e responsáveis.
+Próximas entregas observáveis: replay sem omissão de recusas; oracle físico/isolamento do candidato Django; prova P3 atual e ponte no Store via regressão Tokio. A preparação C06 não aumentou elegibilidade nem avaliou gate. Conjunto lexical independente, contratos ABA/blobs, comparadores/smoke, recursos v2 e coletor S02 continuam em paralelo. [Revisão corrente](relatorios/REVISAO-L5-C06.md), §5, define os próximos resultados.
 
 O avanço técnico reduz incertezas do protótipo, mas ainda não há sessão real de agente demonstrando ganho, corpus32 admitido ou gate avaliado. O próximo marco de produto continua G0; não há base para percentual/data de v1.0. As [fatias históricas](L5-PROXIMA-EXECUCAO.md) preservam contratos que a revisão não substituiu.

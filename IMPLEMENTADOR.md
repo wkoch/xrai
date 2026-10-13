@@ -1,6 +1,6 @@
 # Instruções para a IA implementadora do xrai
 
-Data: 13/10/2026. **Entrada vigente: [revisão L5-C04/C05](docs/relatorios/REVISAO-L5-C05.md).** Quatro eventos operacionais, TSJS lexical/sessão, recuperação com tokens e recursos nos dois hosts aceitos nos recortes. Oito tarefas elegíveis, D1 global 0/32 e projeção multimódulo 19/20. Priorizar correção do pedido mutável D01, dossiê Django e integração P3 Rust; critérios e frentes independentes na revisão. S02 offline aceito; setup afetado permanece bloqueado. O [roteiro v1](docs/ROTEIRO-V1.md) mantém M0 → confirmação → alpha → estabilização. Leia o [estado atual](docs/STATUS-IMPLEMENTACAO.md); não refaça provas aceitas nem anuncie planejamento como código concluído.
+Data: 13/10/2026. **Entrada vigente: [revisão L5-C06](docs/relatorios/REVISAO-L5-C06.md), com contratos de continuidade na [C05](docs/relatorios/REVISAO-L5-C05.md).** Captura privada do request e adoção offline avançaram; corrigir completude do replay de recusas. Django tem dossiê preparado, sem oracle físico/crédito; P3 typed preparado, prova nativa e Store pendentes no corte revisado. Oito elegíveis, D1 global 0/32, quatro eventos e projeção multimódulo 19/20. [Estado](docs/STATUS-IMPLEMENTACAO.md) e [roteiro v1](docs/ROTEIRO-V1.md) distinguem essas entregas de gates/produto. Não refazer aceites históricos.
 
 Atualização de 12/10/2026: repositório público e [CI confirmada nos três jobs](docs/relatorios/CI-PUBLICO.md). M0-02.R2/M0-07 concluídas; bloqueio anterior superado. [L3](docs/relatorios/L3.md) avançou contenção, workers, captura e quatro pilotos verticais. [L4](docs/relatorios/L4.md) entregou os recortes descritos acima; L5 organiza o restante dos mesmos cartões. Nenhum gate competitivo foi avaliado.
 
@@ -25,7 +25,8 @@ Leia inicialmente este arquivo, o estado atual, a revisão vigente e os cartões
 |---|---|
 | [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
 | [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e seis atividades complementares, dependências, entregáveis e aceite; IDs são estáveis |
-| [Revisão L5-C04/C05](docs/relatorios/REVISAO-L5-C05.md) | Aceites recentes, pedido mutável D01, candidato Django, P3 Rust, avaliação e próximos critérios |
+| [Revisão L5-C06](docs/relatorios/REVISAO-L5-C06.md) | Replay completo, oracle físico Django e integração Store/Tokio; aceites por hash do trabalho observado |
+| [Revisão L5-C04/C05](docs/relatorios/REVISAO-L5-C05.md) | Aceites prévios e contratos de corpus, avaliação, recursos, ABA/blobs e inspeção ainda vigentes |
 | [Revisão L5-C03](docs/relatorios/REVISAO-L5-C03.md) | Histórico da primeira prova Rust e origem de E02/D01/S02 |
 | [Próxima execução L5](docs/L5-PROXIMA-EXECUCAO.md) | Fatias C03/dispatch e perfil TS/JS; considerar os aceites e ajustes posteriores da revisão L5-C05 |
 | [Revisão L5-C02](docs/relatorios/REVISAO-L5-C02.md) | Aceite anterior dos quatro pares e origem dos requisitos de eventos/C03 e dependências/S01 |
@@ -138,4 +139,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Próxima execução: [revisão L5-C04/C05](docs/relatorios/REVISAO-L5-C05.md), §8.** Corrigir request reservado versus transportado; qualificar Django no slot existente; integrar intake ao P3 Rust e avaliar tarefa completa. Conjunto lexical independente, adoção do factory, ABA/blobs, comparadores/smoke, recursos e inspeção seguem em paralelo conforme contratos. Preservar quatro eventos, 45 labels TSJS e provas nativas aceitas. Oito elegíveis/0 admitidos, 41 estados e seis V1 condicionais permanecem. Registrar evidências/limites e commit/push após verificar, conforme AGENTS.md.
+**Próxima execução: [revisão L5-C06](docs/relatorios/REVISAO-L5-C06.md), §5.** Corrigir omissão de recusas no replay; preparar oracle físico Django com condição pública substantiva e isolamento; concluir prova P3 e ligar intake ao Store via regressão Tokio. Interface pública de transporte e demais frentes C05 seguem em paralelo. Nenhum crédito multimódulo por lista de paths nem tarefa natural por fixture. Atualizar evidências/limites e commit/push após checks conforme AGENTS.md.
