@@ -1,0 +1,30 @@
+{
+  "b": 0.75,
+  "chunk_lines": 40,
+  "k1": 1.2,
+  "limits": [
+    "scripted_retrieval only; no agent/model/tokenizer/provider/semantic precision/performance claim",
+    "No threshold is a gate; misses remain evidence. No tuning or relabelling after results."
+  ],
+  "max_wire_bytes": 65536,
+  "methods": [
+    "bm25",
+    "tfidf_cosine"
+  ],
+  "metrics": [
+    "file_hit_at_1",
+    "file_hit_at_3",
+    "file_hit_at_5",
+    "file_reciprocal_rank",
+    "anchor_covered_at_5",
+    "negative_empty"
+  ],
+  "overlap_lines": 10,
+  "path_term_weight": 3,
+  "repetitions": 2,
+  "schema": "xrai.eval.lexical.frozen-protocol.v1",
+  "seed": 20261012,
+  "selection": "descending score then path/start/end; skip overlapping source spans; no zero-score hits",
+  "tokenization": "unicode words; preserve folded whole identifiers plus camelCase/PascalCase/snake_case components; path and body terms",
+  "top_k": 5
+}

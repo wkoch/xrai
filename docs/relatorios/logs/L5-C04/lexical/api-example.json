@@ -1,0 +1,114 @@
+{
+  "search": {
+    "schema": "lexical-delivery.v1",
+    "snapshot_id": "fc6b7289dfb2b5649aba2ed8cbff355d9af76976200e81c9356aaf494c0fb876",
+    "configuration_id": "501267ba8aca6a879a280051edfc2c96a2797cac97831668bdb1020f33588b9a",
+    "producer_sha256": "d170aefebcb9211fc644a1c98ae2c03d31c1cb5fc70305e658d81d8502faa8c0",
+    "mode": "search",
+    "method": "bm25",
+    "query_sha256": "00558aaacf288a9303719ec5681e6f3863451971b7e645ac68e8c931f5ebc70b",
+    "status": "lexical_matches",
+    "snippets": [
+      {
+        "id": "7319da3ca75a13eae212d4957fb0e2175cbc1dc5972935d2327e2b0a12328eb2",
+        "path": "src/a.py",
+        "start": 0,
+        "end": 33,
+        "source_sha256": "d7baa82b0197fa11a257503615b8b936ddf92ecbb2fc63037ac0fbfc61262953",
+        "snippet_sha256": "d7baa82b0197fa11a257503615b8b936ddf92ecbb2fc63037ac0fbfc61262953",
+        "text": "def sample_value():\n    return 1\n",
+        "score": 0.8630462173553426,
+        "rank": 1
+      }
+    ],
+    "refusals": [],
+    "requested_ids": [],
+    "coverage": {
+      "captured_scope_only": true,
+      "whole_repository": false,
+      "captured_files": 1,
+      "source_bytes": 33,
+      "indexed_chunks": 1,
+      "empty_files": 0,
+      "complete_captured_index": true,
+      "parse_status": "unknown",
+      "semantic_status": "unknown"
+    },
+    "model_tokens": null,
+    "financial_cost": null,
+    "wire_bytes": 1111
+  },
+  "expand": {
+    "schema": "lexical-delivery.v1",
+    "snapshot_id": "fc6b7289dfb2b5649aba2ed8cbff355d9af76976200e81c9356aaf494c0fb876",
+    "configuration_id": "501267ba8aca6a879a280051edfc2c96a2797cac97831668bdb1020f33588b9a",
+    "producer_sha256": "d170aefebcb9211fc644a1c98ae2c03d31c1cb5fc70305e658d81d8502faa8c0",
+    "mode": "full_captured_file",
+    "method": null,
+    "query_sha256": null,
+    "status": "expanded_full_captured_files",
+    "snippets": [
+      {
+        "id": "7319da3ca75a13eae212d4957fb0e2175cbc1dc5972935d2327e2b0a12328eb2",
+        "path": "src/a.py",
+        "start": 0,
+        "end": 33,
+        "source_sha256": "d7baa82b0197fa11a257503615b8b936ddf92ecbb2fc63037ac0fbfc61262953",
+        "snippet_sha256": "d7baa82b0197fa11a257503615b8b936ddf92ecbb2fc63037ac0fbfc61262953",
+        "text": "def sample_value():\n    return 1\n"
+      }
+    ],
+    "refusals": [],
+    "requested_ids": [
+      "7319da3ca75a13eae212d4957fb0e2175cbc1dc5972935d2327e2b0a12328eb2"
+    ],
+    "coverage": {
+      "captured_scope_only": true,
+      "whole_repository": false,
+      "captured_files": 1,
+      "source_bytes": 33,
+      "indexed_chunks": 1,
+      "empty_files": 0,
+      "complete_captured_index": true,
+      "parse_status": "unknown",
+      "semantic_status": "unknown"
+    },
+    "model_tokens": null,
+    "financial_cost": null,
+    "wire_bytes": 1102
+  },
+  "unknown": {
+    "schema": "lexical-delivery.v1",
+    "snapshot_id": "fc6b7289dfb2b5649aba2ed8cbff355d9af76976200e81c9356aaf494c0fb876",
+    "configuration_id": "501267ba8aca6a879a280051edfc2c96a2797cac97831668bdb1020f33588b9a",
+    "producer_sha256": "d170aefebcb9211fc644a1c98ae2c03d31c1cb5fc70305e658d81d8502faa8c0",
+    "mode": "full_captured_file",
+    "method": null,
+    "query_sha256": null,
+    "status": "unknown_handles",
+    "snippets": [],
+    "refusals": [
+      {
+        "id": "bad",
+        "reason": "handle_not_in_snapshot_and_configuration"
+      }
+    ],
+    "requested_ids": [
+      "bad"
+    ],
+    "coverage": {
+      "captured_scope_only": true,
+      "whole_repository": false,
+      "captured_files": 1,
+      "source_bytes": 33,
+      "indexed_chunks": 1,
+      "empty_files": 0,
+      "complete_captured_index": true,
+      "parse_status": "unknown",
+      "semantic_status": "unknown"
+    },
+    "model_tokens": null,
+    "financial_cost": null,
+    "wire_bytes": 769
+  }
+}

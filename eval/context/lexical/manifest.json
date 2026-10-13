@@ -1,0 +1,980 @@
+{
+  "capture_rationale": "Complete production source extensions within four existing utility/API subtrees; no hit-based file selection or method-specific universe.",
+  "data_only": true,
+  "input_policy": "Only files under the explicit per-family source allowlist enter retrievers; labels/oracles/patches/licenses stay evaluator-only.",
+  "schema": "xrai.eval.lexical.captured-sources.v1",
+  "universes": [
+    {
+      "archive": {
+        "path": "eval/qualification/l5-real/rust/baseline.tar.gz",
+        "sha256": "539f90cd750eff4df257d2ff01d9552da7f57201daa493d5afe4b8daaf1e4e9f"
+      },
+      "capture_extension": ".rs",
+      "capture_prefix": "crates/stdx/src/",
+      "commit": "3a5f65784a90278fa1de97fe89a7a529dd44765a",
+      "coverage": "exact captured subtree production paths only; outside prefix and separate tests omitted",
+      "family": "Rust",
+      "file_count": 13,
+      "files": {
+        "crates/stdx/src/anymap.rs": {
+          "asset": "sources/Rust/crates/stdx/src/anymap.rs",
+          "bytes": 11044,
+          "sha256": "624ee0a71f5744aa78ab37319eeddb660aa1eb9c1d2dfc5d55dff00e0ce263c6"
+        },
+        "crates/stdx/src/assert.rs": {
+          "asset": "sources/Rust/crates/stdx/src/assert.rs",
+          "bytes": 3770,
+          "sha256": "1f3191a21f1e8626d9add573880c3c11629c1b0013fdafeb32360befbccba2af"
+        },
+        "crates/stdx/src/lib.rs": {
+          "asset": "sources/Rust/crates/stdx/src/lib.rs",
+          "bytes": 12526,
+          "sha256": "f446733f5bdb045691bd8f25ad4a3186404ef956c9e5b7eebd6f1025395dbfd1"
+        },
+        "crates/stdx/src/macros.rs": {
+          "asset": "sources/Rust/crates/stdx/src/macros.rs",
+          "bytes": 4939,
+          "sha256": "0013e37e9239c53f2af495987a0e5f017337d28fe247945ffc56702bb74e02c4"
+        },
+        "crates/stdx/src/non_empty_vec.rs": {
+          "asset": "sources/Rust/crates/stdx/src/non_empty_vec.rs",
+          "bytes": 768,
+          "sha256": "91ca57945f28d076d13f63503ea07195980fdd9fba61eb28da5177230ca8ae6d"
+        },
+        "crates/stdx/src/panic_context.rs": {
+          "asset": "sources/Rust/crates/stdx/src/panic_context.rs",
+          "bytes": 1286,
+          "sha256": "42a0d9b9c58dfa3225bc530f4f20dce8a5c93e28d55f3894f163a2981139271b"
+        },
+        "crates/stdx/src/process.rs": {
+          "asset": "sources/Rust/crates/stdx/src/process.rs",
+          "bytes": 8491,
+          "sha256": "3c1ae96791e4d897315879a01662c34bd662c7d63819a48c4b01d207c8eba208"
+        },
+        "crates/stdx/src/rand.rs": {
+          "asset": "sources/Rust/crates/stdx/src/rand.rs",
+          "bytes": 735,
+          "sha256": "cb56df4a9ab5e528e9d8df04127ff4fc395607d73b93e4d0fdf83341dacee772"
+        },
+        "crates/stdx/src/tempfile.rs": {
+          "asset": "sources/Rust/crates/stdx/src/tempfile.rs",
+          "bytes": 5866,
+          "sha256": "f3799d49dd85ba766ea9541c75c57d74c6e2854a9519a75c9f5627ad4fe9eea3"
+        },
+        "crates/stdx/src/thread.rs": {
+          "asset": "sources/Rust/crates/stdx/src/thread.rs",
+          "bytes": 3171,
+          "sha256": "41506c82ce4d1032624c3281bce8bf1c4f6a982d6d31ce67f46773d79e8b67a4"
+        },
+        "crates/stdx/src/thread/intent.rs": {
+          "asset": "sources/Rust/crates/stdx/src/thread/intent.rs",
+          "bytes": 11408,
+          "sha256": "9af4aebd7dac578e271e03e72a5067693d3ba0cd6a9baa964ebd3272c4ea8bbe"
+        },
+        "crates/stdx/src/thread/pool.rs": {
+          "asset": "sources/Rust/crates/stdx/src/thread/pool.rs",
+          "bytes": 4693,
+          "sha256": "22dfde056cef354fbcf394a5c9310c36781fcdb7f403c03e2e368dda48fdd94f"
+        },
+        "crates/stdx/src/variance.rs": {
+          "asset": "sources/Rust/crates/stdx/src/variance.rs",
+          "bytes": 7832,
+          "sha256": "a9d15758fa1af0804b14549710dafee9e5e91c3661529e96e83df6c59c459863"
+        }
+      },
+      "full_archive_regular_files": 2342,
+      "licenses": {
+        "LICENSE-APACHE": {
+          "asset": "licenses/Rust/LICENSE-APACHE",
+          "bytes": 9723,
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        "LICENSE-MIT": {
+          "asset": "licenses/Rust/LICENSE-MIT",
+          "bytes": 1023,
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      },
+      "limits": [
+        "Full selected file bytes, including inline tests/comments/docs; no production LOC claim.",
+        "Flow/compile tags/conditional syntax are source text; no parser/semantic/build configuration claim.",
+        "A lexical absence is limited to this captured scope, never whole-repository absence."
+      ],
+      "omitted_inside_prefix": [],
+      "omitted_outside_prefix_count": 2329,
+      "repository": "rust-lang/rust-analyzer",
+      "source_bytes": 76529
+    },
+    {
+      "archive": {
+        "path": "eval/qualification/l5-real/js/sources/base.tar.gz",
+        "sha256": "b589b94f327ee6a48ab809d9477f9926341b2980676a9b89cb1a4f6ea783afd6"
+      },
+      "capture_extension": ".js",
+      "capture_prefix": "packages/react/src/",
+      "commit": "77912d9a05d7a90287fabdec76486f25869b2981",
+      "coverage": "exact captured subtree production paths only; outside prefix and separate tests omitted",
+      "family": "TSJS",
+      "file_count": 28,
+      "files": {
+        "packages/react/src/BadMapPolyfill.js": {
+          "asset": "sources/TSJS/packages/react/src/BadMapPolyfill.js",
+          "bytes": 557,
+          "sha256": "23dbb32c59a8258c70b3d2e5cdfedb587a49fa0dd0418e338873820abe21f294"
+        },
+        "packages/react/src/React.js": {
+          "asset": "sources/TSJS/packages/react/src/React.js",
+          "bytes": 3312,
+          "sha256": "31bf8b27e2682c1cabad2c1667e9afdfba297789612aa29758a4cf53eac4f6e3"
+        },
+        "packages/react/src/ReactAct.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactAct.js",
+          "bytes": 7271,
+          "sha256": "c3e617dc5c34be5f68857704ac1d3d7b7cb4581c991c652ebf795a2d518127a1"
+        },
+        "packages/react/src/ReactBaseClasses.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactBaseClasses.js",
+          "bytes": 4901,
+          "sha256": "4817f0705e5b1bb7d3588eb99ef67190d862a4a21a1c3b18f55afc8edca7b294"
+        },
+        "packages/react/src/ReactChildren.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactChildren.js",
+          "bytes": 9078,
+          "sha256": "d9b0392d5230d3c2bfbc86f187f785c1f4df68fff4643298db650ec07c21e46e"
+        },
+        "packages/react/src/ReactContext.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactContext.js",
+          "bytes": 4348,
+          "sha256": "ec51cc418c87bbf17e7b7187b4314c4c25bdc82d8b08c9842250c922ed0e4bd5"
+        },
+        "packages/react/src/ReactCreateRef.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactCreateRef.js",
+          "bytes": 459,
+          "sha256": "300d2f482922aba0e598c93d7f3fb8965e6ff23a2bcb975666d7174fe42b8979"
+        },
+        "packages/react/src/ReactCurrentActQueue.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactCurrentActQueue.js",
+          "bytes": 894,
+          "sha256": "0c2dbb1c488c298d94a6c0f238e05f8d9cb6ff05a53e47b28b39fcbed6ef6a63"
+        },
+        "packages/react/src/ReactCurrentBatchConfig.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactCurrentBatchConfig.js",
+          "bytes": 432,
+          "sha256": "79aba8fcf5b60fe3f249e926a472ce8c309511115bdb52a40ac187fb41b88e2a"
+        },
+        "packages/react/src/ReactCurrentDispatcher.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactCurrentDispatcher.js",
+          "bytes": 495,
+          "sha256": "8a5078b861880b0f0661bd1871852efe5dd686c6d965608103c1c112004bbd1b"
+        },
+        "packages/react/src/ReactCurrentOwner.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactCurrentOwner.js",
+          "bytes": 582,
+          "sha256": "80a85143c12d7acf4ad79f71051fca25432663eafe50ea87fede406626d00b64"
+        },
+        "packages/react/src/ReactDebugCurrentFrame.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactDebugCurrentFrame.js",
+          "bytes": 1178,
+          "sha256": "c8187149fa2590d8138a6551c6b847f94a1f09456a4a0446f57120c7ff12fd83"
+        },
+        "packages/react/src/ReactElement.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactElement.js",
+          "bytes": 15462,
+          "sha256": "7c988c8c3325c0a16daa82ee1845d31f075424f0174473819fd0c565eeca7591"
+        },
+        "packages/react/src/ReactElementValidator.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactElementValidator.js",
+          "bytes": 16027,
+          "sha256": "30ff821185d2628bce5330fb6113c2b4996856e54be0309149e6a61d5b7013a3"
+        },
+        "packages/react/src/ReactForwardRef.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactForwardRef.js",
+          "bytes": 2511,
+          "sha256": "f376ec880ad58e25da9f45b277d83bfc15c99049b40fef8e1ffe80f7b127a517"
+        },
+        "packages/react/src/ReactHooks.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactHooks.js",
+          "bytes": 5778,
+          "sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+        },
+        "packages/react/src/ReactLazy.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactLazy.js",
+          "bytes": 5395,
+          "sha256": "0a59e45b9df3f2e354a1690d269523f32b64b62530b6e333172f7ebe9e749a2d"
+        },
+        "packages/react/src/ReactMemo.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactMemo.js",
+          "bytes": 1659,
+          "sha256": "550ba085248f77ad04bec9f75dfa1eff5ac42cd94425b991fc3428ae0d1ff2a6"
+        },
+        "packages/react/src/ReactMutableSource.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactMutableSource.js",
+          "bytes": 1022,
+          "sha256": "af124566329412bcde04f8efaa00d19d5530c5d56d45c4ff6f5a564c56fa1487"
+        },
+        "packages/react/src/ReactNoopUpdateQueue.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactNoopUpdateQueue.js",
+          "bytes": 3735,
+          "sha256": "515fadd0a3d1026794ecf3ea3650509936713d5ba89253a3e49a42aa07c5c691"
+        },
+        "packages/react/src/ReactSharedInternals.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactSharedInternals.js",
+          "bytes": 921,
+          "sha256": "dd0d36a5029385ec50d1d9c1953c4c9f925e4f649d80c6d24e6b25249043276c"
+        },
+        "packages/react/src/ReactStartTransition.js": {
+          "asset": "sources/TSJS/packages/react/src/ReactStartTransition.js",
+          "bytes": 522,
+          "sha256": "986697beceb6f1c20a0997332ce37e016b89aaa1a77d16dd00ab480638d936fe"
+        },
+        "packages/react/src/forks/ReactCurrentDispatcher.www.js": {
+          "asset": "sources/TSJS/packages/react/src/forks/ReactCurrentDispatcher.www.js",
+          "bytes": 240,
+          "sha256": "e5ed96d3ec4547133fe541992992faf9027200526b3e683c8ce608ced6496e30"
+        },
+        "packages/react/src/forks/ReactCurrentOwner.www.js": {
+          "asset": "sources/TSJS/packages/react/src/forks/ReactCurrentOwner.www.js",
+          "bytes": 235,
+          "sha256": "5bbf50cab230600b7edef081633f14cfae0f86dffb34a43c272f769099e9250e"
+        },
+        "packages/react/src/forks/ReactSharedInternals.umd.js": {
+          "asset": "sources/TSJS/packages/react/src/forks/ReactSharedInternals.umd.js",
+          "bytes": 1294,
+          "sha256": "d2c828589d01a9458ebba3a244589326b07eecacf392e139de663f620c6e10da"
+        },
+        "packages/react/src/jsx/ReactJSX.js": {
+          "asset": "sources/TSJS/packages/react/src/jsx/ReactJSX.js",
+          "bytes": 797,
+          "sha256": "f62fd9d25b6c7eeab169417ddba0d3cf17b3552732a4f8bd4104410203f805ad"
+        },
+        "packages/react/src/jsx/ReactJSXElement.js": {
+          "asset": "sources/TSJS/packages/react/src/jsx/ReactJSXElement.js",
+          "bytes": 9990,
+          "sha256": "56d11470eff72d46d7f2fb6bad0974612f6e228d23cbb3f5ef632f29d6ea2ff8"
+        },
+        "packages/react/src/jsx/ReactJSXElementValidator.js": {
+          "asset": "sources/TSJS/packages/react/src/jsx/ReactJSXElementValidator.js",
+          "bytes": 13027,
+          "sha256": "b6efd893b70122602ddc4a695a9011e59c145b5195d83e4c3a6b928c531c109f"
+        }
+      },
+      "full_archive_regular_files": 2330,
+      "licenses": {
+        "LICENSE": {
+          "asset": "licenses/TSJS/LICENSE",
+          "bytes": 1086,
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      },
+      "limits": [
+        "Full selected file bytes, including inline tests/comments/docs; no production LOC claim.",
+        "Flow/compile tags/conditional syntax are source text; no parser/semantic/build configuration claim.",
+        "A lexical absence is limited to this captured scope, never whole-repository absence."
+      ],
+      "omitted_inside_prefix": [
+        {
+          "bytes": 29788,
+          "path": "packages/react/src/__tests__/ReactChildren-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 2179,
+          "path": "packages/react/src/__tests__/ReactClassEquivalence-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 16750,
+          "path": "packages/react/src/__tests__/ReactCoffeeScriptClass-test.coffee",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 22207,
+          "path": "packages/react/src/__tests__/ReactContextValidator-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1403,
+          "path": "packages/react/src/__tests__/ReactCreateRef-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 17564,
+          "path": "packages/react/src/__tests__/ReactES6Class-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 15776,
+          "path": "packages/react/src/__tests__/ReactElement-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 10587,
+          "path": "packages/react/src/__tests__/ReactElementClone-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 13839,
+          "path": "packages/react/src/__tests__/ReactElementJSX-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 17801,
+          "path": "packages/react/src/__tests__/ReactElementValidator-test.internal.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 6045,
+          "path": "packages/react/src/__tests__/ReactJSXElement-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 13174,
+          "path": "packages/react/src/__tests__/ReactJSXElementValidator-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 86971,
+          "path": "packages/react/src/__tests__/ReactProfiler-test.internal.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 5459,
+          "path": "packages/react/src/__tests__/ReactProfilerDevToolsIntegration-test.internal.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 3461,
+          "path": "packages/react/src/__tests__/ReactPureComponent-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 3645,
+          "path": "packages/react/src/__tests__/ReactStrictMode-test.internal.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 36621,
+          "path": "packages/react/src/__tests__/ReactStrictMode-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 20746,
+          "path": "packages/react/src/__tests__/ReactTypeScriptClass-test.ts",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 1739,
+          "path": "packages/react/src/__tests__/__snapshots__/ReactProfiler-test.internal.js.snap",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 21622,
+          "path": "packages/react/src/__tests__/createReactClassIntegration-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 6049,
+          "path": "packages/react/src/__tests__/forwardRef-test.internal.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 15626,
+          "path": "packages/react/src/__tests__/forwardRef-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1923,
+          "path": "packages/react/src/__tests__/onlyChild-test.js",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 413,
+          "path": "packages/react/src/__tests__/testDefinitions/PropTypes.d.ts",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 792,
+          "path": "packages/react/src/__tests__/testDefinitions/React.d.ts",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 617,
+          "path": "packages/react/src/__tests__/testDefinitions/ReactDOM.d.ts",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 430,
+          "path": "packages/react/src/__tests__/testDefinitions/ReactInternalAct.d.ts",
+          "reason": "outside_selected_extension"
+        }
+      ],
+      "omitted_outside_prefix_count": 2275,
+      "repository": "facebook/react",
+      "source_bytes": 112122
+    },
+    {
+      "archive": {
+        "path": "eval/qualification/l5-real/python/sources/base.tar.gz",
+        "sha256": "70f9d47a3aba04faf22b150075283b0a4311f8b665bf2ab3e447cd5c3685b70b"
+      },
+      "capture_extension": ".py",
+      "capture_prefix": "sklearn/metrics/",
+      "commit": "156ef141f3b270edb06c8ae9af37c55253c0aabe",
+      "coverage": "exact captured subtree production paths only; outside prefix and separate tests omitted",
+      "family": "Python",
+      "file_count": 19,
+      "files": {
+        "sklearn/metrics/__init__.py": {
+          "asset": "sources/Python/sklearn/metrics/__init__.py",
+          "bytes": 4553,
+          "sha256": "0388db4efb86c7ca3aa117c0ff92075dc9edd405514e403a92706740bd3445e6"
+        },
+        "sklearn/metrics/_base.py": {
+          "asset": "sources/Python/sklearn/metrics/_base.py",
+          "bytes": 7293,
+          "sha256": "1df623872c3cef5200b7caf7e9cf325423305dc688d0915827bbe3aef41ee5b9"
+        },
+        "sklearn/metrics/_classification.py": {
+          "asset": "sources/Python/sklearn/metrics/_classification.py",
+          "bytes": 126075,
+          "sha256": "2f0cb72e27139dd48839e05d9a3a4b54a8981d1fa92e781c7c7fdc001c8be364"
+        },
+        "sklearn/metrics/_pairwise_distances_reduction/__init__.py": {
+          "asset": "sources/Python/sklearn/metrics/_pairwise_distances_reduction/__init__.py",
+          "bytes": 5122,
+          "sha256": "2f96c2632dbbe8a3e5e822c42d3e285e546bd62af06f9194cf93dd960100c68c"
+        },
+        "sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py": {
+          "asset": "sources/Python/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py",
+          "bytes": 29726,
+          "sha256": "a9e3248745625f6f53467664104324057c62d06d2fc139d52b2ae1c33c84deb1"
+        },
+        "sklearn/metrics/_plot/__init__.py": {
+          "asset": "sources/Python/sklearn/metrics/_plot/__init__.py",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sklearn/metrics/_plot/confusion_matrix.py": {
+          "asset": "sources/Python/sklearn/metrics/_plot/confusion_matrix.py",
+          "bytes": 16378,
+          "sha256": "493e6ac0fa75bbd95778249faeb01f9a11cf520fbba90dc613959de3ee0a7b05"
+        },
+        "sklearn/metrics/_plot/det_curve.py": {
+          "asset": "sources/Python/sklearn/metrics/_plot/det_curve.py",
+          "bytes": 10770,
+          "sha256": "b70700d494334932c4f03e19ebcc58ea6faaabc3fd3255af7e4ae8b190be274b"
+        },
+        "sklearn/metrics/_plot/precision_recall_curve.py": {
+          "asset": "sources/Python/sklearn/metrics/_plot/precision_recall_curve.py",
+          "bytes": 17688,
+          "sha256": "5c99cee3eb377d232fd32e4b43d967f82b7800379b0c9e41f9b00288a5fc543a"
+        },
+        "sklearn/metrics/_plot/regression.py": {
+          "asset": "sources/Python/sklearn/metrics/_plot/regression.py",
+          "bytes": 14389,
+          "sha256": "d082d427d161caa257884d6289d5da6f2c19ad76b4a1d219aa186befaa5dc3a5"
+        },
+        "sklearn/metrics/_plot/roc_curve.py": {
+          "asset": "sources/Python/sklearn/metrics/_plot/roc_curve.py",
+          "bytes": 13545,
+          "sha256": "a34d6d63d722ec1d184468626be4e8184ba4e78b749f4c588ef0deb5c9ed4de0"
+        },
+        "sklearn/metrics/_ranking.py": {
+          "asset": "sources/Python/sklearn/metrics/_ranking.py",
+          "bytes": 77526,
+          "sha256": "420a8519c0dedc3d0e71dc0b7371dc93946e33f0026d9bd2a08bf5851bb9bab4"
+        },
+        "sklearn/metrics/_regression.py": {
+          "asset": "sources/Python/sklearn/metrics/_regression.py",
+          "bytes": 62959,
+          "sha256": "c0419e30b4d012f863313448d7d976a6aca40515e847a366c022aa43aa8b6906"
+        },
+        "sklearn/metrics/_scorer.py": {
+          "asset": "sources/Python/sklearn/metrics/_scorer.py",
+          "bytes": 36135,
+          "sha256": "010858ab2d8718a22d16505b2317777b4054fb037de6cf71e94d5050a358f8fa"
+        },
+        "sklearn/metrics/cluster/__init__.py": {
+          "asset": "sources/Python/sklearn/metrics/cluster/__init__.py",
+          "bytes": 1331,
+          "sha256": "ee117687dde0814233d5f4f28cbfe2df3512f9b91528b311592acde4cd6f8ac4"
+        },
+        "sklearn/metrics/cluster/_bicluster.py": {
+          "asset": "sources/Python/sklearn/metrics/cluster/_bicluster.py",
+          "bytes": 3562,
+          "sha256": "431fbe99a5dd322982f82f88ff3b67f1f6080a8285b288f68bb6f82ee081029b"
+        },
+        "sklearn/metrics/cluster/_supervised.py": {
+          "asset": "sources/Python/sklearn/metrics/cluster/_supervised.py",
+          "bytes": 44627,
+          "sha256": "23879a9c080bd518521c029a91663692306b2d23cba08b7d4c47427a731ef4a1"
+        },
+        "sklearn/metrics/cluster/_unsupervised.py": {
+          "asset": "sources/Python/sklearn/metrics/cluster/_unsupervised.py",
+          "bytes": 17143,
+          "sha256": "14bec9bebc4b7586980a76b8ce37ac5c3829644aed957425025977dabac03cd0"
+        },
+        "sklearn/metrics/pairwise.py": {
+          "asset": "sources/Python/sklearn/metrics/pairwise.py",
+          "bytes": 87515,
+          "sha256": "bf40ffe53c476ed7512a7319a16d769257233d176c5796539ba4e9b10d0fe0a1"
+        }
+      },
+      "full_archive_regular_files": 1424,
+      "licenses": {
+        "COPYING": {
+          "asset": "licenses/Python/COPYING",
+          "bytes": 1532,
+          "sha256": "75684d16f4662ab842ed5af9482ac01939aee83c8243d89993616d959d3053f8"
+        }
+      },
+      "limits": [
+        "Full selected file bytes, including inline tests/comments/docs; no production LOC claim.",
+        "Flow/compile tags/conditional syntax are source text; no parser/semantic/build configuration claim.",
+        "A lexical absence is limited to this captured scope, never whole-repository absence."
+      ],
+      "omitted_inside_prefix": [
+        {
+          "bytes": 4378,
+          "path": "sklearn/metrics/_dist_metrics.pxd.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 91783,
+          "path": "sklearn/metrics/_dist_metrics.pyx.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 979,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_argkmin.pxd.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 19783,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_argkmin.pyx.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 6432,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_argkmin_classmode.pyx.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 3563,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_base.pxd.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 18353,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_base.pyx.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 151,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_classmode.pxd",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 1948,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_datasets_pair.pxd.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 15087,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_datasets_pair.pyx.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 5925,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_middle_term_computer.pxd.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 20344,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_middle_term_computer.pyx.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 3254,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_radius_neighbors.pxd.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 19423,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_radius_neighbors.pyx.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 7350,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/_radius_neighbors_classmode.pyx.tp",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 7939,
+          "path": "sklearn/metrics/_pairwise_distances_reduction/meson.build",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 3510,
+          "path": "sklearn/metrics/_pairwise_fast.pyx",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 0,
+          "path": "sklearn/metrics/_plot/tests/__init__.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 8815,
+          "path": "sklearn/metrics/_plot/tests/test_common_curve_display.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 13705,
+          "path": "sklearn/metrics/_plot/tests/test_confusion_matrix_display.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 3426,
+          "path": "sklearn/metrics/_plot/tests/test_det_curve_display.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 13100,
+          "path": "sklearn/metrics/_plot/tests/test_precision_recall_display.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 5786,
+          "path": "sklearn/metrics/_plot/tests/test_predict_error_display.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 10135,
+          "path": "sklearn/metrics/_plot/tests/test_roc_curve_display.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 2730,
+          "path": "sklearn/metrics/cluster/_expected_mutual_info_fast.pyx",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 172,
+          "path": "sklearn/metrics/cluster/meson.build",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 0,
+          "path": "sklearn/metrics/cluster/tests/__init__.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1719,
+          "path": "sklearn/metrics/cluster/tests/test_bicluster.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 7755,
+          "path": "sklearn/metrics/cluster/tests/test_common.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 17873,
+          "path": "sklearn/metrics/cluster/tests/test_supervised.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 12269,
+          "path": "sklearn/metrics/cluster/tests/test_unsupervised.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1534,
+          "path": "sklearn/metrics/meson.build",
+          "reason": "outside_selected_extension"
+        },
+        {
+          "bytes": 0,
+          "path": "sklearn/metrics/tests/__init__.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 108787,
+          "path": "sklearn/metrics/tests/test_classification.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 62529,
+          "path": "sklearn/metrics/tests/test_common.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 14802,
+          "path": "sklearn/metrics/tests/test_dist_metrics.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 58062,
+          "path": "sklearn/metrics/tests/test_pairwise.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 53061,
+          "path": "sklearn/metrics/tests/test_pairwise_distances_reduction.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 83447,
+          "path": "sklearn/metrics/tests/test_ranking.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 27231,
+          "path": "sklearn/metrics/tests/test_regression.py",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 55718,
+          "path": "sklearn/metrics/tests/test_score_objects.py",
+          "reason": "separate_test_path"
+        }
+      ],
+      "omitted_outside_prefix_count": 1364,
+      "repository": "scikit-learn/scikit-learn",
+      "source_bytes": 576337
+    },
+    {
+      "archive": {
+        "path": "eval/qualification/l5-real/go/sources/base.tar.gz",
+        "sha256": "3cd918c96a563db6a64e8c9717d556097240de799f9f0948ba50060e6143c190"
+      },
+      "capture_extension": ".go",
+      "capture_prefix": "modules/util/",
+      "commit": "8eefa1f6dedf2488db2c9e12c916e8e51f673160",
+      "coverage": "exact captured subtree production paths only; outside prefix and separate tests omitted",
+      "family": "Go",
+      "file_count": 22,
+      "files": {
+        "modules/util/color.go": {
+          "asset": "sources/Go/modules/util/color.go",
+          "bytes": 1973,
+          "sha256": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9"
+        },
+        "modules/util/error.go": {
+          "asset": "sources/Go/modules/util/error.go",
+          "bytes": 2353,
+          "sha256": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d"
+        },
+        "modules/util/file_unix.go": {
+          "asset": "sources/Go/modules/util/file_unix.go",
+          "bytes": 628,
+          "sha256": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a"
+        },
+        "modules/util/file_windows.go": {
+          "asset": "sources/Go/modules/util/file_windows.go",
+          "bytes": 274,
+          "sha256": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609"
+        },
+        "modules/util/filebuffer/file_backed_buffer.go": {
+          "asset": "sources/Go/modules/util/filebuffer/file_backed_buffer.go",
+          "bytes": 3281,
+          "sha256": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd"
+        },
+        "modules/util/io.go": {
+          "asset": "sources/Go/modules/util/io.go",
+          "bytes": 1849,
+          "sha256": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6"
+        },
+        "modules/util/keypair.go": {
+          "asset": "sources/Go/modules/util/keypair.go",
+          "bytes": 1408,
+          "sha256": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd"
+        },
+        "modules/util/legacy.go": {
+          "asset": "sources/Go/modules/util/legacy.go",
+          "bytes": 1827,
+          "sha256": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da"
+        },
+        "modules/util/pack.go": {
+          "asset": "sources/Go/modules/util/pack.go",
+          "bytes": 695,
+          "sha256": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27"
+        },
+        "modules/util/paginate.go": {
+          "asset": "sources/Go/modules/util/paginate.go",
+          "bytes": 727,
+          "sha256": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b"
+        },
+        "modules/util/path.go": {
+          "asset": "sources/Go/modules/util/path.go",
+          "bytes": 9185,
+          "sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c"
+        },
+        "modules/util/remove.go": {
+          "asset": "sources/Go/modules/util/remove.go",
+          "bytes": 2464,
+          "sha256": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb"
+        },
+        "modules/util/rotatingfilewriter/writer.go": {
+          "asset": "sources/Go/modules/util/rotatingfilewriter/writer.go",
+          "bytes": 5587,
+          "sha256": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71"
+        },
+        "modules/util/sanitize.go": {
+          "asset": "sources/Go/modules/util/sanitize.go",
+          "bytes": 2542,
+          "sha256": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031"
+        },
+        "modules/util/sec_to_time.go": {
+          "asset": "sources/Go/modules/util/sec_to_time.go",
+          "bytes": 2749,
+          "sha256": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f"
+        },
+        "modules/util/shellquote.go": {
+          "asset": "sources/Go/modules/util/shellquote.go",
+          "bytes": 3574,
+          "sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02"
+        },
+        "modules/util/slice.go": {
+          "asset": "sources/Go/modules/util/slice.go",
+          "bytes": 1910,
+          "sha256": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7"
+        },
+        "modules/util/string.go": {
+          "asset": "sources/Go/modules/util/string.go",
+          "bytes": 2337,
+          "sha256": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713"
+        },
+        "modules/util/timer.go": {
+          "asset": "sources/Go/modules/util/timer.go",
+          "bytes": 549,
+          "sha256": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c"
+        },
+        "modules/util/truncate.go": {
+          "asset": "sources/Go/modules/util/truncate.go",
+          "bytes": 1250,
+          "sha256": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb"
+        },
+        "modules/util/url.go": {
+          "asset": "sources/Go/modules/util/url.go",
+          "bytes": 1138,
+          "sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e"
+        },
+        "modules/util/util.go": {
+          "asset": "sources/Go/modules/util/util.go",
+          "bytes": 5732,
+          "sha256": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8"
+        }
+      },
+      "full_archive_regular_files": 6127,
+      "licenses": {
+        "LICENSE": {
+          "asset": "licenses/Go/LICENSE",
+          "bytes": 1097,
+          "sha256": "ed2f10a9d78b8c6c9ef33f1420d0eb266981891caf2f15d630553f02dc60d3ae"
+        }
+      },
+      "limits": [
+        "Full selected file bytes, including inline tests/comments/docs; no production LOC claim.",
+        "Flow/compile tags/conditional syntax are source text; no parser/semantic/build configuration claim.",
+        "A lexical absence is limited to this captured scope, never whole-repository absence."
+      ],
+      "omitted_inside_prefix": [
+        {
+          "bytes": 1594,
+          "path": "modules/util/color_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 760,
+          "path": "modules/util/file_unix_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 651,
+          "path": "modules/util/filebuffer/file_backed_buffer_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1660,
+          "path": "modules/util/io_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1420,
+          "path": "modules/util/keypair_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1215,
+          "path": "modules/util/legacy_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 544,
+          "path": "modules/util/pack_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1285,
+          "path": "modules/util/paginate_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 4491,
+          "path": "modules/util/path_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1097,
+          "path": "modules/util/rotatingfilewriter/writer_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1851,
+          "path": "modules/util/sanitize_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1040,
+          "path": "modules/util/sec_to_time_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 2692,
+          "path": "modules/util/shellquote_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 2546,
+          "path": "modules/util/slice_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1291,
+          "path": "modules/util/string_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 807,
+          "path": "modules/util/timer_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 1374,
+          "path": "modules/util/truncate_test.go",
+          "reason": "separate_test_path"
+        },
+        {
+          "bytes": 6226,
+          "path": "modules/util/util_test.go",
+          "reason": "separate_test_path"
+        }
+      ],
+      "omitted_outside_prefix_count": 6087,
+      "repository": "go-gitea/gitea",
+      "source_bytes": 54032
+    }
+  ]
+}

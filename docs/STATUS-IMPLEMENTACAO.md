@@ -217,3 +217,7 @@ CI presença38329111797/código3463bdc aprovada: três casos JS/Python/Go, 73 ch
 ## TSJS experimental e preflight factual comprovados
 
 TSJS38329944063/código96b377c aprovado e [ZIP/API recompostos](relatorios/logs/L5-C04/TSJS/native-proof/reconciliation.json):45 casos,13/13 referências resolvíveis nos labels, zero promoções indevidas, relação real uuid e callable unknown. Limites em[L5-TSJS](relatorios/L5-TSJS.md); nenhum novo dossiê/admissão. [D01 factual](relatorios/logs/L5-C04/D01/factual/proof.json) passou18 contraprovas e recomposição real em snapshot/cópia privada: quatro eventos operacionais, oito elegíveis,0/32 admitidos,19/20 multimódulo; provider/teto e demais requisitos faltantes continuam recusados. CI regular3463bdc38329094983 passou Linux/macOS/contratos, probes upstream históricos skipped. Frentes de recuperação/adapter/recursos seguem em implementação; 41 estados/gates preservados.
+
+## Baseline lexical e alternativa reais
+
+[L5-LEXICAL](relatorios/L5-LEXICAL.md) entrega API BM25/TF-IDF e expansão de fontes integrais sob limite do JSON em bytes; 27 checks e 64 células recompostas pelo raiz. Quatro famílias em subárvores capturadas; fontes@3 12/12 para ambos, anchors@5 10/12 e11/12 com perdas preservadas. Consulta/labels congelados antes do algoritmo; tokens/provider/agentes reais e revisão independente dos labels pendentes. [Evidências](relatorios/logs/L5-C04/lexical/root-recheck.json). Estados de cartões/gates e 8 elegíveis/0 admitidos inalterados.

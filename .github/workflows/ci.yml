@@ -58,6 +58,10 @@ jobs:
           python -m unittest discover -s eval/scripts -p 'test_inspection_policy.py' -v
           python eval/scripts/verify_tsjs_semantics.py --labels-only
           python -m unittest discover -s eval/scripts -p 'test_tsjs_semantics.py' -v
+          python eval/context/lexical/freeze_inputs.py verify
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_lexical_retrieval.py' -v
+          python eval/context/lexical/benchmark.py > "$RUNNER_TEMP/lexical-results.json"
+          python -c 'import json,os; from pathlib import Path; assert json.loads(Path(os.environ["RUNNER_TEMP"],"lexical-results.json").read_bytes()) == json.loads(Path("docs/relatorios/logs/L5-C04/lexical/benchmark.json").read_bytes())'
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}
