@@ -1,0 +1,46 @@
+{
+  "schema": "xrai.eval.c04.resource-audit.v1",
+  "recorded_at_utc": "2026-10-13T01:30:28.579779+00:00",
+  "delegated_reviewers": [
+    "e02_allocation",
+    "d01_commitment"
+  ],
+  "native_executed_locally": false,
+  "upstream_executed": false,
+  "initial_findings": [
+    "conflicting source_id reuse",
+    "first-seen lane scope named ambiguously",
+    "all-mode equivalence metadata insufficient",
+    "session cardinality allowed duplicates",
+    "Response producer/types/diagnostics invalid data accepted",
+    "binary closure missing",
+    "RSS baselines index duplicates/types",
+    "CPU infinity and non-integer RSS/phase times"
+  ],
+  "source_audit": {
+    "whole_sources": 52,
+    "controlled_prefixes": 14,
+    "historical_controls": 14,
+    "verified_archive_correspondence_reported": 80,
+    "fresh_acquisition": false
+  },
+  "independent_recheck_reported": {
+    "valid_control_accepted": true,
+    "negative_cases_rejected": [
+      "CPU infinity",
+      "peak RSS float",
+      "sum RSS float",
+      "start observed boolean",
+      "ack epoch float"
+    ]
+  },
+  "remaining_at_checkpoint": [
+    "final owner data-only tests and phase failure shape",
+    "native Linux and macOS execution",
+    "authenticated original ZIP/API reconciliation"
+  ],
+  "limits": [
+    "Read-only delegated data inspection; no native response or measured resource claimed at this checkpoint.",
+    "Missing real TSX dense/large and unavailable XRW2 internal timings remain declared."
+  ]
+}

@@ -1,0 +1,69 @@
+name: L5 captured real worker resources
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-resources:
+    name: C04 real resources ${{ matrix.host }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            host: x86_64-unknown-linux-gnu
+          - runner: macos-15
+            host: aarch64-apple-darwin
+    defaults:
+      run:
+        shell: bash
+    env:
+      CARGO_TERM_COLOR: always
+      EXPECTED_HOST: ${{ matrix.host }}
+      MACOSX_DEPLOYMENT_TARGET: '15.0'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Install pinned resource verification tooling
+        run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Verify frozen real source design
+        run: |
+          mkdir -p resource-evidence
+          python eval/scripts/verify_real_resources.py --design-only > resource-evidence/design.json
+      - name: Build owned experimental resource driver
+        run: |
+          export RUSTUP_HOME="$RUNNER_TEMP/xrai-rustup"
+          printf '%s\n' "RUSTUP_HOME=$RUSTUP_HOME" >> "$GITHUB_ENV"
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+          cargo fmt --all -- --check
+          cargo clippy --locked -p xrai-eval --bin worker-benchmark-real --bin worker-spike --bin worker-persistent -- -D warnings
+          cargo build --release --locked -p xrai-eval --bin worker-benchmark-real --bin worker-spike --bin worker-persistent
+          rustc --version --verbose > resource-evidence/rustc.txt
+          cargo --version > resource-evidence/cargo.txt
+          python --version > resource-evidence/python.txt
+          test "$(rustc --version --verbose | awk '/^host:/ {print $2}')" = "$EXPECTED_HOST"
+      - name: Measure owned workers on frozen captured sources
+        run: python eval/scripts/run_real_resources.py --binary target/release/worker-benchmark-real --single-worker target/release/worker-spike --persistent-worker target/release/worker-persistent --output resource-evidence/event > resource-evidence/collector.json
+      - name: Recompute complete real resource evidence
+        run: python eval/scripts/verify_real_resources.py --output resource-evidence/event > resource-evidence/verification.json
+      - name: Reject adversarial resource substitutions
+        env:
+          XRAI_REAL_RESOURCES_OUTPUT: resource-evidence/event
+        run: python -m unittest discover -s eval/scripts -p test_real_resources.py -v > resource-evidence/receipt-tests.stdout 2> resource-evidence/receipt-tests.stderr
+      - name: Preserve exact real resource proof and native bytes
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c04-real-resources-${{ matrix.host }}
+          path: resource-evidence
+          if-no-files-found: error
+          retention-days: 90

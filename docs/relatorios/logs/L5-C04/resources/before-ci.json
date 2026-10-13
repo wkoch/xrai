@@ -1,0 +1,20 @@
+{
+  "schema_version": "xrai.eval.resources.real-before-ci.v1",
+  "recorded_at": "2026-10-13T01:30:10.508273+00:00",
+  "source_sha256": {
+    "crates/xrai-eval/src/bin/worker-benchmark-real.rs": "21244c0cee05253e4ad727ccf447df8591da177307455830d4fa819309bac877",
+    "eval/scripts/run_real_resources.py": "46fa1261578467812646d49f0ef33dda871f91c1995ad709c68cd81c6c8176ae",
+    "eval/scripts/verify_real_resources.py": "f49fb362221837a0047cf2aea85359ae65b0e718ef5a5c0be4ea02ce2ac3e613",
+    "eval/scripts/test_real_resources.py": "ada34c9ab9eb7058161eb5a443e0c213b1938ffecac43d4c45108adec528c7df",
+    "eval/resources/real-v1/protocol.json": "1a5aff585dc9546c19cc36ba3f3519a7dd417c99ad5d88a88b908becb3deb17d",
+    "eval/resources/real-v1/source-manifest.json": "5a5787e27c45ce98dc635a600456db87e54eb3ee56ae6fb0fd62a866b54b81eb",
+    "eval/resources/real-v1/freeze-before-driver.json": "2f8a5789b756d5d3330b087d31a54613d97fb0599a1f4d3c09bf8d0970b3b205"
+  },
+  "local_data_only_tests": {
+    "passed": 21,
+    "actual_native_proof_skipped": 9
+  },
+  "rustfmt_check": "pass",
+  "local_native_execution": false,
+  "ci_measurement": "pending"
+}

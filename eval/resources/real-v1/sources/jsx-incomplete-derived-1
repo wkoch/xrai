@@ -1,0 +1,21 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @emails react-core
+ */
+
+/* eslint-disable no-script-url */
+
+'use strict';
+
+const ReactDOMServerIntegrationUtils = require('./utils/ReactDOMServerIntegrationTestUtils');
+
+let React;
+let ReactDOM;
+let ReactDOMServer;
+let ReactTestUtils;
+
+function runTests(itRenders, itRejectsRendering, expectToReject) {

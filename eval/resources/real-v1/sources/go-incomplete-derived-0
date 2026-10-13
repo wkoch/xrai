@@ -1,0 +1,22 @@
+// Copyright 2022 The Gitea Authors. All rights reserved.
+// SPDX-License-Identifier: MIT
+
+package dbfs
+
+import (
+	"context"
+	"errors"
+	"io"
+	"io/fs"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+	"time"
+
+	"code.gitea.io/gitea/models/db"
+)
+
+var defaultFileBlockSize int64 = 32 * 1024
+
+type File interface {

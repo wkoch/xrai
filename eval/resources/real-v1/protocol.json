@@ -1,0 +1,86 @@
+{
+  "schema_version": "xrai.eval.resources.real-protocol.v1",
+  "purpose": "L5-03 real parser workers with direct_cached control; experimental, no M0-06 closure or production recommendation by construction.",
+  "dialects": [
+    "rust",
+    "javascript",
+    "jsx",
+    "typescript",
+    "tsx",
+    "python",
+    "go"
+  ],
+  "classes": [
+    "small",
+    "medium",
+    "dense",
+    "large",
+    "incomplete-derived",
+    "large-comments-control"
+  ],
+  "modes": [
+    "direct",
+    "direct_cached",
+    "xrw1",
+    "xrw2"
+  ],
+  "patterns": [
+    "repeated",
+    "distinct_two_source_cycle"
+  ],
+  "sessions_per_mode_concurrency": 3,
+  "requests_per_dialect_class_pattern_session": 30,
+  "concurrency_values": [
+    1,
+    2
+  ],
+  "warmup_requests_per_lane": 2,
+  "mode_rotation": [
+    [
+      "direct",
+      "direct_cached",
+      "xrw1",
+      "xrw2"
+    ],
+    [
+      "direct_cached",
+      "xrw1",
+      "xrw2",
+      "direct"
+    ],
+    [
+      "xrw1",
+      "xrw2",
+      "direct",
+      "direct_cached"
+    ]
+  ],
+  "configuration_cycle": [
+    "configuration-A",
+    "configuration-B"
+  ],
+  "source_read_policy": "All modes consume byte-identical captured frozen source copies; source reads/setup outside dispatch timings, reported separately.",
+  "cache_policy": "Exact copy of XRW2 dialect-keyed parser/query cache; validate producer/config/source identity, reset before/after, parse with no old tree/ranges/edits; no response/AST/source cache. Separate lane cache per concurrent caller.",
+  "equivalence": "Before measured sessions, all four modes must compare complete encoded Response byte-for-byte after validating correlation and normalizing ONLY request number to0. Retain every unique full encoded reference compressed plus observed fingerprint per completed request.",
+  "cpu": "wait4 terminal inclusive target parent+waited descendants after synchronized idle baseline; calibrate once each host, observer counters separate; no double counting historical children.",
+  "rss": "Separate observer process ps common snapshots25ms; simultaneoussum baselineidle synchronized via ready/startfiles before work and after warmup where observable; sampled_peak_sum_rss only, retain rawseries+lostworkerPIDs+samplinggaps.",
+  "timing": "Capture/read/hash/requestencode/cachecompile whereobservable/outerdispatch/Responseencode/shutdown separate; XRW2 internalqueue/codec/roundtrip and observedstderr null withreason until instrumentation exists. No summing component percentiles.",
+  "binary_policy": "Retain actual benchmark-real/worker-spike/worker-persistent bytes per host; no upstream executed; native ownprobe only disposableLinux/macOSCI.",
+  "limits": {
+    "source_bytes": 8388608,
+    "response_bytes": 16777216,
+    "reserved_payload_bytes": 67108864,
+    "queue_positions": 8,
+    "request_deadline_seconds": 5,
+    "session_watchdog_seconds": 1200,
+    "artifact_uncompressed_bytes": 157286400
+  },
+  "known_gaps": [
+    "TSX large class unavailable; no synthetic substitute.",
+    "Distinct pattern alternates only two source units, not thirty independent files.",
+    "Incomplete class is controlled prefix of real source, not original defect.",
+    "JSX selection lexical, syntax coverage must be observed later without relabeling.",
+    "XRW2 private inner component timings/IPC counters unavailable.",
+    "Complete M0-06 calibration/production choice remains pending."
+  ]
+}
