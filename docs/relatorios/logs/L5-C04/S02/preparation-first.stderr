@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/inventory_gitea_availability.py", line 422, in <module>
+    main()
+    ~~~~^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/inventory_gitea_availability.py", line 418, in main
+    print(encoded(prepare() if args.action == 'prepare' else verify()).decode(), end='')
+                  ~~~~~~~^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/inventory_gitea_availability.py", line 401, in prepare
+    outputs = compose(); availability = decode(outputs['availability.json'])
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/inventory_gitea_availability.py", line 229, in compose
+    cache = decode(raw[CACHE]); files = validate_cache(cache)
+                                        ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/inventory_gitea_availability.py", line 163, in validate_cache
+    need(set(row) == {'path', 'bytes', 'sha256'} and type(row['bytes']) is int and 0 <= row['bytes'] <= MAX_INPUT_BYTES and
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         re.fullmatch('[0-9a-f]{64}', row['sha256']), 'cache file receipt')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/inventory_gitea_availability.py", line 57, in need
+    raise ValueError(message)
+ValueError: cache file receipt

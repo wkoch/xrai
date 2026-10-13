@@ -52,6 +52,8 @@ jobs:
           python -m unittest discover -s eval/scripts -p 'test_state_assignment.py' -v
           python -m unittest discover -s eval/scripts -p 'test_presence_ci.py' -v
           python -m unittest discover -s eval/scripts -p 'test_presence_events.py' -v
+          python eval/scripts/inventory_gitea_availability.py verify
+          python -m unittest discover -s eval/scripts -p 'test_inspection_policy.py' -v
           python eval/scripts/verify_tsjs_semantics.py --labels-only
           python -m unittest discover -s eval/scripts -p 'test_tsjs_semantics.py' -v
   workspace:

@@ -192,6 +192,21 @@ class ConsumerTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'duplicate admission task'):
             v.apply_assignment(rows, self.assignment)
 
+    def test_presence_original_ci_reconciler_is_consumed(self):
+        import prepare_state_events, reconcile_state_ci, reconcile_presence_ci, verify_c02
+        matrix = v.decode((v.ROOT / self.plan['factual_progress']['path']).read_bytes())
+        rust = v.decode((v.ROOT / self.progress['historical_rust_proof']['path']).read_bytes())
+        false_proof = v.decode((v.ROOT / self.progress['presence_proof']['path']).read_bytes())
+        false_proof['native_verification']['go']['required_event_executed'] = False
+        with patch.object(prepare_state_events,'verify',return_value={'prepared_required_events':4}), \
+             patch.object(verify_c02,'reconcile',return_value=matrix), \
+             patch.object(reconcile_state_ci,'reconcile',return_value=rust), \
+             patch.object(reconcile_presence_ci,'reconcile',return_value=false_proof) as consumed:
+            with self.assertRaisesRegex(ValueError,'original ZIP/API recomputation'):
+                v.derive_progress(self.plan,self.assignment)
+            consumed.assert_called_once_with(v.ROOT/v.PRESENCE_PROOF_DIRECTORY,
+                v.PRESENCE_RUN,v.PRESENCE_HEAD,v.PRESENCE_ARTIFACT)
+
     def test_supplemental_event_cannot_fill_required_slot(self):
         rows = self.rows(); rows[0]['incremental_event']['role'] = 'supplemental'
         with self.assertRaisesRegex(ValueError, 'supplemental event'):
@@ -218,7 +233,7 @@ class ConsumerTests(unittest.TestCase):
 
     def test_forged_progress_flags_not_authority(self):
         forged = deepcopy(self.progress)
-        forged['summary']['required_events_operationally_proven'] = 4
+        forged['summary']['required_events_operationally_proven'] += 1
         forged['tasks'][1]['operational_event_proven'] = True
         with patch.object(v, 'derive_progress', return_value=self.progress):
             with self.assertRaisesRegex(ValueError, 'recomputed evidence'):
@@ -232,8 +247,8 @@ class ConsumerTests(unittest.TestCase):
                 v.verify(progress=forged)
 
     def test_preparer_executed_zero_is_not_actual_event_count(self):
-        self.assertEqual(self.progress['summary']['required_events_operationally_proven'], 1)
-        self.assertEqual(self.progress['summary']['required_event_by_family'], {'Rust': 1, 'TSJS': 0, 'Python': 0, 'Go': 0})
+        self.assertEqual(self.progress['summary']['required_events_operationally_proven'], 4)
+        self.assertEqual(self.progress['summary']['required_event_by_family'], {'Rust': 1, 'TSJS': 1, 'Python': 1, 'Go': 1})
         self.assertEqual(self.progress['summary']['new_state_dossiers_individually_eligible'], 0)
         self.assertEqual(self.progress['summary']['individual_eligible_tasks'], 8)
 

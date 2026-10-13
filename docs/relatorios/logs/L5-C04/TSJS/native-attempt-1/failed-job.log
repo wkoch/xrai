@@ -1,0 +1,24 @@
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	﻿2026-10-13T00:51:02.2941976Z ##[group]Run python eval/scripts/run_tsjs_semantics.py --binary target/release/tsjs-semantics --output tsjs-evidence/event > tsjs-evidence/collector.json
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.2943105Z ^[[36;1mpython eval/scripts/run_tsjs_semantics.py --binary target/release/tsjs-semantics --output tsjs-evidence/event > tsjs-evidence/collector.json^[[0m
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3007120Z shell: /usr/bin/bash -e {0}
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3007377Z env:
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3007640Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.13/x64
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3008083Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.13/x64/lib/pkgconfig
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3008518Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.13/x64
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3008895Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.13/x64
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3009278Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.13/x64
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3009654Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.13/x64/lib
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.3009973Z ##[endgroup]
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4600659Z Traceback (most recent call last):
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4630131Z   File "/home/runner/work/xrai/xrai/eval/scripts/run_tsjs_semantics.py", line 50, in <module>
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4631212Z     main()
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4631499Z     ~~~~^^
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4632095Z   File "/home/runner/work/xrai/xrai/eval/scripts/run_tsjs_semantics.py", line 46, in main
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4632870Z     print(json.dumps(run(args.binary, args.output), indent=2))
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4633378Z                      ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4634058Z   File "/home/runner/work/xrai/xrai/eval/scripts/run_tsjs_semantics.py", line 36, in run
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4634746Z     result = verifier.verify_outputs(snapshots)
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4635596Z   File "/home/runner/work/xrai/xrai/eval/scripts/verify_tsjs_semantics.py", line 171, in verify_outputs
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4636564Z     raise ValueError(f"query occurrence absent: {case['id']}")
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4637222Z ValueError: query occurrence absent: javascript-partial
+C04 captured TSJS relative semantics	Prove frozen TSJS labels and real relation	2026-10-13T00:51:02.4725094Z ##[error]Process completed with exit code 1.

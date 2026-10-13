@@ -1,0 +1,34 @@
+{
+  "schema_version": "xrai.eval.tsjs.partial-failure-diagnosis.v1",
+  "data_only": true,
+  "run_id": 38329117468,
+  "code_commit": "3463bdc7bd6ad085d784f0b45fc7ef496f9ee80b",
+  "original_zip_sha256": "006cbb88aa6026632e8f416f4823e8ba2c04150dc0491c1f574c9071c3a7cd75",
+  "labels_sha256": "812837d7c86e79cc19bcbde2141a1f4ddd9e75d4d93ab1733f8e55b19fa322d0",
+  "observed_matched_queries": 43,
+  "total_queries": 45,
+  "absent_occurrences": [
+    {
+      "case": "javascript-partial",
+      "expected_state": "unknown",
+      "query_offset": 61,
+      "failure": "AST recovered use as property/method-name; occurrence omitted"
+    },
+    {
+      "case": "typescript-partial",
+      "expected_state": "unknown",
+      "query_offset": 61,
+      "failure": "AST recovered use as property/method-name; occurrence omitted"
+    }
+  ],
+  "required_native_verification_accepted": false,
+  "fix": "Keep partial AST identifier/property tokens as explicitly unknown occurrences at module gap, with original spans; retain parse_partial diagnostics and no promotions.",
+  "labels_changed": false,
+  "upstream_executed": false,
+  "prospective_source_sha256": {
+    "crates/xrai-eval/src/tsjs_semantics.rs": "557f8dcfb373c6430cda21c3e4733327540dd066cf99366b57316246685e5528",
+    "eval/scripts/run_tsjs_semantics.py": "cfed8c3526804018da11e03bcc5f01e5e02dc4153e53ae7db5976fcc1b47114d",
+    "eval/scripts/reconcile_tsjs_ci.py": "7e8a0abc231525a8d20213435271d8d0546ba63128a16cd6910e7cf25e3ef40b"
+  },
+  "recorded_at": "2026-10-13T00:52:56.619721+00:00"
+}

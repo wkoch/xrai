@@ -1,0 +1,37 @@
+{
+  "schema": "xrai.eval.c04.source-presence.receipt.v1",
+  "family": "Go",
+  "task_id": "L5-STATE-Go-SOURCE-AVAILABILITY",
+  "slot_id": "L5-SLOT-Go-state_config-1",
+  "descriptor_sha256": "0a85e6222ae5a9a8db3fd08d2dda85b42b58b90667d50aaa766d4db6fff4c8c2",
+  "input_sha256": {
+    "a.json": "045500223166da810ee34ad00da4b5e4cbc17c78ec2f8831df56bea8a4d2061a",
+    "b.json": "93cc2475f71015e7a115ce0e6366b62dbdba2e329d4140d6cdf75f613aabce42",
+    "queries.json": "536a053e28e900984d76f120534c6dcdb9c7bec2656b0358fe61f4f8f7fa2b70",
+    "oracle.json": "242a4f624b5fd83e1e670719e109da56f03ed7d4a39f0083bc17826c1a7ce7a6"
+  },
+  "source_sha256": {
+    "eval/scripts/run_presence_events.py": "272a4f36b8f7f57346f7ef34fc16210b85a2d4afdb4aaa8cf0a197df81954518",
+    "eval/scripts/verify_presence_event.py": "18118856662c899832f20bec9d1862d23057242fbc30229e59054a540071f532",
+    "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+    "crates/xrai-eval/src/bin/source-presence-session.rs": "67b3cc73c5c01796df0dc126fb992412b7f139d21053cf786e059440a5b97813",
+    "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+    "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+  },
+  "binary": {
+    "path": "native-bin/source-presence-session",
+    "sha256": "1e1c12f137192833b533d72d5d53553aa2167f337f467e691da33316db290dde",
+    "bytes": 863216
+  },
+  "environment": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "github_sha": "3463bdc7bd6ad085d784f0b45fc7ef496f9ee80b",
+    "github_run_id": "38329111797"
+  },
+  "scope": "captured-source-presence-v1",
+  "strategy": "conservative_full_rebuild",
+  "normalization": [],
+  "admitted": false,
+  "competitive_runs_allowed": false
+}

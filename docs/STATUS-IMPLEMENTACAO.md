@@ -205,3 +205,11 @@ D01 define compromisso de envio/cancelamento; a contraprova fake observou cancel
 ## Continuação E02/D01 e preparação das provas TSJS/presença
 
 [L5-C04](relatorios/L5-C04.md): E02 validado com mapa prospectivo v2 e déficit multimódulo 19/20 explícito; quatro tarefas de estado preparadas, Rust 1/4 operacional, nenhum novo dossiê elegível, oito tarefas individuais e 0/32 admitidas. [D01](relatorios/L5-D01.md) separa reserva/compromisso/envio, com 17 testes e seis replays; CLI seed consumiu v2 e replay aprovado. [TSJS](relatorios/L5-TSJS.md) tem labels congelados de 45 casos e resolver limitado; resultados nativos ainda pendentes neste checkpoint. Três eventos de presença usam fontes React/Flow/sklearn/Gitea como dados e analyzer próprio em CI dedicado. Contraprovas locais sintéticas e reconciliador ZIP/API estão implementados. [Verificações offline](relatorios/logs/L5-C04/integration/checks.json); estados dos 41 cartões e gates preservados. S02 e diagnóstico factual de campanha continuam em paralelo, sem execução upstream/provider.
+
+## Quatro eventos operacionais conciliados
+
+CI presença38329111797/código3463bdc aprovada: três casos JS/Python/Go, 73 checks no job e 79 checks posteriores data-only no export real. [ZIP/API e 53 arquivos exatos](relatorios/logs/L5-C04/presence-native-proof/reconciliation.json). Progresso v2 agora recompõe quatro eventos operacionais (um por família), quatro preparados, zero novos dossiês elegíveis, oito individuais/0 admitidos. Déficit multimódulo 19/20 permanece. Primeira CI TSJS38329117468 falhou nos casos partial após clippy/build aprovados; ocorrências foram preservadas como unknown na correção, labels intactos e segundo aceite pendente. Estados de cartões/gates preservados.
+
+## S02 disponível para revisão
+
+[Inventário/contrato S02](relatorios/L5-S02.md) concluídos com 48 checks offline: bytes declarados do cache enumerados como ausentes no ZIP histórico, requisitos/versões separados de seleção e compilação unknown. Guard S01 e 55 alertas continuam bloqueantes. Nenhum downloader ou autorização de execução implementado; próxima análise depende de bytes/closure/contextos e contenção prospectiva. Continuidade L5, sem avanço de cartões/gates.

@@ -1,0 +1,37 @@
+{
+  "schema": "xrai.eval.c04.source-presence.receipt.v1",
+  "family": "TSJS",
+  "task_id": "L5-STATE-TSJS-SOURCE-AVAILABILITY",
+  "slot_id": "L5-SLOT-TSJS-state_config-1",
+  "descriptor_sha256": "d2ed15309db714d776429680c591336e9693c9d55f3f5b94cfa861c6fcced08a",
+  "input_sha256": {
+    "a.json": "56e59562dead00bb493aeb8458370eaf2411014eae7c081770d0554e287783e0",
+    "b.json": "a723856691d7c9b53e726c38a279470baa8dfab1a8ca5e6952671a095c3eddc3",
+    "queries.json": "fa1882368b0b5925fa4cadaca03e55a775c2c72568a9a406da7434edf1c533d9",
+    "oracle.json": "2ac94a4abb6a4d9e4a8b37871c11f15b08d609a0c65178ba0074f899e2369ca8"
+  },
+  "source_sha256": {
+    "eval/scripts/run_presence_events.py": "272a4f36b8f7f57346f7ef34fc16210b85a2d4afdb4aaa8cf0a197df81954518",
+    "eval/scripts/verify_presence_event.py": "18118856662c899832f20bec9d1862d23057242fbc30229e59054a540071f532",
+    "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+    "crates/xrai-eval/src/bin/source-presence-session.rs": "67b3cc73c5c01796df0dc126fb992412b7f139d21053cf786e059440a5b97813",
+    "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+    "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+  },
+  "binary": {
+    "path": "native-bin/source-presence-session",
+    "sha256": "1e1c12f137192833b533d72d5d53553aa2167f337f467e691da33316db290dde",
+    "bytes": 863216
+  },
+  "environment": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "github_sha": "3463bdc7bd6ad085d784f0b45fc7ef496f9ee80b",
+    "github_run_id": "38329111797"
+  },
+  "scope": "captured-source-presence-v1",
+  "strategy": "conservative_full_rebuild",
+  "normalization": [],
+  "admitted": false,
+  "competitive_runs_allowed": false
+}

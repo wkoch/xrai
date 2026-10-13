@@ -35,7 +35,7 @@ def run(binary, output):
         raise ValueError('binary changed during execution')
     result = verifier.verify_outputs(snapshots)
     (output / 'verification.json').write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n')
-    sources = ['crates/xrai-eval/src/tsjs_semantics.rs', 'crates/xrai-eval/src/bin/tsjs-semantics.rs', 'eval/scripts/verify_tsjs_semantics.py', 'eval/scripts/run_tsjs_semantics.py', 'eval/semantics/tsjs/labels.json', 'eval/semantics/tsjs/freeze-before-resolver.json', 'Cargo.lock', 'crates/xrai-eval/parsing-provenance.json']
+    sources = ['crates/xrai-eval/src/tsjs_semantics.rs', 'crates/xrai-eval/src/bin/tsjs-semantics.rs', 'crates/xrai-eval/src/worker_spike.rs', 'crates/xrai-eval/src/parsing_spike.rs', 'crates/xrai-eval/queries/javascript.scm', 'crates/xrai-eval/queries/typescript.scm', 'eval/scripts/verify_tsjs_semantics.py', 'eval/scripts/run_tsjs_semantics.py', 'eval/semantics/tsjs/labels.json', 'eval/semantics/tsjs/freeze-before-resolver.json', 'Cargo.lock', 'crates/xrai-eval/parsing-provenance.json']
     receipt = {'schema_version': 'xrai.eval.tsjs.native-receipt.v1', 'binary_sha256': binary_sha, 'source_sha256': {p: hashlib.sha256((verifier.ROOT / p).read_bytes()).hexdigest() for p in sources}, 'code_commit': os.environ.get('GITHUB_SHA'), 'run_id': os.environ.get('GITHUB_RUN_ID'), 'platform': platform.platform(), 'machine': platform.machine(), 'cases': len(receipts), 'upstream_executed': False, 'calls_to_upstream_compiler': 0, 'owned_analyzer_only': True, 'global_admission': False}
     (output / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
     return result

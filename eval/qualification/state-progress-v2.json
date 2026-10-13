@@ -5,7 +5,6 @@
   },
   "blockers": [
     "multimodule allocation projects 19/20; compensating task pending",
-    "required operational events missing for TSJS/Python/Go",
     "state dossiers remain individually unqualified",
     "global corpus remains 0/32"
   ],
@@ -22,12 +21,16 @@
     "Original prepared executed=false flags are historical preparation, not current event counts.",
     "Historical Rust event uses its original slot; only prospective admission consumes the map.",
     "Original CI acquisition authenticated by its caller; local metadata is not a signature.",
-    "No native/upstream execution or new acquisition; all verification reads retained bytes.",
+    "This consumer performs no native/upstream execution or acquisition; four events are recomputed from retained authenticated original bytes.",
     "Operational proof does not establish semantic accuracy, complexity, multimodule qualification or performance."
   ],
   "plan": {
     "path": "eval/qualification/l5-slot-plan-v2.json",
     "sha256": "3a6bfd9ffcd03c44ccb98fd11cce4f361dd69e650f8bc997480283493391dd67"
+  },
+  "presence_proof": {
+    "path": "docs/relatorios/logs/L5-C04/presence-native-proof/reconciliation.json",
+    "sha256": "18c9a5f0a6c981a3f3adb0acc650a8875b7b4e30be408fd19c99db3c662be92c"
   },
   "schema": "xrai.eval.qualification.state-progress.v2",
   "summary": {
@@ -48,12 +51,12 @@
     "new_state_dossiers_individually_eligible": 0,
     "primary_tasks_required": 32,
     "required_event_by_family": {
-      "Go": 0,
-      "Python": 0,
+      "Go": 1,
+      "Python": 1,
       "Rust": 1,
-      "TSJS": 0
+      "TSJS": 1
     },
-    "required_events_operationally_proven": 1,
+    "required_events_operationally_proven": 4,
     "state_tasks_prepared": 4
   },
   "tasks": [
@@ -84,10 +87,13 @@
       "family": "TSJS",
       "globally_admitted": false,
       "individual_eligible": false,
-      "operational_event_proven": false,
+      "operational_event_proven": true,
       "original_slot_id": "L5-SLOT-TSJS-state_config-1",
       "prepared": true,
-      "proof": null,
+      "proof": {
+        "path": "docs/relatorios/logs/L5-C04/presence-native-proof/reconciliation.json",
+        "sha256": "18c9a5f0a6c981a3f3adb0acc650a8875b7b4e30be408fd19c99db3c662be92c"
+      },
       "task_id": "L5-STATE-TSJS-SOURCE-AVAILABILITY"
     },
     {
@@ -99,10 +105,13 @@
       "family": "Python",
       "globally_admitted": false,
       "individual_eligible": false,
-      "operational_event_proven": false,
+      "operational_event_proven": true,
       "original_slot_id": "L5-SLOT-Python-state_config-1",
       "prepared": true,
-      "proof": null,
+      "proof": {
+        "path": "docs/relatorios/logs/L5-C04/presence-native-proof/reconciliation.json",
+        "sha256": "18c9a5f0a6c981a3f3adb0acc650a8875b7b4e30be408fd19c99db3c662be92c"
+      },
       "task_id": "L5-STATE-Python-SOURCE-AVAILABILITY"
     },
     {
@@ -114,10 +123,13 @@
       "family": "Go",
       "globally_admitted": false,
       "individual_eligible": false,
-      "operational_event_proven": false,
+      "operational_event_proven": true,
       "original_slot_id": "L5-SLOT-Go-state_config-1",
       "prepared": true,
-      "proof": null,
+      "proof": {
+        "path": "docs/relatorios/logs/L5-C04/presence-native-proof/reconciliation.json",
+        "sha256": "18c9a5f0a6c981a3f3adb0acc650a8875b7b4e30be408fd19c99db3c662be92c"
+      },
       "task_id": "L5-STATE-Go-SOURCE-AVAILABILITY"
     }
   ]

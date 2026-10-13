@@ -1,0 +1,57 @@
+{
+  "answers": {
+    "restored-source": {
+      "a": {
+        "available": false,
+        "sha256": null
+      },
+      "b": {
+        "available": true,
+        "sha256": "8a5078b861880b0f0661bd1871852efe5dd686c6d965608103c1c112004bbd1b"
+      }
+    },
+    "retained-source": {
+      "a": {
+        "available": true,
+        "sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+      },
+      "b": {
+        "available": true,
+        "sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353"
+      }
+    },
+    "unrelated-absent": {
+      "a": {
+        "available": false,
+        "sha256": null
+      },
+      "b": {
+        "available": false,
+        "sha256": null
+      }
+    }
+  },
+  "capacity": "captured-source-presence-v1",
+  "full_comparison": "complete declared snapshot, all queries, unknown/coverage/diagnostics preserved",
+  "labels_frozen_before_results": true,
+  "no_normalization_of": [
+    "source_hashes",
+    "configuration",
+    "unknown",
+    "coverage",
+    "diagnostics",
+    "targets",
+    "evidence",
+    "dependencies"
+  ],
+  "operational_normalization": [
+    "session_id",
+    "operation_id",
+    "generation",
+    "pid",
+    "timing"
+  ],
+  "schema_version": "xrai.eval.real-state-event.prepared.v1",
+  "stale_control": "A answers for changed queries must differ from B expectations",
+  "task_id": "L5-STATE-TSJS-SOURCE-AVAILABILITY"
+}

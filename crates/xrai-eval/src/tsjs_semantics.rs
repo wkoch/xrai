@@ -211,6 +211,28 @@ impl Builder<'_> {
             source_specifier: None,
         });
     }
+    // A partial parse can classify an unfinished use as a method/property name.
+    // Preserve those AST identifier tokens as unknown occurrences; never use the
+    // recovered tree's binding interpretation to promote a lexical target.
+    fn recover_partial_identifiers(&mut self, node: Node<'_>, scope: usize) {
+        if matches!(
+            node.kind(),
+            "identifier"
+                | "property_identifier"
+                | "shorthand_property_identifier"
+                | "shorthand_property_identifier_pattern"
+                | "type_identifier"
+        ) {
+            self.occurrences.push((
+                text(node, self.source).to_string(),
+                scope,
+                self.evidence(node, "reference"),
+            ));
+        }
+        for child in children(node) {
+            self.recover_partial_identifiers(child, scope);
+        }
+    }
     fn imports(&mut self, node: Node<'_>, scope: usize) {
         self.exclude_tree(node);
         let specifier = node.child_by_field_name("source").map(|s| {
@@ -717,6 +739,11 @@ pub fn build(input: Input) -> Result<Snapshot> {
             builder.gap(root, module, None, "parse_partial");
         }
         builder.visit(root, module);
+        if root.has_error() {
+            builder.occurrences.clear();
+            builder.excluded.clear();
+            builder.recover_partial_identifiers(root, module);
+        }
         for (name, scope, evidence) in builder.occurrences {
             if !builder.excluded.contains(&(evidence.start, evidence.end)) {
                 occurrences.push((name, scope, evidence));
@@ -725,7 +752,7 @@ pub fn build(input: Input) -> Result<Snapshot> {
         snapshot.coverage.insert(
             path.clone(),
             if root.has_error() {
-                "parse_partial_lookup_unknown"
+                "parse_partial_identifier_tokens_unknown"
             } else {
                 "experimental_lexical_subset_callables_unknown"
             }

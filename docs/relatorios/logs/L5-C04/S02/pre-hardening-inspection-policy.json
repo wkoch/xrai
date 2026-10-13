@@ -1,0 +1,67 @@
+{
+  "S01_execution_allowed": false,
+  "acquisition_implemented": false,
+  "forbidden": [
+    "go_mod_download",
+    "go_list",
+    "build",
+    "probe",
+    "upstream_import",
+    "source_execution",
+    "hooks",
+    "generation",
+    "tests",
+    "subprocess",
+    "remote_alert_dismiss",
+    "project_credentials"
+  ],
+  "limits": {
+    "archive_files": 50000,
+    "expanded_bytes": 268435456,
+    "object_bytes": 33554432,
+    "objects": 128,
+    "output_bytes": 1048576,
+    "timeout_seconds": 30,
+    "total_bytes": 268435456
+  },
+  "network": {
+    "credentials": false,
+    "fragment": "",
+    "headers": {},
+    "host": "proxy.golang.org",
+    "method": "GET",
+    "port": null,
+    "query": "",
+    "redirects": false,
+    "scheme": "https",
+    "versioned_extensions": [
+      "mod",
+      "info",
+      "zip"
+    ]
+  },
+  "operators": [
+    "sha256",
+    "regular_path_inventory",
+    "bounded_utf8_read"
+  ],
+  "profile": "restricted_frozen_data_inspection_v2",
+  "reader": {
+    "dependencies": "standard_library_only",
+    "language": "Python",
+    "sha256": "775940a3c7af6ae8aeedb1e00d2b06034f31b84e8be6d2aac2501508dbdf4d17",
+    "source": "eval/scripts/inventory_gitea_availability.py",
+    "version": "3.13.13"
+  },
+  "remote_actions": "none",
+  "runtime_requirements": [
+    "fresh disposable Linux inspection directory; no project credentials or environment passthrough",
+    "authenticated frozen input bytes read-only; inspect owned immutable in-memory copies",
+    "raw response quarantine; expected hash/length before any reader",
+    "no archive extraction; bounded inventory/read only; reject symlinks/traversal/duplicates/special files",
+    "own Python reader/runtime bytes fixed and recorded before acquisition",
+    "actual acquisition/containment requires separate implementation and receipts; request flags do not prove it"
+  ],
+  "schema": "xrai.eval.gitea.inspection.contract.v2",
+  "status": "offline_contract_validated_acquisition_not_implemented"
+}

@@ -1,0 +1,48 @@
+{
+  "artifact_sha256": {
+    "availability.json": "a1fd8469775afbbf78dab02adc8980dc3c742b623248b54dda4a42186f459949",
+    "inspection-policy.json": "8913c095ea365a085edf482cd0bd40d411ac6555bfc35c15f1ce8f5eb03ab473",
+    "missing-cache-files.json.gz": "83956daffa87cf6cc45bd33f5c7cf58c14b1dff441e06166f13063df7c88c9d0",
+    "sample-request.json": "153af0ebce1cea3fa063dbc679f5f4603eac7b1b327e114abdd6179132bdac4e"
+  },
+  "data_only": true,
+  "execution_allowed": false,
+  "new_acquisitions": 0,
+  "request_verification": {
+    "acquisition_performed": false,
+    "data_only": true,
+    "declared_bytes": 1738,
+    "execution_allowed": false,
+    "limits": [
+      "No downloader is implemented or authorized by this return value.",
+      "Runtime containment, interpreter binary pin and actual response bytes require a separate acquisition receipt.",
+      "S01 download/build/probe guard remains unchanged and blocking."
+    ],
+    "objects": 1,
+    "prospective_shape_valid": true,
+    "remote_actions": "none",
+    "schema": "xrai.eval.gitea.inspection.request-verification.v2"
+  },
+  "schema": "xrai.eval.gitea.inspection.verification.v2",
+  "source_sha256": "775940a3c7af6ae8aeedb1e00d2b06034f31b84e8be6d2aac2501508dbdf4d17",
+  "summary": {
+    "alerts": 55,
+    "alerts_compiled_version_unknown": 55,
+    "alerts_selected_version_unknown": 55,
+    "critical_high_priority": 23,
+    "direct_requirements": 117,
+    "excluded_module_versions": 4,
+    "execution_allowed": false,
+    "historical_cache_bytes_declared": 1076105923,
+    "historical_cache_files_declared": 36892,
+    "indirect_requirements": 174,
+    "new_acquisitions": 0,
+    "replacement_requirements": 4,
+    "retained_ci_zip_files": 14,
+    "retained_module_cache_bytes": 0,
+    "retained_module_cache_files": 0,
+    "root_requirements": 291,
+    "root_requirements_with_matching_declared_cache_version": 287
+  },
+  "verified": true
+}

@@ -25,6 +25,10 @@ PROOF_DIRECTORY = 'docs/relatorios/logs/L5-C03/native-proof'
 RUST_RUN = 38309739709
 RUST_HEAD = '4972f0285915a37d044d0d2bee30a32eecaffb30'
 RUST_ARTIFACT = 11773539273
+PRESENCE_PROOF_DIRECTORY = 'docs/relatorios/logs/L5-C04/presence-native-proof'
+PRESENCE_RUN = 38329111797
+PRESENCE_HEAD = '3463bdc7bd6ad085d784f0b45fc7ef496f9ee80b'
+PRESENCE_ARTIFACT = 11781928843
 FAMILIES = ('Rust', 'TSJS', 'Python', 'Go')
 CASES = (
     ('rust', 'Rust', 'Rust', 'rust-lang/rust-analyzer', 'L5-STATE-Rust-STDX-EDITION',
@@ -201,32 +205,48 @@ def derive_progress(plan, assignment, *, root=ROOT):
     require((event['task_id'], event['slot_id'], event['descriptor_sha256'], event['family']) ==
             (rust['task_id'], rust['original_slot_id'], rust['descriptor']['sha256'], 'Rust') and
             event['required_event_executed'] is True, 'Rust event differs from the frozen original case')
+    # Consume the authentic original three-event ZIP rather than executed flags
+    # in preparation descriptors, progress summaries or caller-authored receipts.
+    import reconcile_presence_ci
+    presence = reconcile_presence_ci.reconcile(root / PRESENCE_PROOF_DIRECTORY,
+        PRESENCE_RUN, PRESENCE_HEAD, PRESENCE_ARTIFACT)
+    presence_receipt = receipt(PRESENCE_PROOF_DIRECTORY + '/reconciliation.json', root)
+    require(same_json(presence, decode(bind(presence_receipt, root=root))),
+            'retained presence proof differs from complete original ZIP/API recomputation')
+    for folder in ['js', 'python', 'go']:
+        actual = presence['native_verification'][folder]
+        mapped = next(row for row in assignment['bindings'] if row['family'] == actual['family'])
+        require((actual['task_id'], actual['frozen_slot_id'], actual['descriptor_sha256']) ==
+                (mapped['task_id'], mapped['original_slot_id'], mapped['descriptor']['sha256']) and
+                actual['required_event_executed'] is True and actual['full_B_snapshot_equal'] is True,
+                'presence event differs from frozen case or required complete same-index evidence')
+    require({row['family'] for row in presence['native_verification'].values()} == {'TSJS','Python','Go'},
+            'three different required source-presence families')
     tasks = [{'task_id': row['task_id'], 'family': row['family'], 'original_slot_id': row['original_slot_id'],
               'canonical_slot_id': row['canonical_slot_id'], 'prepared': True,
-              'operational_event_proven': row['family'] == 'Rust', 'individual_eligible': False,
-              'globally_admitted': False, 'proof': stored_proof if row['family'] == 'Rust' else None,
+              'operational_event_proven': True, 'individual_eligible': False,
+              'globally_admitted': False, 'proof': stored_proof if row['family'] == 'Rust' else presence_receipt,
               'eligibility_blockers': ['natural task search/context and rubric qualification',
                                        'independent second reader and complete dossier criteria']}
              for row in assignment['bindings']]
     return {'schema': 'xrai.eval.qualification.state-progress.v2', 'data_only': True,
             'assignment': receipt(ASSIGNMENT, root), 'plan': receipt(PLAN, root),
-            'c02_matrix': matrix_receipt, 'historical_rust_proof': stored_proof,
+            'c02_matrix': matrix_receipt, 'historical_rust_proof': stored_proof, 'presence_proof': presence_receipt,
             'tasks': tasks,
-            'summary': {'state_tasks_prepared': 4, 'required_events_operationally_proven': 1,
+            'summary': {'state_tasks_prepared': 4, 'required_events_operationally_proven': 4,
                         'new_state_dossiers_individually_eligible': 0, 'individual_eligible_tasks': 8,
                         'admitted_tasks': 0, 'primary_tasks_required': 32,
                         'competitive_runs_allowed': False,
                         'conditional_projection': matrix['summary']['conditional_projection'],
-                        'required_event_by_family': {family: int(family == 'Rust') for family in FAMILIES},
+                        'required_event_by_family': {family: 1 for family in FAMILIES},
                         'multi_module_planning_projection': 19, 'multi_module_planning_required': 20,
                         'multi_module_planning_deficit': 1},
             'blockers': ['multimodule allocation projects 19/20; compensating task pending',
-                         'required operational events missing for TSJS/Python/Go',
                          'state dossiers remain individually unqualified', 'global corpus remains 0/32'],
             'limits': ['Original prepared executed=false flags are historical preparation, not current event counts.',
                        'Historical Rust event uses its original slot; only prospective admission consumes the map.',
                        'Original CI acquisition authenticated by its caller; local metadata is not a signature.',
-                       'No native/upstream execution or new acquisition; all verification reads retained bytes.',
+                       'This consumer performs no native/upstream execution or acquisition; four events are recomputed from retained authenticated original bytes.',
                        'Operational proof does not establish semantic accuracy, complexity, multimodule qualification or performance.']}
 
 

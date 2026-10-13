@@ -35,6 +35,8 @@ MAX_TOTAL_BYTES = 256 * 1024 * 1024
 MAX_MEMBERS = 128
 SOURCE_PATHS = {
     "crates/xrai-eval/src/tsjs_semantics.rs", "crates/xrai-eval/src/bin/tsjs-semantics.rs",
+    "crates/xrai-eval/src/worker_spike.rs", "crates/xrai-eval/src/parsing_spike.rs",
+    "crates/xrai-eval/queries/javascript.scm", "crates/xrai-eval/queries/typescript.scm",
     "eval/scripts/verify_tsjs_semantics.py", "eval/scripts/run_tsjs_semantics.py",
     "eval/semantics/tsjs/labels.json", "eval/semantics/tsjs/freeze-before-resolver.json",
     "Cargo.lock", "crates/xrai-eval/parsing-provenance.json",
@@ -196,7 +198,7 @@ def reconcile(directory, run_id, head, artifact_id, attempt=1):
              invocation["stdout_sha256"] == sha(members["event/outputs/" + case["id"] + ".json"]), "consumed input and complete native output invocation binding")
         need(type(invocation["elapsed_seconds"]) in [int, float] and 0 <= invocation["elapsed_seconds"] <= 30, "bounded native invocation duration")
     toolchain = members["toolchain.txt"].decode()
-    need("rustc 1.98.1" in toolchain and "cargo 1.98.1" in toolchain, "pinned Rust toolchain receipt")
+    need("rustc 1.98.1" in toolchain and "host: x86_64-unknown-linux-gnu" in toolchain, "pinned Rust compiler and Linux host receipt")
     tests = members["receipt-tests.stderr"].decode()
     need(members["receipt-tests.stdout"] == b"" and re.search(r"Ran 22 tests in [0-9.]+s\n\nOK\n", tests) is not None and "skipped" not in tests,
          "all actual snapshot adversarial checks ran and passed")
@@ -215,6 +217,7 @@ def reconcile(directory, run_id, head, artifact_id, attempt=1):
             "reconciler_source_sha256": sha(Path(__file__).read_bytes()), "global_admission": False,
             "limits": ["Original API/ZIP authenticated acquisition is performed by caller; arbitrary local JSON is not a signature.",
                        "Retained binary is hashed and never executed by this reconciler.",
+                       "Cargo version was not separately printed in this first workflow; the pinned Rust toolchain/build step supplies configuration provenance.",
                        "Experimental reference subset only; callable targets, other dialects and D1 remain unqualified."]}
 
 

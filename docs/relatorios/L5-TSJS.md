@@ -26,3 +26,15 @@ Runner novo executa só o analyzer próprio e retém binário/45 snapshots/invoc
 TSJS-C não implementado: não confundir esta semântica com evento de presença React/Flow. JSX/TSX, chamadas demonstradas, alias chamáveis, TDZ completo, type namespace/merging, package/default/namespace/reexports, resolução Node/bundler e recuperação semântica geral ficam fora. A gramática Tree-sitter não implica suporte a todas essas construções. Não há mudança de labels para atingir meta e não há admissão de corpus.
 
 Referências oficiais consultadas antes dos labels: [TypeScript módulos](https://www.typescriptlang.org/docs/handbook/modules/reference.html), cuja resolução geral tem substituição de extensões deliberadamente excluída; [ECMAScript 2024 declarações lexicais](https://tc39.es/ecma262/2024/multipage/ecmascript-language-statements-and-declarations.html#sec-let-and-const-declarations), base da barreira temporal. Não foi feita alegação de conformidade geral.
+
+## Primeiro recibo native: falha preservada
+
+CI `38329117468`, commit `3463bdc7bd6ad085d784f0b45fc7ef496f9ee80b`, compilação/clippy aprovados, 45 snapshots emitidos; verificação recusou `javascript-partial` porque a ocorrência consultada foi omitida pela interpretação de recuperação da AST. Inspeção data-only do ZIP original encontrou o mesmo problema em `typescript-partial`; as outras 43 consultas coincidiram com os labels. Isso não foi aceito como prova completa e não houve alteração de rótulos. [Diagnóstico e hash do ZIP](logs/L5-C04/TSJS/partial-occurrence-diagnosis.json).
+
+Correção prospectiva preserva tokens de identificador/propriedade da AST parcial como ocorrências explicitamente unknown no alcance do gap de módulo, com spans originais e diagnóstico parse_partial. Não usa a recuperação para promover bindings. Runner prospectivo expande de oito para 12 hashes de fonte, acrescentando helpers parsing/producer e queries JS/TS. Nova compilação/prova CI é necessária para esse código. A falha original e o manifesto antes do primeiro CI permanecem preservados.
+
+## Primeira prova e correção observada
+
+CI 38329117468 no código 3463bdc compilou/clippy aprovados, mas o verificador recusou duas ocorrências ausentes (javascript-partial/typescript-partial). [ZIP/API/log preservados](logs/L5-C04/TSJS/native-attempt-1/acquisition.json), [diagnóstico data-only dos 45 snapshots](logs/L5-C04/TSJS/partial-occurrence-diagnosis.json): 43 casos tiveram consultas representadas; esse run não é aceite semântico.
+
+Correção recupera identifier/property_identifier no AST parcial como referências unknown, sob gap parse_partial, sem criar alvo/binder. Labels/SHA/denominador permanecem congelados. Novo runner acrescenta bindings de helpers/queries do produtor; reconciliação exige rustc/host realmente impressos, registra que Cargo não foi impresso separadamente. Segunda CI dedicada pendente neste checkpoint.
