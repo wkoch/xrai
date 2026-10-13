@@ -1,0 +1,46 @@
+name: L5 lexical whole-wire tokens
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lexical-tokens:
+    name: C05 lexical whole-wire tokens
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Install pinned measurement tooling
+        run: |
+          python -m pip install -r docs/contracts/examples/requirements.txt
+          python -m pip install -r crates/xrai-eval/harness/requirements-measurement.txt
+      - name: Verify frozen lexical token protocol
+        run: |
+          mkdir -p lexical-token-evidence
+          python --version > lexical-token-evidence/python.txt
+          python -m pip freeze > lexical-token-evidence/packages.txt
+          python eval/context/lexical-token-v1/verifier.py --design-only > lexical-token-evidence/design.json
+      - name: Measure frozen lexical whole-wire envelopes
+        run: python eval/context/lexical-token-v1/driver.py --output lexical-token-evidence/event > lexical-token-evidence/collector.json
+      - name: Recompute exact controlled token receipts
+        run: python eval/context/lexical-token-v1/verifier.py --output lexical-token-evidence/event > lexical-token-evidence/verification.json
+      - name: Reject adversarial controlled token receipts
+        env:
+          XRAI_LEXICAL_TOKEN_OUTPUT: lexical-token-evidence/event
+        run: python -m unittest discover -s crates/xrai-eval/harness/tests -p test_lexical_tokens.py -v > lexical-token-evidence/receipt-tests.stdout 2> lexical-token-evidence/receipt-tests.stderr
+      - name: Preserve exact lexical token evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c05-lexical-whole-wire-tokens
+          path: lexical-token-evidence
+          if-no-files-found: error
+          retention-days: 90

@@ -70,6 +70,13 @@ jobs:
           python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_unified_diff.py' -v
           python eval/context/diff-v1/replay.py > "$RUNNER_TEMP/p3-diff-proof.json"
           python -c 'import json,os; from pathlib import Path; assert json.loads(Path(os.environ["RUNNER_TEMP"],"p3-diff-proof.json").read_bytes()) == json.loads(Path("docs/relatorios/logs/L5-C05/P3-diff/proof.json").read_bytes())'
+          python eval/adapters/guarded-v1/verify.py
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_session_tool_guard.py' -v
+          python eval/context/lexical-token-v1/verifier.py --design-only
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_lexical_tokens.py' -v
+          python eval/scripts/verify_tsjs_semantic_session.py --design-only
+          python -m unittest discover -s eval/scripts -p 'test_tsjs_semantic_session.py' -v
+          python -m unittest discover -s eval/scripts -p 'test_c05_ci.py' -v
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}

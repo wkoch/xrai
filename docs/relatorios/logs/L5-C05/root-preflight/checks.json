@@ -1,0 +1,115 @@
+{
+  "python": "3.13.13 (main, Apr 14 2026, 14:32:41) [Clang 22.1.3 ]",
+  "verification": "own Python/data only; no analyzer, upstream or provider executed",
+  "checks": [
+    {
+      "name": "guard-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_session_tool_guard.py",
+        "-v"
+      ],
+      "environment": {},
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a2ab3d6603992b0499f675d17bae4cec7dee9e27cf76c02ae49e60f13e39ca6e"
+    },
+    {
+      "name": "guard-replay",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "eval/adapters/guarded-v1/verify.py"
+      ],
+      "environment": {},
+      "exit_code": 0,
+      "stdout_sha256": "19b63fe651b11d754091092b457ed7fa1d6e5a99c5eb6a5b7b7779bcf07d0cf6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "token-design",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "eval/context/lexical-token-v1/verifier.py",
+        "--design-only"
+      ],
+      "environment": {},
+      "exit_code": 0,
+      "stdout_sha256": "de2448d993b4ae3ce9b2a5b830a93e5b0f85f85d20443ecd3b6a323c06c47d0b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "token-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_lexical_tokens.py",
+        "-v"
+      ],
+      "environment": {
+        "XRAI_LEXICAL_TOKEN_OUTPUT": "/private/tmp/xrai-c05-lexical-tokens-local"
+      },
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "eb7f075efa1b8e7b44d7c7cf96a58faa1f002cd65edb36ad0e531e0f343c6304"
+    },
+    {
+      "name": "tsjs-design",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "eval/scripts/verify_tsjs_semantic_session.py",
+        "--design-only"
+      ],
+      "environment": {},
+      "exit_code": 0,
+      "stdout_sha256": "74488472e880cd13801d4506431ddc3a957e4208736a0208e0570bdcdc1e03e1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "tsjs-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_tsjs_semantic_session.py",
+        "-v"
+      ],
+      "environment": {},
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a7d25b71afd2ada3c8aa5847c654466d776aa504ba53ebdb11be5dc51663bef4"
+    },
+    {
+      "name": "ci-reconciler-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_c05_ci.py",
+        "-v"
+      ],
+      "environment": {},
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "dc97d9722d6c6553855a186efd4652e450ed3378a6339fa15bcf093abab0f466"
+    }
+  ]
+}

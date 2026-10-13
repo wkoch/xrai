@@ -243,3 +243,7 @@ Segunda leitura lexical16/16 registrada em[L5-LEXICAL-REVISAO](relatorios/L5-LEX
 ## Continuação L5: intake de diff data-only
 
 [L5-C05](relatorios/L5-C05.md) inicia novas fatias dos mesmos IDs. [L5-P3-DIFF](relatorios/L5-P3-DIFF.md) entrega decoder limitado e consumidor typed:63checks,21 aceites/34 recusas pré-congelados eHEAD integral reconstituído, inclusive criação/remoção de fonte real, vazio eEOF semnewline. Recibo recomposto pelo raiz; nenhum legado/hash anterior modificado. Integração nativa Rust/P3, gates e demais critérios M0-09 pendentes. GuardsD01/tokenwire/sessãoTSJS-C em andamento, sem resultados atribuídos;8 elegíveis/0 admitidos e41 estados preservados.
+
+## C05: ferramentas, tokens integrais e sessão semântica
+
+[L5-C05](relatorios/L5-C05.md) registra três novas fatias verificadas: factory D01 público com33 testes/11 replays; lexical640 entregas locais realmente contadas pelo runtime L4 pinned,28 checks efetivos; sessão TSJS-C preparada com45 contraprovas data-only e update/full B congelados. Reconciliador novo50 checks/1 prova autêntica ainda skipped; workflows dedicados prontos, nenhuma execução nativa local. P3 cba8214/run38421464241 passou os três checks regulares. Checkpoint código/evidências locais pronto para commit; provas CI dedicadas e demais critérios/provider/contenção continuam pendentes.8 elegíveis/0 admitidos,19/20 multimódulo e41 estados/gates preservados.

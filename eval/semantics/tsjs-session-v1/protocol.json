@@ -1,0 +1,79 @@
+{
+  "admitted": false,
+  "bounds": {
+    "input_frame_bytes": 8388608,
+    "operations": 64,
+    "response_frame_bytes": 16777216,
+    "snapshot_files": 128,
+    "source_bytes": 8388608
+  },
+  "case": "uuid-captured-source-availability",
+  "comparison": "complete Snapshot and complete query results byte-equivalent JSON; no removal or normalization of evidence, dependencies, gaps, coverage, diagnostic or callable fields",
+  "limits": [
+    "experimental captured exact-relative ESM only",
+    "runtime callable targets unknown",
+    "partial real capture; no entire repository claim",
+    "does not replace natural state dossiers",
+    "existing resolver unchanged; labels here freeze operational states before session implementation"
+  ],
+  "new_eligible_dossier": false,
+  "operations": [
+    "open_a",
+    "snapshot_a",
+    "query_a_1",
+    "query_a_2",
+    "query_a_3",
+    "wrong_revision_update",
+    "snapshot_a_after_wrong_revision",
+    "invalid_configuration_update",
+    "snapshot_a_after_invalid_configuration",
+    "update_b",
+    "snapshot_b",
+    "query_b_1",
+    "query_b_2",
+    "query_b_3",
+    "close"
+  ],
+  "profile": "captured-relative-exact-v1",
+  "queries": [
+    {
+      "after_state": "resolved",
+      "before_state": "unknown",
+      "callable": "unknown",
+      "id": "restored-export",
+      "offset": 645,
+      "path": "src/v4.js",
+      "target_after": "src/stringify.js:unsafeStringify"
+    },
+    {
+      "after_state": "resolved",
+      "before_state": "resolved",
+      "callable": "unknown",
+      "id": "retained-local",
+      "offset": 661,
+      "path": "src/v4.js",
+      "target_after": "src/v4.js:rnds",
+      "target_before": "src/v4.js:rnds"
+    },
+    {
+      "after_state": "unknown",
+      "before_state": "unknown",
+      "callable": "unknown",
+      "id": "unrelated-default",
+      "offset": 155,
+      "path": "src/v4.js"
+    }
+  ],
+  "quota_event_credit": false,
+  "real_source_origin": "existing uuidjs/uuid capture from TSJS-A; file availability is a controlled capture intervention, not an upstream bug or historical patch",
+  "rebuild_operations": [
+    "open_b",
+    "snapshot_b",
+    "query_b_1",
+    "query_b_2",
+    "query_b_3",
+    "close"
+  ],
+  "schema": "xrai.eval.tsjs-semantic-session-protocol.v1",
+  "update_strategy": "conservative full semantic rebuild in one owned live index; atomic publish after success; no cache-performance claim"
+}

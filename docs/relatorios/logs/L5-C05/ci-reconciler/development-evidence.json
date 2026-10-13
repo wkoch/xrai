@@ -1,0 +1,62 @@
+{
+  "actual_bundle_checks_skipped": 1,
+  "actual_bundle_reconciliation": "pending root authenticated API/ZIP acquisition",
+  "checks_passed": 50,
+  "commands": [
+    {
+      "command": "/private/tmp/xrai-c05-measure/bin/python -m unittest discover -s eval/scripts -p test_c05_ci.py -v",
+      "exit_code": 0,
+      "stderr_sha256": "99ee884303f704f13220ce5cea8154d58d0265202a2b1d68273a739d1a1714d1",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "python3 -m py_compile eval/scripts/reconcile_c05_ci.py eval/scripts/test_c05_ci.py",
+      "exit_code": 0,
+      "owned_bytecode_only": true
+    }
+  ],
+  "data_only": true,
+  "limits": [
+    "Synthetic metadata/ZIP tests prove defensive checker behavior, not authenticated native/measurement execution.",
+    "Caller must acquire original GitHub API/ZIP with authenticated access; arbitrary JSON is not signature.",
+    "Fresh isolated owned verifier recomputation; no fake tokenizer/metadata/cache success fallback.",
+    "No producer/helper/workflow was edited by reconciler worker."
+  ],
+  "native_executed": false,
+  "new_acquisitions": 0,
+  "profiles": {
+    "tokens": {
+      "actual_token_packages": {
+        "regex": "2026.9.29",
+        "tiktoken": "0.12.0"
+      },
+      "event_files": 354,
+      "event_member_bytes_max": 524288,
+      "exact_files": 361,
+      "expanded_total_bytes_max": 100663296,
+      "fixed_token_python": "3.13.13",
+      "members_max": 1024,
+      "original_zip_bytes_max": 134217728,
+      "top_member_bytes_max": 67108864
+    },
+    "tsjs": {
+      "event_files": 16,
+      "exact_files": 24,
+      "expanded_total_bytes_max": 134217728,
+      "member_bytes_max": 33554432,
+      "members_max": 64,
+      "original_zip_bytes_max": 134217728,
+      "retained_elf_executed_by_reconciler": false
+    }
+  },
+  "provider_calls": 0,
+  "python": "3.13.13",
+  "schema": "xrai.eval.c05-ci-reconciler-development.v1",
+  "source_sha256": {
+    ".github/workflows/l5-lexical-token.yml": "60082c96638a960b5e9cc798305ae5dfe7123a5976add8a89a677127afdb39a4",
+    ".github/workflows/l5-tsjs-session.yml": "d38985f8d3a535eeb968a94236c37fc31385b4ddf8b0f7c1e4049f86758f3209",
+    "eval/scripts/reconcile_c05_ci.py": "7ef61f0c8150a3947b14781d682a512c5fdef5c1332bc8ba3d2e8144d401f565",
+    "eval/scripts/reconcile_tsjs_ci.py": "7e8a0abc231525a8d20213435271d8d0546ba63128a16cd6910e7cf25e3ef40b",
+    "eval/scripts/test_c05_ci.py": "9272654b9c4ffc8ca5f695abcc91000fc9eb977f3dd5c5c81a7220bae9a6d55b"
+  }
+}

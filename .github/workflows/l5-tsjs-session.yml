@@ -1,0 +1,53 @@
+name: L5 TSJS semantic session
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tsjs-session:
+    name: C05 captured TSJS semantic session
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Install pinned verification tooling
+        run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Verify frozen TSJS session design
+        run: |
+          mkdir -p tsjs-session-evidence
+          python --version > tsjs-session-evidence/python.txt
+          python eval/scripts/verify_tsjs_semantic_session.py --design-only > tsjs-session-evidence/design.json
+      - name: Build owned TSJS semantic session
+        run: |
+          export RUSTUP_HOME="$RUNNER_TEMP/xrai-rustup"
+          printf '%s\n' "RUSTUP_HOME=$RUSTUP_HOME" >> "$GITHUB_ENV"
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+          cargo fmt --all -- --check
+          cargo clippy --locked -p xrai-eval --bin tsjs-semantic-session -- -D warnings
+          cargo build --release --locked -p xrai-eval --bin tsjs-semantic-session
+          rustc --version --verbose > tsjs-session-evidence/rustc.txt
+          cargo --version > tsjs-session-evidence/cargo.txt
+      - name: Prove frozen live TSJS semantic update
+        run: python eval/scripts/run_tsjs_semantic_session.py --binary target/release/tsjs-semantic-session --output tsjs-session-evidence/event > tsjs-session-evidence/collector.json
+      - name: Recompute complete TSJS session evidence
+        run: python eval/scripts/verify_tsjs_semantic_session.py --output tsjs-session-evidence/event > tsjs-session-evidence/verification.json
+      - name: Reject adversarial TSJS session substitutions
+        env:
+          XRAI_TSJS_SESSION_OUTPUT: tsjs-session-evidence/event
+        run: python -m unittest discover -s eval/scripts -p test_tsjs_semantic_session.py -v > tsjs-session-evidence/receipt-tests.stdout 2> tsjs-session-evidence/receipt-tests.stderr
+      - name: Preserve exact TSJS semantic session evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c05-tsjs-semantic-session
+          path: tsjs-session-evidence
+          if-no-files-found: error
+          retention-days: 90
