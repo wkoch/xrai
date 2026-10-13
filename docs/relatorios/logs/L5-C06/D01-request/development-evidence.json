@@ -1,4 +1,5 @@
 {
+  "admission_counterproofs_preserved": "admission-before-repair",
   "agent_runs": 0,
   "campaign_scoring_enabled": false,
   "commands": [
@@ -15,7 +16,7 @@
       ],
       "exit_code": 0,
       "skips": 0,
-      "tests": 25
+      "tests": 38
     },
     {
       "command": [
@@ -41,12 +42,16 @@
       "version": "3.13.13"
     }
   ],
+  "counts_semantics": "recorded own metadata only; strong completeness vs guard begin/end and reserves; observed calls independently unavailable/null",
+  "current_profile": "immutable-request-dispatch.v4",
   "interpreter": {
     "executable": "/opt/homebrew/opt/python@3.15/bin/python3.15",
     "version": "3.15.0"
   },
   "model_tokens": null,
-  "proof_sha256": "89938ef68499f589ec0bc43b67469b9a06b182ff866487b5f44387f292c0693a",
+  "omission_counterproof_preserved": "omission-before-repair",
+  "pending_identity_capacity_atomic": true,
+  "proof_sha256": "889fc1bb4f817eff5bcdfecf89b752e3555d209d169c6a549c025a818ed8d798",
   "provider_calls": 0,
   "provider_charge": null,
   "review_repair": {
@@ -58,9 +63,10 @@
   "runtime_transport_independent_observation": false,
   "runtime_uses_profiler": false,
   "schema_version": "xrai.eval.immutable-request-development-evidence.v1",
+  "snapshot_wrapper_target_same_lock_memory_only": true,
   "source_hashes": {
-    "crates/xrai-eval/harness/immutable_request_dispatch.py": "0ff3fc2abc5a420ab2ae76945f244dcd046c3ac766b8ceb138a55dc66423eb7f",
-    "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "5a9f201cf5e8cdfb10c7ec7ba73a27db57a11cf23e785daa795213ba1c5ad3c9",
+    "crates/xrai-eval/harness/immutable_request_dispatch.py": "7f8d73d7e1641d0ea2e02c1df12c0139b2231e2e436527f0fd83c43cc11c0b40",
+    "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "d5754808b716611287b83d61e901a4737943118095f8c519ba1a75da0aab9ab5",
     "eval/adapters/immutable-request-v1/freeze.json": "1c9c1e5309291208da79dbf77178cbd64f696b6a6e971ee7cdea2557e4b9fdf8",
     "eval/adapters/immutable-request-v1/prove.py": "a5dc0fe69c0c05e9f1a2c2fd6ae465122958f979c59cd2b0d1d57388e0891b0d",
     "eval/adapters/immutable-request-v1/verify.py": "23b304db7d9f5d79e05be13a59e36fe1d4c4e6eb8a8ca89a2dd6418fd17c2b58"

@@ -1,0 +1,14 @@
+........F...................
+======================================================================
+FAIL: test_json_size_and_nesting_bounded (test_guarded_smoke.ConsumerTests.test_json_size_and_nesting_bounded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/tests/test_guarded_smoke.py", line 85, in test_json_size_and_nesting_bounded
+    with self.assertRaises(ValueError):m.decode(raw)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 28 tests in 4.392s
+
+FAILED (failures=1)

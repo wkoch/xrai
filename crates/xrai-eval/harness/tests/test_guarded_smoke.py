@@ -23,14 +23,24 @@ class ConsumerTests(unittest.TestCase):
     def test_all_frozen_real_source_consumers_replay(self):
         for name,record in self.records.items():
             with self.subTest(name=name):self.assertTrue(m.verify_record(record)['verified'])
-    def test_consumer_adopts_prospective_immutable_request_v3(self):
+    def test_consumer_adopts_prospective_immutable_request_v4(self):
         for record in self.records.values():
-            self.assertEqual(record['immutable_request']['schema_version'],'xrai.eval.immutable-request-dispatch.v3')
+            self.assertEqual(record['immutable_request']['schema_version'],'xrai.eval.immutable-request-dispatch.v4')
             self.assertTrue(record['immutable_request_replay']['immutable_payloads_equal_reserved'])
             self.assertFalse(record['immutable_request_replay']['transport_observed_independently'])
     def test_consumer_request_binding_substitution_refused(self):
         r=self.changed();r['immutable_request']['header']['bindings']['arm']='direct'
         with self.assertRaises(ValueError):m.verify_record(r)
+    def test_phantom_capture_refusal_recomputed_summary_refused(self):
+        record=self.changed()
+        record['immutable_request']['capture_refusals'].append({'attempt_id':'phantom','call_id':'phantom','category':'request_capture_refused_before_guard','fake_begin':False,'payload_authority':None})
+        record['immutable_request_replay']=m.replay_immutable(record['immutable_request'],record['guard'])
+        with self.assertRaises(ValueError):m.verify_record(record)
+    def test_frozen_capture_category_omission_cannot_change_denominator(self):
+        record=self.changed();record['immutable_request']['requests']=[]
+        with self.assertRaises(ValueError):m.verify_record(record)
+        record=self.changed();record['immutable_request_replay']['capture_refusals']=1
+        with self.assertRaises(ValueError):m.verify_record(record)
     def test_whole_go_source_capture_bytes(self):
         files,_=m.capture(self.scenarios[0]);self.assertEqual(len(files),22);self.assertEqual(sum(map(len,files.values())),54032)
     def test_bm25_and_tfidf_both_search_expand(self):

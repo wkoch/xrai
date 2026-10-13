@@ -1,0 +1,913 @@
+{
+  "agent_runs": 0,
+  "consumer_archive": {
+    "bytes": 3606045,
+    "exact_files": 11,
+    "expanded_bytes": 10620144,
+    "file_sha256": {
+      "case-00.json": "c7face34ca898cfcb9299de24a50f78e66e263c254d0d400466fe6de131d02ed",
+      "case-01.json": "ee80b42b583150f17fad6ae691fa6e9793eb93e3e7a1fcaadc8d4f62fe521102",
+      "case-02.json": "232abab17525208b982c56d7cb5f4dda93e2d66d235d0c65b3269c31cad8e5f0",
+      "case-03.json": "5eae78f80dd6bc748c62a5fa6e898ea51fba0cd967067217aca06716125b372a",
+      "case-04.json": "22f82092a1864b9bf0e66eea4a215c1ccadb454f95b0b278cfad76cdc820af18",
+      "case-05.json": "af75726ce6e58200a8552f13cf2fa232893237ac52f246613b63c05683f4b596",
+      "case-06.json": "c1afd3664f696eda1fe9f6a2c323457c93d93fe452d444024bc30ad35836d83f",
+      "case-07.json": "4c5c125ab0b69d9fc1850e3558d7cdb3ddc0731481849039051948c7c7635647",
+      "case-08.json": "4328dad9cc2c5a4d410cbc7d67d22bef637e1838e7e161e2e41e094ed31c6c1a",
+      "case-09.json": "e35b07142ca081d01c8ef6aa8a4f24e9a1b148093fabdc19e8b4263c0303a9ba",
+      "receipt.json": "10698ba437980d158398df98ec1c32f6d403d4e3354ab663020086ebff1db961"
+    },
+    "path": "docs/relatorios/logs/L5-C06/guarded-smoke/owned-output.zip",
+    "sha256": "49be27a05cb1ee0824428359e534549fcb3a4ce744261172f70bf04f64b0868d"
+  },
+  "counterproofs": {
+    "actual_unreserved_bijection": {
+      "guard_begins": 2,
+      "guard_ends": 2,
+      "ledger_attempts": 1,
+      "requests": 2
+    },
+    "guard_row_forgeries": {
+      "call_argument": {
+        "reason": "complete immutable dispatch/public guard argument equality",
+        "rejected": true
+      },
+      "duplicate": {
+        "reason": "bounded unique request rows",
+        "rejected": true
+      },
+      "extra": {
+        "reason": "exact ordered bijection with ALL public guard fake dispatch begins including unreserved refusals",
+        "rejected": true
+      },
+      "maximum_argument": {
+        "reason": "complete immutable dispatch/public guard argument equality",
+        "rejected": true
+      },
+      "omit_unreserved": {
+        "reason": "exact ordered bijection with ALL public guard fake dispatch begins including unreserved refusals",
+        "rejected": true
+      },
+      "reorder": {
+        "reason": "exact ordered bijection with ALL public guard fake dispatch begins including unreserved refusals",
+        "rejected": true
+      },
+      "retry_argument": {
+        "reason": "complete immutable dispatch/public guard argument equality",
+        "rejected": true
+      },
+      "wrong_outcome": {
+        "reason": "public guard accepted result equals immutable caller return",
+        "rejected": true
+      }
+    },
+    "root_findings_resolved": {
+      "concurrent_same_attempt": {
+        "iterations": 20,
+        "no_spy_or_private_hook": true,
+        "one_dispatch_one_pre_admission_refusal_each_time": true,
+        "temporary_switch_interval_restored": true,
+        "valid_request_record_each_time": true
+      },
+      "consumer_phantom_capture": {
+        "reason": "exact frozen fake request identities and zero capture errors",
+        "rejected": true,
+        "wrapper_refusal_rows_not_independent_authority": true
+      },
+      "direct_before_reserve": {
+        "invalidated": {
+          "closed_record_verified": true,
+          "denominator": {
+            "attempts": 0,
+            "capture_refusals": 1,
+            "commitments": 0,
+            "committed_private_projections": 0,
+            "guarded_requests": 0,
+            "immutable_payloads_equal_reserved": true,
+            "limits": [
+              "Dict capture requires caller quiescence during one canonical serialization.",
+              "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+              "External ABA and large blobs remain unavailable."
+            ],
+            "model_tokens": null,
+            "observed_calls": null,
+            "provider_calls": 0,
+            "provider_charge": null,
+            "recorded_requests": 1,
+            "reservations": 0,
+            "reserve_events": 0,
+            "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+            "transport_observed_independently": false,
+            "verified": true
+          },
+          "dispatch_refusal": "session admission refused: snapshot_invalidated"
+        },
+        "missing_retry": {
+          "closed_record_verified": true,
+          "denominator": {
+            "attempts": 0,
+            "capture_refusals": 1,
+            "commitments": 0,
+            "committed_private_projections": 0,
+            "guarded_requests": 0,
+            "immutable_payloads_equal_reserved": true,
+            "limits": [
+              "Dict capture requires caller quiescence during one canonical serialization.",
+              "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+              "External ABA and large blobs remain unavailable."
+            ],
+            "model_tokens": null,
+            "observed_calls": null,
+            "provider_calls": 0,
+            "provider_charge": null,
+            "recorded_requests": 1,
+            "reservations": 0,
+            "reserve_events": 0,
+            "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+            "transport_observed_independently": false,
+            "verified": true
+          },
+          "dispatch_refusal": "retry reference"
+        },
+        "revoked": {
+          "closed_record_verified": true,
+          "denominator": {
+            "attempts": 0,
+            "capture_refusals": 1,
+            "commitments": 0,
+            "committed_private_projections": 0,
+            "guarded_requests": 0,
+            "immutable_payloads_equal_reserved": true,
+            "limits": [
+              "Dict capture requires caller quiescence during one canonical serialization.",
+              "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+              "External ABA and large blobs remain unavailable."
+            ],
+            "model_tokens": null,
+            "observed_calls": null,
+            "provider_calls": 0,
+            "provider_charge": null,
+            "recorded_requests": 1,
+            "reservations": 0,
+            "reserve_events": 0,
+            "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+            "transport_observed_independently": false,
+            "verified": true
+          },
+          "dispatch_refusal": "session admission refused: authorization_revoked"
+        },
+        "same_call_without_retry": {
+          "closed_record_verified": true,
+          "denominator": {
+            "attempts": 1,
+            "capture_refusals": 1,
+            "commitments": 1,
+            "committed_private_projections": 1,
+            "guarded_requests": 1,
+            "immutable_payloads_equal_reserved": true,
+            "limits": [
+              "Dict capture requires caller quiescence during one canonical serialization.",
+              "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+              "External ABA and large blobs remain unavailable."
+            ],
+            "model_tokens": null,
+            "observed_calls": null,
+            "provider_calls": 0,
+            "provider_charge": null,
+            "recorded_requests": 2,
+            "reservations": 1,
+            "reserve_events": 1,
+            "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+            "transport_observed_independently": false,
+            "verified": true
+          },
+          "dispatch_refusal": "retry link required"
+        }
+      }
+    },
+    "scope": "owned Python fake/data-only no runtime profiler",
+    "source_sha256": {
+      "crates/xrai-eval/harness/guarded_smoke.py": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+      "crates/xrai-eval/harness/immutable_request_dispatch.py": "7f8d73d7e1641d0ea2e02c1df12c0139b2231e2e436527f0fd83c43cc11c0b40",
+      "crates/xrai-eval/harness/tests/test_guarded_smoke.py": "9948f4e8f261b44a98d58b8596d36537ea514dd1449676599309ee4f523ae047",
+      "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "d5754808b716611287b83d61e901a4737943118095f8c519ba1a75da0aab9ab5"
+    }
+  },
+  "counts_semantics": {
+    "commitments": "committed attempts derived from ledger",
+    "guarded_requests": "exact ordered public fake begins; recover/expand excluded",
+    "observed_calls": null,
+    "recorded_requests": "owned rows plus separately declared pre-admission/capture refusals",
+    "reservations": "only successful reservations; budget-refused events excluded",
+    "reserve_events": "ledger attempts including budget-refused admission events"
+  },
+  "coverage": {
+    "all_four_paths": "metadata_match_best_effort",
+    "generation": "2026-10-13T18:13:23Z",
+    "project": "Users-wkoch-Projetos-xrai",
+    "tier": 2
+  },
+  "findings": [
+    {
+      "evidence": "Two public begins/ends match two immutable rows, including one unreserved refusal; omitted/extra/duplicate/reordered/changed-argument/outcome rows rejected.",
+      "id": "all-guard-admission-bijection",
+      "status": "resolved"
+    },
+    {
+      "after": "Pending ID and capacity token reserved under lock, atomically transferred to request/refusal; snapshots refuse in-flight capture. Twenty independent public-thread races produced one valid row and one pre-admission duplicate refusal, record/replay valid.",
+      "before": "Concurrent same attempt passed check before capture, produced duplicate rows and broke request_record; reproduced via public dispatch and temporary scheduler interval without spy.",
+      "id": "capture-slot-race",
+      "status": "resolved"
+    },
+    {
+      "after": "Four cases close as direct_admission_refused_before_reserve with no payload/send authority; typed replay denominator preserves captures separately.",
+      "before": "Public revoke/invalidate/missing retry/repeated call produced row without reserve and record failed.",
+      "id": "direct-pre-reserve-admission",
+      "status": "resolved"
+    },
+    {
+      "after": "Consumer binds known one/two attempts, call/retry/max and zero capture refusals; phantom with recomputed summary rejected.",
+      "before": "Fake capture row plus recomputed summary inflated known frozen scenario denominator and verify_record accepted.",
+      "id": "consumer-phantom-capture-denominator",
+      "status": "resolved"
+    },
+    {
+      "evidence": "Legitimate two-thread capture A then public begin B→A succeeds; reordered request rows fail. Tests use owned public callback barrier; no runtime reflection seam.",
+      "id": "public-begin-order-vs-capture-order",
+      "status": "checked"
+    }
+  ],
+  "legacy_sources_or_receipts_edited_by_reviewer": false,
+  "limits": [
+    "Dict capture requires caller quiescence; immutable canonical bytes preferred.",
+    "Capture-refusal rows outside the guard have no independent admission/transport evidence or payload authority; the known consumer rejects fabricated rows using its frozen sequence.",
+    "Runtime canonical projection does not independently observe transport bytes consumed; test spy is confined to owned FakeTransport public method.",
+    "Direct exception class/message unknown; typed lifecycle is not a provider receipt.",
+    "External ABA, large blobs, real provider/agent/paid budget remain unavailable."
+  ],
+  "local_native_execution": false,
+  "mode": "readonly_source_review_owned_Python_fake_tests_and_original_consumer_archive",
+  "model_tokens": null,
+  "provider_calls": 0,
+  "readonly_verifiers": [
+    {
+      "name": "immutable diagnostics",
+      "readonly": true,
+      "result": {
+        "agent_runs": 0,
+        "cases": {
+          "caller-after_commit": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            },
+            "fake_invocations": 1,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          },
+          "caller-before_commit": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            },
+            "fake_invocations": 1,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          },
+          "cancel-after_commit": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 0,
+              "observed_cost_complete": false,
+              "observed_cost_micro_usd": null,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 500,
+              "supported_cost_interval_micro_usd": [
+                0,
+                500
+              ],
+              "unknown_charge_attempts": [
+                "attempt-1"
+              ]
+            },
+            "fake_invocations": 1,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          },
+          "cancel-before_commit": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 0,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 0,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                0,
+                0
+              ],
+              "unknown_charge_attempts": []
+            },
+            "fake_invocations": 0,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          },
+          "retry-late": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": false,
+              "observed_cost_micro_usd": null,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 500,
+              "supported_cost_interval_micro_usd": [
+                35,
+                535
+              ],
+              "unknown_charge_attempts": [
+                "attempt-1"
+              ]
+            },
+            "fake_invocations": 2,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": null,
+            "verified": true
+          },
+          "transport-disposable": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            },
+            "fake_invocations": 1,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          }
+        },
+        "model_tokens": null,
+        "provider_calls": 0,
+        "provider_charge": null,
+        "verified": true
+      },
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ae16888d515c3ceedeb4e16c85a4ac9408dab2c3d0420be2c022fbc463bfaed2"
+    },
+    {
+      "name": "consumer original ZIP",
+      "readonly": true,
+      "result": {
+        "agent_runs": 0,
+        "campaign_scoring_enabled": false,
+        "model_tokens": null,
+        "provider_calls": 0,
+        "provider_charge": null,
+        "provider_usage": null,
+        "records": [
+          {
+            "accepted_tool_results": 2,
+            "fake_invocations": 1,
+            "handler_calls": 2,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "bm25-complete",
+            "state": "completed",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 2,
+            "fake_invocations": 1,
+            "handler_calls": 2,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "tfidf-complete",
+            "state": "completed",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 2,
+            "fake_invocations": 2,
+            "handler_calls": 2,
+            "immutable_request": {
+              "attempts": 2,
+              "capture_refusals": 0,
+              "commitments": 2,
+              "committed_private_projections": 2,
+              "guarded_requests": 2,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 2,
+              "reservations": 2,
+              "reserve_events": 2,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "retry-late",
+            "state": "completed",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": false,
+              "observed_cost_micro_usd": null,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 500,
+              "supported_cost_interval_micro_usd": [
+                35,
+                535
+              ],
+              "unknown_charge_attempts": [
+                "attempt-1"
+              ]
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 0,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "manifest-before",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 0,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "evidence-before",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 1,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 1,
+            "scenario_id": "manifest-after",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 1,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 1,
+            "scenario_id": "evidence-after",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 0,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "source-before",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 0,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "producer-before",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 2,
+            "fake_invocations": 1,
+            "handler_calls": 2,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "final-change",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          }
+        ],
+        "schema_version": "xrai.eval.guarded-smoke-verification.v3",
+        "source_bytes": 54032,
+        "source_files": 22,
+        "verified": true
+      },
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "0841b9c82b7ed2f74eadd1b0072ae59e2defc657fd415f17affdcb7d01a741d4"
+    }
+  ],
+  "remaining_findings": [],
+  "reviewed_at": "2026-10-13T18:18:43.822399+00:00",
+  "runtime": "Python3.13.13",
+  "schema": "xrai.eval.c06-d01-v4-independent-review.v1",
+  "scope": [
+    "crates/xrai-eval/harness/immutable_request_dispatch.py",
+    "crates/xrai-eval/harness/guarded_smoke.py",
+    "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py",
+    "crates/xrai-eval/harness/tests/test_guarded_smoke.py"
+  ],
+  "source_sha256": {
+    "crates/xrai-eval/harness/guarded_smoke.py": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+    "crates/xrai-eval/harness/immutable_request_dispatch.py": "7f8d73d7e1641d0ea2e02c1df12c0139b2231e2e436527f0fd83c43cc11c0b40",
+    "crates/xrai-eval/harness/tests/test_guarded_smoke.py": "9948f4e8f261b44a98d58b8596d36537ea514dd1449676599309ee4f523ae047",
+    "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "d5754808b716611287b83d61e901a4737943118095f8c519ba1a75da0aab9ab5"
+  },
+  "source_stable_during_review": true,
+  "suites": [
+    {
+      "discovered": 38,
+      "name": "immutable request v4",
+      "passed": 38,
+      "skipped": 0,
+      "stderr": "test_bounds_and_nonjson_request_types_refused (test_immutable_request_dispatch.ImmutableTests.test_bounds_and_nonjson_request_types_refused) ... ok\ntest_budget_refusal_has_no_transport_projection (test_immutable_request_dispatch.ImmutableTests.test_budget_refusal_has_no_transport_projection) ... ok\ntest_caller_after_commit_message_limits_nested (test_immutable_request_dispatch.ImmutableTests.test_caller_after_commit_message_limits_nested) ... ok\ntest_caller_before_commit_message_limits_nested (test_immutable_request_dispatch.ImmutableTests.test_caller_before_commit_message_limits_nested) ... ok\ntest_caller_mutated_before_capture_refused_zero (test_immutable_request_dispatch.ImmutableTests.test_caller_mutated_before_capture_refused_zero) ... ok\ntest_cancel_after_commit_keeps_unknown_reservation (test_immutable_request_dispatch.ImmutableTests.test_cancel_after_commit_keeps_unknown_reservation) ... ok\ntest_cancel_before_commit_zero_invocation (test_immutable_request_dispatch.ImmutableTests.test_cancel_before_commit_zero_invocation) ... ok\ntest_capture_exception_clears_pending_to_typed_refusal (test_immutable_request_dispatch.ImmutableTests.test_capture_exception_clears_pending_to_typed_refusal) ... ok\ntest_capture_refusal_cannot_forge_guard_begin (test_immutable_request_dispatch.ImmutableTests.test_capture_refusal_cannot_forge_guard_begin) ... ok\ntest_direct_failure_lifecycle_has_typed_unknown_exception (test_immutable_request_dispatch.ImmutableTests.test_direct_failure_lifecycle_has_typed_unknown_exception) ... ok\ntest_direct_refusals_before_reserve_record_no_fake_authority (test_immutable_request_dispatch.ImmutableTests.test_direct_refusals_before_reserve_record_no_fake_authority) ... ok\ntest_direct_reserve_order_bijection (test_immutable_request_dispatch.ImmutableTests.test_direct_reserve_order_bijection) ... ok\ntest_direct_success_cannot_become_fabricated_failure (test_immutable_request_dispatch.ImmutableTests.test_direct_success_cannot_become_fabricated_failure) ... ok\ntest_error_from_another_guard_attempt_rejected (test_immutable_request_dispatch.ImmutableTests.test_error_from_another_guard_attempt_rejected) ... ok\ntest_extra_duplicate_order_and_changed_guard_ids_rejected (test_immutable_request_dispatch.ImmutableTests.test_extra_duplicate_order_and_changed_guard_ids_rejected) ... ok\ntest_failed_before_transport_releases_reservation (test_immutable_request_dispatch.ImmutableTests.test_failed_before_transport_releases_reservation) ... ok\ntest_guard_request_arguments_cannot_be_changed (test_immutable_request_dispatch.ImmutableTests.test_guard_request_arguments_cannot_be_changed) ... ok\ntest_guard_success_cannot_become_fabricated_failure (test_immutable_request_dispatch.ImmutableTests.test_guard_success_cannot_become_fabricated_failure) ... ok\ntest_guarded_factory_second_admission_refused_without_attempt (test_immutable_request_dispatch.ImmutableTests.test_guarded_factory_second_admission_refused_without_attempt) ... ok\ntest_immutable_bytes_accepted (test_immutable_request_dispatch.ImmutableTests.test_immutable_bytes_accepted) ... ok\ntest_no_runtime_profiler_installed (test_immutable_request_dispatch.ImmutableTests.test_no_runtime_profiler_installed) ... ok\ntest_noncanonical_duplicate_nonfinite_bytes_refused (test_immutable_request_dispatch.ImmutableTests.test_noncanonical_duplicate_nonfinite_bytes_refused) ... ok\ntest_original_v2_counterproof_still_diverges_historical (test_immutable_request_dispatch.ImmutableTests.test_original_v2_counterproof_still_diverges_historical) ... ok\ntest_other_attempt_error_cannot_forge_budget_refusal_exception (test_immutable_request_dispatch.ImmutableTests.test_other_attempt_error_cannot_forge_budget_refusal_exception) ... ok\ntest_pending_capture_counts_capacity_before_append (test_immutable_request_dispatch.ImmutableTests.test_pending_capture_counts_capacity_before_append) ... ok\ntest_public_record_copy_does_not_expose_authority (test_immutable_request_dispatch.ImmutableTests.test_public_record_copy_does_not_expose_authority) ... ok\ntest_record_returns_same_atomic_target_snapshot (test_immutable_request_dispatch.ImmutableTests.test_record_returns_same_atomic_target_snapshot) ... ok\ntest_recover_expand_do_not_change_dispatch_denominator (test_immutable_request_dispatch.ImmutableTests.test_recover_expand_do_not_change_dispatch_denominator) ... ok\ntest_replay_attempt_call_limit_retry_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_attempt_call_limit_retry_adulterated) ... ok\ntest_replay_payload_hash_or_bytes_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_payload_hash_or_bytes_adulterated) ... ok\ntest_replay_projection_omitted_or_changed_refused (test_immutable_request_dispatch.ImmutableTests.test_replay_projection_omitted_or_changed_refused) ... ok\ntest_replay_task_arm_run_authorization_binding_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_task_arm_run_authorization_binding_adulterated) ... ok\ntest_retry_late_idempotence_preserved (test_immutable_request_dispatch.ImmutableTests.test_retry_late_idempotence_preserved) ... ok\ntest_same_attempt_pending_unique_and_record_blocked (test_immutable_request_dispatch.ImmutableTests.test_same_attempt_pending_unique_and_record_blocked) ... ok\ntest_transport_mutates_only_disposable_decode (test_immutable_request_dispatch.ImmutableTests.test_transport_mutates_only_disposable_decode) ... ok\ntest_two_threads_real_guard_begin_order_wins_over_capture_order (test_immutable_request_dispatch.ImmutableTests.test_two_threads_real_guard_begin_order_wins_over_capture_order) ... ok\ntest_uncertain_after_commit_retains_reservation (test_immutable_request_dispatch.ImmutableTests.test_uncertain_after_commit_retains_reservation) ... ok\ntest_unreserved_refusal_omission_rejected (test_immutable_request_dispatch.ImmutableTests.test_unreserved_refusal_omission_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 38 tests in 1.011s\n\nOK\n",
+      "stderr_sha256": "8edec361fdd26a91bb84fd0fdbb9dee5b1e1295ce92834c1390a267c21ce00ba",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "discovered": 33,
+      "name": "guarded consumer v3",
+      "passed": 33,
+      "skipped": 0,
+      "stderr": "test_all_frozen_real_source_consumers_replay (test_guarded_smoke.ConsumerTests.test_all_frozen_real_source_consumers_replay) ... ok\ntest_bm25_and_tfidf_both_search_expand (test_guarded_smoke.ConsumerTests.test_bm25_and_tfidf_both_search_expand) ... ok\ntest_budget_boolean_and_changed_ceiling_refused (test_guarded_smoke.ConsumerTests.test_budget_boolean_and_changed_ceiling_refused) ... ok\ntest_campaign_intent_refused_before_consumer (test_guarded_smoke.ConsumerTests.test_campaign_intent_refused_before_consumer) ... ok\ntest_consumer_adopts_prospective_immutable_request_v4 (test_guarded_smoke.ConsumerTests.test_consumer_adopts_prospective_immutable_request_v4) ... ok\ntest_consumer_request_binding_substitution_refused (test_guarded_smoke.ConsumerTests.test_consumer_request_binding_substitution_refused) ... ok\ntest_duplicate_and_nonfinite_json_refused (test_guarded_smoke.ConsumerTests.test_duplicate_and_nonfinite_json_refused) ... ok\ntest_final_changed_cannot_complete (test_guarded_smoke.ConsumerTests.test_final_changed_cannot_complete) ... ok\ntest_fresh_output_and_readonly_complete_receipt (test_guarded_smoke.ConsumerTests.test_fresh_output_and_readonly_complete_receipt) ... ok\ntest_frozen_capture_category_omission_cannot_change_denominator (test_guarded_smoke.ConsumerTests.test_frozen_capture_category_omission_cannot_change_denominator) ... ok\ntest_gate_identity_substitution_refused (test_guarded_smoke.ConsumerTests.test_gate_identity_substitution_refused) ... ok\ntest_json_size_and_nesting_bounded (test_guarded_smoke.ConsumerTests.test_json_size_and_nesting_bounded) ... ok\ntest_late_duplicate_reconciliation_claim_refused (test_guarded_smoke.ConsumerTests.test_late_duplicate_reconciliation_claim_refused) ... ok\ntest_manifest_unknown_ready_flag_refused (test_guarded_smoke.ConsumerTests.test_manifest_unknown_ready_flag_refused) ... ok\ntest_method_or_query_changed_after_freeze_refused (test_guarded_smoke.ConsumerTests.test_method_or_query_changed_after_freeze_refused) ... ok\ntest_modified_manifest_leaves_no_output (test_guarded_smoke.ConsumerTests.test_modified_manifest_leaves_no_output) ... ok\ntest_ordinary_file_size_and_symlink_refused (test_guarded_smoke.ConsumerTests.test_ordinary_file_size_and_symlink_refused) ... ok\ntest_paid_provider_field_refused (test_guarded_smoke.ConsumerTests.test_paid_provider_field_refused) ... ok\ntest_phantom_capture_refusal_recomputed_summary_refused (test_guarded_smoke.ConsumerTests.test_phantom_capture_refusal_recomputed_summary_refused) ... ok\ntest_postchecks_retained_tool_not_returned (test_guarded_smoke.ConsumerTests.test_postchecks_retained_tool_not_returned) ... ok\ntest_prechecks_zero_handler_actual_fake_preserved (test_guarded_smoke.ConsumerTests.test_prechecks_zero_handler_actual_fake_preserved) ... ok\ntest_provider_tokens_and_agent_claims_refused (test_guarded_smoke.ConsumerTests.test_provider_tokens_and_agent_claims_refused) ... ok\ntest_record_unknown_fields_refused (test_guarded_smoke.ConsumerTests.test_record_unknown_fields_refused) ... ok\ntest_retry_late_fake_reservation_and_idempotence (test_guarded_smoke.ConsumerTests.test_retry_late_fake_reservation_and_idempotence) ... ok\ntest_return_promoted_after_refusal_refused (test_guarded_smoke.ConsumerTests.test_return_promoted_after_refusal_refused) ... ok\ntest_snapshot_copies_input_bytes (test_guarded_smoke.ConsumerTests.test_snapshot_copies_input_bytes) ... ok\ntest_source_bounds_before_reads (test_guarded_smoke.ConsumerTests.test_source_bounds_before_reads) ... ok\ntest_source_path_traversal_refused (test_guarded_smoke.ConsumerTests.test_source_path_traversal_refused) ... ok\ntest_summary_counts_cannot_replace_actual_journal (test_guarded_smoke.ConsumerTests.test_summary_counts_cannot_replace_actual_journal) ... ok\ntest_task_arm_run_substitution_refused (test_guarded_smoke.ConsumerTests.test_task_arm_run_substitution_refused) ... ok\ntest_virtual_invocation_count_substitution_refused (test_guarded_smoke.ConsumerTests.test_virtual_invocation_count_substitution_refused) ... ok\ntest_whole_go_source_capture_bytes (test_guarded_smoke.ConsumerTests.test_whole_go_source_capture_bytes) ... ok\ntest_zip_unknown_traversal_duplicate_and_symlink_refused (test_guarded_smoke.ConsumerTests.test_zip_unknown_traversal_duplicate_and_symlink_refused) ... /private/tmp/xrai-c05-python/cpython-3.13.13-macos-aarch64-none/lib/python3.13/zipfile/__init__.py:1655: UserWarning: Duplicate name: 'receipt.json'\n  return self._open_to_write(zinfo, force_zip64=force_zip64)\nok\n\n----------------------------------------------------------------------\nRan 33 tests in 13.484s\n\nOK\n",
+      "stderr_sha256": "2dd0e6181687d84927e997d6ba16b078a36c8e7a944f3021f737d2bcccc7f92d",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "upstream_code_execution": false
+}

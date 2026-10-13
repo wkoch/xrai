@@ -1,0 +1,681 @@
+{
+  "verified": true,
+  "runtime": "3.13.13 (main, Apr 14 2026, 14:32:41) [Clang 22.1.3 ]",
+  "source_and_evidence_hashes": {
+    "crates/xrai-eval/harness/immutable_request_dispatch.py": "7f8d73d7e1641d0ea2e02c1df12c0139b2231e2e436527f0fd83c43cc11c0b40",
+    "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "d5754808b716611287b83d61e901a4737943118095f8c519ba1a75da0aab9ab5",
+    "crates/xrai-eval/harness/guarded_smoke.py": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+    "crates/xrai-eval/harness/tests/test_guarded_smoke.py": "9948f4e8f261b44a98d58b8596d36537ea514dd1449676599309ee4f523ae047",
+    "eval/adapters/guarded-smoke-v1/verify.py": "c15245d61cdfe51eb61a819a282d989987ed63389bbbe0570d7dd48286184261",
+    "docs/relatorios/logs/L5-C06/D01-request/proof.json": "889fc1bb4f817eff5bcdfecf89b752e3555d209d169c6a549c025a818ed8d798",
+    "docs/relatorios/logs/L5-C06/guarded-smoke/owned-output.zip": "49be27a05cb1ee0824428359e534549fcb3a4ce744261172f70bf04f64b0868d"
+  },
+  "commands": [
+    {
+      "name": "v4-request-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_immutable_request_dispatch.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 38,
+      "skips": 0
+    },
+    {
+      "name": "v3-consumer-tests",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_guarded_smoke.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 33,
+      "skips": 0
+    },
+    {
+      "name": "v4-request-proof",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-B",
+        "eval/adapters/immutable-request-v1/verify.py"
+      ],
+      "exit_code": 0,
+      "output": {
+        "agent_runs": 0,
+        "cases": {
+          "caller-after_commit": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            },
+            "fake_invocations": 1,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          },
+          "caller-before_commit": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            },
+            "fake_invocations": 1,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          },
+          "cancel-after_commit": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 0,
+              "observed_cost_complete": false,
+              "observed_cost_micro_usd": null,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 500,
+              "supported_cost_interval_micro_usd": [
+                0,
+                500
+              ],
+              "unknown_charge_attempts": [
+                "attempt-1"
+              ]
+            },
+            "fake_invocations": 1,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          },
+          "cancel-before_commit": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 0,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 0,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                0,
+                0
+              ],
+              "unknown_charge_attempts": []
+            },
+            "fake_invocations": 0,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          },
+          "retry-late": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": false,
+              "observed_cost_micro_usd": null,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 500,
+              "supported_cost_interval_micro_usd": [
+                35,
+                535
+              ],
+              "unknown_charge_attempts": [
+                "attempt-1"
+              ]
+            },
+            "fake_invocations": 2,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": null,
+            "verified": true
+          },
+          "transport-disposable": {
+            "accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            },
+            "fake_invocations": 1,
+            "runtime_transport_independent_observation": false,
+            "test_spy_equals_reserved": true,
+            "verified": true
+          }
+        },
+        "model_tokens": null,
+        "provider_calls": 0,
+        "provider_charge": null,
+        "verified": true
+      }
+    },
+    {
+      "name": "v3-consumer-proof",
+      "command": [
+        "/private/tmp/xrai-c05-measure/bin/python",
+        "-B",
+        "eval/adapters/guarded-smoke-v1/verify.py",
+        "--archive",
+        "docs/relatorios/logs/L5-C06/guarded-smoke/owned-output.zip"
+      ],
+      "exit_code": 0,
+      "output": {
+        "agent_runs": 0,
+        "campaign_scoring_enabled": false,
+        "model_tokens": null,
+        "provider_calls": 0,
+        "provider_charge": null,
+        "provider_usage": null,
+        "records": [
+          {
+            "accepted_tool_results": 2,
+            "fake_invocations": 1,
+            "handler_calls": 2,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "bm25-complete",
+            "state": "completed",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 2,
+            "fake_invocations": 1,
+            "handler_calls": 2,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "tfidf-complete",
+            "state": "completed",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 2,
+            "fake_invocations": 2,
+            "handler_calls": 2,
+            "immutable_request": {
+              "attempts": 2,
+              "capture_refusals": 0,
+              "commitments": 2,
+              "committed_private_projections": 2,
+              "guarded_requests": 2,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 2,
+              "reservations": 2,
+              "reserve_events": 2,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "retry-late",
+            "state": "completed",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": false,
+              "observed_cost_micro_usd": null,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 500,
+              "supported_cost_interval_micro_usd": [
+                35,
+                535
+              ],
+              "unknown_charge_attempts": [
+                "attempt-1"
+              ]
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 0,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "manifest-before",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 0,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "evidence-before",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 1,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 1,
+            "scenario_id": "manifest-after",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 1,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 1,
+            "scenario_id": "evidence-after",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 0,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "source-before",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 0,
+            "fake_invocations": 1,
+            "handler_calls": 0,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "producer-before",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          },
+          {
+            "accepted_tool_results": 2,
+            "fake_invocations": 1,
+            "handler_calls": 2,
+            "immutable_request": {
+              "attempts": 1,
+              "capture_refusals": 0,
+              "commitments": 1,
+              "committed_private_projections": 1,
+              "guarded_requests": 1,
+              "immutable_payloads_equal_reserved": true,
+              "limits": [
+                "Dict capture requires caller quiescence during one canonical serialization.",
+                "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                "External ABA and large blobs remain unavailable."
+              ],
+              "model_tokens": null,
+              "observed_calls": null,
+              "provider_calls": 0,
+              "provider_charge": null,
+              "recorded_requests": 1,
+              "reservations": 1,
+              "reserve_events": 1,
+              "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+              "transport_observed_independently": false,
+              "verified": true
+            },
+            "retained_but_not_returned_tool_results": 0,
+            "scenario_id": "final-change",
+            "state": "partial",
+            "verified": true,
+            "virtual_accounting": {
+              "budget_limit_respected": true,
+              "budget_micro_usd": 1500,
+              "known_observed_charge_micro_usd": 35,
+              "observed_cost_complete": true,
+              "observed_cost_micro_usd": 35,
+              "reservation_is_provider_charge_guarantee": false,
+              "retained_reservation_micro_usd": 0,
+              "supported_cost_interval_micro_usd": [
+                35,
+                35
+              ],
+              "unknown_charge_attempts": []
+            }
+          }
+        ],
+        "schema_version": "xrai.eval.guarded-smoke-verification.v3",
+        "source_bytes": 54032,
+        "source_files": 22,
+        "verified": true
+      }
+    }
+  ],
+  "scope": "Owned Python/fake tests and readonly retained proof verification; no native/upstream/provider execution."
+}

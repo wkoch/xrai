@@ -289,3 +289,9 @@ Decisões: bijeção journal/request/ledger; oracle físico Django com requisito
 [L5-C06](relatorios/L5-C06.md): CI P3 38441971210/fbf1e53 aprovada, ZIP/API originais autenticados, 225 respostas e 42 pares completos recompostos; 44 checks de autoridade +47 contraprovas factuais passaram, zero skips. [Revisão independente](relatorios/logs/L5-C06/P3-native/native-proof/independent-review.json). Aceite limita-se ao novo intake/contexto tipado por bytes; Store/IR/P2/tokens/tarefa inteira pendentes.
 
 [Entrada histórica C04](relatorios/L5-HISTORICAL-ADAPTER.md) concluída: cápsula de 30 inputs/7 replays/8 comparadores, 16 testes aprovados, preservando plano vigente e fontes/recibos originais. Integração CI regular corrigida; aprovação do novo run ainda não atribuída. Bijeção D01 v4 em revisão independente, Django v2 físico e ponte Store/Tokio próximos; 8 elegíveis/0 admitidos, 19/20 e41 estados/gates preservados.
+
+## C06: completude D01 v4 verificada
+
+[L5-C06](relatorios/L5-C06.md): bijeção de todos os dispatches públicos, ID/capacidade pending atômicos, snapshot consistente e recusas pré-reserva separadas. Consumer v3 fecha a sequência congelada e recusa metadados fictícios. Root e revisor independente passaram 38 +33 testes sem skips, seis diagnósticos e dez recibos completos readonly, hashes estáveis. [Evidência raiz](relatorios/logs/L5-C06/root-preflight/v4-integration-preflight.json), [revisão](relatorios/logs/L5-C06/D01-request/independent-review-v4.json).
+
+CI 38443838874/282f885 passou Linux/macOS/contratos após a correção histórica, antes desta v4. Novo run após publicação ainda não atribuído. Recibo público do transporte, ABA/blobs, Django v2 físico e Store/Tokio permanecem próximos; observed_calls/provider/model_tokens sem nova medição. 8 elegíveis/0 admitidos, 19/20 e41 estados/gates preservados.

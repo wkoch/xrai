@@ -5,7 +5,9 @@ from pathlib import Path
 import sys
 import threading
 import unittest
+from unittest import mock
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+import immutable_request_dispatch as d
 from agent_ledger import canonical,sha,fake_request,fake_receipt
 from execution_gate import EvidenceSnapshot,OfflineAuthorization,make_smoke_fixture,preflight
 from execution_dispatch_v2 import DispatchSessionV2,FakeTransportV2,FakeResultV2,DispatchBarriers,make_bindings
@@ -67,6 +69,8 @@ class ImmutableTests(unittest.TestCase):
         self.make();mutate(self.request)
         with self.assertRaises(ValueError):self.dispatch()
         self.assertEqual(self.fake.calls,0);self.assertEqual(self.wrapper.request_record()['requests'],[])
+        self.assertEqual(len(self.wrapper.request_record()['capture_refusals']),1)
+        result=self.replay();self.assertEqual(result['recorded_requests'],1);self.assertEqual(result['capture_refusals'],1);self.assertEqual(result['reservations'],0);self.assertIsNone(result['observed_calls'])
     def test_immutable_bytes_accepted(self):
         self.make();t,observed,_,errors=self.started(lambda:self.dispatch(self.original));self.joined(t)
         self.assertEqual(errors,[]);self.assertEqual(observed,[self.original]);self.assertTrue(self.replay()['verified'])
@@ -108,7 +112,7 @@ class ImmutableTests(unittest.TestCase):
         self.assertTrue(self.replay()['verified'])
     def test_budget_refusal_has_no_transport_projection(self):
         self.make();self.wrapper.dispatch('large','call-1',self.original,2000)
-        self.assertEqual(self.fake.calls,0);self.assertIsNone(self.wrapper.request_record()['requests'][0]['transport_projection']);self.assertTrue(self.replay()['verified'])
+        self.assertEqual(self.fake.calls,0);self.assertIsNone(self.wrapper.request_record()['requests'][0]['transport_projection']);self.assertTrue(self.replay()['verified']);self.assertEqual(self.replay()['reserve_events'],1);self.assertEqual(self.replay()['reservations'],0)
     def test_replay_payload_hash_or_bytes_adulterated(self):
         self.make();self.dispatch()
         for key,value in [('sha256','0'*64),('base64',base64.b64encode(b'{}').decode()),('bytes',True),('version','wrong')]:
@@ -131,7 +135,7 @@ class ImmutableTests(unittest.TestCase):
         for value in (None,payload(b'{}')):
             record=copy.deepcopy(self.wrapper.request_record());record['requests'][0]['transport_projection']=value
             with self.assertRaises(ValueError):replay_immutable(record,self.session.record(),target_kind='dispatch_v2')
-    def test_guarded_factory_second_admission_refused_without_attempt(self):
+    def guard_two(self):
         import lexical_retrieval
         from lexical_retrieval import LexicalIndex
         from agent_adapter_protocol import ToolSnapshot
@@ -142,7 +146,11 @@ class ImmutableTests(unittest.TestCase):
             current_sources=lambda:files,current_producer=lambda:producer,clock=lambda:1)
         guarded.dispatch_fake('one','call',self.original,500);guarded.revoke()
         with self.assertRaises(ValueError):guarded.dispatch_fake('two','call',self.original,500,retry_of='one')
-        target=guarded.finish('partial');result=replay_immutable(guarded.request_record(),target)
+        return guarded,guarded.finish('partial')
+
+    def test_guarded_factory_second_admission_refused_without_attempt(self):
+        guarded,target=self.guard_two()
+        result=replay_immutable(guarded.request_record(),target)
         self.assertTrue(result['verified']);self.assertEqual(result['attempts'],2)
         self.assertEqual(result['committed_private_projections'],1)
         forged=copy.deepcopy(guarded.request_record());forged['requests'][1]['error']=None;forged['requests'][1]['result']={'status':'completed','committed':True,'adapter_called':True}
@@ -155,6 +163,113 @@ class ImmutableTests(unittest.TestCase):
         for n,event in enumerate(changed_target['events']):
             event['previous_event_sha256']=sha(canonical(changed_target['events'][n-1])) if n else None
         with self.assertRaises(ValueError):replay_immutable(forged,changed_target)
+    def test_unreserved_refusal_omission_rejected(self):
+        guarded,target=self.guard_two();forged=guarded.request_record();forged['requests'].pop()
+        with self.assertRaises(ValueError):replay_immutable(forged,target)
+    def test_extra_duplicate_order_and_changed_guard_ids_rejected(self):
+        guarded,target=self.guard_two();original=guarded.request_record()
+        for action in ('extra','duplicate','order','changed_id'):
+            record=copy.deepcopy(original)
+            if action=='extra':
+                row=copy.deepcopy(record['requests'][1]);row['attempt_id']='extra';record['requests'].append(row)
+            elif action=='duplicate':record['requests'].append(copy.deepcopy(record['requests'][1]))
+            elif action=='order':record['requests'].reverse()
+            else:record['requests'][1]['attempt_id']='different'
+            with self.assertRaises(ValueError):replay_immutable(record,target)
+    def test_error_from_another_guard_attempt_rejected(self):
+        guarded,target=self.guard_two();record=guarded.request_record();record['requests'][0]['error']=record['requests'][1]['error'];record['requests'][0]['result']=None
+        with self.assertRaises(ValueError):replay_immutable(record,target)
+    def test_guard_request_arguments_cannot_be_changed(self):
+        guarded,target=self.guard_two()
+        for key,value in [('call_id','different'),('maximum_micro_usd',501),('retry_of',None)]:
+            record=guarded.request_record();record['requests'][1][key]=value
+            with self.assertRaises(ValueError):replay_immutable(record,target)
+    def test_recover_expand_do_not_change_dispatch_denominator(self):
+        import guarded_smoke
+        record=guarded_smoke.run(guarded_smoke.frozen()[0][0]);result=record['immutable_request_replay']
+        self.assertEqual(result['recorded_requests'],1);self.assertEqual(result['guarded_requests'],1)
+        self.assertEqual(result['reservations'],1);self.assertEqual(result['commitments'],1);self.assertIsNone(result['observed_calls'])
+    def test_capture_refusal_cannot_forge_guard_begin(self):
+        guarded,target=self.guard_two();record=guarded.request_record();record['capture_refusals'].append({'attempt_id':'one','call_id':'call','category':'request_capture_refused_before_guard','fake_begin':False,'payload_authority':None})
+        with self.assertRaises(ValueError):replay_immutable(record,target)
+    def test_direct_reserve_order_bijection(self):
+        self.make(outcomes=[FakeResultV2(response=None),FakeResultV2(response=None)]);self.dispatch();self.wrapper.dispatch('two','call-1',self.original,500,retry_of='attempt-1')
+        record=self.wrapper.request_record();record['requests'].reverse()
+        with self.assertRaises(ValueError):replay_immutable(record,self.session.record(),target_kind='dispatch_v2')
+    def test_two_threads_real_guard_begin_order_wins_over_capture_order(self):
+        import lexical_retrieval
+        from lexical_retrieval import LexicalIndex
+        from agent_adapter_protocol import ToolSnapshot
+        files={'own.py':b'def owned(): pass\n'};producer=Path(lexical_retrieval.__file__).read_bytes();index=LexicalIndex(files)
+        reached,release=threading.Event(),threading.Event();blocked=[False]
+        def manifest():
+            if threading.current_thread().name=='immutable-A' and not blocked[0]:
+                blocked[0]=True;reached.set()
+                if not release.wait(5):raise ValueError('owned callback barrier timeout')
+            return self.manifest
+        guarded=make_immutable_guarded_fake_session(self.snapshot,self.auth,index,ToolSnapshot.capture(index,files,producer),
+            bindings=make_bindings(self.snapshot,task_id='D0-RS-01',arm='direct',run_id='real-admission-order'),
+            current_manifest=manifest,current_evidence=lambda:self.evidence,current_authorization=lambda:self.auth,
+            current_sources=lambda:files,current_producer=lambda:producer,clock=lambda:1)
+        results=[];errors=[]
+        def work(attempt):
+            try:results.append(guarded.dispatch_fake(attempt,'call-'+attempt,self.original,500))
+            except Exception as error:errors.append(error)
+        first=threading.Thread(target=lambda:work('A'),name='immutable-A');first.start();self.assertTrue(reached.wait(5))
+        second=threading.Thread(target=lambda:work('B'),name='immutable-B');second.start();self.joined(second)
+        release.set();self.joined(first);self.assertEqual(errors,[]);self.assertEqual(len(results),2)
+        target=guarded.finish('completed');record=guarded.request_record()
+        self.assertEqual([row['attempt_id'] for row in record['requests']],['B','A'])
+        self.assertTrue(replay_immutable(record,target)['verified'])
+        record['requests'].reverse()
+        with self.assertRaises(ValueError):replay_immutable(record,target)
+    def blocked_capture(self):
+        original=d.capture_request;reached,release=threading.Event(),threading.Event()
+        def capture(value):
+            reached.set()
+            if not release.wait(5):raise ValueError('owned capture fault barrier timeout')
+            return original(value)
+        return reached,release,capture
+    def test_same_attempt_pending_unique_and_record_blocked(self):
+        self.make();reached,release,capture=self.blocked_capture()
+        with mock.patch.object(d,'capture_request',side_effect=capture):
+            thread,_,results,errors=self.started(self.dispatch);self.assertTrue(reached.wait(5))
+            with self.assertRaises(ValueError):self.dispatch()
+            with self.assertRaises(ValueError):self.wrapper.request_record()
+            with self.assertRaises(ValueError):self.wrapper.record()
+            release.set();self.joined(thread)
+        self.assertEqual(errors,[]);self.assertEqual(len(results),1);self.assertEqual(self.fake.calls,1)
+        self.assertEqual(self.replay()['recorded_requests'],1)
+    def test_pending_capture_counts_capacity_before_append(self):
+        self.make();reached,release,capture=self.blocked_capture()
+        with mock.patch.object(d,'MAX_ATTEMPTS',1),mock.patch.object(d,'capture_request',side_effect=capture):
+            thread,_,results,errors=self.started(self.dispatch);self.assertTrue(reached.wait(5))
+            with self.assertRaises(ValueError):self.wrapper.dispatch('second','second',self.original,500)
+            release.set();self.joined(thread)
+        self.assertEqual(errors,[]);self.assertEqual(len(results),1);self.assertEqual(self.fake.calls,1)
+        self.assertEqual(self.replay()['recorded_requests'],1)
+    def test_capture_exception_clears_pending_to_typed_refusal(self):
+        self.make()
+        with mock.patch.object(d,'capture_request',side_effect=ValueError('owned capture fault')):
+            with self.assertRaises(ValueError):self.dispatch()
+        record=self.wrapper.record();result=replay_immutable(record['immutable_request'],record['target'],target_kind='dispatch_v2')
+        self.assertEqual(result['capture_refusals'],1);self.assertEqual(result['reservations'],0);self.assertEqual(self.fake.calls,0)
+    def test_direct_refusals_before_reserve_record_no_fake_authority(self):
+        for control in ('revoke','invalidate','retry_missing','same_call'):
+            self.setUp();self.make()
+            if control=='revoke':self.wrapper.revoke()
+            elif control=='invalidate':self.wrapper.invalidate('owned control')
+            elif control=='same_call':self.dispatch()
+            attempt='attempt-2' if control=='same_call' else 'attempt-1'
+            with self.assertRaises(ValueError):self.wrapper.dispatch(attempt,'call-1',self.original,500,retry_of='missing' if control=='retry_missing' else None)
+            record=self.wrapper.record();refusal=record['immutable_request']['capture_refusals'][-1]
+            self.assertEqual(refusal['category'],'direct_admission_refused_before_reserve');self.assertIsNone(refusal['payload_authority']);self.assertFalse(refusal['fake_begin'])
+            result=replay_immutable(record['immutable_request'],record['target'],target_kind='dispatch_v2')
+            self.assertEqual(result['capture_refusals'],1);self.assertEqual(result['recorded_requests'],2 if control=='same_call' else 1)
+            self.assertEqual(self.fake.calls,1 if control=='same_call' else 0)
+    def test_record_returns_same_atomic_target_snapshot(self):
+        self.make();self.dispatch();record=self.wrapper.record()
+        self.assertTrue(replay_immutable(record['immutable_request'],record['target'],target_kind=record['target_kind'])['verified'])
     def test_public_record_copy_does_not_expose_authority(self):
         self.make();self.dispatch();record=self.wrapper.request_record();record['requests'][0]['payload']['sha256']='0'*64
         self.assertEqual(restore(self.wrapper.request_record()['requests'][0]['payload']),self.original)

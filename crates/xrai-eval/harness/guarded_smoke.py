@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[3]
 DESIGN = ROOT / 'eval/adapters/guarded-smoke-v1'
 from immutable_request_dispatch import make_immutable_guarded_fake_session, replay_immutable
 
-VERSION = 'xrai.eval.guarded-smoke-consumer.v2'
+VERSION = 'xrai.eval.guarded-smoke-consumer.v3'
 MAX_MANIFEST = 256 * 1024
 MAX_SOURCE = 128 * 1024
 MAX_SOURCE_TOTAL = 128 * 1024
@@ -225,7 +225,11 @@ def verify_record(record):
     require(exact(record['guard']['header']['tool_snapshot'], ToolSnapshot.capture(index, files, producer).as_dict()), 'actual complete copied source/producer/configuration')
     replay = replay_guard(record['guard'])
     require(exact(replay, record['replay']), 'derived consumer replay')
-    require(exact(replay_immutable(record['immutable_request'],record['guard']),record['immutable_request_replay']), 'derived immutable request v3 replay')
+    immutable_replay=replay_immutable(record['immutable_request'],record['guard'])
+    require(exact(immutable_replay,record['immutable_request_replay']), 'derived immutable request v4 replay')
+    expected_attempts=['attempt-1','attempt-2'] if scenario['intervention']=='retry_late' else ['attempt-1']
+    require(record['immutable_request']['capture_refusals']==[] and [row['attempt_id'] for row in record['immutable_request']['requests']]==expected_attempts and all(row['call_id']=='call-1' and row['maximum_micro_usd']==500 and row['retry_of']==('attempt-1' if row['attempt_id']=='attempt-2' else None) for row in record['immutable_request']['requests']), 'exact frozen fake request identities and zero capture errors')
+    require(immutable_replay['recorded_requests']==len(expected_attempts) and immutable_replay['guarded_requests']==len(expected_attempts) and immutable_replay['capture_refusals']==0 and immutable_replay['reserve_events']==len(expected_attempts) and immutable_replay['reservations']==len(expected_attempts) and immutable_replay['commitments']==len(expected_attempts) and immutable_replay['observed_calls'] is None, 'frozen complete request/reserve/commit denominator; no runtime observed calls claim')
     binding = record['guard']['header']['bindings']
     require(all(binding[name] == scenario[name] for name in ('task_id','arm','run_id')), 'consumer identity binding')
     require(record['guard']['header']['allowance']['budget_micro_usd'] == scenario['budget_micro_usd'] and record['guard']['header']['allowance']['expires_monotonic'] == scenario['expires_monotonic'], 'virtual authorization ceiling')

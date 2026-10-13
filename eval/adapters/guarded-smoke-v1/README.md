@@ -1,7 +1,7 @@
 # Consumer guardado offline — L5-05, C06
 
 Esta entrada executa Python próprio e trata Go capturado como bytes. Usa exclusivamente
-`make_immutable_guarded_fake_session`, que compõe o factory original `make_guarded_fake_session` e mantém o request canônico privado prospectivo v3; todas as operações passam pelo guard público. O consumer atual tem schema v2. A primeira tentativa v1 está preservada em logs/first-attempt. É um
+`make_immutable_guarded_fake_session`, que compõe o factory original `make_guarded_fake_session` e mantém o request canônico privado prospectivo v4; todas as operações passam pelo guard público. O consumer atual tem schema v3. A primeira tentativa v1 está preservada em logs/first-attempt. É um
 consumer CLI de recuperação lexical, com transport fake e controles de desenvolvimento.
 Não constitui `agent_run`, smoke pago, provider, D1, admissão ou gate.
 

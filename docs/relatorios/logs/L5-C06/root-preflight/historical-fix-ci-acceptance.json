@@ -1,0 +1,22 @@
+{
+  "verified": true,
+  "run_id": 38443838874,
+  "head_sha": "282f8850e6e5b896dab12a88c0e92e1203a13321",
+  "url": "https://github.com/wkoch/xrai/actions/runs/38443838874",
+  "jobs": {
+    "Documentary contracts": "success",
+    "x86_64-unknown-linux-gnu": "success",
+    "aarch64-apple-darwin": "success",
+    "L5 real Rust behavioral pair": "skipped",
+    "L5 real JavaScript behavioral pair": "skipped"
+  },
+  "expected_conditional_step_skip": {
+    "host": "aarch64-apple-darwin",
+    "step": "Prepare Linux evaluator sandbox"
+  },
+  "original_api_sha256": {
+    "historical-fix-ci-run.json": "c7df97c1b16a0778e5d0c9f8507bf20edd828a1ed8668400140da3986ddf3b6f",
+    "historical-fix-ci-jobs.json": "21a6ea6f60f6271988caeb7254a09f08c57e6979db809459b707fdb1d82e7dae"
+  },
+  "scope": "Three owned regular CI jobs passed; explicitly gated historical upstream behavioral probes were skipped. Linux-only sandbox setup skipped on macOS."
+}

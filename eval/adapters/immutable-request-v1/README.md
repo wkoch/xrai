@@ -1,4 +1,4 @@
-# Captura de request prospectiva v3 — composição offline
+# Captura de request prospectiva v4 — composição offline
 
 `ImmutableRequestDispatch` / `make_immutable_guarded_fake_session` capturam uma
 representação JSON canônica única e mantêm seus bytes como autoridade. O guard/v2
@@ -35,10 +35,12 @@ readonly, trata recibos/spy como dados e confere source closure atual.
 
 `freeze.json` registra 12 controles antes do wrapper. Seis execuções completas
 retidas exercitam antes/depois compromisso, cancel pre/post, alteração descartável
-no adapter e retry/receipt tardio. Vinte e cinco testes cobrem também pedido alterado
+no adapter e retry/receipt tardio. Trinta e oito testes cobrem também pedido alterado
 antes de capture, bytes não canônicos, binding adulterado e recusa de segundo
 admission guardado sem reserva. v2 histórico continua reproduzível com divergência
 no teste de regressão; não foi consertado retroativamente.
 
 ABA, autoridade por geração monotônica, blob store/perfil e contenção factual
 ficam pendentes. Não há provider/network/native/upstream execution ou agent_run.
+
+Profile v4 confere bijeção completa e ordenada com TODOS os begin/end fake (inclusive refusals sem reserva), ou reserves diretos. Ordem é derivada da sequência real pública, com pending ID/cap reservado antes de capture e snapshot wrapper+target coeso. Categorias pré-journal são diagnósticos próprios sem send authority; o denominador observado externamente permanece indisponível. O consumer frozen exige uma/duas chamadas e zero dessas categorias. Próximo passo é owner público/body receipt do transporte, sem adicionar wrappers genéricos.

@@ -1,12 +1,13 @@
 {
   "agent_runs": 0,
   "artifact": {
-    "bytes": 3605445,
-    "expanded_bytes": 10618544,
+    "bytes": 3606045,
+    "expanded_bytes": 10620144,
     "members": 11,
     "path": "docs/relatorios/logs/L5-C06/guarded-smoke/owned-output.zip",
-    "sha256": "fabf5107495ead52ad09c54535f9577f0b4f8a7de115d18b6a747796ce1d9841"
+    "sha256": "49be27a05cb1ee0824428359e534549fcb3a4ce744261172f70bf04f64b0868d"
   },
+  "before_omission_repair_retained": "before-omission-repair",
   "campaign_scoring_enabled": false,
   "commands": [
     {
@@ -22,14 +23,14 @@
       ],
       "exit_code": 0,
       "skips": 0,
-      "tests": 31
+      "tests": 33
     },
     {
       "command": [
         "python3",
         "crates/xrai-eval/harness/guarded_smoke.py",
         "--output",
-        "/private/tmp/xrai-guarded-smoke-immutable-v2-reviewed"
+        "/private/tmp/xrai-guarded-smoke-v4-inflight-final"
       ],
       "exit_code": 0
     },
@@ -53,6 +54,7 @@
       "python_version": "3.13.13"
     }
   ],
+  "current_profile": "guarded-smoke-consumer.v3 + immutable-request-dispatch.v4",
   "first_attempt": {
     "new_profile": "guarded-smoke-consumer.v2 + immutable-request-dispatch.v3",
     "path": "docs/relatorios/logs/L5-C06/guarded-smoke/first-attempt",
@@ -63,6 +65,11 @@
     "executable": "/opt/homebrew/opt/python@3.15/bin/python3.15",
     "version": "3.15.0"
   },
+  "known_frozen_dispatch_count": {
+    "capture_refusals": 0,
+    "normal": 1,
+    "retry_late": 2
+  },
   "model_tokens": null,
   "native_execution": false,
   "provider_calls": 0,
@@ -71,14 +78,14 @@
     "previous_profile_bytes_retained": "pre-review-v2",
     "reason": "forged publicfailure plus unreserved hashbinding accepted by preliminary replay; repaired beforepublication"
   },
-  "schema_version": "xrai.eval.guarded-smoke-development-evidence.v2",
+  "schema_version": "xrai.eval.guarded-smoke-development-evidence.v3",
   "source_hashes": {
-    "crates/xrai-eval/harness/guarded_smoke.py": "65d1bacb23c86f153fbcab158b6b6e02bff51c54bc6633fd45b53e0b000c6d80",
-    "crates/xrai-eval/harness/immutable_request_dispatch.py": "0ff3fc2abc5a420ab2ae76945f244dcd046c3ac766b8ceb138a55dc66423eb7f",
-    "crates/xrai-eval/harness/tests/test_guarded_smoke.py": "37294cac19fcae14399f48ccb0d3a3a26165eaa7869338755c55d347840dc7a6",
+    "crates/xrai-eval/harness/guarded_smoke.py": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+    "crates/xrai-eval/harness/immutable_request_dispatch.py": "7f8d73d7e1641d0ea2e02c1df12c0139b2231e2e436527f0fd83c43cc11c0b40",
+    "crates/xrai-eval/harness/tests/test_guarded_smoke.py": "9948f4e8f261b44a98d58b8596d36537ea514dd1449676599309ee4f523ae047",
     "eval/adapters/guarded-smoke-v1/freeze.json": "47a70dd00b62778429b347c2aef1847dac11ac91a28ad61a9126e4d6ed82354f",
     "eval/adapters/guarded-smoke-v1/scenarios.json": "211a7aaa1929b822bb200b91bba97566e4e9d07ac6edc671d13ed08544846adf",
-    "eval/adapters/guarded-smoke-v1/verify.py": "78996c09cd8b2e103f0bbe6898f0160edcd99a2ab3f3c15432ca61869bf44e77"
+    "eval/adapters/guarded-smoke-v1/verify.py": "c15245d61cdfe51eb61a819a282d989987ed63389bbbe0570d7dd48286184261"
   },
   "upstream_execution": false
 }

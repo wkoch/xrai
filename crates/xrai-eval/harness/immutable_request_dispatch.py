@@ -12,7 +12,7 @@ from agent_adapter_protocol import require, exact
 from execution_dispatch_v2 import DispatchSessionV2, replay_dispatch_v2
 from session_tool_guard import make_guarded_fake_session, SessionToolGuard, replay_guard
 
-VERSION = 'xrai.eval.immutable-request-dispatch.v3'
+VERSION = 'xrai.eval.immutable-request-dispatch.v4'
 REQUEST_VERSION = 'xrai.eval.canonical-fake-request.v1'
 MAX_REQUEST = 128 * 1024
 MAX_ATTEMPTS = 16
@@ -87,6 +87,8 @@ class ImmutableRequestDispatch:
         self._target=target
         self._lock=threading.RLock()
         self._requests=[]
+        self._capture_refusals=[]
+        self._inflight={}
         initial=target.record()
         ledger=initial['session'] if type(target) is SessionToolGuard else initial
         self._header={'schema_version':VERSION,'bindings':copy.deepcopy(ledger['bindings']),
@@ -96,13 +98,23 @@ class ImmutableRequestDispatch:
             'transport_observation':'no runtime independent transport observation; canonical private projection; test-only spy',
             'provider_calls':0,'provider_charge':None,'provider_usage':None,'model_tokens':None}
     def _dispatch(self,attempt_id,call_id,request,maximum_micro_usd,retry_of,invoke):
-        raw=capture_request(request)
-        require(sha(raw)==self._header['manifest_request_sha256'],'request differs from captured manifest')
         require(type(attempt_id) is str and 0<len(attempt_id.encode())<=256 and type(call_id) is str and 0<len(call_id.encode())<=256,'bounded explicit attempt/call')
-        require(type(maximum_micro_usd) is int and maximum_micro_usd>=0 and (retry_of is None or type(retry_of) is str),'typed virtual maximum/retry')
-        require(maximum_micro_usd>=500,'fixed fake request maximum covers enforced resources')
         with self._lock:
-            require(len(self._requests)<MAX_ATTEMPTS and all(row['attempt_id']!=attempt_id for row in self._requests),'bounded unique immutable dispatch')
+            require(len(self._requests)+len(self._capture_refusals)+len(self._inflight)<MAX_ATTEMPTS and attempt_id not in self._inflight and all(row['attempt_id']!=attempt_id for row in self._requests+self._capture_refusals),'bounded unique immutable dispatch')
+            token=object();self._inflight[attempt_id]=token
+        try:
+            require(type(maximum_micro_usd) is int and maximum_micro_usd>=500 and (retry_of is None or type(retry_of) is str),'typed covering fake maximum/retry')
+            raw=capture_request(request)
+            require(sha(raw)==self._header['manifest_request_sha256'],'request differs from captured manifest')
+        except BaseException:
+            with self._lock:
+                require(self._inflight.get(attempt_id) is token,'same pending capture token')
+                del self._inflight[attempt_id]
+                self._capture_refusals.append({'attempt_id':attempt_id,'call_id':call_id,'category':'request_capture_refused_before_guard','fake_begin':False,'payload_authority':None})
+            raise
+        with self._lock:
+            require(self._inflight.get(attempt_id) is token and all(row['attempt_id']!=attempt_id for row in self._requests+self._capture_refusals),'atomic pending to owned request transition')
+            del self._inflight[attempt_id]
             row={'attempt_id':attempt_id,'call_id':call_id,'retry_of':retry_of,'maximum_micro_usd':maximum_micro_usd,
                 'payload':payload(raw),'transport_projection':None,'result':None,'error':None,'finished':False}
             self._requests.append(row)
@@ -122,6 +134,11 @@ class ImmutableRequestDispatch:
             with self._lock:
                 row['transport_projection']=payload(raw) if attempt is not None and attempt['committed'] else None
                 row['finished']=True
+                no_admission=not any(event['kind']=='begin' and event['details']['operation_id']=='dispatch:'+attempt_id for event in actual['events']) if type(self._target) is SessionToolGuard else attempt is None
+                if no_admission:
+                    require(attempt is None and row['result'] is None and row['error'] is not None,'no guard begin implies no reserve/returned result')
+                    self._requests.remove(row)
+                    self._capture_refusals.append({'attempt_id':attempt_id,'call_id':call_id,'category':'guard_admission_refused_before_begin' if type(self._target) is SessionToolGuard else 'direct_admission_refused_before_reserve','fake_begin':False,'payload_authority':None})
     def dispatch_fake(self,attempt_id,call_id,request,maximum_micro_usd,*,retry_of=None):
         require(type(self._target) is SessionToolGuard,'guarded target required')
         return self._dispatch(attempt_id,call_id,request,maximum_micro_usd,retry_of,
@@ -137,13 +154,21 @@ class ImmutableRequestDispatch:
     def revoke(self):return self._target.revoke()
     def invalidate(self,*args,**kwargs):return self._target.invalidate(*args,**kwargs)
     def finish(self,*args,**kwargs):return self._target.finish(*args,**kwargs)
+    def _snapshot_locked(self):
+        require(not self._inflight and all(row['finished'] for row in self._requests),'immutable capture/dispatch I/O still active')
+        actual=self._target.record()  # Bounded own memory snapshot; no callback/transport I/O.
+        header=copy.deepcopy(self._header);rows=copy.deepcopy(self._requests);refusals=copy.deepcopy(self._capture_refusals)
+        order=[event['details']['arguments']['attempt_id'] for event in actual['events'] if event['kind']=='begin' and event['details']['method']=='dispatch_fake'] if type(self._target) is SessionToolGuard else [event['attempt_id'] for event in actual['events'] if event['kind']=='reserve']
+        require(set(order)=={row['attempt_id'] for row in rows} and len(order)==len(rows),'exact public admission order before returning request record')
+        positions={attempt:n for n,attempt in enumerate(order)}
+        rows.sort(key=lambda row:positions[row['attempt_id']])
+        return {'schema_version':VERSION,'header':header,'requests':rows,'capture_refusals':refusals},actual
     def request_record(self):
-        with self._lock:
-            require(all(row['finished'] for row in self._requests),'immutable dispatch I/O still active')
-            return {'schema_version':VERSION,'header':copy.deepcopy(self._header),'requests':copy.deepcopy(self._requests)}
+        with self._lock:return self._snapshot_locked()[0]
     def record(self):
-        return {'immutable_request':self.request_record(),'target':self._target.record(),
-            'target_kind':'guard' if type(self._target) is SessionToolGuard else 'dispatch_v2'}
+        with self._lock:
+            request,actual=self._snapshot_locked()
+            return {'immutable_request':request,'target':actual,'target_kind':'guard' if type(self._target) is SessionToolGuard else 'dispatch_v2'}
 
 
 def make_immutable_guarded_fake_session(*args,**kwargs):
@@ -151,7 +176,7 @@ def make_immutable_guarded_fake_session(*args,**kwargs):
 
 
 def replay_immutable(record,target,*,target_kind='guard'):
-    require(type(record) is dict and set(record)=={'schema_version','header','requests'} and record['schema_version']==VERSION,'typed immutable v3 record')
+    require(type(record) is dict and set(record)=={'schema_version','header','requests','capture_refusals'} and record['schema_version']==VERSION,'typed immutable v3 record')
     header=record['header']
     require(type(header) is dict and set(header)=={'schema_version','bindings','authorization','manifest_request_sha256','source_sha256','capture_policy','transport_observation','provider_calls','provider_charge','provider_usage','model_tokens'} and header['schema_version']==VERSION,'immutable v3 header')
     require(header['source_sha256']==sha((ROOT/SOURCE).read_bytes()),'current prospective request method binding')
@@ -165,6 +190,23 @@ def replay_immutable(record,target,*,target_kind='guard'):
     rows=record['requests']
     require(type(rows) is list and len(rows)<=MAX_ATTEMPTS and len({row['attempt_id'] for row in rows})==len(rows),'bounded unique request rows')
     require(set(ledger['attempts']).issubset({row['attempt_id'] for row in rows}),'complete immutable request/ledger attempt coverage')
+    capture_refusals=record['capture_refusals']
+    require(type(capture_refusals) is list and len(rows)+len(capture_refusals)<=MAX_ATTEMPTS,'bounded recorded request/capture refusal count')
+    require(all(type(row) is dict and set(row)=={'attempt_id','call_id','category','fake_begin','payload_authority'} and type(row['attempt_id']) is str and 0<len(row['attempt_id'].encode())<=256 and type(row['call_id']) is str and 0<len(row['call_id'].encode())<=256 and row['category'] in ('request_capture_refused_before_guard','guard_admission_refused_before_begin','direct_admission_refused_before_reserve') and row['fake_begin'] is False and row['payload_authority'] is None for row in capture_refusals),'typed pre-guard capture refusal without payload/send authority')
+    require(len({row['attempt_id'] for row in rows+capture_refusals})==len(rows)+len(capture_refusals),'unique identities across capture/refusal requests')
+    if target_kind=='guard':
+        begins=[event['details'] for event in target['events'] if event['kind']=='begin' and event['details']['method']=='dispatch_fake']
+        ends=[event['details'] for event in target['events'] if event['kind']=='end' and event['details']['operation_id'] in {row['operation_id'] for row in begins}]
+        require(['dispatch:'+row['attempt_id'] for row in rows]==[row['operation_id'] for row in begins],'exact ordered bijection with ALL public guard fake dispatch begins including unreserved refusals')
+        require({row['operation_id'] for row in ends}=={row['operation_id'] for row in begins} and len(ends)==len(rows),'one complete public end per guard dispatch')
+        require(all(row['category']!='direct_admission_refused_before_reserve' for row in capture_refusals),'guard target cannot claim direct refusal category')
+        require(all('dispatch:'+row['attempt_id'] not in {begin['operation_id'] for begin in begins} and row['attempt_id'] not in ledger['attempts'] for row in capture_refusals),'pre-guard capture refusals cannot also reserve or invoke fake begin')
+        for row,begin in zip(rows,begins):
+            arguments=begin['arguments']
+            require(exact(arguments,{'attempt_id':row['attempt_id'],'call_id':row['call_id'],'request':json.loads(restore(row['payload'])),'maximum_micro_usd':row['maximum_micro_usd'],'retry_of':row['retry_of']}),'complete immutable dispatch/public guard argument equality')
+    else:
+        require([row['attempt_id'] for row in rows]==[event['attempt_id'] for event in ledger['events'] if event['kind']=='reserve'],'ordered direct immutable reserve bijection')
+        require(all(row['category']!='guard_admission_refused_before_begin' and row['attempt_id'] not in ledger['attempts'] for row in capture_refusals),'capture/direct refusal cannot also become direct reserve')
     entries=0
     for row in rows:
         require(type(row) is dict and set(row)=={'attempt_id','call_id','retry_of','maximum_micro_usd','payload','transport_projection','result','error','finished'} and row['finished'] is True,'closed immutable row')
@@ -201,6 +243,6 @@ def replay_immutable(record,target,*,target_kind='guard'):
             require(exact(row['result'],expected),'returned dispatch commitment/outcome')
         else:require(row['result'] is None,'error has no publicly returned outcome')
         entries+=int(attempt['committed'])
-    return {'schema_version':VERSION,'verified':True,'attempts':len(rows),'committed_private_projections':entries,'transport_observed_independently':False,
+    return {'schema_version':VERSION,'verified':True,'attempts':len(rows),'recorded_requests':len(rows)+len(capture_refusals),'guarded_requests':len(rows),'capture_refusals':len(capture_refusals),'reserve_events':len(ledger['attempts']),'reservations':sum(attempt['rejection_reason']!='budget' for attempt in ledger['attempts'].values()),'commitments':entries,'observed_calls':None,'committed_private_projections':entries,'transport_observed_independently':False,
         'immutable_payloads_equal_reserved':True,'provider_calls':0,'provider_charge':None,'model_tokens':None,
         'limits':['Dict capture requires caller quiescence during one canonical serialization.','Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.','External ABA and large blobs remain unavailable.']}

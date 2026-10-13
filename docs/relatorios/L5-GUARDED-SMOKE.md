@@ -1,6 +1,6 @@
 # L5-05 — consumer CLI guardado offline, checkpoint C06
 
-Entrega prospectiva `guarded-smoke-consumer.v2`, adotando `immutable-request-dispatch.v3` após o achado da revisão C05 §2. Primeira tentativa v1 e seus source bytes/ZIP foram retidos em `logs/L5-C06/guarded-smoke/first-attempt`, sem relabeling.
+Entrega prospectiva `guarded-smoke-consumer.v3`, adotando `immutable-request-dispatch.v4` após o achado da revisão C05 §2. Primeira tentativa v1 e seus source bytes/ZIP foram retidos em `logs/L5-C06/guarded-smoke/first-attempt`, sem relabeling.
 
 Entrega implementada: `harness/guarded_smoke.py` chama o factory público D01 C05 e
 consome seu guard em dispatch fake, recuperação BM25/TF-IDF, expansão, retry,
@@ -39,12 +39,12 @@ somente o ID da fixture fake legada, sem claim de qualificação Rust/Go.
 | Receipt readonly | Closure exata de 11 JSON canônicos; hashes/bytes, binding método atual, guard journal, delegated prefix e ledger/history replays; retorno falso não pode virar resultado aceito. |
 
 Prova completa preservada em `logs/L5-C06/guarded-smoke/owned-output.zip`:
-3.605.445 bytes, onze membros, 10.618.544 bytes expandidos; SHA-256
-`fabf5107495ead52ad09c54535f9577f0b4f8a7de115d18b6a747796ce1d9841`.
+3.606.045 bytes, onze membros, 10.620.144 bytes expandidos; SHA-256
+`49be27a05cb1ee0824428359e534549fcb3a4ce744261172f70bf04f64b0868d`.
 Os outputs `directory-verification.json`, `archive-verification.json` e
 `pinned-runtime-verification.json` são byte a byte idênticos. O terceiro foi
-recomputado por CPython 3.13.13, além da coleta e 31 testes por CPython 3.15.0.
-31 testes passam, zero skips; substituições de identidade/retorno/custos/tokens,
+recomputado por CPython 3.13.13, além da coleta e 33 testes por CPython 3.15.0.
+33 testes passam, zero skips; substituições de identidade/retorno/custos/tokens,
 JSON e ZIP são contraprovas. Warning de duplicate ZIP no teste negativo é
 intencional, com exit code zero.
 
@@ -56,9 +56,11 @@ independente da tolerância maior do Python 3.15. Cenários e fontes ficaram
 inalterados durante os reparos. Todos os comandos/hashes e a prova final estão
 em `development-evidence.json`.
 
+Após revisão C06, o profile v3 fecha também o denominador conhecido: uma chamada frozen, duas no retry, IDs/call/retry/max exatos, zero capture errors. Phantom capture recompondo o summary é recusado; solicitações omitidas/trocadas também. Recibos preliminares e sources/ZIPs permanecem em first-attempt, pre-review-v2 e before-omission-repair.
+
 ## Escopo e pendências para o Arquiteto
 
-Esta fatia fecha o caller offline explícito do factory C05 por composição com captura prospectiva imutável de request. [L5-D01-REQUEST.md](L5-D01-REQUEST.md) registra 25 testes adicionais e a limitação de ausência de observação de transporte independente no runtime. Permanece
+Esta fatia fecha o caller offline explícito do factory C05 por composição com captura prospectiva imutável de request. [L5-D01-REQUEST.md](L5-D01-REQUEST.md) registra 38 testes adicionais e a limitação de ausência de observação de transporte independente no runtime. Permanece
 `guarded_scripted_retrieval`, `agent_run=false`, campaign false, zero
 provider/network/upstream/native observados. Teto/reserva/receipts são fake:
 35 micro-USD observados sintéticos por receipt; nenhum custo/usage de provider

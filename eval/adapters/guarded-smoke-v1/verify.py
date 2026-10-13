@@ -30,7 +30,7 @@ def verify_members(members):
         require(raw==canonical(record) and exact(record['scenario'],scenario),'canonical exact frozen consumer artifact')
         result.append(verify_record(record))
     require(all(type(receipt[k]) is int and receipt[k]==0 for k in ('provider_calls','agent_runs')) and receipt['campaign_scoring_enabled'] is False and all(receipt[k] is None for k in ('provider_charge','provider_usage','model_tokens')),'fake-only unknown provider/tokens')
-    return {'schema_version':'xrai.eval.guarded-smoke-verification.v2','verified':True,'records':result,'source_files':22,'source_bytes':54032,'provider_calls':0,'agent_runs':0,'campaign_scoring_enabled':False,'provider_charge':None,'provider_usage':None,'model_tokens':None}
+    return {'schema_version':'xrai.eval.guarded-smoke-verification.v3','verified':True,'records':result,'source_files':22,'source_bytes':54032,'provider_calls':0,'agent_runs':0,'campaign_scoring_enabled':False,'provider_charge':None,'provider_usage':None,'model_tokens':None}
 
 
 def verify(output):
