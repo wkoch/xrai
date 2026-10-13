@@ -1,0 +1,773 @@
+{
+  "architect_pending": [
+    "GO-02 query clause unsubstantiated: future prospectively frozen corpus/query correction needed, original preserved.",
+    "RS-03 wording conflates pipe EOF with child exit; future natural task should clarify process-wait scope.",
+    "Independent prospective holdout, harder natural tasks, diverse absent cases and ambiguity/multiple relevance labels remain pending.",
+    "Second reading after results cannot retroactively blind or validate the original design; original pending marker intentionally preserved."
+  ],
+  "captured_source_sha256": {
+    "eval/context/lexical/sources/Go/modules/util/color.go": "a892ac28577bdc4b45a8f05310e66dbf7cc3cc1935b16505a25ec7bfb1d1c6a9",
+    "eval/context/lexical/sources/Go/modules/util/error.go": "4c1ef41d72e1976bdc383bf0044be2a5eeba280b660149dad7c1b7fb4046a96d",
+    "eval/context/lexical/sources/Go/modules/util/file_unix.go": "d8382f39f9a3b2ffbf3388022a4b5aae966c5a952c6e9f0732137449d4a5fa6a",
+    "eval/context/lexical/sources/Go/modules/util/file_windows.go": "f627109e34aec56c93673136539352cff834bad6052b1a57432264769c2fe609",
+    "eval/context/lexical/sources/Go/modules/util/filebuffer/file_backed_buffer.go": "df2dd5a8d1e28bdd8d8a57d6be5a9cbdd4872f83fe180159fe6fab7da889affd",
+    "eval/context/lexical/sources/Go/modules/util/io.go": "1642f059dfe130c69d8e353c55934cdb5713e5b0023fe6f54cc150369ce563f6",
+    "eval/context/lexical/sources/Go/modules/util/keypair.go": "0d3daa3f19329d2100f2f50bc46dfc4a26c7abafd020a4b7dab7c1b9122b50bd",
+    "eval/context/lexical/sources/Go/modules/util/legacy.go": "bd2937750b8eac620d8f656c094f7686e4c09fa352dd2e87eaeedf98dde433da",
+    "eval/context/lexical/sources/Go/modules/util/pack.go": "1d25ec4f45082f54f40eac122bdb23ac7cbea379ac915332f1fae769cd06db27",
+    "eval/context/lexical/sources/Go/modules/util/paginate.go": "16761612bac2a973e0e90e5af1b12676959e8beb49cc01987292d784f223275b",
+    "eval/context/lexical/sources/Go/modules/util/path.go": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c",
+    "eval/context/lexical/sources/Go/modules/util/remove.go": "411274b4f23bd97802d3a92d08769c3fa106375d60da3af65ff0136ab2a69ebb",
+    "eval/context/lexical/sources/Go/modules/util/rotatingfilewriter/writer.go": "335901d7042f07ec5636c263d96fc2134268582d0632aa80ecfb8d61cb2bcc71",
+    "eval/context/lexical/sources/Go/modules/util/sanitize.go": "87860ac0dfe8e9236c86517617a6495b84f57da8a8de89d379b221a8428ce031",
+    "eval/context/lexical/sources/Go/modules/util/sec_to_time.go": "a20769ef34e4250efd1e8697dfc6a7b7fb2d5513b2edc92b3a4f583a72f9a13f",
+    "eval/context/lexical/sources/Go/modules/util/shellquote.go": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02",
+    "eval/context/lexical/sources/Go/modules/util/slice.go": "03627b6ce71732a1a68de40e14a8793338b4d1cc08737476dd38de6e1f4114d7",
+    "eval/context/lexical/sources/Go/modules/util/string.go": "63dd70ccdd2d60aa69d57cba29d5d233ec9831483915de22509911ce31d0e713",
+    "eval/context/lexical/sources/Go/modules/util/timer.go": "ccb807b8370f5c526bf9c953c1295bd43af787f946fe7ddc921d84e69517c02c",
+    "eval/context/lexical/sources/Go/modules/util/truncate.go": "a168184948d4086ac5882dc72cc4d9452f2d7c149a64a0c9875363edc8c539fb",
+    "eval/context/lexical/sources/Go/modules/util/url.go": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e",
+    "eval/context/lexical/sources/Go/modules/util/util.go": "7dceb0bf113a8d5c9aff47403d7a7dd13ec3465c0143fbd68a64c6d72b4f48b8",
+    "eval/context/lexical/sources/Python/sklearn/metrics/__init__.py": "0388db4efb86c7ca3aa117c0ff92075dc9edd405514e403a92706740bd3445e6",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_base.py": "1df623872c3cef5200b7caf7e9cf325423305dc688d0915827bbe3aef41ee5b9",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_classification.py": "2f0cb72e27139dd48839e05d9a3a4b54a8981d1fa92e781c7c7fdc001c8be364",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_pairwise_distances_reduction/__init__.py": "2f96c2632dbbe8a3e5e822c42d3e285e546bd62af06f9194cf93dd960100c68c",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py": "a9e3248745625f6f53467664104324057c62d06d2fc139d52b2ae1c33c84deb1",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_plot/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_plot/confusion_matrix.py": "493e6ac0fa75bbd95778249faeb01f9a11cf520fbba90dc613959de3ee0a7b05",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_plot/det_curve.py": "b70700d494334932c4f03e19ebcc58ea6faaabc3fd3255af7e4ae8b190be274b",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_plot/precision_recall_curve.py": "5c99cee3eb377d232fd32e4b43d967f82b7800379b0c9e41f9b00288a5fc543a",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_plot/regression.py": "d082d427d161caa257884d6289d5da6f2c19ad76b4a1d219aa186befaa5dc3a5",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_plot/roc_curve.py": "a34d6d63d722ec1d184468626be4e8184ba4e78b749f4c588ef0deb5c9ed4de0",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_ranking.py": "420a8519c0dedc3d0e71dc0b7371dc93946e33f0026d9bd2a08bf5851bb9bab4",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_regression.py": "c0419e30b4d012f863313448d7d976a6aca40515e847a366c022aa43aa8b6906",
+    "eval/context/lexical/sources/Python/sklearn/metrics/_scorer.py": "010858ab2d8718a22d16505b2317777b4054fb037de6cf71e94d5050a358f8fa",
+    "eval/context/lexical/sources/Python/sklearn/metrics/cluster/__init__.py": "ee117687dde0814233d5f4f28cbfe2df3512f9b91528b311592acde4cd6f8ac4",
+    "eval/context/lexical/sources/Python/sklearn/metrics/cluster/_bicluster.py": "431fbe99a5dd322982f82f88ff3b67f1f6080a8285b288f68bb6f82ee081029b",
+    "eval/context/lexical/sources/Python/sklearn/metrics/cluster/_supervised.py": "23879a9c080bd518521c029a91663692306b2d23cba08b7d4c47427a731ef4a1",
+    "eval/context/lexical/sources/Python/sklearn/metrics/cluster/_unsupervised.py": "14bec9bebc4b7586980a76b8ce37ac5c3829644aed957425025977dabac03cd0",
+    "eval/context/lexical/sources/Python/sklearn/metrics/pairwise.py": "bf40ffe53c476ed7512a7319a16d769257233d176c5796539ba4e9b10d0fe0a1",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/anymap.rs": "624ee0a71f5744aa78ab37319eeddb660aa1eb9c1d2dfc5d55dff00e0ce263c6",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/assert.rs": "1f3191a21f1e8626d9add573880c3c11629c1b0013fdafeb32360befbccba2af",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/lib.rs": "f446733f5bdb045691bd8f25ad4a3186404ef956c9e5b7eebd6f1025395dbfd1",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/macros.rs": "0013e37e9239c53f2af495987a0e5f017337d28fe247945ffc56702bb74e02c4",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/non_empty_vec.rs": "91ca57945f28d076d13f63503ea07195980fdd9fba61eb28da5177230ca8ae6d",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/panic_context.rs": "42a0d9b9c58dfa3225bc530f4f20dce8a5c93e28d55f3894f163a2981139271b",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/process.rs": "3c1ae96791e4d897315879a01662c34bd662c7d63819a48c4b01d207c8eba208",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/rand.rs": "cb56df4a9ab5e528e9d8df04127ff4fc395607d73b93e4d0fdf83341dacee772",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/tempfile.rs": "f3799d49dd85ba766ea9541c75c57d74c6e2854a9519a75c9f5627ad4fe9eea3",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/thread.rs": "41506c82ce4d1032624c3281bce8bf1c4f6a982d6d31ce67f46773d79e8b67a4",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/thread/intent.rs": "9af4aebd7dac578e271e03e72a5067693d3ba0cd6a9baa964ebd3272c4ea8bbe",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/thread/pool.rs": "22dfde056cef354fbcf394a5c9310c36781fcdb7f403c03e2e368dda48fdd94f",
+    "eval/context/lexical/sources/Rust/crates/stdx/src/variance.rs": "a9d15758fa1af0804b14549710dafee9e5e91c3661529e96e83df6c59c459863",
+    "eval/context/lexical/sources/TSJS/packages/react/src/BadMapPolyfill.js": "23dbb32c59a8258c70b3d2e5cdfedb587a49fa0dd0418e338873820abe21f294",
+    "eval/context/lexical/sources/TSJS/packages/react/src/React.js": "31bf8b27e2682c1cabad2c1667e9afdfba297789612aa29758a4cf53eac4f6e3",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactAct.js": "c3e617dc5c34be5f68857704ac1d3d7b7cb4581c991c652ebf795a2d518127a1",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactBaseClasses.js": "4817f0705e5b1bb7d3588eb99ef67190d862a4a21a1c3b18f55afc8edca7b294",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactChildren.js": "d9b0392d5230d3c2bfbc86f187f785c1f4df68fff4643298db650ec07c21e46e",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactContext.js": "ec51cc418c87bbf17e7b7187b4314c4c25bdc82d8b08c9842250c922ed0e4bd5",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactCreateRef.js": "300d2f482922aba0e598c93d7f3fb8965e6ff23a2bcb975666d7174fe42b8979",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactCurrentActQueue.js": "0c2dbb1c488c298d94a6c0f238e05f8d9cb6ff05a53e47b28b39fcbed6ef6a63",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactCurrentBatchConfig.js": "79aba8fcf5b60fe3f249e926a472ce8c309511115bdb52a40ac187fb41b88e2a",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactCurrentDispatcher.js": "8a5078b861880b0f0661bd1871852efe5dd686c6d965608103c1c112004bbd1b",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactCurrentOwner.js": "80a85143c12d7acf4ad79f71051fca25432663eafe50ea87fede406626d00b64",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactDebugCurrentFrame.js": "c8187149fa2590d8138a6551c6b847f94a1f09456a4a0446f57120c7ff12fd83",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactElement.js": "7c988c8c3325c0a16daa82ee1845d31f075424f0174473819fd0c565eeca7591",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactElementValidator.js": "30ff821185d2628bce5330fb6113c2b4996856e54be0309149e6a61d5b7013a3",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactForwardRef.js": "f376ec880ad58e25da9f45b277d83bfc15c99049b40fef8e1ffe80f7b127a517",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactHooks.js": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactLazy.js": "0a59e45b9df3f2e354a1690d269523f32b64b62530b6e333172f7ebe9e749a2d",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactMemo.js": "550ba085248f77ad04bec9f75dfa1eff5ac42cd94425b991fc3428ae0d1ff2a6",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactMutableSource.js": "af124566329412bcde04f8efaa00d19d5530c5d56d45c4ff6f5a564c56fa1487",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactNoopUpdateQueue.js": "515fadd0a3d1026794ecf3ea3650509936713d5ba89253a3e49a42aa07c5c691",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactSharedInternals.js": "dd0d36a5029385ec50d1d9c1953c4c9f925e4f649d80c6d24e6b25249043276c",
+    "eval/context/lexical/sources/TSJS/packages/react/src/ReactStartTransition.js": "986697beceb6f1c20a0997332ce37e016b89aaa1a77d16dd00ab480638d936fe",
+    "eval/context/lexical/sources/TSJS/packages/react/src/forks/ReactCurrentDispatcher.www.js": "e5ed96d3ec4547133fe541992992faf9027200526b3e683c8ce608ced6496e30",
+    "eval/context/lexical/sources/TSJS/packages/react/src/forks/ReactCurrentOwner.www.js": "5bbf50cab230600b7edef081633f14cfae0f86dffb34a43c272f769099e9250e",
+    "eval/context/lexical/sources/TSJS/packages/react/src/forks/ReactSharedInternals.umd.js": "d2c828589d01a9458ebba3a244589326b07eecacf392e139de663f620c6e10da",
+    "eval/context/lexical/sources/TSJS/packages/react/src/jsx/ReactJSX.js": "f62fd9d25b6c7eeab169417ddba0d3cf17b3552732a4f8bd4104410203f805ad",
+    "eval/context/lexical/sources/TSJS/packages/react/src/jsx/ReactJSXElement.js": "56d11470eff72d46d7f2fb6bad0974612f6e228d23cbb3f5ef632f29d6ea2ff8",
+    "eval/context/lexical/sources/TSJS/packages/react/src/jsx/ReactJSXElementValidator.js": "b6efd893b70122602ddc4a695a9011e59c145b5195d83e4c3a6b928c531c109f"
+  },
+  "frozen_at_utc": "2026-10-13T01:02:02.642273+00:00",
+  "full_capture": {
+    "all_source_bytes_hashes_verified": true,
+    "before_after_bytes_unchanged": true,
+    "bytes": 819020,
+    "families": 4,
+    "files": 82
+  },
+  "independence": {
+    "authored_frozen_expected_labels": false,
+    "authored_frozen_queries": false,
+    "authored_lexical_benchmark_driver": false,
+    "authored_lexical_retriever": false,
+    "blinded_to_results": false,
+    "chronology": "post-result second source reading",
+    "external_reviewer": false,
+    "implemented_adapter_using_lexical_api": true,
+    "prospective_holdout_review": false,
+    "same_implementation_team": true
+  },
+  "inputs_sha256": {
+    "docs/relatorios/logs/L5-C04/lexical/benchmark.json": "6d10a09be6f1cf1e56e2a595e3ad55f57d333594401d9a96258650557a8d74ae",
+    "docs/relatorios/logs/L5-C04/lexical/freeze-before-algorithm.json": "a2fec9edfaf31bd1122860006e6a17c8e3b038de26f6937bedf7e655926d7e98",
+    "eval/context/lexical/expected-labels.json": "dd5df30eb39e80ed61d6a2e6ffbef0e169d81393088eb8dc480f2d27f960ae53",
+    "eval/context/lexical/manifest.json": "f3997f6c8772307a5fc4b8cf8f7a63ff5f5e8b19a98927d272d114e3f3cb6eb3",
+    "eval/context/lexical/matrix.json": "8e697ca3d7a61435a6c3e91d1d71c02bfe870ccf4831c5a0bcecd71a97e3b0b8",
+    "eval/context/lexical/protocol.json": "36590578310e9d53f7645e456a4f2e2b372fc332414f5cdd30e7c962a3ab388d",
+    "eval/context/lexical/queries.json": "2d6cf5b9b8faba8caccb534ebf3b13a6433fb20d9def51b9f5ec9af527b1279a"
+  },
+  "label_author": "implementer/e02_allocation",
+  "original_second_reader_marker": "pending",
+  "queries": [
+    {
+      "anchor": {
+        "end": 249,
+        "full_captured_source_checked": true,
+        "line": 6,
+        "sha256": "c8a8f4365aaab1d588b8ad9b0218c1ce45d29ce9586a06fb01bccbadedff8f05",
+        "start": 235,
+        "text": "pub fn shuffle",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Rust",
+      "frozen_label_changed": false,
+      "note": "Assinatura aceita slice mutável e callback de índice; corpo utiliza callback e swap. Consulta contém identificador exato; tarefa lexical direta.",
+      "path": "crates/stdx/src/rand.rs",
+      "query": "Locate shuffle for mutable slices and its random index callback.",
+      "query_id": "RS-01",
+      "source_bytes": 735,
+      "source_sha256": "cb56df4a9ab5e528e9d8df04127ff4fc395607d73b93e4d0fdf83341dacee772",
+      "witnesses": [
+        {
+          "end": 312,
+          "line": 6,
+          "sha256": "e4d971e8d5cb2b61fa4401865af1533e4e08302126a2866188352fd1dfc77770",
+          "start": 270,
+          "text": "mut rand_index: impl FnMut(usize) -> usize"
+        },
+        {
+          "end": 425,
+          "line": 9,
+          "sha256": "30a71f2f5f9b05ea3efd0ee557ff1df12307d04e98c3c586d007b80064ec4da2",
+          "start": 391,
+          "text": "let index = rand_index(remaining);"
+        },
+        {
+          "end": 463,
+          "line": 10,
+          "sha256": "8c348caa852253b7c630f2f311c65cb0caf98bd8e33925096bdb5f49e9acfc44",
+          "start": 434,
+          "text": "slice.swap(remaining, index);"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 386,
+        "full_captured_source_checked": true,
+        "line": 18,
+        "sha256": "fc22a26ed834e380edb5b16f26236928e1ff3847f677e16c6aaee2e8516d415d",
+        "start": 374,
+        "text": "pub fn enter",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Rust",
+      "frozen_label_changed": false,
+      "note": "Arquivo vincula guard RAII, stack thread-local e enter que instala hook uma vez. Anchor enter é apropriado para localização; não é prova de lifetimes/efeitos em runtime.",
+      "path": "crates/stdx/src/panic_context.rs",
+      "query": "Locate the panic context stack frame guard that sets a panic hook.",
+      "query_id": "RS-02",
+      "source_bytes": 1286,
+      "source_sha256": "42a0d9b9c58dfa3225bc530f4f20dce8a5c93e28d55f3894f163a2981139271b",
+      "witnesses": [
+        {
+          "end": 283,
+          "line": 12,
+          "sha256": "de6b934eef26fb7f76ef98f37bc93d09277bb3c80be798544d617e050d083c3b",
+          "start": 257,
+          "text": "impl Drop for PanicContext"
+        },
+        {
+          "end": 1012,
+          "line": 36,
+          "sha256": "d3469a4d6cd50f672135bedbc15ca89be1296406a807d9c639edddf5fc1d4323",
+          "start": 983,
+          "text": "SET_HOOK.call_once(set_hook);"
+        },
+        {
+          "end": 1050,
+          "line": 38,
+          "sha256": "4bbe48580492b39009f21aa302b4f692c49b17e6c4b07d5951de6c02d0fbc573",
+          "start": 1018,
+          "text": "with_ctx(|ctx| ctx.push(frame));"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 449,
+        "full_captured_source_checked": true,
+        "line": 13,
+        "sha256": "e1a4329ea02b9b5110a5c919f4922b53b77e46cefd24769d1b414639cc83cfaa",
+        "start": 426,
+        "text": "pub fn streaming_output",
+        "utf8_boundaries": true
+      },
+      "decision": "supported_with_wording_caveat",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Rust",
+      "frozen_label_changed": false,
+      "note": "Target lexical correto. streaming_output recebe pipes e usa EOF; espera pelo processo está no wrapper spawn_with_streaming_output. A frase until the child exits não é contrato literal do anchor.",
+      "path": "crates/stdx/src/process.rs",
+      "query": "Where does streaming_output read stdout and stderr until the child exits?",
+      "query_id": "RS-03",
+      "source_bytes": 8491,
+      "source_sha256": "3c1ae96791e4d897315879a01662c34bd662c7d63819a48c4b01d207c8eba208",
+      "witnesses": [
+        {
+          "end": 738,
+          "line": 23,
+          "sha256": "228c36a7ae38b2cd57b289fcb59205b4c7d343bd7b57d4afddf862e8e387aa35",
+          "start": 718,
+          "text": "imp::read2(out, err,"
+        },
+        {
+          "end": 792,
+          "line": 24,
+          "sha256": "2b6c14da1410d8b18e87a1d7859bb716db775d9612d694341f28a851b3a17743",
+          "start": 784,
+          "text": "if eof {"
+        },
+        {
+          "end": 2267,
+          "line": 75,
+          "sha256": "039fc78449562e3b435cfb9d68466179f655b97d9fdd725cb5c606c2f3073e87",
+          "start": 2240,
+          "text": "let status = child.wait()?;"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 648,
+        "full_captured_source_checked": true,
+        "line": 24,
+        "sha256": "c5ee0c076073326f0c5c2a4595a33ec2c1df34b53ab65f0db8265e9d35507e51",
+        "start": 622,
+        "text": "function resolveDispatcher",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "TSJS",
+      "frozen_label_changed": false,
+      "note": "Nome e mensagem estão no arquivo/função. Error aqui inclui diagnóstico console.error em DEV; o código comenta que não lança erro próprio. Flow e flags de build não foram executados.",
+      "path": "packages/react/src/ReactHooks.js",
+      "query": "Locate resolveDispatcher and the invalid hook call error.",
+      "query_id": "JS-01",
+      "source_bytes": 5778,
+      "source_sha256": "2d017d54827bdc46ba7db1e257c30caa52971723b8507af51ab003b55dbad353",
+      "witnesses": [
+        {
+          "end": 650,
+          "line": 24,
+          "sha256": "f24f56d61e1677c82beb025b90d6496249735b498807eb539e5ea15afdb3691f",
+          "start": 622,
+          "text": "function resolveDispatcher()"
+        },
+        {
+          "end": 802,
+          "line": 29,
+          "sha256": "019912665ba496b4738cb7ce25b8aad04ff6f81c2a3a430086106e643b114bc4",
+          "start": 784,
+          "text": "Invalid hook call."
+        },
+        {
+          "end": 774,
+          "line": 28,
+          "sha256": "ed1e3728ee12ffacd208744b2d93d183020acfa26409e8a96d86140b42cd5989",
+          "start": 760,
+          "text": "console.error("
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 12996,
+        "full_captured_source_checked": true,
+        "line": 470,
+        "sha256": "2925046144a4121a82d6483060e3ea46a9184d1fc8c6702e58cbb921302dab73",
+        "start": 12968,
+        "text": "export function cloneElement",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "TSJS",
+      "frozen_label_changed": false,
+      "note": "Corpo de cloneElement possui overrides de ref/key e transferência de children. Anchor só marca declaração, não garante que trecho retornado cubra todos os branches.",
+      "path": "packages/react/src/ReactElement.js",
+      "query": "Locate cloneElement when children, ref and key are overridden.",
+      "query_id": "JS-02",
+      "source_bytes": 15462,
+      "source_sha256": "7c988c8c3325c0a16daa82ee1845d31f075424f0174473819fd0c565eeca7591",
+      "witnesses": [
+        {
+          "end": 13883,
+          "line": 498,
+          "sha256": "9260ceef95ef2724f34aeb8f60e99f9071bfb7c2b5df64771a89052d6743f037",
+          "start": 13866,
+          "text": "ref = config.ref;"
+        },
+        {
+          "end": 13990,
+          "line": 502,
+          "sha256": "05ca334a456be3d7f7c8af68e59ba5b81bb39b40ba7ac1a548cb27323fb4512b",
+          "start": 13968,
+          "text": "key = '' + config.key;"
+        },
+        {
+          "end": 14806,
+          "line": 529,
+          "sha256": "eb737fea9e1007f6660150e79e15bcf93ee4ac47183eb6229c41b65d859ed9a1",
+          "start": 14780,
+          "text": "props.children = children;"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 941,
+        "full_captured_source_checked": true,
+        "line": 51,
+        "sha256": "d2aa06fee19d6ccfc36457a7f61fbc4348ad47e650693a3ac374f5e20bbcc9e5",
+        "start": 917,
+        "text": "function lazyInitializer",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "TSJS",
+      "frozen_label_changed": false,
+      "note": "Função manipula payload e estados Pending/Resolved/Rejected; relação textual forte sem execução ou validação de comportamento assíncrono.",
+      "path": "packages/react/src/ReactLazy.js",
+      "query": "Where does the lazy initializer track pending, resolved or rejected payload state?",
+      "query_id": "JS-03",
+      "source_bytes": 5395,
+      "source_sha256": "0a59e45b9df3f2e354a1690d269523f32b64b62530b6e333172f7ebe9e749a2d",
+      "witnesses": [
+        {
+          "end": 941,
+          "line": 51,
+          "sha256": "d2aa06fee19d6ccfc36457a7f61fbc4348ad47e650693a3ac374f5e20bbcc9e5",
+          "start": 917,
+          "text": "function lazyInitializer"
+        },
+        {
+          "end": 1691,
+          "line": 65,
+          "sha256": "49099d4f4e59b78ab69e2d3c6d5c87c1d22657ad112100fb0684928e93b018b3",
+          "start": 1663,
+          "text": "resolved._status = Resolved;"
+        },
+        {
+          "end": 1992,
+          "line": 73,
+          "sha256": "7c59e6f81b32742f9c286d01b19e3d76bb5319b0b82442feedd76342a96b155f",
+          "start": 1964,
+          "text": "rejected._status = Rejected;"
+        },
+        {
+          "end": 2323,
+          "line": 82,
+          "sha256": "a36961cce0cdacee96adcab9493459a5274c319d9e853fe55f77899b2c898819",
+          "start": 2297,
+          "text": "pending._status = Pending;"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 14690,
+        "full_captured_source_checked": true,
+        "line": 420,
+        "sha256": "c306bbf3df9f9671e85a97d54d18a7807b532f1d0962a778fc56fb6a28248de9",
+        "start": 14673,
+        "text": "def roc_auc_score",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Python",
+      "frozen_label_changed": false,
+      "note": "API recebe ranking scores e max_fpr, documenta restrição multiclass e delega cálculo binário. Label de arquivo/declaração é pertinente; não julga numericamente AUC.",
+      "path": "sklearn/metrics/_ranking.py",
+      "query": "Locate roc_auc_score and max_fpr for ranking scores.",
+      "query_id": "PY-01",
+      "source_bytes": 77526,
+      "source_sha256": "420a8519c0dedc3d0e71dc0b7371dc93946e33f0026d9bd2a08bf5851bb9bab4",
+      "witnesses": [
+        {
+          "end": 14691,
+          "line": 420,
+          "sha256": "0d2c5949655321ecee3b63dc62e8b6abe23a3fe9592d8a3b9cdf52dd113ad8bc",
+          "start": 14673,
+          "text": "def roc_auc_score("
+        },
+        {
+          "end": 14786,
+          "line": 426,
+          "sha256": "70ccac3a43e33df40f71b62d1e53c6a2280d1b798d7554c54b04e54aa51d3189",
+          "start": 14773,
+          "text": "max_fpr=None,"
+        },
+        {
+          "end": 24661,
+          "line": 641,
+          "sha256": "f1f8871a981e6cd5856e43ad0f8b2c42de5825147f29b17b909155c58db770ce",
+          "start": 24614,
+          "text": "partial(_binary_roc_auc_score, max_fpr=max_fpr)"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 59152,
+        "full_captured_source_checked": true,
+        "line": 1614,
+        "sha256": "48a2723da88a2e1866749d281cd9ec19b5036f0eb8a7bdf56a61e2b2535e9b51",
+        "start": 59117,
+        "text": "def precision_recall_fscore_support",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Python",
+      "frozen_label_changed": false,
+      "note": "Assinatura e corpo tratam average/beta/zero_division. Termos aparecem também em outras funções/docstrings; fonte esperada pertinente, sem afirmação de único trecho relevante.",
+      "path": "sklearn/metrics/_classification.py",
+      "query": "Locate precision_recall_fscore_support handling average, beta and zero_division.",
+      "query_id": "PY-02",
+      "source_bytes": 126075,
+      "source_sha256": "2f0cb72e27139dd48839e05d9a3a4b54a8981d1fa92e781c7c7fdc001c8be364",
+      "witnesses": [
+        {
+          "end": 59153,
+          "line": 1614,
+          "sha256": "a32fb9e660b9a20672909e95982621808be3ecf454485b955adb44d5442e8922",
+          "start": 59117,
+          "text": "def precision_recall_fscore_support("
+        },
+        {
+          "end": 67580,
+          "line": 1810,
+          "sha256": "6252af7e64dbd8a082fcfff755c4d959c3844fc70910198603f23ee7f89f3495",
+          "start": 67565,
+          "text": "beta2 = beta**2"
+        },
+        {
+          "end": 68623,
+          "line": 1842,
+          "sha256": "c89b092036d52daf14669066e12d67d7609c6970f248edbd0f9d15efb49c7758",
+          "start": 68598,
+          "text": "if average == \"weighted\":"
+        },
+        {
+          "end": 67788,
+          "line": 1815,
+          "sha256": "7588bb1690001c08a4b1b0a26c6051c41ae99f79605982469cf9fcb8ee000348",
+          "start": 67756,
+          "text": "average, warn_for, zero_division"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 15165,
+        "full_captured_source_checked": true,
+        "line": 426,
+        "sha256": "cbe7cc8ff0a7c6a0a347098878558b38a206f98ca196a8f1e9582c77c7f1f7d6",
+        "start": 15143,
+        "text": "def mean_squared_error",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Python",
+      "frozen_label_changed": false,
+      "note": "Definição descreve regression loss e usa sample_weight no cálculo. Consulta inclui identificador exato; execução NumPy e compatibilidade de versão fora desta revisão.",
+      "path": "sklearn/metrics/_regression.py",
+      "query": "Locate mean_squared_error for regression and sample weights.",
+      "query_id": "PY-03",
+      "source_bytes": 62959,
+      "source_sha256": "c0419e30b4d012f863313448d7d976a6aca40515e847a366c022aa43aa8b6906",
+      "witnesses": [
+        {
+          "end": 15166,
+          "line": 426,
+          "sha256": "29632249145b0e4ff07280b18bae6565415c7352ac504ab3662fe068fb24d27f",
+          "start": 15143,
+          "text": "def mean_squared_error("
+        },
+        {
+          "end": 15221,
+          "line": 430,
+          "sha256": "cfdfae2fada63ea803e05b85f28f1ab6a0f81d726f895dcce6d40870d020ba75",
+          "start": 15202,
+          "text": "sample_weight=None,"
+        },
+        {
+          "end": 18073,
+          "line": 510,
+          "sha256": "ff3cfd386330b78a37e52d8bf7c3931f6cc525709f94d2907d5145e4c41c56a8",
+          "start": 17992,
+          "text": "output_errors = np.average((y_true - y_pred) ** 2, axis=0, weights=sample_weight)"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 1008,
+        "full_captured_source_checked": true,
+        "line": 43,
+        "sha256": "000d514561e1a310db4a2c645665466d7a8cc189dc6cce9fb4b136b8d1c2ccef",
+        "start": 992,
+        "text": "func SanitizeURL",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Go",
+      "frozen_label_changed": false,
+      "note": "Target contém parsing de URL e remoção de User. O vínculo é textual; não certifica sanitização de todos os componentes/formatos URL.",
+      "path": "modules/util/url.go",
+      "query": "Locate SanitizeURL handling URL user credentials.",
+      "query_id": "GO-01",
+      "source_bytes": 1138,
+      "source_sha256": "b253b321f53579ce5dde5f80636e91f5bf60ba1de21768903dd8cb286e9b5d8e",
+      "witnesses": [
+        {
+          "end": 1008,
+          "line": 43,
+          "sha256": "000d514561e1a310db4a2c645665466d7a8cc189dc6cce9fb4b136b8d1c2ccef",
+          "start": 992,
+          "text": "func SanitizeURL"
+        },
+        {
+          "end": 1060,
+          "line": 44,
+          "sha256": "ca68f781e19d96b30a63556172bed79f73af35052a695a5805f66a116ba1b66b",
+          "start": 1038,
+          "text": "u, err := url.Parse(s)"
+        },
+        {
+          "end": 1111,
+          "line": 48,
+          "sha256": "112fb52ab06ca134bdc474790a470e6a80305eb567719f8d9456ab9a9fbe551f",
+          "start": 1099,
+          "text": "u.User = nil"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 6679,
+        "full_captured_source_checked": true,
+        "line": 228,
+        "sha256": "6c30a8c32112a43d21c244d14f288eb4249a5b7b7191d37bea73b9e399db9c98",
+        "start": 6661,
+        "text": "func FileURLToPath",
+        "utf8_boundaries": true
+      },
+      "clause_counterevidence": {
+        "authority_validation_text_present": false,
+        "conclusion_scope": "textual source reading; no URL runtime test",
+        "function_end_before_home_dir": 7055,
+        "function_start": 6661,
+        "only_scheme_error_text_present": true,
+        "reads_url_host": false
+      },
+      "decision": "partial_query_clause_unsubstantiated",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Go",
+      "frozen_label_changed": false,
+      "note": "Caminho e anchor da conversão file URL são corretos; a cláusula rejecting invalid authorities não é sustentada. Função só rejeita scheme não-file e não lê u.Host/authority; recebe *url.URL já parseada.",
+      "path": "modules/util/path.go",
+      "query": "Locate FileURLToPath converting file URLs and rejecting invalid authorities.",
+      "query_id": "GO-02",
+      "source_bytes": 9185,
+      "source_sha256": "bfe743f010af20cd21b857298078aee7546a142b3b977c2f2641a09f39c6e70c",
+      "witnesses": [
+        {
+          "end": 6679,
+          "line": 228,
+          "sha256": "6c30a8c32112a43d21c244d14f288eb4249a5b7b7191d37bea73b9e399db9c98",
+          "start": 6661,
+          "text": "func FileURLToPath"
+        },
+        {
+          "end": 6734,
+          "line": 229,
+          "sha256": "cb14a0d9b1fb90def236ee99eb53c7c2d177584b91d422ca152008ee117f5e21",
+          "start": 6711,
+          "text": "if u.Scheme != \"file\" {"
+        },
+        {
+          "end": 6821,
+          "line": 233,
+          "sha256": "30f52ac7fcc1570b3ca32023633f632fe5903fa4da27dec18daed7dc370721ed",
+          "start": 6807,
+          "text": "path := u.Path"
+        },
+        {
+          "end": 6660,
+          "line": 227,
+          "sha256": "30037c723e0893c715f1544504205b1c662ecd64c21d98ca3729596c4be21a8d",
+          "start": 6603,
+          "text": "// It returns an error only if the URL is not a file URL."
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "end": 2280,
+        "full_captured_source_checked": true,
+        "line": 55,
+        "sha256": "93098b81ee4be2cf68d68d271deeffc4720eb73c7496dd3252a0d520d4dfd07a",
+        "start": 2264,
+        "text": "func ShellEscape",
+        "utf8_boundaries": true
+      },
+      "decision": "supported",
+      "expected": "lexical_source_retrieval_not_semantic_resolution",
+      "family": "Go",
+      "frozen_label_changed": false,
+      "note": "Corpo escolhe escapes/quotes a partir de caracteres e preserva expansão inicial de tilde. Target lexical adequado; não é teste de segurança ou equivalência entre shells.",
+      "path": "modules/util/shellquote.go",
+      "query": "Where does ShellEscape quote unsafe shell characters?",
+      "query_id": "GO-03",
+      "source_bytes": 3574,
+      "source_sha256": "1fea2534f846af3515e7231379ddf684a68cce25b4ce813439a3a2fa117b1d02",
+      "witnesses": [
+        {
+          "end": 2280,
+          "line": 55,
+          "sha256": "93098b81ee4be2cf68d68d271deeffc4720eb73c7496dd3252a0d520d4dfd07a",
+          "start": 2264,
+          "text": "func ShellEscape"
+        },
+        {
+          "end": 2806,
+          "line": 77,
+          "sha256": "aad401974feaf630199c2ef7e426f7645451b058b3927086d4d7c30b92e73987",
+          "start": 2756,
+          "text": "strings.ContainsAny(toEscape[start:], needsEscape)"
+        },
+        {
+          "end": 3098,
+          "line": 86,
+          "sha256": "e97924b953f596446e86211c8238188926cf4c2b00c123a4b1ddb61c928eac6d",
+          "start": 3043,
+          "text": "strings.ContainsAny(toEscape[start:], needsSingleQuote)"
+        }
+      ]
+    },
+    {
+      "decision": "lexical_absence_supported",
+      "expected": "no_lexical_match_within_captured_scope",
+      "family": "Rust",
+      "frozen_label_changed": false,
+      "negative": {
+        "captured_files_checked": 13,
+        "casefold_body_and_path_absent": true,
+        "literal": "qzvksndpwbf467901",
+        "natural_unanswerable_task": false,
+        "source_bytes_checked": 76529,
+        "whole_repository_absence": false
+      },
+      "note": "Mesmo identificador artificial nas quatro famílias; mede ausência lexical no capture, não quatro perguntas naturais independentes nem ausência semântica.",
+      "query": "qzvksndpwbf467901",
+      "query_id": "Rust-ABSENT"
+    },
+    {
+      "decision": "lexical_absence_supported",
+      "expected": "no_lexical_match_within_captured_scope",
+      "family": "TSJS",
+      "frozen_label_changed": false,
+      "negative": {
+        "captured_files_checked": 28,
+        "casefold_body_and_path_absent": true,
+        "literal": "qzvksndpwbf467901",
+        "natural_unanswerable_task": false,
+        "source_bytes_checked": 112122,
+        "whole_repository_absence": false
+      },
+      "note": "Mesmo identificador artificial nas quatro famílias; mede ausência lexical no capture, não quatro perguntas naturais independentes nem ausência semântica.",
+      "query": "qzvksndpwbf467901",
+      "query_id": "TSJS-ABSENT"
+    },
+    {
+      "decision": "lexical_absence_supported",
+      "expected": "no_lexical_match_within_captured_scope",
+      "family": "Python",
+      "frozen_label_changed": false,
+      "negative": {
+        "captured_files_checked": 19,
+        "casefold_body_and_path_absent": true,
+        "literal": "qzvksndpwbf467901",
+        "natural_unanswerable_task": false,
+        "source_bytes_checked": 576337,
+        "whole_repository_absence": false
+      },
+      "note": "Mesmo identificador artificial nas quatro famílias; mede ausência lexical no capture, não quatro perguntas naturais independentes nem ausência semântica.",
+      "query": "qzvksndpwbf467901",
+      "query_id": "Python-ABSENT"
+    },
+    {
+      "decision": "lexical_absence_supported",
+      "expected": "no_lexical_match_within_captured_scope",
+      "family": "Go",
+      "frozen_label_changed": false,
+      "negative": {
+        "captured_files_checked": 22,
+        "casefold_body_and_path_absent": true,
+        "literal": "qzvksndpwbf467901",
+        "natural_unanswerable_task": false,
+        "source_bytes_checked": 54032,
+        "whole_repository_absence": false
+      },
+      "note": "Mesmo identificador artificial nas quatro famílias; mede ausência lexical no capture, não quatro perguntas naturais independentes nem ausência semântica.",
+      "query": "qzvksndpwbf467901",
+      "query_id": "Go-ABSENT"
+    }
+  ],
+  "recorded_at_utc": "2026-10-13T01:40:43Z",
+  "review_started_utc": "2026-10-13T01:36:30Z",
+  "reviewer": "implementer/d01_commitment",
+  "schema": "xrai.eval.lexical.independent-label-review.v1",
+  "scope": "owned Python byte checks plus manual reading of frozen captured source; no source execution or ranking rerun",
+  "summary": {
+    "campaign_authorized": false,
+    "distinct_negative_strings": 1,
+    "holdout_promoted": false,
+    "native_execution": false,
+    "negative_literal_absence_verified": 4,
+    "network_calls": 0,
+    "original_metrics_denominator_changed": false,
+    "positive_anchors_verified": 12,
+    "positive_partial_query_clause_unsubstantiated": 1,
+    "positive_source_relation_supported": 10,
+    "positive_supported_with_wording_caveat": 1,
+    "provider_calls": 0,
+    "queries_reviewed": 16,
+    "ranking_or_metrics_recomputed": false,
+    "semantic_validation": false,
+    "upstream_execution": false
+  }
+}

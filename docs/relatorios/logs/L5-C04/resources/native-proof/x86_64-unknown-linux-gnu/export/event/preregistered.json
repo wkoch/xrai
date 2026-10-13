@@ -1,0 +1,199 @@
+{
+  "binary_sha256": {
+    "native-bin/worker-benchmark-real": "c336084d3ca3f71c4aebcdb5f67d72e6648272ea4cfa8797d3fd9a42f1d224a3",
+    "native-bin/worker-persistent": "5f47da0c38ccdefc30e8627107394455e24bad4d945da9190ec0981459050371",
+    "native-bin/worker-spike": "a98a4486de0fec047547a633fbabcd05f24a7607341a580adcf5aa44426b1e90"
+  },
+  "cache_state_limit": "Warmups cover only Rust small; other grammars first compiled inside matrix. Sequential latency and concurrency2 throughput reported separately. Cold never claims OS page-cache cold.",
+  "environment": {
+    "head_sha": "e308c0f35813d597b4c76c9c060461a136b601f0",
+    "host": "x86_64-unknown-linux-gnu",
+    "platform": "Linux",
+    "repository": "wkoch/xrai",
+    "run_attempt": 1,
+    "run_id": 38332601334
+  },
+  "frozen_epoch_ns": 1791855252386865668,
+  "native_executed_locally": false,
+  "output_root": "/home/runner/work/xrai/xrai/resource-evidence/event",
+  "protocol_sha256": "1a5aff585dc9546c19cc36ba3f3519a7dd417c99ad5d88a88b908becb3deb17d",
+  "python_version": "3.13.13",
+  "schema_version": "xrai.eval.resources.real-preregistration.v1",
+  "sessions": [
+    {
+      "concurrency": 1,
+      "directory": "session-0-c1-direct",
+      "mode": "direct",
+      "session": 0
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-0-c1-direct_cached",
+      "mode": "direct_cached",
+      "session": 0
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-0-c1-xrw1",
+      "mode": "xrw1",
+      "session": 0
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-0-c1-xrw2",
+      "mode": "xrw2",
+      "session": 0
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-1-c1-direct_cached",
+      "mode": "direct_cached",
+      "session": 1
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-1-c1-xrw1",
+      "mode": "xrw1",
+      "session": 1
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-1-c1-xrw2",
+      "mode": "xrw2",
+      "session": 1
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-1-c1-direct",
+      "mode": "direct",
+      "session": 1
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-2-c1-xrw1",
+      "mode": "xrw1",
+      "session": 2
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-2-c1-xrw2",
+      "mode": "xrw2",
+      "session": 2
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-2-c1-direct",
+      "mode": "direct",
+      "session": 2
+    },
+    {
+      "concurrency": 1,
+      "directory": "session-2-c1-direct_cached",
+      "mode": "direct_cached",
+      "session": 2
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-0-c2-direct",
+      "mode": "direct",
+      "session": 0
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-0-c2-direct_cached",
+      "mode": "direct_cached",
+      "session": 0
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-0-c2-xrw1",
+      "mode": "xrw1",
+      "session": 0
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-0-c2-xrw2",
+      "mode": "xrw2",
+      "session": 0
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-1-c2-direct_cached",
+      "mode": "direct_cached",
+      "session": 1
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-1-c2-xrw1",
+      "mode": "xrw1",
+      "session": 1
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-1-c2-xrw2",
+      "mode": "xrw2",
+      "session": 1
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-1-c2-direct",
+      "mode": "direct",
+      "session": 1
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-2-c2-xrw1",
+      "mode": "xrw1",
+      "session": 2
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-2-c2-xrw2",
+      "mode": "xrw2",
+      "session": 2
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-2-c2-direct",
+      "mode": "direct",
+      "session": 2
+    },
+    {
+      "concurrency": 2,
+      "directory": "session-2-c2-direct_cached",
+      "mode": "direct_cached",
+      "session": 2
+    }
+  ],
+  "source_bindings_sha256": {
+    ".github/workflows/l5-real-resources.yml": "12f4337239a5ffd86147438f4863a90bb10ca7f1efb86b0363a26309c9eb87fa",
+    "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+    "Cargo.toml": "6a757303d08e72b7c54472db4fafc72df75d69ae811efcc9ecd559a988974d25",
+    "crates/xrai-eval/Cargo.toml": "9f5cf28f5af73102531d849b82e5a0f607e66838a79336bbccc09f43579c5056",
+    "crates/xrai-eval/parsing-provenance.json": "8d3dadf8c870f44f32516fe2585ba64438959caa1243ba2596457eb581c641ba",
+    "crates/xrai-eval/queries/go.scm": "07427b924c206d66bb2ff578a0116842efa7cbb32a5691055bd86945701eb92e",
+    "crates/xrai-eval/queries/javascript.scm": "292985c5bbc4188e6a0b70cff1955551c9c021dcf69701a29a853034267f2d4b",
+    "crates/xrai-eval/queries/python.scm": "5fdc049ddbde82b70f2e1cad12a35c973d4f60a1602dbe13b3c6a3d2eb462f49",
+    "crates/xrai-eval/queries/rust.scm": "cb0c5adf1065df990975271b3e74389fd763c8fa5eb0a04cb99f4600f829f681",
+    "crates/xrai-eval/queries/tsx.scm": "823c3d010f1ca730f0470b2250a789b75ae926a6b2cf4253df97dadd29490ab5",
+    "crates/xrai-eval/queries/typescript.scm": "823c3d010f1ca730f0470b2250a789b75ae926a6b2cf4253df97dadd29490ab5",
+    "crates/xrai-eval/src/bin/worker-benchmark-real.rs": "21244c0cee05253e4ad727ccf447df8591da177307455830d4fa819309bac877",
+    "crates/xrai-eval/src/bin/worker-persistent.rs": "0dd2bcec6b9debdc1c7e71c4f1cef03d19e3c72a7b67580a684dc330d1566b9c",
+    "crates/xrai-eval/src/bin/worker-spike.rs": "96f82da6f806506f888cfe3df73dd52c7e824119fbdf491638a535f77ffadb6a",
+    "crates/xrai-eval/src/lib.rs": "91520107e5dd547d0d2604fb9ed1c5ffa56480bff15752d81b40df90e836daf3",
+    "crates/xrai-eval/src/parsing_spike.rs": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+    "crates/xrai-eval/src/worker_persistent.rs": "84c08b832a0861bb94c9a9b7f6ee0aea8916dfa17999c9f5cdd28639955fca15",
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "docs/contracts/examples/requirements.txt": "f2c39ba704b36e6c884a0552e34f1eeabd02907fc8251420f9fb8bfd5d8ce9ac",
+    "eval/resources/real-v1/freeze-before-driver.json": "2f8a5789b756d5d3330b087d31a54613d97fb0599a1f4d3c09bf8d0970b3b205",
+    "eval/resources/real-v1/protocol.json": "1a5aff585dc9546c19cc36ba3f3519a7dd417c99ad5d88a88b908becb3deb17d",
+    "eval/resources/real-v1/source-manifest.json": "5a5787e27c45ce98dc635a600456db87e54eb3ee56ae6fb0fd62a866b54b81eb",
+    "eval/scripts/measure_workers.py": "f7426006802d1ab30cf1317763657e7e6395c896b9c2610982fcd9b921a66568",
+    "eval/scripts/run_real_resources.py": "46fa1261578467812646d49f0ef33dda871f91c1995ad709c68cd81c6c8176ae",
+    "eval/scripts/test_real_resources.py": "ada34c9ab9eb7058161eb5a443e0c213b1938ffecac43d4c45108adec528c7df",
+    "eval/scripts/verify_real_resources.py": "f49fb362221837a0047cf2aea85359ae65b0e718ef5a5c0be4ea02ce2ac3e613",
+    "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+  },
+  "source_manifest_sha256": "5a5787e27c45ce98dc635a600456db87e54eb3ee56ae6fb0fd62a866b54b81eb",
+  "upstream_executed": false
+}

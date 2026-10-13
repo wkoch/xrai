@@ -1,0 +1,196 @@
+{
+  "data_only": true,
+  "run_id": 38332601334,
+  "full_response_equivalent": true,
+  "host_sessions": 24,
+  "measured_requests_per_host": 57600,
+  "units": 80,
+  "aggregation": "median of three independently started sessions per mode/concurrency on the same CI host; 2400 queries over mixed frozen classes per session; no p50/p95 pooling",
+  "rows": [
+    {
+      "host": "aarch64-apple-darwin",
+      "mode": "direct",
+      "concurrency": 1,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 105.39901822774942,
+      "median_cpu_inclusive_seconds": 22.415772999999998,
+      "median_sampled_peak_sum_rss_bytes": 59490304,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "aarch64-apple-darwin",
+      "mode": "direct",
+      "concurrency": 2,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 224.11908068612595,
+      "median_cpu_inclusive_seconds": 20.442854999999998,
+      "median_sampled_peak_sum_rss_bytes": 73629696,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "aarch64-apple-darwin",
+      "mode": "direct_cached",
+      "concurrency": 1,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 134.74284927243107,
+      "median_cpu_inclusive_seconds": 17.720536,
+      "median_sampled_peak_sum_rss_bytes": 56786944,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "aarch64-apple-darwin",
+      "mode": "direct_cached",
+      "concurrency": 2,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 258.39201645170425,
+      "median_cpu_inclusive_seconds": 17.570349999999998,
+      "median_sampled_peak_sum_rss_bytes": 67665920,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "aarch64-apple-darwin",
+      "mode": "xrw1",
+      "concurrency": 1,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 70.71769686517159,
+      "median_cpu_inclusive_seconds": 32.147906,
+      "median_sampled_peak_sum_rss_bytes": 38944768,
+      "worker_pids_missed_by_sampler": 5328
+    },
+    {
+      "host": "aarch64-apple-darwin",
+      "mode": "xrw1",
+      "concurrency": 2,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 147.97800465519234,
+      "median_cpu_inclusive_seconds": 29.789564,
+      "median_sampled_peak_sum_rss_bytes": 51658752,
+      "worker_pids_missed_by_sampler": 5144
+    },
+    {
+      "host": "aarch64-apple-darwin",
+      "mode": "xrw2",
+      "concurrency": 1,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 116.55971618124451,
+      "median_cpu_inclusive_seconds": 20.309135,
+      "median_sampled_peak_sum_rss_bytes": 98598912,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "aarch64-apple-darwin",
+      "mode": "xrw2",
+      "concurrency": 2,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 238.86637997964215,
+      "median_cpu_inclusive_seconds": 18.732618000000002,
+      "median_sampled_peak_sum_rss_bytes": 103251968,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "x86_64-unknown-linux-gnu",
+      "mode": "direct",
+      "concurrency": 1,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 99.20810202224764,
+      "median_cpu_inclusive_seconds": 24.262908,
+      "median_sampled_peak_sum_rss_bytes": 41615360,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "x86_64-unknown-linux-gnu",
+      "mode": "direct",
+      "concurrency": 2,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 182.4724974363137,
+      "median_cpu_inclusive_seconds": 26.050285000000002,
+      "median_sampled_peak_sum_rss_bytes": 42856448,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "x86_64-unknown-linux-gnu",
+      "mode": "direct_cached",
+      "concurrency": 1,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 111.36181135741352,
+      "median_cpu_inclusive_seconds": 21.618211000000002,
+      "median_sampled_peak_sum_rss_bytes": 44515328,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "x86_64-unknown-linux-gnu",
+      "mode": "direct_cached",
+      "concurrency": 2,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 204.05364830888522,
+      "median_cpu_inclusive_seconds": 22.820819,
+      "median_sampled_peak_sum_rss_bytes": 49266688,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "x86_64-unknown-linux-gnu",
+      "mode": "xrw1",
+      "concurrency": 1,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 72.76100000623013,
+      "median_cpu_inclusive_seconds": 33.882047,
+      "median_sampled_peak_sum_rss_bytes": 39174144,
+      "worker_pids_missed_by_sampler": 5096
+    },
+    {
+      "host": "x86_64-unknown-linux-gnu",
+      "mode": "xrw1",
+      "concurrency": 2,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 129.86093913784006,
+      "median_cpu_inclusive_seconds": 37.126001,
+      "median_sampled_peak_sum_rss_bytes": 50397184,
+      "worker_pids_missed_by_sampler": 4905
+    },
+    {
+      "host": "x86_64-unknown-linux-gnu",
+      "mode": "xrw2",
+      "concurrency": 1,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 104.41237498840883,
+      "median_cpu_inclusive_seconds": 23.241982,
+      "median_sampled_peak_sum_rss_bytes": 63803392,
+      "worker_pids_missed_by_sampler": 0
+    },
+    {
+      "host": "x86_64-unknown-linux-gnu",
+      "mode": "xrw2",
+      "concurrency": 2,
+      "sessions": 3,
+      "measured_requests": 7200,
+      "median_requests_per_second": 175.77852746698008,
+      "median_cpu_inclusive_seconds": 26.862302,
+      "median_sampled_peak_sum_rss_bytes": 65748992,
+      "worker_pids_missed_by_sampler": 0
+    }
+  ],
+  "production_recommendation": null,
+  "m0_06_complete": false,
+  "cross_host_complete_response_hashes_equal": 160,
+  "actual_data_only_tests": {
+    "ci": 96,
+    "linux": 30,
+    "macos": 30,
+    "skipped": 0
+  }
+}

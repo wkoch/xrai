@@ -1,0 +1,48 @@
+{
+  "code_commit": "e308c0f35813d597b4c76c9c060461a136b601f0",
+  "cross_host_identical_complete_responses": 160,
+  "data_only": true,
+  "graph_coverage": "best_effort metadata_match/no_recorded_issue",
+  "graph_coverage_generation": "2026-10-13T01:47:02Z",
+  "hosts": {
+    "aarch64-apple-darwin": {
+      "artifact_zip_bytes": 11370186,
+      "exact_export_files": 1123,
+      "measured_queries": 57600,
+      "sessions": 24,
+      "xrw1_short_worker_pids_missed": 10472
+    },
+    "x86_64-unknown-linux-gnu": {
+      "artifact_zip_bytes": 12317029,
+      "exact_export_files": 1123,
+      "measured_queries": 57600,
+      "sessions": 24,
+      "xrw1_short_worker_pids_missed": 10001
+    }
+  },
+  "m0_06_complete": false,
+  "native_binaries_executed_locally": false,
+  "new_acquisitions": 0,
+  "observations": [
+    "Direct_cached median throughput exceeded XRW2 in all four host/concurrency groups of this captured workload; no statistical generalization from three sessions.",
+    "XRW1 sampled RSS cannot substantiate memory benefit: many short worker PIDs missed; shared pages and between-sample peaks remain limitations.",
+    "CPU counters cover whole native sessions, while throughput uses measured makespan; do not infer per-query CPU or hidden XRW2 components."
+  ],
+  "original_api_zip_private_recomposition_equals_retained": true,
+  "production_recommendation": null,
+  "read_only_producer_review": true,
+  "reviewed_at_utc": "2026-10-13T01:49:46.039229+00:00",
+  "reviewer": "e02_allocation",
+  "run_attempt": 1,
+  "run_id": 38332601334,
+  "schema": "xrai.eval.c04.independent-real-native-review.v1",
+  "scope": "Separate from authenticated acquisition; recomposed using own data-only reconciler/verifier, not an independent parser implementation.",
+  "source_sha256": {
+    "docs/relatorios/logs/L5-C04/resources/native-proof/reconciliation.json": "27ba870097f60aaf62d1d7e414d2898e21ecaa3435353b65bc62ac18d5664a48",
+    "docs/relatorios/logs/L5-C04/resources/native-summary.json": "376a8d38559c95a1fda9ae564d69a638df4464fe45c2b1279a0a82af628fa372",
+    "eval/scripts/reconcile_real_resources_ci.py": "82f5d4e36a56ebcfd1c08d0c1e7171506abbfb6f9ceffc9b6d59ea5306497e94",
+    "eval/scripts/verify_real_resources.py": "f49fb362221837a0047cf2aea85359ae65b0e718ef5a5c0be4ea02ce2ac3e613"
+  },
+  "summary_medians_recomputed_equal": true,
+  "verified": true
+}

@@ -1,0 +1,3979 @@
+{
+  "baselines": {
+    "idle": {
+      "ack_epoch_ns": 1791855711814084000,
+      "ready_epoch_ns": 1791855711646197000,
+      "sample_indices": [
+        1,
+        2,
+        3
+      ]
+    },
+    "warm_idle": {
+      "ack_epoch_ns": 1791855712012042000,
+      "ready_epoch_ns": 1791855711831496000,
+      "sample_indices": [
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "calibration_sha256": "f895e0e34ba82cb375e959eca2a25b8a7c5e1850f276fd1f60c8a64315509495",
+  "command": [
+    "/Users/runner/work/xrai/xrai/resource-evidence/event/native-bin/worker-benchmark-real"
+  ],
+  "cpu_inclusive_calibrated": true,
+  "cpu_origin": "wait4 target parent plus its waited descendants; calibration validated once on this host",
+  "cpu_scope": "Inclusive whole native session: capture/setup/idling/warmup/measurement/validation/serialization/shutdown; no per-query CPU inference.",
+  "cpu_system_seconds": 0.37175199999999997,
+  "cpu_user_seconds": 16.890399,
+  "elapsed_ns": 9439684833,
+  "epoch_finished_ns": 1791855721014666000,
+  "epoch_started_ns": 1791855711604025000,
+  "exit": 0,
+  "observer_epoch_finished_ns": 1791855721043708000,
+  "observer_errors": [],
+  "observer_ps_system_seconds": 2.0723849999999837,
+  "observer_ps_user_seconds": 0.7083509999999968,
+  "observer_self_system_seconds": 0.30308700000000144,
+  "observer_self_user_seconds": 0.18909800000000132,
+  "pid": 39142,
+  "rss_limit": "Common ps snapshots sum alive RSS; shared pages double count, sampling misses short workers and between-sample peaks; lstart has platform display granularity.",
+  "sample_interval_seconds": 0.025,
+  "sampled_peak_sum_rss": 69599232,
+  "samples": [
+    {
+      "begin_ns": 818134149583,
+      "end_ns": 818147378125,
+      "epoch_begin_ns": 1791855711606325000,
+      "epoch_end_ns": 1791855711619554000,
+      "error": null,
+      "phase": "capture_setup",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 3489792,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 3489792
+    },
+    {
+      "begin_ns": 818186292166,
+      "end_ns": 818199047625,
+      "epoch_begin_ns": 1791855711658468000,
+      "epoch_end_ns": 1791855711671223000,
+      "error": null,
+      "phase": "idle",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 13778944,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 13778944
+    },
+    {
+      "begin_ns": 818292841875,
+      "end_ns": 818329168708,
+      "epoch_begin_ns": 1791855711765019000,
+      "epoch_end_ns": 1791855711801344000,
+      "error": null,
+      "phase": "idle",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 13778944,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 13778944
+    },
+    {
+      "begin_ns": 818329406583,
+      "end_ns": 818341740083,
+      "epoch_begin_ns": 1791855711801581000,
+      "epoch_end_ns": 1791855711813916000,
+      "error": null,
+      "phase": "idle",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 13778944,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 13778944
+    },
+    {
+      "begin_ns": 818379537083,
+      "end_ns": 818401541833,
+      "epoch_begin_ns": 1791855711851713000,
+      "epoch_end_ns": 1791855711873717000,
+      "error": null,
+      "phase": "warm_idle",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 19726336,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 19726336
+    },
+    {
+      "begin_ns": 818423662708,
+      "end_ns": 818438420333,
+      "epoch_begin_ns": 1791855711895838000,
+      "epoch_end_ns": 1791855711910596000,
+      "error": null,
+      "phase": "warm_idle",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 19726336,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 19726336
+    },
+    {
+      "begin_ns": 818525702041,
+      "end_ns": 818539699583,
+      "epoch_begin_ns": 1791855711997878000,
+      "epoch_end_ns": 1791855712011875000,
+      "error": null,
+      "phase": "warm_idle",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 19726336,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 19726336
+    },
+    {
+      "begin_ns": 818560032708,
+      "end_ns": 818573249500,
+      "epoch_begin_ns": 1791855712032208000,
+      "epoch_end_ns": 1791855712045425000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 19890176,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 19890176
+    },
+    {
+      "begin_ns": 818596082083,
+      "end_ns": 818620283041,
+      "epoch_begin_ns": 1791855712068258000,
+      "epoch_end_ns": 1791855712092459000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 20971520,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 20971520
+    },
+    {
+      "begin_ns": 818627562416,
+      "end_ns": 818640265000,
+      "epoch_begin_ns": 1791855712099738000,
+      "epoch_end_ns": 1791855712112440000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 21053440,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 21053440
+    },
+    {
+      "begin_ns": 818738754625,
+      "end_ns": 818776311416,
+      "epoch_begin_ns": 1791855712210932000,
+      "epoch_end_ns": 1791855712248487000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 29720576,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 29720576
+    },
+    {
+      "begin_ns": 818776336750,
+      "end_ns": 818819697625,
+      "epoch_begin_ns": 1791855712248511000,
+      "epoch_end_ns": 1791855712291874000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 30261248,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 30261248
+    },
+    {
+      "begin_ns": 818819749875,
+      "end_ns": 818851258833,
+      "epoch_begin_ns": 1791855712291925000,
+      "epoch_end_ns": 1791855712323434000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 30572544,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 30572544
+    },
+    {
+      "begin_ns": 818851287083,
+      "end_ns": 818870731083,
+      "epoch_begin_ns": 1791855712323462000,
+      "epoch_end_ns": 1791855712342907000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 30572544,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 30572544
+    },
+    {
+      "begin_ns": 818880068833,
+      "end_ns": 818912452500,
+      "epoch_begin_ns": 1791855712352244000,
+      "epoch_end_ns": 1791855712384628000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 30621696,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 30621696
+    },
+    {
+      "begin_ns": 818912476416,
+      "end_ns": 818946021416,
+      "epoch_begin_ns": 1791855712384651000,
+      "epoch_end_ns": 1791855712418198000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 30621696,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 30621696
+    },
+    {
+      "begin_ns": 818946077083,
+      "end_ns": 819016933541,
+      "epoch_begin_ns": 1791855712418252000,
+      "epoch_end_ns": 1791855712489109000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 30621696,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 30621696
+    },
+    {
+      "begin_ns": 819016958083,
+      "end_ns": 819044480250,
+      "epoch_begin_ns": 1791855712489133000,
+      "epoch_end_ns": 1791855712516656000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 30916608,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 30916608
+    },
+    {
+      "begin_ns": 819044504333,
+      "end_ns": 819056684750,
+      "epoch_begin_ns": 1791855712516679000,
+      "epoch_end_ns": 1791855712528860000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 30965760,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 30965760
+    },
+    {
+      "begin_ns": 819082539666,
+      "end_ns": 819096389416,
+      "epoch_begin_ns": 1791855712554716000,
+      "epoch_end_ns": 1791855712568565000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 31113216,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 31113216
+    },
+    {
+      "begin_ns": 819129303291,
+      "end_ns": 819155830833,
+      "epoch_begin_ns": 1791855712601480000,
+      "epoch_end_ns": 1791855712628007000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 31326208,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 31326208
+    },
+    {
+      "begin_ns": 819155858000,
+      "end_ns": 819173421083,
+      "epoch_begin_ns": 1791855712628033000,
+      "epoch_end_ns": 1791855712645596000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 31621120,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 31621120
+    },
+    {
+      "begin_ns": 819238854791,
+      "end_ns": 819251641000,
+      "epoch_begin_ns": 1791855712711030000,
+      "epoch_end_ns": 1791855712723817000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 31768576,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 31768576
+    },
+    {
+      "begin_ns": 819345499166,
+      "end_ns": 819381966041,
+      "epoch_begin_ns": 1791855712817676000,
+      "epoch_end_ns": 1791855712854142000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 32194560,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 32194560
+    },
+    {
+      "begin_ns": 819382023458,
+      "end_ns": 819413248916,
+      "epoch_begin_ns": 1791855712854198000,
+      "epoch_end_ns": 1791855712885424000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 32309248,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 32309248
+    },
+    {
+      "begin_ns": 819413272750,
+      "end_ns": 819435525125,
+      "epoch_begin_ns": 1791855712885447000,
+      "epoch_end_ns": 1791855712907700000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 33685504,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 33685504
+    },
+    {
+      "begin_ns": 819451050333,
+      "end_ns": 819486724875,
+      "epoch_begin_ns": 1791855712923226000,
+      "epoch_end_ns": 1791855712958901000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 35602432,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 35602432
+    },
+    {
+      "begin_ns": 819486771875,
+      "end_ns": 819523765458,
+      "epoch_begin_ns": 1791855712958947000,
+      "epoch_end_ns": 1791855712995941000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 35618816,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 35618816
+    },
+    {
+      "begin_ns": 819523789833,
+      "end_ns": 819566292541,
+      "epoch_begin_ns": 1791855712995964000,
+      "epoch_end_ns": 1791855713038468000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 35635200,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 35635200
+    },
+    {
+      "begin_ns": 819566321666,
+      "end_ns": 819616765208,
+      "epoch_begin_ns": 1791855713038496000,
+      "epoch_end_ns": 1791855713088940000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 35667968,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 35667968
+    },
+    {
+      "begin_ns": 819616789125,
+      "end_ns": 819652485291,
+      "epoch_begin_ns": 1791855713088964000,
+      "epoch_end_ns": 1791855713124660000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 35700736,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 35700736
+    },
+    {
+      "begin_ns": 819652515708,
+      "end_ns": 819683826458,
+      "epoch_begin_ns": 1791855713124690000,
+      "epoch_end_ns": 1791855713156002000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 35717120,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 35717120
+    },
+    {
+      "begin_ns": 819683853041,
+      "end_ns": 819725620250,
+      "epoch_begin_ns": 1791855713156028000,
+      "epoch_end_ns": 1791855713197795000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36274176,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36274176
+    },
+    {
+      "begin_ns": 819725652791,
+      "end_ns": 819758102000,
+      "epoch_begin_ns": 1791855713197827000,
+      "epoch_end_ns": 1791855713230277000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36438016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36438016
+    },
+    {
+      "begin_ns": 819758130416,
+      "end_ns": 819790277875,
+      "epoch_begin_ns": 1791855713230305000,
+      "epoch_end_ns": 1791855713262453000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36487168,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36487168
+    },
+    {
+      "begin_ns": 819790301583,
+      "end_ns": 819820800833,
+      "epoch_begin_ns": 1791855713262476000,
+      "epoch_end_ns": 1791855713292976000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36601856,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36601856
+    },
+    {
+      "begin_ns": 819820824916,
+      "end_ns": 819854239541,
+      "epoch_begin_ns": 1791855713293000000,
+      "epoch_end_ns": 1791855713326415000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36700160,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36700160
+    },
+    {
+      "begin_ns": 819854268583,
+      "end_ns": 819896124583,
+      "epoch_begin_ns": 1791855713326443000,
+      "epoch_end_ns": 1791855713368300000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36765696,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36765696
+    },
+    {
+      "begin_ns": 819896150833,
+      "end_ns": 819922373083,
+      "epoch_begin_ns": 1791855713368325000,
+      "epoch_end_ns": 1791855713394549000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36765696,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36765696
+    },
+    {
+      "begin_ns": 819922399458,
+      "end_ns": 819950128958,
+      "epoch_begin_ns": 1791855713394574000,
+      "epoch_end_ns": 1791855713422304000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36798464,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36798464
+    },
+    {
+      "begin_ns": 819950157291,
+      "end_ns": 819975307208,
+      "epoch_begin_ns": 1791855713422332000,
+      "epoch_end_ns": 1791855713447483000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36798464,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36798464
+    },
+    {
+      "begin_ns": 819975334083,
+      "end_ns": 820001857666,
+      "epoch_begin_ns": 1791855713447509000,
+      "epoch_end_ns": 1791855713474033000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36798464,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36798464
+    },
+    {
+      "begin_ns": 820001881583,
+      "end_ns": 820043134375,
+      "epoch_begin_ns": 1791855713474056000,
+      "epoch_end_ns": 1791855713515311000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36814848,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36814848
+    },
+    {
+      "begin_ns": 820043186166,
+      "end_ns": 820085551125,
+      "epoch_begin_ns": 1791855713515361000,
+      "epoch_end_ns": 1791855713557726000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36831232,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36831232
+    },
+    {
+      "begin_ns": 820085575750,
+      "end_ns": 820118803875,
+      "epoch_begin_ns": 1791855713557750000,
+      "epoch_end_ns": 1791855713590979000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36864000,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36864000
+    },
+    {
+      "begin_ns": 820118836208,
+      "end_ns": 820149191583,
+      "epoch_begin_ns": 1791855713591011000,
+      "epoch_end_ns": 1791855713621367000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36864000,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36864000
+    },
+    {
+      "begin_ns": 820149218458,
+      "end_ns": 820175276166,
+      "epoch_begin_ns": 1791855713621393000,
+      "epoch_end_ns": 1791855713647452000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36864000,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36864000
+    },
+    {
+      "begin_ns": 820175315000,
+      "end_ns": 820216211666,
+      "epoch_begin_ns": 1791855713647490000,
+      "epoch_end_ns": 1791855713688387000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36896768,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36896768
+    },
+    {
+      "begin_ns": 820216238916,
+      "end_ns": 820239302458,
+      "epoch_begin_ns": 1791855713688413000,
+      "epoch_end_ns": 1791855713711478000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 36913152,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 36913152
+    },
+    {
+      "begin_ns": 820255364083,
+      "end_ns": 820288029208,
+      "epoch_begin_ns": 1791855713727540000,
+      "epoch_end_ns": 1791855713760205000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 37453824,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 37453824
+    },
+    {
+      "begin_ns": 820288055125,
+      "end_ns": 820328487291,
+      "epoch_begin_ns": 1791855713760230000,
+      "epoch_end_ns": 1791855713800663000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 37470208,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 37470208
+    },
+    {
+      "begin_ns": 820328516000,
+      "end_ns": 820364173125,
+      "epoch_begin_ns": 1791855713800691000,
+      "epoch_end_ns": 1791855713836349000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 37814272,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 37814272
+    },
+    {
+      "begin_ns": 820364199375,
+      "end_ns": 820391669000,
+      "epoch_begin_ns": 1791855713836374000,
+      "epoch_end_ns": 1791855713863844000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 41304064,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 41304064
+    },
+    {
+      "begin_ns": 820391694458,
+      "end_ns": 820407127541,
+      "epoch_begin_ns": 1791855713863869000,
+      "epoch_end_ns": 1791855713879303000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 42237952,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 42237952
+    },
+    {
+      "begin_ns": 820482902708,
+      "end_ns": 820516066416,
+      "epoch_begin_ns": 1791855713955078000,
+      "epoch_end_ns": 1791855713988242000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 43139072,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 43139072
+    },
+    {
+      "begin_ns": 820516094958,
+      "end_ns": 820551022666,
+      "epoch_begin_ns": 1791855713988270000,
+      "epoch_end_ns": 1791855714023198000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 43139072,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 43139072
+    },
+    {
+      "begin_ns": 820551051416,
+      "end_ns": 820586522416,
+      "epoch_begin_ns": 1791855714023226000,
+      "epoch_end_ns": 1791855714058698000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 43139072,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 43139072
+    },
+    {
+      "begin_ns": 820586555583,
+      "end_ns": 820620096750,
+      "epoch_begin_ns": 1791855714058730000,
+      "epoch_end_ns": 1791855714092272000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 43974656,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 43974656
+    },
+    {
+      "begin_ns": 820620127916,
+      "end_ns": 820653759208,
+      "epoch_begin_ns": 1791855714092303000,
+      "epoch_end_ns": 1791855714125935000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 43974656,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 43974656
+    },
+    {
+      "begin_ns": 820653790166,
+      "end_ns": 820688664416,
+      "epoch_begin_ns": 1791855714125965000,
+      "epoch_end_ns": 1791855714160840000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 43991040,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 43991040
+    },
+    {
+      "begin_ns": 820688697708,
+      "end_ns": 820722123750,
+      "epoch_begin_ns": 1791855714160872000,
+      "epoch_end_ns": 1791855714194300000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44040192,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44040192
+    },
+    {
+      "begin_ns": 820722165416,
+      "end_ns": 820755184291,
+      "epoch_begin_ns": 1791855714194340000,
+      "epoch_end_ns": 1791855714227360000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44367872,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44367872
+    },
+    {
+      "begin_ns": 820755210041,
+      "end_ns": 820785273750,
+      "epoch_begin_ns": 1791855714227385000,
+      "epoch_end_ns": 1791855714257450000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44400640,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44400640
+    },
+    {
+      "begin_ns": 820785309041,
+      "end_ns": 820812546250,
+      "epoch_begin_ns": 1791855714257484000,
+      "epoch_end_ns": 1791855714284722000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44400640,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44400640
+    },
+    {
+      "begin_ns": 820812574708,
+      "end_ns": 820825176833,
+      "epoch_begin_ns": 1791855714284749000,
+      "epoch_end_ns": 1791855714297352000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44400640,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44400640
+    },
+    {
+      "begin_ns": 820850544041,
+      "end_ns": 820862931750,
+      "epoch_begin_ns": 1791855714322719000,
+      "epoch_end_ns": 1791855714335108000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44400640,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44400640
+    },
+    {
+      "begin_ns": 820886578458,
+      "end_ns": 820920753458,
+      "epoch_begin_ns": 1791855714358754000,
+      "epoch_end_ns": 1791855714392929000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44449792,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44449792
+    },
+    {
+      "begin_ns": 820920788333,
+      "end_ns": 820955014333,
+      "epoch_begin_ns": 1791855714392963000,
+      "epoch_end_ns": 1791855714427190000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44449792,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44449792
+    },
+    {
+      "begin_ns": 820955050083,
+      "end_ns": 820967929541,
+      "epoch_begin_ns": 1791855714427225000,
+      "epoch_end_ns": 1791855714440105000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44449792,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44449792
+    },
+    {
+      "begin_ns": 820994731125,
+      "end_ns": 821007568500,
+      "epoch_begin_ns": 1791855714466907000,
+      "epoch_end_ns": 1791855714479746000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44449792,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44449792
+    },
+    {
+      "begin_ns": 821030763208,
+      "end_ns": 821046740791,
+      "epoch_begin_ns": 1791855714502939000,
+      "epoch_end_ns": 1791855714518916000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44466176,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44466176
+    },
+    {
+      "begin_ns": 821066797958,
+      "end_ns": 821079357500,
+      "epoch_begin_ns": 1791855714538977000,
+      "epoch_end_ns": 1791855714551535000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44482560,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44482560
+    },
+    {
+      "begin_ns": 821189319333,
+      "end_ns": 821221678083,
+      "epoch_begin_ns": 1791855714661495000,
+      "epoch_end_ns": 1791855714693854000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44777472,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44777472
+    },
+    {
+      "begin_ns": 821221706166,
+      "end_ns": 821253894833,
+      "epoch_begin_ns": 1791855714693881000,
+      "epoch_end_ns": 1791855714726070000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44777472,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44777472
+    },
+    {
+      "begin_ns": 821253920000,
+      "end_ns": 821284090750,
+      "epoch_begin_ns": 1791855714726095000,
+      "epoch_end_ns": 1791855714756266000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44826624,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44826624
+    },
+    {
+      "begin_ns": 821284116875,
+      "end_ns": 821296605333,
+      "epoch_begin_ns": 1791855714756291000,
+      "epoch_end_ns": 1791855714768781000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44826624,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44826624
+    },
+    {
+      "begin_ns": 821334092458,
+      "end_ns": 821368564750,
+      "epoch_begin_ns": 1791855714806270000,
+      "epoch_end_ns": 1791855714840740000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44892160,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44892160
+    },
+    {
+      "begin_ns": 821368595083,
+      "end_ns": 821386305500,
+      "epoch_begin_ns": 1791855714840770000,
+      "epoch_end_ns": 1791855714858484000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 44990464,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 44990464
+    },
+    {
+      "begin_ns": 821423149250,
+      "end_ns": 821438329791,
+      "epoch_begin_ns": 1791855714895325000,
+      "epoch_end_ns": 1791855714910505000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 45219840,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 45219840
+    },
+    {
+      "begin_ns": 821459177541,
+      "end_ns": 821492476125,
+      "epoch_begin_ns": 1791855714931353000,
+      "epoch_end_ns": 1791855714964652000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 45432832,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 45432832
+    },
+    {
+      "begin_ns": 821492510833,
+      "end_ns": 821513331666,
+      "epoch_begin_ns": 1791855714964685000,
+      "epoch_end_ns": 1791855714985509000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 45449216,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 45449216
+    },
+    {
+      "begin_ns": 821551081791,
+      "end_ns": 821570924416,
+      "epoch_begin_ns": 1791855715023258000,
+      "epoch_end_ns": 1791855715043100000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 45547520,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 45547520
+    },
+    {
+      "begin_ns": 821603335541,
+      "end_ns": 821635741000,
+      "epoch_begin_ns": 1791855715075511000,
+      "epoch_end_ns": 1791855715107916000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 45580288,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 45580288
+    },
+    {
+      "begin_ns": 821635765375,
+      "end_ns": 821668162208,
+      "epoch_begin_ns": 1791855715107940000,
+      "epoch_end_ns": 1791855715140337000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 45613056,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 45613056
+    },
+    {
+      "begin_ns": 821668185666,
+      "end_ns": 821695666291,
+      "epoch_begin_ns": 1791855715140360000,
+      "epoch_end_ns": 1791855715167842000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46055424,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46055424
+    },
+    {
+      "begin_ns": 821695692166,
+      "end_ns": 821709309416,
+      "epoch_begin_ns": 1791855715167867000,
+      "epoch_end_ns": 1791855715181485000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46055424,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46055424
+    },
+    {
+      "begin_ns": 821744017958,
+      "end_ns": 821776542916,
+      "epoch_begin_ns": 1791855715216194000,
+      "epoch_end_ns": 1791855715248718000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46333952,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46333952
+    },
+    {
+      "begin_ns": 821776566791,
+      "end_ns": 821809211625,
+      "epoch_begin_ns": 1791855715248741000,
+      "epoch_end_ns": 1791855715281387000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46645248,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46645248
+    },
+    {
+      "begin_ns": 821809240000,
+      "end_ns": 821844711750,
+      "epoch_begin_ns": 1791855715281415000,
+      "epoch_end_ns": 1791855715316887000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46645248,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46645248
+    },
+    {
+      "begin_ns": 821844738041,
+      "end_ns": 821880018291,
+      "epoch_begin_ns": 1791855715316913000,
+      "epoch_end_ns": 1791855715352194000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46678016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46678016
+    },
+    {
+      "begin_ns": 821880041500,
+      "end_ns": 821902727125,
+      "epoch_begin_ns": 1791855715352216000,
+      "epoch_end_ns": 1791855715374903000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46678016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46678016
+    },
+    {
+      "begin_ns": 821923633041,
+      "end_ns": 821936283000,
+      "epoch_begin_ns": 1791855715395809000,
+      "epoch_end_ns": 1791855715408458000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46678016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46678016
+    },
+    {
+      "begin_ns": 821950483833,
+      "end_ns": 821963213958,
+      "epoch_begin_ns": 1791855715422659000,
+      "epoch_end_ns": 1791855715435389000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46678016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46678016
+    },
+    {
+      "begin_ns": 822006387291,
+      "end_ns": 822019172458,
+      "epoch_begin_ns": 1791855715478563000,
+      "epoch_end_ns": 1791855715491350000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46678016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46678016
+    },
+    {
+      "begin_ns": 822042399791,
+      "end_ns": 822062349416,
+      "epoch_begin_ns": 1791855715514575000,
+      "epoch_end_ns": 1791855715534525000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46678016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46678016
+    },
+    {
+      "begin_ns": 822078415708,
+      "end_ns": 822090807333,
+      "epoch_begin_ns": 1791855715550591000,
+      "epoch_end_ns": 1791855715562982000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46678016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46678016
+    },
+    {
+      "begin_ns": 822114454791,
+      "end_ns": 822148701833,
+      "epoch_begin_ns": 1791855715586630000,
+      "epoch_end_ns": 1791855715620877000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46710784,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46710784
+    },
+    {
+      "begin_ns": 822148731166,
+      "end_ns": 822188289708,
+      "epoch_begin_ns": 1791855715620906000,
+      "epoch_end_ns": 1791855715660468000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46710784,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46710784
+    },
+    {
+      "begin_ns": 822188322375,
+      "end_ns": 822200870000,
+      "epoch_begin_ns": 1791855715660497000,
+      "epoch_end_ns": 1791855715673045000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46710784,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46710784
+    },
+    {
+      "begin_ns": 822311185083,
+      "end_ns": 822331053583,
+      "epoch_begin_ns": 1791855715783363000,
+      "epoch_end_ns": 1791855715803229000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46743552,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46743552
+    },
+    {
+      "begin_ns": 822345136666,
+      "end_ns": 822357379666,
+      "epoch_begin_ns": 1791855715817312000,
+      "epoch_end_ns": 1791855715829555000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46743552,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46743552
+    },
+    {
+      "begin_ns": 822434303583,
+      "end_ns": 822462134166,
+      "epoch_begin_ns": 1791855715906480000,
+      "epoch_end_ns": 1791855715934310000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46776320,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46776320
+    },
+    {
+      "begin_ns": 822462162833,
+      "end_ns": 822475100291,
+      "epoch_begin_ns": 1791855715934337000,
+      "epoch_end_ns": 1791855715947275000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46776320,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46776320
+    },
+    {
+      "begin_ns": 822559291375,
+      "end_ns": 822600580666,
+      "epoch_begin_ns": 1791855716031468000,
+      "epoch_end_ns": 1791855716072756000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46792704,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46792704
+    },
+    {
+      "begin_ns": 822600607416,
+      "end_ns": 822633448125,
+      "epoch_begin_ns": 1791855716072782000,
+      "epoch_end_ns": 1791855716105624000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46792704,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46792704
+    },
+    {
+      "begin_ns": 822633476458,
+      "end_ns": 822666575208,
+      "epoch_begin_ns": 1791855716105651000,
+      "epoch_end_ns": 1791855716138751000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46792704,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46792704
+    },
+    {
+      "begin_ns": 822666598750,
+      "end_ns": 822698805291,
+      "epoch_begin_ns": 1791855716138773000,
+      "epoch_end_ns": 1791855716170980000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46792704,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46792704
+    },
+    {
+      "begin_ns": 822698827208,
+      "end_ns": 822731216791,
+      "epoch_begin_ns": 1791855716171002000,
+      "epoch_end_ns": 1791855716203392000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46792704,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46792704
+    },
+    {
+      "begin_ns": 822731240041,
+      "end_ns": 822763432291,
+      "epoch_begin_ns": 1791855716203415000,
+      "epoch_end_ns": 1791855716235608000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46792704,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46792704
+    },
+    {
+      "begin_ns": 822763461458,
+      "end_ns": 822795820958,
+      "epoch_begin_ns": 1791855716235636000,
+      "epoch_end_ns": 1791855716267996000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46792704,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46792704
+    },
+    {
+      "begin_ns": 822795843625,
+      "end_ns": 822828277708,
+      "epoch_begin_ns": 1791855716268018000,
+      "epoch_end_ns": 1791855716300453000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 46792704,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 46792704
+    },
+    {
+      "begin_ns": 822828301916,
+      "end_ns": 822845109541,
+      "epoch_begin_ns": 1791855716300477000,
+      "epoch_end_ns": 1791855716317285000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 51380224,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 51380224
+    },
+    {
+      "begin_ns": 822880402125,
+      "end_ns": 822909098708,
+      "epoch_begin_ns": 1791855716352578000,
+      "epoch_end_ns": 1791855716381274000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54542336,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54542336
+    },
+    {
+      "begin_ns": 822909125083,
+      "end_ns": 822924828375,
+      "epoch_begin_ns": 1791855716381300000,
+      "epoch_end_ns": 1791855716397004000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54542336,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54542336
+    },
+    {
+      "begin_ns": 823006339541,
+      "end_ns": 823018825500,
+      "epoch_begin_ns": 1791855716478515000,
+      "epoch_end_ns": 1791855716491001000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54624256,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54624256
+    },
+    {
+      "begin_ns": 823060378708,
+      "end_ns": 823093003541,
+      "epoch_begin_ns": 1791855716532554000,
+      "epoch_end_ns": 1791855716565180000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54657024,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54657024
+    },
+    {
+      "begin_ns": 823093029083,
+      "end_ns": 823114026625,
+      "epoch_begin_ns": 1791855716565204000,
+      "epoch_end_ns": 1791855716586202000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54657024,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54657024
+    },
+    {
+      "begin_ns": 823136201583,
+      "end_ns": 823160459416,
+      "epoch_begin_ns": 1791855716608378000,
+      "epoch_end_ns": 1791855716632635000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54657024,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54657024
+    },
+    {
+      "begin_ns": 823161312166,
+      "end_ns": 823176369000,
+      "epoch_begin_ns": 1791855716633487000,
+      "epoch_end_ns": 1791855716648545000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54657024,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54657024
+    },
+    {
+      "begin_ns": 823186515416,
+      "end_ns": 823198648250,
+      "epoch_begin_ns": 1791855716658691000,
+      "epoch_end_ns": 1791855716670824000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54673408,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54673408
+    },
+    {
+      "begin_ns": 823312680041,
+      "end_ns": 823325701916,
+      "epoch_begin_ns": 1791855716784856000,
+      "epoch_end_ns": 1791855716797877000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54706176,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54706176
+    },
+    {
+      "begin_ns": 823348694125,
+      "end_ns": 823362342375,
+      "epoch_begin_ns": 1791855716820869000,
+      "epoch_end_ns": 1791855716834517000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54706176,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54706176
+    },
+    {
+      "begin_ns": 823384755791,
+      "end_ns": 823421909000,
+      "epoch_begin_ns": 1791855716856932000,
+      "epoch_end_ns": 1791855716894084000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54706176,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54706176
+    },
+    {
+      "begin_ns": 823421935791,
+      "end_ns": 823455559708,
+      "epoch_begin_ns": 1791855716894110000,
+      "epoch_end_ns": 1791855716927735000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54706176,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54706176
+    },
+    {
+      "begin_ns": 823455587041,
+      "end_ns": 823487851000,
+      "epoch_begin_ns": 1791855716927762000,
+      "epoch_end_ns": 1791855716960027000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54738944,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54738944
+    },
+    {
+      "begin_ns": 823487882375,
+      "end_ns": 823506812041,
+      "epoch_begin_ns": 1791855716960057000,
+      "epoch_end_ns": 1791855716978987000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54755328,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54755328
+    },
+    {
+      "begin_ns": 823544625416,
+      "end_ns": 823579278833,
+      "epoch_begin_ns": 1791855717016801000,
+      "epoch_end_ns": 1791855717051454000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54755328,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54755328
+    },
+    {
+      "begin_ns": 823579303416,
+      "end_ns": 823611921916,
+      "epoch_begin_ns": 1791855717051478000,
+      "epoch_end_ns": 1791855717084097000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54771712,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54771712
+    },
+    {
+      "begin_ns": 823611954000,
+      "end_ns": 823644734708,
+      "epoch_begin_ns": 1791855717084129000,
+      "epoch_end_ns": 1791855717116910000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54771712,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54771712
+    },
+    {
+      "begin_ns": 823644762708,
+      "end_ns": 823686110125,
+      "epoch_begin_ns": 1791855717116937000,
+      "epoch_end_ns": 1791855717158286000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54771712,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54771712
+    },
+    {
+      "begin_ns": 823686140041,
+      "end_ns": 823719462625,
+      "epoch_begin_ns": 1791855717158315000,
+      "epoch_end_ns": 1791855717191638000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54771712,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54771712
+    },
+    {
+      "begin_ns": 823719485416,
+      "end_ns": 823752321833,
+      "epoch_begin_ns": 1791855717191660000,
+      "epoch_end_ns": 1791855717224497000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54771712,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54771712
+    },
+    {
+      "begin_ns": 823752346000,
+      "end_ns": 823786248458,
+      "epoch_begin_ns": 1791855717224521000,
+      "epoch_end_ns": 1791855717258424000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54788096,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54788096
+    },
+    {
+      "begin_ns": 823786273500,
+      "end_ns": 823820584541,
+      "epoch_begin_ns": 1791855717258448000,
+      "epoch_end_ns": 1791855717292760000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54788096,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54788096
+    },
+    {
+      "begin_ns": 823820612541,
+      "end_ns": 823858679208,
+      "epoch_begin_ns": 1791855717292787000,
+      "epoch_end_ns": 1791855717330855000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54788096,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54788096
+    },
+    {
+      "begin_ns": 823858707916,
+      "end_ns": 823891611458,
+      "epoch_begin_ns": 1791855717330883000,
+      "epoch_end_ns": 1791855717363787000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54804480,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54804480
+    },
+    {
+      "begin_ns": 823891635083,
+      "end_ns": 823926127250,
+      "epoch_begin_ns": 1791855717363810000,
+      "epoch_end_ns": 1791855717398303000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54804480,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54804480
+    },
+    {
+      "begin_ns": 823926151666,
+      "end_ns": 823945124500,
+      "epoch_begin_ns": 1791855717398326000,
+      "epoch_end_ns": 1791855717417300000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54804480,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54804480
+    },
+    {
+      "begin_ns": 823994271708,
+      "end_ns": 824037826833,
+      "epoch_begin_ns": 1791855717466447000,
+      "epoch_end_ns": 1791855717510002000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54919168,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54919168
+    },
+    {
+      "begin_ns": 824037853500,
+      "end_ns": 824071247583,
+      "epoch_begin_ns": 1791855717510028000,
+      "epoch_end_ns": 1791855717543423000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 54935552,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 54935552
+    },
+    {
+      "begin_ns": 824071270791,
+      "end_ns": 824103820416,
+      "epoch_begin_ns": 1791855717543445000,
+      "epoch_end_ns": 1791855717575996000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 55033856,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 55033856
+    },
+    {
+      "begin_ns": 824103843541,
+      "end_ns": 824136321541,
+      "epoch_begin_ns": 1791855717576018000,
+      "epoch_end_ns": 1791855717608496000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 55083008,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 55083008
+    },
+    {
+      "begin_ns": 824136343291,
+      "end_ns": 824168636208,
+      "epoch_begin_ns": 1791855717608518000,
+      "epoch_end_ns": 1791855717640811000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 55115776,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 55115776
+    },
+    {
+      "begin_ns": 824168660750,
+      "end_ns": 824204492416,
+      "epoch_begin_ns": 1791855717640835000,
+      "epoch_end_ns": 1791855717676668000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 56688640,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 56688640
+    },
+    {
+      "begin_ns": 824204516750,
+      "end_ns": 824246500291,
+      "epoch_begin_ns": 1791855717676691000,
+      "epoch_end_ns": 1791855717718676000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 56803328,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 56803328
+    },
+    {
+      "begin_ns": 824246527708,
+      "end_ns": 824280227958,
+      "epoch_begin_ns": 1791855717718702000,
+      "epoch_end_ns": 1791855717752403000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 56983552,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 56983552
+    },
+    {
+      "begin_ns": 824280254250,
+      "end_ns": 824313271375,
+      "epoch_begin_ns": 1791855717752429000,
+      "epoch_end_ns": 1791855717785447000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 57016320,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 57016320
+    },
+    {
+      "begin_ns": 824313296416,
+      "end_ns": 824345789791,
+      "epoch_begin_ns": 1791855717785471000,
+      "epoch_end_ns": 1791855717817965000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 57163776,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 57163776
+    },
+    {
+      "begin_ns": 824345814958,
+      "end_ns": 824394896708,
+      "epoch_begin_ns": 1791855717817990000,
+      "epoch_end_ns": 1791855717867072000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 57344000,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 57344000
+    },
+    {
+      "begin_ns": 824394919583,
+      "end_ns": 824427615958,
+      "epoch_begin_ns": 1791855717867094000,
+      "epoch_end_ns": 1791855717899791000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 57360384,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 57360384
+    },
+    {
+      "begin_ns": 824427638125,
+      "end_ns": 824460294375,
+      "epoch_begin_ns": 1791855717899813000,
+      "epoch_end_ns": 1791855717932470000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 57393152,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 57393152
+    },
+    {
+      "begin_ns": 824460317208,
+      "end_ns": 824492756291,
+      "epoch_begin_ns": 1791855717932492000,
+      "epoch_end_ns": 1791855717964932000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 57425920,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 57425920
+    },
+    {
+      "begin_ns": 824492778708,
+      "end_ns": 824525116041,
+      "epoch_begin_ns": 1791855717964953000,
+      "epoch_end_ns": 1791855717997292000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58064896,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58064896
+    },
+    {
+      "begin_ns": 824525139458,
+      "end_ns": 824574157041,
+      "epoch_begin_ns": 1791855717997314000,
+      "epoch_end_ns": 1791855718046333000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58195968,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58195968
+    },
+    {
+      "begin_ns": 824574191000,
+      "end_ns": 824609689291,
+      "epoch_begin_ns": 1791855718046366000,
+      "epoch_end_ns": 1791855718081868000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58228736,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58228736
+    },
+    {
+      "begin_ns": 824609715583,
+      "end_ns": 824637797916,
+      "epoch_begin_ns": 1791855718081890000,
+      "epoch_end_ns": 1791855718109976000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58294272,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58294272
+    },
+    {
+      "begin_ns": 824637824708,
+      "end_ns": 824650017208,
+      "epoch_begin_ns": 1791855718109999000,
+      "epoch_end_ns": 1791855718122195000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58392576,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58392576
+    },
+    {
+      "begin_ns": 824690592041,
+      "end_ns": 824728061125,
+      "epoch_begin_ns": 1791855718162767000,
+      "epoch_end_ns": 1791855718200237000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58556416,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58556416
+    },
+    {
+      "begin_ns": 824728104125,
+      "end_ns": 824761762166,
+      "epoch_begin_ns": 1791855718200279000,
+      "epoch_end_ns": 1791855718233938000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58572800,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58572800
+    },
+    {
+      "begin_ns": 824761789166,
+      "end_ns": 824796370750,
+      "epoch_begin_ns": 1791855718233964000,
+      "epoch_end_ns": 1791855718268546000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58736640,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58736640
+    },
+    {
+      "begin_ns": 824796395875,
+      "end_ns": 824833883958,
+      "epoch_begin_ns": 1791855718268570000,
+      "epoch_end_ns": 1791855718306060000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58753024,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58753024
+    },
+    {
+      "begin_ns": 824833912458,
+      "end_ns": 824868432875,
+      "epoch_begin_ns": 1791855718306087000,
+      "epoch_end_ns": 1791855718340608000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58753024,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58753024
+    },
+    {
+      "begin_ns": 824868456375,
+      "end_ns": 824900860583,
+      "epoch_begin_ns": 1791855718340631000,
+      "epoch_end_ns": 1791855718373036000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58818560,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58818560
+    },
+    {
+      "begin_ns": 824900885125,
+      "end_ns": 824933532625,
+      "epoch_begin_ns": 1791855718373060000,
+      "epoch_end_ns": 1791855718405708000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58949632,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58949632
+    },
+    {
+      "begin_ns": 824933557000,
+      "end_ns": 824966220708,
+      "epoch_begin_ns": 1791855718405732000,
+      "epoch_end_ns": 1791855718438396000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58949632,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58949632
+    },
+    {
+      "begin_ns": 824966244458,
+      "end_ns": 824999741000,
+      "epoch_begin_ns": 1791855718438419000,
+      "epoch_end_ns": 1791855718471916000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 58966016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 58966016
+    },
+    {
+      "begin_ns": 824999765125,
+      "end_ns": 825032301625,
+      "epoch_begin_ns": 1791855718471940000,
+      "epoch_end_ns": 1791855718504477000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59015168,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59015168
+    },
+    {
+      "begin_ns": 825032325750,
+      "end_ns": 825065153458,
+      "epoch_begin_ns": 1791855718504500000,
+      "epoch_end_ns": 1791855718537329000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59015168,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59015168
+    },
+    {
+      "begin_ns": 825065177458,
+      "end_ns": 825097741708,
+      "epoch_begin_ns": 1791855718537352000,
+      "epoch_end_ns": 1791855718569917000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59097088,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59097088
+    },
+    {
+      "begin_ns": 825097765000,
+      "end_ns": 825130354416,
+      "epoch_begin_ns": 1791855718569940000,
+      "epoch_end_ns": 1791855718602529000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59097088,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59097088
+    },
+    {
+      "begin_ns": 825130378208,
+      "end_ns": 825162663375,
+      "epoch_begin_ns": 1791855718602553000,
+      "epoch_end_ns": 1791855718634839000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59228160,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59228160
+    },
+    {
+      "begin_ns": 825162688041,
+      "end_ns": 825204555791,
+      "epoch_begin_ns": 1791855718634863000,
+      "epoch_end_ns": 1791855718676731000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59244544,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59244544
+    },
+    {
+      "begin_ns": 825204580625,
+      "end_ns": 825243396208,
+      "epoch_begin_ns": 1791855718676755000,
+      "epoch_end_ns": 1791855718715572000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59260928,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59260928
+    },
+    {
+      "begin_ns": 825243421833,
+      "end_ns": 825279408750,
+      "epoch_begin_ns": 1791855718715596000,
+      "epoch_end_ns": 1791855718751584000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59310080,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59310080
+    },
+    {
+      "begin_ns": 825279437250,
+      "end_ns": 825312896458,
+      "epoch_begin_ns": 1791855718751612000,
+      "epoch_end_ns": 1791855718785073000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59424768,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59424768
+    },
+    {
+      "begin_ns": 825312929625,
+      "end_ns": 825338293750,
+      "epoch_begin_ns": 1791855718785104000,
+      "epoch_end_ns": 1791855718810469000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59424768,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59424768
+    },
+    {
+      "begin_ns": 825338323125,
+      "end_ns": 825362574875,
+      "epoch_begin_ns": 1791855718810498000,
+      "epoch_end_ns": 1791855718834750000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59457536,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59457536
+    },
+    {
+      "begin_ns": 825369392791,
+      "end_ns": 825383454791,
+      "epoch_begin_ns": 1791855718841569000,
+      "epoch_end_ns": 1791855718855630000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59457536,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59457536
+    },
+    {
+      "begin_ns": 825481983875,
+      "end_ns": 825507416416,
+      "epoch_begin_ns": 1791855718954160000,
+      "epoch_end_ns": 1791855718979591000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59965440,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59965440
+    },
+    {
+      "begin_ns": 825507441333,
+      "end_ns": 825522384833,
+      "epoch_begin_ns": 1791855718979616000,
+      "epoch_end_ns": 1791855718994560000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 59981824,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 59981824
+    },
+    {
+      "begin_ns": 825548052583,
+      "end_ns": 825581133416,
+      "epoch_begin_ns": 1791855719020228000,
+      "epoch_end_ns": 1791855719053309000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60129280,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60129280
+    },
+    {
+      "begin_ns": 825581159833,
+      "end_ns": 825623368791,
+      "epoch_begin_ns": 1791855719053334000,
+      "epoch_end_ns": 1791855719095544000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60162048,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60162048
+    },
+    {
+      "begin_ns": 825623397125,
+      "end_ns": 825658758916,
+      "epoch_begin_ns": 1791855719095572000,
+      "epoch_end_ns": 1791855719130937000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60178432,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60178432
+    },
+    {
+      "begin_ns": 825658785166,
+      "end_ns": 825692507375,
+      "epoch_begin_ns": 1791855719130960000,
+      "epoch_end_ns": 1791855719164683000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60178432,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60178432
+    },
+    {
+      "begin_ns": 825692540458,
+      "end_ns": 825725341708,
+      "epoch_begin_ns": 1791855719164715000,
+      "epoch_end_ns": 1791855719197517000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60194816,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60194816
+    },
+    {
+      "begin_ns": 825725367125,
+      "end_ns": 825757933583,
+      "epoch_begin_ns": 1791855719197542000,
+      "epoch_end_ns": 1791855719230111000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60227584,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60227584
+    },
+    {
+      "begin_ns": 825757961375,
+      "end_ns": 825793633375,
+      "epoch_begin_ns": 1791855719230136000,
+      "epoch_end_ns": 1791855719265809000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60227584,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60227584
+    },
+    {
+      "begin_ns": 825793658333,
+      "end_ns": 825837849000,
+      "epoch_begin_ns": 1791855719265833000,
+      "epoch_end_ns": 1791855719310025000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60227584,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60227584
+    },
+    {
+      "begin_ns": 825837899250,
+      "end_ns": 825872946583,
+      "epoch_begin_ns": 1791855719310074000,
+      "epoch_end_ns": 1791855719345122000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60227584,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60227584
+    },
+    {
+      "begin_ns": 825872976125,
+      "end_ns": 825905884291,
+      "epoch_begin_ns": 1791855719345151000,
+      "epoch_end_ns": 1791855719378060000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60260352,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60260352
+    },
+    {
+      "begin_ns": 825905911291,
+      "end_ns": 825941035458,
+      "epoch_begin_ns": 1791855719378086000,
+      "epoch_end_ns": 1791855719413211000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60276736,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60276736
+    },
+    {
+      "begin_ns": 825941065750,
+      "end_ns": 825998805583,
+      "epoch_begin_ns": 1791855719413240000,
+      "epoch_end_ns": 1791855719470981000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60309504,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60309504
+    },
+    {
+      "begin_ns": 825998829583,
+      "end_ns": 826015323083,
+      "epoch_begin_ns": 1791855719471004000,
+      "epoch_end_ns": 1791855719487498000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60309504,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60309504
+    },
+    {
+      "begin_ns": 826076287250,
+      "end_ns": 826109050000,
+      "epoch_begin_ns": 1791855719548464000,
+      "epoch_end_ns": 1791855719581225000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60358656,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60358656
+    },
+    {
+      "begin_ns": 826109073458,
+      "end_ns": 826146357375,
+      "epoch_begin_ns": 1791855719581248000,
+      "epoch_end_ns": 1791855719618534000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60375040,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60375040
+    },
+    {
+      "begin_ns": 826146390083,
+      "end_ns": 826184641250,
+      "epoch_begin_ns": 1791855719618565000,
+      "epoch_end_ns": 1791855719656817000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60456960,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60456960
+    },
+    {
+      "begin_ns": 826184668041,
+      "end_ns": 826237824291,
+      "epoch_begin_ns": 1791855719656843000,
+      "epoch_end_ns": 1791855719710000000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60456960,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60456960
+    },
+    {
+      "begin_ns": 826237852500,
+      "end_ns": 826274009833,
+      "epoch_begin_ns": 1791855719710027000,
+      "epoch_end_ns": 1791855719746185000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60456960,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60456960
+    },
+    {
+      "begin_ns": 826274039708,
+      "end_ns": 826306897208,
+      "epoch_begin_ns": 1791855719746214000,
+      "epoch_end_ns": 1791855719779073000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60456960,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60456960
+    },
+    {
+      "begin_ns": 826306921291,
+      "end_ns": 826339874958,
+      "epoch_begin_ns": 1791855719779096000,
+      "epoch_end_ns": 1791855719812051000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60473344,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60473344
+    },
+    {
+      "begin_ns": 826339902083,
+      "end_ns": 826378450083,
+      "epoch_begin_ns": 1791855719812077000,
+      "epoch_end_ns": 1791855719850627000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60473344,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60473344
+    },
+    {
+      "begin_ns": 826378524250,
+      "end_ns": 826424931000,
+      "epoch_begin_ns": 1791855719850699000,
+      "epoch_end_ns": 1791855719897107000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60489728,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60489728
+    },
+    {
+      "begin_ns": 826424964125,
+      "end_ns": 826459646750,
+      "epoch_begin_ns": 1791855719897139000,
+      "epoch_end_ns": 1791855719931822000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60489728,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60489728
+    },
+    {
+      "begin_ns": 826459671750,
+      "end_ns": 826492218708,
+      "epoch_begin_ns": 1791855719931846000,
+      "epoch_end_ns": 1791855719964394000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60506112,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60506112
+    },
+    {
+      "begin_ns": 826492243833,
+      "end_ns": 826527156041,
+      "epoch_begin_ns": 1791855719964418000,
+      "epoch_end_ns": 1791855719999333000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60506112,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60506112
+    },
+    {
+      "begin_ns": 826527207416,
+      "end_ns": 826589353541,
+      "epoch_begin_ns": 1791855719999382000,
+      "epoch_end_ns": 1791855720061529000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60506112,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60506112
+    },
+    {
+      "begin_ns": 826589382750,
+      "end_ns": 826622570166,
+      "epoch_begin_ns": 1791855720061557000,
+      "epoch_end_ns": 1791855720094746000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60506112,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60506112
+    },
+    {
+      "begin_ns": 826622594375,
+      "end_ns": 826655439333,
+      "epoch_begin_ns": 1791855720094769000,
+      "epoch_end_ns": 1791855720127614000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60506112,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60506112
+    },
+    {
+      "begin_ns": 826655464166,
+      "end_ns": 826693277083,
+      "epoch_begin_ns": 1791855720127639000,
+      "epoch_end_ns": 1791855720165453000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60506112,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60506112
+    },
+    {
+      "begin_ns": 826693324541,
+      "end_ns": 826727396375,
+      "epoch_begin_ns": 1791855720165499000,
+      "epoch_end_ns": 1791855720199572000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60506112,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60506112
+    },
+    {
+      "begin_ns": 826727422958,
+      "end_ns": 826764060625,
+      "epoch_begin_ns": 1791855720199598000,
+      "epoch_end_ns": 1791855720236236000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60538880,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60538880
+    },
+    {
+      "begin_ns": 826764091083,
+      "end_ns": 826798782125,
+      "epoch_begin_ns": 1791855720236266000,
+      "epoch_end_ns": 1791855720270958000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60555264,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60555264
+    },
+    {
+      "begin_ns": 826798818291,
+      "end_ns": 826832231666,
+      "epoch_begin_ns": 1791855720270993000,
+      "epoch_end_ns": 1791855720304407000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60555264,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60555264
+    },
+    {
+      "begin_ns": 826832258708,
+      "end_ns": 826866684166,
+      "epoch_begin_ns": 1791855720304433000,
+      "epoch_end_ns": 1791855720338860000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60555264,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60555264
+    },
+    {
+      "begin_ns": 826866710958,
+      "end_ns": 826880004625,
+      "epoch_begin_ns": 1791855720338886000,
+      "epoch_end_ns": 1791855720352180000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60555264,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60555264
+    },
+    {
+      "begin_ns": 826946748458,
+      "end_ns": 826980509875,
+      "epoch_begin_ns": 1791855720418925000,
+      "epoch_end_ns": 1791855720452685000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60571648,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60571648
+    },
+    {
+      "begin_ns": 826980534958,
+      "end_ns": 827026544541,
+      "epoch_begin_ns": 1791855720452710000,
+      "epoch_end_ns": 1791855720498720000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60735488,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60735488
+    },
+    {
+      "begin_ns": 827026572791,
+      "end_ns": 827059931625,
+      "epoch_begin_ns": 1791855720498747000,
+      "epoch_end_ns": 1791855720532109000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60751872,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60751872
+    },
+    {
+      "begin_ns": 827059960875,
+      "end_ns": 827093402208,
+      "epoch_begin_ns": 1791855720532135000,
+      "epoch_end_ns": 1791855720565577000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60768256,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60768256
+    },
+    {
+      "begin_ns": 827093429375,
+      "end_ns": 827126279125,
+      "epoch_begin_ns": 1791855720565604000,
+      "epoch_end_ns": 1791855720598455000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60768256,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60768256
+    },
+    {
+      "begin_ns": 827126303666,
+      "end_ns": 827161114500,
+      "epoch_begin_ns": 1791855720598478000,
+      "epoch_end_ns": 1791855720633290000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60801024,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60801024
+    },
+    {
+      "begin_ns": 827161140958,
+      "end_ns": 827202737583,
+      "epoch_begin_ns": 1791855720633316000,
+      "epoch_end_ns": 1791855720674913000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60833792,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60833792
+    },
+    {
+      "begin_ns": 827202767166,
+      "end_ns": 827241722666,
+      "epoch_begin_ns": 1791855720674942000,
+      "epoch_end_ns": 1791855720713898000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60833792,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60833792
+    },
+    {
+      "begin_ns": 827241748000,
+      "end_ns": 827278357916,
+      "epoch_begin_ns": 1791855720713923000,
+      "epoch_end_ns": 1791855720750533000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60882944,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60882944
+    },
+    {
+      "begin_ns": 827278383250,
+      "end_ns": 827315384875,
+      "epoch_begin_ns": 1791855720750558000,
+      "epoch_end_ns": 1791855720787560000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60981248,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60981248
+    },
+    {
+      "begin_ns": 827315410125,
+      "end_ns": 827353481083,
+      "epoch_begin_ns": 1791855720787585000,
+      "epoch_end_ns": 1791855720825656000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60981248,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60981248
+    },
+    {
+      "begin_ns": 827353508708,
+      "end_ns": 827390205333,
+      "epoch_begin_ns": 1791855720825683000,
+      "epoch_end_ns": 1791855720862381000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60997632,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60997632
+    },
+    {
+      "begin_ns": 827390250208,
+      "end_ns": 827407649916,
+      "epoch_begin_ns": 1791855720862425000,
+      "epoch_end_ns": 1791855720879826000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 60997632,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 60997632
+    },
+    {
+      "begin_ns": 827425488708,
+      "end_ns": 827446365666,
+      "epoch_begin_ns": 1791855720897665000,
+      "epoch_end_ns": 1791855720918541000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 61014016,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 61014016
+    },
+    {
+      "begin_ns": 827476529500,
+      "end_ns": 827509952083,
+      "epoch_begin_ns": 1791855720948705000,
+      "epoch_end_ns": 1791855720982127000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 61079552,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 61079552
+    },
+    {
+      "begin_ns": 827509977041,
+      "end_ns": 827544605041,
+      "epoch_begin_ns": 1791855720982152000,
+      "epoch_end_ns": 1791855721016782000,
+      "error": null,
+      "phase": "measured_dispatch_shutdown",
+      "processes": [
+        {
+          "pid": 39142,
+          "ppid": 6220,
+          "rss_bytes": 69599232,
+          "start_observed": "Tue Oct 13 01:41:51 2026    "
+        }
+      ],
+      "sum_rss_bytes": 69599232
+    }
+  ],
+  "schema_version": "xrai.eval.resources.real-observer.v1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "0550c4d6ffc6fd5a93575eb97b7d988b4f4b46096ebeea00b9fb1a4d528ec343",
+  "timed_out": false,
+  "worker_pids_missed_by_sampler": []
+}

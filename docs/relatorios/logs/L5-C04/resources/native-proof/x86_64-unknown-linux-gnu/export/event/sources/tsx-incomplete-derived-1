@@ -1,0 +1,13 @@
+// @strict: true
+// @jsx: react-jsx
+// @jsxImportSource: preact
+// @types: preact/jsx-runtime
+// @filename: /node_modules/preact/index.d.ts
+type Defaultize<Props, Defaults> =
+	// Distribute over unions
+	Props extends any // Make any properties included in Default optional
+		? Partial<Pick<Props, Extract<keyof Props, keyof Defaults>>> &
+				// Include the remaining properties from Props
+				Pick<Props, Exclude<keyof Props, keyof Defaults>>
+		: never;
+export namespace JSXInternal {

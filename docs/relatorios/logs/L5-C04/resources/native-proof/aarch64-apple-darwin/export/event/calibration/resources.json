@@ -1,0 +1,516 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.13/bin/python",
+    "-c",
+    "\nimport json, os, resource, subprocess, sys, time\ncode = 'import time; a=bytearray(16*1024*1024); end=time.process_time()+0.15\\nwhile time.process_time()<end: pass\\ntime.sleep(0.3)'\nchildren = [subprocess.Popen([sys.executable, '-c', code]) for _ in range(2)]\nshort = subprocess.Popen([sys.executable, '-c', 'pass'])\nids=[c.pid for c in children]+[short.pid]\nusage=[]\nfor c in children+[short]:\n _, status, r=os.wait4(c.pid,0); c.returncode=os.waitstatus_to_exitcode(status); assert c.returncode==0\n usage.append({'pid':c.pid,'user':r.ru_utime,'system':r.ru_stime})\nself_usage=resource.getrusage(resource.RUSAGE_SELF)\nprint(json.dumps({'parent':os.getpid(),'children':ids,'child_usage':usage,'self_user':self_usage.ru_utime,'self_system':self_usage.ru_stime}))\n"
+  ],
+  "cpu_origin": "wait4 terminal rusage of experiment parent, including its waited descendants; host calibration must validate inclusivity",
+  "cpu_system_seconds": 0.15172,
+  "cpu_user_seconds": 0.25884999999999997,
+  "elapsed_ns": 652531500,
+  "exit": 0,
+  "observer_ps_system_seconds": 0.212548,
+  "observer_ps_user_seconds": 0.06348100000000001,
+  "observer_self_system_seconds": 0.022024000000000002,
+  "observer_self_user_seconds": 0.01865,
+  "output_sha256": "196744f1ff6d0b64081c7f7caa2b29ffaeb53c487b7ce9d37680b471e4a11be8",
+  "pid": 6222,
+  "rss_limit": "ps snapshot sum of simultaneous live RSS; shared pages double count; between-sample peaks and short children can be missed",
+  "sample_interval_seconds": 0.025,
+  "sampled_peak_sum_rss": 72040448,
+  "samples": [
+    {
+      "begin_ns": 366295201291,
+      "end_ns": 366319677041,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 753664,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 753664
+    },
+    {
+      "begin_ns": 366326332708,
+      "end_ns": 366352965875,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 131072,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 15286272
+    },
+    {
+      "begin_ns": 366353009333,
+      "end_ns": 366403346375,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366403384166,
+      "end_ns": 366425657625,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366444326791,
+      "end_ns": 366482666958,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366482686500,
+      "end_ns": 366528541250,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366528562958,
+      "end_ns": 366565612458,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366565639250,
+      "end_ns": 366605798708,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366605844166,
+      "end_ns": 366648661000,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366648684208,
+      "end_ns": 366685365833,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366685403166,
+      "end_ns": 366720840333,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366720860875,
+      "end_ns": 366759123125,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366759147208,
+      "end_ns": 366794782958,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366794799500,
+      "end_ns": 366834667750,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366834706666,
+      "end_ns": 366870210125,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366870234791,
+      "end_ns": 366907856250,
+      "error": null,
+      "processes": [
+        {
+          "pid": 6222,
+          "ppid": 6220,
+          "rss_bytes": 15155200,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6225,
+          "ppid": 6222,
+          "rss_bytes": 28573696,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6226,
+          "ppid": 6222,
+          "rss_bytes": 28311552,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        },
+        {
+          "pid": 6227,
+          "ppid": 6222,
+          "rss_bytes": 0,
+          "start_observed": "Tue Oct 13 01:34:19 2026    "
+        }
+      ],
+      "sum_rss_bytes": 72040448
+    },
+    {
+      "begin_ns": 366907888000,
+      "end_ns": 366945022000,
+      "error": null,
+      "processes": [],
+      "sum_rss_bytes": 0
+    }
+  ],
+  "schema": "xrai.eval.worker.resources.v1",
+  "started_ns": 366292752916,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "timed_out": false
+}

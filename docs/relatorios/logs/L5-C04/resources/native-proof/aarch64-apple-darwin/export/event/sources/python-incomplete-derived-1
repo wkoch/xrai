@@ -1,0 +1,46 @@
+import textwrap
+from io import BytesIO
+
+import pytest
+
+from sklearn.datasets._arff_parser import (
+    _liac_arff_parser,
+    _pandas_arff_parser,
+    _post_process_frame,
+    load_arff_from_gzip_file,
+)
+
+
+@pytest.mark.parametrize(
+    "feature_names, target_names",
+    [
+        (
+            [
+                "col_int_as_integer",
+                "col_int_as_numeric",
+                "col_float_as_real",
+                "col_float_as_numeric",
+            ],
+            ["col_categorical", "col_string"],
+        ),
+        (
+            [
+                "col_int_as_integer",
+                "col_int_as_numeric",
+                "col_float_as_real",
+                "col_float_as_numeric",
+            ],
+            ["col_categorical"],
+        ),
+        (
+            [
+                "col_int_as_integer",
+                "col_int_as_numeric",
+                "col_float_as_real",
+                "col_float_as_numeric",
+            ],
+            [],
+        ),
+    ],
+)
+def test_post_process_frame(feature_names, target_names):

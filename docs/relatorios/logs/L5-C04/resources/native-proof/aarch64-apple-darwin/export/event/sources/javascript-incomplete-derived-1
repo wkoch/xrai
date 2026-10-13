@@ -1,0 +1,33 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @emails react-core
+ * @jest-environment node
+ */
+
+/* eslint-disable no-for-of-loops/no-for-of-loops */
+
+'use strict';
+
+let Scheduler;
+let runtime;
+let performance;
+let cancelCallback;
+let scheduleCallback;
+let NormalPriority;
+let UserBlockingPriority;
+
+// The Scheduler implementation uses browser APIs like `MessageChannel` and
+// `setTimeout` to schedule work on the main thread. Most of our tests treat
+// these as implementation details; however, the sequence and timing of these
+// APIs are not precisely specified, and can vary across browsers.
+//
+// To prevent regressions, we need the ability to simulate specific edge cases
+// that we may encounter in various browsers.
+//
+// This test suite mocks all browser methods used in our implementation. It
+// assumes as little as possible about the order and timing of events.
+describe('SchedulerDOMSetImmediate', () => {

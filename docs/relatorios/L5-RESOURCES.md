@@ -1,6 +1,6 @@
 # L5-03 — recursos dos workers em fontes reais capturadas
 
-Estado: desenho e implementação experimental preparados; compilação, equivalência nativa e medição Linux/macOS **pendentes de CI descartável**. Nenhum benchmark, Cargo, parser nativo ou código upstream foi executado localmente. O aceite de M0-06 e a decisão de workers em produção permanecem pendentes.
+Estado corrente: prova experimental Linux/macOS aprovada em CI38332601334 e ZIP/API autenticados/recompostos. O histórico de preparação abaixo precede essa prova. Nenhum benchmark, Cargo, parser nativo ou código upstream foi executado localmente. O aceite de M0-06 e a decisão de workers em produção permanecem pendentes.
 
 ## Desenho congelado antes do driver
 
@@ -41,3 +41,43 @@ Warmup cobre somente Rust small; primeiras chamadas de outros dialetos ficam inc
 Verificação local permitida: rustfmt do arquivo novo PASS; desenho data-only PASS;21 testes data-only PASS e9 testes que exigem a prova real ficam skipped localmente. Os testes rejeitam produtores zero, JSON duplicado, bool como contador, tipos/coords/kind de diagnóstico adulterados, truncamento, bytes extras, infinidade de CPU, RSS float, baselines repetidos/negativos/fora de intervalo, PID diferente, calibração substituída e perda ocultada. Em CI, os9 testes adicionais consomem evidências reais e exigem24 sessões distintas,3 bins, produtor pinado, matriz congelada e equivalência antes da medição. Logs: `docs/relatorios/logs/L5-C04/resources/{design-before-ci.json,python-before-ci.stdout,python-before-ci.stderr,before-ci.json}`.
 
 Pendências do Arquiteto: ampliar classes reais TSX dense/large com novo protocolo; tarefas com30 arquivos distintos; casos originalmente incompletos; separação de cold/fully-warm para todas gramáticas; instrumentação privada XRW2; calibradores restantes de M0-06 (tickets/deadline/slow-consumer/real workloads), além de decisão de produção. Nenhum resultado de CPU/RSS/ganho foi inventado nesta entrega.
+
+CI regular e308c0f/[38332587411](https://github.com/wkoch/xrai/actions/runs/38332587411) aprovada em Linux/macOS/Documentary contracts; cargo fmt/clippy/test/build dos próprios targets e checks data-only do desenho/reconciliador passaram. Probes upstream históricos skipped. API original em `logs/L5-C04/resources/regular-e308-run.json`. Isso não substitui a prova de medição nativa dedicada38332601334 ainda em execução neste checkpoint.
+
+## Aceite experimental nativo e evidência autenticada
+
+[CI38332601334](https://github.com/wkoch/xrai/actions/runs/38332601334), commit `e308c0f35813d597b4c76c9c060461a136b601f0`, attempt1: os dois jobs passaram fmt/clippy/build, equivalência, medição, recomposição e30 contraprovas reais sem skips. [Conciliação](logs/L5-C04/resources/native-proof/reconciliation.json) vincula API original, ZIP original,1123 arquivos exatos por host e reexecução do verificador em cópia privada como dados. Root passou96 testes do reconciliador sobre prova autêntica e30 testes de dados em cada host,156 checks sem skips. Logs `native-recheck-{ci,linux,macos}.stderr` preservados. Binários retidos foram somente lidos/hasheados localmente.
+
+| Host | Job / artifact | ZIP SHA256 / bytes |
+|---|---|---|
+|aarch64-apple-darwin|115085501213 / 11784255629|`08decef9093bc33bb6edbd294a4c8a5ca2ba3e71de5ac070a1c794a287579be0` / 11370186|
+|x86_64-unknown-linux-gnu|115085501458 / 11783946551|`fd561eb1c3095f8bf3c7246a72e5b4ccc21c3076a28f15ca1a75da2f4d870e37` / 12317029|
+
+Por host:24 sessões independentes de processo,57.600 consultas medidas,80 fontes,160 combinações fonte/configuração na referência e equivalência integral das quatro modalidades antes da primeira medição. Os160 SHA das Responses canônicas completas também coincidem entre os hosts, sob a normalização operacional já declarada. As sessões não constituem24 máquinas independentes, e as duas unidades alternadas não constituem30 arquivos independentes.
+
+[Agregação derivada](logs/L5-C04/resources/native-summary.json): medianas de três sessões por modalidade/concorrência. Cada sessão reúne2400 consultas na matriz de classes/padrões congelada; throughput é contagem/makespan medido, CPU terminal inclui as fases declaradas e RSS é soma simultânea amostral. Percentis de latência permanecem por classe/padrão no recibo, sem mistura ou soma de percentis.
+
+| Host | Modalidade | Conc. | Mediana consultas/s | Mediana CPU inclusiva s | Mediana RSS amostral MiB | PIDs de worker perdidos pelo sampler (soma3sessões) |
+|---|---|---:|---:|---:|---:|---:|
+|macOS|direct|1|105.40|22.416|56.73|0|
+|macOS|direct|2|224.12|20.443|70.22|0|
+|macOS|direct_cached|1|134.74|17.721|54.16|0|
+|macOS|direct_cached|2|258.39|17.570|64.53|0|
+|macOS|xrw1|1|70.72|32.148|37.14|5328|
+|macOS|xrw1|2|147.98|29.790|49.27|5144|
+|macOS|xrw2|1|116.56|20.309|94.03|0|
+|macOS|xrw2|2|238.87|18.733|98.47|0|
+|Linux|direct|1|99.21|24.263|39.69|0|
+|Linux|direct|2|182.47|26.050|40.87|0|
+|Linux|direct_cached|1|111.36|21.618|42.45|0|
+|Linux|direct_cached|2|204.05|22.821|46.98|0|
+|Linux|xrw1|1|72.76|33.882|37.36|5096|
+|Linux|xrw1|2|129.86|37.126|48.06|4905|
+|Linux|xrw2|1|104.41|23.242|60.85|0|
+|Linux|xrw2|2|175.78|26.862|62.70|0|
+
+O direto com cache teve throughput mediano observado maior que XRW2 nos quatro cenários desta matriz. Isso permanece um resultado do recorte, sem recomendação de produção/ganho universal. A perda de workers curtos XRW1 impede interpretar seu RSS observado menor como vantagem de memória; PID-set não prova cobertura de cada incarnation. Picos entre amostras e páginas compartilhadas continuam desconhecidos.
+
+Limitação adicional preservada: A/B alterna globalmente; com concorrência2 a distribuição por índice/lane mantém consultas medidas da lane0 emA e lane1 emB. A equivalência anterior concorrência1 expõe alternância por cache nos160 casos/método, e warmup A→B ocorre nas duas lanes. Não se afirma alternância medida por lane na concorrência2. TSX dense/large e componentes internos XRW2 continuam ausentes/null. M0-06 permanece incompleto, recommendation=null e gates/qualificação/campanha não são liberados por esses números.
+
+[Revisão independente dos dados autenticados](logs/L5-C04/resources/independent-native-review.json) recompôs a conciliação e as16 linhas de medianas, conferiu160 Responses completas por bytes gzip entre hosts e confirmou perdas XRW1 Linux10.001/macOS10.472 PIDs observados em14.400 consultas por host. Escopo é dados/proveniência; nenhum binário foi executado localmente.

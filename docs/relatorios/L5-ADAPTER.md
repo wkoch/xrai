@@ -44,3 +44,5 @@ result = replay_adapter(raw)
 5. A captura exportada deve caber no limite de frame depois de base64 e metadados; o corpus máximo lexical de 16 MiB pode ultrapassar o frame de 1 MiB. Este perfil falha de forma explícita; decidir formato de blobs separados/manifest antes de ampliar o capture. Receipts transportam produtor como **dados**, nunca executam esses bytes nem os tornam qualificação/admissão.
 
 Estado: boundary e contraprovas estruturais implementados; adapter/provider real, comparadores fortes medidos e prova de agent_run permanecem pendentes. Não há julgamento, ranking, promoção de corpus nem autorização competitiva derivada destes arquivos.
+
+CI regular `2bd1607`/[38332066426](https://github.com/wkoch/xrai/actions/runs/38332066426) aprovada em Linux/macOS/Documentary contracts, incluindo37 testes do boundary e recomposição readonly dos sete transcritos e oito recusas. API original em `logs/L5-C04/adapter/regular-2bd-run.json`.

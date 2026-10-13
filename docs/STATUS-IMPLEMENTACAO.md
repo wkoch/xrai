@@ -231,3 +231,11 @@ Correção de ambiente CI:303043b foi publicado, mas run38331893281 recusou YAML
 ## Driver de recursos reais preparado
 
 [L5-RESOURCES](relatorios/L5-RESOURCES.md): 80 fontes congeladas, direct_cached equivalente à política XRW2, quatro modalidades e24 sessões/host. Root21+95 checks próprios aprovados,9+1 exigem prova nativa/autêntica e skipped no checkpoint. FullResponse literal antes das medições, CPU calibrada e RSS amostral são exigidos pelos verificadores. Pipeline Linux/macOS dedicado e reconciliador ZIP/API preparados; prova pendente. Classes TSX e fases internas não observáveis continuam declaradas, nenhum ganho/fechamento M0-06/gate atribuído.
+
+CI corrigida2bd1607/run38332066426 aprovada Linux/macOS/contratos: lexical27checks+64células e adapter37checks+sete transcritos verificados. Preparação recurso e308c0f publicada; workflow dedicado38332601334 em execução, sem resultado nativo atribuído até conciliação.
+
+Segunda leitura lexical16/16 registrada em[L5-LEXICAL-REVISAO](relatorios/L5-LEXICAL-REVISAO.md):12 anchors íntegros, dez formulações sustentadas, ressalvas GO-02/RS-03,4 ausências artificiais. Autoria separada com resultados visíveis; sem holdout ou modificação dos originais. CI regular e308c0f passou3checks e dedicada38332601334 passou2hosts; aceitação de recursos aguarda recomposta ZIP/API.
+
+## Aceite experimental de recursos reais
+
+[L5-RESOURCES](relatorios/L5-RESOURCES.md): CI38332601334/e308c0f passou Linux/macOS; ZIP/API originais autenticados e1123 arquivos exatos por host recompostos.24 sessões/57.600 consultas por host,FullResponse quatro modalidades e160 Responses canônicas iguais entre hosts. Root96+30+30checks sem skips. Métricas e perdas amostrais XRW1 preservadas; classes TSX/fases internas/calibradores e decisão de produção pendentes, M0-06 incompleto. [Evidência](relatorios/logs/L5-C04/resources/native-proof/reconciliation.json).41 estados/gates e8 elegíveis/0 admitidos inalterados.
