@@ -1,0 +1,44 @@
+name: L5 captured TSJS semantics
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tsjs-semantics:
+    name: C04 captured TSJS relative semantics
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Install pinned verification tooling
+        run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Build owned TSJS analyzer
+        run: |
+          mkdir -p tsjs-evidence
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+          cargo fmt --all -- --check
+          cargo clippy --locked -p xrai-eval --bin tsjs-semantics -- -D warnings
+          cargo build --release --locked -p xrai-eval --bin tsjs-semantics
+          rustc --version --verbose > tsjs-evidence/toolchain.txt
+      - name: Prove frozen TSJS labels and real relation
+        run: python eval/scripts/run_tsjs_semantics.py --binary target/release/tsjs-semantics --output tsjs-evidence/event > tsjs-evidence/collector.json
+      - name: Reject adversarial TSJS substitutions
+        env:
+          XRAI_TSJS_OUTPUTS: tsjs-evidence/event/outputs
+        run: python -m unittest discover -s eval/scripts -p test_tsjs_semantics.py -v > tsjs-evidence/receipt-tests.stdout 2> tsjs-evidence/receipt-tests.stderr
+      - name: Preserve exact TSJS proof and native bytes
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c04-tsjs-semantics
+          path: tsjs-evidence
+          if-no-files-found: error
+          retention-days: 90

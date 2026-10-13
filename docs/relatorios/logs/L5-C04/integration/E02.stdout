@@ -1,0 +1,164 @@
+{
+  "admitted_tasks": 0,
+  "allocation": {
+    "admitted_tasks": 0,
+    "allocation_globally_satisfactory": false,
+    "assignment_valid": true,
+    "competitive_runs_allowed": false,
+    "plan_projection": {
+      "by_repository": {
+        "django/django": 4,
+        "facebook/react": 4,
+        "go-gitea/gitea": 4,
+        "microsoft/TypeScript": 4,
+        "prometheus/prometheus": 4,
+        "rust-lang/rust-analyzer": 4,
+        "scikit-learn/scikit-learn": 4,
+        "tokio-rs/tokio": 4
+      },
+      "complex": 16,
+      "multi_module": 19,
+      "public_historical": 16
+    },
+    "planning_deficits": {
+      "multi_module": {
+        "compensating_task": null,
+        "missing": 1,
+        "projected": 19,
+        "reason": "Rust rand.rs is unitary; two captured files do not demonstrate a necessary semantic relation.",
+        "required": 20,
+        "status": "pending_selection_and_qualification"
+      }
+    },
+    "planning_only": true,
+    "prepared": 4,
+    "schema": "xrai.eval.qualification.state-assignment.verification.v2"
+  },
+  "competitive_runs_allowed": false,
+  "data_only": true,
+  "progress": {
+    "assignment": {
+      "path": "eval/qualification/l5-state-assignment-v2.json",
+      "sha256": "0c81f132255a12493ba17b82d6a4ba85cae4f71d21b8ff4534d1c0c2c04347da"
+    },
+    "blockers": [
+      "multimodule allocation projects 19/20; compensating task pending",
+      "required operational events missing for TSJS/Python/Go",
+      "state dossiers remain individually unqualified",
+      "global corpus remains 0/32"
+    ],
+    "c02_matrix": {
+      "path": "eval/qualification/c02-status-matrix.json",
+      "sha256": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe"
+    },
+    "data_only": true,
+    "historical_rust_proof": {
+      "path": "docs/relatorios/logs/L5-C03/native-proof/reconciliation.json",
+      "sha256": "c633a99f50d1343304800f2d73b80f4975ec6f4415aa0f4477b1ec36c9694252"
+    },
+    "limits": [
+      "Original prepared executed=false flags are historical preparation, not current event counts.",
+      "Historical Rust event uses its original slot; only prospective admission consumes the map.",
+      "Original CI acquisition authenticated by its caller; local metadata is not a signature.",
+      "No native/upstream execution or new acquisition; all verification reads retained bytes.",
+      "Operational proof does not establish semantic accuracy, complexity, multimodule qualification or performance."
+    ],
+    "plan": {
+      "path": "eval/qualification/l5-slot-plan-v2.json",
+      "sha256": "3a6bfd9ffcd03c44ccb98fd11cce4f361dd69e650f8bc997480283493391dd67"
+    },
+    "schema": "xrai.eval.qualification.state-progress.v2",
+    "summary": {
+      "admitted_tasks": 0,
+      "competitive_runs_allowed": false,
+      "conditional_projection": {
+        "additional_complex": 11,
+        "additional_historical": 10,
+        "additional_multi_module": 12,
+        "additional_tasks": 24,
+        "admission_deficit": 32,
+        "new_dossiers_remaining": 0
+      },
+      "individual_eligible_tasks": 8,
+      "multi_module_planning_deficit": 1,
+      "multi_module_planning_projection": 19,
+      "multi_module_planning_required": 20,
+      "new_state_dossiers_individually_eligible": 0,
+      "primary_tasks_required": 32,
+      "required_event_by_family": {
+        "Go": 0,
+        "Python": 0,
+        "Rust": 1,
+        "TSJS": 0
+      },
+      "required_events_operationally_proven": 1,
+      "state_tasks_prepared": 4
+    },
+    "tasks": [
+      {
+        "canonical_slot_id": "L5-SLOT-Rust-state_config-2",
+        "eligibility_blockers": [
+          "natural task search/context and rubric qualification",
+          "independent second reader and complete dossier criteria"
+        ],
+        "family": "Rust",
+        "globally_admitted": false,
+        "individual_eligible": false,
+        "operational_event_proven": true,
+        "original_slot_id": "L5-SLOT-Rust-state_config-1",
+        "prepared": true,
+        "proof": {
+          "path": "docs/relatorios/logs/L5-C03/native-proof/reconciliation.json",
+          "sha256": "c633a99f50d1343304800f2d73b80f4975ec6f4415aa0f4477b1ec36c9694252"
+        },
+        "task_id": "L5-STATE-Rust-STDX-EDITION"
+      },
+      {
+        "canonical_slot_id": "L5-SLOT-TSJS-state_config-2",
+        "eligibility_blockers": [
+          "natural task search/context and rubric qualification",
+          "independent second reader and complete dossier criteria"
+        ],
+        "family": "TSJS",
+        "globally_admitted": false,
+        "individual_eligible": false,
+        "operational_event_proven": false,
+        "original_slot_id": "L5-SLOT-TSJS-state_config-1",
+        "prepared": true,
+        "proof": null,
+        "task_id": "L5-STATE-TSJS-SOURCE-AVAILABILITY"
+      },
+      {
+        "canonical_slot_id": "L5-SLOT-Python-state_config-2",
+        "eligibility_blockers": [
+          "natural task search/context and rubric qualification",
+          "independent second reader and complete dossier criteria"
+        ],
+        "family": "Python",
+        "globally_admitted": false,
+        "individual_eligible": false,
+        "operational_event_proven": false,
+        "original_slot_id": "L5-SLOT-Python-state_config-1",
+        "prepared": true,
+        "proof": null,
+        "task_id": "L5-STATE-Python-SOURCE-AVAILABILITY"
+      },
+      {
+        "canonical_slot_id": "L5-SLOT-Go-state_config-2",
+        "eligibility_blockers": [
+          "natural task search/context and rubric qualification",
+          "independent second reader and complete dossier criteria"
+        ],
+        "family": "Go",
+        "globally_admitted": false,
+        "individual_eligible": false,
+        "operational_event_proven": false,
+        "original_slot_id": "L5-SLOT-Go-state_config-1",
+        "prepared": true,
+        "proof": null,
+        "task_id": "L5-STATE-Go-SOURCE-AVAILABILITY"
+      }
+    ]
+  },
+  "verified": true
+}

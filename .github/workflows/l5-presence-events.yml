@@ -1,0 +1,47 @@
+name: L5 captured source presence events
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-presence:
+    name: C04 JS Python Go retained-index presence
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Install pinned verification tooling
+        run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Verify frozen source-only descriptors
+        run: |
+          mkdir -p presence-evidence
+          python eval/scripts/prepare_state_events.py verify > presence-evidence/preparation.json
+      - name: Build owned presence inventory
+        run: |
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+          cargo fmt --all -- --check
+          cargo clippy --locked -p xrai-eval --bin source-presence-session -- -D warnings
+          cargo build --release --locked -p xrai-eval --bin source-presence-session
+          rustc --version --verbose > presence-evidence/toolchain.txt
+      - name: Prove three frozen retained-index events
+        run: python eval/scripts/run_presence_events.py --binary target/release/source-presence-session --output presence-evidence/events > presence-evidence/batch.json
+      - name: Reject adversarial source presence substitutions
+        env:
+          XRAI_PRESENCE_PROOF: presence-evidence/events
+        run: python -m unittest discover -s eval/scripts -p test_presence_events.py -v > presence-evidence/receipt-tests.stdout 2> presence-evidence/receipt-tests.stderr
+      - name: Preserve exact source events and native bytes
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c04-source-presence
+          path: presence-evidence
+          if-no-files-found: error
+          retention-days: 90

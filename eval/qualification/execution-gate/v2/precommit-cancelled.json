@@ -1,0 +1,229 @@
+{
+  "schema_version": "xrai.eval.execution-dispatch.v2",
+  "snapshot": {
+    "manifest": {
+      "configuration": {
+        "input_tokens": 100,
+        "output_tokens": 100,
+        "profile": "offline-paired-smoke-v1"
+      },
+      "controls": {
+        "containment_evidence": "not_a_real_probe",
+        "mode": "offline_fake",
+        "network": "never_called"
+      },
+      "dataset": {
+        "name": "D0",
+        "origin": "development_seed",
+        "purpose": "development_smoke"
+      },
+      "evidence_sha256": {
+        "configuration": "167e1eef7534c0e705eb1c3cb547b86052a4ca64637ea893213ef76e63c93923",
+        "controls": "ae4338dac4ceb58ac3a36467e5915b35fd0b906aaf7c3b161ee59a511b1c7a66",
+        "measurement": "e50a29ee0332a95e9527a0fce8439fcd9c8bfab9e9aa638d466b8f4bbd9e57cc",
+        "model": "b10ac7a63502baf5309cdcef79876d982a78be75f59755f6c444e6381369541e",
+        "protocol": "efcbb29a13f61415540983a2e8ccd5fe5addf9a10b3e02f71e14d8f5a7d020d7",
+        "task/D0-RS-01/input": "07351ff3cc44e74a5363b2e7ca03c39c0a2c677e273ae83adb554a857d8767a6",
+        "task/D0-RS-01/oracle": "61cb4e96703ec0a0c0c0f131af45114e3d747f796ef965d16ee211e8588fd590",
+        "task/D0-RS-01/review": "d3233ea3e7a49c56bc308da872e238021fd7e77acbe1c1b60d7c7f54057380c5",
+        "tools": "713b5720cfced91f91f282ed98815bc9b984512aa182233aa31db4a8e8481680"
+      },
+      "intent": "smoke_seed",
+      "measurement": {
+        "cost_semantics": "synthetic_micro_usd",
+        "profile": "offline-counted-v1"
+      },
+      "model": {
+        "effort": "fixed",
+        "name": "fake-stream-v1",
+        "provider": "fake",
+        "version": "1"
+      },
+      "protocol": {
+        "arms": [
+          "direct",
+          "indexed"
+        ],
+        "id": "offline-paired-smoke-v1",
+        "paired_resources": true,
+        "result_destination": "development_only",
+        "task_ids": [
+          "D0-RS-01"
+        ]
+      },
+      "request_sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+      "schema_version": "xrai.eval.execution-gate.v1",
+      "task_ids": [
+        "D0-RS-01"
+      ],
+      "tools": [
+        {
+          "input": "path",
+          "name": "read"
+        }
+      ]
+    },
+    "evidence": {
+      "configuration": "eyJpbnB1dF90b2tlbnMiOjEwMCwib3V0cHV0X3Rva2VucyI6MTAwLCJwcm9maWxlIjoib2ZmbGluZS1wYWlyZWQtc21va2UtdjEifQ==",
+      "controls": "eyJjb250YWlubWVudF9ldmlkZW5jZSI6Im5vdF9hX3JlYWxfcHJvYmUiLCJtb2RlIjoib2ZmbGluZV9mYWtlIiwibmV0d29yayI6Im5ldmVyX2NhbGxlZCJ9",
+      "measurement": "eyJjb3N0X3NlbWFudGljcyI6InN5bnRoZXRpY19taWNyb191c2QiLCJwcm9maWxlIjoib2ZmbGluZS1jb3VudGVkLXYxIn0=",
+      "model": "eyJlZmZvcnQiOiJmaXhlZCIsIm5hbWUiOiJmYWtlLXN0cmVhbS12MSIsInByb3ZpZGVyIjoiZmFrZSIsInZlcnNpb24iOiIxIn0=",
+      "protocol": "eyJhcm1zIjpbImRpcmVjdCIsImluZGV4ZWQiXSwiaWQiOiJvZmZsaW5lLXBhaXJlZC1zbW9rZS12MSIsInBhaXJlZF9yZXNvdXJjZXMiOnRydWUsInJlc3VsdF9kZXN0aW5hdGlvbiI6ImRldmVsb3BtZW50X29ubHkiLCJ0YXNrX2lkcyI6WyJEMC1SUy0wMSJdfQ==",
+      "task/D0-RS-01/input": "b2ZmbGluZSBmaXh0dXJlIHRhc2s=",
+      "task/D0-RS-01/oracle": "b2ZmbGluZSBmaXh0dXJlIGV4cGVjdGVkIHJlc3VsdA==",
+      "task/D0-RS-01/review": "eyJpbnB1dF9zaGEyNTYiOiIwNzM1MWZmM2NjNDRlNzRhNTM2M2IyZTdjYTAzYzM5YzBhMmM2NzdlMjczYWU4M2FkYjU1NGE4NTdkODc2N2E2Iiwib3JhY2xlX3NoYTI1NiI6IjYxY2I0ZTk2NzAzZWMwYTBjMGMwZjEzMWFmNDUxMTRlM2Q3NDdmNzk2ZWY5NjVkMTZlZTIxMWU4NTg4ZmQ1OTAiLCJvcmlnaW4iOiJkZXZlbG9wbWVudF9zZWVkIiwic2NvcGUiOiJvZmZsaW5lX2ZpeHR1cmVfcmV2aWV3IiwidGFza19pZCI6IkQwLVJTLTAxIn0=",
+      "tools": "W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV0="
+    }
+  },
+  "decision": {
+    "schema_version": "xrai.eval.execution-gate.v1",
+    "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f",
+    "intent": "smoke_seed",
+    "accepted": true,
+    "dimensions": {},
+    "scope": "offline-fake-only",
+    "campaign_scoring_enabled": false,
+    "paid_provider_enabled": false
+  },
+  "bindings": {
+    "task_id": "D0-RS-01",
+    "arm": "direct",
+    "run_id": "fixture-v2-precommit-cancelled",
+    "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f",
+    "model": {
+      "effort": "fixed",
+      "name": "fake-stream-v1",
+      "provider": "fake",
+      "version": "1"
+    },
+    "configuration_sha256": "167e1eef7534c0e705eb1c3cb547b86052a4ca64637ea893213ef76e63c93923",
+    "tools_sha256": "713b5720cfced91f91f282ed98815bc9b984512aa182233aa31db4a8e8481680",
+    "tokenizer": {
+      "config_sha256": "446859e7b320ef64f363d3134f6bf8d8171f844c01c8af9173764d26a022d6f1",
+      "vocab_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "measurement": "bound-profile-not-tokenized-by-dispatch"
+    },
+    "serializer": {
+      "name": "xrai.canonical-json.v1",
+      "encoding": "utf-8",
+      "ensure_ascii": false,
+      "sort_keys": true,
+      "separators": [
+        ",",
+        ":"
+      ],
+      "normalization": "none",
+      "truncation": "captured-prefix-only",
+      "binary_projection": "base64-on-invalid-utf8",
+      "special_tokens": "ordinary-text"
+    },
+    "serializer_sha256": "42cbab430bcb47be562e52c5f9289bcdd226555e691a87f13b185d727b222867"
+  },
+  "authorization": {
+    "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f",
+    "budget_micro_usd": 1000,
+    "expires_monotonic": 100,
+    "scope": "offline-synthetic-only"
+  },
+  "events": [
+    {
+      "sequence": 0,
+      "kind": "reserve",
+      "attempt_id": "attempt-1",
+      "details": {
+        "call_id": "call-1",
+        "request": {
+          "orientation": "Offline fake session; no source oracle.",
+          "tool_definitions": [
+            {
+              "name": "read",
+              "input": "path"
+            }
+          ],
+          "messages": [
+            {
+              "role": "user",
+              "content": "localize função"
+            }
+          ],
+          "tool_calls": [],
+          "expansions": [],
+          "edits": [],
+          "tests": [],
+          "limits": {
+            "input_tokens": 100,
+            "output_tokens": 100
+          },
+          "maximum_charge_policy": "fake-enforced"
+        },
+        "maximum": 500,
+        "retry_of": null
+      },
+      "monotonic_seconds": 1,
+      "previous_event_sha256": null
+    },
+    {
+      "sequence": 1,
+      "kind": "cancel",
+      "attempt_id": "attempt-1",
+      "details": {},
+      "monotonic_seconds": 1,
+      "previous_event_sha256": "c1e4b9f8349cee858a0df0dc5bf3e586931ab4b603d41cb589194e3a4905ba1f"
+    },
+    {
+      "sequence": 2,
+      "kind": "reject_before_commit",
+      "attempt_id": "attempt-1",
+      "details": {
+        "reason": "cancel_requested"
+      },
+      "monotonic_seconds": 1,
+      "previous_event_sha256": "7fdc53716fc0a598334ebf4851550f690aa03937c6c1a8e951c1ad2374b09d7b"
+    }
+  ],
+  "events_sha256": "02cc1b166a0e7224cbca4ce1f77bf4331c79cd9dadc169c88221b2011211a958",
+  "attempts": {
+    "attempt-1": {
+      "task_id": "D0-RS-01",
+      "arm": "direct",
+      "call_id": "call-1",
+      "attempt_id": "attempt-1",
+      "retry_of": null,
+      "request_sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+      "maximum_micro_usd": 500,
+      "reservation_micro_usd": 0,
+      "state": "rejected_before_commit",
+      "committed": false,
+      "cancel_requested": true,
+      "transport_proven_absent": false,
+      "response": null,
+      "outcome_state": null,
+      "late_response_state": null,
+      "abort_requests": [
+        "cancel_requested"
+      ],
+      "receipt": null,
+      "rejection_reason": "cancel_requested"
+    }
+  },
+  "accounting": {
+    "budget_micro_usd": 1000,
+    "known_observed_charge_micro_usd": 0,
+    "retained_reservation_micro_usd": 0,
+    "unknown_charge_attempts": [],
+    "observed_cost_complete": true,
+    "observed_cost_micro_usd": 0,
+    "supported_cost_interval_micro_usd": [
+      0,
+      0
+    ],
+    "budget_limit_respected": true,
+    "reservation_is_provider_charge_guarantee": false
+  },
+  "budget_incidents": [],
+  "revoked": false,
+  "invalidated": null,
+  "scope": "offline-synthetic-fake-only",
+  "paid_provider_called": false,
+  "campaign_scoring_enabled": false
+}

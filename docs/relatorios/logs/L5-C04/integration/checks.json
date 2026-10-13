@@ -1,0 +1,206 @@
+{
+  "schema": "xrai.eval.c04.offline-integration.v1",
+  "recorded_at": "2026-10-13T00:48:07.640784+00:00",
+  "checks": [
+    {
+      "name": "E02",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_state_assignment.py"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/E02.stdout": "f0ce13f11eb6d1c6d21925d132ecc7013481a4dd40459f16e3e2a1ebe0a6ece0",
+        "docs/relatorios/logs/L5-C04/integration/E02.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "E02-tests",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_state_assignment.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/E02-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "docs/relatorios/logs/L5-C04/integration/E02-tests.stderr": "d9e39c1092a8f1e60ecb6700c924b9f789dbbd7005b1816e69c39808aef0f476"
+      }
+    },
+    {
+      "name": "D01-tests",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/xrai-eval/harness/tests",
+        "-p",
+        "test_execution_dispatch_v2.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/D01-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "docs/relatorios/logs/L5-C04/integration/D01-tests.stderr": "eb6baeb2ff55c231c6ccf83d30d8f3bcc559f13908359d3e2b69ed9e892adf7c"
+      }
+    },
+    {
+      "name": "seed-v2",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/execution_preflight.py",
+        "eval/qualification/execution-gate/smoke-offline.json",
+        "--dispatch-fake",
+        "--task-id",
+        "D0-RS-01",
+        "--arm",
+        "direct",
+        "--run-id",
+        "c04-offline-integration"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/seed-v2.stdout": "2c694bf06ae0424257d737916dff75ccbbdd0d08fa7f3b84627dfdca49704c35",
+        "docs/relatorios/logs/L5-C04/integration/seed-v2.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "presence-tests",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_presence_events.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/presence-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "docs/relatorios/logs/L5-C04/integration/presence-tests.stderr": "7ff24b595407c9921740ed607adfda2c0c64edf0657a66187ea95f84af97113f"
+      }
+    },
+    {
+      "name": "presence-ci-tests",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_presence_ci.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/presence-ci-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "docs/relatorios/logs/L5-C04/integration/presence-ci-tests.stderr": "69ee907bceec097285e411cdf6ec36dfd7901a20390e515485b9b3623067f9c2"
+      }
+    },
+    {
+      "name": "TSJS-labels",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_tsjs_semantics.py",
+        "--labels-only"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/TSJS-labels.stdout": "911f08ae27c0c79b1a36df8145dc75c36384377a82f75b47a19b7e5cd873c6ce",
+        "docs/relatorios/logs/L5-C04/integration/TSJS-labels.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "TSJS-tests",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_tsjs_semantics.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/TSJS-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "docs/relatorios/logs/L5-C04/integration/TSJS-tests.stderr": "1b81e3dd943644826d0965ade4992b5f96acc3e0843adac2a01e8e971783439f"
+      }
+    },
+    {
+      "name": "frozen-prepare",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/prepare_state_events.py",
+        "verify"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/frozen-prepare.stdout": "4fcca5308d39491ad76afdbd00278a3c35a94bb608df1dabb9227810b438cee5",
+        "docs/relatorios/logs/L5-C04/integration/frozen-prepare.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "frozen-C02",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_c02.py"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/frozen-C02.stdout": "91cb47bd025640e688a5c5ebf410640ddc748ebaa02b10a24ddbdbfc5873a8fe",
+        "docs/relatorios/logs/L5-C04/integration/frozen-C02.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "original-slots",
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/verify_slot_plan.py"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/original-slots.stdout": "f3f85653d3ee3531ec42eaee4355232c7e722f5778ab129c6ef4885b677a3d15",
+        "docs/relatorios/logs/L5-C04/integration/original-slots.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "rustfmt",
+      "command": [
+        "rustfmt",
+        "--edition",
+        "2024",
+        "--check",
+        "crates/xrai-eval/src/bin/source-presence-session.rs",
+        "crates/xrai-eval/src/tsjs_semantics.rs",
+        "crates/xrai-eval/src/bin/tsjs-semantics.rs",
+        "crates/xrai-eval/src/lib.rs"
+      ],
+      "exit_code": 0,
+      "sha256": {
+        "docs/relatorios/logs/L5-C04/integration/rustfmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "docs/relatorios/logs/L5-C04/integration/rustfmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "native_executed": false,
+  "upstream_executed": false,
+  "paid_calls": 0,
+  "admitted": false,
+  "all_checks_passed": true
+}

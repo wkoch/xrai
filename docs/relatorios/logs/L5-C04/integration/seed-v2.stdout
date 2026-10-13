@@ -1,0 +1,318 @@
+{
+  "adapter_calls": 1,
+  "decision": {
+    "accepted": true,
+    "campaign_scoring_enabled": false,
+    "dimensions": {},
+    "intent": "smoke_seed",
+    "paid_provider_enabled": false,
+    "schema_version": "xrai.eval.execution-gate.v1",
+    "scope": "offline-fake-only",
+    "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f"
+  },
+  "dispatch_replay": {
+    "accounting": {
+      "budget_limit_respected": true,
+      "budget_micro_usd": 1000,
+      "known_observed_charge_micro_usd": 35,
+      "observed_cost_complete": true,
+      "observed_cost_micro_usd": 35,
+      "reservation_is_provider_charge_guarantee": false,
+      "retained_reservation_micro_usd": 0,
+      "supported_cost_interval_micro_usd": [
+        35,
+        35
+      ],
+      "unknown_charge_attempts": []
+    },
+    "attempts": 1,
+    "external_calls": 0,
+    "paid_provider_called": false,
+    "status": "verified_offline_dispatch_v2"
+  },
+  "external_calls": 0,
+  "ledger": {
+    "accounting": {
+      "budget_limit_respected": true,
+      "budget_micro_usd": 1000,
+      "known_observed_charge_micro_usd": 35,
+      "observed_cost_complete": true,
+      "observed_cost_micro_usd": 35,
+      "reservation_is_provider_charge_guarantee": false,
+      "retained_reservation_micro_usd": 0,
+      "supported_cost_interval_micro_usd": [
+        35,
+        35
+      ],
+      "unknown_charge_attempts": []
+    },
+    "attempts": {
+      "cli-attempt": {
+        "abort_requests": [],
+        "arm": "direct",
+        "attempt_id": "cli-attempt",
+        "call_id": "cli-call",
+        "cancel_requested": false,
+        "committed": true,
+        "late_response_state": null,
+        "maximum_micro_usd": 500,
+        "outcome_state": "completed",
+        "receipt": {
+          "category_semantics": {
+            "cached_input_tokens": "subset_of_input_tokens",
+            "reasoning_output_tokens": "subset_of_output_tokens"
+          },
+          "estimated_charge_micro_usd": 35,
+          "observed_charge_micro_usd": 35,
+          "observed_charge_source": "synthetic-receipt",
+          "price_version": "fake-usd-v1",
+          "provider": "fake",
+          "provider_receipt_id": "fake-v2-1",
+          "usage": {
+            "cached_input_tokens": 4,
+            "input_tokens": 10,
+            "output_tokens": 5,
+            "reasoning_output_tokens": 2
+          }
+        },
+        "rejection_reason": null,
+        "request_sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+        "reservation_micro_usd": 0,
+        "response": {
+          "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+          "bytes": 16,
+          "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20"
+        },
+        "retry_of": null,
+        "state": "completed",
+        "task_id": "D0-RS-01",
+        "transport_proven_absent": false
+      }
+    },
+    "authorization": {
+      "budget_micro_usd": 1000,
+      "expires_monotonic": 17597.690868625,
+      "scope": "offline-synthetic-only",
+      "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f"
+    },
+    "bindings": {
+      "arm": "direct",
+      "configuration_sha256": "167e1eef7534c0e705eb1c3cb547b86052a4ca64637ea893213ef76e63c93923",
+      "model": {
+        "effort": "fixed",
+        "name": "fake-stream-v1",
+        "provider": "fake",
+        "version": "1"
+      },
+      "run_id": "c04-offline-integration",
+      "serializer": {
+        "binary_projection": "base64-on-invalid-utf8",
+        "encoding": "utf-8",
+        "ensure_ascii": false,
+        "name": "xrai.canonical-json.v1",
+        "normalization": "none",
+        "separators": [
+          ",",
+          ":"
+        ],
+        "sort_keys": true,
+        "special_tokens": "ordinary-text",
+        "truncation": "captured-prefix-only"
+      },
+      "serializer_sha256": "42cbab430bcb47be562e52c5f9289bcdd226555e691a87f13b185d727b222867",
+      "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f",
+      "task_id": "D0-RS-01",
+      "tokenizer": {
+        "config_sha256": "446859e7b320ef64f363d3134f6bf8d8171f844c01c8af9173764d26a022d6f1",
+        "measurement": "bound-profile-not-tokenized-by-dispatch",
+        "vocab_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7"
+      },
+      "tools_sha256": "713b5720cfced91f91f282ed98815bc9b984512aa182233aa31db4a8e8481680"
+    },
+    "budget_incidents": [],
+    "campaign_scoring_enabled": false,
+    "decision": {
+      "accepted": true,
+      "campaign_scoring_enabled": false,
+      "dimensions": {},
+      "intent": "smoke_seed",
+      "paid_provider_enabled": false,
+      "schema_version": "xrai.eval.execution-gate.v1",
+      "scope": "offline-fake-only",
+      "snapshot_sha256": "2c6e19c51411218d09a42c5ab103b7518f8f38eff7495c65db2ddb4f953a031f"
+    },
+    "events": [
+      {
+        "attempt_id": "cli-attempt",
+        "details": {
+          "call_id": "cli-call",
+          "maximum": 500,
+          "request": {
+            "edits": [],
+            "expansions": [],
+            "limits": {
+              "input_tokens": 100,
+              "output_tokens": 100
+            },
+            "maximum_charge_policy": "fake-enforced",
+            "messages": [
+              {
+                "content": "localize fun\u00e7\u00e3o",
+                "role": "user"
+              }
+            ],
+            "orientation": "Offline fake session; no source oracle.",
+            "tests": [],
+            "tool_calls": [],
+            "tool_definitions": [
+              {
+                "input": "path",
+                "name": "read"
+              }
+            ]
+          },
+          "retry_of": null
+        },
+        "kind": "reserve",
+        "monotonic_seconds": 17567.692396333,
+        "previous_event_sha256": null,
+        "sequence": 0
+      },
+      {
+        "attempt_id": "cli-attempt",
+        "details": {},
+        "kind": "commit",
+        "monotonic_seconds": 17567.692431041,
+        "previous_event_sha256": "3ecd6a19cf4c77268110fbdeb4ee1736d1c49dfb004cb378e1a830eddf6be9dd",
+        "sequence": 1
+      },
+      {
+        "attempt_id": "cli-attempt",
+        "details": {
+          "response": {
+            "base64": "b2ZmbGluZSByZXNwb25zZQ==",
+            "bytes": 16,
+            "sha256": "e2ed707f4e185277af2bbaeb0b313f16af047e5ac688b0b23417ba246eafbf20"
+          },
+          "state": "completed"
+        },
+        "kind": "outcome",
+        "monotonic_seconds": 17567.692457083,
+        "previous_event_sha256": "3e499e84d619fe814460ad2db15d698f1346d26baf36fbea492eafa4b78aeb69",
+        "sequence": 2
+      },
+      {
+        "attempt_id": "cli-attempt",
+        "details": {
+          "category_semantics": {
+            "cached_input_tokens": "subset_of_input_tokens",
+            "reasoning_output_tokens": "subset_of_output_tokens"
+          },
+          "estimated_charge_micro_usd": 35,
+          "observed_charge_micro_usd": 35,
+          "observed_charge_source": "synthetic-receipt",
+          "price_version": "fake-usd-v1",
+          "provider": "fake",
+          "provider_receipt_id": "fake-v2-1",
+          "usage": {
+            "cached_input_tokens": 4,
+            "input_tokens": 10,
+            "output_tokens": 5,
+            "reasoning_output_tokens": 2
+          }
+        },
+        "kind": "receipt",
+        "monotonic_seconds": 17567.69247225,
+        "previous_event_sha256": "7b6b88f3efd4332f5138ad44ae79e893ae99591c3080fa5abddb9d905f1cc610",
+        "sequence": 3
+      }
+    ],
+    "events_sha256": "076b35557e31c90a1819512498a064d244a19c37f739573426eafe6033ed4053",
+    "invalidated": null,
+    "paid_provider_called": false,
+    "revoked": false,
+    "schema_version": "xrai.eval.execution-dispatch.v2",
+    "scope": "offline-synthetic-fake-only",
+    "snapshot": {
+      "evidence": {
+        "configuration": "eyJpbnB1dF90b2tlbnMiOjEwMCwib3V0cHV0X3Rva2VucyI6MTAwLCJwcm9maWxlIjoib2ZmbGluZS1wYWlyZWQtc21va2UtdjEifQ==",
+        "controls": "eyJjb250YWlubWVudF9ldmlkZW5jZSI6Im5vdF9hX3JlYWxfcHJvYmUiLCJtb2RlIjoib2ZmbGluZV9mYWtlIiwibmV0d29yayI6Im5ldmVyX2NhbGxlZCJ9",
+        "measurement": "eyJjb3N0X3NlbWFudGljcyI6InN5bnRoZXRpY19taWNyb191c2QiLCJwcm9maWxlIjoib2ZmbGluZS1jb3VudGVkLXYxIn0=",
+        "model": "eyJlZmZvcnQiOiJmaXhlZCIsIm5hbWUiOiJmYWtlLXN0cmVhbS12MSIsInByb3ZpZGVyIjoiZmFrZSIsInZlcnNpb24iOiIxIn0=",
+        "protocol": "eyJhcm1zIjpbImRpcmVjdCIsImluZGV4ZWQiXSwiaWQiOiJvZmZsaW5lLXBhaXJlZC1zbW9rZS12MSIsInBhaXJlZF9yZXNvdXJjZXMiOnRydWUsInJlc3VsdF9kZXN0aW5hdGlvbiI6ImRldmVsb3BtZW50X29ubHkiLCJ0YXNrX2lkcyI6WyJEMC1SUy0wMSJdfQ==",
+        "task/D0-RS-01/input": "b2ZmbGluZSBmaXh0dXJlIHRhc2s=",
+        "task/D0-RS-01/oracle": "b2ZmbGluZSBmaXh0dXJlIGV4cGVjdGVkIHJlc3VsdA==",
+        "task/D0-RS-01/review": "eyJpbnB1dF9zaGEyNTYiOiIwNzM1MWZmM2NjNDRlNzRhNTM2M2IyZTdjYTAzYzM5YzBhMmM2NzdlMjczYWU4M2FkYjU1NGE4NTdkODc2N2E2Iiwib3JhY2xlX3NoYTI1NiI6IjYxY2I0ZTk2NzAzZWMwYTBjMGMwZjEzMWFmNDUxMTRlM2Q3NDdmNzk2ZWY5NjVkMTZlZTIxMWU4NTg4ZmQ1OTAiLCJvcmlnaW4iOiJkZXZlbG9wbWVudF9zZWVkIiwic2NvcGUiOiJvZmZsaW5lX2ZpeHR1cmVfcmV2aWV3IiwidGFza19pZCI6IkQwLVJTLTAxIn0=",
+        "tools": "W3siaW5wdXQiOiJwYXRoIiwibmFtZSI6InJlYWQifV0="
+      },
+      "manifest": {
+        "configuration": {
+          "input_tokens": 100,
+          "output_tokens": 100,
+          "profile": "offline-paired-smoke-v1"
+        },
+        "controls": {
+          "containment_evidence": "not_a_real_probe",
+          "mode": "offline_fake",
+          "network": "never_called"
+        },
+        "dataset": {
+          "name": "D0",
+          "origin": "development_seed",
+          "purpose": "development_smoke"
+        },
+        "evidence_sha256": {
+          "configuration": "167e1eef7534c0e705eb1c3cb547b86052a4ca64637ea893213ef76e63c93923",
+          "controls": "ae4338dac4ceb58ac3a36467e5915b35fd0b906aaf7c3b161ee59a511b1c7a66",
+          "measurement": "e50a29ee0332a95e9527a0fce8439fcd9c8bfab9e9aa638d466b8f4bbd9e57cc",
+          "model": "b10ac7a63502baf5309cdcef79876d982a78be75f59755f6c444e6381369541e",
+          "protocol": "efcbb29a13f61415540983a2e8ccd5fe5addf9a10b3e02f71e14d8f5a7d020d7",
+          "task/D0-RS-01/input": "07351ff3cc44e74a5363b2e7ca03c39c0a2c677e273ae83adb554a857d8767a6",
+          "task/D0-RS-01/oracle": "61cb4e96703ec0a0c0c0f131af45114e3d747f796ef965d16ee211e8588fd590",
+          "task/D0-RS-01/review": "d3233ea3e7a49c56bc308da872e238021fd7e77acbe1c1b60d7c7f54057380c5",
+          "tools": "713b5720cfced91f91f282ed98815bc9b984512aa182233aa31db4a8e8481680"
+        },
+        "intent": "smoke_seed",
+        "measurement": {
+          "cost_semantics": "synthetic_micro_usd",
+          "profile": "offline-counted-v1"
+        },
+        "model": {
+          "effort": "fixed",
+          "name": "fake-stream-v1",
+          "provider": "fake",
+          "version": "1"
+        },
+        "protocol": {
+          "arms": [
+            "direct",
+            "indexed"
+          ],
+          "id": "offline-paired-smoke-v1",
+          "paired_resources": true,
+          "result_destination": "development_only",
+          "task_ids": [
+            "D0-RS-01"
+          ]
+        },
+        "request_sha256": "2c16899ce0720e6b011d02e21aa18d63331fbc6a6831b81fa0044f48d5a35f8a",
+        "schema_version": "xrai.eval.execution-gate.v1",
+        "task_ids": [
+          "D0-RS-01"
+        ],
+        "tools": [
+          {
+            "input": "path",
+            "name": "read"
+          }
+        ]
+      }
+    }
+  },
+  "paid_authorization": false,
+  "result": {
+    "adapter_called": true,
+    "committed": true,
+    "status": "completed"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "xrai.eval.tsjs.real-data.v1",
+  "repo": "https://github.com/uuidjs/uuid",
+  "commit": "b3f142f7efa6d335cd667413b8a5860d2dd04ebf",
+  "tag": "v9.0.1",
+  "acquisition": "official-GitHub-contents-API-data-only",
+  "executed_upstream": false,
+  "files": [
+    {
+      "path": "src/parse.js",
+      "sha256": "dbe1a1fb0344b6616ee8d80667872646ad2d8bf7606109e2bc1104114b5b6ac3",
+      "bytes": 1132,
+      "git_blob": "85edd846571e3a55df9e13230949afa13fc74fdc",
+      "api_sha256": "132e8484d7b9b6bb91ce3bfe756af27523c4087a8d616312f4b2935ff95e4bc1"
+    },
+    {
+      "path": "src/stringify.js",
+      "sha256": "82c89087fac02c4c822fbddeb5a443bdd4b5e0362fc627c4b729f0ad67b39cb8",
+      "bytes": 1557,
+      "git_blob": "3d15e61ac922caf9101ce280d527164eb2361d6e",
+      "api_sha256": "47849c98f9a43f390e94771c663e1cfec4e7cb6e8530acf8badae5286ec4245b"
+    },
+    {
+      "path": "src/v3.js",
+      "sha256": "c82a36ec554d554d7fbf3c50e841b9682c728f622a4de7f8116f96b301805cc9",
+      "bytes": 109,
+      "git_blob": "ef17c7c48b2b25d2cb21f2e03b4c5e2d451567da",
+      "api_sha256": "7595da78ab92b6d49df659e2fde56a9764987625c54f3774a9452615051fa53b"
+    },
+    {
+      "path": "src/v35.js",
+      "sha256": "df161dbf2892402d13f80051bacd7c6f3f68d67893c8a26805103ca64bb0e48f",
+      "bytes": 1700,
+      "git_blob": "1e56eea50553f8a9639e5345964d8d0e79e8ec8d",
+      "api_sha256": "62d710e0b588087c915e031cfeb1bccad0bb6f1b41f640fdf2a10ab412af5705"
+    },
+    {
+      "path": "src/v4.js",
+      "sha256": "4b47bed7a1952d5752ec134b28cc3430454a587a02ad03242878b2d4833886e9",
+      "bytes": 690,
+      "git_blob": "dc21c59fc19af9a1011c70cba15aa8040489f3dc",
+      "api_sha256": "59c08d5b6343e361751da4f51fb687c351af201d1f11cbd7d5036a4451da3338"
+    },
+    {
+      "path": "LICENSE.md",
+      "sha256": "beaa6b04fb82e41dd2ad679e19e27953afb5999b1abbb455b6564e78ebfeb332",
+      "bytes": 1109
+    }
+  ],
+  "selected_production_units": 5,
+  "losses": [
+    "All other repository units excluded; no repository-wide completeness claim.",
+    "Default imports in v4 and stringify remain unsupported; only named unsafeStringify relation labeled."
+  ],
+  "analyzed_production_units": 2,
+  "inspected_but_not_analyzed": [
+    "src/v35.js",
+    "src/v3.js",
+    "src/parse.js"
+  ]
+}

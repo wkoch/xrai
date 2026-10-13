@@ -48,6 +48,12 @@ jobs:
           python eval/scripts/verify_vertical.py
           python eval/scripts/verify_c02.py
           python eval/scripts/verify_slot_plan.py
+          python eval/scripts/verify_state_assignment.py
+          python -m unittest discover -s eval/scripts -p 'test_state_assignment.py' -v
+          python -m unittest discover -s eval/scripts -p 'test_presence_ci.py' -v
+          python -m unittest discover -s eval/scripts -p 'test_presence_events.py' -v
+          python eval/scripts/verify_tsjs_semantics.py --labels-only
+          python -m unittest discover -s eval/scripts -p 'test_tsjs_semantics.py' -v
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}

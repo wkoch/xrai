@@ -1,0 +1,1501 @@
+{
+  "schema_version": "xrai.eval.tsjs.labels.v1",
+  "profile": "captured-relative-exact-v1",
+  "experimental": true,
+  "threshold_resolvable_reference": 0.8,
+  "required_false_promotions": 0,
+  "callable_policy": "always_unknown_v1_no_mutation_analysis",
+  "official_references": [
+    "https://www.typescriptlang.org/docs/handbook/modules/reference.html",
+    "https://tc39.es/ecma262/2024/multipage/ecmascript-language-statements-and-declarations.html#sec-let-and-const-declarations"
+  ],
+  "cases": [
+    {
+      "id": "javascript-alias",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 42,
+          "state": "resolved",
+          "target": "lib.js:run",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "javascript-export-list",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "function f() {}\nexport { f as run };"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 42,
+          "state": "resolved",
+          "target": "lib.js:f",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "javascript-homonym",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nimport {run} from './other.js';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 74,
+          "state": "resolved",
+          "target": "lib.js:run",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "javascript-missing-export",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function other() {}"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 42,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-missing-file",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './absent.js';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 45,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-outside-root",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from '../lib.js';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 43,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-no-extension",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 39,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-bare-specifier",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from 'pkg';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 37,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-duplicate",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nfunction chosen() {}\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 63,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-partial",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nfunction broken( {\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 61,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-parameter",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nfunction wrapper(chosen) { chosen(); }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 69,
+          "state": "resolved",
+          "target": "main.js:chosen",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "javascript-sibling-block",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\n{ const chosen = 1; }\n{ chosen(); }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 66,
+          "state": "resolved",
+          "target": "lib.js:run",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "javascript-tdz",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\n{ chosen(); const chosen = 1; }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 44,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-self-init",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\n{ const chosen = chosen; }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 59,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-const-alias",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\n{ const alias = chosen; alias(); }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 66,
+          "state": "resolved",
+          "target": "main.js:alias",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "javascript-let-shadow",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\n{ let chosen = 1; chosen(); }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 60,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-var-hoist",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nfunction wrapper() { chosen(); var chosen; }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 63,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-destructure",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\n{ const {chosen} = obj; chosen(); }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 66,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-eval",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nfunction wrapper() { eval(code); chosen(); }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 75,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-default-import",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import chosen from './lib.js';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 31,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-namespace-import",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import * as chosen from './lib.js';\nchosen();"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 36,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "javascript-closure",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.js": {
+            "dialect": "javascript",
+            "source": "import { run as chosen } from './lib.js';\nfunction outer() { const chosen = 1; function inner() { chosen(); } }"
+          },
+          "lib.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          },
+          "other.js": {
+            "dialect": "javascript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.js",
+          "offset": 98,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-alias",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 42,
+          "state": "resolved",
+          "target": "lib.ts:run",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "typescript-export-list",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "function f() {}\nexport { f as run };"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 42,
+          "state": "resolved",
+          "target": "lib.ts:f",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "typescript-homonym",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nimport {run} from './other.ts';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 74,
+          "state": "resolved",
+          "target": "lib.ts:run",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "typescript-missing-export",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function other() {}"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 42,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-missing-file",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './absent.ts';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 45,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-outside-root",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from '../lib.ts';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 43,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-no-extension",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 39,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-bare-specifier",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from 'pkg';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 37,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-duplicate",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nfunction chosen() {}\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 63,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-partial",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nfunction broken( {\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 61,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-parameter",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nfunction wrapper(chosen) { chosen(); }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 69,
+          "state": "resolved",
+          "target": "main.ts:chosen",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "typescript-sibling-block",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\n{ const chosen = 1; }\n{ chosen(); }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 66,
+          "state": "resolved",
+          "target": "lib.ts:run",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "typescript-tdz",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\n{ chosen(); const chosen = 1; }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 44,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-self-init",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\n{ const chosen = chosen; }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 59,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-const-alias",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\n{ const alias = chosen; alias(); }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 66,
+          "state": "resolved",
+          "target": "main.ts:alias",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true
+    },
+    {
+      "id": "typescript-let-shadow",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\n{ let chosen = 1; chosen(); }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 60,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-var-hoist",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nfunction wrapper() { chosen(); var chosen; }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 63,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-destructure",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\n{ const {chosen} = obj; chosen(); }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 66,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-eval",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\nfunction wrapper() { eval(code); chosen(); }"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 75,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-default-import",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import chosen from './lib.ts';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 31,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-namespace-import",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import * as chosen from './lib.ts';\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 36,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "typescript-type-only",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "main.ts": {
+            "dialect": "typescript",
+            "source": "import { run as chosen } from './lib.ts';\ntype chosen = number;\nchosen();"
+          },
+          "lib.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          },
+          "other.ts": {
+            "dialect": "typescript",
+            "source": "export function run() {}\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "main.ts",
+          "offset": 64,
+          "state": "unknown",
+          "target": null,
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": false
+    },
+    {
+      "id": "real-uuid-v4-unsafeStringify",
+      "input": {
+        "profile": "captured-relative-exact-v1",
+        "configuration": {
+          "module": "esm"
+        },
+        "files": {
+          "src/v4.js": {
+            "dialect": "javascript",
+            "source": "import native from './native.js';\nimport rng from './rng.js';\nimport { unsafeStringify } from './stringify.js';\n\nfunction v4(options, buf, offset) {\n  if (native.randomUUID && !buf && !options) {\n    return native.randomUUID();\n  }\n\n  options = options || {};\n\n  const rnds = options.random || (options.rng || rng)();\n\n  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`\n  rnds[6] = (rnds[6] & 0x0f) | 0x40;\n  rnds[8] = (rnds[8] & 0x3f) | 0x80;\n\n  // Copy bytes to buffer, if provided\n  if (buf) {\n    offset = offset || 0;\n\n    for (let i = 0; i < 16; ++i) {\n      buf[offset + i] = rnds[i];\n    }\n\n    return buf;\n  }\n\n  return unsafeStringify(rnds);\n}\n\nexport default v4;\n"
+          },
+          "src/stringify.js": {
+            "dialect": "javascript",
+            "source": "import validate from './validate.js';\n\n/**\n * Convert array of 16 byte values to UUID string format of the form:\n * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\n */\nconst byteToHex = [];\n\nfor (let i = 0; i < 256; ++i) {\n  byteToHex.push((i + 0x100).toString(16).slice(1));\n}\n\nexport function unsafeStringify(arr, offset = 0) {\n  // Note: Be careful editing this code!  It's been tuned for performance\n  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434\n  return (\n    byteToHex[arr[offset + 0]] +\n    byteToHex[arr[offset + 1]] +\n    byteToHex[arr[offset + 2]] +\n    byteToHex[arr[offset + 3]] +\n    '-' +\n    byteToHex[arr[offset + 4]] +\n    byteToHex[arr[offset + 5]] +\n    '-' +\n    byteToHex[arr[offset + 6]] +\n    byteToHex[arr[offset + 7]] +\n    '-' +\n    byteToHex[arr[offset + 8]] +\n    byteToHex[arr[offset + 9]] +\n    '-' +\n    byteToHex[arr[offset + 10]] +\n    byteToHex[arr[offset + 11]] +\n    byteToHex[arr[offset + 12]] +\n    byteToHex[arr[offset + 13]] +\n    byteToHex[arr[offset + 14]] +\n    byteToHex[arr[offset + 15]]\n  );\n}\n\nfunction stringify(arr, offset = 0) {\n  const uuid = unsafeStringify(arr, offset);\n  // Consistency check for valid UUID.  If this throws, it's likely due to one\n  // of the following:\n  // - One or more input array values don't map to a hex octet (leading to\n  // \"undefined\" in the uuid)\n  // - Invalid input values for the RFC `version` or `variant` fields\n  if (!validate(uuid)) {\n    throw TypeError('Stringified UUID is invalid');\n  }\n\n  return uuid;\n}\n\nexport default stringify;\n"
+          }
+        }
+      },
+      "queries": [
+        {
+          "path": "src/v4.js",
+          "offset": 645,
+          "state": "resolved",
+          "target": "src/stringify.js:unsafeStringify",
+          "callable": "unknown"
+        }
+      ],
+      "resolvable_labeled_before_implementation": true,
+      "real_source": true,
+      "losses": [
+        "default import lookup excluded",
+        "call targets remain unknown",
+        "3 inspected units omitted; all remaining repo units not acquired"
+      ]
+    }
+  ]
+}

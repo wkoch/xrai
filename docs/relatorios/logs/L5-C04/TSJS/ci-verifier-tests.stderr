@@ -1,0 +1,38 @@
+test_api_hash_changed (test_tsjs_ci.ActualBundle.test_api_hash_changed) ... skipped 'requires authentic original CI bundle'
+test_api_step_skipped (test_tsjs_ci.ActualBundle.test_api_step_skipped) ... skipped 'requires authentic original CI bundle'
+test_authentic_bundle (test_tsjs_ci.ActualBundle.test_authentic_bundle) ... skipped 'requires authentic original CI bundle'
+test_export_binary_removed (test_tsjs_ci.ActualBundle.test_export_binary_removed) ... skipped 'requires authentic original CI bundle'
+test_export_byte_changed (test_tsjs_ci.ActualBundle.test_export_byte_changed) ... skipped 'requires authentic original CI bundle'
+test_export_extra_file (test_tsjs_ci.ActualBundle.test_export_extra_file) ... skipped 'requires authentic original CI bundle'
+test_zip_byte_changed (test_tsjs_ci.ActualBundle.test_zip_byte_changed) ... skipped 'requires authentic original CI bundle'
+test_artifact_envelope_truncated (test_tsjs_ci.Metadata.test_artifact_envelope_truncated) ... ok
+test_artifact_wrong_attempt_time (test_tsjs_ci.Metadata.test_artifact_wrong_attempt_time) ... ok
+test_artifact_wrong_run (test_tsjs_ci.Metadata.test_artifact_wrong_run) ... ok
+test_expired_artifact (test_tsjs_ci.Metadata.test_expired_artifact) ... ok
+test_failed_job (test_tsjs_ci.Metadata.test_failed_job) ... ok
+test_job_envelope_truncated (test_tsjs_ci.Metadata.test_job_envelope_truncated) ... ok
+test_run_flag_not_integer (test_tsjs_ci.Metadata.test_run_flag_not_integer) ... ok
+test_step_deleted (test_tsjs_ci.Metadata.test_step_deleted) ... ok
+test_step_reordered (test_tsjs_ci.Metadata.test_step_reordered) ... ok
+test_step_skipped (test_tsjs_ci.Metadata.test_step_skipped) ... ok
+test_valid_context_only_fixture (test_tsjs_ci.Metadata.test_valid_context_only_fixture) ... ok
+test_wrong_head (test_tsjs_ci.Metadata.test_wrong_head) ... ok
+test_wrong_repo (test_tsjs_ci.Metadata.test_wrong_repo) ... ok
+test_wrong_workflow (test_tsjs_ci.Metadata.test_wrong_workflow) ... ok
+test_alias (test_tsjs_ci.ZipSafety.test_alias) ... ok
+test_drive (test_tsjs_ci.ZipSafety.test_drive) ... ok
+test_duplicate (test_tsjs_ci.ZipSafety.test_duplicate) ... /opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/zipfile/__init__.py:1755: UserWarning: Duplicate name: 'event/receipt.json'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
+test_empty_directory (test_tsjs_ci.ZipSafety.test_empty_directory) ... ok
+test_export_symlink_rejected (test_tsjs_ci.ZipSafety.test_export_symlink_rejected) ... ok
+test_file_directory_collision (test_tsjs_ci.ZipSafety.test_file_directory_collision) ... ok
+test_safe_export_must_be_fresh (test_tsjs_ci.ZipSafety.test_safe_export_must_be_fresh) ... ok
+test_symlink (test_tsjs_ci.ZipSafety.test_symlink) ... ok
+test_traversal (test_tsjs_ci.ZipSafety.test_traversal) ... ok
+test_valid_data_bundle (test_tsjs_ci.ZipSafety.test_valid_data_bundle) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.006s
+
+OK (skipped=7)

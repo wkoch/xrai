@@ -1,0 +1,135 @@
+{
+  "TSJS_language_targets": {
+    "JavaScript": 4,
+    "TypeScript": 4
+  },
+  "admitted_tasks": 0,
+  "allocation_consistent": true,
+  "competitive_runs_allowed": false,
+  "conditional_deficits": {
+    "additional_complex": 11,
+    "additional_historical": 10,
+    "additional_multi_module": 12,
+    "additional_tasks": 24,
+    "admission_deficit": 32,
+    "new_dossiers_remaining": 0
+  },
+  "factual_summary": {
+    "admitted_tasks": 0,
+    "competitive_runs_allowed": false,
+    "conditional_projection": {
+      "additional_complex": 11,
+      "additional_historical": 10,
+      "additional_multi_module": 12,
+      "additional_tasks": 24,
+      "admission_deficit": 32,
+      "new_dossiers_remaining": 0
+    },
+    "eligible_complex": 5,
+    "eligible_historical": 6,
+    "eligible_multi_module": 8,
+    "eligible_tasks": 8,
+    "new_dossiers_behavior_verified": 4,
+    "new_dossiers_curated_reviewed": 4,
+    "new_dossiers_individually_eligible": 4,
+    "new_dossiers_required": 4,
+    "required_state_events_prepared": {
+      "Go": 0,
+      "Python": 0,
+      "Rust": 0,
+      "TSJS": 0
+    }
+  },
+  "families": {
+    "Go": {
+      "complex_targets": 4,
+      "complex_targets_by_repository": {
+        "go-gitea/gitea": 2,
+        "prometheus/prometheus": 2
+      },
+      "historical_targets": 4,
+      "repository_targets": [
+        "go-gitea/gitea",
+        "prometheus/prometheus"
+      ],
+      "slots": 8,
+      "strata": {
+        "contract_change": 2,
+        "control": 1,
+        "correction": 2,
+        "review": 1,
+        "state_config": 2
+      }
+    },
+    "Python": {
+      "complex_targets": 4,
+      "complex_targets_by_repository": {
+        "django/django": 2,
+        "scikit-learn/scikit-learn": 2
+      },
+      "historical_targets": 4,
+      "repository_targets": [
+        "django/django",
+        "scikit-learn/scikit-learn"
+      ],
+      "slots": 8,
+      "strata": {
+        "contract_change": 2,
+        "control": 1,
+        "correction": 2,
+        "review": 1,
+        "state_config": 2
+      }
+    },
+    "Rust": {
+      "complex_targets": 4,
+      "complex_targets_by_repository": {
+        "rust-lang/rust-analyzer": 2,
+        "tokio-rs/tokio": 2
+      },
+      "historical_targets": 4,
+      "repository_targets": [
+        "rust-lang/rust-analyzer",
+        "tokio-rs/tokio"
+      ],
+      "slots": 8,
+      "strata": {
+        "contract_change": 2,
+        "control": 1,
+        "correction": 2,
+        "review": 1,
+        "state_config": 2
+      }
+    },
+    "TSJS": {
+      "complex_targets": 4,
+      "complex_targets_by_repository": {
+        "facebook/react": 2,
+        "microsoft/TypeScript": 2
+      },
+      "historical_targets": 4,
+      "repository_targets": [
+        "facebook/react",
+        "microsoft/TypeScript"
+      ],
+      "slots": 8,
+      "strata": {
+        "contract_change": 2,
+        "control": 1,
+        "correction": 2,
+        "review": 1,
+        "state_config": 2
+      }
+    }
+  },
+  "global_gate": "closed",
+  "limits": [
+    "Allocation targets and current factual progress are different units; neither admits the global corpus",
+    "C02 factual matrix is hash-bound to current sources; verify_c02 recomputes the underlying evidence",
+    "Required real family state cases and complete 32-task quotas remain pending"
+  ],
+  "multi_module_targets": 20,
+  "new_dossiers_delivered": 4,
+  "planning_only": true,
+  "schema": "xrai.eval.qualification.slot-plan.verification.v1"
+}

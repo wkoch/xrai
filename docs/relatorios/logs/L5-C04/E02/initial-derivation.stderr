@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/verify_state_assignment.py", line 182, in derive_progress
+    require(preparation['prepared'] == 4, 'four frozen state preparations required')
+            ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'prepared'

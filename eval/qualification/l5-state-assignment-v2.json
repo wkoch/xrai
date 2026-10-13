@@ -1,0 +1,74 @@
+{
+  "admitted_tasks": 0,
+  "base_plan": {
+    "path": "eval/qualification/l5-slot-plan.json",
+    "sha256": "ec4f37722ba944af7ef29004b77594a5414df5d8a5625dc4abd6e560aff7765b"
+  },
+  "bindings": [
+    {
+      "aliases": [],
+      "canonical_slot_id": "L5-SLOT-Rust-state_config-2",
+      "descriptor": {
+        "path": "eval/qualification/state-events/rust/descriptor.json",
+        "sha256": "78cb26abf5d189d866a9fadfcc462a0c8c18d4d35acce05ced85f2be25a85d0a"
+      },
+      "family": "Rust",
+      "language": "Rust",
+      "original_slot_id": "L5-SLOT-Rust-state_config-1",
+      "repository": "rust-lang/rust-analyzer",
+      "required_event": true,
+      "task_id": "L5-STATE-Rust-STDX-EDITION"
+    },
+    {
+      "aliases": [],
+      "canonical_slot_id": "L5-SLOT-TSJS-state_config-2",
+      "descriptor": {
+        "path": "eval/qualification/state-events/js/descriptor.json",
+        "sha256": "d2ed15309db714d776429680c591336e9693c9d55f3f5b94cfa861c6fcced08a"
+      },
+      "family": "TSJS",
+      "language": "JavaScript",
+      "original_slot_id": "L5-SLOT-TSJS-state_config-1",
+      "repository": "facebook/react",
+      "required_event": true,
+      "task_id": "L5-STATE-TSJS-SOURCE-AVAILABILITY"
+    },
+    {
+      "aliases": [],
+      "canonical_slot_id": "L5-SLOT-Python-state_config-2",
+      "descriptor": {
+        "path": "eval/qualification/state-events/python/descriptor.json",
+        "sha256": "bb7d2d2a765d86b28b9c91724221d1219df931f1c7b44fa55a758a230e25fc42"
+      },
+      "family": "Python",
+      "language": "Python",
+      "original_slot_id": "L5-SLOT-Python-state_config-1",
+      "repository": "scikit-learn/scikit-learn",
+      "required_event": true,
+      "task_id": "L5-STATE-Python-SOURCE-AVAILABILITY"
+    },
+    {
+      "aliases": [],
+      "canonical_slot_id": "L5-SLOT-Go-state_config-2",
+      "descriptor": {
+        "path": "eval/qualification/state-events/go/descriptor.json",
+        "sha256": "0a85e6222ae5a9a8db3fd08d2dda85b42b58b90667d50aaa766d4db6fff4c8c2"
+      },
+      "family": "Go",
+      "language": "Go",
+      "original_slot_id": "L5-SLOT-Go-state_config-1",
+      "repository": "go-gitea/gitea",
+      "required_event": true,
+      "task_id": "L5-STATE-Go-SOURCE-AVAILABILITY"
+    }
+  ],
+  "competitive_runs_allowed": false,
+  "plan": {
+    "path": "eval/qualification/l5-slot-plan-v2.json",
+    "sha256": "3a6bfd9ffcd03c44ccb98fd11cce4f361dd69e650f8bc997480283493391dd67"
+  },
+  "plan_version": 2,
+  "schema": "xrai.eval.qualification.state-assignment.v2",
+  "status": "prospective_allocation_not_admission",
+  "version": 2
+}
