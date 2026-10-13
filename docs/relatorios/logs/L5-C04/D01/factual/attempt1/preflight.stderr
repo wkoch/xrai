@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/campaign_preflight.py", line 244, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/campaign_preflight.py", line 239, in main
+    print(json.dumps(preflight(snapshot, rows=rows), indent=2, sort_keys=True))
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/campaign_preflight.py", line 185, in preflight
+    snapshot.assert_current(current=current)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/campaign_preflight.py", line 146, in assert_current
+    require(path.is_file() and not path.is_symlink() and path.read_bytes() == raw, 'snapshot source changed: ' + name)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkoch/Projetos/xrai/eval/scripts/campaign_preflight.py", line 31, in require
+    raise ValueError(message)
+ValueError: snapshot source changed: eval/scripts/test_state_assignment.py

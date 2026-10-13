@@ -1,0 +1,27 @@
+{
+  "schema_version": "xrai.eval.tsjs.native-receipt.v1",
+  "binary_sha256": "7848b31faeccbc1d5a7498484bfd49e4a964c5366c6ac6aa852ed177207f04e9",
+  "source_sha256": {
+    "crates/xrai-eval/src/tsjs_semantics.rs": "557f8dcfb373c6430cda21c3e4733327540dd066cf99366b57316246685e5528",
+    "crates/xrai-eval/src/bin/tsjs-semantics.rs": "50a21edffed2b64e11140e9c70f972376eed56321c6a4f282a0d0f28c2b5a868",
+    "crates/xrai-eval/src/worker_spike.rs": "083e76ee4410aec6aa5b5c995c8cf66fdfcbd08a966f0dba2faa2f0af31051e0",
+    "crates/xrai-eval/src/parsing_spike.rs": "d4886d8f9f32582ed399e6d55c1faeea0844bf3ca18e8f614c74dc881fbd608b",
+    "crates/xrai-eval/queries/javascript.scm": "292985c5bbc4188e6a0b70cff1955551c9c021dcf69701a29a853034267f2d4b",
+    "crates/xrai-eval/queries/typescript.scm": "823c3d010f1ca730f0470b2250a789b75ae926a6b2cf4253df97dadd29490ab5",
+    "eval/scripts/verify_tsjs_semantics.py": "9c01083628325a3ca6418b21c6baf7ebc422badc895f55f439021b74d69c6308",
+    "eval/scripts/run_tsjs_semantics.py": "cfed8c3526804018da11e03bcc5f01e5e02dc4153e53ae7db5976fcc1b47114d",
+    "eval/semantics/tsjs/labels.json": "812837d7c86e79cc19bcbde2141a1f4ddd9e75d4d93ab1733f8e55b19fa322d0",
+    "eval/semantics/tsjs/freeze-before-resolver.json": "4c019426b9f55c2e6d82e455a492c18974b1ee459ad5c8db155cda5b2eb73581",
+    "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+    "crates/xrai-eval/parsing-provenance.json": "8d3dadf8c870f44f32516fe2585ba64438959caa1243ba2596457eb581c641ba"
+  },
+  "code_commit": "96b377c9c12be862d9ce90c92816ac499cb1bfc7",
+  "run_id": "38329944063",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "cases": 45,
+  "upstream_executed": false,
+  "calls_to_upstream_compiler": 0,
+  "owned_analyzer_only": true,
+  "global_admission": false
+}

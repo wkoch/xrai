@@ -213,3 +213,7 @@ CI presença38329111797/código3463bdc aprovada: três casos JS/Python/Go, 73 ch
 ## S02 disponível para revisão
 
 [Inventário/contrato S02](relatorios/L5-S02.md) concluídos com 48 checks offline: bytes declarados do cache enumerados como ausentes no ZIP histórico, requisitos/versões separados de seleção e compilação unknown. Guard S01 e 55 alertas continuam bloqueantes. Nenhum downloader ou autorização de execução implementado; próxima análise depende de bytes/closure/contextos e contenção prospectiva. Continuidade L5, sem avanço de cartões/gates.
+
+## TSJS experimental e preflight factual comprovados
+
+TSJS38329944063/código96b377c aprovado e [ZIP/API recompostos](relatorios/logs/L5-C04/TSJS/native-proof/reconciliation.json):45 casos,13/13 referências resolvíveis nos labels, zero promoções indevidas, relação real uuid e callable unknown. Limites em[L5-TSJS](relatorios/L5-TSJS.md); nenhum novo dossiê/admissão. [D01 factual](relatorios/logs/L5-C04/D01/factual/proof.json) passou18 contraprovas e recomposição real em snapshot/cópia privada: quatro eventos operacionais, oito elegíveis,0/32 admitidos,19/20 multimódulo; provider/teto e demais requisitos faltantes continuam recusados. CI regular3463bdc38329094983 passou Linux/macOS/contratos, probes upstream históricos skipped. Frentes de recuperação/adapter/recursos seguem em implementação; 41 estados/gates preservados.

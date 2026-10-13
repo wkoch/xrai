@@ -1,0 +1,94 @@
+{
+  "accepted": false,
+  "actual_dimensions": {
+    "admission": "E02 admission requires four explicitly mapped required events",
+    "allocation": "multimodule projection 19/20; compensation pending",
+    "authorization": "paid authorization absent",
+    "budget": "concrete paid currency/window/ceiling unavailable",
+    "containment": "real provider/resource containment profile unavailable",
+    "corpus": "global admitted 0/32; individual eligible 8",
+    "provider": "paid provider adapter unavailable",
+    "state_dossiers": "individually eligible state dossiers 0/4"
+  },
+  "actual_factual_summary": {
+    "admitted_tasks": 0,
+    "competitive_runs_allowed": false,
+    "conditional_projection": {
+      "additional_complex": 11,
+      "additional_historical": 10,
+      "additional_multi_module": 12,
+      "additional_tasks": 24,
+      "admission_deficit": 32,
+      "new_dossiers_remaining": 0
+    },
+    "individual_eligible_tasks": 8,
+    "multi_module_planning_deficit": 1,
+    "multi_module_planning_projection": 19,
+    "multi_module_planning_required": 20,
+    "new_state_dossiers_individually_eligible": 0,
+    "primary_tasks_required": 32,
+    "required_event_by_family": {
+      "Go": 1,
+      "Python": 1,
+      "Rust": 1,
+      "TSJS": 1
+    },
+    "required_events_operationally_proven": 4,
+    "state_tasks_prepared": 4
+  },
+  "captured_bytes": 161426419,
+  "captured_files": 1707,
+  "checks": [
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "eval/scripts",
+        "-p",
+        "test_campaign_preflight.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "tests"
+    },
+    {
+      "command": [
+        "/private/tmp/xrai-c02-tools/bin/python",
+        "eval/scripts/campaign_preflight.py",
+        "--intent",
+        "campaign_d1"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "name": "preflight"
+    }
+  ],
+  "external_calls": 0,
+  "limits": [
+    "Diagnostic uses owned frozen bytes; upstream/native binaries remain data.",
+    "Local API snapshots are internally reconciled; original authenticated acquisition is a prerequisite, not a cryptographic signature.",
+    "This entry point cannot grant D1 or a paid resource even if corpus facts later change.",
+    "No tokenizer execution, performance claim or task eligibility inferred from state protocol proof."
+  ],
+  "paid_provider_enabled": false,
+  "private_copy_retained": false,
+  "recorded_at": "2026-10-13T00:57:07.458919+00:00",
+  "schema": "xrai.eval.d01-factual-preflight-proof.v1",
+  "sha256": {
+    "docs/relatorios/logs/L5-C04/D01/factual/preflight.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/relatorios/logs/L5-C04/D01/factual/preflight.stdout": "e6523176976642bf225f9b2dae8a011bf6985fb2213f60c0f189d24c87cc7773",
+    "docs/relatorios/logs/L5-C04/D01/factual/prove.py": "0c8172a9527119c7d71ebc03fe5c8a7d7a8b8bfc1e2538fc82d1d1824e8eec5c",
+    "docs/relatorios/logs/L5-C04/D01/factual/tests.stderr": "3d6337ad7dda8cd08343f06e66a06f9d09588dd73389a2fedc0a720bceb214b7",
+    "docs/relatorios/logs/L5-C04/D01/factual/tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval/scripts/campaign_preflight.py": "d9f0514db93720db50bb9399221b25acc2e98dc1978ac2a17a9757bc780af6d6",
+    "eval/scripts/test_campaign_preflight.py": "45bf715b4d6b5d5ad8bfce734c33b22861f9837b17ffbda85225cd29ea455b33"
+  },
+  "snapshot_sha256": "8692ad2579cd34a2cc9ba76f36746979638ed95e2c3da68c71e7fda53e9c8e97",
+  "structural_tests": 18,
+  "temporary_copy_reaped": true,
+  "upstream_or_native_execution": false
+}
