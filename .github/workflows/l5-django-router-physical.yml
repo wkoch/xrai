@@ -1,0 +1,48 @@
+name: L5 Django router physical v2
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  django:
+    name: C07 Django real SQLite physical pair
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Prepare disposable Linux containment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          if ! bwrap --unshare-all --ro-bind / / /usr/bin/true; then
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
+          mkdir -p "$RUNNER_TEMP/django-v2-proof"
+          python --version > "$RUNNER_TEMP/django-v2-proof/python.txt"
+          bwrap --version > "$RUNNER_TEMP/django-v2-proof/bwrap.txt"
+      - name: Verify frozen public task and private oracle before execution
+        run: |
+          python eval/scripts/django_router_physical.py verify > "$RUNNER_TEMP/django-v2-proof/design.json"
+          python -m unittest discover -s eval/scripts -p 'test_django_router_physical.py' -v > "$RUNNER_TEMP/django-v2-proof/tests.stdout" 2> "$RUNNER_TEMP/django-v2-proof/tests.stderr"
+      - name: Acquire exact dependency bytes in separate installation phase
+        run: python eval/scripts/django_router_physical.py fetch --cache "$RUNNER_TEMP/django-v2-wheels" > "$RUNNER_TEMP/django-v2-proof/acquisition.json"
+      - name: Prove isolated agent view and baseline reference SQLite behavior
+        run: python eval/scripts/django_router_physical.py run --cache "$RUNNER_TEMP/django-v2-wheels" --output "$RUNNER_TEMP/django-v2-proof/event" > "$RUNNER_TEMP/django-v2-proof/collector.json"
+      - name: Recompute complete physical and teardown receipts
+        run: python eval/scripts/django_router_physical_verify.py --output "$RUNNER_TEMP/django-v2-proof/event" > "$RUNNER_TEMP/django-v2-proof/verification.json"
+      - name: Preserve original physical proof
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c07-django-router-physical-v2
+          path: ${{ runner.temp }}/django-v2-proof
+          if-no-files-found: error
+          retention-days: 90

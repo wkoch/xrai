@@ -1,0 +1,153 @@
+{
+  "schema": "xrai.eval.django-router.oracle.v2",
+  "main_cells": [
+    {
+      "state": "a",
+      "alias": "default",
+      "app": "ledger",
+      "model": "entry",
+      "table": "ledger_entry",
+      "creates_table": true,
+      "router_consulted": true,
+      "isolated_router_allows": true
+    },
+    {
+      "state": "a",
+      "alias": "default",
+      "app": "catalog",
+      "model": "item",
+      "table": "catalog_item",
+      "creates_table": true,
+      "router_consulted": true,
+      "isolated_router_allows": true
+    },
+    {
+      "state": "a",
+      "alias": "default",
+      "app": "ledger",
+      "model": "legacyentry",
+      "table": "ledger_legacyentry",
+      "creates_table": false,
+      "router_consulted": false,
+      "isolated_router_allows": true
+    },
+    {
+      "state": "a",
+      "alias": "reporting",
+      "app": "ledger",
+      "model": "entry",
+      "table": "ledger_entry",
+      "creates_table": false,
+      "router_consulted": true,
+      "isolated_router_allows": false
+    },
+    {
+      "state": "a",
+      "alias": "reporting",
+      "app": "catalog",
+      "model": "item",
+      "table": "catalog_item",
+      "creates_table": false,
+      "router_consulted": true,
+      "isolated_router_allows": false
+    },
+    {
+      "state": "a",
+      "alias": "reporting",
+      "app": "ledger",
+      "model": "legacyentry",
+      "table": "ledger_legacyentry",
+      "creates_table": false,
+      "router_consulted": false,
+      "isolated_router_allows": false
+    },
+    {
+      "state": "b",
+      "alias": "default",
+      "app": "ledger",
+      "model": "entry",
+      "table": "ledger_entry",
+      "creates_table": false,
+      "router_consulted": true,
+      "isolated_router_allows": false
+    },
+    {
+      "state": "b",
+      "alias": "default",
+      "app": "catalog",
+      "model": "item",
+      "table": "catalog_item",
+      "creates_table": true,
+      "router_consulted": true,
+      "isolated_router_allows": true
+    },
+    {
+      "state": "b",
+      "alias": "default",
+      "app": "ledger",
+      "model": "legacyentry",
+      "table": "ledger_legacyentry",
+      "creates_table": false,
+      "router_consulted": false,
+      "isolated_router_allows": false
+    },
+    {
+      "state": "b",
+      "alias": "reporting",
+      "app": "ledger",
+      "model": "entry",
+      "table": "ledger_entry",
+      "creates_table": true,
+      "router_consulted": true,
+      "isolated_router_allows": true
+    },
+    {
+      "state": "b",
+      "alias": "reporting",
+      "app": "catalog",
+      "model": "item",
+      "table": "catalog_item",
+      "creates_table": false,
+      "router_consulted": true,
+      "isolated_router_allows": false
+    },
+    {
+      "state": "b",
+      "alias": "reporting",
+      "app": "ledger",
+      "model": "legacyentry",
+      "table": "ledger_legacyentry",
+      "creates_table": false,
+      "router_consulted": false,
+      "isolated_router_allows": true
+    }
+  ],
+  "physical_controls": [
+    {
+      "control": "all-none",
+      "alias": "default",
+      "creates_table": true
+    },
+    {
+      "control": "all-none",
+      "alias": "reporting",
+      "creates_table": true
+    },
+    {
+      "control": "absent-then-false",
+      "alias": "default",
+      "creates_table": false
+    },
+    {
+      "control": "absent-then-false",
+      "alias": "reporting",
+      "creates_table": false
+    }
+  ],
+  "oracle_executed": false,
+  "baseline_requirement_satisfied": false,
+  "reference_requirement_satisfied": true,
+  "multimodule": false,
+  "projection": 19,
+  "need_statement": "Physical correctness tests framework chain; source relations may be useful but no agent necessity established. Equivalent evidence accepted."
+}

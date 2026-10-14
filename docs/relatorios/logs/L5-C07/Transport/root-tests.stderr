@@ -1,0 +1,43 @@
+test_budget_refusal_records_no_entry (test_transport_receipt_session.PublicTransportTests.test_budget_refusal_records_no_entry) ... ok
+test_caller_mutation_after_commit (test_transport_receipt_session.PublicTransportTests.test_caller_mutation_after_commit) ... ok
+test_caller_mutation_before_commit (test_transport_receipt_session.PublicTransportTests.test_caller_mutation_before_commit) ... ok
+test_cancel_before_commit_no_entry (test_transport_receipt_session.PublicTransportTests.test_cancel_before_commit_no_entry) ... ok
+test_closed_session_no_dispatch_or_late (test_transport_receipt_session.PublicTransportTests.test_closed_session_no_dispatch_or_late) ... ok
+test_conflicting_late_response_refused (test_transport_receipt_session.PublicTransportTests.test_conflicting_late_response_refused) ... ok
+test_duplicate_live_receipt_cannot_be_adopted (test_transport_receipt_session.PublicTransportTests.test_duplicate_live_receipt_cannot_be_adopted) ... ok
+test_duplicated_entry_receipt (test_transport_receipt_session.PublicTransportTests.test_duplicated_entry_receipt) ... ok
+test_entry_omission_and_false_metadata_consistently_resealed_refused (test_transport_receipt_session.PublicTransportTests.test_entry_omission_and_false_metadata_consistently_resealed_refused) ... ok
+test_entry_then_exception (test_transport_receipt_session.PublicTransportTests.test_entry_then_exception) ... ok
+test_entry_then_timeout (test_transport_receipt_session.PublicTransportTests.test_entry_then_timeout) ... ok
+test_final_wire_differs_from_logical (test_transport_receipt_session.PublicTransportTests.test_final_wire_differs_from_logical) ... ok
+test_missing_finish_refused (test_transport_receipt_session.PublicTransportTests.test_missing_finish_refused) ... ok
+test_missing_live_entry_cannot_be_completed (test_transport_receipt_session.PublicTransportTests.test_missing_live_entry_cannot_be_completed) ... ok
+test_missing_response_receipt (test_transport_receipt_session.PublicTransportTests.test_missing_response_receipt) ... ok
+test_mutated_caller_before_capture_refused (test_transport_receipt_session.PublicTransportTests.test_mutated_caller_before_capture_refused) ... ok
+test_no_return_keeps_uncertainty (test_transport_receipt_session.PublicTransportTests.test_no_return_keeps_uncertainty) ... ok
+test_no_runtime_profiler (test_transport_receipt_session.PublicTransportTests.test_no_runtime_profiler) ... ok
+test_omitted_entry_after_exception (test_transport_receipt_session.PublicTransportTests.test_omitted_entry_after_exception) ... ok
+test_omitted_entry_receipt (test_transport_receipt_session.PublicTransportTests.test_omitted_entry_receipt) ... ok
+test_omitted_public_request_admission (test_transport_receipt_session.PublicTransportTests.test_omitted_public_request_admission) ... ok
+test_omitted_request_row (test_transport_receipt_session.PublicTransportTests.test_omitted_request_row) ... ok
+test_oversized_late_response_refused_before_financial_mutation (test_transport_receipt_session.PublicTransportTests.test_oversized_late_response_refused_before_financial_mutation) ... ok
+test_preentry_refusal_knows_absence (test_transport_receipt_session.PublicTransportTests.test_preentry_refusal_knows_absence) ... ok
+test_public_wire_truncated_refuses_before_entry (test_transport_receipt_session.PublicTransportTests.test_public_wire_truncated_refuses_before_entry) ... ok
+test_repeat_response_with_new_receipt_only (test_transport_receipt_session.PublicTransportTests.test_repeat_response_with_new_receipt_only) ... ok
+test_response_changed_resealed (test_transport_receipt_session.PublicTransportTests.test_response_changed_resealed) ... ok
+test_retry_identity_and_late_idempotence (test_transport_receipt_session.PublicTransportTests.test_retry_identity_and_late_idempotence) ... ok
+test_revoke_during_io_lock_free (test_transport_receipt_session.PublicTransportTests.test_revoke_during_io_lock_free) ... ok
+test_snapshot_during_actual_entry_io (test_transport_receipt_session.PublicTransportTests.test_snapshot_during_actual_entry_io) ... ok
+test_truncated_wire (test_transport_receipt_session.PublicTransportTests.test_truncated_wire) ... ok
+test_wire_identity_bool_bytes_refused (test_transport_receipt_session.PublicTransportTests.test_wire_identity_bool_bytes_refused) ... ok
+test_wrong_attempt (test_transport_receipt_session.PublicTransportTests.test_wrong_attempt) ... ok
+test_wrong_commit (test_transport_receipt_session.PublicTransportTests.test_wrong_commit) ... ok
+test_wrong_live_attempt_receipt_cannot_be_adopted (test_transport_receipt_session.PublicTransportTests.test_wrong_live_attempt_receipt_cannot_be_adopted) ... ok
+test_wrong_live_serializer_receipt_cannot_be_adopted (test_transport_receipt_session.PublicTransportTests.test_wrong_live_serializer_receipt_cannot_be_adopted) ... ok
+test_wrong_returned_bytes_keep_uncertainty (test_transport_receipt_session.PublicTransportTests.test_wrong_returned_bytes_keep_uncertainty) ... ok
+test_wrong_serializer (test_transport_receipt_session.PublicTransportTests.test_wrong_serializer) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.156s
+
+OK

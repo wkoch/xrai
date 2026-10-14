@@ -1,0 +1,31 @@
+{
+  "schema": "xrai.eval.django-router.local-check.v2",
+  "recorded_at": "2026-10-14T19:45:07.635618+00:00",
+  "python_version": "3.15.0",
+  "commands": [
+    {
+      "command": "python3 eval/scripts/django_router_physical.py verify",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -m unittest discover -s eval/scripts -p test_django_router_physical.py -v",
+      "tests": 34,
+      "pass": 34,
+      "skip": 0,
+      "exit_code": 0
+    }
+  ],
+  "source_sha256": {
+    "eval/scripts/django_router_physical.py": "9fda94eaf96c3a3cd685d78fe4019d75d3e602807d51d7e0a07d6a613aaca395",
+    "eval/scripts/django_router_physical_verify.py": "58ad23a2fed953d3e93ffcb0d64f9e6911f0e7b038fa6143f36975a7a10445d2",
+    "eval/scripts/test_django_router_physical.py": "a7cdd91211c21ac9da6c7c2a67967684520f772ecc31ed2e4c7d4a49af9ce5c3",
+    "eval/qualification/django-router-v2/evaluator/physical_oracle.py": "e8183662b6a402c7802e819ea0c470d06f4ad82eed8b1ba68b6d7c538a802259",
+    "eval/qualification/django-router-v2/agent/visibility_probe.py": "be12b8aabe67fdbeaa56cfd55faba083d6d69add27114976c6f92a2025a3dce2"
+  },
+  "ast_syntax_verified": true,
+  "framework_executed": false,
+  "sqlite_oracle_executed": false,
+  "elf_executed": false,
+  "provider_used": false,
+  "physical_proof_pending": true
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "xrai.eval.django-router.setup.v2",
+  "python": "3.13.13",
+  "platform": "Linux-x86_64",
+  "source_pin": "8abacfc36d755d8e762a4d2074601b8dc412bfee",
+  "packages": [
+    {
+      "name": "asgiref",
+      "version": "3.12.1",
+      "filename": "asgiref-3.12.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/c0/1b/54f4ad77cd8a584fa70746c47df988e002cf1ee1eba43364d46f87803647/asgiref-3.12.1-py3-none-any.whl",
+      "bytes": 25478,
+      "sha256": "fe386d1c2bff7259ea95929266d12a8cf9a8b5a1c2598402967d8792e7a7c094",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "sqlparse",
+      "version": "0.5.3",
+      "filename": "sqlparse-0.5.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a9/5c/bfd6bd0bf979426d405cc6e71eceb8701b148b16c21d2dc3c261efc61c7b/sqlparse-0.5.3-py3-none-any.whl",
+      "bytes": 44415,
+      "sha256": "cf2196ed3418f3ba5de6af7e82c694a9fbdbfecccdfc72e281548517081f16ca",
+      "license": "BSD-3-Clause"
+    }
+  ],
+  "phase_policy": {
+    "install": "network acquisition of exact wheel bytes; data extraction only; no package import/build/setup.py",
+    "execute": "disposable Linux runner.execute namespace, offline inner read-only source/runtime, no evaluator mount for agent",
+    "max_process_seconds": 60,
+    "max_batch_seconds": 300,
+    "max_output_bytes_combined": 1048576,
+    "scratch_tmpfs_bytes": 67108864,
+    "rlimit_address_space_bytes": 1073741824,
+    "rlimit_processes_per_uid": 64,
+    "rlimit_file_bytes": 16777216,
+    "aggregate_memory_cgroup_applied": false,
+    "aggregate_process_cgroup_applied": false
+  },
+  "runtime_capture": "copy exact setup-python executable/stdlib excluding site-packages; inventory SHA256 and licenses BEFORE any Django import; SQLite and ELF dependency closure inventoried; host wheel inheritance prohibited",
+  "qualified": false,
+  "admitted": false
+}

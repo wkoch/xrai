@@ -1,0 +1,84 @@
+{
+  "schema_version": "xrai.eval.store-process-independent-review.v1",
+  "reviewer": "/root/transport_receipt",
+  "runtime": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "recorded_at_utc": "2026-10-14T19:52:50.908912+00:00",
+  "source_bindings": {
+    "crates/xrai-eval/harness/store_process_protocol.py": "4a845c92b6207f73c1f7309a1f8a686a449829f45debd1ee200f35bd59574d83",
+    "crates/xrai-eval/harness/tests/test_store_process_protocol.py": "2df796026fa1a5179a374855a2787eba37ee452c88cabf8018092a92b443eb78",
+    "crates/xrai-eval/src/context_spike.rs": "5c64446a9486a5b5b6bd5f8f77aac4fa0712dcc8c7e51af0156e3fb8126bc5cf",
+    "crates/xrai-eval/src/context_spike/validated_diff.rs": "5e28af1dd058aa5e1361de862fc0fac4e0e47ee34342c669ac9a3020f000dfe5"
+  },
+  "graph": {
+    "project": "Users-wkoch-Projetos-xrai",
+    "tier": 2,
+    "generation": "2026-10-14T19:47:23Z",
+    "source_fallback": [
+      "context_spike.rs:150-240,381-460,600-715,775-910,1040-1328",
+      "validated_diff.rs:1-317"
+    ],
+    "coverage_caveat": "best effort; changed Store read directly"
+  },
+  "tests": {
+    "command": [
+      "/opt/homebrew/opt/python@3.15/bin/python3.15",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "crates/xrai-eval/harness/tests",
+      "-p",
+      "test_store_process_protocol.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "passed": 13,
+    "skipped": 0,
+    "stdout": "",
+    "stderr": "test_close_timeout_reaps_instance (test_store_process_protocol.ProcessTests.test_close_timeout_reaps_instance) ... ok\ntest_concurrent_operation_refuses_without_mixing_frames (test_store_process_protocol.ProcessTests.test_concurrent_operation_refuses_without_mixing_frames) ... ok\ntest_final_stderr_after_stdout_eof_is_retained (test_store_process_protocol.ProcessTests.test_final_stderr_after_stdout_eof_is_retained) ... ok\ntest_final_stderr_is_bounded_and_fatal_when_oversize (test_store_process_protocol.ProcessTests.test_final_stderr_is_bounded_and_fatal_when_oversize) ... ok\ntest_late_old_reply_cannot_answer_next_command (test_store_process_protocol.ProcessTests.test_late_old_reply_cannot_answer_next_command) ... ok\ntest_local_request_caps_monotonic_ids_and_booleans (test_store_process_protocol.ProcessTests.test_local_request_caps_monotonic_ids_and_booleans) ... ok\ntest_nonblocking_write_is_inside_deadline (test_store_process_protocol.ProcessTests.test_nonblocking_write_is_inside_deadline) ... ok\ntest_output_and_stderr_caps_checked_before_unbounded_capture (test_store_process_protocol.ProcessTests.test_output_and_stderr_caps_checked_before_unbounded_capture) ... ok\ntest_partial_eof_is_fatal (test_store_process_protocol.ProcessTests.test_partial_eof_is_fatal) ... ok\ntest_partial_reply_timeout_retained_and_instance_never_reused (test_store_process_protocol.ProcessTests.test_partial_reply_timeout_retained_and_instance_never_reused) ... ok\ntest_same_process_echo_complete_bytes_and_explicit_close (test_store_process_protocol.ProcessTests.test_same_process_echo_complete_bytes_and_explicit_close) ... ok\ntest_unsolicited_reply_before_request_is_fatal (test_store_process_protocol.ProcessTests.test_unsolicited_reply_before_request_is_fatal) ... ok\ntest_wrong_identity_duplicate_nonfinite_and_extra_frames (test_store_process_protocol.ProcessTests.test_wrong_identity_duplicate_nonfinite_and_extra_frames) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 1.294s\n\nOK\n"
+  },
+  "findings": [
+    {
+      "id": "final-stderr-loss",
+      "status": "fixed_verified",
+      "before": "Close loop ended at stdout EOF; queued final stderr emitted before child exit was dropped.",
+      "counterproof": "Owned Python fixture responds close, os.close(1), sleeps50ms, writes FINAL_AUDIT newline and exits. Original captured stderr0B; fixed captured12B SHA25602764267ef420e627b0789ff9b76c30dcb5729d78eb216869d1e21f25673a956.",
+      "regressions": [
+        "test_final_stderr_after_stdout_eof_is_retained",
+        "test_final_stderr_is_bounded_and_fatal_when_oversize"
+      ]
+    }
+  ],
+  "verified": {
+    "request_write_and_response_read_share_deadline": true,
+    "write_nonblocking": true,
+    "bounded_frame_before_full_allocation": true,
+    "duplicate_keys_nonfinite_wrong_ids_extra_frames_refused": true,
+    "partial_timeout_eof_retained": true,
+    "fatal_instance_not_reused": true,
+    "final_stderr_drained_bounded": true,
+    "close_waits_pipes_and_exit_under_shutdown_deadline": true,
+    "direct_child_reaped_tested": true,
+    "group_signal_denied_keeps_absence_unknown": true,
+    "store_publication_plan_victims_then_all_fallible_before_evict": true,
+    "store_ttl_separate_legitimate_expiry": true,
+    "store_validated_diff_non_deserialize_private_construction": true,
+    "native_identity_and_complete_head_check_read": true,
+    "explicit_absent_present_empty_unavailable": true,
+    "bytes_frontend_has_no_rust_ir": true,
+    "presence_items_have_null_span_and_content": true
+  },
+  "limitations": [
+    "_kill wait timeout2s is bounded collection grace outside operation deadline; hard total SLA not proved.",
+    "abort serializes on process lock and waits inflight call; immediate asynchronous cancellation not implemented.",
+    "Process groups can be unknown under OS restrictions; no containment claim.",
+    "Helper authorizes no native/upstream execution; caller must supply authorized domain.",
+    "Rust review is source-only; native behavior/unit tests not executed locally.",
+    "Whole-task aggregate costs, public Store consumer and real model not demonstrated by helper."
+  ],
+  "external_calls": 0,
+  "provider_called": false,
+  "native_executed": false,
+  "upstream_imported": false,
+  "conclusion": "owned-helper boundaries accepted with explicit cleanup/cancellation/OS limits; Store source-only bounded review no material finding"
+}

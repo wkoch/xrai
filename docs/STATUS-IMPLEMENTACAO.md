@@ -311,3 +311,9 @@ Checkout consultado `e30f54f`, limpo e sem commits posteriores locais. Dois agen
 Fechadas decisões da ponte: perfil prospectivo para envelope/snapshot incompatível, entrada de sessão chamando Store real, framing serial com deadline cobrindo escrita/leitura, transição explícita entre bindings e preservação do orçamento agregado. O wrapper lexical/fake histórico não ganha autorização de subprocesso. Próxima implementação continua Store/Tokio, Django físico e transporte; o novo contrato especifica a integração subsequente e não as substitui. [Pareceres e hashes](relatorios/logs/vertical-Rust-planejamento/revisao.json).
 
 Clarificada a redação de M0-10: as 20 tarefas citadas são D0; a decisão competitiva G0 mantém D1 qualificado de 32. Estados 9/7/25, oito elegíveis/0 admitidos, quatro eventos, projeção19/20 e G0/G1/G2 inalterados. [Checks documentais](relatorios/logs/vertical-Rust-planejamento/documentacao.json). Entrega somente de arquitetura, com commit/push após checks.
+
+## C07 — transporte público e preparação física
+
+[L5-C07](relatorios/L5-C07.md): transporte fake no mesmo owner financeiro, bytes wire finais e entrada pública observada;38 testes e oito registros completos próprios, revisão independente e reparos de omissão/lateoversize. Histórico D01/guard/consumer preservado. Helper de processo novo tem14 testes ownPython e revisão, deadline incluindo write/read, cancel sem lockI/O e stderrfinal; nenhuma chamada do Store real atribuída ainda.
+
+Django v2 preparado com pública unmanaged, oracle12+4 pré-congelado, lock/runtime/domínio/visibilidade e38 contraprovas de dados, incluindo quatro acrescidas na integração root. CI física ainda pendente neste checkpoint. Store Rust preparado pelo agente, collector/rebuild/CI em finalização; não reutiliza receipt C06 para atribuir integração futura. 41 estados9/7/25, oito elegíveis/0 admitidos, D1global0/32,19/20 e gates preservados.

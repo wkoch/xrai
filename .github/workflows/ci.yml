@@ -89,6 +89,11 @@ jobs:
           python eval/adapters/guarded-smoke-v1/verify.py --archive docs/relatorios/logs/L5-C06/guarded-smoke/owned-output.zip
           python -m unittest discover -s eval/scripts -p 'test_django_router.py' -v
           python eval/scripts/django_router_verify.py --receipt docs/relatorios/logs/L5-C06/Django-routers/verification.json
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_transport_receipt_session.py' -v
+          python eval/adapters/public-transport-v1/verify.py
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p 'test_store_process_protocol.py' -v
+          python -m unittest discover -s eval/scripts -p 'test_django_router_physical.py' -v
+          python eval/scripts/django_router_physical.py verify
   workspace:
     name: ${{ matrix.host }}
     runs-on: ${{ matrix.runner }}

@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-10-14T19:39:48.995914+00:00",
+  "reviewer": "root second reader before physical execution",
+  "scope": "manual source-supported oracle review; no Django imported or SQLite oracle executed",
+  "source_anchors": {
+    "models.py": "CreateModel.database_forwards97-110 uses to_state historical model and schema_editor.create_model after allow_migrate_model",
+    "base.py": "148-158 rejects model before router",
+    "options.py": "395-411 rejects unmanaged before any connection/router",
+    "utils.py": "257-269 first non-None, including False; all-None True"
+  },
+  "expected_cells": 12,
+  "physical_controls": 4,
+  "public_veto_explicit": true,
+  "approved_for_freeze": true,
+  "runtime_lock_not_yet_physically_verified": true,
+  "sha256": {
+    "eval/qualification/django-router-v2/agent/input.md": "f9729a0c1bf161502675bafbc3295755d2b430ed60cc4f4c26a0bb6ad6cfdb10",
+    "eval/qualification/django-router-v2/agent/deployment.json": "3581ff46940734aeb744d26ca026e36c73d67660daf436d174a02572a1e8f60d",
+    "eval/qualification/django-router-v2/agent/policy.py": "95ca159e0f181feb6235aca44e9cd37937b95a68b753013d678645b4541e7c57",
+    "eval/qualification/django-router-v2/evaluator/reference.json": "89871a5c749449ba2ee2e42cefe0a271f324ee70cd7e01c61492684d30d7b385",
+    "eval/qualification/django-router-v2/evaluator/oracle.json": "698d95de682105319b2d6f84146c38087722ec878e321e0e620b27fdb7770d3b"
+  }
+}

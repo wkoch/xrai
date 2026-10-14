@@ -1,0 +1,43 @@
+{
+  "databases": {
+    "default": {
+      "engine": "sqlite",
+      "storage": "disposable-separated-database"
+    },
+    "reporting": {
+      "engine": "sqlite",
+      "storage": "disposable-separated-database"
+    }
+  },
+  "router_components": {
+    "primary": "policy.DefaultPolicy",
+    "scoped": "policy.LedgerPolicy"
+  },
+  "router_order": [
+    "primary",
+    "scoped"
+  ],
+  "models": [
+    {
+      "app_label": "ledger",
+      "model_name": "entry",
+      "managed": true,
+      "proxy": false,
+      "swapped": false
+    },
+    {
+      "app_label": "catalog",
+      "model_name": "item",
+      "managed": true,
+      "proxy": false,
+      "swapped": false
+    },
+    {
+      "app_label": "ledger",
+      "model_name": "legacyentry",
+      "managed": false,
+      "proxy": false,
+      "swapped": false
+    }
+  ]
+}
