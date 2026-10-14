@@ -1,0 +1,40 @@
+{
+  "byte_budget": "normal success Store selects whole outer envelope including LF; model_tokens=null; used_tokens field is functional byte units in named profile; refusal frame costs separately recorded",
+  "files": {
+    "crates/xrai-eval/src/bin/context-store-session.rs": {
+      "bytes": 7589,
+      "sha256": "18df5970fa1eb708b754a48e4bb5ed17cd6d93139b12d956aa310ab99dfff8fe"
+    },
+    "crates/xrai-eval/src/context_spike.rs": {
+      "bytes": 89396,
+      "sha256": "5c64446a9486a5b5b6bd5f8f77aac4fa0712dcc8c7e51af0156e3fb8126bc5cf"
+    },
+    "crates/xrai-eval/src/context_spike/validated_diff.rs": {
+      "bytes": 14928,
+      "sha256": "5e28af1dd058aa5e1361de862fc0fac4e0e47ee34342c669ac9a3020f000dfe5"
+    },
+    "eval/semantics/tokio-development.json": {
+      "bytes": 6097,
+      "sha256": "38d61962127f09367ad53ce30627fde3c630b4cbdaa7aaf6d158fc7933db161d"
+    }
+  },
+  "frozen_at_utc": "2026-10-14T19:47:52.036726+00:00",
+  "graft_calls": 3,
+  "graft_saved_tokens": 117736,
+  "identity_mapping": "unit-tests independent Store epoch explicitly equal; same input created_ms=0/incarnation=1. No source/configuration/IR/candidate/obligation field excluded. Meter elapsed timing compared separately, not semantic full artifact. Session collector maps runtime handles prospectively.",
+  "local_native_executed": false,
+  "native_results_observed": false,
+  "pre_native_repair": "Read-only static review: byte capture symbol_count=null and reason captured_bytes:ir_absent. Rust legacy serialized labels unchanged.",
+  "profile": "xrai.eval.store-bridge-pre-native-freeze.v1",
+  "prospective_tests": [
+    "complete_head_and_utf8_are_native_requirements",
+    "presence_is_distinct_and_unavailable_cannot_be_complete",
+    "identity_unknown_fields_and_duplicate_files_are_refused",
+    "bytes_presence_create_delete_empty_without_rust_ir",
+    "byte_p2_and_foreign_hunks_refused_preserving_live_context",
+    "pressure_deadline_gate_is_atomic_and_ttl_is_separate",
+    "valid_update_and_failed_budget_keep_retained_source",
+    "tokio_removed_declaration_base_expansion_and_head_query_are_distinct"
+  ],
+  "tokio_pin": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6"
+}

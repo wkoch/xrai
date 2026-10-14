@@ -1,0 +1,55 @@
+name: L5 live Store bridge
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  store:
+    name: C07 live Store typed context
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13.13'
+      - name: Install pinned own verification tooling
+        run: python -m pip install -r docs/contracts/examples/requirements.txt
+      - name: Verify frozen Store cases before native execution
+        run: |
+          mkdir -p store-bridge-evidence
+          python --version > store-bridge-evidence/python.txt
+          python eval/scripts/store_bridge_verify.py --design-only > store-bridge-evidence/design.json
+          python -m unittest discover -s crates/xrai-eval/harness/tests -p test_store_process_protocol.py -v > store-bridge-evidence/process-tests.stdout 2> store-bridge-evidence/process-tests.stderr
+      - name: Build and test the owned Store library and session
+        run: |
+          export RUSTUP_HOME="$RUNNER_TEMP/xrai-rustup"
+          printf '%s\n' "RUSTUP_HOME=$RUSTUP_HOME" >> "$GITHUB_ENV"
+          rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy
+          cargo fmt --all -- --check
+          cargo clippy --locked -p xrai-eval --all-targets -- -D warnings
+          cargo test --locked -p xrai-eval context_spike -- --nocapture > store-bridge-evidence/native-tests.stdout 2> store-bridge-evidence/native-tests.stderr
+          cargo build --release --locked -p xrai-eval --bin context-store-session
+          rustc --version --verbose > store-bridge-evidence/rustc.txt
+          cargo --version > store-bridge-evidence/cargo.txt
+      - name: Collect live Store and fresh rebuild responses
+        run: python eval/scripts/store_bridge_collect.py --binary target/release/context-store-session --output store-bridge-evidence/event > store-bridge-evidence/collector.json
+      - name: Recompute complete captured Store receipts
+        run: python eval/scripts/store_bridge_verify.py --output store-bridge-evidence/event > store-bridge-evidence/verification.json
+      - name: Reject altered Store replies and captures
+        env:
+          XRAI_C07_STORE_OUTPUT: store-bridge-evidence/event
+        run: python -m unittest discover -s eval/scripts -p test_store_bridge.py -v > store-bridge-evidence/receipt-tests.stdout 2> store-bridge-evidence/receipt-tests.stderr
+      - name: Preserve original live Store proof
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: c07-live-store-bridge
+          path: store-bridge-evidence
+          if-no-files-found: error
+          retention-days: 90

@@ -1,0 +1,666 @@
+{
+  "cases": [
+    {
+      "diff": {
+        "base": {
+          "capture_blake3": "5f07644e6285a48da47e8b59bf2be5cb42909831357402cb43eb2397977a6534",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-create-A",
+          "files": {
+            "src/a.jsx": {
+              "state": "absent"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        },
+        "changes": [
+          {
+            "hunks": [
+              {
+                "base_span": [
+                  0,
+                  0
+                ],
+                "head_span": [
+                  0,
+                  20
+                ],
+                "removed_hex": "",
+                "replacement_hex": "6578706f727420636f6e737420ceb13d313b0d0a"
+              }
+            ],
+            "kind": "create",
+            "path": "src/a.jsx"
+          }
+        ],
+        "head": {
+          "capture_blake3": "22c5b0922eb392b8ee4dd642247cd31960fdeb3101e00732d8479a2c482cc345",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-create-B",
+          "files": {
+            "src/a.jsx": {
+              "bytes_hex": "6578706f727420636f6e737420ceb13d313b0d0a",
+              "state": "present"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        }
+      },
+      "expected_queries": [],
+      "id": "react-create",
+      "request": {
+        "anchors": [],
+        "description": "public controlled react-create",
+        "hunks": [],
+        "intent": "review",
+        "limits": {
+          "deadline_ms": 30000,
+          "max_bytes": 131072,
+          "max_candidates": 64,
+          "max_files": 16,
+          "max_source_bytes": 1048576,
+          "max_tokens": 131072
+        },
+        "p2": false
+      }
+    },
+    {
+      "diff": {
+        "base": {
+          "capture_blake3": "738e3d4b0fa277ac1b706219709e4580d35aaf6c492300973bd53b2ef38e98e7",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-delete-A",
+          "files": {
+            "src/a.jsx": {
+              "bytes_hex": "6578706f727420636f6e737420ceb13d313b0d0a",
+              "state": "present"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        },
+        "changes": [
+          {
+            "hunks": [
+              {
+                "base_span": [
+                  0,
+                  20
+                ],
+                "head_span": [
+                  0,
+                  0
+                ],
+                "removed_hex": "6578706f727420636f6e737420ceb13d313b0d0a",
+                "replacement_hex": ""
+              }
+            ],
+            "kind": "delete",
+            "path": "src/a.jsx"
+          }
+        ],
+        "head": {
+          "capture_blake3": "9f40d72979f7e0662c991ddbead53b6ca49d57180b3c45d0952fc6523694e042",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-delete-B",
+          "files": {
+            "src/a.jsx": {
+              "state": "absent"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        }
+      },
+      "expected_queries": [],
+      "id": "react-delete",
+      "request": {
+        "anchors": [],
+        "description": "public controlled react-delete",
+        "hunks": [],
+        "intent": "review",
+        "limits": {
+          "deadline_ms": 30000,
+          "max_bytes": 131072,
+          "max_candidates": 64,
+          "max_files": 16,
+          "max_source_bytes": 1048576,
+          "max_tokens": 131072
+        },
+        "p2": false
+      }
+    },
+    {
+      "diff": {
+        "base": {
+          "capture_blake3": "a077263a3d30162684f797cf7b7318b43bbfbaeb48fa38f06b9cd35770bc5d48",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-create-empty-A",
+          "files": {
+            "src/a.jsx": {
+              "state": "absent"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        },
+        "changes": [
+          {
+            "hunks": [
+              {
+                "base_span": [
+                  0,
+                  0
+                ],
+                "head_span": [
+                  0,
+                  0
+                ],
+                "removed_hex": "",
+                "replacement_hex": ""
+              }
+            ],
+            "kind": "create",
+            "path": "src/a.jsx"
+          }
+        ],
+        "head": {
+          "capture_blake3": "0d560423f09f2f600ae533382ef3b4eaa745fc80d8fae26111e88c6cadf6fa87",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-create-empty-B",
+          "files": {
+            "src/a.jsx": {
+              "bytes_hex": "",
+              "state": "present"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        }
+      },
+      "expected_queries": [],
+      "id": "react-create-empty",
+      "request": {
+        "anchors": [],
+        "description": "public controlled react-create-empty",
+        "hunks": [],
+        "intent": "review",
+        "limits": {
+          "deadline_ms": 30000,
+          "max_bytes": 131072,
+          "max_candidates": 64,
+          "max_files": 16,
+          "max_source_bytes": 1048576,
+          "max_tokens": 131072
+        },
+        "p2": false
+      }
+    },
+    {
+      "diff": {
+        "base": {
+          "capture_blake3": "38e6c8260259c7ea8e8b080bcdf6d405dbf169c185ff74b4f2a623887aa6691d",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-delete-empty-A",
+          "files": {
+            "src/a.jsx": {
+              "bytes_hex": "",
+              "state": "present"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        },
+        "changes": [
+          {
+            "hunks": [
+              {
+                "base_span": [
+                  0,
+                  0
+                ],
+                "head_span": [
+                  0,
+                  0
+                ],
+                "removed_hex": "",
+                "replacement_hex": ""
+              }
+            ],
+            "kind": "delete",
+            "path": "src/a.jsx"
+          }
+        ],
+        "head": {
+          "capture_blake3": "5840d2e5b4e84f15a984c8dd2f2da64e5184197264367496b7f629c45ae04f58",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-delete-empty-B",
+          "files": {
+            "src/a.jsx": {
+              "state": "absent"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        }
+      },
+      "expected_queries": [],
+      "id": "react-delete-empty",
+      "request": {
+        "anchors": [],
+        "description": "public controlled react-delete-empty",
+        "hunks": [],
+        "intent": "review",
+        "limits": {
+          "deadline_ms": 30000,
+          "max_bytes": 131072,
+          "max_candidates": 64,
+          "max_files": 16,
+          "max_source_bytes": 1048576,
+          "max_tokens": 131072
+        },
+        "p2": false
+      }
+    },
+    {
+      "diff": {
+        "base": {
+          "capture_blake3": "6397812a68f48a8c340b52b662f10e4f4593fe111e50c5b2695fa123adfc962a",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-modify-A",
+          "files": {
+            "src/a.jsx": {
+              "bytes_hex": "636f6e737420ceb13d313b0d0a",
+              "state": "present"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        },
+        "changes": [
+          {
+            "hunks": [
+              {
+                "base_span": [
+                  0,
+                  13
+                ],
+                "head_span": [
+                  0,
+                  13
+                ],
+                "removed_hex": "636f6e737420ceb13d313b0d0a",
+                "replacement_hex": "636f6e737420ceb13d323b0d0a"
+              }
+            ],
+            "kind": "modify",
+            "path": "src/a.jsx"
+          }
+        ],
+        "head": {
+          "capture_blake3": "146df271d983c806975372edd248b30ef59286749673544b9dcaeaa7f452dccc",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-modify-B",
+          "files": {
+            "src/a.jsx": {
+              "bytes_hex": "636f6e737420ceb13d323b0d0a",
+              "state": "present"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        }
+      },
+      "expected_queries": [],
+      "id": "react-modify",
+      "request": {
+        "anchors": [],
+        "description": "public controlled react-modify",
+        "hunks": [],
+        "intent": "review",
+        "limits": {
+          "deadline_ms": 30000,
+          "max_bytes": 131072,
+          "max_candidates": 64,
+          "max_files": 16,
+          "max_source_bytes": 1048576,
+          "max_tokens": 131072
+        },
+        "p2": false
+      }
+    },
+    {
+      "diff": {
+        "base": {
+          "capture_blake3": "01e81d71f2918274c962dd5687516102e646b21357b29980bdd0ee09f3b0049e",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "2021",
+          "external_revision": "tokio-cstr-A",
+          "files": {
+            "tokio/src/io/uring/utils.rs": {
+              "bytes_hex": "757365207374643a3a6f733a3a66643a3a7b417352617746642c204f776e656446642c2052617746647d3b0a757365207374643a3a6f733a3a756e69783a3a6666693a3a4f735374724578743b0a757365207374643a3a73796e633a3a4172633b0a757365207374643a3a7b6666693a3a43537472696e672c20696f2c20706174683a3a506174687d3b0a0a707562286372617465292074797065204172634664203d204172633c64796e2041735261774664202b2053656e64202b2053796e63202b20277374617469633e3b0a0a2f2f2f205261772066696c652064657363726970746f7220747261697420666f7220696f2d7572696e67206f7065726174696f6e732e0a2f2f2f0a2f2f2f20604172633c64796e20417352617746643e6020646f6573206e6f7420736174697366792060417352617746646020626563617573652074686520626c616e6b657420696d706c0a2f2f2f20666f7220604172633c543e602072657175697265732060543a2053697a6564602e2054686973207472616974206272696467657320746861742067617020736f20626f74680a2f2f2f20604f776e656446646020616e6420604172634664602063616e20626520757365642067656e65726963616c6c79207769746820604f703a3a726561645f6174602e0a70756228637261746529207472616974205572696e6746643a2053656e64202b2053796e63202b2027737461746963207b0a20202020666e2061735f7261775f6664282673656c6629202d3e2052617746643b0a7d0a0a696d706c205572696e67466420666f72204f776e65644664207b0a20202020666e2061735f7261775f6664282673656c6629202d3e205261774664207b0a2020202020202020417352617746643a3a61735f7261775f66642873656c66290a202020207d0a7d0a0a696d706c205572696e67466420666f72204172634664207b0a20202020666e2061735f7261775f6664282673656c6629202d3e205261774664207b0a2020202020202020282a2a73656c66292e61735f7261775f666428290a202020207d0a7d0a0a7075622863726174652920666e206373747228703a20265061746829202d3e20696f3a3a526573756c743c43537472696e673e207b0a202020204f6b2843537472696e673a3a6e657728702e61735f6f735f73747228292e61735f62797465732829293f290a7d0a",
+              "state": "present"
+            }
+          },
+          "frontend": "rust",
+          "root": "tokio/src/io/uring/utils.rs",
+          "rules": "rust-r1-r2-v1"
+        },
+        "changes": [
+          {
+            "hunks": [
+              {
+                "base_span": [
+                  774,
+                  878
+                ],
+                "head_span": [
+                  774,
+                  774
+                ],
+                "removed_hex": "7075622863726174652920666e206373747228703a20265061746829202d3e20696f3a3a526573756c743c43537472696e673e207b0a202020204f6b2843537472696e673a3a6e657728702e61735f6f735f73747228292e61735f62797465732829293f290a7d0a",
+                "replacement_hex": ""
+              }
+            ],
+            "kind": "modify",
+            "path": "tokio/src/io/uring/utils.rs"
+          }
+        ],
+        "head": {
+          "capture_blake3": "5ccfbae12369ca2e80d3f6a9e385a983a02e06f0b21ef14d9a0bb2c396745f2e",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "2021",
+          "external_revision": "tokio-cstr-B",
+          "files": {
+            "tokio/src/io/uring/utils.rs": {
+              "bytes_hex": "757365207374643a3a6f733a3a66643a3a7b417352617746642c204f776e656446642c2052617746647d3b0a757365207374643a3a6f733a3a756e69783a3a6666693a3a4f735374724578743b0a757365207374643a3a73796e633a3a4172633b0a757365207374643a3a7b6666693a3a43537472696e672c20696f2c20706174683a3a506174687d3b0a0a707562286372617465292074797065204172634664203d204172633c64796e2041735261774664202b2053656e64202b2053796e63202b20277374617469633e3b0a0a2f2f2f205261772066696c652064657363726970746f7220747261697420666f7220696f2d7572696e67206f7065726174696f6e732e0a2f2f2f0a2f2f2f20604172633c64796e20417352617746643e6020646f6573206e6f7420736174697366792060417352617746646020626563617573652074686520626c616e6b657420696d706c0a2f2f2f20666f7220604172633c543e602072657175697265732060543a2053697a6564602e2054686973207472616974206272696467657320746861742067617020736f20626f74680a2f2f2f20604f776e656446646020616e6420604172634664602063616e20626520757365642067656e65726963616c6c79207769746820604f703a3a726561645f6174602e0a70756228637261746529207472616974205572696e6746643a2053656e64202b2053796e63202b2027737461746963207b0a20202020666e2061735f7261775f6664282673656c6629202d3e2052617746643b0a7d0a0a696d706c205572696e67466420666f72204f776e65644664207b0a20202020666e2061735f7261775f6664282673656c6629202d3e205261774664207b0a2020202020202020417352617746643a3a61735f7261775f66642873656c66290a202020207d0a7d0a0a696d706c205572696e67466420666f72204172634664207b0a20202020666e2061735f7261775f6664282673656c6629202d3e205261774664207b0a2020202020202020282a2a73656c66292e61735f7261775f666428290a202020207d0a7d0a0a",
+              "state": "present"
+            }
+          },
+          "frontend": "rust",
+          "root": "tokio/src/io/uring/utils.rs",
+          "rules": "rust-r1-r2-v1"
+        }
+      },
+      "expected_queries": [
+        {
+          "occurrence": true,
+          "path": "cstr",
+          "side": "base",
+          "state": "resolved"
+        },
+        {
+          "occurrence": false,
+          "path": "cstr",
+          "side": "head",
+          "state": "unknown"
+        },
+        {
+          "occurrence": true,
+          "path": "ArcFd",
+          "side": "base",
+          "state": "resolved"
+        },
+        {
+          "occurrence": true,
+          "path": "ArcFd",
+          "side": "head",
+          "state": "resolved"
+        },
+        {
+          "occurrence": true,
+          "path": "UringFd",
+          "side": "base",
+          "state": "resolved"
+        },
+        {
+          "occurrence": true,
+          "path": "UringFd",
+          "side": "head",
+          "state": "resolved"
+        },
+        {
+          "occurrence": true,
+          "path": "OwnedFd",
+          "side": "base",
+          "state": "unknown"
+        },
+        {
+          "occurrence": true,
+          "path": "OwnedFd",
+          "side": "head",
+          "state": "unknown"
+        }
+      ],
+      "id": "tokio-cstr",
+      "request": {
+        "anchors": [
+          {
+            "end": 792,
+            "lookup": {
+              "module": "",
+              "namespace": "value",
+              "path": "cstr"
+            },
+            "path": "tokio/src/io/uring/utils.rs",
+            "side": "base",
+            "start": 788
+          },
+          {
+            "end": 161,
+            "lookup": {
+              "module": "",
+              "namespace": "type",
+              "path": "ArcFd"
+            },
+            "path": "tokio/src/io/uring/utils.rs",
+            "side": "base",
+            "start": 156
+          },
+          {
+            "end": 161,
+            "lookup": {
+              "module": "",
+              "namespace": "type",
+              "path": "ArcFd"
+            },
+            "path": "tokio/src/io/uring/utils.rs",
+            "side": "head",
+            "start": 156
+          },
+          {
+            "end": 509,
+            "lookup": {
+              "module": "",
+              "namespace": "type",
+              "path": "UringFd"
+            },
+            "path": "tokio/src/io/uring/utils.rs",
+            "side": "base",
+            "start": 502
+          },
+          {
+            "end": 509,
+            "lookup": {
+              "module": "",
+              "namespace": "type",
+              "path": "UringFd"
+            },
+            "path": "tokio/src/io/uring/utils.rs",
+            "side": "head",
+            "start": 502
+          },
+          {
+            "end": 34,
+            "lookup": {
+              "module": "",
+              "namespace": "type",
+              "path": "OwnedFd"
+            },
+            "path": "tokio/src/io/uring/utils.rs",
+            "side": "base",
+            "start": 27
+          },
+          {
+            "end": 34,
+            "lookup": {
+              "module": "",
+              "namespace": "type",
+              "path": "OwnedFd"
+            },
+            "path": "tokio/src/io/uring/utils.rs",
+            "side": "head",
+            "start": 27
+          }
+        ],
+        "description": "public controlled tokio-cstr",
+        "hunks": [],
+        "intent": "review",
+        "limits": {
+          "deadline_ms": 30000,
+          "max_bytes": 131072,
+          "max_candidates": 64,
+          "max_files": 16,
+          "max_source_bytes": 1048576,
+          "max_tokens": 131072
+        },
+        "p2": true
+      }
+    },
+    {
+      "diff": {
+        "base": {
+          "capture_blake3": "8f01f22dd78ce98d6924617c0bdd44e7a1db41cfcb9019dba82f80e37e5ad105",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-next-A",
+          "files": {
+            "src/a.jsx": {
+              "bytes_hex": "636f6e737420ceb13d313b0d0a",
+              "state": "present"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        },
+        "changes": [
+          {
+            "hunks": [
+              {
+                "base_span": [
+                  0,
+                  13
+                ],
+                "head_span": [
+                  0,
+                  13
+                ],
+                "removed_hex": "636f6e737420ceb13d313b0d0a",
+                "replacement_hex": "636f6e737420ceb13d333b0d0a"
+              }
+            ],
+            "kind": "modify",
+            "path": "src/a.jsx"
+          }
+        ],
+        "head": {
+          "capture_blake3": "8c71f8c5cdf248b39436124fe2a6c27836bfbd79e49d136c9a70e3b731f13f14",
+          "configuration": {
+            "features": "not_evaluated",
+            "target": "not_evaluated"
+          },
+          "edition": "none",
+          "external_revision": "react-next-B",
+          "files": {
+            "src/a.jsx": {
+              "bytes_hex": "636f6e737420ceb13d333b0d0a",
+              "state": "present"
+            }
+          },
+          "frontend": "bytes",
+          "root": "src/a.jsx",
+          "rules": "captured-bytes-v1"
+        }
+      },
+      "expected_queries": [],
+      "id": "react-next",
+      "request": {
+        "anchors": [],
+        "description": "public controlled react-next",
+        "hunks": [],
+        "intent": "review",
+        "limits": {
+          "deadline_ms": 30000,
+          "max_bytes": 131072,
+          "max_candidates": 64,
+          "max_files": 16,
+          "max_source_bytes": 1048576,
+          "max_tokens": 131072
+        },
+        "p2": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "admitted": false,
+  "cases": [
+    "react-create",
+    "react-delete",
+    "react-create-empty",
+    "react-delete-empty",
+    "react-modify",
+    "tokio-cstr",
+    "react-next"
+  ],
+  "first_case_controls": [
+    "capture_identity_refusal_keeps_live_A",
+    "three_admitted_failed_expansions_spend_cap",
+    "fifth_expansion_refused",
+    "snapshot_reports_attempts4"
+  ],
+  "frame_bytes": 524288,
+  "last_control": "inspect at expires_ms returns context_expired",
+  "mapping": {
+    "allowed": [
+      "outer.instance_id",
+      "manifest.retention_epoch",
+      "manifest.incarnation",
+      "context_id derived and checked",
+      "expand request_id derived and checked"
+    ],
+    "byte_lengths": "fixed64char epoch/ctx/request IDs and one-digit incarnation1..7 ensure mapping does not change any measured frame length",
+    "never_removed": [
+      "capture",
+      "input",
+      "ir",
+      "candidates",
+      "obligations",
+      "selected",
+      "resolutions",
+      "coverage",
+      "source_hash",
+      "configuration",
+      "producer",
+      "wire budget"
+    ]
+  },
+  "model_tokens": null,
+  "operations": "one live process + fresh process per case, same command_ids and created_ms; complete publiccontext/expand and pre/post inspect equal under frozen operational mapping",
+  "profile": "xrai.eval.store-bridge-fixtures.v1",
+  "source_profile": "captured full control files only, not full Tokio corpus",
+  "tokio_pin": "2fb5757a97a94b3173f8fdd7b6280423b63da6e6"
+}

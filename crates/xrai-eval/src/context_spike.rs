@@ -8,6 +8,9 @@ use std::io::Read;
 use std::time::Instant;
 use tree_sitter::{Node, Parser};
 
+pub mod validated_diff;
+use validated_diff::{Presence, ValidatedDiff};
+
 pub const RULES: &str = "p3-rust-obligations-v1";
 pub const MAX_CONTEXTS: usize = 2;
 pub const MAX_RETAINED_BYTES: usize = 8 * 1024 * 1024;
@@ -123,6 +126,8 @@ pub struct Candidate {
     pub full: [usize; 2],
     pub reason: String,
     pub state: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub presence: Option<String>,
 }
 #[derive(Clone, Debug, Serialize)]
 pub struct Obligation {
@@ -156,10 +161,80 @@ pub struct Manifest {
     pub expires_ms: u64,
     pub retained_bytes: usize,
 }
+/// A captured revision is independent of optional Rust IR. Historical outputs
+/// retain their exact Snapshot projection; prospective profiles expose IR absence.
+#[derive(Clone)]
+pub struct RetainedRevision {
+    pub snapshot_id: String,
+    pub configuration_id: String,
+    pub configuration_fingerprint: String,
+    pub producer_fingerprint: String,
+    pub input: Input,
+    pub ir: Option<Snapshot>,
+    capture: Option<validated_diff::RevisionInput>,
+}
+impl Serialize for RetainedRevision {
+    fn serialize<S: serde::Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+        if self.capture.is_none() {
+            return self.ir.as_ref().expect("legacy IR").serialize(serializer);
+        }
+        json!({"snapshot_id":self.snapshot_id,"configuration_id":self.configuration_id,
+            "configuration_fingerprint":self.configuration_fingerprint,"producer_fingerprint":self.producer_fingerprint,
+            "capture":self.capture,"input":self.input,"ir":self.ir}).serialize(serializer)
+    }
+}
+impl RetainedRevision {
+    fn legacy(ir: Snapshot) -> Self {
+        Self {
+            snapshot_id: ir.snapshot_id.clone(),
+            configuration_id: ir.configuration_id.clone(),
+            configuration_fingerprint: ir.configuration_fingerprint.clone(),
+            producer_fingerprint: ir.producer_fingerprint.clone(),
+            input: ir.input.clone(),
+            ir: Some(ir),
+            capture: None,
+        }
+    }
+    fn validated(revision: &validated_diff::Revision) -> Result<Self, String> {
+        let ir = if revision.dto.frontend == "rust" {
+            Some(semantics_spike::build(revision.input.clone())?)
+        } else {
+            None
+        };
+        let producer_fingerprint = hash(
+            &[
+                include_bytes!("context_spike.rs").as_slice(),
+                include_bytes!("context_spike/validated_diff.rs").as_slice(),
+            ]
+            .concat(),
+        );
+        let configuration_fingerprint = hash(
+            &serde_json::to_vec(&(
+                &revision.dto.frontend,
+                &revision.input.edition,
+                &revision.input.configuration,
+                &revision.input.rules,
+            ))
+            .map_err(|e| e.to_string())?,
+        );
+        Ok(Self {
+            snapshot_id: id(
+                "snap",
+                &(&revision.dto.capture_blake3, &producer_fingerprint),
+            ),
+            configuration_id: format!("cfg_{configuration_fingerprint}"),
+            configuration_fingerprint,
+            producer_fingerprint,
+            input: revision.input.clone(),
+            ir,
+            capture: Some(revision.dto.clone()),
+        })
+    }
+}
 #[derive(Clone)]
 struct Saved {
     manifest: Manifest,
-    snapshots: Vec<Snapshot>,
+    snapshots: Vec<RetainedRevision>,
     request: Request,
     expansions: usize,
 }
@@ -174,7 +249,7 @@ pub struct Delivery {
     pub request: Value,
     pub response: Value,
     pub manifest: Manifest,
-    pub snapshots: Vec<Snapshot>,
+    pub snapshots: Vec<RetainedRevision>,
     pub wire_hex: String,
     pub wire_blake3: String,
     pub meter_calls: usize,
@@ -183,7 +258,7 @@ pub struct Delivery {
 fn hex(bytes: &[u8]) -> String {
     bytes.iter().map(|b| format!("{b:02x}")).collect()
 }
-fn descriptor(s: &Snapshot, generation: usize) -> Value {
+fn descriptor(s: &RetainedRevision, generation: usize) -> Value {
     json!({"snapshot_id":s.snapshot_id,"workspace_id":"ws_context","worktree_id":"wt_context",
     "generation":generation,"input_kind":"captured_blobs","configuration_id":s.configuration_id,
     "configuration_fingerprint":{"algorithm":"blake3","hex":s.configuration_fingerprint},
@@ -247,7 +322,7 @@ fn window(source: &str, start: usize, end: usize) -> [usize; 2] {
     [a, b]
 }
 fn add_candidate(
-    s: &Snapshot,
+    s: &RetainedRevision,
     path: &str,
     start: usize,
     end: usize,
@@ -258,11 +333,16 @@ fn add_candidate(
     if !valid_span(source, start, end) {
         return Err("invalid_request:source_span".into());
     }
-    let mut parser = Parser::new();
-    parser
-        .set_language(&tree_sitter_rust::LANGUAGE.into())
-        .map_err(|e| e.to_string())?;
-    let tree = parser.parse(source, None).ok_or("parse_unavailable")?;
+    let container_span = if s.ir.is_some() {
+        let mut parser = Parser::new();
+        parser
+            .set_language(&tree_sitter_rust::LANGUAGE.into())
+            .map_err(|e| e.to_string())?;
+        let tree = parser.parse(source, None).ok_or("parse_unavailable")?;
+        container(tree.root_node(), start, end).unwrap_or([start, end])
+    } else {
+        window(source, start, end)
+    };
     Ok(Candidate {
         id: id("item", &(&s.snapshot_id, path, start, end)),
         snapshot_id: s.snapshot_id.clone(),
@@ -270,10 +350,11 @@ fn add_candidate(
         path: path.into(),
         source_hash: hash(source.as_bytes()),
         minimum: window(source, start, end),
-        container: container(tree.root_node(), start, end).unwrap_or([start, end]),
+        container: container_span,
         full: [0, source.len()],
         reason: reason.into(),
         state: state.into(),
+        presence: None,
     })
 }
 fn obligation(c: &Candidate) -> Obligation {
@@ -284,11 +365,28 @@ fn obligation(c: &Candidate) -> Obligation {
         state: "omitted_budget".into(),
         reason: c.reason.clone(),
         item_ids: vec![c.id.clone()],
-        minimum_view: "excerpt".into(),
-        minimum_span: Some(json!({"start":c.minimum[0],"end":c.minimum[1]})),
+        minimum_view: if c.presence.is_some() {
+            "presence"
+        } else {
+            "excerpt"
+        }
+        .into(),
+        minimum_span: if c.presence.is_some() {
+            None
+        } else {
+            Some(json!({"start":c.minimum[0],"end":c.minimum[1]}))
+        },
     }
 }
 fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
+    prepare_with(case, now_ms, profile, None)
+}
+fn prepare_with(
+    case: Case,
+    now_ms: u64,
+    profile: &str,
+    validated: Option<&ValidatedDiff>,
+) -> Result<Saved, String> {
     let req = case.request;
     if !["locate", "understand", "fix", "review", "impact"].contains(&req.intent.as_str())
         || req.limits.max_candidates == 0
@@ -320,7 +418,7 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
         return Err("work_limit:input_capture".into());
     }
     let mut snapshots = vec![];
-    for input in inputs {
+    for (index, input) in inputs.into_iter().enumerate() {
         if input.files.keys().any(|p| {
             p.is_empty()
                 || p.starts_with('/')
@@ -334,7 +432,11 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
         {
             return Err("work_limit:input_capture".into());
         }
-        snapshots.push(semantics_spike::build(input)?);
+        snapshots.push(if let Some(diff) = validated {
+            RetainedRevision::validated(if index == 0 { &diff.base } else { &diff.head })?
+        } else {
+            RetainedRevision::legacy(semantics_spike::build(input)?)
+        });
         if started.elapsed().as_millis() >= u128::from(req.limits.deadline_ms) {
             return Err("work_limit:deadline".into());
         }
@@ -348,7 +450,7 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
     let mut anchors = req.anchors.clone();
     let mut unavailable = vec![];
     let mut resolutions = vec![];
-    for h in &req.hunks {
+    for h in req.hunks.iter().filter(|_| validated.is_none()) {
         if snapshots.len() != 2 {
             return Err("invalid_request:diff_without_base".into());
         }
@@ -375,7 +477,13 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
             }
         }
     }
-    for path in req.hunks.iter().map(|h| &h.path).collect::<BTreeSet<_>>() {
+    for path in req
+        .hunks
+        .iter()
+        .filter(|_| validated.is_none())
+        .map(|h| &h.path)
+        .collect::<BTreeSet<_>>()
+    {
         let base = &snapshots[0].input.files[path];
         let changed = &head.input.files[path];
         let mut hunks = req
@@ -439,8 +547,9 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
         candidates.insert(c.id.clone(), c);
         if let Some(lookup) = &a.lookup {
             if req.p2 {
+                let ir = s.ir.as_ref().ok_or("p2_unavailable:bytes_capture")?;
                 let r = if s.input.rules == crate::semantics_spike::RULES_R3 {
-                    s.resolve_at(
+                    ir.resolve_at(
                         &lookup.module,
                         &lookup.path,
                         &lookup.namespace,
@@ -448,12 +557,12 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
                         a.start,
                     )
                 } else {
-                    s.resolve(&lookup.module, &lookup.path, &lookup.namespace)
+                    ir.resolve(&lookup.module, &lookup.path, &lookup.namespace)
                 };
                 resolutions.push(json!({"snapshot_id":s.snapshot_id,"lookup":lookup,
                     "occurrence":{"path":a.path,"start":a.start,"end":a.end},"result":r}));
                 if r.state == "resolved" {
-                    if let Some(d) = s
+                    if let Some(d) = ir
                         .declarations
                         .iter()
                         .find(|d| Some(&d.id) == r.target_id.as_ref())
@@ -471,7 +580,7 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
                             c.minimum = c.container;
                         }
                         candidates.insert(c.id.clone(), c);
-                        for reference in &s.references {
+                        for reference in &ir.references {
                             if candidates.len() >= req.limits.max_candidates {
                                 gaps.insert("max_candidates".into());
                                 break;
@@ -503,10 +612,92 @@ fn prepare(case: Case, now_ms: u64, profile: &str) -> Result<Saved, String> {
             return Err("work_limit:deadline".into());
         }
     }
+    if let Some(diff) = validated {
+        // A query can be derived from a removed BASE occurrence. Its HEAD
+        // comparison is explicitly not an occurrence; never fabricate one.
+        if req.p2 {
+            for anchor in &req.anchors {
+                if anchor.side != "base" {
+                    continue;
+                }
+                let Some(lookup) = &anchor.lookup else {
+                    continue;
+                };
+                if !diff.hunks.iter().any(|h| {
+                    h.path == anchor.path
+                        && h.base_start <= anchor.start
+                        && anchor.end <= h.base_end
+                        && !h.removed.is_empty()
+                }) {
+                    continue;
+                }
+                let ir = head.ir.as_ref().ok_or("p2_unavailable:bytes_capture")?;
+                let result = ir.resolve(&lookup.module, &lookup.path, &lookup.namespace);
+                if result.state != "resolved" {
+                    gaps.insert(format!("{}:{}", result.state, result.reason));
+                }
+                resolutions.push(json!({"snapshot_id":head.snapshot_id,"lookup":lookup,"occurrence":null,"query_origin":{"kind":"removed_base_occurrence","snapshot_id":snapshots[0].snapshot_id,"path":anchor.path,"start":anchor.start,"end":anchor.end},"result":result}));
+            }
+        }
+        for change in &diff.changes {
+            for (side, s, revision) in [
+                ("base", &snapshots[0], &diff.base),
+                ("head", head, &diff.head),
+            ] {
+                let presence = &revision.dto.files[&change.path];
+                let state = match presence {
+                    Presence::Absent => Some("absent"),
+                    Presence::Present { .. }
+                        if !s
+                            .input
+                            .files
+                            .get(&change.path)
+                            .is_some_and(|source| !source.is_empty()) =>
+                    {
+                        Some("present_empty")
+                    }
+                    _ => None,
+                };
+                if let Some(state) = state {
+                    if candidates.len() >= req.limits.max_candidates {
+                        gaps.insert("max_candidates".into());
+                        continue;
+                    }
+                    let c = Candidate {
+                        id: id(
+                            "item_presence",
+                            &(&s.snapshot_id, &change.path, side, state),
+                        ),
+                        snapshot_id: s.snapshot_id.clone(),
+                        file_id: format!("fi_{}", hash(change.path.as_bytes())),
+                        path: change.path.clone(),
+                        source_hash: s
+                            .input
+                            .files
+                            .get(&change.path)
+                            .map(|source| hash(source.as_bytes()))
+                            .unwrap_or_default(),
+                        minimum: [0, 0],
+                        container: [0, 0],
+                        full: [0, 0],
+                        reason: format!("diff_{side}_presence"),
+                        state: "captured_presence".into(),
+                        presence: Some(state.into()),
+                    };
+                    candidates.insert(c.id.clone(), c);
+                }
+            }
+        }
+        if snapshots.iter().any(|s| s.ir.is_none()) {
+            gaps.insert("ir_absent:captured_bytes_only".into());
+        }
+    }
     if anchors.is_empty() {
         gaps.insert("not_assessed:no_anchors_lexical_search_unimplemented".into());
     }
-    gaps.insert("bounded_rust_r1_r2_not_all_callers".into());
+    if snapshots.iter().any(|s| s.ir.is_some()) {
+        gaps.insert("bounded_rust_r1_r2_not_all_callers".into());
+    }
     let mut candidates = candidates.into_values().collect::<Vec<_>>();
     candidates.sort_by(|a, b| {
         (&a.snapshot_id, &a.path, a.minimum, a.id.as_str()).cmp(&(
@@ -597,6 +788,9 @@ fn item(saved: &Saved, c: &Candidate, span: [usize; 2]) -> Value {
         .iter()
         .find(|s| s.snapshot_id == c.snapshot_id)
         .expect("retained revision");
+    if let Some(presence) = &c.presence {
+        return json!({"id":c.id,"kind":"presence","view":"presence","file_id":c.file_id,"snapshot_id":c.snapshot_id,"presence":presence,"span":null,"content":null,"source_hash":if presence=="absent" {Value::Null}else{json!({"algorithm":"blake3","hex":c.source_hash})},"producer_id":format!("prod_{}",s.producer_fingerprint),"configuration_id":s.configuration_id,"reason":c.reason});
+    }
     let source = &s.input.files[&c.path];
     json!({"id":c.id,"kind":"source","view":"source","file_id":c.file_id,"snapshot_id":c.snapshot_id,
     "source_hash":{"algorithm":"blake3","hex":c.source_hash},"byte_length":source.len(),
@@ -615,7 +809,9 @@ fn envelope(
     for c in &m.candidates {
         if let Some(span) = selected.get(&c.id) {
             if let Some(existing) = items.iter_mut().find(|i| {
-                i["snapshot_id"] == c.snapshot_id
+                i["kind"] == "source"
+                    && c.presence.is_none()
+                    && i["snapshot_id"] == c.snapshot_id
                     && i["file_id"] == c.file_id
                     && i["span"]["start"].as_u64().unwrap() <= span[1] as u64
                     && i["span"]["end"].as_u64().unwrap() >= span[0] as u64
@@ -667,8 +863,8 @@ fn envelope(
         .collect::<Vec<_>>();
     let files = saved.snapshots.iter().flat_map(|s|s.input.files.keys().map(|path|json!({"snapshot_id":s.snapshot_id,
         "file_id":format!("fi_{}",hash(path.as_bytes())),"state":"partial","tree_valid":Value::Null,
-        "symbol_count":s.declarations.iter().filter(|d|&d.evidence.path==path).count(),"reason":"bounded_r1_r2","gaps":[{"start":0,"end":s.input.files[path].len()}]}))).collect::<Vec<_>>();
-    json!({"schema_version":3,"request_id":q["request_id"],"workspace_id":"ws_context","worktree_id":"wt_context","status":status,
+        "symbol_count":s.ir.as_ref().map(|ir|ir.declarations.iter().filter(|d|&d.evidence.path==path).count()),"reason":if s.ir.is_some(){"bounded_r1_r2"}else{"captured_bytes:ir_absent"},"gaps":[{"start":0,"end":s.input.files[path].len()}]}))).collect::<Vec<_>>();
+    let mut result = json!({"schema_version":3,"request_id":q["request_id"],"workspace_id":"ws_context","worktree_id":"wt_context","status":status,
     "snapshot":head,"comparison":if m.snapshots.len()==2 {json!({"base":m.snapshots[0],"head":head})}else{Value::Null},
     "index":{"availability":"ready"},"support":{"status":"experimental","capability":"context.experimental","languages":["rust"],
     "scope":{"kind":"workspace"},"limits":m.gaps,"producers":producers},
@@ -683,7 +879,30 @@ fn envelope(
     "minimum_additional_bytes":0,"description":o.reason})).collect::<Vec<_>>(),"diagnostics":[],
     "next":if omitted.is_empty(){json!([])}else{json!([{"operation":"expand","context_id":m.context_id,
         "item_ids":omitted.iter().flat_map(|o|o.item_ids.clone()).collect::<Vec<_>>(),"reason":"identified_content_omitted"}])},
-    "error":null,"context_id":m.context_id,"obligation_receipts":obligations.iter().map(|o|json!({"id":o.id,"state":o.state,"reason":o.reason,"item_ids":o.item_ids})).collect::<Vec<_>>()})
+    "error":null,"context_id":m.context_id,"obligation_receipts":obligations.iter().map(|o|json!({"id":o.id,"state":o.state,"reason":o.reason,"item_ids":o.item_ids})).collect::<Vec<_>>()});
+    if saved.snapshots.iter().any(|s| s.capture.is_some()) {
+        result["profile"] = json!(validated_diff::PROFILE);
+        result["support"]["languages"] = json!(
+            saved
+                .snapshots
+                .iter()
+                .filter_map(|s| s.capture.as_ref().map(|c| c.frontend.clone()))
+                .collect::<BTreeSet<_>>()
+        );
+        result["support"]["producers"] = json!(saved.snapshots.iter().map(|s|json!({"producer_id":format!("prod_{}",s.producer_fingerprint),"fingerprint":{"algorithm":"blake3","hex":s.producer_fingerprint},"frontend":s.capture.as_ref().unwrap().frontend,"method":if s.ir.is_some(){"rust_structural_optional_p2"}else{"captured_bytes"}})).collect::<Vec<_>>());
+        result["capture_binding"] = json!(saved.snapshots.iter().enumerate().map(|(i,s)|json!({"side":if i==0{"base"}else{"head"},"snapshot_id":s.snapshot_id,"external_revision":s.capture.as_ref().unwrap().external_revision,"external_revision_is_provenance_only":true,"capture_blake3":s.capture.as_ref().unwrap().capture_blake3,"ir_present":s.ir.is_some(),"p2_enabled":saved.request.p2})).collect::<Vec<_>>());
+        result["resolutions"] = json!(m.resolutions);
+        result["unknowns"] = json!(
+            m.resolutions
+                .iter()
+                .filter(|r| r["result"]["state"] != "resolved")
+                .collect::<Vec<_>>()
+        );
+        result["retained_candidates"] = json!(m.candidates);
+        result["retained_obligations"] = json!(obligations);
+        result["diagnostics"] = json!(m.gaps);
+    }
+    result
 }
 /// Bounded fixed point, including digit boundaries and token interactions.
 pub fn stabilize(
@@ -844,7 +1063,65 @@ impl Store {
         let started = Instant::now();
         let deadline_ms = case.request.limits.deadline_ms;
         self.expire(now_ms);
-        let mut saved = prepare(case, now_ms, meter.profile())?;
+        let saved = prepare(case, now_ms, meter.profile())?;
+        self.publish_prepared(saved, now_ms, meter, started, deadline_ms)
+    }
+    pub fn context_validated(
+        &mut self,
+        diff: ValidatedDiff,
+        mut request: Request,
+        now_ms: u64,
+        meter: &mut impl Meter,
+    ) -> Result<Delivery, String> {
+        let started = Instant::now();
+        let deadline_ms = request.limits.deadline_ms;
+        self.expire(now_ms);
+        if !request.hunks.is_empty() {
+            return Err("invalid_request:caller_hunks_for_validated_diff".into());
+        }
+        if diff.head.dto.frontend == "bytes" && request.p2 {
+            return Err("p2_unavailable:bytes_capture".into());
+        }
+        for anchor in &request.anchors {
+            let revision = match anchor.side.as_str() {
+                "base" => &diff.base,
+                "head" => &diff.head,
+                _ => return Err("anchor_revision_mismatch".into()),
+            };
+            let source = revision
+                .input
+                .files
+                .get(&anchor.path)
+                .ok_or("invalid_request:anchor_presence")?;
+            if !valid_span(source, anchor.start, anchor.end) || anchor.start == anchor.end {
+                return Err("invalid_request:source_span".into());
+            }
+            if let Some(lookup) = &anchor.lookup {
+                if &source[anchor.start..anchor.end]
+                    != lookup.path.rsplit("::").next().unwrap_or("")
+                {
+                    return Err("invalid_request:lookup_occurrence".into());
+                }
+            }
+        }
+        request.anchors.extend(diff.anchors.clone());
+        request.hunks = diff.hunks.clone();
+        let case = Case {
+            base: Some(diff.base.input.clone()),
+            head: diff.head.input.clone(),
+            request,
+        };
+        let saved = prepare_with(case, now_ms, meter.profile(), Some(&diff))?;
+        self.publish_prepared(saved, now_ms, meter, started, deadline_ms)
+    }
+    fn publish_prepared(
+        &mut self,
+        mut saved: Saved,
+        _now_ms: u64,
+        meter: &mut impl Meter,
+        started: Instant,
+        deadline_ms: u64,
+    ) -> Result<Delivery, String> {
         let live = self
             .contexts
             .values()
@@ -894,29 +1171,53 @@ impl Store {
             delivery.manifest = self.contexts[&cid].manifest.clone();
             return Ok(delivery);
         }
-        while self.contexts.len() >= MAX_CONTEXTS
-            || self
-                .contexts
-                .values()
-                .map(|s| s.manifest.retained_bytes)
-                .sum::<usize>()
-                + saved.manifest.retained_bytes
-                > MAX_RETAINED_BYTES
-        {
-            let oldest = self
-                .contexts
-                .iter()
-                .min_by_key(|(_, s)| (s.manifest.created_ms, s.manifest.incarnation))
-                .map(|(id, _)| id.clone())
-                .ok_or("retention_capacity")?;
-            self.contexts.remove(&oldest);
-        }
-        if started.elapsed().as_millis() >= u128::from(deadline_ms) {
-            return Err("work_limit:deadline".into());
-        }
-        self.published = Some(saved.snapshots.last().unwrap().snapshot_id.clone());
-        self.contexts.insert(cid, saved);
+        // Plan every eviction without mutating live contexts. All errors/deadline
+        // checks happen before the infallible commit; failure B leaves valid A.
+        self.commit_publication(cid, saved, || {
+            if started.elapsed().as_millis() >= u128::from(deadline_ms) {
+                Err("work_limit:deadline".into())
+            } else {
+                Ok(())
+            }
+        })?;
         Ok(delivery)
+    }
+    fn commit_publication(
+        &mut self,
+        cid: String,
+        saved: Saved,
+        admission: impl FnOnce() -> Result<(), String>,
+    ) -> Result<(), String> {
+        let victims = self.publication_victims(&saved)?;
+        admission()?;
+        for victim in victims {
+            self.contexts.remove(&victim);
+        }
+        self.published = Some(saved.snapshots.last().expect("head").snapshot_id.clone());
+        self.contexts.insert(cid, saved);
+        Ok(())
+    }
+    fn publication_victims(&self, saved: &Saved) -> Result<Vec<String>, String> {
+        let mut ordered = self.contexts.iter().collect::<Vec<_>>();
+        ordered.sort_by_key(|(_, s)| (s.manifest.created_ms, s.manifest.incarnation));
+        let mut count = ordered.len();
+        let mut bytes = ordered
+            .iter()
+            .map(|(_, s)| s.manifest.retained_bytes)
+            .sum::<usize>();
+        let mut victims = vec![];
+        for (id, s) in ordered {
+            if count < MAX_CONTEXTS && bytes + saved.manifest.retained_bytes <= MAX_RETAINED_BYTES {
+                break;
+            }
+            victims.push(id.clone());
+            count -= 1;
+            bytes -= s.manifest.retained_bytes;
+        }
+        if count >= MAX_CONTEXTS || bytes + saved.manifest.retained_bytes > MAX_RETAINED_BYTES {
+            return Err("retention_capacity".into());
+        }
+        Ok(victims)
     }
     pub fn expand(
         &mut self,
@@ -1010,6 +1311,17 @@ impl Store {
                 .iter()
                 .any(|snapshot| snapshot.snapshot_id == snapshot_id)
         });
+    }
+    /// Evaluator-only diagnostics; does not search or reread a checkout.
+    pub fn inspect(&mut self, context_id: &str, now_ms: u64) -> Result<Value, String> {
+        self.expire(now_ms);
+        let saved = self.contexts.get(context_id).ok_or("context_expired")?;
+        Ok(
+            json!({"manifest":saved.manifest,"snapshots":saved.snapshots,"expansions":saved.expansions}),
+        )
+    }
+    pub fn instance_id(&self) -> &str {
+        &self.epoch
     }
     pub fn retained_contexts(&self) -> usize {
         self.contexts.len()
@@ -1647,6 +1959,423 @@ mod tests {
         assert_eq!(
             stabilize(&mut v, &mut Cycle).err().unwrap(),
             "counter_cycle"
+        );
+    }
+}
+
+#[cfg(test)]
+mod bridge_tests {
+    use super::*;
+    use validated_diff::{Change, DiffInput, Edit, RevisionInput};
+    struct Bytes;
+    impl Meter for Bytes {
+        fn profile(&self) -> &str {
+            "bridge-functional-bytes-unmeasured-model-tokens"
+        }
+        fn tokens(&mut self, bytes: &[u8]) -> Result<usize, String> {
+            Ok(bytes.len())
+        }
+    }
+    fn limits() -> Limits {
+        Limits {
+            max_bytes: 131072,
+            max_tokens: 131072,
+            max_candidates: 64,
+            max_files: 16,
+            max_source_bytes: 1048576,
+            deadline_ms: 30000,
+        }
+    }
+    fn request() -> Request {
+        Request {
+            intent: "review".into(),
+            description: "public controlled diff".into(),
+            anchors: vec![],
+            hunks: vec![],
+            p2: false,
+            limits: limits(),
+        }
+    }
+    fn revision(id: &str, frontend: &str, path: &str, source: Option<&str>) -> RevisionInput {
+        let mut r = RevisionInput {
+            external_revision: id.into(),
+            frontend: frontend.into(),
+            root: path.into(),
+            edition: if frontend == "rust" { "2021" } else { "none" }.into(),
+            configuration: BTreeMap::from([
+                ("target".into(), "not_evaluated".into()),
+                ("features".into(), "not_evaluated".into()),
+            ]),
+            rules: if frontend == "rust" {
+                semantics_spike::RULES
+            } else {
+                "captured-bytes-v1"
+            }
+            .into(),
+            files: BTreeMap::from([(
+                path.into(),
+                source
+                    .map(|s| Presence::Present {
+                        bytes_hex: hex(s.as_bytes()),
+                    })
+                    .unwrap_or(Presence::Absent),
+            )]),
+            capture_blake3: String::new(),
+        };
+        r.capture_blake3 = r.identity();
+        r
+    }
+    fn change(frontend: &str, path: &str, a: Option<&str>, b: Option<&str>) -> DiffInput {
+        let base = revision("captured-A", frontend, path, a);
+        let head = revision("captured-B", frontend, path, b);
+        DiffInput {
+            base,
+            head,
+            changes: vec![Change {
+                path: path.into(),
+                kind: match (a, b) {
+                    (None, Some(_)) => "create",
+                    (Some(_), None) => "delete",
+                    _ => "modify",
+                }
+                .into(),
+                hunks: vec![Edit {
+                    base_span: [0, a.map_or(0, str::len)],
+                    head_span: [0, b.map_or(0, str::len)],
+                    removed_hex: hex(a.unwrap_or("").as_bytes()),
+                    replacement_hex: hex(b.unwrap_or("").as_bytes()),
+                }],
+            }],
+        }
+    }
+    #[test]
+    fn bytes_presence_create_delete_empty_without_rust_ir() {
+        for (a, b) in [
+            (None, Some("")),
+            (Some(""), None),
+            (None, Some("export const α=1;\r\n")),
+            (Some("export const α=1;\r\n"), None),
+            (Some("a\n"), Some("b\n")),
+        ] {
+            let mut store = Store::new().unwrap();
+            let diff = ValidatedDiff::try_from(change("bytes", "src/a.jsx", a, b)).unwrap();
+            let delivery = store
+                .context_validated(diff, request(), 0, &mut Bytes)
+                .unwrap();
+            assert!(delivery.snapshots.iter().all(|s| s.ir.is_none()));
+            assert_eq!(delivery.response["support"]["languages"], json!(["bytes"]));
+            assert!(
+                delivery.response["resolutions"]
+                    .as_array()
+                    .unwrap()
+                    .is_empty()
+            );
+            assert!(
+                delivery.response["items"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .filter(|i| i["kind"] == "presence")
+                    .all(|i| i["span"].is_null() && i["content"].is_null())
+            );
+            assert!(
+                delivery
+                    .manifest
+                    .obligations
+                    .iter()
+                    .all(|o| o.state == "satisfied")
+            );
+            for c in &delivery.manifest.candidates {
+                let expanded = store
+                    .expand(
+                        &delivery.manifest.context_id,
+                        std::slice::from_ref(&c.id),
+                        limits(),
+                        1,
+                        &mut Bytes,
+                    )
+                    .unwrap();
+                assert_eq!(expanded.response["items"][0]["snapshot_id"], c.snapshot_id);
+                if let Some(presence) = &c.presence {
+                    assert_eq!(expanded.response["items"][0]["presence"], *presence);
+                }
+            }
+        }
+    }
+    #[test]
+    fn byte_p2_and_foreign_hunks_refused_preserving_live_context() {
+        let mut store = Store::new().unwrap();
+        let raw = change("bytes", "src/a.jsx", Some("a\n"), Some("b\n"));
+        let a = store
+            .context_validated(
+                ValidatedDiff::try_from(raw.clone()).unwrap(),
+                request(),
+                0,
+                &mut Bytes,
+            )
+            .unwrap();
+        let mut req = request();
+        req.p2 = true;
+        assert!(
+            store
+                .context_validated(
+                    ValidatedDiff::try_from(raw.clone()).unwrap(),
+                    req,
+                    1,
+                    &mut Bytes
+                )
+                .is_err()
+        );
+        let mut req = request();
+        req.hunks = vec![Hunk {
+            path: "wrong".into(),
+            base_start: 0,
+            base_end: 0,
+            head_start: 0,
+            head_end: 0,
+            removed: String::new(),
+            added: String::new(),
+        }];
+        assert!(
+            store
+                .context_validated(ValidatedDiff::try_from(raw).unwrap(), req, 1, &mut Bytes)
+                .is_err()
+        );
+        assert!(store.inspect(&a.manifest.context_id, 2).is_ok());
+    }
+    #[test]
+    fn pressure_deadline_gate_is_atomic_and_ttl_is_separate() {
+        let mut store = Store::new().unwrap();
+        let a = store
+            .context_validated(
+                ValidatedDiff::try_from(change("bytes", "a.jsx", Some("a"), Some("b"))).unwrap(),
+                request(),
+                0,
+                &mut Bytes,
+            )
+            .unwrap();
+        let b = store
+            .context_validated(
+                ValidatedDiff::try_from(change("bytes", "b.jsx", Some("a"), Some("b"))).unwrap(),
+                request(),
+                1,
+                &mut Bytes,
+            )
+            .unwrap();
+        let valid = store.contexts[&b.manifest.context_id].clone();
+        let mut failing = valid.clone();
+        failing.manifest.context_id = "ctx_new".into();
+        failing.manifest.retained_bytes = MAX_RETAINED_BYTES;
+        let victims = store.publication_victims(&failing).unwrap();
+        assert_eq!(victims.len(), 2);
+        let before = serde_json::to_value((
+            &store.contexts[&a.manifest.context_id].manifest,
+            &store.contexts[&b.manifest.context_id].manifest,
+            &store.published,
+        ))
+        .unwrap();
+        assert_eq!(
+            store
+                .commit_publication("ctx_new".into(), failing, || Err(
+                    "work_limit:deadline".into()
+                ))
+                .unwrap_err(),
+            "work_limit:deadline"
+        );
+        assert_eq!(
+            serde_json::to_value((
+                &store.contexts[&a.manifest.context_id].manifest,
+                &store.contexts[&b.manifest.context_id].manifest,
+                &store.published
+            ))
+            .unwrap(),
+            before
+        );
+        let mut failing = valid;
+        failing.manifest.retained_bytes = MAX_RETAINED_BYTES + 1;
+        assert!(
+            store
+                .commit_publication("ctx_new".into(), failing, || Ok(()))
+                .is_err()
+        );
+        assert!(
+            store
+                .expand(
+                    &a.manifest.context_id,
+                    &[a.manifest.candidates[0].id.clone()],
+                    limits(),
+                    2,
+                    &mut Bytes
+                )
+                .is_ok()
+        );
+        assert!(store.inspect(&a.manifest.context_id, TTL_MS).is_err());
+        assert!(store.inspect(&b.manifest.context_id, TTL_MS).is_ok());
+    }
+    #[test]
+    fn valid_update_and_failed_budget_keep_retained_source() {
+        let mut store = Store::new().unwrap();
+        let a = store
+            .context_validated(
+                ValidatedDiff::try_from(change("bytes", "a.jsx", Some("a\n"), Some("b\n")))
+                    .unwrap(),
+                request(),
+                0,
+                &mut Bytes,
+            )
+            .unwrap();
+        let b = store
+            .context_validated(
+                ValidatedDiff::try_from(change("bytes", "a.jsx", Some("a\n"), Some("c\n")))
+                    .unwrap(),
+                request(),
+                1,
+                &mut Bytes,
+            )
+            .unwrap();
+        assert_ne!(a.manifest.context_id, b.manifest.context_id);
+        let mut req = request();
+        req.limits.max_bytes = 1024;
+        assert!(
+            store
+                .context_validated(
+                    ValidatedDiff::try_from(change("bytes", "a.jsx", Some("a\n"), Some("d\n")))
+                        .unwrap(),
+                    req,
+                    2,
+                    &mut Bytes
+                )
+                .is_err()
+        );
+        let old = store
+            .expand(
+                &a.manifest.context_id,
+                &[a.manifest.candidates[0].id.clone()],
+                limits(),
+                3,
+                &mut Bytes,
+            )
+            .unwrap();
+        assert_eq!(
+            old.response["items"][0]["content"],
+            a.response["items"][0]["content"]
+        );
+        assert_eq!(
+            store.published.as_deref(),
+            Some(b.snapshots[1].snapshot_id.as_str())
+        );
+    }
+    #[test]
+    fn tokio_removed_declaration_base_expansion_and_head_query_are_distinct() {
+        let captured: Value = serde_json::from_str(include_str!(
+            "../../../eval/semantics/tokio-development.json"
+        ))
+        .unwrap();
+        assert_eq!(
+            captured["upstream_commit"],
+            "2fb5757a97a94b3173f8fdd7b6280423b63da6e6"
+        );
+        let path = "tokio/src/io/uring/utils.rs";
+        let source = captured["cases"][0]["files"][path].as_str().unwrap();
+        let start = source.find("pub(crate) fn cstr").unwrap();
+        let head = &source[..start];
+        let mut dto = change("rust", path, Some(source), Some(head));
+        dto.changes[0].hunks = vec![Edit {
+            base_span: [start, source.len()],
+            head_span: [start, start],
+            removed_hex: hex(source[start..].as_bytes()),
+            replacement_hex: String::new(),
+        }];
+        let mut req = request();
+        req.p2 = true;
+        for (name, needle, namespace) in [
+            ("cstr", "fn cstr", "value"),
+            ("ArcFd", "type ArcFd", "type"),
+            ("UringFd", "trait UringFd", "type"),
+            ("OwnedFd", "OwnedFd", "type"),
+        ] {
+            for (side, content) in [("base", source), ("head", head)] {
+                if let Some(index) = content.find(needle) {
+                    let at = index + needle.len() - name.len();
+                    req.anchors.push(Anchor {
+                        side: side.into(),
+                        path: path.into(),
+                        start: at,
+                        end: at + name.len(),
+                        lookup: Some(Lookup {
+                            module: String::new(),
+                            path: name.into(),
+                            namespace: namespace.into(),
+                        }),
+                    });
+                }
+            }
+        }
+        let diff = ValidatedDiff::try_from(dto).unwrap();
+        let mut store = Store::new().unwrap();
+        let d = store
+            .context_validated(diff.clone(), req.clone(), 0, &mut Bytes)
+            .unwrap();
+        for r in &d.manifest.resolutions {
+            let name = r["lookup"]["path"].as_str().unwrap();
+            let is_head = r["snapshot_id"] == d.snapshots[1].snapshot_id;
+            assert_eq!(
+                r["result"]["state"],
+                if name == "OwnedFd" || name == "cstr" && is_head {
+                    "unknown"
+                } else {
+                    "resolved"
+                }
+            );
+            if name == "cstr" && is_head {
+                assert!(r["occurrence"].is_null());
+                assert_eq!(r["query_origin"]["kind"], "removed_base_occurrence");
+            }
+        }
+        let declaration = d
+            .manifest
+            .candidates
+            .iter()
+            .find(|c| {
+                c.reason == "resolved_definition"
+                    && c.snapshot_id == d.snapshots[0].snapshot_id
+                    && c.minimum[0] >= start
+            })
+            .unwrap();
+        let expanded = store
+            .expand(
+                &d.manifest.context_id,
+                std::slice::from_ref(&declaration.id),
+                limits(),
+                1,
+                &mut Bytes,
+            )
+            .unwrap();
+        assert_eq!(expanded.response["items"][0]["content"], source);
+        // Freeze operational identity mapping explicitly; fresh build uses no
+        // persisted IR/candidates, then compare every semantic artifact field.
+        let mut fresh = Store::new().unwrap();
+        fresh.epoch = store.epoch.clone();
+        let rebuilt = fresh.context_validated(diff, req, 0, &mut Bytes).unwrap();
+        assert_eq!(
+            serde_json::to_value((
+                &d.request,
+                &d.response,
+                &d.manifest,
+                &d.snapshots,
+                &d.wire_hex,
+                &d.wire_blake3
+            ))
+            .unwrap(),
+            serde_json::to_value((
+                &rebuilt.request,
+                &rebuilt.response,
+                &rebuilt.manifest,
+                &rebuilt.snapshots,
+                &rebuilt.wire_hex,
+                &rebuilt.wire_blake3
+            ))
+            .unwrap()
         );
     }
 }

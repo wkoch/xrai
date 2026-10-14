@@ -1,0 +1,21 @@
+{
+  "artifact_files_expected": 14,
+  "commands_expected": 72,
+  "design_verified": true,
+  "fixtures": 7,
+  "local_native_executed": false,
+  "model_tokens": null,
+  "native_tests_expected": 29,
+  "processes_expected": 8,
+  "profile": "xrai.eval.store-bridge-development.v1",
+  "provider_used": false,
+  "python_passed": 40,
+  "python_skipped": 2,
+  "python_tests": 42,
+  "skip_reason": "authentic native producer absent; no ELF executed locally",
+  "source_method_freeze_before_native": true,
+  "static_review_repairs": [
+    "exact process/schema/row closure and exact numeric types",
+    "exact metadata-path operational mapping; semantic strings equal epoch/context refused"
+  ]
+}
