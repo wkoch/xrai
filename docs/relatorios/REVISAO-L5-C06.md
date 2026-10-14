@@ -1,5 +1,7 @@
 # Revisão L5-C06 — completude do replay e passagem à tarefa real
 
+**Atualização posterior:** o [fechamento C06](REVISAO-L5-C06-FECHAMENTO.md) encerra replay, cápsula histórica/CI e prova nativa por bytes em `bd12a9a`. O texto abaixo preserva o diagnóstico e o corte anteriores; pendências restantes seguem a ordem do fechamento.
+
 13/10/2026, Arquiteto. Corte inicial publicado `bc874f4`, após `1d40e52`; revisão anterior `b065e33`/[C05](REVISAO-L5-C05.md). Implementador ativo no mesmo checkout. Os pareceres sobre D01/consumer/Django e correção P3 referem-se aos hashes locais registrados, não a um futuro commit ou CI. Três agentes trabalharam somente em leitura e verificações próprias offline. Este documento mantém os mesmos cartões L5/M0 e as frentes independentes da revisão C05.
 
 Durante a revisão, o Implementador publicou `fbf1e53`. Os 43 registros de paths hashados nas três frentes coincidem com os bytes desse commit; os aceites locais abaixo podem ser vinculados a ele. Isso não atribui sucesso à sua CI nem elimina as pendências de replay, tarefa ou prova nativa.

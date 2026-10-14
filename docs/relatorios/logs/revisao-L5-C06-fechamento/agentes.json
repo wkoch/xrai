@@ -1,0 +1,311 @@
+{
+  "schema": "xrai.architecture.c06.closure-agents.v1",
+  "reviewed_head": "bd12a9a53fcd046c1731eda3b33a11c918d1cfc0",
+  "agents": {
+    "dispatch": {
+      "report": "# Aceite limitado D01 v4 / consumer v3 e próximo contrato de transporte\n\n13/10/2026. Base solicitada bd12a9a, deltas 282f885/b5b9f8b. Relatório somente arquitetural; nenhuma edição no repositório. Evidência detalhada: `/tmp/xrai-c06-close-dispatch-evidence.json`, com HEAD observado, runtime, sete hashes antes/depois, comandos e artefatos.\n\n## Parecer\n\n**Aceitar a correção da completude de recusas e da admissão concorrente no escopo fake/offline v4, com consumer v3.** Nenhum novo defeito acionável encontrado neste recorte dirigido. Isso não certifica todas as rotas possíveis, provider, contenção real ou ganho competitivo.\n\n- `immutable_request_dispatch.py:197–206`: bijeção ordenada de todos os begin/end dispatch_fake com linhas do wrapper, incluindo recusa sem reserva; argumentos integrais vinculados. Recover/expand não entram no denominador. `:207–209` preserva a ordem de reservas do perfil direto.\n- `:100–120`: ID e capacidade incluem pending sob lock antes de captura; token exclusivo impede dupla admissão; falha converte pending em recusa sem autoridade de payload/envio. Estado aceito→owned request/refusal é atômico. Slots pendentes e concluídos contam no teto.\n- `:130–141`: erros anteriores a begin/reserva são classificados separadamente; não fabricam tentativa de envio. Essas linhas relatam recusa local, sem evidência independente de entrada de transporte.\n- `:157–171`: record bloqueia capture/I/O ativo, lê um único snapshot público do target e deriva ordem do journal real. Não usa a ordem de chegada do caller como ordem de admissão. `record()` exporta wrapper e target desse mesmo snapshot.\n- `guarded_smoke.py:228–233`: consumer fecha o denominador congelado (uma tentativa, duas no retry), com IDs/call/retry/maximum exatos e zero capture_refusals nos cenários conhecidos. Recusa phantom capture mesmo que o sumário seja recalculado.\n- `immutable_request_dispatch.py:246–248`: observed_calls continua null; committed_private_projections não vira prova de invocação. Correto manter esse limite até contrato de transporte próprio.\n\nReexecução da contraprova anterior: duas operações da guarda (`one`, `two`, sendo a segunda recusada antes da reserva); remover a segunda linha agora falha com `exact ordered bijection with ALL public guard fake dispatch begins including unreserved refusals`. `/tmp/xrai-c06-close-omission.py` e `.json` preservam o caso. O script temporário da revisão anterior já não existia; a primeira tentativa terminou com exit 2 sem executar código, registrada no JSON, e o caso atual foi recriado com fixture própria já existente.\n\n## Verificação\n\n38 testes de immutable_request_dispatch e 33 de guarded_smoke passaram, zero skips. Cobrem ownership antes/depois de commit, adulterações, recusas sem reserva, ordem real de duas threads, pending mesmo ID, capacidade antes de append, record durante captura, cleanup de exceção e snapshot conjunto. Logs `/tmp/xrai-c06-close-immutable.stdout/.stderr` e `/tmp/xrai-c06-close-smoke.stdout/.stderr`. Os sete arquivos hashados permaneceram idênticos durante a revisão. Nenhum teste de upstream, provider ou binário nativo executado.\n\nTier 2 codebase-memory: search→trace→snippet de record/_snapshot_locked, geração `2026-10-13T18:31:33Z`. Sete paths no evidence JSON com metadata_match/no_recorded_issue; sinal best-effort, não garantia global. Graft: zero chamadas adicionais; localização inicial enviada pelo pai.\n\n## Próxima fatia pronta: um dono público da sessão e recibo de transporte local\n\nNão acrescentar outro wrapper genérico que apenas projete os bytes privados. Criar perfil experimental prospectivo com uma entrada pública de sessão/transporte que possua o payload preparado e produza sua evidência no lado do transporte. Leitores/fixtures históricos v2/v3/v4 permanecem versionados; não reescrever prova antiga como nova observação.\n\n### Incremento A — bytes preparados e entrada realmente observada pelo fake\n\nContrato conceitual, nomes a cargo do Implementador:\n\n- `PreparedPayload`: bytes imutáveis efetivamente entregues à seam, tamanho/hash com algoritmo explícito, versão de serializer, hash do request lógico e identidade task/arm/run/call/attempt. Para o primeiro fake, request lógico e body podem ser idênticos; se houver envelope, registrar ambos e a transformação versionada. Hash de body não omite ferramentas/orientação quando elas integram o body anunciado.\n- O dono da sessão valida/reserva e lineariza commit sobre essa identidade. O transporte recebe apenas bytes preparados e token interno da tentativa; não recebe dict original nem caminho a reabrir. Preparar/serializar ocorre antes do commit; depois, nenhuma reconstrução a partir de estado mutável.\n- `TransportEntryReceipt`: emitido pelo próprio fake na entrada pública, contendo versão de adapter, identidade da tentativa/commit e hash+tamanho calculados sobre bytes que recebeu. Estado é `entered_local_adapter`; não alegar recebimento remoto, processamento de modelo ou cobrança. A projeção do dispatcher pode coexistir para auditoria, mas não substitui esse recibo.\n- Recusa anterior ao commit tem zero entrada. Commit seguido de falha antes de entrada só libera reserva com prova própria explícita da seam; ausência de recibo após commit é indeterminação, não zero custo. Mantêm-se response/usage/charge separados da entrada e desconhecidos enquanto ausentes.\n\nAceite: consumer usa o novo dono ponta a ponta, sem profiler/monkeypatch runtime. Fake espião independente verifica bytes na entrada; recibo corrente recomposto pelo replay. Contraprovas: pedido mutado antes/depois de commit, serializer/envelope alterado, recibo de outra attempt/task/arm/run, digest correto com tamanho errado, truncamento, duplicata conflitante, omissão de entrada alegada e retry reaproveitando recibo. Recusa/cancelamento pré-commit não chama fake; pós-commit não promete retroativamente zero entrada.\n\n### Incremento B — encerrar e reconciliar todas as tentativas\n\nDono exporta um snapshot público conjunto de requests/guards/ledger/recibos de transporte. Replay exige bijeção segundo cada estágio observado, incluindo recusas sem reserva, reservas, commits e entradas; nenhum contador é derivado de simples negação de `transport_proven_absent`. Declarar indeterminação quando há commit mas falta prova de entrada/ausência.\n\nAceite: dois envios concorrentes com teto comum; revogação e invalidação durante I/O sem lock de controle bloqueado; timeout/falha após entrada mantêm reserva; retorno e usage tardios exatos são idempotentes, conflito fecha admissões. Falha de serialização é anterior ao commit e deixa registro local tipado, sem recibo de transporte inventado. Consumer preserva todos os retornos recusados e fecha partial/erro conforme fatos.\n\nEsse trabalho pode terminar inteiro offline. Provider/modelo, documentos oficiais de wire/usage/preço, autorização/moeda/janela/teto concretos e contenção são decisões posteriores para um adapter específico; não criar nomes/preços fictícios nem exigir credencial para validar a seam. Os quatro smokes pareados naturais, M0-04, D1 e G0 seguem abertos.\n\nLimite de implementação: reusar a máquina D01 de reserva/commit/cancelamento/reconciliação e a guarda; o dono público organiza suas APIs e a seam, sem criar um segundo lifecycle concorrente nem replicar regras de orçamento. A única observação nova é a entrada local sobre os bytes wire preparados antes do commit, com recibo independente da projeção; sua ausência ou falha não resolve incerteza de envio por inferência. Sem provider nesta fatia.\n",
+      "report_sha256": "8959c9ae232caccee99df1db1cc20ab70b27ddbf530b41ab6c6dc7bd7ff5219d",
+      "evidence": {
+        "scope": "architectural bounded read-only review plus owned Python fake tests",
+        "head": "bd12a9a53fcd046c1731eda3b33a11c918d1cfc0",
+        "interpreter": {
+          "executable": "/opt/homebrew/opt/python@3.15/bin/python3.15",
+          "version": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]"
+        },
+        "before": {
+          "crates/xrai-eval/harness/immutable_request_dispatch.py": "7f8d73d7e1641d0ea2e02c1df12c0139b2231e2e436527f0fd83c43cc11c0b40",
+          "crates/xrai-eval/harness/guarded_smoke.py": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+          "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "d5754808b716611287b83d61e901a4737943118095f8c519ba1a75da0aab9ab5",
+          "crates/xrai-eval/harness/tests/test_guarded_smoke.py": "9948f4e8f261b44a98d58b8596d36537ea514dd1449676599309ee4f523ae047",
+          "crates/xrai-eval/harness/session_tool_guard.py": "466f6915cbc80582ae710f403751221188a4242f459b3697ef31a98a7f1c5739",
+          "docs/relatorios/L5-D01-REQUEST.md": "0fb58829f8416fa89129915d57ad4a883728e680fabba28d0ea80e70cf20d33d",
+          "docs/relatorios/L5-GUARDED-SMOKE.md": "50722c87b9e14e9da6f664a6f12a3c3daa524aa0d9ef7877fb57ee51e03b511c"
+        },
+        "after": {
+          "crates/xrai-eval/harness/immutable_request_dispatch.py": "7f8d73d7e1641d0ea2e02c1df12c0139b2231e2e436527f0fd83c43cc11c0b40",
+          "crates/xrai-eval/harness/guarded_smoke.py": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+          "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py": "d5754808b716611287b83d61e901a4737943118095f8c519ba1a75da0aab9ab5",
+          "crates/xrai-eval/harness/tests/test_guarded_smoke.py": "9948f4e8f261b44a98d58b8596d36537ea514dd1449676599309ee4f523ae047",
+          "crates/xrai-eval/harness/session_tool_guard.py": "466f6915cbc80582ae710f403751221188a4242f459b3697ef31a98a7f1c5739",
+          "docs/relatorios/L5-D01-REQUEST.md": "0fb58829f8416fa89129915d57ad4a883728e680fabba28d0ea80e70cf20d33d",
+          "docs/relatorios/L5-GUARDED-SMOKE.md": "50722c87b9e14e9da6f664a6f12a3c3daa524aa0d9ef7877fb57ee51e03b511c"
+        },
+        "changed_paths": [],
+        "checks": [
+          {
+            "command": [
+              "python3",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "crates/xrai-eval/harness/tests",
+              "-p",
+              "test_immutable_request_dispatch.py",
+              "-v"
+            ],
+            "environment": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests": 38,
+            "skips": 0,
+            "stderr": "/tmp/xrai-c06-close-immutable.stderr"
+          },
+          {
+            "command": [
+              "python3",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "crates/xrai-eval/harness/tests",
+              "-p",
+              "test_guarded_smoke.py",
+              "-v"
+            ],
+            "environment": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests": 33,
+            "skips": 0,
+            "stderr": "/tmp/xrai-c06-close-smoke.stderr"
+          },
+          {
+            "command": [
+              "python3",
+              "/tmp/xrai-c06-close-omission.py"
+            ],
+            "environment": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "result": {
+              "scope": "owned Python fake only",
+              "original": {
+                "schema_version": "xrai.eval.immutable-request-dispatch.v4",
+                "verified": true,
+                "attempts": 2,
+                "recorded_requests": 2,
+                "guarded_requests": 2,
+                "capture_refusals": 0,
+                "reserve_events": 1,
+                "reservations": 1,
+                "commitments": 1,
+                "observed_calls": null,
+                "committed_private_projections": 1,
+                "transport_observed_independently": false,
+                "immutable_payloads_equal_reserved": true,
+                "provider_calls": 0,
+                "provider_charge": null,
+                "model_tokens": null,
+                "limits": [
+                  "Dict capture requires caller quiescence during one canonical serialization.",
+                  "Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.",
+                  "External ABA and large blobs remain unavailable."
+                ]
+              },
+              "omission_refused": true,
+              "forged": {
+                "error": "exact ordered bijection with ALL public guard fake dispatch begins including unreserved refusals"
+              },
+              "guard_dispatch_ids": [
+                "dispatch:one",
+                "dispatch:two"
+              ]
+            }
+          }
+        ],
+        "prior_temp_retry": {
+          "command": [
+            "python3",
+            "/tmp/xrai-review-c06-dispatch-omission.py"
+          ],
+          "exit_code": 2,
+          "reason": "prior /tmp script absent; no code ran; replaced by preserved current counterproof"
+        },
+        "artifacts": {
+          "/tmp/xrai-c06-close-immutable.stdout": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "/tmp/xrai-c06-close-immutable.stderr": {
+            "sha256": "6e18882762edc2037708e09b62e64e9e2571342a8ece625181343356a14e9671",
+            "bytes": 6005
+          },
+          "/tmp/xrai-c06-close-smoke.stdout": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "/tmp/xrai-c06-close-smoke.stderr": {
+            "sha256": "ea22c710b7289763750585e9531593f7decd721465d6952a63763208b5dbadf4",
+            "bytes": 4627
+          },
+          "/tmp/xrai-c06-close-omission.py": {
+            "sha256": "8bea570d13c00fd9596d6ccfbb82c754ba0651fa674816fa08a575eb7344830f",
+            "bytes": 1059
+          },
+          "/tmp/xrai-c06-close-omission.json": {
+            "sha256": "3468cd6b6ac6fd3dec6bfb36dcd9cac147c639fde7f6038f63b7344c95bf6bc4",
+            "bytes": 1080
+          }
+        },
+        "codebase_memory": {
+          "project": "Users-wkoch-Projetos-xrai",
+          "generation": "2026-10-13T18:31:33Z",
+          "tier": 2,
+          "paths": [
+            "crates/xrai-eval/harness/immutable_request_dispatch.py",
+            "crates/xrai-eval/harness/guarded_smoke.py",
+            "crates/xrai-eval/harness/tests/test_immutable_request_dispatch.py",
+            "crates/xrai-eval/harness/tests/test_guarded_smoke.py",
+            "crates/xrai-eval/harness/session_tool_guard.py",
+            "docs/relatorios/L5-D01-REQUEST.md",
+            "docs/relatorios/L5-GUARDED-SMOKE.md"
+          ],
+          "coverage": "no_recorded_issue / metadata_match / best_effort"
+        },
+        "graft_calls": 0,
+        "upstream_calls": 0,
+        "provider_calls": 0,
+        "native_execution": false,
+        "repo_files_edited": false
+      },
+      "retained_artifacts": {
+        "xrai-c06-close-immutable.stdout": {
+          "content": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "xrai-c06-close-immutable.stderr": {
+          "content": "test_bounds_and_nonjson_request_types_refused (test_immutable_request_dispatch.ImmutableTests.test_bounds_and_nonjson_request_types_refused) ... ok\ntest_budget_refusal_has_no_transport_projection (test_immutable_request_dispatch.ImmutableTests.test_budget_refusal_has_no_transport_projection) ... ok\ntest_caller_after_commit_message_limits_nested (test_immutable_request_dispatch.ImmutableTests.test_caller_after_commit_message_limits_nested) ... ok\ntest_caller_before_commit_message_limits_nested (test_immutable_request_dispatch.ImmutableTests.test_caller_before_commit_message_limits_nested) ... ok\ntest_caller_mutated_before_capture_refused_zero (test_immutable_request_dispatch.ImmutableTests.test_caller_mutated_before_capture_refused_zero) ... ok\ntest_cancel_after_commit_keeps_unknown_reservation (test_immutable_request_dispatch.ImmutableTests.test_cancel_after_commit_keeps_unknown_reservation) ... ok\ntest_cancel_before_commit_zero_invocation (test_immutable_request_dispatch.ImmutableTests.test_cancel_before_commit_zero_invocation) ... ok\ntest_capture_exception_clears_pending_to_typed_refusal (test_immutable_request_dispatch.ImmutableTests.test_capture_exception_clears_pending_to_typed_refusal) ... ok\ntest_capture_refusal_cannot_forge_guard_begin (test_immutable_request_dispatch.ImmutableTests.test_capture_refusal_cannot_forge_guard_begin) ... ok\ntest_direct_failure_lifecycle_has_typed_unknown_exception (test_immutable_request_dispatch.ImmutableTests.test_direct_failure_lifecycle_has_typed_unknown_exception) ... ok\ntest_direct_refusals_before_reserve_record_no_fake_authority (test_immutable_request_dispatch.ImmutableTests.test_direct_refusals_before_reserve_record_no_fake_authority) ... ok\ntest_direct_reserve_order_bijection (test_immutable_request_dispatch.ImmutableTests.test_direct_reserve_order_bijection) ... ok\ntest_direct_success_cannot_become_fabricated_failure (test_immutable_request_dispatch.ImmutableTests.test_direct_success_cannot_become_fabricated_failure) ... ok\ntest_error_from_another_guard_attempt_rejected (test_immutable_request_dispatch.ImmutableTests.test_error_from_another_guard_attempt_rejected) ... ok\ntest_extra_duplicate_order_and_changed_guard_ids_rejected (test_immutable_request_dispatch.ImmutableTests.test_extra_duplicate_order_and_changed_guard_ids_rejected) ... ok\ntest_failed_before_transport_releases_reservation (test_immutable_request_dispatch.ImmutableTests.test_failed_before_transport_releases_reservation) ... ok\ntest_guard_request_arguments_cannot_be_changed (test_immutable_request_dispatch.ImmutableTests.test_guard_request_arguments_cannot_be_changed) ... ok\ntest_guard_success_cannot_become_fabricated_failure (test_immutable_request_dispatch.ImmutableTests.test_guard_success_cannot_become_fabricated_failure) ... ok\ntest_guarded_factory_second_admission_refused_without_attempt (test_immutable_request_dispatch.ImmutableTests.test_guarded_factory_second_admission_refused_without_attempt) ... ok\ntest_immutable_bytes_accepted (test_immutable_request_dispatch.ImmutableTests.test_immutable_bytes_accepted) ... ok\ntest_no_runtime_profiler_installed (test_immutable_request_dispatch.ImmutableTests.test_no_runtime_profiler_installed) ... ok\ntest_noncanonical_duplicate_nonfinite_bytes_refused (test_immutable_request_dispatch.ImmutableTests.test_noncanonical_duplicate_nonfinite_bytes_refused) ... ok\ntest_original_v2_counterproof_still_diverges_historical (test_immutable_request_dispatch.ImmutableTests.test_original_v2_counterproof_still_diverges_historical) ... ok\ntest_other_attempt_error_cannot_forge_budget_refusal_exception (test_immutable_request_dispatch.ImmutableTests.test_other_attempt_error_cannot_forge_budget_refusal_exception) ... ok\ntest_pending_capture_counts_capacity_before_append (test_immutable_request_dispatch.ImmutableTests.test_pending_capture_counts_capacity_before_append) ... ok\ntest_public_record_copy_does_not_expose_authority (test_immutable_request_dispatch.ImmutableTests.test_public_record_copy_does_not_expose_authority) ... ok\ntest_record_returns_same_atomic_target_snapshot (test_immutable_request_dispatch.ImmutableTests.test_record_returns_same_atomic_target_snapshot) ... ok\ntest_recover_expand_do_not_change_dispatch_denominator (test_immutable_request_dispatch.ImmutableTests.test_recover_expand_do_not_change_dispatch_denominator) ... ok\ntest_replay_attempt_call_limit_retry_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_attempt_call_limit_retry_adulterated) ... ok\ntest_replay_payload_hash_or_bytes_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_payload_hash_or_bytes_adulterated) ... ok\ntest_replay_projection_omitted_or_changed_refused (test_immutable_request_dispatch.ImmutableTests.test_replay_projection_omitted_or_changed_refused) ... ok\ntest_replay_task_arm_run_authorization_binding_adulterated (test_immutable_request_dispatch.ImmutableTests.test_replay_task_arm_run_authorization_binding_adulterated) ... ok\ntest_retry_late_idempotence_preserved (test_immutable_request_dispatch.ImmutableTests.test_retry_late_idempotence_preserved) ... ok\ntest_same_attempt_pending_unique_and_record_blocked (test_immutable_request_dispatch.ImmutableTests.test_same_attempt_pending_unique_and_record_blocked) ... ok\ntest_transport_mutates_only_disposable_decode (test_immutable_request_dispatch.ImmutableTests.test_transport_mutates_only_disposable_decode) ... ok\ntest_two_threads_real_guard_begin_order_wins_over_capture_order (test_immutable_request_dispatch.ImmutableTests.test_two_threads_real_guard_begin_order_wins_over_capture_order) ... ok\ntest_uncertain_after_commit_retains_reservation (test_immutable_request_dispatch.ImmutableTests.test_uncertain_after_commit_retains_reservation) ... ok\ntest_unreserved_refusal_omission_rejected (test_immutable_request_dispatch.ImmutableTests.test_unreserved_refusal_omission_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 38 tests in 1.572s\n\nOK\n",
+          "sha256": "6e18882762edc2037708e09b62e64e9e2571342a8ece625181343356a14e9671",
+          "bytes": 6005
+        },
+        "xrai-c06-close-smoke.stdout": {
+          "content": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "xrai-c06-close-smoke.stderr": {
+          "content": "test_all_frozen_real_source_consumers_replay (test_guarded_smoke.ConsumerTests.test_all_frozen_real_source_consumers_replay) ... ok\ntest_bm25_and_tfidf_both_search_expand (test_guarded_smoke.ConsumerTests.test_bm25_and_tfidf_both_search_expand) ... ok\ntest_budget_boolean_and_changed_ceiling_refused (test_guarded_smoke.ConsumerTests.test_budget_boolean_and_changed_ceiling_refused) ... ok\ntest_campaign_intent_refused_before_consumer (test_guarded_smoke.ConsumerTests.test_campaign_intent_refused_before_consumer) ... ok\ntest_consumer_adopts_prospective_immutable_request_v4 (test_guarded_smoke.ConsumerTests.test_consumer_adopts_prospective_immutable_request_v4) ... ok\ntest_consumer_request_binding_substitution_refused (test_guarded_smoke.ConsumerTests.test_consumer_request_binding_substitution_refused) ... ok\ntest_duplicate_and_nonfinite_json_refused (test_guarded_smoke.ConsumerTests.test_duplicate_and_nonfinite_json_refused) ... ok\ntest_final_changed_cannot_complete (test_guarded_smoke.ConsumerTests.test_final_changed_cannot_complete) ... ok\ntest_fresh_output_and_readonly_complete_receipt (test_guarded_smoke.ConsumerTests.test_fresh_output_and_readonly_complete_receipt) ... ok\ntest_frozen_capture_category_omission_cannot_change_denominator (test_guarded_smoke.ConsumerTests.test_frozen_capture_category_omission_cannot_change_denominator) ... ok\ntest_gate_identity_substitution_refused (test_guarded_smoke.ConsumerTests.test_gate_identity_substitution_refused) ... ok\ntest_json_size_and_nesting_bounded (test_guarded_smoke.ConsumerTests.test_json_size_and_nesting_bounded) ... ok\ntest_late_duplicate_reconciliation_claim_refused (test_guarded_smoke.ConsumerTests.test_late_duplicate_reconciliation_claim_refused) ... ok\ntest_manifest_unknown_ready_flag_refused (test_guarded_smoke.ConsumerTests.test_manifest_unknown_ready_flag_refused) ... ok\ntest_method_or_query_changed_after_freeze_refused (test_guarded_smoke.ConsumerTests.test_method_or_query_changed_after_freeze_refused) ... ok\ntest_modified_manifest_leaves_no_output (test_guarded_smoke.ConsumerTests.test_modified_manifest_leaves_no_output) ... ok\ntest_ordinary_file_size_and_symlink_refused (test_guarded_smoke.ConsumerTests.test_ordinary_file_size_and_symlink_refused) ... ok\ntest_paid_provider_field_refused (test_guarded_smoke.ConsumerTests.test_paid_provider_field_refused) ... ok\ntest_phantom_capture_refusal_recomputed_summary_refused (test_guarded_smoke.ConsumerTests.test_phantom_capture_refusal_recomputed_summary_refused) ... ok\ntest_postchecks_retained_tool_not_returned (test_guarded_smoke.ConsumerTests.test_postchecks_retained_tool_not_returned) ... ok\ntest_prechecks_zero_handler_actual_fake_preserved (test_guarded_smoke.ConsumerTests.test_prechecks_zero_handler_actual_fake_preserved) ... ok\ntest_provider_tokens_and_agent_claims_refused (test_guarded_smoke.ConsumerTests.test_provider_tokens_and_agent_claims_refused) ... ok\ntest_record_unknown_fields_refused (test_guarded_smoke.ConsumerTests.test_record_unknown_fields_refused) ... ok\ntest_retry_late_fake_reservation_and_idempotence (test_guarded_smoke.ConsumerTests.test_retry_late_fake_reservation_and_idempotence) ... ok\ntest_return_promoted_after_refusal_refused (test_guarded_smoke.ConsumerTests.test_return_promoted_after_refusal_refused) ... ok\ntest_snapshot_copies_input_bytes (test_guarded_smoke.ConsumerTests.test_snapshot_copies_input_bytes) ... ok\ntest_source_bounds_before_reads (test_guarded_smoke.ConsumerTests.test_source_bounds_before_reads) ... ok\ntest_source_path_traversal_refused (test_guarded_smoke.ConsumerTests.test_source_path_traversal_refused) ... ok\ntest_summary_counts_cannot_replace_actual_journal (test_guarded_smoke.ConsumerTests.test_summary_counts_cannot_replace_actual_journal) ... ok\ntest_task_arm_run_substitution_refused (test_guarded_smoke.ConsumerTests.test_task_arm_run_substitution_refused) ... ok\ntest_virtual_invocation_count_substitution_refused (test_guarded_smoke.ConsumerTests.test_virtual_invocation_count_substitution_refused) ... ok\ntest_whole_go_source_capture_bytes (test_guarded_smoke.ConsumerTests.test_whole_go_source_capture_bytes) ... ok\ntest_zip_unknown_traversal_duplicate_and_symlink_refused (test_guarded_smoke.ConsumerTests.test_zip_unknown_traversal_duplicate_and_symlink_refused) ... /opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/zipfile/__init__.py:1755: UserWarning: Duplicate name: 'receipt.json'\n  return self._open_to_write(zinfo, force_zip64=force_zip64)\nok\n\n----------------------------------------------------------------------\nRan 33 tests in 9.104s\n\nOK\n",
+          "sha256": "ea22c710b7289763750585e9531593f7decd721465d6952a63763208b5dbadf4",
+          "bytes": 4627
+        },
+        "xrai-c06-close-omission.py": {
+          "content": "import copy,json,sys\nfrom pathlib import Path\nsys.dont_write_bytecode=True\nsys.path.insert(0,'/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/tests')\nfrom test_immutable_request_dispatch import ImmutableTests\nfrom immutable_request_dispatch import replay_immutable\ncase=ImmutableTests();case.setUp();guard,target=case.guard_two()\noriginal=guard.request_record();good=replay_immutable(original,target)\nforged=copy.deepcopy(original);forged['requests'].pop()\ntry:\n    bad=replay_immutable(forged,target);refused=False\nexcept ValueError as error:\n    bad={'error':str(error)};refused=True\nout={'scope':'owned Python fake only','original':good,'omission_refused':refused,'forged':bad,'guard_dispatch_ids':[x['details']['operation_id'] for x in target['events'] if x['kind']=='begin' and x['details']['method']=='dispatch_fake']}\nPath('/tmp/xrai-c06-close-omission.json').write_text(json.dumps(out,indent=2)+'\\n')\nassert good['attempts']==2 and refused\nprint(json.dumps({'original_attempts':good['attempts'],'omission_refused':refused,'reason':bad['error']}))\n",
+          "sha256": "8bea570d13c00fd9596d6ccfbb82c754ba0651fa674816fa08a575eb7344830f",
+          "bytes": 1059
+        },
+        "xrai-c06-close-omission.json": {
+          "content": "{\n  \"scope\": \"owned Python fake only\",\n  \"original\": {\n    \"schema_version\": \"xrai.eval.immutable-request-dispatch.v4\",\n    \"verified\": true,\n    \"attempts\": 2,\n    \"recorded_requests\": 2,\n    \"guarded_requests\": 2,\n    \"capture_refusals\": 0,\n    \"reserve_events\": 1,\n    \"reservations\": 1,\n    \"commitments\": 1,\n    \"observed_calls\": null,\n    \"committed_private_projections\": 1,\n    \"transport_observed_independently\": false,\n    \"immutable_payloads_equal_reserved\": true,\n    \"provider_calls\": 0,\n    \"provider_charge\": null,\n    \"model_tokens\": null,\n    \"limits\": [\n      \"Dict capture requires caller quiescence during one canonical serialization.\",\n      \"Transport equality is independently observed only by a test spy; future adapter needs a public payload receipt seam.\",\n      \"External ABA and large blobs remain unavailable.\"\n    ]\n  },\n  \"omission_refused\": true,\n  \"forged\": {\n    \"error\": \"exact ordered bijection with ALL public guard fake dispatch begins including unreserved refusals\"\n  },\n  \"guard_dispatch_ids\": [\n    \"dispatch:one\",\n    \"dispatch:two\"\n  ]\n}\n",
+          "sha256": "3468cd6b6ac6fd3dec6bfb36dcd9cac147c639fde7f6038f63b7344c95bf6bc4",
+          "bytes": 1080
+        }
+      }
+    },
+    "store": {
+      "report": "# C06 — plano de integração do intake ao Store existente\n\n13/10/2026, leitura dirigida em HEAD bd12a9a. Este documento concretiza §4 de REVISAO-L5-C06, sem trocar seus objetivos ou iniciar implementação. A raiz verifica o novo recibo nativo38441971210; esta frente não atribui aceite a essa CI nem executa o produtor. Nenhum arquivo do repositório foi alterado, teste/binário/upstream/provider executado ou aquisição realizada.\n\n## Seams confirmados e correção de path\n\nA biblioteca é `crates/xrai-eval/src/context_spike.rs` (underscore); o driver é `crates/xrai-eval/src/bin/context-spike.rs` (hífen). Ambos existem e têm cobertura metadata_match. O primeiro contém Store/prepare/select/expand; o segundo é a entrada experimental e o PythonMeter L4. O novo `bin/context-diff-spike.rs` deve deixar de ser a alternativa de planejamento; sua prova histórica permanece um teste de bytes.\n\n- Validação a reutilizar: `context-diff-spike.rs:94–106,156–250`, antes da construção de evidências/Context próprio.\n- Contrato atual a adaptar: `context_spike.rs:35–91` Anchor/Hunk/Request/Case; Hunk não tem presença e Case acopla ambas revisões à Input Rust.\n- Retenção acoplada à IR: `:160–185` Saved/Delivery possuem Vec<semantics_spike::Snapshot>; `item` em592–609 lê fonte via IR; descriptor/envelope também presumem Rust.\n- Preparação: `:291–564` sempre chama semantics_spike::build e exige paths dos hunks nos dois lados. `p2=false` apenas desativa lookup em499; **não** impede análise Rust. `add_candidate:249–278` também sempre parseia com gramática Rust. Logo React não pode entrar com p2=false e ser anunciado byte-only sem mudar essa fronteira.\n- Seleção/medição existentes: `:709–819`, Meter/stabilize em681–708; preservar estes componentes.\n- Publicação/evicção: Store.context838–920; incremento da encarnação e remoção de vítimas antecedem caminhos de erro. Expansão921–1006 gasta tentativa admitida antes de trabalho falível, regra deliberada que não deve ser desfeita por uma promessa genérica de rollback.\n\n## Contrato mínimo fixável agora\n\n1. `Presence` interno distingue `Absent` de `Present(blob)`, incluindo blob de zero bytes. Indisponibilidade fica separada (`Unavailable` no resultado da captura ou erro de captura incompleta), nunca equivale a Absent. O primeiro perfil de diff exige os dois inventários completos no escopo declarado; entrada desconhecida não ganha prova de ausência.\n2. `UnvalidatedDiff`/DTO aceita o wire limitado; `ValidatedDiff` tem campos privados, construção somente pelo validador nativo e acesso imutável. Não derivar Deserialize que produza diretamente um ValidatedDiff. Nome/layout internos ficam a cargo do Implementador; módulo novo dentro xrai-eval é suficiente, sem crate ou API de produção.\n3. Validar paths/maps únicos, UTF-8/spans, kind/presença, ordenação, bytes removidos/repostos, limites e igualdade **do mapa HEAD inteiro**. Nenhum `validated:true` externo dispensa a validação.\n4. Identidade tem algoritmo e bytes de referência explícitos. A fronteira que aceita SHA256 externo como autoridade deve recalculá-lo; alternativa limitada é conservá-lo apenas como proveniência não verificada, nunca chave autoritativa. BLAKE3 interno e SHA256 não são comparados entre si. Fixar a serialização tipada utilizada antes de gerar novos recibos. Não exigir parser de diff bruto Rust: Python limitado pode continuar como decoder, com bytes/hash/perfil registrados e spans revalidados.\n5. Contexto retém captura de fonte imutável independentemente de haver IR. Uma representação interna pequena, como `RetainedRevision::{Rust(Snapshot), Bytes(CapturedRevision)}`, ou equivalente com fatos opcionais, evita fabricar Snapshot Rust para React. Reutilizar Store/select/expand; nenhuma segunda tabela de contextos nem seletor paralelo. Lookup/conteiner Rust só quando frontend configurado compatível estiver presente. Fatos e IDs semânticos mantêm vínculo inequívoco à revisão capturada/configuração/produtor; identity de captura não se confunde com snapshot semântico.\n6. Perfil byte-only gera obrigações de presença/conteúdo com semantic_support unknown e produtor byte-validator; não declara grammarRust ou inventário de símbolos. P2 disponível acrescenta relações demonstradas; `p2=false` continua uma ablação estrutural para Rust suportado. Byte-only e P2 desligado são estados distintos, sem inventar quinto estado de resolução.\n\n## Quatro incrementos pequenos, na ordem\n\n### S1 — extrair e consumir o intake validado dentro do Store\n\nResponsabilidade: biblioteca de validação interna, context_spike::Case/prepare/Saved e driver context-spike existente. Reutilizar o validador de context-diff-spike; não copiar duas implementações nativas independentes. A entrada nova do driver pode ser versão experimental/tag explícita; não promover a CLI xrai nem alterar silenciosamente recibos antigos.\n\nPreparação produz capturas BASE/HEAD e obrigações de presença. Para create: ausência BASE + conteúdo/presença HEAD; delete: conteúdo/presença BASE + ausência HEAD; presente vazio: prova de presença/hash real, sem declaração/spans semânticos inventados. Um hunk zero-length não elimina obrigação de presença. Conhecida ausência não vira `source_unavailable`; indisponível conserva lacuna própria. Expansão de fonte removida lê BASE retida.\n\nAceite: controles já congelados de criação/remoção React atravessam **Store.context/select/expand** no modo bytes sem instanciar parser Rust; vazios/ausentes/indisponíveis distintos; HEAD com mudança não listada recusado; bytes/spans/exatos preservados. Novas evidências registram Store/planner efetivamente chamado, mas permanecem sem P2. O novo perfil herda retenção Store (dois contextos/TTL) e não a política de um contexto do binário byte-only histórico. Handles antigos continuam válidos enquanto retidos, depois recusam com razão; não sobrescrever provas antigas para igualar políticas.\n\n### S2 — publicação transacional e retenção em falha\n\nResponsabilidade: Store.context, account_retention e testes do próprio Store. Pipeline:\n`validate → build/derive → select/meter → account → plan_victims → last_deadline_check → commit`.\n\nPreparação constrói um candidato isolado; encarnação seguinte é apenas prospectiva até commit. Planejar vítimas por mesma ordem/política, sem removê-las. Serialização, contabilização, medição e operações que retornem erro terminam antes do commit. Commit aplica vítimas, insere Saved, atualiza published/encarnação de uma vez sob ownership exclusivo do Store; não há chamada ao meter/decoder/IR depois de remover A.\n\nContraprova determinística: retenha A válido; planeje B exigindo evicção; faça relógio/checkpoint atingir deadline ou meter falhar antes do commit. Context IDs, manifests, bytes, published, encarnação publicada e expansão de A devem permanecer iguais. Relógio injetável/checkpoint interno é opção do Implementador; não usar sleep frágil para forçar timing. Depois prove sucesso: vítimas exatamente planejadas e B publicado. Teste também input inválido, contador sem ponto fixo e retenção excedida. Expiração legítima por TTL segue política e deve ser registrada separadamente: não se exige recuperar contexto expirado. Tentativa de expand admitida continua consumindo MAX_EXPANSIONS mesmo em falha técnica, como já definido; não restaurar esse contador para esconder trabalho.\n\n### S3 — ponte P2 Tokio, sem anchors do oracle\n\nFonte concreta existente: Tokio `2fb5757a97a94b3173f8fdd7b6280423b63da6e6`, unidade inteira `tokio/src/io/uring/utils.rs` em `eval/semantics/tokio-development.json`; edição2021/rust-r1-r2-v1. Archive retido `eval/sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz`, SHA256 `aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88`.\n\nCongelar uma nova regressão derivada: A conserva a unidade original; B remove exclusivamente a declaração inteira cstr. Não criar outro arquivo de programa para facilitar resolução, trocar root/configuração ou alegar remoção histórica. Diff e input operacional entram no Store; labels/expected-target ficam no verificador.\n\nHoje o Store só expande P2 quando Anchor.lookup vem preenchido. A ponte deve localizar declarações/referências afetadas pelos spans dos hunks **nos fatos/árvore da respectiva revisão**, então formular lookups usando seus próprios nome/namespace/owner/span. Na deleção, obter cstr da declaração BASE; não do oracle. Lookup correspondente em HEAD pode retornar unknown, explicitamente ancorado à investigação da mudança BASE, sem inventar ocorrência em posição zero no HEAD. Hunk vazio na outra revisão não deve selecionar automaticamente a próxima declaração que toca a fronteira.\n\nAceite do planner: definição BASE e sua obrigação sobrevivem à remoção, expansão devolve fonte BASE integral; HEAD não contém alvo cstr; mesmos símbolos de controle ArcFd/UringFd e unknown externo OwnedFd permanecem como esperado. Estes controles são consultas do **avaliador** aos snapshots e não dicas extras para seleção. Sem afirmar callers, validade de execução ou cobertura do crate completo. P2 on/off sobre mesmos hunks/capturas mede diferença de evidências; não precisa vencer para passar o contrato. Todas as resoluções/unknown/gaps são reportadas, com denominadores.\n\n### S4 — medição e prova nativa da vertical Store\n\nReusar Meter/stabilize, PythonMeter e expand do Store. Orçamento de resposta mede envelope inteiro final com metadados, presença, provas de omissão e contadores; bytes não viram tokens. Perfil L4 real fixado é necessário para alegação de tokens. Resposta mínima impossível recusa sem publicar; obrigação identificada que não cabe continua `insufficient_budget`, não é apagada para satisfazer suficiência. Deduplicar conteúdo por revisão/path/span quando adequado, conservando ligação de cada obrigação à evidência; BASE e HEAD nunca deduplicados apenas pelo basename.\n\nAntes de medir, congelar teto de bytes/tokens por resposta, número de expansões e orçamento agregado do roteiro (contexto + expansões + recusas/request projections pertinentes). Manter separados custo do wire entregue, trabalho do meter e metadados avaliador não entregues; não afirmar provider usage/billing. Respeitar cap efetivo do meter atual (512KiB) e demais limites mais restritivos, sem inventar novos SLOs.\n\nExecutar em CI própria a mesma vertical do **driver Store**: byte-presence React, Tokio P2 on/off, falhas transacionais, expansão de BASE após publicação de B e rebuild independente. Rebuild deve comparar captura/IR, candidatos, resoluções, obrigações, conteúdo, desconhecidos e coverage. Epoch/context handles dependem da retenção e podem diferir entre processos; declarar previamente mapeamento de identidades operacionais e comparar seu vínculo completo. Não excluir snapshot/configuração/produtor/evidência da comparação para acomodar divergência. Dentro do mesmo contexto retido, expansão antes/depois de publicar outro contexto deve ser byte-identical no perfil/limites idênticos.\n\n## O que encerra esta fatia e o que continua\n\nFatia encerra quando o único Store consome ValidatedDiff, preserva presença/retenção/atomicidade, deriva P2 Tokio dos próprios fatos, entrega/expande revisão certa sob orçamento e passa contraprovas/rebuild com recibos novos autenticados. Não requer CLI/index produção, parser universal ou frontend JS Rust-falso. Evitar outro binário/planner paralelo; driver existente ou modo experimental explícito basta.\n\nContinua aberta a tarefa Rust natural inteira pelo consumer guardado, com universo amplo, orçamento de sessão e baseline lexical comparável. Regressão Tokio é controle de integração, não bug histórico/tarefa D1/crédito de quota. Nenhum gate/cartão ou número de elegíveis muda automaticamente. Publicação histórica de fonte/recibos permanece pinada: evolução das fontes exige perfil/produtor/recibo prospectivo ou cápsula histórica explícita, nunca reancorar SHA antigo em bytes novos.\n\n## Cobertura/evidências desta revisão\n\ncodebase-memory Tier2, geração `2026-10-13T18:31:33Z`; search/trace/snippet Store.context e leitura dirigida. Seis paths metadata_match/no_recorded_issue, best-effort. Nenhuma lacuna faltante nesses paths; resultados homônimos de trace não sustentam conclusões. Hashes antes/depois constam em `/tmp/xrai-c06-close-store-hashes.json`.\n\n- docs/relatorios/REVISAO-L5-C06.md\n- crates/xrai-eval/src/context_spike.rs\n- crates/xrai-eval/src/bin/context-spike.rs\n- crates/xrai-eval/src/bin/context-diff-spike.rs\n- crates/xrai-eval/src/semantics_spike.rs\n- eval/semantics/tokio-development.json\n\nGraft desta tarefa:22.139 tokens economizados, uma chamada, sem valor monetário fornecido.\n",
+      "report_sha256": "94aa44065caf3806d5cea842aff234f31e20fd9f2a7a7546b0f177f98db748ca",
+      "evidence": {
+        "before": {
+          "docs/relatorios/REVISAO-L5-C06.md": "bd81ef4ff16cb03ddf2ec159ae20f33517e5c4c87ab2ea3db5df6474b6a0f48a",
+          "crates/xrai-eval/src/context_spike.rs": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+          "crates/xrai-eval/src/bin/context-spike.rs": "f1633415d8989c56ef5b0f11b9c50f7e6c79ad3ed2dfabe2ff4e0e0c18a891c0",
+          "crates/xrai-eval/src/bin/context-diff-spike.rs": "9d092b55a28be335f8bdcfbdd39dae304f52201f31be1c2fde3061b9c5250a54",
+          "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+          "eval/semantics/tokio-development.json": "38d61962127f09367ad53ce30627fde3c630b4cbdaa7aaf6d158fc7933db161d"
+        },
+        "after": {
+          "docs/relatorios/REVISAO-L5-C06.md": "bd81ef4ff16cb03ddf2ec159ae20f33517e5c4c87ab2ea3db5df6474b6a0f48a",
+          "crates/xrai-eval/src/context_spike.rs": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+          "crates/xrai-eval/src/bin/context-spike.rs": "f1633415d8989c56ef5b0f11b9c50f7e6c79ad3ed2dfabe2ff4e0e0c18a891c0",
+          "crates/xrai-eval/src/bin/context-diff-spike.rs": "9d092b55a28be335f8bdcfbdd39dae304f52201f31be1c2fde3061b9c5250a54",
+          "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+          "eval/semantics/tokio-development.json": "38d61962127f09367ad53ce30627fde3c630b4cbdaa7aaf6d158fc7933db161d"
+        },
+        "changed": [],
+        "review_read_only": true
+      }
+    },
+    "django": {
+      "report": "# Fechamento arquitetural C06 — próxima entrega Django mínima\n\n13/10/2026, HEAD consultado bd12a9a. Não há mudança pertinente em django-router-v1/verificador/relatório desde fbf1e53. A preparação atual continua válida no recorte já revisado; nenhum oracle de domínio novo foi entregue. Esta rodada não repetiu os 42 testes, não executou Django/SQLite/binários XRAI, não adquiriu dependências e não alterou o repositório.\n\n## Uma entrega, três partes\n\nImplementar apenas: (1) variante pública/oracle v2 congelados; (2) um executor físico em domínio descartável; (3) materialização pública/privada com contraprovas nas ferramentas realmente usadas. Reutilizar verificação de captura e supervisor existentes. Não criar outro framework de política nem novo redutor como substituto do oracle físico.\n\n### 1. Variante pública e matriz esperada\n\nPreservar django-router-v1 e sua evidência. A v2 mantém task/slot e vínculo explícito de revisão da mesma linhagem; não conta outra tarefa. Acrescentar ao deployment público um terceiro modelo, `ledger.LegacyEntry`, `managed=false`, `proxy=false`, `swapped=false`, sem requisitos adicionais de vendor/features. Os dois modelos anteriores mantêm managed=true. As duas políticas de `agent/policy.py` permanecem byte a byte. Apenas a ordem dos dois componentes é editável pelo agente.\n\nMotivação pública mínima: tabelas correntes de ledger pertencem a reporting; demais aplicativos pertencem a default; o registro legado é administrado por processo externo e esta migração não deve criá-lo. O agente vê os metadados dos três modelos e as duas policies. Não vê config B, lista esperada, fontes privadas do oracle nem os nomes internos de métodos/paths que explicam o veto. O pedido pode solicitar explicar por que mudar a ordem não autoriza a criação da tabela legada.\n\nFixar explicitamente o estado inicial: as tabelas dos três modelos estão ausentes nas duas bases descartáveis. A regra deste primeiro oracle é **não criar** a tabela unmanaged, não provar preservação de uma tabela legada preexistente. Um teste de tabela preexistente é extensão opcional, não requisito desta entrega. Assim evita ambiguidade entre ausência exigida e estado externo prévio.\n\nMatriz física mínima, antes de qualquer execução:\n\n| Estado | Conexão | ledger.Entry | catalog.Item | ledger.LegacyEntry |\n|---|---|---|---|---|\n| A: primary, scoped | default | presente | presente | ausente |\n| A: primary, scoped | reporting | ausente | ausente | ausente |\n| B: scoped, primary | default | ausente | presente | ausente |\n| B: scoped, primary | reporting | presente | ausente | ausente |\n\nSão 12 resultados por modelo/alias/estado. Nas quatro tentativas de LegacyEntry, zero chamadas a allow_migrate da política: `Options.can_migrate` retorna False por unmanaged antes do roteamento. O veto foi confirmado em fonte capturada, `sources/django/db/models/options.py:395–411` e `sources/django/db/migrations/operations/base.py:148–158`. Na linha B/reporting, o router permitiria um modelo ledger elegível; o legado permanece ausente. Essa diferença é a condição operacional que falta ao redutor de routing isolado.\n\nCobertura já presente nos oito resultados centrais: decisão explícita True/False, ordem oposta e abstain de LedgerPolicy para catalog. Acrescentar somente dois controles físicos pequenos, em domínios limpos: (i) todos routers se abstêm, modelo managed é criado; (ii) componente sem método seguido de False, modelo managed não é criado, uma invocação efetiva. Rodar cada controle nos dois aliases, quatro resultados adicionais. Os controles são evaluator-only e não mudam as policies públicas do desafio. Os dez controles declarativos v1 ficam preservados com sua natureza original; não alegar que todos ganharam prova física se só este subconjunto executar.\n\n### 2. Executor físico e receipts\n\nUsar como referência de domínio o exemplo capturado `evaluator/captured/tests/migrations/test_multidb.py:47–70`: `CreateModel`, `ProjectState.clone`, `state_forwards`, `connection.schema_editor`, `database_forwards` e consulta física da tabela. Criar os três modelos históricos com flags/opções explicitamente fixados; não passar apenas `model_can_migrate=false` a um mock.\n\nExecutar A e B em processos/scratch novos, cada um com dois arquivos SQLite diferentes. Para cada modelo/alias: capturar estado antes, executar a operação real e inspecionar o catálogo real das DUAS bases. Preparar em cada base uma tabela sentinela do avaliador, com schema e linha de valor distintos por alias, antes da execução; registrar hashes lógicos de schema/linhas e exigir preservação após cada operação. As sentinelas são fixtures declaradas, não sujeira preexistente: as tabelas dos três modelos continuam inicialmente ausentes. Demonstrar que a base não alvo não mudou durante aquela operação. A comprovação do alias inclui caminho real/identidade distintos das duas bases; um mapa JSON com dois nomes apontando ao mesmo arquivo deve ser rejeitado. Não passar o resultado calculado da policy como presença de tabela.\n\nO oracle pode observar as invocações às policies (profiler ou wrapper que somente delegue ao código original, revisto), sem substituir ConnectionRouter, Operation, CreateModel ou schema_editor. Presença/ausência física é a autoridade de comportamento; traces são evidência complementar do veto e ligação entre unidades. Registrar a origem dos módulos carregados e hashes do snapshot efetivamente importado.\n\nA baseline A viola o requisito ledger no estado físico; B atende e preserva catalog/legacy. Estado A pode ter exit do executor 0 porque a violação esperada foi reproduzida: guardar separadamente `oracle_executed` e `requirement_satisfied`, evitando tratar falha esperada como quebra de infraestrutura.\n\nReceipt mínimo por execução: manifesto fonte/configuração/modelos/policies/oracle, runtime e dependências, identificação das duas bases, 12 linhas centrais/quatro controles físicos observados, traces relevantes, logs limitados, status da infraestrutura, razão de divergência, limpeza e nenhum filho restante. Fechar as conexões antes da inspeção/limpeza final e preservar hashes dos inputs readonly. Não é prova de índice incremental ou ABA; não tocar nos eventos requeridos scikit-learn.\n\n### 3. Setup e materialização sem contornar a fronteira\n\nDisponibilidade verificada SOMENTE nos paths conhecidos do piloto: `/private/tmp/xrai-l3-python` não existe mais; isso não prova ausência das dependências em toda a máquina. O executável `/opt/homebrew/bin/python3.15` existe e seus bytes têm SHA256 `15c72833c1ffc09bc4e05d1e1866784d126721ad548d9c4d8f943641262535cb`; não foi executado e a presença não autentica a stdlib, bibliotecas dinâmicas, SQLite ou isolamento. Não usar site-packages global para preencher lacuna.\n\nReusar os pins históricos de asgiref 3.12.1/sqlparse 0.5.4 como entradas candidatas e o snapshot completo Django. Não reutilizar receipt JSONField como proof deste cenário. O runner novo precisa inventário/lock de bytes e origem de imports próprios. Não é necessário instalar/buildar Django: código pode ser importado diretamente do checkout fixado dentro do domínio. Não instalar toda a suíte de testes upstream para usar o oracle próprio.\n\nEscolher um runtime Linux suportado pelo executor e fixar distribuição/versão/hash/stdlib/SQLite; isso é variante de setup identificada, não o ambiente macOS anterior. A aquisição faltante, se houver, é fase separada com artefatos/pins/proveniência; instalação offline a partir do wheelhouse, sem download durante import/probe. Nenhum IO upstream deve anteceder o preflight do domínio. Para execução, fontes/runtime/dependências readonly; bases/tmp/pycache somente scratch; ambiente limpo, sem rede, segredos ou caminhos do host. Consumir o supervisor existente; não reaproveitar o process group auxiliar do piloto como sandbox.\n\nOrçamento inicial concreto para este pequeno oracle: serial, 60 s por processo de estado/controle, 300 s no lote, 1 MiB por stream; fixar também memória/processos/disco nos limites que o executor efetivamente consegue impor, registrando os valores antes de rodar. Falta de mecanismo para impor um limite declarado recusa o run; não basta flag em setup-readiness. Essa preparação não precisa criar outra biblioteca de contenção quando o supervisor atual atende.\n\nMaterialização do agente: raiz nova contendo checkout amplo e material público; somente o arquivo de ordem/configuração autorizado é gravável. Avaliador e referência ficam em outra raiz não montada no domínio do agente. Não montar workspace xrai, .git, relatórios, receipts ou drafts. O mapeamento do agente não herda o Python path do avaliador. O índice, grep e leitor usados pela ferramenta precisam consumir a mesma raiz; validar isso com chamadas reais dessas ferramentas sem provider.\n\nContraprovas mínimas: leitura por caminho absoluto do evaluator, traversal e symlink; busca ampla por marcador único privado; indexação/publicação acidental de referência; patch de policy/model/framework em vez da configuração; aliases para o mesmo DB; DB sujo; Django importado globalmente; manifestação de fonte alterada entre preflight e consumo; timeout/teardown e saída incompleta. Recusas devem ocorrer antes do efeito protegido, e materiais privados não podem aparecer nas respostas. Marcador de teste serve só como contraprova da fronteira, não como único mecanismo de isolamento.\n\n## Crédito e término\n\nPreparação completa não basta. Segundo leitor deve avaliar requisito público+observação física, não lista obrigatória de três paths. Uma resposta que confunde permissões do router com criação física deve errar LegacyEntry; uma resposta correta com evidências alternativas deve ser aceita. Não exigir citar cada unidade como ritual. Ainda assim, a inclusão de unmanaged pode continuar sendo simples conhecimento prévio do framework; documentar a necessidade de contexto específica do caso e não alegar dificuldade/ganho de recuperação por hipótese.\n\nSe execução/visibilidade/linhagem passam mas a relação adicional é ornamental, qualificar como tarefa pequena `multi_module=false`, mantendo 19/20 e procurando outra compensação. Se necessidade de relação entre unidades também estiver factual e independentemente demonstrada, Implementador pode produzir plano/consumer prospectivo v3 vinculado às provas, derivando quotas sem nova aprovação rotineira. Nem um resultado nem a projeção futura 20/20 abrem D1/G0.\n\nEntrega seguinte esperada é código do oracle/materializador e suas contraprovas, com receipts reais quando o setup estiver pronto; não outro inventário de preparação sem operação nova.\n\n## Evidências desta subrevisão\n\nGraft file_api e codebase-memory Tier 2: search_graph→trace verify ambos sentidos→snippet. Coverage adicional dez paths: metadata_match/no_recorded_issue, geração 2026-10-13T18:31:33Z. Sem novas leituras de archive comprimido nesta rodada; as fontes citadas são cópias locais já autenticadas pelo dossiê, não nova autenticação própria do tar. Hashes estão em `/tmp/xrai-c06-close-django-hashes.json`. Nenhum teste de domínio/declarativo repetido por esta revisão.\n\nGraft: **3.375 tokens poupados, 1 chamada nesta tarefa**, sem acumular rodadas anteriores.\n",
+      "report_sha256": "49100ba57308ea5c662e3831b8ecc7485b87f40e3e37126e84384f7fca054917",
+      "evidence": {
+        "head": "bd12a9a53fcd046c1731eda3b33a11c918d1cfc0",
+        "historical_base": "fbf1e53",
+        "relevant_diff": [],
+        "inputs_final_snapshot": [
+          {
+            "path": "docs/relatorios/REVISAO-L5-C06.md",
+            "bytes": 16560,
+            "sha256": "bd81ef4ff16cb03ddf2ec159ae20f33517e5c4c87ab2ea3db5df6474b6a0f48a"
+          },
+          {
+            "path": "eval/scripts/django_router_verify.py",
+            "bytes": 14598,
+            "sha256": "c8e4494ff5fbf6cc0ad50356d45c2ef0142f24337637ee558110e261b7a5a8e6"
+          },
+          {
+            "path": "eval/scripts/run_vertical_probes.py",
+            "bytes": 22570,
+            "sha256": "943f31fae58d99696c4bf4006af319afe54faead75ae30b4cea26f74c3f7a88d"
+          },
+          {
+            "path": "eval/qualification/django-router-v1/case.json",
+            "bytes": 2190,
+            "sha256": "cfb5d099075937d323e2f8889b7a9142abc9ee85e7646fcb28d6088db39b4895"
+          },
+          {
+            "path": "eval/qualification/django-router-v1/agent/deployment.json",
+            "bytes": 558,
+            "sha256": "68f76907c29cd1ea8915836e4bda6fbe435fbf4ec8651b5cab75c92076d32d2e"
+          },
+          {
+            "path": "eval/qualification/django-router-v1/agent/policy.py",
+            "bytes": 353,
+            "sha256": "95ca159e0f181feb6235aca44e9cd37937b95a68b753013d678645b4541e7c57"
+          },
+          {
+            "path": "eval/qualification/django-router-v1/evaluator/setup-readiness.json",
+            "bytes": 967,
+            "sha256": "ab9352b43c4d036e0785d1cb995018cad175a086495a05e8b51f15c16da1e486"
+          },
+          {
+            "path": "eval/qualification/django-router-v1/evaluator/captured/tests/migrations/test_multidb.py",
+            "bytes": 7035,
+            "sha256": "ddef357fc38d29e9c55a7b815fe18107d68abc37dbfa18e39cc7342d25d91e66"
+          },
+          {
+            "path": "eval/qualification/django-router-v1/sources/django/db/models/options.py",
+            "bytes": 39675,
+            "sha256": "3cb6de013d977255d5004b1d777712cffd7c9d2269e95d6b98f5d9b9f015fa49"
+          },
+          {
+            "path": "eval/qualification/django-router-v1/sources/django/db/migrations/operations/base.py",
+            "bytes": 5927,
+            "sha256": "802f323647bb1314e4c50cfb2e2ae4b392423031ee86edfbad389303cad0910a"
+          }
+        ],
+        "receipt_scope": "Read-only architecture; no test/domain execution; hashes captured at conclusion, not a claim of before/after execution audit",
+        "coverage_generation": "2026-10-13T18:31:33Z",
+        "report_sha256": "49100ba57308ea5c662e3831b8ecc7485b87f40e3e37126e84384f7fca054917",
+        "known_dependencies_path_available": false,
+        "graft": {
+          "calls": 1,
+          "tokens_saved": 3375
+        }
+      }
+    }
+  },
+  "total_fake_tests": 71,
+  "scope": "Architectural review; no product code or domain execution",
+  "graft": {
+    "root_tokens": 8642,
+    "agent_tokens": 25514,
+    "total_tokens": 34156,
+    "calls": 3,
+    "dollars_reported": null
+  }
+}

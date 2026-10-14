@@ -1,0 +1,137 @@
+{
+  "schema": "xrai.architecture.c06.closure-review.v1",
+  "reviewed_head": "bd12a9a53fcd046c1731eda3b33a11c918d1cfc0",
+  "verified": true,
+  "source_sha256": {
+    "eval/adapters/historical-v1/verify.py": "56f0d8ef9c1d73595c6c7480888fb8751bc5f8c8fa317b69267f04c32c4763f4",
+    "eval/adapters/historical-v1/provenance.json": "30001ef3fe6674d7746677d70e00e49087cdeeac15709b93f9b25417b1a25757",
+    "eval/adapters/historical-v1/test_historical_adapter.py": "58c0bbe783c96cfa2b052c7f3fe70d68d7a7cfa00b8561c2459f0fdf6c92118f",
+    "eval/scripts/reconcile_c06_p3_ci.py": "075e3ac71b58fccfbf1580e4e5ef6a5c447ecdaadd3253540c86fa82e172ebc9",
+    "eval/scripts/p3_diff_native_verify.py": "268b4ede2f834ae1cc78c4f26534fb64e1392abf290055d6390f1296ff02694d",
+    "eval/scripts/test_c06_p3.py": "c863f2b12218f726c6be2ef6dfc979c1ff9fb2273bc20428c03ca422f3bc92ba"
+  },
+  "p3_reconciliation_equal_complete": true,
+  "p3_reconciliation_sha256": "5825537a143769fb174e26236672e0fa426f7245c5ab5d0e443259b6b3e86f37",
+  "p3_acquisition_bytes_checked": true,
+  "p3_commands": 225,
+  "p3_complete_pairs": 42,
+  "p3_run": 38441971210,
+  "historical_original_plan_git_bytes_equal": true,
+  "historical_verification": {
+    "agent_runs": 0,
+    "campaign_scoring_enabled": false,
+    "capsule_bytes": 2223633,
+    "capsule_members": 30,
+    "current_plan_binding_claimed": false,
+    "current_plan_sha256": "f53acab3e75521a1a6705df71f2e81fac55950e182d84512bf486cd41c31f6e1",
+    "historical_commit": "f8881d496cace07b71863b7a31929eb0552c94c4",
+    "historical_plan_sha256": "5bffa29b5223ac305663a6e4cbf28a0325a277d96c44e863ebb50ac639d74bbc",
+    "historical_result": {
+      "agent_runs": 0,
+      "campaign_scoring_enabled": false,
+      "comparator_refusals": 8,
+      "fixtures": {
+        "cancelled-revoked": {
+          "bytes": 34148,
+          "sha256": "c0e5e75a283f5fa7575b660e6b583e0ca3773488459141b5d2bc65f1c155678d",
+          "verified": true
+        },
+        "completed-bm25": {
+          "bytes": 39433,
+          "sha256": "7e262b738c802b26d4b5d12c692699db1e27f2d2366ec2b04d2be9e8ce5e18b9",
+          "verified": true
+        },
+        "completed-tfidf": {
+          "bytes": 39453,
+          "sha256": "b3378b2f6dcab4be158ec181e453f7672d7a592708f5dc49b3a1107226219a29",
+          "verified": true
+        },
+        "error-before-transport": {
+          "bytes": 31563,
+          "sha256": "73291167ded72b6dd896e8cbe675e3c5ba5fa8fa85e3f0eef56a15494af082a3",
+          "verified": true
+        },
+        "late-usage-idempotent": {
+          "bytes": 41246,
+          "sha256": "1ed0f3000a741a79ca129ad9c4b375cc760c40d03b76c38ccfd39cdb90549e05",
+          "verified": true
+        },
+        "partial-unanswered": {
+          "bytes": 34415,
+          "sha256": "1ff22e7062cb3e6a89f1ec0abb6903a854b5cfbd24f119c752291eee27079426",
+          "verified": true
+        },
+        "timeout-unknown": {
+          "bytes": 31577,
+          "sha256": "34297e1f4c48ff562c4b935e6ff0d34fdfbdf9d08fceb55659613acce61a2263",
+          "verified": true
+        }
+      },
+      "provider_calls": 0,
+      "schema": "xrai.eval.adapter-evidence-verification.v1",
+      "verified": true
+    },
+    "native_execution": false,
+    "new_qualification": false,
+    "original_receipt_sha256": "4e851b4624e759ca5703c09139c7f168cc8b111241d392a393a178057a7039f1",
+    "provider_calls": 0,
+    "schema_version": "xrai.eval.historical-adapter-verification.v1",
+    "scope": "historical original adapter replay; current own code exact; original plan snapshot only",
+    "upstream_execution": false,
+    "verified": true
+  },
+  "code_ci": {
+    "verified": true,
+    "run_id": 38446119525,
+    "head_sha": "b5b9f8bb9e00c2ba49d44cebec32bbb0d72160c8",
+    "url": "https://github.com/wkoch/xrai/actions/runs/38446119525",
+    "jobs": {
+      "Documentary contracts": "success",
+      "x86_64-unknown-linux-gnu": "success",
+      "aarch64-apple-darwin": "success",
+      "L5 real Rust behavioral pair": "skipped",
+      "L5 real JavaScript behavioral pair": "skipped"
+    },
+    "expected_conditional_step_skip": {
+      "host": "aarch64-apple-darwin",
+      "step": "Prepare Linux evaluator sandbox"
+    },
+    "original_api_sha256": {
+      "v4-code-ci-run.json": "4fca172701f0fbd1b5569ffc8208b22fedd369cd23e6c66cae70093e055d8e94",
+      "v4-code-ci-jobs.json": "55e493b98c07a8d34087e09590782a33a9829cf3fac9f93837496fbcc66f2272"
+    },
+    "scope": "Final D01 v4/consumer v3 code passed all three regular owned CI jobs. Historical upstream behavioral jobs remained gated/skipped; Linux-only setup skipped on macOS."
+  },
+  "tests": {
+    "historical": {
+      "passed": 16,
+      "skipped": 0,
+      "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.578s\n\nOK\n",
+      "stdout": ""
+    },
+    "p3": {
+      "passed": 47,
+      "skipped": 0,
+      "stderr": "...............................................\n----------------------------------------------------------------------\nRan 47 tests in 1.785s\n\nOK\n",
+      "stdout": ""
+    }
+  },
+  "runtime": {
+    "historical": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "p3": "CPython 3.13.13; blake3 1.0.11 copied from existing local uv cache into disposable venv; no download"
+  },
+  "commands": [
+    "python3 -B eval/adapters/historical-v1/verify.py",
+    "python3 -B -m unittest discover -s eval/adapters/historical-v1 -p test_*.py",
+    "/tmp/xrai-c06-close-python/bin/python -B eval/scripts/reconcile_c06_p3_ci.py docs/relatorios/logs/L5-C06/P3-native/native-proof --run-id 38441971210 --head fbf1e535994ee50e6b4cf1ef42ed04eaf565b7ac --artifact-id 11835013388",
+    "XRAI_C06_P3_OUTPUT=docs/relatorios/logs/L5-C06/P3-native/native-proof/export/event /tmp/xrai-c06-close-python/bin/python -B -m unittest discover -s eval/scripts -p test_c06_p3.py"
+  ],
+  "limits": [
+    "Rechecked retained acquisition/API evidence; no new GitHub acquisition or CI run. JSON is not a signature.",
+    "No retained ELF, upstream project, product analyzer or provider executed.",
+    "Native proof is typed intake/byte context only; no Store/P2/token or agent efficacy claim.",
+    "CI evidence refers to b5b9f8b code, not this later documentary commit."
+  ],
+  "admitted": false,
+  "provider_calls": 0
+}

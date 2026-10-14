@@ -1,0 +1,52 @@
+{
+  "schema": "xrai.architecture.c06.closure-doc-check.v1",
+  "verified": true,
+  "base": "bd12a9a",
+  "cards_preserved": 41,
+  "status_counts": {
+    "concluída": 9,
+    "em andamento": 7,
+    "não iniciada": 25
+  },
+  "six_v1_full_blocks_unchanged": true,
+  "gates_unchanged": true,
+  "local_links": 264,
+  "local_links_valid": true,
+  "current_source_hashes_match_review": true,
+  "agent_review_hashes_match_base": true,
+  "historical_verifier_after_plan_update": {
+    "verified": true,
+    "current_plan_sha256": "83459c0173e390461c357b73fe96951a23e5f396ec024962bca6dd1c363b9e66",
+    "capsule_members": 30,
+    "current_plan_binding_claimed": false
+  },
+  "owned_paths": [
+    "IMPLEMENTADOR.md",
+    "README.md",
+    "docs/L5-PROXIMA-EXECUCAO.md",
+    "docs/PLANO-DE-IMPLEMENTACAO.md",
+    "docs/PLANO-DE-VALIDACAO.md",
+    "docs/ROTEIRO-V1.md",
+    "docs/STATUS-IMPLEMENTACAO.md",
+    "docs/relatorios/REVISAO-L5-C06.md",
+    "docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md",
+    "docs/relatorios/logs/revisao-L5-C06-fechamento/evidencias.json",
+    "docs/relatorios/logs/revisao-L5-C06-fechamento/agentes.json",
+    "docs/relatorios/logs/revisao-L5-C06-fechamento/documentacao.json"
+  ],
+  "foreign_changes_excluded": [],
+  "file_sha256": {
+    "IMPLEMENTADOR.md": "435162175a568cf4dc692aca1ad297d0e04d58a11ce0fc2616ef8ea6ae25569a",
+    "README.md": "03d003175cf971b3771eba5b43f6d877b6af8c2febceccf0424f0df9c5e74ca6",
+    "docs/L5-PROXIMA-EXECUCAO.md": "3e78f426eb554545960603fffd7c938efcd81f54e4c1099bddd5ea2d0d729608",
+    "docs/PLANO-DE-IMPLEMENTACAO.md": "83459c0173e390461c357b73fe96951a23e5f396ec024962bca6dd1c363b9e66",
+    "docs/PLANO-DE-VALIDACAO.md": "3ba52c81d55cc5d2d4f185adf8763b09fc04844252bb653918c255518d885b9a",
+    "docs/ROTEIRO-V1.md": "b0e26d47b199ebc500969ac3ab1173a0fa48945c7d47a2275e96dad9eed9f4b9",
+    "docs/STATUS-IMPLEMENTACAO.md": "b12d4061306172b381bdfb347ec5ddf38916b3fccfca33c96942f4ebb4f640e6",
+    "docs/relatorios/REVISAO-L5-C06.md": "3d00b9d1c8e631ea0a7ed05ea9f786c7b14723f7f42ba1a2651f745eb5a44dc8",
+    "docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md": "ed59b156794933a6c1eee7e1f228a4cebe03a3e7fd90c592db78a1568160b41f",
+    "docs/relatorios/logs/revisao-L5-C06-fechamento/evidencias.json": "abb9e73797bf76d7a959a4c6744226d02afc496f2b8e348a0eb09e3f545a2920",
+    "docs/relatorios/logs/revisao-L5-C06-fechamento/agentes.json": "7dcef3607bc95bcf35d040b718fe3ff9720363778e9d2508646435c3915d934b"
+  },
+  "verification_recipe": "from pathlib import Path\nimport re,json,hashlib,subprocess,collections\nR=Path('/Users/wkoch/Projetos/xrai');base='bd12a9a';log='docs/relatorios/logs/revisao-L5-C06-fechamento/'\nmd=['IMPLEMENTADOR.md','README.md','docs/L5-PROXIMA-EXECUCAO.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/PLANO-DE-VALIDACAO.md','docs/ROTEIRO-V1.md','docs/STATUS-IMPLEMENTACAO.md','docs/relatorios/REVISAO-L5-C06.md','docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md']\nowned=md+[log+n for n in ['evidencias.json','agentes.json','documentacao.json']]\ndef old(p):return subprocess.check_output(['git','show',base+':'+p],cwd=R,text=True)\ndef cur(p):return (R/p).read_text()\ndef sha(b):return hashlib.sha256(b).hexdigest()\ndef rows(s):return re.findall(r'^\\| (M[01]-[^|]+) \\| ([^|]+) \\| ([^|]+) \\|',s,re.M)\ns='docs/STATUS-IMPLEMENTACAO.md';assert rows(old(s))==rows(cur(s)) and len(rows(cur(s)))==41\ncounts=dict(collections.Counter(r[2].strip() for r in rows(cur(s))));assert counts=={'concluída':9,'em andamento':7,'não iniciada':25}\np='docs/PLANO-DE-IMPLEMENTACAO.md';pattern=r'^### (M[01]-[^\\n]+)\\n\\n(\\*\\*Depende de:\\*\\*[^\\n]+)';assert re.findall(pattern,old(p),re.M)==re.findall(pattern,cur(p),re.M);assert len(re.findall(pattern,cur(p),re.M))==41\nv='docs/ROTEIRO-V1.md';pattern=r'### V1-.*?(?=\\n### V1-|\\n## 5\\.)';assert re.findall(pattern,old(v),re.S)==re.findall(pattern,cur(v),re.S);assert len(re.findall(pattern,cur(v),re.S))==6\nassert re.findall(r'^\\| G[012] \\|.*$',old(s),re.M)==re.findall(r'^\\| G[012] \\|.*$',cur(s),re.M)\nlinks=[]\nfor n in md:\n for link in re.findall(r'\\[[^\\]]*\\]\\(([^)]+)\\)',cur(n)):\n  if re.match(r'(https?://|mailto:|#)',link):continue\n  target=link.split('#',1)[0];p=(R/n).parent/target\n  assert p.exists() or p.resolve()==(R/log/'documentacao.json').resolve(),(n,link)\n  links.append([n,link])\nroot=json.loads((R/log/'evidencias.json').read_text());assert all(sha((R/n).read_bytes())==h for n,h in root['source_sha256'].items())\na=json.loads((R/log/'agentes.json').read_text())\nfor agent in a['agents'].values():\n e=agent['evidence']\n for n,h in e.get('before',{}).items():assert sha(subprocess.check_output(['git','show',base+':'+n],cwd=R))==h\n for row in e.get('inputs_final_snapshot',[]):\n  if not row['path'].startswith('/'):\n   assert sha(subprocess.check_output(['git','show',base+':'+row['path']],cwd=R))==row['sha256']\n assert sha(agent['report'].encode())==agent['report_sha256']\n# Recheck historical verifier after architectural plan changed, without re-running unrelated suites.\nh=subprocess.run(['python3','-B','eval/adapters/historical-v1/verify.py'],cwd=R,text=True,capture_output=True,check=True)\nhist=json.loads(h.stdout);assert hist['verified'] and hist['current_plan_sha256']==sha((R/'docs/PLANO-DE-IMPLEMENTACAO.md').read_bytes()) and not hist['current_plan_binding_claimed']\nsubprocess.run(['git','diff','--check','--',*owned],cwd=R,check=True)\nchanged=subprocess.check_output(['git','diff','--name-only'],cwd=R,text=True).splitlines();untracked=subprocess.check_output(['git','ls-files','--others','--exclude-standard'],cwd=R,text=True).splitlines()\nforeign=sorted((set(changed)|set(untracked))-set(owned))\nresult={'schema':'xrai.architecture.c06.closure-doc-check.v1','verified':True,'base':base,'cards_preserved':41,'status_counts':counts,'six_v1_full_blocks_unchanged':True,'gates_unchanged':True,'local_links':len(links),'local_links_valid':True,'current_source_hashes_match_review':True,'agent_review_hashes_match_base':True,'historical_verifier_after_plan_update':{'verified':hist['verified'],'current_plan_sha256':hist['current_plan_sha256'],'capsule_members':hist['capsule_members'],'current_plan_binding_claimed':False},'owned_paths':owned,'foreign_changes_excluded':foreign,'file_sha256':{n:sha((R/n).read_bytes()) for n in owned if n!=log+'documentacao.json'},'verification_recipe':Path(__file__).read_text()}\n(R/log/'documentacao.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\\n')\nPath('/tmp/xrai-c06-close-owned.json').write_text(json.dumps(owned))\nprint(json.dumps({k:result[k] for k in ['verified','cards_preserved','status_counts','local_links','foreign_changes_excluded']}))\n"
+}

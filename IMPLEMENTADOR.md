@@ -1,6 +1,6 @@
 # Instruções para a IA implementadora do xrai
 
-Data: 13/10/2026. **Entrada vigente: [revisão L5-C06](docs/relatorios/REVISAO-L5-C06.md), com contratos de continuidade na [C05](docs/relatorios/REVISAO-L5-C05.md).** Captura privada do request e adoção offline avançaram; corrigir completude do replay de recusas. Django tem dossiê preparado, sem oracle físico/crédito; P3 typed preparado, prova nativa e Store pendentes no corte revisado. Oito elegíveis, D1 global 0/32, quatro eventos e projeção multimódulo 19/20. [Estado](docs/STATUS-IMPLEMENTACAO.md) e [roteiro v1](docs/ROTEIRO-V1.md) distinguem essas entregas de gates/produto. Não refazer aceites históricos.
+Data: 13/10/2026. **Entrada vigente: [fechamento C06](docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md).** Replay D01 v4, cápsula histórica/CI e prova nativa P3 por bytes aceitos no corte `bd12a9a`. Próximas entregas: integração Store/Tokio, oracle físico Django v2 e recibo público de transporte fake. Oito elegíveis, D1 global 0/32, quatro eventos e projeção multimódulo 19/20. [Estado](docs/STATUS-IMPLEMENTACAO.md) e [roteiro v1](docs/ROTEIRO-V1.md). Não repetir aceites históricos.
 
 Atualização de 12/10/2026: repositório público e [CI confirmada nos três jobs](docs/relatorios/CI-PUBLICO.md). M0-02.R2/M0-07 concluídas; bloqueio anterior superado. [L3](docs/relatorios/L3.md) avançou contenção, workers, captura e quatro pilotos verticais. [L4](docs/relatorios/L4.md) entregou os recortes descritos acima; L5 organiza o restante dos mesmos cartões. Nenhum gate competitivo foi avaliado.
 
@@ -25,7 +25,8 @@ Leia inicialmente este arquivo, o estado atual, a revisão vigente e os cartões
 |---|---|
 | [Estado da implementação](docs/STATUS-IMPLEMENTACAO.md) | Tarefas realmente executadas, evidências, impedimentos e próxima ação |
 | [Plano de implementação](docs/PLANO-DE-IMPLEMENTACAO.md) | 35 tarefas principais e seis atividades complementares, dependências, entregáveis e aceite; IDs são estáveis |
-| [Revisão L5-C06](docs/relatorios/REVISAO-L5-C06.md) | Replay completo, oracle físico Django e integração Store/Tokio; aceites por hash do trabalho observado |
+| [Fechamento C06](docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md) | Aceites D01/histórico/P3 e próximas fatias Store, Django e transporte |
+| [Revisão L5-C06](docs/relatorios/REVISAO-L5-C06.md) | Histórico dos achados e contratos complementares preservados |
 | [Revisão L5-C04/C05](docs/relatorios/REVISAO-L5-C05.md) | Aceites prévios e contratos de corpus, avaliação, recursos, ABA/blobs e inspeção ainda vigentes |
 | [Revisão L5-C03](docs/relatorios/REVISAO-L5-C03.md) | Histórico da primeira prova Rust e origem de E02/D01/S02 |
 | [Próxima execução L5](docs/L5-PROXIMA-EXECUCAO.md) | Fatias C03/dispatch e perfil TS/JS; considerar os aceites e ajustes posteriores da revisão L5-C05 |
@@ -139,4 +140,4 @@ Instrução posterior do usuário: ao finalizar uma entrega e suas verificaçõe
 
 Não marque sucesso experimental por acerto de fixture, economia de payload ou benchmark publicado por concorrente. Um relatório de experimento negativo é uma entrega válida e pode economizar investimento futuro. Mantenha falhas visíveis e não reescreva critérios para acomodar o resultado.
 
-**Próxima execução: [revisão L5-C06](docs/relatorios/REVISAO-L5-C06.md), §5.** Corrigir omissão de recusas no replay; preparar oracle físico Django com condição pública substantiva e isolamento; concluir prova P3 e ligar intake ao Store via regressão Tokio. Interface pública de transporte e demais frentes C05 seguem em paralelo. Nenhum crédito multimódulo por lista de paths nem tarefa natural por fixture. Atualizar evidências/limites e commit/push após checks conforme AGENTS.md.
+**Próxima execução: [fechamento C06](docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md), §§2–5.** Integrar intake ao Store com presença/IR opcional e regressão Tokio; preparar/executar oracle físico Django v2 no domínio permitido; observar bytes na interface pública de transporte fake. Correção do replay, cápsula histórica e prova nativa byte-only estão aceitas. Continuar demais frentes C05. Nenhum crédito multimódulo por lista de paths nem tarefa natural por fixture. Atualizar evidências e commit/push após checks conforme AGENTS.md.

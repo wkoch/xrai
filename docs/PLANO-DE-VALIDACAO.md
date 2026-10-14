@@ -314,3 +314,13 @@ P3 Rust deve preservar presença distinta de vazio, reconstrução integral BASE
 ## 18. Continuação C06: completude, necessidade e publicação
 
 [Revisão L5-C06](relatorios/REVISAO-L5-C06.md): replay exige todos os dispatches da guarda, inclusive recusas sem ledger, com categorias próprias antes da entrada. Projeção privada não é recibo da entrada do transporte. Django requer oracle físico e condição pública substantiva: três paths citados não provam necessidade multimódulo. Store consome presença tipada sem converter ausência em vazio; contraprova de pressão/timeout verifica que falha não remove contexto ainda válido. Regressão controlada Tokio liga a engenharia; tarefa natural e sucesso de agente continuam critérios separados. Atualizações do Implementador após os hashes observados exigem rechecagem dirigida, não aceite automático desta revisão.
+
+## 19. Fechamento C06 e validação da próxima integração
+
+[Fechamento C06](relatorios/REVISAO-L5-C06-FECHAMENTO.md): omissão do replay corrigida, prova histórica conservada e contexto nativo por bytes recomposto. Preservar contraprovas; não inferir integração semântica ou sucesso de tarefa desses aceites.
+
+- Store: presença por lado/IR opcional; React não passa parser Rust; cstr Tokio derivado sem anchors do oracle; BASE/HEAD/expansão equivalem a rebuild; timeout/pressão não remove A válido; custo serializado e agregado da sessão.
+- Django v2: requisito público unmanaged; 12 células com CreateModel/estado histórico/schema editor/SQLite reais; veto anterior ao router, sentinelas preservadas, baseline/referência e visibilidade de tools. Necessidade multimódulo demonstrada, nunca contagem de paths.
+- Transporte: mesmos bytes finais capturados antes do compromisso e consumidos na fronteira pública; recibos completos por tentativa; ausência/incerteza/resposta distintas; retry/tardio idempotentes. Fake não comprova provider, cobrança ou execução de modelo.
+
+Aceites anteriores e novos usam métodos/inputs identificados. Estas adições não alteram estados dos 41 cartões, metas competitivas, seis V1 ou a condição de cada gate.

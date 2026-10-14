@@ -1,6 +1,6 @@
 # Plano de implementação — M0 e M1
 
-Data: 13/10/2026. **Continuação C06 revisada:** inventário E02 aceito no recorte; request privado/consumer e Django preparados, P3 nativo ainda sem aceite no corte. [Parecer e próxima execução](relatorios/REVISAO-L5-C06.md). Mesmos IDs/dependências, oito elegíveis/0 admitidos e [roteiro v1](ROTEIRO-V1.md). Estado em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
+Data: 13/10/2026. **Fechamento C06:** replay D01 v4, cápsula histórica/CI e P3 nativo por bytes aceitos no corte `bd12a9a`. [Parecer e próxima execução](relatorios/REVISAO-L5-C06-FECHAMENTO.md): Store/Tokio, oracle físico Django v2 e transporte fake. Mesmos IDs/dependências, oito elegíveis/0 admitidos e [roteiro v1](ROTEIRO-V1.md). Estado em [STATUS-IMPLEMENTACAO.md](STATUS-IMPLEMENTACAO.md).
 
 Base: [RFC-0001](RFC-0001-ARQUITETURA.md), [plano de validação](PLANO-DE-VALIDACAO.md), [protocolo de diferenciação](PROVA-DE-DIFERENCIACAO.md) e [estudo comparativo](ESTUDO-COMPARATIVO.md). Este documento detalha entregáveis e critérios da arquitetura. A existência e a verificação de cada entregável são registradas no estado de implementação; mencionar um caminho ou comando neste plano não comprova sua implementação.
 
@@ -709,14 +709,11 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 
 ## 9. Sequência executável vigente
 
-[Revisão L5-C06](relatorios/REVISAO-L5-C06.md), §5; contratos independentes da [C05](relatorios/REVISAO-L5-C05.md) permanecem. Mesmos IDs/dependências; não repetir provas aceitas.
+[Fechamento C06](relatorios/REVISAO-L5-C06-FECHAMENTO.md), §§2–5. Replay completo, entrada histórica C04/CI e prova P3 nativa por bytes estão aceitos. Contratos independentes da [C05](relatorios/REVISAO-L5-C05.md) permanecem. Mesmos IDs/dependências; não repetir provas aceitas.
 
-Correção imediata de CI: reproduzir C04 em cápsula com o plano original f8881d4, hash/receipt intactos e substituição documental limitada; comprovar o novo run regular.
+1. L5-01: intake tipado consumido pelo Store, revisão capturada com IR opcional, regressão Tokio cstr BASE/HEAD, controles React sem análise Rust e contraprova de evicção/timeout. Depois tarefa natural compatível, sem crédito D1 à regressão.
+2. L5-04 em paralelo: Django v2 com condição pública unmanaged, oracle CreateModel/schema editor/duas SQLite, 12 células físicas e isolamento agente/avaliador. 19/20 permanece até necessidade factual comprovada.
+3. L5-05 em paralelo: interface pública de transporte fake com bytes finais imutáveis e recibo próprio; projeção não é observação nem cobrança. Preservar o owner de sessão e a bijeção já corrigida.
+4. Demais L5: lexical24/expansão, semântica por perda útil, recursos v2, comparadores/smoke e inspeção S02 conforme C05, sem esperar produção M1.
 
-1. L5-05: exigir bijeção de todos os dispatches no replay, incluindo recusas sem reserva; identidade do pedido já avançou no wrapper novo.
-2. L5-04: variante pública Django com requisito de modelo não migrável, oracle CreateModel/schema editor/duas SQLite e isolamento agente/avaliador; 19/20 permanece até necessidade factual comprovada.
-3. L5-01: concluir prova nativa P3; intake tipado consumido pelo Store, regressão Tokio cstr BASE/HEAD e contraprova de evicção/timeout. Depois tarefa natural compatível, sem dar crédito D1 à regressão.
-4. L5-05: interface pública de transporte com bytes imutáveis e recibo próprio; projeção não é observação nem cobrança.
-5. Demais L5: avaliação lexical24/expansão, semântica por perda útil, recursos v2, comparadores/smoke e inspeção S02 continuam conforme C05, sem esperar banco/produção M1.
-
-Dono da integração coordena Store/consumer/schemas; agentes têm ownership exclusivo. Quatro eventos operacionais e seis V1 condicionais preservados; nenhum gate foi avaliado.
+Dono da integração coordena Store/consumer/schemas; agentes têm ownership exclusivo. Quatro eventos operacionais, 41 cartões e seis V1 condicionais preservados; nenhum gate foi avaliado.
