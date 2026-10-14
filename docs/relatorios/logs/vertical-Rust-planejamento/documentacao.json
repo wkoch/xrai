@@ -1,0 +1,45 @@
+{
+  "verified": true,
+  "base": "e30f54f",
+  "cards_and_dependencies_preserved": 41,
+  "status_counts": {
+    "concluída": 9,
+    "em andamento": 7,
+    "não iniciada": 25
+  },
+  "six_v1_blocks_unchanged": true,
+  "gates_unchanged": true,
+  "local_links_checked": 232,
+  "historical_verifier_after_live_plan_edit": {
+    "command": [
+      "python3",
+      "-B",
+      "eval/adapters/historical-v1/verify.py"
+    ],
+    "exit_code": 0,
+    "verified": true,
+    "current_plan_sha256": "fed0244fdba0bf29dfed0b58afe5cd08cb5ae6e33160225728a648eb7fc8f298",
+    "current_plan_binding_claimed": false
+  },
+  "owned_paths": [
+    "IMPLEMENTADOR.md",
+    "docs/INTEGRACAO-VERTICAL-RUST.md",
+    "docs/PLANO-DE-IMPLEMENTACAO.md",
+    "docs/ROTEIRO-V1.md",
+    "docs/STATUS-IMPLEMENTACAO.md",
+    "docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md",
+    "docs/relatorios/logs/vertical-Rust-planejamento/revisao.json",
+    "docs/relatorios/logs/vertical-Rust-planejamento/documentacao.json"
+  ],
+  "foreign_changes_excluded": [],
+  "file_sha256": {
+    "IMPLEMENTADOR.md": "79dc93562df25bbf1d95a4f3b1215daeca28a569ee497cc381178973b36f5f68",
+    "docs/INTEGRACAO-VERTICAL-RUST.md": "87dbbb73cb99b9bd555622ef141cbf059edeab3e50331241d974c178a1afc7b7",
+    "docs/PLANO-DE-IMPLEMENTACAO.md": "fed0244fdba0bf29dfed0b58afe5cd08cb5ae6e33160225728a648eb7fc8f298",
+    "docs/ROTEIRO-V1.md": "c0fc479478c1b2616d42ca351442cc07d48fe436e9e2ffccb7017cc5c3edf279",
+    "docs/STATUS-IMPLEMENTACAO.md": "5690567d2da46bcc7d6638a78ecc7b412dcc4b81939405b7b0661b1d4c0ec067",
+    "docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md": "12f1085b3e7d65c6f75567f85571269e5b1590b866645ca34ccdbbd522373cd1",
+    "docs/relatorios/logs/vertical-Rust-planejamento/revisao.json": "e3cb682553bb69821a40770e68bdc517ff04a84e4f58e5b9f9993e0e8796629f"
+  },
+  "recipe": "from pathlib import Path\nimport hashlib,json,subprocess,re,collections\nR=Path('/Users/wkoch/Projetos/xrai');base='e30f54f';O=R/'docs/relatorios/logs/vertical-Rust-planejamento';O.mkdir(parents=True,exist_ok=True)\ndef sha(b):return hashlib.sha256(b).hexdigest()\ndef old(n):return subprocess.check_output(['git','show',base+':'+n],cwd=R)\nreports={};input_hashes={}\nfor n,ename in [('task','task'),('adapter','adapter-evidence')]:\n p=Path('/tmp/xrai-vertical-'+n+'.md');e=json.loads(Path('/tmp/xrai-vertical-'+ename+'.json').read_bytes())\n for row in e['paths']:\n  target=Path(row['path']);target=target if target.is_absolute() else R/target\n  rel=str(target.relative_to(R));h=row['sha256']\n  if rel=='docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md':assert sha(old(rel))==h\n  else:assert sha(target.read_bytes())==h,(rel,'changed after review')\n  input_hashes[rel]=h\n reports[n]={'report':p.read_text(),'report_sha256':sha(p.read_bytes()),'evidence':e}\nfor n in ['docs/decisoes/CONTEXTO-P3.md','docs/PROVA-DE-DIFERENCIACAO.md','eval/qualification/vertical/oracles/tokio/probe.json','eval/adapters/experimental-v1/comparator-plan.json']:\n input_hashes[n]=sha((R/n).read_bytes())\nevidence={'schema':'xrai.architecture.vertical-rust-planning.v1','date':'2026-10-14','reviewed_head':subprocess.check_output(['git','rev-parse',base],cwd=R,text=True).strip(),'new_implementation_deliveries':False,'scope':'read-only targeted architecture; new implementation remains pending','decisions':['Q1-Rust-8371 future diagnostic whole task, Store conservative P2 off','public BASE search before patch; HEAD only agent patch','prospective binding/envelope and live Store session, preserved historical lexical consumer','serialized bounded process I/O and cancellation; total budget conserved across revision bindings'],'agents':reports,'review_input_sha256':input_hashes,'tests_rerun':False,'native_execution':False,'upstream_execution':False,'provider_calls':0,'new_eligible_dossiers':0,'gate_promotion':False,'graft':{'tokens_saved_reported':38838,'calls':2,'dollars_reported':None},'limits':['Source inspection is not runtime proof.','Prior test/CI results are retained historical evidence, not rerun by this review.','No forecast percentage or date inferred from document count.','Coverage best effort; archive/not-tracked data read directly by reviewer; full audit not claimed.']}\n(O/'revisao.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+'\\n')\nmd=['IMPLEMENTADOR.md','docs/INTEGRACAO-VERTICAL-RUST.md','docs/PLANO-DE-IMPLEMENTACAO.md','docs/ROTEIRO-V1.md','docs/STATUS-IMPLEMENTACAO.md','docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md']\nowned=md+[str((O/n).relative_to(R)) for n in ['revisao.json','documentacao.json']]\ndef current(n):return (R/n).read_text()\ndef txtold(n):return old(n).decode()\npattern=r'^\\| (M[01]-[^|]+) \\| ([^|]+) \\| ([^|]+) \\|';n='docs/STATUS-IMPLEMENTACAO.md'\na=re.findall(pattern,current(n),re.M);assert a==re.findall(pattern,txtold(n),re.M) and len(a)==41\ncounts=dict(collections.Counter(x[2].strip() for x in a));assert counts=={'concluída':9,'em andamento':7,'não iniciada':25}\nassert re.findall(r'^\\| G[012] \\|.*$',current(n),re.M)==re.findall(r'^\\| G[012] \\|.*$',txtold(n),re.M)\nn='docs/PLANO-DE-IMPLEMENTACAO.md';pat=r'^### (M[01]-[^\\n]+)\\n\\n(\\*\\*Depende de:\\*\\*[^\\n]+)';assert re.findall(pat,current(n),re.M)==re.findall(pat,txtold(n),re.M) and len(re.findall(pat,current(n),re.M))==41\nn='docs/ROTEIRO-V1.md';pat=r'### V1-.*?(?=\\n### V1-|\\n## 5\\.)';assert re.findall(pat,current(n),re.S)==re.findall(pat,txtold(n),re.S) and len(re.findall(pat,current(n),re.S))==6\nlinks=0\nfor n in md:\n for link in re.findall(r'\\[[^\\]]*\\]\\(([^)]+)\\)',current(n)):\n  if re.match(r'(https?://|mailto:|#)',link):continue\n  p=((R/n).parent/link.split('#')[0]).resolve();assert p.exists() or p==O/'documentacao.json',(n,link);links+=1\n# Only the historical verifier is rerun because the live plan was edited again.\nh=subprocess.run(['python3','-B','eval/adapters/historical-v1/verify.py'],cwd=R,text=True,capture_output=True,check=True)\nv=json.loads(h.stdout);assert v['verified'] and v['current_plan_sha256']==sha((R/'docs/PLANO-DE-IMPLEMENTACAO.md').read_bytes()) and v['current_plan_binding_claimed'] is False\nsubprocess.run(['git','diff','--check','--',*owned],cwd=R,check=True)\nchanged=set(subprocess.check_output(['git','diff','--name-only'],cwd=R,text=True).splitlines())|set(subprocess.check_output(['git','ls-files','--others','--exclude-standard'],cwd=R,text=True).splitlines())\ncheck={'verified':True,'base':base,'cards_and_dependencies_preserved':41,'status_counts':counts,'six_v1_blocks_unchanged':True,'gates_unchanged':True,'local_links_checked':links,'historical_verifier_after_live_plan_edit':{'command':['python3','-B','eval/adapters/historical-v1/verify.py'],'exit_code':h.returncode,'verified':v['verified'],'current_plan_sha256':v['current_plan_sha256'],'current_plan_binding_claimed':False},'owned_paths':owned,'foreign_changes_excluded':sorted(changed-set(owned)),'file_sha256':{n:sha((R/n).read_bytes()) for n in owned if not n.endswith('documentacao.json')},'recipe':Path(__file__).read_text()}\n(O/'documentacao.json').write_text(json.dumps(check,ensure_ascii=False,indent=2)+'\\n')\nprint(json.dumps({k:check[k] for k in ['verified','cards_and_dependencies_preserved','local_links_checked','foreign_changes_excluded']}))\n"
+}

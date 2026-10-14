@@ -1,0 +1,350 @@
+{
+  "schema": "xrai.architecture.vertical-rust-planning.v1",
+  "date": "2026-10-14",
+  "reviewed_head": "e30f54f2c331d97676ef3eea8dcf1a161cf2ea51",
+  "new_implementation_deliveries": false,
+  "scope": "read-only targeted architecture; new implementation remains pending",
+  "decisions": [
+    "Q1-Rust-8371 future diagnostic whole task, Store conservative P2 off",
+    "public BASE search before patch; HEAD only agent patch",
+    "prospective binding/envelope and live Store session, preserved historical lexical consumer",
+    "serialized bounded process I/O and cancellation; total budget conserved across revision bindings"
+  ],
+  "agents": {
+    "task": {
+      "report": "# Primeira tarefa Rust inteira após integração Tokio\nRevisão arquitetural em 2026-10-14. Base informada pelo pai: e30f54f, sem entrega posterior. Nenhum binário, teste, upstream, rede ou provider executado. Não revisa Store/D01 novamente.\n\n## Decisão\nEscolher **Q1-Rust-8371**, FIFO do mutex Tokio sob orçamento cooperativo, para a primeira vertical natural inteira **diagnóstica**: braço baseline rg/leitura e braço Store context/expand conservador com P2 desativado. P3 diff só participa depois de existir patch do agente; Store permanece ligado no braço instrumentado. Isso seleciona trabalho futuro e não declara campanha autorizada, elegibilidade nova, ganho de P2 ou sucesso do agente. A tarefa permanece a correção completa do enunciado, incluindo cancelamento e regressões; não substituir por localizar um símbolo, cstr ou corrigir o teste.\nNenhum dos três candidatos demonstra, pelos contratos atuais examinados, uma cadeia semântica inteira necessária suportada. Não é preciso aguardar frontend completo para medir utilidade de busca/contexto/edição/julgamento real.\n\n| Candidato | Prova capturada e custo semântico | Decisão |\n|---|---|---|\n| Tokio Q1-Rust-8371 | Tarefa natural, baseline FIFO falha; referência passa nove sync_mutex, incluindo cancelamento. Cadeia lock_owned→acquire→Acquire::poll→poll_acquire/poll_proceed depende de métodos, macros, cfg e scheduler. | Primeiro diagnóstico completo. Evidência de comportamento já capturada; busca lexical e bytes suficientes para disponibilizar informação sem afirmar resolução semântica. complex=false preservado. |\n| RA L5-Rust-RA-23422 | Natural, case.json registra par 2 falhas/2 passes e 16 regressões; individual_eligible=true, global=false. BodyValidationDiagnostic::collect→validator→pat.walk_child_pats requer tipos/receiver/cross-crate e padrões aninhados. | Segunda tarefa, depois de validar bootstrap na Tokio; individual eligibility não prova compatibilidade P2. Não tentar suportar compiler Rust para esta rodada. |\n| rand.rs L5-STATE-Rust-STDX-EDITION | Mesmo arquivo 735 bytes em A/B; edição do analisador 2018→2024; seed/shuffle unknown→resolved, helper ausente unknown. Fonte de produção real mas transformação/configuração controlada. | Manter controle operacional independente; não relabelar como correção natural nem substituir tarefa inteira. Descriptor preparado não é recibo de execução; conclusão de execução pertence aos recibos reconciliados pelo pai. |\n\n## Pins e fontes disponíveis\nTokio BASE: 2fb5757a97a94b3173f8fdd7b6280423b63da6e6; archive normalizado local eval/sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz (SHA no JSON deste relatório). Referência privada: d241e4b5112ade7fa47310f39f81f59521ce988b; selection.json:13–29 liga pins e SHA dos archives upstream. Archive normalizado e upstream têm identidades diferentes; não trocar hashes.\nFontes selecionadas lidas diretamente do archive, sem extrair/executar: tokio/src/sync/mutex.rs:618–642, tokio/src/sync/batch_semaphore.rs:617–655 e tokio/src/task/coop/mod.rs:273–285. Hashes desses três membros coincidem com review.json:131–133.\nRA pins: BASE 3a5f65784a90278fa1de97fe89a7a529dd44765a e referência ec5b576b726a1e3d0b860761f0fd73b1665cfa32 (case.json). Trechos locais: captures/baseline/crates/hir-ty/src/diagnostics/expr.rs:699–719 e captures/baseline/crates/hir-def/src/hir.rs:809–825.\nFonte e enunciado fornecidos ao agente não podem incluir este relatório, case-details, relações rotuladas, provenance.body, oracles, testes hidden ou patch de referência. Os paths acima servem ao avaliador/arquiteto, nunca como seeds ocultos da busca.\n\n## Menor entrega necessária: entrada BASE sem solução\n1. Congelar uma versão de protocolo diagnóstica, IDs, enunciado público existente e universo completo do archive BASE com exclusões de acesso explícitas. Reutilizar materialização/guard existentes; nenhum caminho privilegiado vindo de production_modules/patch/review. Não iniciar por três arquivos rotulados, snippets artificiais, um lib.rs sintético nem diff BASE→referência.\n2. Disponibilizar ao agente busca lexical paginada sobre o universo congelado; agente escolhe consulta a partir do enunciado e dos resultados anteriores. Cada hit retorna snapshot, path, span byte UTF-8, hash e método textual. Context recebe anchors desses hits com lookup=None. A camada de adaptação valida pertencimento/span/hash; nenhum hit torna-se aresta semântica por coincidência de nomes. Mesmo mecanismo serve fallback quando semântica é unknown. Não é necessário embutir ranking novo no Store; adaptar busca já disponível ao contrato de anchors e registrar transcript.\n3. Primeiro contexto é de uma única revisão BASE; não inventar HEAD idêntico só para satisfazer diff. context_spike.rs:506 registra falta de anchors/busca lexical como not_assessed; a vertical deve fornecer anchors reais de busca, não lista do oracle. O caminho de contexto inicial/adapter deve aceitar uma revisão e contabilizar busca→contexto antes de qualquer edição; somente depois integrar P3. Confirmar esse contrato por preflight do Implementador, sem refazer a arquitetura Store.\n4. Agente edita BASE. Só o patch produzido pelo agente gera HEAD; validar esse diff e inventário antes de publicar o próximo contexto. IDs/custos e conteúdos de BASE/HEAD devem ficar distinguíveis. Referência e patch hidden permanecem exclusivamente no julgamento. O controle rg/leitura pode operar sem P3; o braço instrumentado deve exercer Store context/expand desde BASE, habilitando diff após a integração planejada e somente quando houver patch do agente; não transformar necessidade de diff em vazamento da solução.\n5. Julgamento usa critérios capturados existentes: FIFO, liberação ao cancelar, nove regressões sync_mutex no perfil congelado; êxito é comportamento, não igualdade textual ao patch. Esta revisão não executou esses comandos e não autoriza provider/campanha por si só. Reusar recibos capturados no preflight; execução futura pertence ao domínio/runner autorizado.\n\n## Preflight obrigatório antes de rodada real\n- Confirmar hashes/inventário/locale/pin; separar source normalizada, checkout editável e julgamento hidden. Materialização deve incluir todo universo permitido, não somente arquivos necessários rotulados.\n- Demonstrar busca inicial com consulta declarada proveniente do enunciado e transcript; se o congelamento incluir uma tradução do enunciado para consulta, registrá-la antecipadamente e sem inserir nomes de solução. Não selecionar a consulta depois de consultar oracle.\n- Ensaio sem modelo com consulta mecânica pré-fixada pode provar roteamento/custo/isolamento, mas não recuperação independente nem sucesso de correção. Não usar reference.patch nem baseline→reference como patch do ensaio.\n- Preflight de capacidade por fonte/configuração real: conservar gaps de macro, cfg, extern, receiver e caminhos fora da captura. Não tratar arquivo inteiro como root autossuficiente para produzir resolução positiva. Não apagar atributos ou macros para fazê-lo passar.\n- Registrar custo acumulado de descoberta/listagem/busca (inclusive sem hits e páginas seguintes), contexto, expansões, edições, recusas e retentativas; metadados também consomem wire. Congelar teto cumulativo e número de tentativas antes do agente. Exceder orçamento é resultado, não licença para omitir custos. Cache não torna resposta grátis.\n- Verificar zero acesso do agente ao dossier/oracle/referência/labels no transcript; guard deve rejeitar leitura direta/indireta de caminhos evaluator-only. Não copiar novo sync_mutex.rs/Cargo.lock hidden na árvore de trabalho do agente.\n- Resultado local prepara disponibilidade operacional. competitive_runs_allowed/global_admission continuam false até critérios existentes; não atualizar registros históricos nem quotas.\n\n## Semântica: menor lacuna e quando avançar\nsemantics_spike.rs:179–348 resolve nomes por módulos/imports demonstrados; extract_items:490–565 registra atributos não avaliados/macros; referências:780–830 marcam receiver/binding/macro não demonstrados. resolve_at r3.rs:24–143 exige ocorrência real e mantém unknown. As capacidades não demonstram o grafo de chamadas de métodos necessário a Tokio/RA; mais arquivos capturados não resolve automaticamente isso.\n**Primeiro avanço é observabilidade**, não promessa de solver: devolver no contexto o motivo de unknown e localização exata disponível, permitindo busca textual medida. Aceite: usuário do contexto enxerga por que a expansão semântica não veio e ainda pode pedir bytes pela busca normal.\nSe o diagnóstico mostrar perda concreta causada por localização de método, abrir incremento separado para extrair declaração de método com owner sintático de impl e span, como **candidato estrutural** pesquisável. Não afirmar receiver→impl resolvido, trait dispatch, cross-crate, cfg completo ou inferência. Namespaces e papéis novos explícitos; duplicatas/owners/impls condicionais permanecem candidatos/unknown. Só propor resolução semântica mais forte após uma ocorrência suportada e contraprovas congeladas; não há aceite de P2needed neste relatório.\nO benefício P2/P3 deve ser medido depois, na mesma tarefa congelada e mesmo orçamento, sem trocar o enunciado ou ampliar acesso. Primeiro aceitar disponibilidade e integridade; resposta correta isolada não prova vantagem causal. **Este ensaio não mede benefício P2 e não substitui os quatro smokes. Desligar Store inteiro só produz o baseline rg/leitura, nunca uma vertical P3.** Congelar comparação offline dos dois caminhos de entrega e custos antes de qualquer rodada de agente/provider.\n\n## Aceites e contraprovas\n- Tarefa completa reproduzível a partir de BASE/enunciado, nenhum anchor seed de solução; transcript liga cada anchor a busca ou seleção explícita do agente.\n- Nenhum contexto inicial acessa HEAD privado; tentativa de usar hash/span/reference rejeitada.\n- Busca sem match, hit duplicado, paginação cortada, span UTF-8 inválido, byte alterado, limite gasto e unknown semântico permanecem observáveis; nenhum fallback ganha rótulo resolved.\n- Após patch do agente, BASE continua rastreável e HEAD vem exclusivamente desse patch. Patch vazio não pode ser apresentado como prova de diff útil.\n- Julgamento distingue infraestrutura incompleta, falha comportamental e sucesso. Não contar falha de build como reprodução do defeito.\n- Não contar cstr, rand.rs, inspeção de referência ou reencontro do patch como nova correção natural elegível.\n- Não usar esta seleção para promover M0, D1, v1.0 ou status de campanha.\n\n## Cobertura e recibo\nSkill codebase-memory Tier2, project Users-wkoch-Projetos-xrai, ready geração 2026-10-14T01:08:06Z. 21 paths consultados em check_index_coverage, todos no_recorded_issue; 19 metadata_match, candidates.jsonl e archive not_tracked. Fallback: candidates linha Tokio lida diretamente; três membros do archive lidos diretamente e hashes conferidos; sem reindexar artefato binário. Resultado best-effort não prova completude. tsjs_semantics.rs veio incidentalmente no resultado graft, não fundamenta escolha Rust.\nJSON acompanha todos os paths e SHA-256. Antes/depois disponíveis para os nove dossiers capturados no início; demais hashes são leitura no fechamento, explicitamente não prova before/after. Nenhuma alteração no repo.\nGraft desta rodada: 1 chamada, economia estimada 17.775 tokens; nenhuma economia monetária calculada.\n\n",
+      "report_sha256": "d6d7f4816ab2bc6cad008237668956a79cc33c3dcc2c5369166d22c3a2f65ac1",
+      "evidence": {
+        "project": "Users-wkoch-Projetos-xrai",
+        "generation": "2026-10-14T01:08:06Z",
+        "scope": "architecture_read_only",
+        "paths": [
+          {
+            "path": "eval/qualification/vertical/case-details.json",
+            "sha256": "4ce4efc2e965f6681b7dcba44f95bdd3cecd470aea34dd52eed484cdea8fc6bb",
+            "before_sha256": "4ce4efc2e965f6681b7dcba44f95bdd3cecd470aea34dd52eed484cdea8fc6bb",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/vertical/oracles/tokio/oracle.json",
+            "sha256": "2e4053bc9a29177d463185f82ddfce7a146d8ef76b44e6e9b28ca6941b9478c4",
+            "before_sha256": "2e4053bc9a29177d463185f82ddfce7a146d8ef76b44e6e9b28ca6941b9478c4",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/vertical/provenance/tokio.json",
+            "sha256": "632f058d1bc519f977419f0837266237e4148f42bc9c16a3684da0a9c11891bc",
+            "before_sha256": "632f058d1bc519f977419f0837266237e4148f42bc9c16a3684da0a9c11891bc",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/l5-real/rust/case.json",
+            "sha256": "fd8dfa9824a9b4d2f0c9da359b25bd125278aed056bd76e936adb6c569ade832",
+            "before_sha256": "fd8dfa9824a9b4d2f0c9da359b25bd125278aed056bd76e936adb6c569ade832",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/l5-real/rust/request.json",
+            "sha256": "d417a16aec38772c501b413fd101265d0d05b8dd21273a0265a9f58d2891b60c",
+            "before_sha256": "d417a16aec38772c501b413fd101265d0d05b8dd21273a0265a9f58d2891b60c",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/l5-real/rust/oracles/oracle.json",
+            "sha256": "1329a98ace6de8ecc56db3acd4a2816f5af2d73ca1d6fbc4d35b46e1dd53fbfc",
+            "before_sha256": "1329a98ace6de8ecc56db3acd4a2816f5af2d73ca1d6fbc4d35b46e1dd53fbfc",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/l5-real/rust/triage.json",
+            "sha256": "fc8c98997711c003263199b751264df9785b4bd8c4a96ca7e612814481bcdb22",
+            "before_sha256": "fc8c98997711c003263199b751264df9785b4bd8c4a96ca7e612814481bcdb22",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/state-events/rust/descriptor.json",
+            "sha256": "78cb26abf5d189d866a9fadfcc462a0c8c18d4d35acce05ced85f2be25a85d0a",
+            "before_sha256": "78cb26abf5d189d866a9fadfcc462a0c8c18d4d35acce05ced85f2be25a85d0a",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/state-events/rust/oracle.json",
+            "sha256": "d73e2f39dfe2ab0cced44791e40fe6bdf5b4cb93f366c30f662b656e0eafe97d",
+            "before_sha256": "d73e2f39dfe2ab0cced44791e40fe6bdf5b4cb93f366c30f662b656e0eafe97d",
+            "stable_where_before_recorded": true,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/state-events/rust/agent/input.md",
+            "sha256": "49fa272e597bdce352f6831242ee06225f8671f039a04acb967dd3974582019a",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/vertical/review.json",
+            "sha256": "132070b7aff27467e03f93e77ee2c502d3438f38a98a7ec559d2b9726c9d3823",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/vertical/candidates.jsonl",
+            "sha256": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "not_tracked",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/vertical/README.md",
+            "sha256": "ae8674726951c2e96512d4c4164c4c8a9b37a3a3b737c4a3c85c60fb7bca8126",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/vertical/selection.json",
+            "sha256": "32e4fb1226f18b19533d126eb50ef7bae22bbf3694802a932d08a69efcd44674",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "crates/xrai-eval/src/semantics_spike.rs",
+            "sha256": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "crates/xrai-eval/src/semantics_spike/r3.rs",
+            "sha256": "dde45cb4ebc3113fd18cb327f56ae5d27e6a08d3473c3d9a5d55cfe61912d2cf",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "crates/xrai-eval/src/tsjs_semantics.rs",
+            "sha256": "557f8dcfb373c6430cda21c3e4733327540dd066cf99366b57316246685e5528",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "crates/xrai-eval/src/context_spike.rs",
+            "sha256": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/l5-real/rust/captures/baseline/crates/hir-ty/src/diagnostics/expr.rs",
+            "sha256": "790b0610162c71588e9e97ef011e97df3ae5fde093b52ce35667c4fe3242524b",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/qualification/l5-real/rust/captures/baseline/crates/hir-def/src/hir.rs",
+            "sha256": "82b8a483610ebacac1543e10b8dd0b4cf43a4b5e1501f3f906537be76f0ad6e1",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "metadata_match",
+            "coverage_issue": "no_recorded_issue"
+          },
+          {
+            "path": "eval/sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz",
+            "sha256": "aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88",
+            "before_sha256": null,
+            "stable_where_before_recorded": null,
+            "coverage": "not_tracked",
+            "coverage_issue": "no_recorded_issue"
+          }
+        ],
+        "changed_among_initial_nine": [],
+        "graft": {
+          "calls": 1,
+          "estimated_tokens_saved": 17775
+        },
+        "report_sha256": "d6d7f4816ab2bc6cad008237668956a79cc33c3dcc2c5369166d22c3a2f65ac1"
+      }
+    },
+    "adapter": {
+      "report": "# Contrato vertical Store → consumer guardado (somente arquitetura)\n\nBase e30f54f; nenhuma execução de teste, nativo, upstream ou provider. Fontes atuais iguais aos blobs HEAD, conforme JSON anexo. Esta revisão complementa FECHAMENTO C06 §2; não reabre Store/P3/Tokio nem D01. O handler atual é lexical real sobre bytes (guarded_smoke.py:141–175), mas isso não prova adoção do Store Rust.\n\n## Quatro incompatibilidades e decisões\n\n1. **Perfil e envelope incompatíveis.** agent_adapter_protocol.py:63–118 exige ToolSnapshot único com identidade SHA-256 de arquivos/configuração; :137–178 aceita somente lexical-delivery.v1 e expansão de arquivos inteiros. session_tool_guard.py:99–101 exige tipos exatos; :132 recaptura o mesmo ToolSnapshot. Store em context_spike.rs:186–214 usa descritores BLAKE3, schema_version=3, context/expand e IDs de context/item; :921–951 valida contexto retido e candidatos. Não cabe duck typing ou converter Store em envelope lexical com semântica inventada. Decisão: entrada experimental prospectiva com binding e verificador próprios, preservando factory/replay/perfil lexical histórico e os checks públicos existentes. Generalizar somente a composição/verificação necessária; não duplicar lifecycle. Preservar bytes do envelope Store, seus algoritmos, cobertura parcial/unknown e identidade completa (processo/instância, contexto/incarnação, snapshots e handles). Manifesto de auditoria não vira automaticamente conteúdo disponível ao modelo.\n\n2. **BASE-only antes do patch não está expresso na interface atual.** Case exige head:Input e base opcional (context_spike.rs:75–82); Request recebe anchors/hunks (:65–73). Isso permite regressão controlada, mas não prova reparo sem oracle. Decisão: bridge inicia com única captura pública BASE e busca/seleção derivada apenas da tarefa e de resultados públicos. Nenhum reference.diff, arquivo de referência HEAD ou oracle anchor/lookup pode entrar no handler/modelo/retrieval. Se reaproveitar slot técnico head para revisão corrente única, registrar explicitamente role=initial_base e mapping do snapshot, sem apresentá-lo como patch/futuro HEAD. Apenas patch produzido pelo agente e validado contra essa BASE introduz HEAD; hunks/ocorrências vêm desses bytes. Não recapturar mutação legítima sob ToolSnapshot anterior: encerrar binding guardado BASE e abrir binding prospectivo do par com ligação explícita ao patch e à execução anterior, preservando o mesmo Store quando necessário. Reuso de handle antigo exige validação explícita do contexto retido; não importar silenciosamente anchors lexicais. Ausente, presente vazio e indisponível continuam distintos como já decidido no FECHAMENTO.\n\n3. **Drivers existentes não demonstram este caminho.** context-spike.rs:105–248 é programa de desenvolvimento one-shot: gera inicial, expansões, publicação artificial, controles e curvas, retornando relatório agregado. context-diff-spike.rs:374–425 mantém seu próprio Option<Context> de bytes e substitui current; não é context_spike::Store. p3_diff_native_collect.py:30–39 executa comandos pré-calculados e comparação com esperado. Decisão: após Tokio, uma entrada de sessão mínima deve chamar o MESMO Store::context/expand integrado; handler do consumer deve efetivamente enviar operações nessa sessão e devolver resposta desse processo. Harness/scripted pode controlar escolha das operações em primeiro aceite, mas não simular o handler, recompor respostas em Python ou ler um relatório salvo como resultado vivo. Congelar fontes/configuração/binário/pin e preservar comandos/respostas reais. A entrada guarded-smoke-v1 é incompatível com subprocesso por contrato explícito (README:41–45); perfil experimental separado, limites e recibo prospectivo, ambiente descartável definido. Não ampliar autorização do perfil antigo nem executar upstream.\n\n4. **Framing/cancelamento de batch não serve sem ajuste para consumer.** Process.call (run_state_event.py:36–63) bloqueia em write/flush ANTES de iniciar deadline, não serializa calls e grava transcript apenas após JSON completo; timeout/EOF deixam bytes parciais sem recibo de chamada. abort (:81–86) existe e collector o chama no finally (p3_diff_native_collect.py:43–45), suficiente para batch, não contrato de ferramenta concorrente. Guard libera lock durante handler e admite mais de uma operação de tool (session_tool_guard.py:158–193). Decisão: bridge serializa uma requisição por processo, inclui escrita/leitura no deadline total e no cancelamento, associa request ID/ordinal a exatamente uma resposta e retém request enviado/bytes parciais/erro. EOF, frame inválido, resposta não solicitada e timeout encerram a sessão do processo; sem retry/reuso implícito e sem confundir kill com rollback. Cancelamento posterior à escrita pode ter aplicado operação: resposta não pode ser entregue após recusa do guard; contexto dessa instância não é reutilizado sem prova. Não manter lock do guard em I/O. Limites congelados separados: frame (inclui newline), envelope Store medido e bytes efetivamente entregues ao modelo; wrapper/auditoria não pode ser escondido no custo. Teto efetivo compatível com 512 KiB do meter já decidido no FECHAMENTO.\n\n## Próxima fatia: dois incrementos, dependentes de Tokio/Store\n\nA. Congelar perfil experimental e binding BASE-only → patch do agente → BASE/HEAD; especificar operações públicas context/expand, seleção pública anterior à geração de patch, handles e mapping dos envelopes. Fixtures adversariais devem negar consumo de reference.diff/oracle/captura HEAD antes de patch. Um fixture futuro mudando apenas oracle não pode mudar os requests/respostas anteriores ao patch. Se seleção pública ainda não puder alimentar Store, registrar bloqueio de adoção; não substituir por anchors escolhidos do gabarito.\n\nB. Ligar handler ao processo Store real no ambiente descartável, com framing/limites/cancelamento acima e verificador offline dos recibos. Critério de aceite: um mesmo processo responde context BASE, expand por handle realmente entregue, publicação do patch e context do par, expand BASE retida após HEAD; alteração do path no HEAD não muda bytes BASE. Handle inventado/expirado/outro processo é recusado; ausente ≠ vazio. Comparação com reconstrução independente preserva envelope/cobertura/obrigação, conforme regras já congeladas no FECHAMENTO. Contraprovas incluem escrita bloqueada, EOF parcial, resposta extra, cancelamento durante leitura e duas chamadas simultâneas; nenhuma resposta cruza operação nem retorna após recusa. Guard/consumer devem provar chamada efetiva do Store e correspondência dos bytes nativos; falha do subprocesso deve impedir sucesso mesmo que fixture esperada esteja disponível.\n\nAceite resultante: adoção vertical experimental de Store real pelo consumer com escolha scripted e modelo/transport fake, se assim declarado. Ainda não é agent_run, reparo autônomo, provider ou D1. Tarefa Rust natural e avaliação posterior permanecem dependências do FECHAMENTO; nenhum novo framework ou máquina de estados solicitado.\n\n## Evidência e limites\n\nJSON: /tmp/xrai-vertical-adapter-evidence.json. Dez paths corretos com metadata_match/no_recorded_issue, geração 2026-10-14T01:08:06Z; sinal best-effort, não completude. Consulta estrutural search→trace→snippet confirmou main→Store e corpo de Process.call; arestas de nomes externos espúrias não fundamentaram conclusões. Caminho README inicialmente digitado sem adapters retornou missing, corrigido e verificado; nenhuma conclusão por ausência. Graft nesta tarefa: 0 chamadas; localização do factory veio do recibo do pai. Sem economia numérica de tokens alegada. Arquivos só lidos; apenas este relatório/JSON em /tmp foram escritos.\n",
+      "report_sha256": "5ff2e25aa7f0f5260aba97b9f942a91d8ded02d7aa507056a3e631a12858fa5b",
+      "evidence": {
+        "head": "e30f54f2c331d97676ef3eea8dcf1a161cf2ea51",
+        "graph_generation": "2026-10-14T01:08:06Z",
+        "project": "Users-wkoch-Projetos-xrai",
+        "graft_calls_this_task": 0,
+        "tests_executed": false,
+        "native_provider_upstream_executed": false,
+        "repository_modified_by_review": false,
+        "paths": [
+          {
+            "path": "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/agent_adapter_protocol.py",
+            "sha256": "d49ee5ea1d748ca6b7f7da097a6bb579d1329cfcc815c1ba9262b3c824ea3f1c",
+            "bytes": 32351,
+            "head_blob_sha256": "d49ee5ea1d748ca6b7f7da097a6bb579d1329cfcc815c1ba9262b3c824ea3f1c",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/session_tool_guard.py",
+            "sha256": "466f6915cbc80582ae710f403751221188a4242f459b3697ef31a98a7f1c5739",
+            "bytes": 33898,
+            "head_blob_sha256": "466f6915cbc80582ae710f403751221188a4242f459b3697ef31a98a7f1c5739",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/crates/xrai-eval/harness/guarded_smoke.py",
+            "sha256": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+            "bytes": 21893,
+            "head_blob_sha256": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/crates/xrai-eval/src/context_spike.rs",
+            "sha256": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+            "bytes": 61415,
+            "head_blob_sha256": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/crates/xrai-eval/src/bin/context-spike.rs",
+            "sha256": "f1633415d8989c56ef5b0f11b9c50f7e6c79ad3ed2dfabe2ff4e0e0c18a891c0",
+            "bytes": 8963,
+            "head_blob_sha256": "f1633415d8989c56ef5b0f11b9c50f7e6c79ad3ed2dfabe2ff4e0e0c18a891c0",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/crates/xrai-eval/src/bin/context-diff-spike.rs",
+            "sha256": "9d092b55a28be335f8bdcfbdd39dae304f52201f31be1c2fde3061b9c5250a54",
+            "bytes": 16806,
+            "head_blob_sha256": "9d092b55a28be335f8bdcfbdd39dae304f52201f31be1c2fde3061b9c5250a54",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/eval/scripts/run_state_event.py",
+            "sha256": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+            "bytes": 8611,
+            "head_blob_sha256": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/eval/scripts/p3_diff_native_collect.py",
+            "sha256": "98239843c6c6e1e54e27e888554897d9d29b938ea392a795189746cde0b24b26",
+            "bytes": 3114,
+            "head_blob_sha256": "98239843c6c6e1e54e27e888554897d9d29b938ea392a795189746cde0b24b26",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md",
+            "sha256": "ed59b156794933a6c1eee7e1f228a4cebe03a3e7fd90c592db78a1568160b41f",
+            "bytes": 14953,
+            "head_blob_sha256": "ed59b156794933a6c1eee7e1f228a4cebe03a3e7fd90c592db78a1568160b41f",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          },
+          {
+            "path": "/Users/wkoch/Projetos/xrai/eval/adapters/guarded-smoke-v1/README.md",
+            "sha256": "2bf062b7595461ae321b5f387e18eb5cda88842b2b0a65ac136a9b1652db940c",
+            "bytes": 2990,
+            "head_blob_sha256": "2bf062b7595461ae321b5f387e18eb5cda88842b2b0a65ac136a9b1652db940c",
+            "equals_head": true,
+            "coverage": "metadata_match/no_recorded_issue"
+          }
+        ],
+        "coverage_correction": "Initial mistyped eval/guarded-smoke-v1/README.md returned freshness=missing; actual eval/adapters/guarded-smoke-v1/README.md verified metadata_match. No absence claim used.",
+        "method": "Tier2 index_status; graph search -> trace -> snippet for native context main and Process.call; direct bounded reads; SHA256 current files compared with HEAD blobs. Graph external-name resolution noise ignored; source authoritative."
+      }
+    }
+  },
+  "review_input_sha256": {
+    "eval/qualification/vertical/case-details.json": "4ce4efc2e965f6681b7dcba44f95bdd3cecd470aea34dd52eed484cdea8fc6bb",
+    "eval/qualification/vertical/oracles/tokio/oracle.json": "2e4053bc9a29177d463185f82ddfce7a146d8ef76b44e6e9b28ca6941b9478c4",
+    "eval/qualification/vertical/provenance/tokio.json": "632f058d1bc519f977419f0837266237e4148f42bc9c16a3684da0a9c11891bc",
+    "eval/qualification/l5-real/rust/case.json": "fd8dfa9824a9b4d2f0c9da359b25bd125278aed056bd76e936adb6c569ade832",
+    "eval/qualification/l5-real/rust/request.json": "d417a16aec38772c501b413fd101265d0d05b8dd21273a0265a9f58d2891b60c",
+    "eval/qualification/l5-real/rust/oracles/oracle.json": "1329a98ace6de8ecc56db3acd4a2816f5af2d73ca1d6fbc4d35b46e1dd53fbfc",
+    "eval/qualification/l5-real/rust/triage.json": "fc8c98997711c003263199b751264df9785b4bd8c4a96ca7e612814481bcdb22",
+    "eval/qualification/state-events/rust/descriptor.json": "78cb26abf5d189d866a9fadfcc462a0c8c18d4d35acce05ced85f2be25a85d0a",
+    "eval/qualification/state-events/rust/oracle.json": "d73e2f39dfe2ab0cced44791e40fe6bdf5b4cb93f366c30f662b656e0eafe97d",
+    "eval/qualification/state-events/rust/agent/input.md": "49fa272e597bdce352f6831242ee06225f8671f039a04acb967dd3974582019a",
+    "eval/qualification/vertical/review.json": "132070b7aff27467e03f93e77ee2c502d3438f38a98a7ec559d2b9726c9d3823",
+    "eval/qualification/vertical/candidates.jsonl": "98a81bf8753f1c2bdcfa4328758f34fc59519402972cb00345cfed2b8868bcd8",
+    "eval/qualification/vertical/README.md": "ae8674726951c2e96512d4c4164c4c8a9b37a3a3b737c4a3c85c60fb7bca8126",
+    "eval/qualification/vertical/selection.json": "32e4fb1226f18b19533d126eb50ef7bae22bbf3694802a932d08a69efcd44674",
+    "crates/xrai-eval/src/semantics_spike.rs": "dcc15da418a91b8503e30b275b175d0be498de0235f21b8c851256aff8660d9f",
+    "crates/xrai-eval/src/semantics_spike/r3.rs": "dde45cb4ebc3113fd18cb327f56ae5d27e6a08d3473c3d9a5d55cfe61912d2cf",
+    "crates/xrai-eval/src/tsjs_semantics.rs": "557f8dcfb373c6430cda21c3e4733327540dd066cf99366b57316246685e5528",
+    "crates/xrai-eval/src/context_spike.rs": "96501b9b29b7ea2ed74280216bff7190d1fc81280413e8aa1b39999feac3ab5a",
+    "eval/qualification/l5-real/rust/captures/baseline/crates/hir-ty/src/diagnostics/expr.rs": "790b0610162c71588e9e97ef011e97df3ae5fde093b52ce35667c4fe3242524b",
+    "eval/qualification/l5-real/rust/captures/baseline/crates/hir-def/src/hir.rs": "82b8a483610ebacac1543e10b8dd0b4cf43a4b5e1501f3f906537be76f0ad6e1",
+    "eval/sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz": "aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88",
+    "crates/xrai-eval/harness/agent_adapter_protocol.py": "d49ee5ea1d748ca6b7f7da097a6bb579d1329cfcc815c1ba9262b3c824ea3f1c",
+    "crates/xrai-eval/harness/session_tool_guard.py": "466f6915cbc80582ae710f403751221188a4242f459b3697ef31a98a7f1c5739",
+    "crates/xrai-eval/harness/guarded_smoke.py": "a30157a95eab2226e060b63e20ae0f08dc46e9e60302425744456f29ce42a2d4",
+    "crates/xrai-eval/src/bin/context-spike.rs": "f1633415d8989c56ef5b0f11b9c50f7e6c79ad3ed2dfabe2ff4e0e0c18a891c0",
+    "crates/xrai-eval/src/bin/context-diff-spike.rs": "9d092b55a28be335f8bdcfbdd39dae304f52201f31be1c2fde3061b9c5250a54",
+    "eval/scripts/run_state_event.py": "4f3d51062e810146ccde25e548f90628d9f017d63fe03a28f8a1d06320b29c65",
+    "eval/scripts/p3_diff_native_collect.py": "98239843c6c6e1e54e27e888554897d9d29b938ea392a795189746cde0b24b26",
+    "docs/relatorios/REVISAO-L5-C06-FECHAMENTO.md": "ed59b156794933a6c1eee7e1f228a4cebe03a3e7fd90c592db78a1568160b41f",
+    "eval/adapters/guarded-smoke-v1/README.md": "2bf062b7595461ae321b5f387e18eb5cda88842b2b0a65ac136a9b1652db940c",
+    "docs/decisoes/CONTEXTO-P3.md": "c7c10b7df7b89e6b77661b278a370de5b676aec1d613ad993f753474e76f5385",
+    "docs/PROVA-DE-DIFERENCIACAO.md": "b010d91bffbc474a6f57a8707f787fbfb88d998bbfeb8847f6d635cdd344682c",
+    "eval/qualification/vertical/oracles/tokio/probe.json": "84bae694a5f51a4cc0cee76b4713a9d23256de801bc6138124cb6e4b679b7a80",
+    "eval/adapters/experimental-v1/comparator-plan.json": "6ef0cd9ca15f51e449aa6262d946a9abc56676b6806a5df452c91786722cd759"
+  },
+  "tests_rerun": false,
+  "native_execution": false,
+  "upstream_execution": false,
+  "provider_calls": 0,
+  "new_eligible_dossiers": 0,
+  "gate_promotion": false,
+  "graft": {
+    "tokens_saved_reported": 38838,
+    "calls": 2,
+    "dollars_reported": null
+  },
+  "limits": [
+    "Source inspection is not runtime proof.",
+    "Prior test/CI results are retained historical evidence, not rerun by this review.",
+    "No forecast percentage or date inferred from document count.",
+    "Coverage best effort; archive/not-tracked data read directly by reviewer; full audit not claimed."
+  ]
+}

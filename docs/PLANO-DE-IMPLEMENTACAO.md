@@ -357,7 +357,7 @@ Registrar no contrato a política de qualidade: fonte/semântica corretas e evid
 
 **Aceite do marco:**
 
-- Vinte tarefas e baseline textual reproduzíveis; contratos e matriz de capacidades definidos; execução nativa comprovada em Linux x86_64 e macOS arm64. Windows não é condição deste gate.
+- Vinte tarefas D0 de desenvolvimento e baseline textual reproduzíveis; os critérios competitivos abaixo usam as 32 tarefas D1 qualificadas e congeladas, conforme o protocolo; contratos e matriz de capacidades definidos; execução nativa comprovada em Linux x86_64 e macOS arm64. Windows não é condição deste gate.
 - Parsing incorporado, falha de worker contida, publicação transacional e caminhos por checkout demonstrados pelos spikes.
 - Fixar limites iniciais de arquivos, bytes em trânsito, workers, timeout, saída e retenção. Distinguir limites verificáveis de aplicação de metas de RSS/latência a observar.
 - Listar o que será reaproveitado, refeito ou descartado, com motivo; registrar riscos, responsáveis por frente e critérios de revisão das decisões.
@@ -717,3 +717,5 @@ M2/M3 amadurecem em conjunto a partir dos componentes que sobreviveram às ablat
 4. Demais L5: lexical24/expansão, semântica por perda útil, recursos v2, comparadores/smoke e inspeção S02 conforme C05, sem esperar produção M1.
 
 Dono da integração coordena Store/consumer/schemas; agentes têm ownership exclusivo. Quatro eventos operacionais, 41 cartões e seis V1 condicionais preservados; nenhum gate foi avaliado.
+
+Complemento de 14/10: [primeira vertical Rust](INTEGRACAO-VERTICAL-RUST.md) concretiza a ponte após Store/Tokio e a entrada BASE-only da tarefa Q1-Rust-8371. Novo binding não reinicia orçamento; smoke Rust isolado não substitui quatro famílias nem o piloto D1. Nenhum cartão/dependência/estado alterado.
