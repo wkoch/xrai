@@ -7,9 +7,9 @@
   "local_tracking_origin_main": "e61c31631bfbc0891d8c907f0c3f98261ea8c341",
   "remote": "https://github.com/wkoch/xrai.git",
   "live_remote_verified": true,
-  "fresh_clone_verified": false,
+  "fresh_clone_verified": true,
   "final_commit_and_push_owner": "Implementador; explicit user instruction this turn",
-  "handoff_not_yet_committed": true,
+  "handoff_not_yet_committed": false,
   "tracked_files_before_handoff": 6430,
   "source_archives": [
     {
@@ -75,9 +75,9 @@
     "docs/relatorios/logs/retomada-2026-10-16/inventario.json"
   ],
   "handoff_document_sha256": {
-    "RETOMADA.md": "28dd4fa134c8ab9f492b278a34772d1efa1dd5f2b13e352b187e01e431df7900",
+    "RETOMADA.md": "6a3f58a8e85c31b83bc1122591d7b4a222affd69f7bf0eb0eeb8ca8958b819a1",
     "IMPLEMENTADOR.md": "66954840dd5423fedfcf94413d8cb9a0c9b86aa9bada994fb9652c4a7a9b61b6",
-    "docs/STATUS-IMPLEMENTACAO.md": "ce47b071ce95dc62a409f543d218aafef01d4d0a7ba3515ccdcfdf9a8b2497a9"
+    "docs/STATUS-IMPLEMENTACAO.md": "959e1877e0caf3cda8e74bd0f00b8b3ad40ab514301ab0b1dbc0413eb87f25e1"
   },
   "checks": {
     "diff_check": true,
@@ -110,7 +110,7 @@
     "Ignored files were audited by paths/categories, not semantic contents of every generated cache.",
     "Credentials, toolchains and app skills are provisioned separately; no whole-machine backup was performed."
   ],
-  "verification_phase": "pre-publication audit; final commit SHA and fresh-clone checks are supplied after publication",
+  "verification_phase": "Published handoff payload verified; this final documentary update receives a new SHA, verified independently after commit/push and delivered to the user.",
   "live_remote_head_before_publication": "e61c31631bfbc0891d8c907f0c3f98261ea8c341",
   "live_remote_verification_methods": [
     "GitHub REST git/ref/heads/main",
@@ -195,5 +195,52 @@
     "dependabot/go_modules/eval/qualification/l5-real/go/setup/golang.org/x/crypto-0.52.0",
     "dependabot/go_modules/eval/qualification/l5-real/go/setup/google.golang.org/grpc-1.83.2"
   ],
-  "external_files_audit_scope": "No whole-machine audit. Project-named /private/tmp entries at final audit were only migration audit tools/outputs; no implementation input identified."
+  "external_files_audit_scope": "No whole-machine audit. Project-named /private/tmp entries at final audit were only migration audit tools/outputs; no implementation input identified.",
+  "verified_published_handoff_commit": "68d87d743667375cff0bc2bede06757136042fdc",
+  "live_remote_verified_commit": "68d87d743667375cff0bc2bede06757136042fdc",
+  "fresh_clone_verification": {
+    "schema": "xrai.fresh-clone.verification.v1",
+    "date": "2026-10-16",
+    "commit": "68d87d743667375cff0bc2bede06757136042fdc",
+    "clone_directory": "/Users/wkoch/Projetos/xrai-verificacao-retomada-2026-10-16",
+    "origin": "https://github.com/wkoch/xrai.git",
+    "clone_method": "HTTPS --no-local; no alternates or shallow history; independent from original objects",
+    "clean": true,
+    "fsck_full": "PASS",
+    "all_tracked_files_blob_bytes_and_modes_verified": 6432,
+    "preserved_original_code_assets_evidence_files": 6428,
+    "handoff_files_verified": [
+      "RETOMADA.md",
+      "IMPLEMENTADOR.md",
+      "docs/STATUS-IMPLEMENTACAO.md",
+      "docs/relatorios/logs/retomada-2026-10-16/inventario.json"
+    ],
+    "source_archives_sha256_verified": 4,
+    "source_archives_bytes": 46300818,
+    "wip_paths_sha256": {
+      "crates/xrai-eval/src/context_spike.rs": "5c64446a9486a5b5b6bd5f8f77aac4fa0712dcc8c7e51af0156e3fb8126bc5cf",
+      "crates/xrai-eval/src/context_spike/validated_diff.rs": "5e28af1dd058aa5e1361de862fc0fac4e0e47ee34342c669ac9a3020f000dfe5",
+      "crates/xrai-eval/src/bin/context-store-session.rs": "18df5970fa1eb708b754a48e4bb5ed17cd6d93139b12d956aa310ab99dfff8fe",
+      "crates/xrai-eval/harness/store_process_protocol.py": "f8247547521ad44e2ce2646d78b8f1ebcf8afe323128759210f933e99c784443",
+      "crates/xrai-eval/harness/transport_receipt_session.py": "db74adfb55f6f556f1ae0b8505b11435ab032c261249a8baef680cadb1688a0b",
+      "eval/scripts/store_bridge_collect.py": "05bb039a3e73390869360d50c97a04287fdbd84a9c18bc1861f1be41971ad993",
+      "eval/scripts/store_bridge_verify.py": "43475046cd11204a608d1046ae5ddb81d4ae2d0d348d605895e4926fb8803e68",
+      "eval/scripts/test_store_bridge.py": "f495aafd82ed51138b850f343f9d286532cadd0880d6817a6533c7757e045d38",
+      "eval/context/store-bridge-v1/protocol.json": "16f9ed5ce52f26bb47c7af9292cb2357895eb08d9c4250eb76a05d55866c5388",
+      "eval/context/store-bridge-v1/cases.json": "3b04b7319cb07e43929b95f6c136098b2c80a9fa15820921b8ca4b31f758c641",
+      "eval/context/store-bridge-v1/freeze-before-native.json": "b0842952dbe3f663172107a3c46fb43ea1a377c835b1e916c979f8e25cdd4334",
+      ".github/workflows/l5-store-bridge.yml": "46afa61c2bce2174aa9c329ed3af9df28f689eb5d26f4a2fcb4e752d5454c18b",
+      "Cargo.lock": "bd5b10790b2a7a1f6d0de0d8b7e0565d07d2b7a1b16af4563ed324a0c5253cb6",
+      "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+    },
+    "wip_directories_present": [
+      "eval/qualification/django-router-v2/",
+      "eval/adapters/public-transport-v1/"
+    ],
+    "tree_manifest_sha256": "f514e1ce7cd351cd7953ad208a14c345bd491add96d8b23a557d9269497667dc",
+    "tree_manifest_algorithm": "git ls-tree -rz --full-tree HEAD order; UTF-8 path + NUL + decimal byte length + NUL + lowercase SHA256 + LF per blob",
+    "implementation_tests_or_experiments_executed": false
+  },
+  "final_verification_receipt": "/Users/wkoch/Projetos/xrai-backup-local-2026-10-16/verificacao-final.json",
+  "final_clone_directory": "/Users/wkoch/Projetos/xrai-clone-final-2026-10-16"
 }
