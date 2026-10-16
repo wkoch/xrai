@@ -1,0 +1,199 @@
+{
+  "schema": "xrai.migration.handoff.v2",
+  "date": "2026-10-16",
+  "review_scope": "repository status, tracked assets and documentary checkpoints; not code acceptance or whole-machine backup",
+  "head_before_handoff": "e61c31631bfbc0891d8c907f0c3f98261ea8c341",
+  "branch": "main",
+  "local_tracking_origin_main": "e61c31631bfbc0891d8c907f0c3f98261ea8c341",
+  "remote": "https://github.com/wkoch/xrai.git",
+  "live_remote_verified": true,
+  "fresh_clone_verified": false,
+  "final_commit_and_push_owner": "Implementador; explicit user instruction this turn",
+  "handoff_not_yet_committed": true,
+  "tracked_files_before_handoff": 6430,
+  "source_archives": [
+    {
+      "path": "eval/sources/archives/vertical-django-8abacfc36d755d8e762a4d2074601b8dc412bfee.tar.gz",
+      "bytes": 10472437,
+      "sha256": "8450b5075ca9b85f795bb7243296e3faea1928eb1f82b3bb2e9c0b6d3df78826"
+    },
+    {
+      "path": "eval/sources/archives/vertical-prometheus-fd99142576bfae26107ac7263c3eb43bb212004e.tar.gz",
+      "bytes": 6194975,
+      "sha256": "fe280bbc1b9541a4dd686e6cae8ebe58f8dd3f9ddbe8efe4c7df01aecc72403b"
+    },
+    {
+      "path": "eval/sources/archives/vertical-tokio-2fb5757a97a94b3173f8fdd7b6280423b63da6e6.tar.gz",
+      "bytes": 1265834,
+      "sha256": "aceb270bd5b8072dd83e03afa7268609b9e58136132b1eeda575e04a71287c88"
+    },
+    {
+      "path": "eval/sources/archives/vertical-typescript-cbc2059b53fe1976a803c6b533cc7432517131ac.tar.gz",
+      "bytes": 28367572,
+      "sha256": "1d323a1bc525ef55ad4358785afb4783afed9402ebad120d07e9e23063d6cbd0"
+    }
+  ],
+  "tracked_symlinks": [],
+  "ignored_directories_at_inspection": [
+    ".codebase-memory/",
+    ".trace-mcp/",
+    "crates/xrai-eval/harness/__pycache__/",
+    "crates/xrai-eval/harness/tests/__pycache__/",
+    "docs/contracts/__pycache__/",
+    "docs/contracts/experimental-p3/__pycache__/",
+    "docs/contracts/experimental-p3/tests/__pycache__/",
+    "docs/contracts/tests/__pycache__/",
+    "docs/relatorios/logs/L5-C02/__pycache__/",
+    "docs/relatorios/logs/L5-continuacao/__pycache__/",
+    "eval/adapters/historical-v1/__pycache__/",
+    "eval/adapters/public-transport-v1/__pycache__/",
+    "eval/context/diff-v1/__pycache__/",
+    "eval/context/lexical-token-v1/__pycache__/",
+    "eval/context/lexical/__pycache__/",
+    "eval/context/tests/__pycache__/",
+    "eval/scripts/__pycache__/",
+    "eval/scripts/tests/__pycache__/",
+    "eval/semantics/r3/tests/__pycache__/",
+    "graft/",
+    "target/"
+  ],
+  "ignored_contents_audited": false,
+  "external_files_audited": false,
+  "stashes": [],
+  "local_branch_commits_not_in_local_remotes": [],
+  "worktrees": [
+    "worktree /Users/wkoch/Projetos/xrai",
+    "HEAD e61c31631bfbc0891d8c907f0c3f98261ea8c341",
+    "branch refs/heads/main",
+    ""
+  ],
+  "submodules": [],
+  "expected_handoff_paths": [
+    "RETOMADA.md",
+    "IMPLEMENTADOR.md",
+    "docs/STATUS-IMPLEMENTACAO.md",
+    "docs/relatorios/logs/retomada-2026-10-16/inventario.json"
+  ],
+  "handoff_document_sha256": {
+    "RETOMADA.md": "28dd4fa134c8ab9f492b278a34772d1efa1dd5f2b13e352b187e01e431df7900",
+    "IMPLEMENTADOR.md": "66954840dd5423fedfcf94413d8cb9a0c9b86aa9bada994fb9652c4a7a9b61b6",
+    "docs/STATUS-IMPLEMENTACAO.md": "ce47b071ce95dc62a409f543d218aafef01d4d0a7ba3515ccdcfdf9a8b2497a9"
+  },
+  "checks": {
+    "diff_check": true,
+    "local_links_valid": 207,
+    "cards_and_statuses_unchanged": 41,
+    "gates_unchanged": true,
+    "source_archive_hashes_valid": 4,
+    "credential_patterns_in_handoff": 0,
+    "read_checkpoint_hashes_valid": 5,
+    "original_code_assets_and_evidence_unchanged": true
+  },
+  "tests_or_experiments_executed": false,
+  "pending_ci": {
+    "store": "native execution/reconciliation pending in saved checkpoint",
+    "django_run_id": 38629057823,
+    "django_head": "f7000369b6d47c613ba4657deac2e466932efd24",
+    "current_remote_run_result_checked": false
+  },
+  "read_checkpoints_sha256": {
+    "docs/relatorios/L5-C07.md": "6addb40d5785f3f8d03e6378da32c472c73b28cae3f0018b2462fb8ad1b5c135",
+    "docs/relatorios/L5-STORE-BRIDGE.md": "221c6e80763f696d4d883f19a36f6adc081fb574bd3e85757afb9ef1bdcf1e5e",
+    "docs/relatorios/PRIORIDADES-LINGUAGENS-2026-10-16.md": "a2c36637c891c82049c3e1799bc685ff96e73cce496197005e4598322ef8eb1b",
+    "AGENTS.md": "4b1c0eddc6aaca65abc1212ae09bfe43abf313a236b90826bd6377cdff5cac2c",
+    "rust-toolchain.toml": "c910997cb152c6dc8ed13b1fdf9fa28a4ed30d6776123e27dd6170e5c66067a0"
+  },
+  "limits": [
+    "This inventory records the stated verification phase, not a self-referential final commit hash. See final delivery SHA and independent-clone receipt.",
+    "Do not delete the original checkout until the final GitHub/clone confirmation.",
+    "Private sibling backup is excluded from GitHub; transfer separately to retain unreachable intermediate objects.",
+    "Ignored files were audited by paths/categories, not semantic contents of every generated cache.",
+    "Credentials, toolchains and app skills are provisioned separately; no whole-machine backup was performed."
+  ],
+  "verification_phase": "pre-publication audit; final commit SHA and fresh-clone checks are supplied after publication",
+  "live_remote_head_before_publication": "e61c31631bfbc0891d8c907f0c3f98261ea8c341",
+  "live_remote_verification_methods": [
+    "GitHub REST git/ref/heads/main",
+    "git ls-remote --heads --tags origin"
+  ],
+  "ignored_paths_audit": {
+    "file_count": 37368,
+    "groups": {
+      ".codebase-memory": {
+        "files": 3,
+        "bytes": 23155326
+      },
+      ".trace-mcp": {
+        "files": 2,
+        "bytes": 17
+      },
+      "python-bytecode": {
+        "files": 208,
+        "bytes": 4738471
+      },
+      "graft": {
+        "files": 503,
+        "bytes": 28076317
+      },
+      "target/.rustc_info.json": {
+        "files": 1,
+        "bytes": 1963
+      },
+      "target/CACHEDIR.TAG": {
+        "files": 1,
+        "bytes": 177
+      },
+      "target/debug": {
+        "files": 35863,
+        "bytes": 2372650860
+      },
+      "target/release": {
+        "files": 787,
+        "bytes": 316625907
+      }
+    },
+    "unclassified": [],
+    "scope": "all paths and aggregate sizes; category/root entries inspected; no semantic read of every cache",
+    "additional_required_inputs_identified": [],
+    "credential_like_paths_found": []
+  },
+  "private_backup": {
+    "directory": "/Users/wkoch/Projetos/xrai-backup-local-2026-10-16",
+    "unreachable_objects": {
+      "blob": 84,
+      "tree": 96,
+      "commit": 0
+    },
+    "restore_verified": true,
+    "files": {
+      "trace-mcp-install-date": {
+        "bytes": 11,
+        "sha256": "41637aac13a9c5febec26a69d6f84a4562dcba7e091f7b74f4d62ecafb3ab1c2"
+      },
+      "objetos-sem-referencia.pack": {
+        "bytes": 262070,
+        "sha256": "036852d3f6e143446ced253ea6159f673756d40e09c2d8b9b70a43a1dcdd810b"
+      },
+      "historico-e-refs.bundle": {
+        "bytes": 173615546,
+        "sha256": "7c0bdf7abbffe2d63b46b05361d100419e30d631dd3410934a98c603c452a97f"
+      },
+      "trace-mcp-guard-mode": {
+        "bytes": 6,
+        "sha256": "f2a01ad640fda34db6b82f18a2d49f803e5a55b6e713752c257f6e51b9eeef58"
+      }
+    },
+    "included_in_github": false,
+    "transfer_separately": "Preserve this sibling directory for intermediate versions; a normal GitHub clone contains current WIP but not these unreachable objects."
+  },
+  "local_branches": [
+    "main"
+  ],
+  "remote_branches_verified_live": [
+    "main",
+    "dependabot/go_modules/eval/qualification/l5-real/go/setup/github.com/go-git/go-git/v5-5.19.2",
+    "dependabot/go_modules/eval/qualification/l5-real/go/setup/golang.org/x/crypto-0.52.0",
+    "dependabot/go_modules/eval/qualification/l5-real/go/setup/google.golang.org/grpc-1.83.2"
+  ],
+  "external_files_audit_scope": "No whole-machine audit. Project-named /private/tmp entries at final audit were only migration audit tools/outputs; no implementation input identified."
+}
