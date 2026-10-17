@@ -4,6 +4,8 @@
 
 ## 1. Ler primeiro e preservar as prioridades
 
+**Complemento posterior ao fechamento da migração:** [panorama competitivo de 16/10](docs/relatorios/PANORAMA-CONCORRENTES-2026-10-16.md), incluindo proposta de avaliação híbrida e pendências COMP-01 a COMP-07. Preservar este arquivo no próximo clone. Os recibos históricos de publicação/clone abaixo comprovam seus respectivos cortes; não atestam automaticamente esta entrega documental posterior. A pausa de implementação permanece.
+
 1. [AGENTS.md](AGENTS.md): papéis, Git e instruções vigentes.
 2. [Prioridades de 16/10](docs/relatorios/PRIORIDADES-LINGUAGENS-2026-10-16.md): Rust/Go/JavaScript/TypeScript com maior profundidade na linguagem e biblioteca padrão; Python existente preservado, novos investimentos no básico, IA e DOCX/XLSX/documentos semelhantes. **Perguntar ao usuário antes de escolher ou aprofundar frameworks em qualquer linguagem.**
 3. [Checkpoint C07](docs/relatorios/L5-C07.md): trabalho mais recente, inclusive preparação ainda sem prova nativa.
